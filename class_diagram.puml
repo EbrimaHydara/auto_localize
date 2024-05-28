@@ -1,0 +1,38 @@
+@startuml ClassDiagram
+class OnboardingAndInitializationSetup {
+  +registerWebsite()
+  +buildTreeStructure()
+  +scrapeHTMLContent()
+}
+
+class AutomaticStringDetectionAndExtraction {
+  +scrapeSourceTree()
+  +extractText()
+  +replaceWithPlaceholders()
+  +storeInJSON()
+}
+
+class AutomaticLocalizationAndTranslationWorkflowTool {
+  +triggerRebuild()
+  +connectToTMS()
+  +updateTranslations()
+}
+
+class AutomaticLocalizationAndTranslationQualityEvaluationAndReview {
+  +versionControlHandling()
+  +permitUserReviews()
+  +updateTranslationCategories()
+}
+
+class ContinuousLocalizationWorkflow {
+  +listenToChanges()
+  +triggerBuilds()
+  +captureScreenshots()
+  +executeQAAndLR()
+}
+
+OnboardingAndInitializationSetup "1" -- "1" AutomaticStringDetectionAndExtraction
+AutomaticStringDetectionAndExtraction "1" -- "1" AutomaticLocalizationAndTranslationWorkflowTool
+AutomaticLocalizationAndTranslationWorkflowTool "1" -- "1" AutomaticLocalizationAndTranslationQualityEvaluationAndReview
+AutomaticLocalizationAndTranslationQualityEvaluationAndReview "1" -- "1" ContinuousLocalizationWorkflow
+@enduml
