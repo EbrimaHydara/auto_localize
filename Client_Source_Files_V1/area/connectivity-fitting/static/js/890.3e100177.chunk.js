@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrakuten_mobile_my_area_beta=self.webpackChunkrakuten_mobile_my_area_beta||[]).push([[890],{7890:function(e,a,t){t.r(a);var r=t(8738);"undefined"===typeof window||(0,r.getBrowser)().start()}}]);
