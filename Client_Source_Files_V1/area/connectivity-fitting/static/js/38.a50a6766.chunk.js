@@ -1,0 +1,1 @@
+(self.webpackChunkrakuten_mobile_my_area_beta=self.webpackChunkrakuten_mobile_my_area_beta||[]).push([[38],{290:function(e){e.exports="test-file-stub"}}]);

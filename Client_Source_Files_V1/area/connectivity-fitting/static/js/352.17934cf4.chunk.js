@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrakuten_mobile_my_area_beta=self.webpackChunkrakuten_mobile_my_area_beta||[]).push([[352],{4352:function(e){e.exports=JSON.parse('{"giftCode":"MANY-ALPH-NUMS-HERE","campaignKey":"dummyCampaignId"}')}}]);
