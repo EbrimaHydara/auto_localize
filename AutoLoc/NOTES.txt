@@ -1,0 +1,29 @@
+UPDATES ON HTMLFileLocalizer:
+- Write function to update the classes and IDs of each tag to change from double quotes to single quotes in every HTML file before loading the HTML in BeautifulSoup. This function must be the first to run on every HTML file by the HTMLFileLocalizer.
+- Update code to extract the full tag's data (not text) to the JSON file. The single quotes in the tags' class or ID attributes should avoid the special character escapings in the JSON file.
+- Write function to check for and remove any duplicated data/value in the JSON files. The first entry of duplicates is retained while the others removed from the JSON file.
+- Write function to update the data-i18n attribute of any tag in the HTML files that contains the same data/value in the JSON file to the key of the JSON data. 
+- Duplicated HTML files for each locale should be next to the original HTML file in the following order as example:
+    - index.html (original)
+    - en/en_US_index.html
+    - zh/zh_CN_index.html
+- For every original HTML and its duplicates for each locale, their navigation links must be relative to each other based on the original HTML file's directory. The _insert_navigation_links() function must render the navigation links in this manner. 
+- Adjust to remove the double rendered <script><script> tags by the _insert_i18next_logic() function.
+- Update the _insert_i18next_logic() function to load the JSON files relative paths based on the locales directory instead of the root directory.
+- Write function to split the locale JSON files into smaller chunks of 30,000 lines limit JSON files for TMS uploads.
+- Write function to merge the translated chunks JSON files into the main locale JSON files based on keys of the entries. 
+
+- Look into Craig's suggestion to avoid HTML duplication and still load the JSON locale translations based on different URLs for each locale pointing to the same HTML file. He assumes this will still cater for the SEO requirement that necessitated RMI's file duplication request. 
+
+
+
+
+self.target_tags = [
+            'title', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+            'address', 'pre', 'blockquote', 'li', 'figcaption', 'caption', 'td', 'th', 'button', 'label', 'option'
+        ]
+    
+self.special_tags = [
+    'div', 'img' 
+]
+
