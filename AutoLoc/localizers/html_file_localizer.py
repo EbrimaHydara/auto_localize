@@ -12,10 +12,11 @@ class HTMLFileLocalizer(FileLocalizer):
         :param project_id: The ID of the project.
         """
         super().__init__(project_id)
-        self.translatable_tags = [
-            'title', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
-            'a', 'li', 'td', 'th', 'button', 'label', 'option', 'img',
-            'span', 'b', 'i', 'small', 'strong', 'em', 'u', 'mark', 'sub', 'sup'
+        self.target_tags = [
+            'title', 'div', 'img', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'address', 'pre', 'blockquote', 'li', 'button', 'figcaption', 'caption', 'td', 'th', 'label', 'option'
+        ]
+        self.formatting_tags = [
+            'a', 'span', 'br', 'b', 'strong', 'i', 'em', 'mark', 'small', 'del', 'ins', 'sub', 'sup', 'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi', 'bdo', 'ruby', 'rt', 'rp', 'wbr'
         ]
 
     def localize_html_files(self):
@@ -53,20 +54,60 @@ class HTMLFileLocalizer(FileLocalizer):
 
         :param soup: The BeautifulSoup object containing the HTML content.
         """
-        for tag in soup.find_all(self.translatable_tags):
+        for tag in soup.find_all(self.target_tags):
             if 'data-i18n' in tag.attrs or 'data-i18n-alt' in tag.attrs:
                 continue  # Skip tags that are already marked
             if tag.name == 'img' and tag.has_attr('alt') and tag['alt'].strip():
                 tag['data-i18n-alt'] = f'html-alt-{self.generate_short_uuid()}'
-            elif tag.get_text(strip=True):
-                tag['data-i18n'] = f'html-str-{self.generate_short_uuid()}'
-            
-            # # Convert class and id attributes to use single quotes for JSON compatibility
-            # for child in tag.find_all():
-            #     if 'class' in child.attrs:
-            #         child['class'] = ' '.join(child['class']).replace('"', "'")
-            #     if 'id' in child.attrs:
-            #         child['id'] = child['id'].replace('"', "'")
+            elif tag.name != 'img':
+                if self._contains_only_text(tag) or self._contains_text_and_formatting_tags(tag) or self._contains_only_formatting_tags(tag) or self._formatting_tag_with_target_tag(tag):
+                    tag['data-i18n'] = f'html-str-{self.generate_short_uuid()}'
+
+    def _contains_only_text(self, tag):
+        """
+        Checks if a tag contains only text.
+
+        :param tag: The BeautifulSoup tag object.
+        :return: True if the tag contains only text, False otherwise.
+        """
+        return tag.string and not any(child for child in tag.children if child.name)
+
+    def _contains_text_and_formatting_tags(self, tag):
+        """
+        Checks if a tag contains text and formatting tags.
+
+        :param tag: The BeautifulSoup tag object.
+        :return: True if the tag contains text and formatting tags, False otherwise.
+        """
+        return any(child.name in self.formatting_tags for child in tag.find_all(recursive=False)) and tag.get_text(strip=True)
+
+    def _contains_only_formatting_tags(self, tag):
+        """
+        Checks if a tag contains only formatting tags.
+
+        :param tag: The BeautifulSoup tag object.
+        :return: True if the tag contains only formatting tags, False otherwise.
+        """
+        return all(child.name in self.formatting_tags for child in tag.find_all(recursive=False))
+
+    def _formatting_tag_with_target_tag(self, tag):
+        """
+        Checks if a formatting tag has a target tag next to it inside a target tag,
+        and its parent tag does not contain immediate text.
+
+        :param tag: The BeautifulSoup tag object.
+        :return: True if a formatting tag has a target tag next to it and the parent tag
+                does not contain immediate text, False otherwise.
+        """
+        for child in tag.find_all(recursive=False):
+            if child.name in self.formatting_tags:
+                next_sibling = child.find_next_sibling()
+                if next_sibling and next_sibling.name in self.target_tags and not self._contains_text_and_formatting_tags(tag):
+                    return True
+        return False
+
+
+
 
     def _extract_and_save_strings(self, soup, html_file):
         """
@@ -78,9 +119,9 @@ class HTMLFileLocalizer(FileLocalizer):
         source_json = {}
         for tag in soup.find_all(attrs={"data-i18n": True}):
             key = tag['data-i18n']
-            text = tag.get_text(strip=True)
-            if text:
-                source_json[key] = text
+            inner_html = ''.join(str(child) for child in tag.children).strip()
+            if inner_html:
+                source_json[key] = inner_html
 
         for tag in soup.find_all(attrs={"data-i18n-alt": True}):
             key = tag['data-i18n-alt']
@@ -287,6 +328,24 @@ class HTMLFileLocalizer(FileLocalizer):
         for html_file in html_files:
             with open(html_file, 'r', encoding='utf-8') as file:
                 soup = BeautifulSoup(file, 'html.parser')
-                if soup.find(self.translatable_tags):
+                if soup.find(self.target_tags):
                     return True
         return False
+
+    # def _contains_only_formatting_tags(self, tag):
+    #     """
+    #     Checks if a tag contains only formatting tags.
+
+    #     :param tag: The BeautifulSoup tag object.
+    #     :return: True if the tag contains only formatting tags, False otherwise.
+    #     """
+    #     return all(child.name in self.formatting_tags for child in tag.find_all())
+
+    # def _contains_text_and_formatting_tags(self, tag):
+    #     """
+    #     Checks if a tag contains text and formatting tags.
+
+    #     :param tag: The BeautifulSoup tag object.
+    #     :return: True if the tag contains text and formatting tags, False otherwise.
+    #     """
+    #     return any(child.name in self.formatting_tags for child in tag.find_all()) and tag.get_text(strip=True)
