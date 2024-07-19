@@ -5,26 +5,6 @@ Current Prompt:
 
 Update the HTMLFileLocalizer class as follows:
 
-- Update the code to replace the translatable_tags to the target_tags list as below:
-self.target_tags = [
-            'title', 'div', 'img', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'address', 'pre', 'blockquote', 'li', 'figcaption', 'caption', 'td', 'th', 'button', 'label', 'option'
-        ]
-
-- Update the code to include the formatting_tags list below:
-self.formatting_tags = [
-            'b', 'strong', 'i', 'em', 'mark', 'small', 'del', 'ins', 'sub', 'sup', 'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi', 'bdo', 'ruby', 'rt', 'rp', 'wbr', 'span', 'br'
-        ]
-
-- Remove the div handling logic and maintain the img handling logic.
-- Mark and extract the contents (innerHTML) of every tag in the target_tags list that either contains only text, or contains an immediate child tag from the formatting_tags, or contains text embedded with an immediate child tag from the formatting_tags, to the JSON files.
-- DO NOT mark and extract any tag in target_tags that DOES NOT contain only text or an immediate child tag from the formatting_tags.
-- Handle the img tags such that only those with alt attributes containing text are marked and extracted to the JSON files.  
-
-
-
-
-
-
 
 - Add a function or functions to check for and remove any duplicated value in the JSON files. Only the first instance of duplicated values is retained while the others removed from the JSON file together with their keys.
 - Add a function or functions to update the data-i18n attributes in all HTML files to have the UUID keys of the values in the JSON files equal to/the same as their tag contents. 
@@ -36,7 +16,14 @@ self.formatting_tags = [
     - en/en_US_index.html
     - zh/zh_CN_index.html
 - For every original HTML and its duplicates for each locale, their navigation links must be relative to each other based on the original HTML file's directory. The _insert_navigation_links() function must render the navigation links in this manner. 
-
+- Update the _save_json_file such that every HTML file renders its text from a JSON file inside its parent directory structure corresponding to it. The locale directories must be next to the original HTML file as:
+- index.html (original) (gets its text from ja/html_strings_ja_JP.json next to it).
+- ja/html_strings_ja_JP.json 
+- en/en_US_index.html (gets gets its text from en/html_strings_en_US.json next to it)
+- en/html_strings_en_US.json
+- zh/zh_CN_index.html
+- zh/html_strings_zh_CN.json 
+- Every JSON file must contain a comment at the top as the first line before the JSON content which indicates the full path of the JSON file.
 
 
 - Adjust to remove the double rendered "<script><script>" tags by the _insert_i18next_logic() function.
@@ -44,8 +31,7 @@ self.formatting_tags = [
 
 
 
-- Write function to split the locale JSON files into smaller chunks of 25,000 lines limit JSON files for each JSON file in its respective directory. Name the JSON chunk files as the {parent JSON filename}_{file_number}, example: html_strings_ja_JP.json as parent and html_strings_ja_JP_chunk_1.json as first chunk of 25,000 lines limit and html_strings_ja_JP_chunk_2.json as second chunk of 25,000 lines limit. The line limit should be less than or equal to 25,000. 
-- Write a function that replaces the contents of the parent JSON files with their corresponding child/chunks JSON files' contents.
+- Write a function to get and populate all JSON files of the source and target locales in the source tree of the root dir (recursively) inside the locales directory. 
+- Write a function that replaces the contents of the individual JSON files in the source tree of the root dir with their corresponding JSON files' contents based on their full/absolute paths in their comments at the top of the JSON file.
 
-- Look into Craig's suggestion to avoid HTML duplication and still load the JSON locale translations based on different URLs for each locale pointing to the same HTML file. He assumes this will still cater for the SEO requirement that necessitated RMI's file duplication request. 
 

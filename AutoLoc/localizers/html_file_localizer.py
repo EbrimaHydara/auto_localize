@@ -332,20 +332,3 @@ class HTMLFileLocalizer(FileLocalizer):
                     return True
         return False
 
-    # def _contains_only_formatting_tags(self, tag):
-    #     """
-    #     Checks if a tag contains only formatting tags.
-
-    #     :param tag: The BeautifulSoup tag object.
-    #     :return: True if the tag contains only formatting tags, False otherwise.
-    #     """
-    #     return all(child.name in self.formatting_tags for child in tag.find_all())
-
-    # def _contains_text_and_formatting_tags(self, tag):
-    #     """
-    #     Checks if a tag contains text and formatting tags.
-
-    #     :param tag: The BeautifulSoup tag object.
-    #     :return: True if the tag contains text and formatting tags, False otherwise.
-    #     """
-    #     return any(child.name in self.formatting_tags for child in tag.find_all()) and tag.get_text(strip=True)
