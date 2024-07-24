@@ -259,40 +259,4 @@ class EJSFileLocalizer(FileLocalizer):
             for ejs_file in ejs_files:
                 file.write(f'{file_counter}: {ejs_file}\n')
                 file_counter += 1
-                # for locale in self.target_locales:
-                #     language_code, country_code = locale[2].split('-')
-                #     file.write(f'Duplicate: {self.locales_dir}/{language_code}_{country_code}/{os.path.basename(ejs_file)}\n')
-
-
-
-
-
-
-# # Usage examples for EJSFileLocalizer functions
-
-# # is followed by comment
-#   is followed by code
-
-# from file_localizers.ejs_file_localizer import EJSFileLocalizer
-
-# # Initialize the EJSFileLocalizer with a given project ID
-# project_id = 1
-# ejs_localizer = EJSFileLocalizer(project_id)
-
-# # Localize all EJS files in the project's root directory and subdirectories
-# ejs_localizer.localize_ejs_files()
-
-# # Assuming the following methods are publicly accessible and could be called individually if needed:
-# # Retrieve and print the locales directory path
-# locales_path = ejs_localizer.get_locales_path()
-# print(f"Locales Directory Path: {locales_path}")
-
-# # Get and print all EJS files with a specific extension in the project's root directory and subdirectories
-# ejs_files = ejs_localizer.get_files_by_extension('.ejs')
-# print("EJS Files:")
-# for ejs_file in ejs_files:
-#     print(ejs_file)
-
-# # Process a specific EJS file for localization (usually called within localize_ejs_files)
-# ejs_file_path = 'path/to/specific/file.ejs'
-# ejs_localizer._process_ejs_file(ejs_file_path)  # Note: This method is typically internal, hence prefixed with '_'
+                

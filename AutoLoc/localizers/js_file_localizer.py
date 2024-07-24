@@ -154,32 +154,3 @@ class JSFileLocalizer(FileLocalizer):
                 file_counter += 1
 
 
-
-# # Usage examples for JSFileLocalizer functions
-
-# # is followed by comment
-#   is followed by code
-
-# from file_localizers.js_file_localizer import JSFileLocalizer
-
-# # Initialize the JSFileLocalizer with a given project ID
-# project_id = 1
-# js_localizer = JSFileLocalizer(project_id)
-
-# # Localize all JS files in the project's root directory and subdirectories
-# js_localizer.localize_js_files()
-
-# # Assuming the following methods are publicly accessible and could be called individually if needed:
-# # Retrieve and print the locales directory path
-# locales_path = js_localizer.get_locales_path()
-# print(f"Locales Directory Path: {locales_path}")
-
-# # Get and print all JS files with a specific extension in the project's root directory and subdirectories
-# js_files = js_localizer.get_files_by_extension('.js')
-# print("JS Files:")
-# for js_file in js_files:
-#     print(js_file)
-
-# # Process a specific JS file for localization (usually called within localize_js_files)
-# js_file_path = 'path/to/specific/file.js'
-# js_localizer._process_js_file(js_file_path)  # Note: This method is typically internal, hence prefixed with '_'

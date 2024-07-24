@@ -1,37 +1,368 @@
 UPDATES ON HTMLFileLocalizer:
 
-Current Prompt:
+GPT4o INITIAL PROMPT:
+
+I want you to read and understand the source code of an app for website source code automatic localization. The app is called AutoLoc. I am going to give you 3 of its classes to read and understand. Then I will prompt you to update specific parts of the code according to new requirements and descriptions. Please say DONE when you are done reading and understanding every class given to you below.
 
 
-Update the HTMLFileLocalizer class as follows:
+========= COMPLETED UPDATES =============
+
+******** UPDATES BATCH 1 **********
+
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class.
+
+Rules:
+
+- All HTML tag contents are sent to a JSON file in the self.locales_dir following the pattern:
+    - locales/en/html_strings_en_US
+    - locales/ja/html_strings_ja_JP
+    - locales/zh/html_strings_zh_CN
+    The above are example patterns of the locales directory.
+- All the HTML files must render the JSON file corresponding to their locale from the self.locales_dir. 
+
+- Before any tag is marked its content is checked in the JSON file to see if it is duplicated. If the content is a duplicate, then the tag is assigned the short UUID (JSON key) from the JSON file, otherwise assigned a new short UUID. This is done to avoid duplicate content in the JSON file.  
+
+- If a tag is marked, none of its children should be marked. 
+
+- Handle the target_tags as follows:
+    - A Target tag is not marked if it contains another Target tag as an immediate child or a special tag as an immediate child.
+    - A Target is marked only if it contains immediate text or it contains an immediate Nav tag or it contains an immediate formating tag.
+
+Handle the special_tags as follows with special rules:
+    - Only img tags with alt attributes having text are marked.
+    - Only meta tags with name="description", or name="author", property="og:title", or property="og:description" or property="og:site_name", or property="og:site_name" are marked to extract their "content" attribute texts. 
+
+Handle the nav_tags as follows:
+    - A Nav tag is not marked if it contains a target tag or a special tag. 
+    - A Nav tag is marked if it has a Target tag as a sibling. 
+
+Handle the formatting_tags as follows:
+    - Formatting tags are never marked. 
+
+************* END UPDATES BATCH 1 *****************
 
 
-- Add a function or functions to check for and remove any duplicated value in the JSON files. Only the first instance of duplicated values is retained while the others removed from the JSON file together with their keys.
-- Add a function or functions to update the data-i18n attributes in all HTML files to have the UUID keys of the values in the JSON files equal to/the same as their tag contents. 
+
+******** UPDATES BATCH 2 **********
+
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Rules on _extract_and_save_strings() function:
+
+- Before any tag's content is extracted to the JSON file, it is checked in the JSON file to see if it is duplicated. If the content is a duplicate and the tag's UUID is different from the corresponding JSON key, then the tag's UUID is updated to that of the JSON content.Otherwise, the tag's content is extracted to the JSON file. This is done to avoid duplicate content in the JSON file. 
+
+- If a tag is estracted, all of its innerHTML is sent as is to the JSON file.
+
+************* END UPDATES BATCH 2 *****************
 
 
 
-- Duplicated HTML files for each locale should be next to the original HTML file in the following order as example:
-    - index.html (original)
-    - en/en_US_index.html
-    - zh/zh_CN_index.html
-- For every original HTML and its duplicates for each locale, their navigation links must be relative to each other based on the original HTML file's directory. The _insert_navigation_links() function must render the navigation links in this manner. 
-- Update the _save_json_file such that every HTML file renders its text from a JSON file inside its parent directory structure corresponding to it. The locale directories must be next to the original HTML file as:
-- index.html (original) (gets its text from ja/html_strings_ja_JP.json next to it).
-- ja/html_strings_ja_JP.json 
-- en/en_US_index.html (gets gets its text from en/html_strings_en_US.json next to it)
-- en/html_strings_en_US.json
-- zh/zh_CN_index.html
-- zh/html_strings_zh_CN.json 
-- Every JSON file must contain a comment at the top as the first line before the JSON content which indicates the full path of the JSON file.
 
+******** UPDATES BATCH 3 **********
 
-- Adjust to remove the double rendered "<script><script>" tags by the _insert_i18next_logic() function.
-- Update the _insert_i18next_logic() function to load the JSON files' relative paths based on the "locales" directory instead of the root directory.
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Rules on _insert_i18next_logic() function:
+
+- Update the _insert_i18next_logic() function to write the JavaScript part viable to be in a JS file named load_translations.js. This file must be appended in the head tag of every HTML file being saved. Make sure the CDN and other required external JavaScript modules are still added in the head tag of the HTML file concerned.  
+
+************* END UPDATES BATCH 3 *****************
 
 
 
-- Write a function to get and populate all JSON files of the source and target locales in the source tree of the root dir (recursively) inside the locales directory. 
-- Write a function that replaces the contents of the individual JSON files in the source tree of the root dir with their corresponding JSON files' contents based on their full/absolute paths in their comments at the top of the JSON file.
+******** UPDATES BATCH 4 **********
+
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Rules on _insert_navigation_links() function:
+
+- Update the _insert_navigation_links() function to make use of the self.base_url attribute of the class to write all the SEO compliant links in the head tag of the affected HTML file. It should also use the self.base_url for the _get_locale_file_path() function to append the navigation links to the corresponding HTML file versions based on their locales while attaching the path from the children directories of the root_dir and not including the root_dir itself in the appended paths. 
+
+************* END UPDATES BATCH 4 *****************
+
+
+
+******** UPDATES BATCH 5 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on the tag lists:
+
+- Update the target_tags list to include all possible HTML tags that are missing in the current list and should be there due to their likeness with the tags in the list. Do not include current members of the other defined tag lists in the class. 
+
+- Update the special_tags list to include all possible HTML tags that are missing in the current list and should be there due to their likeness with the tags in the list. Do not include current members of the other defined tag lists in the class. 
+
+- Update the nav_tags list to include all possible HTML tags that are missing in the current list and should be there due to their likeness with the tags in the list. Do not include current members of the other defined tag lists in the class. 
+
+- Update the formating_tags list to include all possible HTML tags that are missing in the current list and should be there due to their likeness with the tags in the list. Do not include current members of the other defined tag lists in the class. 
+
+************* END UPDATES BATCH 5 *****************
+
+
+
+******** UPDATES BATCH 6 **********
+
+Update the DBManager class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on the SQLite DB File:
+
+- Update the self.db_file = 'autoloc.db' to always create the self.db_file inside the "managers" folder no matter where the class is executed within the AutoLoc app directory tree. 
+
+************* END UPDATES BATCH 6 *****************
+
+
+
+******** UPDATES BATCH 7 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on _insert_navigation_links() function:
+
+- Update the _insert_navigation_links() function to fix the following problem in the original_html_file:
+
+<link href="https://network.mobile.rakuten.co.jp/https://network.mobile.rakuten.co.jp/ad/lp/index.html" hreflang="ja-JP" rel="alternate"/><link href="https://network.mobile.rakuten.co.jp/https://network.mobile.rakuten.co.jp/ad/lp/en/en_index.html" hreflang="en-US" rel="alternate"/><link href="https://network.mobile.rakuten.co.jp/https://network.mobile.rakuten.co.jp/ad/lp/index.html" hreflang="ja-JP" rel="alternate"/><link href="https://network.mobile.rakuten.co.jp/https://network.mobile.rakuten.co.jp/ad/lp/en/en_index.html" hreflang="en-US" rel="alternate"/><link href="https://network.mobile.rakuten.co.jp/https://network.mobile.rakuten.co.jp/ad/lp/index.html" hreflang="ja-JP" rel="alternate"/><link href="https://network.mobile.rakuten.co.jp/https://network.mobile.rakuten.co.jp/ad/lp/en/en_index.html" hreflang="en-US" rel="alternate"/>
+
+- The SEO compliant links are repeated in the original_html_file multiple times unnecessarily. Every unique SEO link must be included just once in the original_html_file. 
+- The base_url is attached twice in every SEO link in the original_html_file and the localized_html_file. The base_url must be attached only once in all SEO paths. It must not be as "https://network.mobile.rakuten.co.jp/https://network.mobile.rakuten.co.jp/ad/lp/index.html" but it should be as "https://network.mobile.rakuten.co.jp/ad/lp/index.html" for example. 
+
+************* END UPDATES BATCH 7 *****************
+
+
+
+******** UPDATES BATCH 8 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on _insert_i18next_logic() function:
+
+- Update the _insert_i18next_logic() function to fix the following problem in the load_translations.js file:
+
+- The json_file_name should be defined inside the JavaScript of the load_translations.js file. The json_file_name should use the language code and country code to specify the correct file name as "html_strings_{language_code}_{country_code}.json".
+- The  jsonFilePath should be relative to the load_translations.js file and not the HTML file under process.
+- The jsonFilePath should be dynamic to load the JSON file corresponding to the HTML file's locale based on the HTML file's locale.
+- The JavaScript inside load_translations.js should dynamically get the jsonFilePath based on the HTML file's locale such as "{language_code/html_strings_{language_code}_{country_code}.json}. 
+
+
+************* END UPDATES BATCH 8 *****************
+
+
+
+******** UPDATES BATCH 9 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on _save_html_file() function:
+
+- Update the _save_html_file() function to pretify the HTML soup to be saved in the HTML file as the original structure before BeautifulSoup loaded it. 
+
+************* END UPDATES BATCH 9 *****************
+
+
+
+******** UPDATES BATCH 10 **********
+
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Rules on _mark_translatable_strings() function:
+
+- Update the logic for the target_tags to be marked if they:
+    - have nav_tags children
+    - have formating_tags children
+    - have only text 
+    - have text plus nav_tags children
+    - have text plus formating tags children
+    - have text plus nav_tags and formatting_tags children
+
+
+************* END UPDATES BATCH 10 *****************
+
+
+
+******** UPDATES BATCH 11 **********
+
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Rules on _mark_translatable_strings() function:
+
+- Update the logic for the target_tags NOT to be marked if they:
+    - are inside nav_tags parent
+    - are inside formating_tags parent
+
+
+************* END UPDATES BATCH 11 *****************
+
+
+
+******** UPDATES BATCH 12 **********
+
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Rules on _mark_translatable_strings() function:
+
+- Update the logic for the nav_tags to be marked if they:
+    - contain target_tags or formating_tags or special_tags children
+    - have target_tags as sibling
+
+
+
+************* END UPDATES BATCH 12 *****************
+
+
+******** UPDATES BATCH 13 **********
+
+Update the HTMLFileLocalizer class according to the following rules. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Rules on _mark_translatable_strings() function:
+
+- Update the logic for the special_tags NOT to be marked if they:
+    - are inside nav_tags
+
+
+
+************* END UPDATES BATCH 13 *****************
+
+
+
+******** UPDATES BATCH 14 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on _insert_i18next_logic() function:
+
+- Update the _insert_i18next_logic() function to only append the load_translations.js file in the head tag of the HTML files. It also makes sure that the CDN and other required external JavaScript modules are still added in the head tag of the HTML file concerned. 
+
+- Add a new separate function that executes only once when the class is initialized to write the JavaScript content to the load_translations.js file. You can name the function as _create_load_translations_js_file().
+
+************* END UPDATES BATCH 14 *****************
+
+
+
+******** UPDATES BATCH 15 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on _extract_and_save_strings() function:
+
+- Update the _extract_and_save_strings() function to save nested JSON oobjects as data in the JSON file using the html file path as parent key and the JSON data for the HTML file as child object. Every HTML file's data should be saved with its file path as key of the parent object. The JSON pattern should look like:
+
+{
+    "path-to-the-html-file-as-key": {
+        "html-string-uuid-as-key-1": "String or HTML data 1 here...",
+        "html-string-uuid-as-key-2": "String or HTML data 2 here...",
+        "html-string-uuid-as-key-3": "String or HTML data 3 here...",
+        
+    },
+    "path-to-another-html-file-as-key": {
+        "html-string-uuid-as-key-4": "String or HTML data 4 here...",
+        "html-string-uuid-as-key-5": "String or HTML data 5 here...",
+        "html-string-uuid-as-key-6": "String or HTML data 6 here...",
+        
+    },
+    ....
+}
+
+- The above is the new JSON format for all JSON files for each locale in the locales directory.
+
+
+************* END UPDATES BATCH 15 *****************
+
+
+
+
+******** UPDATES BATCH 16 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points on _is_duplicate() function usage rendering the class extremely slow:
+
+- Remove every instance of the usage or calling of the _is_duplicate() function in any affected part of the class and just mark and extract tag contents without checking for duplicates.
+
+- We will create a separate class that removes duplicate entries in the JSON files later. 
+
+
+************* END UPDATES BATCH 16 *****************
+
+
+
+******** UPDATES BATCH 17 **********
+
+Update the HTMLFileLocalizer class according to the following points. Only update and return the parts of the class affected and do not rewrite or return the entire class because it's a long class. If there is no update needed, then just say no update needed.
+
+Points adding a new function to replace some characters in the JSON files:
+
+- Add a function to the class that executes at class initialization to replace all \" to a single quote (').
+
+
+************* END UPDATES BATCH 17 *****************
+
+
+
+
+
+=========== PENDING UPDATES =============
+
+
+
+
+******** UPDATES BATCH 18 **********
+
+Create a new HTMLFileLocDeduplicator class according to the following points:
+
+- The class is similar to the HTMLFileLocalizer class in nature but different in functionality.
+
+- The class must load the source locale JSON file from the locales directory at initialization. The JSON file must not be loaded in memory more than once to optimize the code for execution speed.
+
+- The class must remove any duplicated content based on the JSON data values in the loaded JSON file.
+
+- The class must update all the target locales JSON files in the locales directories with the updated data of the source locale JSON file.
+
+- The class must load all original HTML files to update any tag's data-i18n whose content is in the loaded JSON file but the JSON key is not equal to its data-i18n attribute. This is done to ensure that duplicated tags or contents in the HTML files point to their unique entry in the JSON files. 
+
+- The class must update each original HTML file's duplicated HTML files with the updated content of the original HTML file.
+
+
+************* END UPDATES BATCH 18 *****************
+
+
+******** UPDATES BATCH 19 **********
+
+Create a new HTMLFileLocUpdater class according to the following points:
+
+- The class is similar to the HTMLFileLocalizer class in nature but different in functionality.
+
+- The class must load the source locale JSON file from the locales directory at initialization. The JSON file must not be loaded in memory more than once to optimize the code for execution speed.
+
+- The class must check in all original HTML files to find tags whose content is not equal to their corresponding JSON file's entry and assign them new data-i18n UUIDs.
+
+- The class must extract any tag whose content is not equal to their corresponding JSON file's entry and its content to different source locale JSON file in the locales directory. The new JSON file should be named as "html_strings_{language_code}_{country_code}_updates.json". 
+
+- The class must then update the source locale's JSON and all the target locales JSON files by appending the data from the new JSON file based on html_file_key and key. 
+
+- The class must update only the affected original HTML file's duplicated HTML files with the updated content of the original HTML file.
+
+
+************* END UPDATES BATCH 19 *****************
+
+
+
+******** UPDATES BATCH 20 **********
+
+Create a new TranslationsManager class according to the following points:
+
+- The class is similar to the HTMLFileLocalizer class in nature but different in functionality.
+
+- The class must load each JSON file from the locales directory at initialization. The JSON files must not be loaded in memory more than once to optimize the code for execution speed.
+
+- The class must create a new directory named TMS_Files if it does not exist in the root_dir.
+
+- The class must create for each JSON file in the locales directory a folder in the TMS_Files folder named after the JSON filename as "{language_code}/{json_file_name}_chunks". In the folder of each JSON file in the TMS_Files folder. Inside each "{language_code}/{json_file_name}_chunks" directory, the class creates a JSON file that only contains one html_file_key record. The JSON chunk file is named after the html_file_key replacing the "/" with "-" of the html_file_key. For each html_file_key the class creates a separed JSON chunk file inside the "{language_code}/{json_file_name}_chunks" directory of the JSON locale file being processed. 
+
+- The class must be able to write back all the JSON chunks files contents from the TMS_Files folder to their corresponding JSON locale files in the locales directory. This done to ensure that after translating the chunks into their intended languages, the translations are then saved to the respective JSON locale files. 
+
+
+************* END UPDATES BATCH 20 *****************
+
+
+
 
 

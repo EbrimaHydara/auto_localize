@@ -15,6 +15,7 @@ class FileLocalizer:
         self.project_id = project_id
         self.project_settings = self._get_project_settings()
         self.root_dir = self.project_settings['root_dir']
+        self.base_url = self.project_settings['base_url']
         self.file_types = self._get_project_file_types()
         self.source_locale = self._get_project_source_locale()
         self.target_locales = self._get_project_target_locales()
@@ -29,7 +30,8 @@ class FileLocalizer:
         project = self.db_manager.get_project(self.project_id)
         if project:
             return {
-                'root_dir': project[0][3]  # Assuming project is a list of tuples and we need the first result
+                'root_dir': project[0][3],
+                'base_url': project[0][4]  # Assuming project is a list of tuples and we need the first result
             }
         return None
 
@@ -99,6 +101,7 @@ class FileLocalizer:
     def delete_locales_directory(self):
         """
         Deletes the 'locales' directory in the root directory.
+        Recreates the 'locales' directory in the root directory.
         """
         if os.path.exists(self.locales_dir):
             shutil.rmtree(self.locales_dir)

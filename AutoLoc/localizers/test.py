@@ -7,6 +7,7 @@ if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
 from html_file_localizer import HTMLFileLocalizer
+# from js_file_localizer import JSFileLocalizer
 
 try:
     html_localizer = HTMLFileLocalizer(1)

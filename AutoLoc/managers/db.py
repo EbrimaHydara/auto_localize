@@ -9,11 +9,12 @@ class DBManager():
 
     def __init__(self):
         super().__init__()
-        self.db_file = 'autoloc.db'
+        self.db_file = os.path.join(os.path.dirname(__file__), 'autoloc.db')
         self.connection = None
         self.create_db()
         self.create_tables()
         self.insert_default_records()
+
 
     def create_db(self):
         self.connection = sqlite3.connect(self.db_file)
@@ -44,7 +45,8 @@ class DBManager():
                                 name TEXT NOT NULL,
                                 description TEXT,
                                 root_dir TEXT NOT NULL,
-                                UNIQUE(name, root_dir))''')
+                                base_url TEXT NOT NULL,
+                                UNIQUE(name, root_dir, base_url))''')
             cursor.execute('''CREATE TABLE IF NOT EXISTS project_file_types (
                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                                 full_name TEXT NOT NULL,
@@ -285,11 +287,11 @@ class DBManager():
     def get_project(self, project_id):
         return self.get_data('projects', f'id = {project_id}')
 
-    def insert_project(self, name, description, root_dir):
-        self.insert_data('projects', 'name, description, root_dir', (name, description, root_dir))
+    def insert_project(self, name, description, root_dir, base_url):
+        self.insert_data('projects', 'name, description, root_dir, base_url', (name, description, root_dir, base_url))
 
-    def update_project(self, project_id, name, description, root_dir):
-        set_statement = f"name = '{name}', description = '{description}', root_dir = '{root_dir}'"
+    def update_project(self, project_id, name, description, root_dir, base_url):
+        set_statement = f"name = '{name}', description = '{description}', root_dir = '{root_dir}', base_url = '{base_url}'"
         condition = f"id = {project_id}"
         self.update_data('projects', set_statement, condition)
 
@@ -346,200 +348,4 @@ class DBManager():
         condition = f"id = {locale_id}"
         self.delete_data('project_target_locales', condition)
     
-
-
-# # Usage examples for DBManager functions
-
-# # is followed by comment
-#   is followed by code
-
-# db_manager = DBManager()
-
-# # =====================================
-# # General Data Management Functions
-# # =====================================
-
-# # Get all records from a table
-# file_types = db_manager.get_table_records('file_types')
-# print("All file types:", file_types)
-
-# # Get a specific record by condition
-# file_type = db_manager.get_data('file_types', "id = 1")
-# print("File type with ID 1:", file_type)
-
-# # Insert a new record into a table
-# db_manager.insert_data('file_types', 'full_name, short_name, extension', ('Markdown', 'MD', '.md'))
-# print("Inserted new file type: Markdown")
-
-# # Update an existing record in a table
-# db_manager.update_data('file_types', "full_name = 'Markdown File', short_name = 'MD', extension = '.md'", "id = 1")
-# print("Updated file type with ID 1")
-
-# # Delete a record from a table
-# db_manager.delete_data('file_types', "id = 1")
-# print("Deleted file type with ID 1")
-
-# # =====================================
-# # File Types Data Management Functions
-# # =====================================
-
-# # Get all file types
-# file_types = db_manager.get_file_types()
-# print("All file types:", file_types)
-
-# # Get a specific file type by ID
-# file_type = db_manager.get_file_type(1)
-# print("File type with ID 1:", file_type)
-
-# # Insert a new file type
-# db_manager.insert_file_type('Markdown', 'MD', '.md')
-# print("Inserted new file type: Markdown")
-
-# # Update an existing file type
-# db_manager.update_file_type(1, 'Markdown File', 'MD', '.md')
-# print("Updated file type with ID 1")
-
-# # Delete a file type
-# db_manager.delete_file_type(1)
-# print("Deleted file type with ID 1")
-
-# # ========================================
-# # Source Locales Data Management Functions
-# # ========================================
-
-# # Get all source locales
-# source_locales = db_manager.get_source_locales()
-# print("All source locales:", source_locales)
-
-# # Get a specific source locale by ID
-# source_locale = db_manager.get_source_locale(1)
-# print("Source locale with ID 1:", source_locale)
-
-# # Insert a new source locale
-# db_manager.insert_source_locale('Spanish', 'es', 'ES')
-# print("Inserted new source locale: Spanish")
-
-# # Update an existing source locale
-# db_manager.update_source_locale(1, 'Spanish', 'es', 'ES')
-# print("Updated source locale with ID 1")
-
-# # Delete a source locale
-# db_manager.delete_source_locale(1)
-# print("Deleted source locale with ID 1")
-
-# # ========================================
-# # Target Locales Data Management Functions
-# # ========================================
-
-# # Get all target locales
-# target_locales = db_manager.get_target_locales()
-# print("All target locales:", target_locales)
-
-# # Get a specific target locale by ID
-# target_locale = db_manager.get_target_locale(1)
-# print("Target locale with ID 1:", target_locale)
-
-# # Insert a new target locale
-# db_manager.insert_target_locale('French', 'fr', 'FR')
-# print("Inserted new target locale: French")
-
-# # Update an existing target locale
-# db_manager.update_target_locale(1, 'French', 'fr', 'FR')
-# print("Updated target locale with ID 1")
-
-# # Delete a target locale
-# db_manager.delete_target_locale(1)
-# print("Deleted target locale with ID 1")
-
-# # ==================================
-# # Project Data Management Functions
-# # ==================================
-
-# # Get all projects
-# projects = db_manager.get_projects()
-# print("All projects:", projects)
-
-# # Get a specific project by ID
-# project = db_manager.get_project(1)
-# print("Project with ID 1:", project)
-
-# # Insert a new project
-# db_manager.insert_project('New Project', 'A new test project', '/path/to/project')
-# print("Inserted new project: New Project")
-
-# # Update an existing project
-# db_manager.update_project(1, 'Updated Project', 'An updated description', '/new/path/to/project')
-# print("Updated project with ID 1")
-
-# # Delete a project
-# db_manager.delete_project(1)
-# print("Deleted project with ID 1")
-
-# # ===========================================
-# # Project File Types Data Management Functions
-# # ===========================================
-
-# # Get file types for a project
-# project_file_types = db_manager.get_project_file_types(1)
-# print("File types for project with ID 1:", project_file_types)
-
-# # Insert a file type to a project
-# db_manager.insert_project_file_type(1, 'HTML', 'Hypertext Markup Language', '.html')
-# print("Inserted file type to project with ID 1: HTML")
-
-# # Update a file type for a project
-# db_manager.update_project_file_type(1, 'HTML', 'Hypertext Markup Language', '.html')
-# print("Updated file type for project with ID 1")
-
-# # Delete a file type from a project
-# db_manager.delete_project_file_type(1)
-# print("Deleted file type from project with ID 1")
-
-# # ==============================================
-# # Project Source Locales Data Management Functions
-# # ==============================================
-
-# # Get source locales for a project
-# project_source_locales = db_manager.get_project_source_locales(1)
-# print("Source locales for project with ID 1:", project_source_locales)
-
-# # Insert a source locale to a project
-# db_manager.insert_project_source_locale(1, 'English', 'en', 'US')
-# print("Inserted source locale to project with ID 1: English")
-
-# # Update a source locale for a project
-# db_manager.update_project_source_locale(1, 'English', 'en', 'US')
-# print("Updated source locale for project with ID 1")
-
-# # Delete a source locale from a project
-# db_manager.delete_project_source_locale(1)
-# print("Deleted source locale from project with ID 1")
-
-# # ============================================
-# # Project Target Locales Data Management Functions
-# # ============================================
-
-# # Get target locales for a project
-# project_target_locales = db_manager.get_project_target_locales(1)
-# print("Target locales for project with ID 1:", project_target_locales)
-
-# # Insert a target locale to a project
-# db_manager.insert_project_target_locale(1, 'Spanish', 'es', 'ES')
-# print("Inserted target locale to project with ID 1: Spanish")
-
-# # Update a target locale for a project
-# db_manager.update_project_target_locale(1, 'Spanish', 'es', 'ES')
-# print("Updated target locale for project with ID 1")
-
-# # Delete a target locale from a project
-# db_manager.delete_project_target_locale(1)
-# print("Deleted target locale from project with ID 1")
-
-# # ============================================
-# # Database Reinitialization Function
-# # ============================================
-
-# # Reinitialize the database
-# db_manager.reinit_db()
-# print("Database reinitialized")
 

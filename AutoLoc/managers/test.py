@@ -14,7 +14,7 @@ try:
 
     # db_manager.reinit_db()
 
-    # db_manager.insert_project("RMI Project","Rakuten Mobile Localization Project","../../../RMI_Source_Files_for_Test/")
+    # db_manager.insert_project("RMI Project","Rakuten Mobile Localization Project","../../../RMI_Source_Files_for_Test/","https://network.mobile.rakuten.co.jp")
     # print(db_manager.get_projects())
 
     # # Get all source locales
