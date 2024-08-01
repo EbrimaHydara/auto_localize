@@ -38,11 +38,11 @@ class FileAnalyzer:
 
 if __name__ == "__main__":
     # Define the source directory and output directory here
-    source_directory = '../../../Rakuten Mobile/Original Source Code/mno_marketing-master'
+    source_directory = '../../../Rakuten Mobile/Original Source Code/mno_marketing-master/src'
     output_directory = '../../RMI_Source_Code_Analysis'
     
     # Define the file extensions to filter
-    file_extensions = ['.html', '.js', '.ejs', '.json','.csv', '.ts','.tsx', '.pdf', '.png', '.jpg', '.jpeg', '.svg']
+    file_extensions = ['.html', '.js', '.ejs', '.json','.csv', '.ts','.tsx', '.vue', '.pdf', '.png', '.jpg', '.jpeg', '.svg']
 
     analyzer = FileAnalyzer(source_directory, output_directory, file_extensions)
     analyzer.analyze_and_copy()

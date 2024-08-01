@@ -1,0 +1,151 @@
+Requirements Specification for AutoLoc App and Plugin:
+
+Introduction:
+
+This document provides an in-depth description of 
+the technical and functional requirements for 
+the AutoLoc script and the AutoLoc plugin. 
+These components are independently crucial for 
+automating the localization process of websites 
+and for seamless integration with various 
+Content Management Systems (CMS). 
+The specifications detailed herein are intended 
+to furnish developers, end-users, and other 
+stakeholders with a clear understanding of 
+the operational procedures, setup requirements, 
+and functionalities of the AutoLoc script and plugin.
+
+Part 1: AutoLoc Script for Website Localization:
+
+Detailed Overview:
+
+The AutoLoc script is a Python application designed 
+for operation from the Command Line Interface (CLI). 
+Its primary function is to automate the extraction 
+of translatable strings from website files, 
+such as HTML and JavaScript, and manage these 
+strings by populating them into structured JSON 
+files tailored to each required locale.
+
+Detailed Requirements:
+
+Extraction and Management of Translatable Strings:
+
+The script is required to meticulously scan 
+through HTML, JavaScript, and other files that 
+may contain hard-coded strings intended for translation. 
+It should extract these strings and systematically 
+populate them into designated JSON files. 
+Each locale requested by the user results in 
+a separate JSON file specifically for that locale.
+
+Locale Management:
+
+The script must support multiple locales simultaneously. 
+For each locale, a unique JSON file is created. 
+The naming convention for each JSON file should 
+reflect its locale (e.g., `en_us.json` for 
+American English, `fr_fr.json` for French).
+
+Replacement with String Identifiers:
+
+After extracting the strings, the script must 
+replace the original content within the HTML and 
+JavaScript files with unique string IDs. 
+These IDs serve as string variables pointing to 
+content from the corresponding JSON files.
+
+Integration with Translation Management Server (TMS):
+
+A pivotal feature of the script is its ability 
+to interface efficiently with a Translation Management 
+Server (TMS), which oversees the translation of 
+the extracted JSON files.
+
+The TMS is responsible for detecting modifications 
+in these files, updating them with the appropriate 
+translations, and pushing the translated content 
+back to the source code repository.
+
+Client-Side Integration Requirements:
+
+Clients are expected to manually integrate 
+the updated source code, which includes 
+the latest translations, into their live websites. 
+They must also shift from hard-coding strings 
+directly into HTML or JavaScript files to managing 
+these strings via the JSON files created by AutoLoc, 
+aligning with the localization structure proposed 
+by AutoLoc.
+
+Functionality for Language Switching:
+
+The script should support a feature that allows 
+website visitors to switch between the languages 
+available on the website. Upon selecting a language 
+from a dropdown menu, the website’s content should 
+automatically update by fetching the corresponding 
+translations from the JSON files located in 
+the “translations” directory.
+
+Continuous Localization Process:
+
+The ongoing process of localization, including 
+translation reviews, validations, and 
+the automatic updating of translated files, 
+should be comprehensively managed by the TMS.
+
+
+
+Part 2: AutoLoc Plugin for CMS Integration:
+
+Detailed Overview:
+
+The AutoLoc plugin is designed to facilitate 
+the integration of translation processes into 
+various CMS platforms, ensuring that content 
+management is both dynamic and localized.
+
+Detailed Requirements:
+
+Development for Specific CMS:
+
+Each CMS supported by AutoLoc necessitates 
+the development of a unique version of the plugin, 
+crafted in the CMS's native programming language.
+
+Automated Translation Management:
+
+The plugin must automate the transmission 
+of content from the CMS to the TMS for 
+translation and handle the reception of 
+translated text from the TMS via APIs.
+
+Database Schema Management:
+
+A crucial function of the plugin is to create 
+or update the CMS’s database schema to support 
+the new locales effectively. It must manage 
+the activation of these new locales within 
+the CMS seamlessly.
+
+Management of Translated Content:
+
+The plugin is responsible for collecting newly 
+translated strings from the TMS and accurately 
+posting them to their respective tables within 
+the CMS database.
+
+
+Summary:
+
+This concise document articulates the comprehensive 
+specifications for the AutoLoc script and plugin, 
+delineating each step and requirement to ensure 
+clarity and facilitate effective implementation. 
+By adhering to these detailed specifications, 
+developers and clients can achieve a robust 
+implementation of website localization and CMS 
+integration, thereby enhancing global accessibility 
+and usability of content across diverse linguistic 
+demographics.
