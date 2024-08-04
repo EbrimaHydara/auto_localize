@@ -13,13 +13,13 @@ class FileAnalyzer:
         for root, dirs, files in os.walk(self.source_dir):
             for file in files:
                 if any(file.endswith(ext) for ext in self.extensions):
-                    # source_file_path = os.path.join(root, file)
-                    # relative_path = os.path.relpath(root, self.source_dir)
-                    # output_file_path = os.path.join(self.output_dir, relative_path, file)
+                    source_file_path = os.path.join(root, file)
+                    relative_path = os.path.relpath(root, self.source_dir)
+                    output_file_path = os.path.join(self.output_dir, relative_path, file)
                     
-                    # os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
-                    # shutil.copy2(source_file_path, output_file_path)
-                    # print(f"Copied: {source_file_path} to {output_file_path}")
+                    os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
+                    shutil.copy2(source_file_path, output_file_path)
+                    print(f"Copied: {source_file_path} to {output_file_path}")
                     
                     file_extension = os.path.splitext(file)[1]
                     self.file_counts[file_extension] += 1
