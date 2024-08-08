@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButtonWithFocus('INPUT_FORM:BIRTH_YEAR');">
+    <f:view>
+        <!-- ヘッダー -->
+        <f:subview id="HEADER">
+            <ui:include src="/rb/fes/views/common/parts/header/login/HeaderLoginForCorporation.xhtml" />
+            <ui:remove>
+                <div id="headerLoginForCorporationinclude" />
+                <script language="JavaScript" src="../../../../../include/headerLoginForCorporation.js"></script>
+            </ui:remove>
+        </f:subview>
+        <center>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+                <tr align="center">
+                    <td>
+                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                            <tr>
+                                <td>
+                                    <!-- タイトル文言 -->
+                                    <h1 class="cp">
+                                        <fes:outputText value="ユーザＩＤの初期化　実行" />
+                                        <ui:remove>ユーザＩＤの初期化　実行</ui:remove>
+                                    </h1>
+                                    <!-- エラーメッセージ -->
+                                    <ui:fragment rendered="#{errorBean.errorFlg}">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginerror">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgC03" align="center">
+                                                    <table width="720" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="20">
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                            <td width="700">
+                                                                <font class="errortxt">
+                                                                    <fes:outputText value="#{errorBean.errorMessage}" />
+                                                                    <ui:remove>ここにエラーメッセージが表示されます</ui:remove>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:fragment>
+                                    <table width="740" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <div class="medium">
+                                                    <fes:outputText value="ユーザＩＤを初期化します。" />
+                                                    <ui:remove>ユーザＩＤを初期化します。</ui:remove>
+                                                    <br />
+                                                    <fes:outputText value="生年月日を入力してください。" />
+                                                    <ui:remove>生年月日を入力してください。</ui:remove>
+                                                    <br />
+                                                    <fes:outputText value="※法人のお客さまは口座管理者さまの生年月日を入力してください。" />
+                                                    <ui:remove>※法人のお客さまは口座管理者さまの生年月日を入力してください。</ui:remove>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="margintop10" align="center">
+                                        <h:form id="INPUT_FORM" onsubmit="return checkDuplicatedSubmit();">
+                                            <table width="740" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="720" border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td valign="top">
+                                                                    <fes:outputText value="※" />
+                                                                    <ui:remove>※</ui:remove>
+                                                                </td>
+                                                                <td>
+                                                                    <fes:outputText value="ユーザＩＤを初期化した場合、今までお使いのユーザＩＤは" />
+                                                                    <ui:remove>ユーザＩＤを初期化した場合、今までお使いのユーザＩＤは</ui:remove>
+                                                                    <font class="c01">
+                                                                        <fes:outputText value="利用できなくなります。" />
+                                                                        <ui:remove>利用できなくなります。</ui:remove>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <div class="margintop10" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">
+                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" width="740" height="15" class="margin0" />
+                                                        <ui:remove>
+                                                            <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" width="740" height="15" class="margin0" />
+                                                        </ui:remove>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bgG08" align="center">
+                                                        <div class="innerbox01">
+                                                            <table width="710" class="table01" cellspacing="0">
+                                                                <tr>
+                                                                    <th valign="top" class="th02short">
+                                                                        <div class="innercell">
+                                                                            <fes:outputText value="生年月日" />
+                                                                            <ui:remove>生年月日</ui:remove>
+                                                                        </div>
+                                                                    </th>
+                                                                    <td class="td03">
+                                                                        <div class="innercell">
+                                                                            <fes:outputText value=" 西暦 " />
+                                                                            <fes:inputText id="BIRTH_YEAR" class="year" value="#{corpUserIDInitializeManagedBean.corpUserIDInitializeFormBean.birthYear}" maxlength="4" autocomplete="off" clear="true" />
+                                                                            <fes:outputText value=" 年  " />
+                                                                            <h:selectOneMenu id="BIRTH_MONTH" value="#{corpUserIDInitializeManagedBean.corpUserIDInitializeFormBean.birthMonth}">
+                                                                                <f:selectItems value="#{corpUserIDInitializeManagedBean.corpUserIDInitializeFormBean.monthList}" />
+                                                                            </h:selectOneMenu>
+                                                                            <fes:outputText value=" 月  " />
+                                                                            <h:selectOneMenu id="BIRTH_DAY" value="#{corpUserIDInitializeManagedBean.corpUserIDInitializeFormBean.birthDay}">
+                                                                                <f:selectItems value="#{corpUserIDInitializeManagedBean.corpUserIDInitializeFormBean.dayList}" />
+                                                                            </h:selectOneMenu>
+                                                                            <fes:outputText value=" 日" />
+                                                                            <ui:remove>
+                                                                                &#160;西暦&#160;
+                                                                                <input type="text" class="year" id="INPUT_FORM:BIRTH_YEAR" maxlength="4" autocomplete="off" clear="true" />
+                                                                                &#160;年&#160;&#160;
+                                                                                <select id="INPUT_FORM:BIRTH_MONTH">
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                    <option value="7">7</option>
+                                                                                    <option value="8">8</option>
+                                                                                    <option value="9">9</option>
+                                                                                    <option value="10">10</option>
+                                                                                    <option value="11">11</option>
+                                                                                    <option value="12">12</option>
+                                                                                </select>
+                                                                                &#160;月&#160;&#160;
+                                                                                <select id="INPUT_FORM:BIRTH_DAY">
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                    <option value="7">7</option>
+                                                                                    <option value="8">8</option>
+                                                                                    <option value="9">9</option>
+                                                                                    <option value="10">10</option>
+                                                                                    <option value="11">11</option>
+                                                                                    <option value="12">12</option>
+                                                                                    <option value="13">13</option>
+                                                                                    <option value="14">14</option>
+                                                                                    <option value="15">15</option>
+                                                                                    <option value="16">16</option>
+                                                                                    <option value="17">17</option>
+                                                                                    <option value="18">18</option>
+                                                                                    <option value="19">19</option>
+                                                                                    <option value="20">20</option>
+                                                                                    <option value="21">21</option>
+                                                                                    <option value="22">22</option>
+                                                                                    <option value="23">23</option>
+                                                                                    <option value="24">24</option>
+                                                                                    <option value="25">25</option>
+                                                                                    <option value="26">26</option>
+                                                                                    <option value="27">27</option>
+                                                                                    <option value="28">28</option>
+                                                                                    <option value="29">29</option>
+                                                                                    <option value="30">30</option>
+                                                                                    <option value="31">31</option>
+                                                                                </select>
+                                                                                &#160;日
+                                                                            </ui:remove>
+                                                                            <br />
+                                                                            <div class="marginleft20">
+                                                                                <fes:outputText value="例）1970" />
+                                                                                <ui:remove>例）1970</ui:remove>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop2">
+                                                <tr>
+                                                    <td class="bgG08" align="center">
+                                                        <div class="innerbox02">
+                                                            <fes:commandButton value="　ユーザID初期化の実行　" action="#{corpUserIDInitializeManagedBean.execute}" actionID="EXECUTE" />
+                                                            <h:inputHidden id="TOKEN" value="#{systemDataBean.clientSideToken}" />
+                                                            <ui:remove>
+                                                                <form action="CorpLoginUserIDInitAccomplished.xhtml">
+                                                                    <input type="submit" value="　ユーザID初期化の実行　" />
+                                                                </form>
+                                                            </ui:remove>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                        <ui:remove>
+                                                            <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                        </ui:remove>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </h:form>
+                                        <div class="margintop20" />
+                                        <table width="720" border="0" cellspacing="0" cellpadding="0" class="margintl06">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_popup.gif" alt="" width="11" height="11" class="listmarker04" />
+                                                    <fes:outputLink value="javascript:openNewWindow('https://www.rakuten-bank.co.jp/rd/kojin/loginid/reset/index.html','','resizable,scrollbars')">
+                                                        <fes:outputText value="ユーザＩＤの初期化についての詳細はこちら" />
+                                                    </fes:outputLink>
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/icn_popup.gif" alt="" />
+                                                        <a href="https://www.rakuten-bank.co.jp/rd/kojin/loginid/reset/index.html" target="_blank">ユーザＩＤの初期化についての詳細はこちら</a>
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="margintop25" />
+        <!-- フッター -->
+        <f:subview id="FOOTER">
+            <ui:include src="/rb/fes/views/common/parts/footer/login/FooterLoginForCorporation.xhtml" />
+            <ui:remove>
+                <center>
+                    <div id="footerLoginForCorporationinclude" />
+                    <script language="JavaScript" src="../../../../../include/footerLoginForCorporation.js"></script>
+                </center>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

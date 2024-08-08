@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
+    style="@style/background_white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/for_bg_basic"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/dw_shape_bg_header"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/tv_header_title"
+                style="@style/HeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_0003" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fral_ui0003_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_60" >
+
+            <ScrollView
+                android:id="@+id/scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rela_ui0003_ternm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/margin_30"
+                    android:layout_marginRight="@dimen/margin_30"
+                    android:paddingBottom="@dimen/padding_40" >
+
+                    <TextView
+                        android:id="@+id/txt_ui0003_term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/for_txt_normal"
+                        android:textSize="@dimen/font_30" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/txt_ui0003_term" />
+                </RelativeLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/dw_bg_hovering"
+                android:orientation="vertical" >
+
+                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBIconButton
+                    xmlns:icobtn="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/btn_ui0003_assent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_60"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="65dp"
+                    android:background="@drawable/dw_btn_normal_gadient"
+                    android:padding="@dimen/padding_10"
+                    icobtn:icon_drawable="@drawable/dw_icon_assent_check"
+                    icobtn:icon_height="@dimen/size_icon_btn_normal_height"
+                    icobtn:icon_width="@dimen/size_icon_btn_normal_width"
+                    icobtn:text1="@string/str_ui0003_assent_btn"
+                    icobtn:text1_color="@drawable/dw_btn_text_color_normal" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <include layout="@layout/loading" />
+
+</FrameLayout>

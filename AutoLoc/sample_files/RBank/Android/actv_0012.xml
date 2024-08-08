@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/for_bg_basic"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--ヘッダー-->
+        <RelativeLayout
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/top_header" />
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ui0012_layout_point_area"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@+id/layout_header"
+            android:background="@drawable/dw_shape_bg_header"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:visibility="gone">
+
+            <include
+                android:id="@+id/img_0012_point_area_loading"
+                layout="@layout/top_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ui0012_img_rakuten_member_status"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_regular_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ui0012_img_rakuten_member_status">
+
+                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                    android:id="@+id/ui0012_label_regular_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_ui0012_regular_points"
+                    android:textColor="@color/black"
+                    android:textSize="9dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                    android:id="@+id/ui0012_value_regular_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ui0012_label_regular_points"
+                    tools:text="1,000" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_time_limited_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layout_regular_points">
+
+                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                    android:id="@+id/ui0012_label_time_limited_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str_ui0012_time_limited_points"
+                    android:textColor="@color/black"
+                    android:textSize="9dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                    android:id="@+id/ui0012_value_time_limited_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/ui0012_label_time_limited_points"
+                    app:layout_constraintTop_toBottomOf="@+id/ui0012_label_time_limited_points"
+                    tools:text="1,000" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/ui0012_img_rakuten_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ui0012_footer"
+            android:layout_below="@+id/ui0012_layout_point_area">
+
+            <ImageView
+                android:id="@+id/ui0012_background_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop" />
+            <!--メインコンテンツ-->
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/ui0012_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_top_background_lightgray"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!--メッセージ枠-->
+                    <LinearLayout
+                        android:id="@+id/ui0012_msg_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--取引停止中-->
+                        <ImageView
+                            android:id="@+id/ui0012_img_trading_halt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop" />
+
+                        <!--緊急メッセージ-->
+                        <ImageView
+                            android:id="@+id/ui0012_img_emergency"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop" />
+
+                        <!--未収-->
+                        <RelativeLayout
+                            android:id="@+id/ui_0012_layout_accrued"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/ui_0012_img_accrued"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop" />
+
+                        </RelativeLayout>
+
+                        <!--属性変更-->
+                        <RelativeLayout
+                            android:id="@+id/ui0012_layout_attribute_change"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:minHeight="60dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/white"
+                                android:layoutDirection="rtl"
+                                android:minHeight="60dp"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ui0012_layout_attribute_change_right_arrow"
+                                    android:layout_width="14dp"
+                                    android:layout_height="14dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="12dp"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitEnd"
+                                    android:src="@drawable/gray_right_arrow" />
+
+                                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                    android:id="@+id/ui0012_layout_attribute_change_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left | center_vertical"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_weight="6"
+                                    android:paddingTop="4dp"
+                                    android:paddingBottom="4dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp"
+                                    app:text_type="japanese" />
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical|start"
+                                    android:layout_weight="1"
+                                    android:scaleType="fitEnd"
+                                    android:src="@drawable/icon_sign_warning" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/for_txt_light_gray" />
+                        </RelativeLayout>
+
+                        <!--ポイント受取-->
+                        <RelativeLayout
+                            android:id="@+id/ui0012_layout_point_accept"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@color/white"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/gray_right_arrow" />
+
+                            <RelativeLayout
+                                android:id="@+id/ui0012_layout_point_accept_msg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true">
+
+                                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                    android:id="@+id/ui0012_point_accept_msg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:gravity="bottom"
+                                    android:paddingBottom="2dp"
+                                    android:text="@string/str_ui0012_point_accept_3days"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp"
+                                    app:text_type="japanese" />
+
+                                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:gravity="top"
+                                    android:paddingTop="2dp"
+                                    android:text="@string/str_ui0012_point_accept"
+                                    android:textColor="@color/for_txt_alert_red"
+                                    android:textSize="12sp"
+                                    app:text_type="japanese" />
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="12dp"
+                                android:layout_toStartOf="@id/ui0012_layout_point_accept_msg"
+                                android:src="@drawable/ic_point" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/for_txt_light_gray" />
+                        </RelativeLayout>
+
+                        <!--海外送金受取-->
+                        <RelativeLayout
+                            android:id="@+id/ui0012_layout_fr_credit_receive"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@color/white"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/gray_right_arrow" />
+
+                            <RelativeLayout
+                                android:id="@+id/ui0012_layout_fr_credit_receive_msg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true">
+
+                                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                    android:id="@+id/ui0012_fr_credit_receive_msg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:gravity="bottom"
+                                    android:paddingBottom="2dp"
+                                    android:text="@string/str_ui0012_fr_credit_receive"
+                                    android:textColor="@color/black"
+                                    android:textSize="12sp"
+                                    app:text_type="japanese" />
+
+                                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="30dp"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:gravity="top"
+                                    android:paddingTop="2dp"
+                                    android:text="@string/str_ui0012_fr_credit_receive_accept"
+                                    android:textColor="@color/for_txt_alert_red"
+                                    android:textSize="12sp"
+                                    app:text_type="japanese" />
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="8dp"
+                                android:layout_toStartOf="@id/ui0012_layout_fr_credit_receive_msg"
+                                android:src="@drawable/ic_overseas_remittance" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/for_txt_light_gray" />
+                        </RelativeLayout>
+
+                        <!-- 口座振替承認依頼 -->
+                        <RelativeLayout
+                            android:id="@+id/ui0012_layout_account_transfer_approval_request"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:visibility="gone">
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/ui_0012_layout_account_transfer_approval_request_description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_toStartOf="@id/ui0012_btn_account_transfer_approval_request_setting"
+                                android:text="@string/str_ui0012_account_transfer_description"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/ui_0012_layout_account_transfer_approval_request_recent_deadline"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/ui_0012_layout_account_transfer_approval_request_description"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:layout_toStartOf="@id/ui0012_btn_account_transfer_approval_request_setting"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/ui0012_btn_account_transfer_approval_request_setting"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="16dp"
+                                android:background="@drawable/red_border"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="8dp"
+                                android:text="@string/str_ui0012_account_transfer_setting"
+                                android:textColor="@color/red"
+                                android:textSize="14sp"
+                                app:text_type="japanese" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/for_txt_light_gray" />
+                        </RelativeLayout>
+
+                        <!-- 付番再同意 -->
+                        <RelativeLayout
+                            android:id="@+id/ui_0012_layout_agree_again"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/ui_0012_img_agree_again"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop" />
+
+                        </RelativeLayout>
+
+                        <!--ご登録情報確認のお願い-->
+                        <RelativeLayout
+                            android:id="@+id/ui0012_layout_account_register_confirm_request"
+                            android:layout_width="match_parent"
+                            android:layout_height="64dp"
+                            android:background="@color/white"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center">
+
+                                <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                    android:id="@+id/ui0012_account_register_confirm_request_msg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="left | center_vertical"
+                                    android:text="@string/str_ui0012_account_register_confirm_request"
+                                    android:textColor="@color/deep_red"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold"
+                                    app:text_type="japanese" />
+
+                                <ImageView
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_toStartOf="@id/ui0012_account_register_confirm_request_msg"
+                                    android:src="@drawable/ic_change_info" />
+
+                            </RelativeLayout>
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="16dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/account_message_arrow" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/for_txt_light_gray" />
+                        </RelativeLayout>
+
+                        <!--プロモーション-->
+                        <RelativeLayout
+                            android:id="@+id/ui0012_layout_promotion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:minHeight="60dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/ui0012_btn_promotion_close"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:minWidth="24dp"
+                                android:padding="10dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/gray_close" />
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/ui0012_promotion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginBottom="14dp"
+                                android:layout_toStartOf="@+id/ui0012_btn_promotion_close"
+                                android:textSize="12sp"
+                                app:text_type="japanese" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0.5dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/for_txt_light_gray" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <!--提携金融機関-->
+                    <RelativeLayout
+                        android:id="@+id/layout_0012_partner_info_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ui0012_msg_area"
+                        android:visibility="gone">
+
+                        <include layout="@layout/top_partner" />
+                    </RelativeLayout>
+
+                    <!--ダッシュボード-->
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/ui0012_dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="340dp"
+                        android:layout_below="@+id/layout_0012_partner_info_area"
+                        android:clipToPadding="false"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ui0012_indicator_button_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ui0012_dashboard">
+                        <!--ボタンの背景ImageView -->
+                        <ImageView
+                            android:id="@+id/button_background_image"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:adjustViewBounds="false"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="375:98"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--ダッシュボードのインジケータ-->
+                        <LinearLayout
+                            android:id="@+id/layout_ui0012_indicator"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:layout_constraintDimensionRatio="375:38"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!--ボタン領域-->
+                        <LinearLayout
+                            android:id="@+id/ui0012_button_area"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@color/clear"
+                            android:orientation="horizontal"
+                            app:layout_constraintDimensionRatio="375:44"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_ui0012_indicator">
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/btn_ui0012_transfer"
+                                android:layout_width="0pt"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="top"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/red_fill"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="@string/str_ui0012_transfer"
+                                android:textColor="@color/white"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+
+                                app:text_type="japanese" />
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/btn_ui0012_deposit"
+                                android:layout_width="0pt"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="top"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="2"
+                                android:background="@drawable/red_fill"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="@string/str_ui0012_deposit"
+                                android:textColor="@color/white"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                app:text_type="japanese" />
+                        </LinearLayout>
+                        <!--margin-->
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:layout_constraintDimensionRatio="375:16"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ui0012_button_area" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--最近の履歴-->
+                    <RelativeLayout
+                        android:id="@+id/ui0012_history_header_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ui0012_indicator_button_area"
+                        android:background="@color/white"
+                        android:paddingTop="16dp">
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/ui0012_history_title"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="24dp"
+                            android:text="@string/str_ui0012_history"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:text_type="japanese" />
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/ui0012_btn_history_remove"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="24dp"
+                            android:text="@string/str_ui0012_remove"
+                            android:textColor="@color/link"
+                            android:textSize="16sp"
+                            app:text_type="japanese" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/ui0012_history_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ui0012_history_header_view">
+
+                        <HorizontalScrollView
+                            android:id="@+id/ui0012_history_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:fadingEdge="horizontal"
+                            android:fadingEdgeLength="5dp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:id="@+id/ui0012_history_list_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:animateLayoutChanges="true"
+                                android:orientation="horizontal"
+                                android:paddingLeft="8dp"
+                                android:paddingTop="10dp"
+                                android:paddingRight="8dp"
+                                android:paddingBottom="16dp"></LinearLayout>
+                        </HorizontalScrollView>
+
+                        <LinearLayout
+                            android:id="@+id/ui0012_history_list_nothing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            android:padding="16dp"
+                            android:visibility="visible">
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="@string/str_ui0012_no_history"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:autoSizeTextType="uniform"
+                                app:text_type="japanese" />
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:paddingTop="8dp"
+                                android:text="@string/str_ui0012_no_history_supplement"
+                                android:textColor="@color/black"
+                                android:textSize="12dp"
+                                app:text_type="japanese" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <!--商品・サービス-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/service_title_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ui0012_history_view"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white">
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/service_title"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/str_ui0012_service_title"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:text_type="japanese" />
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/ui0012_btn_show_all_service"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/str_ui0012_show_all"
+                            android:textColor="@color/link"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/service_title"
+                            app:text_type="japanese" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ui0012_service_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            app:layout_constraintTop_toBottomOf="@+id/ui0012_btn_show_all_service" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 友達に紹介 -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/refer_friends_constraint_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/service_title_layout"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/white">
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/ui0012_refer_friends_title"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/str_ui0012_referral_title"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:text_type="japanese" />
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/ui0012_text_how_to_use_referral_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="24dp"
+                            android:text="@string/str_ui0012_referral_how_to_use_referralcode"
+                            android:textColor="@color/link"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ui0012_refer_friends_title"
+                            app:text_type="japanese" />
+
+                        <ImageView
+                            android:id="@+id/ui0012_referral_code_info_image"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:maxWidth="191dp"
+                            android:maxHeight="65dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/ui0012_referral_code_share_constraint_layout"
+                            app:layout_constraintDimensionRatio="191:65"
+                            app:layout_constraintEnd_toStartOf="@+id/ui0012_referral_code_share_constraint_layout"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/ui0012_referral_code_share_constraint_layout" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/ui0012_referral_code_share_constraint_layout"
+                            android:layout_width="140dp"
+                            android:layout_height="65dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/background_share"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ui0012_text_how_to_use_referral_code">
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/ui0012_referral_code_send_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/str_ui0012_referral_code_send"
+                                android:textColor="@color/gray"
+                                android:textSize="10dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:text_type="japanese" />
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/ui0012_referral_code_text"
+                                style="@style/text_bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/ui0012_referral_code_send_title"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center_vertical"
+                                android:textColor="@color/black"
+                                android:textSize="16dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:text_type="japanese"
+                                tools:text="ABCD12345" />
+
+                            <ImageView
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:src="@drawable/icon_share_blue"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--あたなにおすすめ-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_ui0012_recommendation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/refer_friends_constraint_layout">
+
+                        <ImageView
+                            android:id="@+id/img_0012_recommend_background"
+                            android:layout_width="92dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/recommend_loading_background"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <include
+                            android:id="@+id/img_0012_recommend_loading"
+                            layout="@layout/top_loading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/recommendation_background_image"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:adjustViewBounds="false"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintDimensionRatio="375:396"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/recommendation_title"
+                            style="@style/text_bold"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="24dp"
+                            android:gravity="center_vertical"
+                            android:shadowColor="@color/white"
+                            android:shadowDx="1"
+                            android:shadowDy="1"
+                            android:shadowRadius="2"
+                            android:text="@string/str_ui0012_recommendation"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintDimensionRatio="375:52"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:text_type="japanese" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recommendation_view"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:nestedScrollingEnabled="false"
+                            app:layout_constraintDimensionRatio="375:344"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/recommendation_title" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--カルーセルバナー-->
+                    <RelativeLayout
+                        android:id="@+id/layout_ui0012_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layout_ui0012_recommendation"
+                        android:background="@color/white"
+                        android:visibility="gone">
+
+                        <include
+                            android:id="@+id/img_0012_banner_loading"
+                            layout="@layout/top_loading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:visibility="gone" />
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/banner_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="25dp"
+                            android:clipToPadding="false" />
+
+                        <!--indicator-->
+                        <LinearLayout
+                            android:id="@+id/banner_indicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_below="@id/banner_view"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:orientation="horizontal" />
+                    </RelativeLayout>
+
+                    <!--セグメントバナー-->
+                    <RelativeLayout
+                        android:id="@+id/layout_ui0012_segmentbanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layout_ui0012_banner"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/img_0012_segmentbanner_loading_background"
+                            android:layout_width="92dp"
+                            android:layout_height="30dp"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/recommend_loading_background"
+                            android:visibility="gone" />
+
+                        <include
+                            android:id="@+id/img_0012_segmentbanner_loading"
+                            layout="@layout/top_loading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/img_0012_segmentbanner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:adjustViewBounds="true" />
+                    </RelativeLayout>
+
+                    <!--楽天銀行からのお知らせ-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_ui0012_notice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layout_ui0012_segmentbanner"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white">
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/notice_title"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/str_ui0012_notice_title"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:text_type="japanese" />
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/ui0012_btn_show_all_notice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/link"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/notice_title"
+                            app:text_type="japanese" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ui0012_notice_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            app:layout_constraintTop_toBottomOf="@+id/ui0012_btn_show_all_notice" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--お問い合わせ・手続き-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/customer_center_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layout_ui0012_notice"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white">
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/customer_center_title"
+                            style="@style/text_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/str_ui0012_customer"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:text_type="japanese" />
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/ui0012_btn_show_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/str_ui0012_show_more"
+                            android:textColor="@color/link"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/customer_center_title"
+                            app:text_type="japanese" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ui0012_customer_center_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            app:layout_constraintTop_toBottomOf="@+id/ui0012_btn_show_more" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 楽天グループサービス-->
+                    <RelativeLayout
+                        android:id="@+id/layout_0012_group_service"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/customer_center_layout"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:id="@+id/group_service_title_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp">
+
+                            <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                                android:id="@+id/text_0012_group_service_title"
+                                style="@style/text_bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/str_ui0012_group_service"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                app:text_type="japanese" />
+
+                        </RelativeLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/ui0012_group_service_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/group_service_title_layout"
+                            android:clipToPadding="false"
+                            android:nestedScrollingEnabled="false"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp" />
+                    </RelativeLayout>
+
+                    <!-- 背景設定 -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_0012_group_service">
+
+                        <ImageView
+                            android:id="@+id/bottom_background_image"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:adjustViewBounds="false"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintDimensionRatio="375:108"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintDimensionRatio="375:108"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <Button
+                                android:id="@+id/ui0012_background_setting_btn"
+                                android:layout_width="163dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/red_border"
+                                android:minHeight="44dp"
+                                android:text="@string/str_ui0012_background_setting_btn"
+                                android:textColor="@color/deep_red"
+                                android:textSize="16sp" />
+                        </RelativeLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/ui0012_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <include layout="@layout/cust_footer_navi_service" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--位置情報ダイアログ-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layer_0012_gps_license_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/for_bg_modal_black"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/layer_0008_finger_touch_dialog_box"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/dw_dialog_box"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="355dp"
+                android:gravity="start"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="22dp"
+                            android:layout_marginRight="20dp"
+                            android:text="@string/str_ui0012_gps_tracking_license_dialog_mess_text1"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            app:text_type="japanese" />
+
+                        <LinearLayout
+                            android:id="@+id/layer_0008_gps_trackingprivacy_policy_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txt_0008_gps_trackingprivacy_policy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/str_ui0012_gps_tracking_license_dialog_mess_text3"
+                                android:textColor="@color/fc_btn_blue"
+                                android:textSize="16dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="20dp"
+                            android:text="@string/str_ui0012_gps_tracking_license_dialog_mess_text2"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            app:text_type="japanese" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_ui0012_disagree_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/dw_dialog_box_button"
+                    android:gravity="start"
+                    android:text="@string/btn_title_ui0012_disagree"
+                    android:textColor="@color/fc_btn_blue"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_ui0012_agree_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/dw_dialog_box_button"
+                    android:gravity="end"
+                    android:text="@string/btn_title_ui0012_agree"
+                    android:textColor="@color/fc_btn_blue"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 位置情報ダイアログ：終了 -->
+
+    <!-- ダイアログ（プッシュ通知のご案内）：開始 -->
+    <RelativeLayout
+        android:id="@+id/layer_0012_push_setting_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/for_bg_modal_black"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/layer_0012_push_setting_dialog_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+
+            android:background="@drawable/dw_dialog_box_basic_color"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:id="@+id/scroll_view1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/str_ui0012_push_setting_dialog_mess_text1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_38"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="@string/str_ui0012_push_setting_dialog_mess_text2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_28"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/illust_push_notification" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
+                android:id="@+id/btn_ui0012_push_goto_setting_button"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/dw_dialog_box_button_basic_color"
+                android:text="@string/str_ui0012_push_setting_dialog_mess_text5"
+                android:textColor="@color/for_txt_link_blue"
+                android:textSize="@dimen/font_38"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+    <!-- ダイアログ（プッシュ通知のご案内）：終了 -->
+    <!--言語設定ダイアログ：開始-->
+    <RelativeLayout
+        android:id="@+id/layer_0012_language_setting_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/for_bg_modal_black"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/layer_0012_language_setting_dialog_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+
+            android:background="@drawable/dw_dialog_box">
+
+            <ScrollView
+                android:id="@+id/scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical">
+
+                    <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:text="@string/str_ui0012_language_setting_dialog_mess_text1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_30"
+                        android:textStyle="bold"
+                        app:text_type="japanese" />
+
+                    <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="@string/str_ui0012_language_setting_dialog_mess_text2"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_30"
+                        app:text_type="japanese" />
+
+                    <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:text="@string/str_ui0012_language_setting_dialog_mess_text3"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_30"
+                        android:textStyle="bold"
+                        app:text_type="japanese" />
+
+                    <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="20dp"
+                        android:text="@string/str_ui0012_language_setting_dialog_mess_text4"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_30"
+                        app:text_type="japanese" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/stroke_2"
+                        android:background="@color/pinkish_grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_ui0012_english_yes_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparency"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:text="@string/btn_title_ui0012_english_agree"
+                            android:textColor="@color/for_txt_link_blue"
+                            android:textSize="@dimen/font_30" />
+
+                        <View
+                            android:layout_width="@dimen/stroke_2"
+                            android:layout_height="match_parent"
+                            android:background="@color/pinkish_grey" />
+
+                        <Button
+                            android:id="@+id/btn_ui0012_english_no_button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@color/transparency"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:text="@string/btn_title_ui0012_english_disagree"
+                            android:textColor="@color/for_txt_link_blue"
+                            android:textSize="@dimen/font_30" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+    <!-- 言語ダイアログ：終了 -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout_ui0012_coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/bottom_sheet_layout"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/dw_bottom_sheet_corner"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/dw_bottom_sheet_gray_corner" />
+
+            <TextView
+                android:id="@+id/ui0012_bottom_sheet_text"
+                style="@style/text_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/str_ui0012_group_service"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ui0012_group_service_bottom_sheet_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="true"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp" />
+
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <!-- 友達に紹介 -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/layout_ui0012_refer_friends_coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/refer_friends_bottom_sheet_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dw_bottom_sheet_light_gray_corner"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:layout_behavior="@string/bottom_sheet_behavior">
+
+            <View
+                android:layout_width="122dp"
+                android:layout_height="6dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/dw_bottom_sheet_gray_aaa_corner" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/refer_friends_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="12dp"
+                android:fillViewport="true"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ui0012_refer_friends_bottom_sheet_text"
+                        style="@style/text_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/str_ui0012_referral_title"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <jp.co.rakuten_bank.rakutenbank.ui.component.common.CustomViewPager
+                        android:id="@+id/ui0012_swipeGuide"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintDimensionRatio="343:275"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_ui0012_refer_friends_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="6dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="horizontal" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btn_ui0012_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_solid_red">
+
+                        <ImageView
+                            android:id="@+id/img_ui0012_share"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/icon_share_white"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@id/txt_ui0012_next" />
+
+                        <jp.co.rakuten_bank.rakutenbank.ui.component.common.RBTextView
+                            android:id="@+id/txt_ui0012_next"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/str_ui0012_next"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_32_dp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintHorizontal_chainStyle="packed"
+                            app:layout_constraintLeft_toRightOf="@id/img_ui0012_share"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:text_type="japanese" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/ui0012_caution_text"
+                        style="@style/text_bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/str_ui0012_caution_text"
+                        android:textColor="@color/button_description"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/ui0012_refer_friends_campaign_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintDimensionRatio="343:170" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <include layout="@layout/loading" />
+
+    <include layout="@layout/layer_linker" />
+</FrameLayout>

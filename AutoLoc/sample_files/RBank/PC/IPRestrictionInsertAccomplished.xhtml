@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButton();">
+    <f:view>
+        <fes:setTabNumber number="22" rendered="#{systemDataBean.userType == PROPERTIES_KEY['user.type.ap']}" />
+        <fes:setTabNumber number="7" rendered="#{systemDataBean.userType != PROPERTIES_KEY['user.type.ap']}" />
+        <!-- ヘッダー -->
+        <f:subview id="HEADER">
+            <ui:include src="/rb/fes/views/common/parts/header/main/Header.xhtml" />
+            <ui:remove>
+                <div id="headerinclude" />
+                <script language="JavaScript" src="../../../../../include/header_min.js"></script>
+            </ui:remove>
+        </f:subview>
+        <center>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+                <tr align="center">
+                    <td>
+                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                            <tr>
+                                <td>
+                                    <!-- パンくず -->
+                                    <h:form id="BREAD_LIST">
+                                        <div class="breadlist">
+                                            <fes:choose>
+                                                <!-- 口座管理プラスログインの場合 -->
+                                                <fes:when condition="#{systemDataBean.userType == PROPERTIES_KEY['user.type.ap']}">
+                                                    <fes:commandLink value="トップ（サービス選択）" action="#{containerTransitionManagedBean.start}" actionID="START" immediate="true">
+                                                        <f:param id="NEXTNAVIGATION_cs" name="#{containerTransitionManagedBean.requestParameterName}" value="cs.service.select" />
+                                                    </fes:commandLink>
+                                                    <fes:outputText value=" > " />
+                                                </fes:when>
+                                                <!-- 口座管理プラス以外の場合 -->
+                                                <fes:otherwise>
+                                                    <fes:commandLink value="トップ（MyAccount）" action="#{containerTransitionManagedBean.start}" actionID="START" immediate="true">
+                                                        <f:param id="NEXTNAVIGATION_myacnt" name="#{containerTransitionManagedBean.requestParameterName}" value="myaccount" />
+                                                    </fes:commandLink>
+                                                    <fes:outputText value=" > " />
+                                                    <fes:commandLink value="商品･サービス一覧" action="#{containerTransitionManagedBean.start}" actionID="START" immediate="true">
+                                                        <f:param id="NEXTNAVIGATION_psl" name="#{containerTransitionManagedBean.requestParameterName}" value="product.service.list" />
+                                                    </fes:commandLink>
+                                                    <fes:outputText value=" > " />
+                                                </fes:otherwise>
+                                            </fes:choose>
+                                            <fes:commandLink value="セキュリティ設定" action="#{securityMenuManagedBean.start}" actionID="START" immediate="true" />
+                                            <fes:outputText value=" > " />
+                                            <fes:commandLink value="IP制限サービス" action="#{ipRestrictionMenuManagedBean.start}" actionID="START" immediate="true" />
+                                            <fes:outputText value=" > " />
+                                            <fes:outputText value="IP登録完了" class="c03" />
+                                            <ui:remove>
+                                                <a href="BalanceInquiry.xhtml" >トップ（MyAccount）</a> &gt; <a href="ProductsServiceList.xhtml" >商品･サービス一覧</a> &gt; <a href="../SecurityMenu/Menu/SecurityMenu.xhtml" >セキュリティ設定</a> &gt; <a href="../IPRestrictionMenu/IPRestrictionMenuStart.xhtml" >IP制限サービス</a> &gt; <span class="c03">IP登録完了</span>
+                                            </ui:remove>
+                                        </div>
+                                    </h:form>
+                                    <!-- タイトル文言 -->
+                                    <h1>
+                                        <fes:outputText value="IP登録完了" />
+                                        <ui:remove>IP登録完了</ui:remove>
+                                    </h1>
+                                    <!-- エラーメッセージ -->
+                                    <ui:fragment rendered="#{errorBean.errorFlg}">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginerror">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgC03" align="center">
+                                                    <table width="720" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="20">
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                            <td width="700">
+                                                                <font class="errortxt">
+                                                                    <fes:outputText value="#{errorBean.errorMessage}" />
+                                                                    <ui:remove>ここにエラーメッセージが表示されます</ui:remove>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:fragment>
+                                    <h:form id="FORM" onsubmit="return checkDuplicatedSubmit();">
+                                        <fes:outputText class="bold" value="この口座のIP制限サービスで利用するIPの登録が完了しました。" />
+                                        <ui:remove>この口座のIP制限サービスで利用するIPの登録が完了しました。</ui:remove>
+                                        <h2>
+                                            <fes:outputText value="登録済みのプロバイダ（IP）一覧" />
+                                            <ui:remove>登録済みのプロバイダ（IP）一覧</ui:remove>
+                                        </h2>
+                                        <div class="margintop20">
+                                            <ui:remove>
+                                                <table class="table01" width="740" cellspacing="0">
+                                                    <tr>
+                                                        <th width="52" class="th01line">
+                                                            <div class="innercell">
+                                                                <span class="bold">No.</span>
+                                                            </div>
+                                                        </th>
+                                                        <th width="129" class="th01">
+                                                            <div class="innercell">
+                                                                <span class="bold">タイトル</span>
+                                                            </div>
+                                                        </th>
+                                                        <th width="368" class="th01">
+                                                            <div class="innercell">
+                                                                <span class="bold">プロバイダ（IP）</span>
+                                                            </div>
+                                                        </th>
+                                                        <th width="179" class="th01">
+                                                            <div class="innercell">
+                                                                <span class="bold">登録日</span>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="td01line">
+                                                            <div class="innercellline">1</div>
+                                                        </td>
+                                                        <td class="td01">
+                                                            <div class="innercell">テストＰＣ</div>
+                                                        </td>
+                                                        <td class="td01">
+                                                            <div class="innercell">ＴＥＳＴドメイン</div>
+                                                        </td>
+                                                        <td class="td01">
+                                                            <div class="innercell">2021/02/25</div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </ui:remove>
+                                            <table class="table01" width="740" cellspacing="0">
+                                                <tr>
+                                                    <th width="52" class="th01line">
+                                                        <div class="innercell">
+                                                            <fes:outputText value="No." class="bold" />
+                                                        </div>
+                                                    </th>
+                                                    <th width="129" class="th01">
+                                                        <div class="innercell">
+                                                            <fes:outputText value="タイトル" class="bold" />
+                                                        </div>
+                                                    </th>
+                                                    <th width="368" class="th01">
+                                                        <div class="innercell">
+                                                            <fes:outputText value="プロバイダ（IP）" class="bold" />
+                                                        </div>
+                                                    </th>
+                                                    <th width="179" class="th01">
+                                                        <div class="innercell">
+                                                            <fes:outputText value="登録日" class="bold" />
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                                <ui:repeat var="sourceIP" value="#{ipRestrictionInsertManagedBean.ipRestrictionInsertFormBean.secureSourceIPFormBeans}" varStatus="row">
+                                                    <tr>
+                                                        <td class="#{row.index % 2 == 0 ? 'td01line' : 'td02line'}">
+                                                            <div class="innercellline">
+                                                                <fes:outputText value="#{row.index + 1}" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="#{row.index % 2 == 0 ? 'td01' : 'td02'}">
+                                                            <div class="innercell">
+                                                                <fes:outputText value="#{sourceIP.title}" />
+                                                            </div>
+                                                        </td>
+                                                        <td class="#{row.index % 2 == 0 ? 'td01' : 'td02'}">
+                                                            <div class="innercell">
+                                                                <fes:choose>
+                                                                    <fes:when condition="#{empty sourceIP.domain}">
+                                                                        <fes:outputText value="#{sourceIP.sourceIP}" />
+                                                                    </fes:when>
+                                                                    <fes:otherwise>
+                                                                        <fes:outputText value="#{sourceIP.domain}" />
+                                                                    </fes:otherwise>
+                                                                </fes:choose>
+                                                            </div>
+                                                        </td>
+                                                        <td class="#{row.index % 2 == 0 ? 'td01' : 'td02'}">
+                                                            <div class="innercell">
+                                                                <fes:outputText value="#{sourceIP.registrationDate}" convertType="date" formatType="YYYYMMDD" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </ui:repeat>
+                                            </table>
+                                        </div>
+                                        <div class="margintop30">
+                                            <fes:choose>
+                                                <!-- 個人の場合 -->
+                                                <fes:when condition="#{customerBaseDataBean.accountType == PROPERTIES_KEY['account.type.individual']}">
+                                                    <table width="740" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td>
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/Common/img_security2.gif" alt="他のセキュリティ設定を行いますか？" width="740" height="55" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/mainservice/Security/Common/img_security2.gif" alt="他のセキュリティ設定を行いますか？" width="740" height="55" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="bgG08" align="center">
+                                                                <div class="margintop5">
+                                                                    <table width="710" border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td width="65">
+                                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/Common/icn_mobile_restriction.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                <ui:remove>
+                                                                                    <img src="../../../../../img/mainservice/Security/Common/icn_mobile_restriction.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                </ui:remove>
+                                                                            </td>
+                                                                            <td width="165">
+                                                                                <fes:commandLink value="携帯電話を登録する" action="#{mobileRestrictionManagedBean.start}" actionID="START" immediate="true" />
+                                                                                <ui:remove>
+                                                                                    <a href="../MobileRestriction/MobileRestrictionStart.xhtml">携帯電話を登録する</a>
+                                                                                </ui:remove>
+                                                                            </td>
+                                                                            <td width="70" align="center">
+                                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/Common/icn_login_restriction.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                <ui:remove>
+                                                                                    <img src="../../../../../img/mainservice/Security/Common/icn_login_restriction.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                </ui:remove>
+                                                                            </td>
+                                                                            <td width="170">
+                                                                                <fes:commandLink value="ログインの認証を強化する" action="#{loginRestrictionManagedBean.start}" actionID="START" immediate="true" />
+                                                                                <ui:remove>
+                                                                                    <a href="../LoginRestriction/LoginRestrictionStart.xhtml">ログインの認証を強化する</a>
+                                                                                </ui:remove>
+                                                                            </td>
+                                                                            <td width="70" align="center">
+                                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/Common/icn_withdrawal_limit.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                <ui:remove>
+                                                                                    <img src="../../../../../img/mainservice/Security/Common/icn_withdrawal_limit.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                </ui:remove>
+                                                                            </td>
+                                                                            <td width="170">
+                                                                                <fes:commandLink value="振込の限度額を設定する" action="#{withdrawalLimitManagedBean.start}" actionID="START" immediate="true" />
+                                                                                <ui:remove>
+                                                                                    <a href="../WithdrawalLimit/WithdrawalLimitStart.xhtml">振込の限度額を設定する</a>
+                                                                                </ui:remove>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </fes:when>
+                                                <!-- 法人の場合 -->
+                                                <fes:otherwise>
+                                                    <fes:choose>
+                                                        <!-- 口座管理プラス以外の法人の場合 -->
+                                                        <fes:when condition="#{systemDataBean.userType != PROPERTIES_KEY['user.type.ap']}">
+                                                            <table width="740" border="0" cellspacing="0" cellpadding="0">
+                                                                <tr>
+                                                                    <td>
+                                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/Common/img_security2.gif" alt="他のセキュリティ設定を行いますか？" width="740" height="55" class="margin0" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="bgG08" align="center">
+                                                                        <div class="margintop5">
+                                                                            <table width="710" border="0" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                    <td width="65">
+                                                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/Common/icn_login_restriction.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                    </td>
+                                                                                    <td width="165">
+                                                                                        <fes:commandLink value="ログインの認証を強化する" action="#{loginRestrictionManagedBean.start}" actionID="START" immediate="true" />
+                                                                                    </td>
+                                                                                    <td width="70" align="center">
+                                                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/Common/icn_withdrawal_limit.gif" alt="" width="60" height="60" class="margin0" />
+                                                                                    </td>
+                                                                                    <td width="170">
+                                                                                        <fes:commandLink value="振込の限度額を設定する" action="#{withdrawalLimitManagedBean.start}" actionID="START" immediate="true" />
+                                                                                    </td>
+                                                                                    <td width="70" align="center" />
+                                                                                    <td width="170" />
+                                                                                </tr>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </fes:when>
+                                                    </fes:choose>
+                                                </fes:otherwise>
+                                            </fes:choose>
+                                        </div>
+                                        <div align="left" class="margintop15">
+                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_arrow_back.gif" alt="" width="9" height="9" class="listmarker04" />
+                                            <fes:commandLink value="セキュリティトップへ戻る" action="#{securityMenuManagedBean.start}" actionID="START" immediate="true" />
+                                            <ui:remove>
+                                                <img src="../../../../../img/common/icn_arrow_back.gif" alt="" width="9" height="9" class="listmarker04" />
+                                                <a href="../SecurityMenu/Menu/SecurityMenu.xhtml">セキュリティトップへ戻る</a>
+                                            </ui:remove>
+                                        </div>
+                                    </h:form>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="margintop25" />
+        <!-- フッター -->
+        <f:subview id="FOOTER">
+            <ui:include src="/rb/fes/views/common/parts/footer/main/Footer.xhtml" />
+            <ui:remove>
+                <center>
+                    <div id="include" />
+                    <script language="JavaScript" src="../../../../../include/footer_min.js"></script>
+                </center>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

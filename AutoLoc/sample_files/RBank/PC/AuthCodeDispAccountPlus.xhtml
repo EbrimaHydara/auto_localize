@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButton();">
+    <f:view>
+        <fes:cache value="false" />
+        <fes:setTabNumber number="21" />
+        <!-- ヘッダー -->
+        <f:subview id="HEADER">
+            <ui:include src="/rb/fes/views/common/parts/header/main/Header.xhtml" />
+            <ui:remove>
+                <div id="headerinclude" />
+                <script language="JavaScript" src="../../../../../include/header_min.js"></script>
+            </ui:remove>
+        </f:subview>
+        <center>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+                <tr>
+                    <td align="center">
+                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                            <tr>
+                                <td>
+                                    <!-- パンくず -->
+                                    <h:form id="BREAD_LIST">
+                                        <div class="breadlist">
+                                            <fes:commandLink value="トップ（口座選択）" action="#{corpContainerTransitionManagedBean.start}" actionID="START" immediate="true" class="c03">
+                                                <f:param id="NEXTNAVIGATION_csacnt" name="#{corpContainerTransitionManagedBean.requestParameterName}" value="cs.account.select" />
+                                            </fes:commandLink>
+                                            <fes:outputText value=" > " />
+                                            <fes:outputText value="楽天銀行アプリ認証　初期設定" class="c03" />
+                                            <ui:remove>
+                                                <a href="#" class="c03">トップ（口座選択）</a> &gt; <span class="c03">楽天銀行アプリ認証　初期設定</span>
+                                            </ui:remove>
+                                        </div>
+                                    </h:form>
+                                    <h1>
+                                        <fes:outputText value="楽天銀行アプリ認証　初期設定" />
+                                        <ui:remove>楽天銀行アプリ認証　初期設定</ui:remove>
+                                    </h1>
+                                    <!-- エラーメッセージ -->
+                                    <ui:fragment rendered="#{errorBean.errorFlg}">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginerror">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgC03" align="center">
+                                                    <table width="720" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="20">
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                            <td width="700">
+                                                                <font class="errortxt">
+                                                                    <fes:outputText value="#{errorBean.errorMessage}" />
+                                                                    <ui:remove>ここにエラーメッセージが表示されます</ui:remove>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:fragment>
+                                    <!-- データ不整合が発生していない場合 -->
+                                    <fes:choose>
+                                        <fes:when condition="#{!configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.dataMismatchFlag}">
+                                            <!-- 正常時 -->
+                                            <ui:fragment rendered="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.partsDescriptionEnableFlag}">
+                                                <div>
+                                                    <fes:outputText value="楽天銀行アプリ認証の初期設定を行ないます。｢楽天銀行アプリ for Business｣アプリにログイン後、初期設定画面で以下の認証コードを入力して、｢認証する｣ボタンを押してください。" />
+                                                    <ui:remove>楽天銀行アプリ認証の初期設定を行ないます。｢楽天銀行アプリ for Business｣アプリにログイン後、初期設定画面で以下の認証コードを入力して、｢認証する｣ボタンを押してください。</ui:remove>
+                                                    <span class="c01">
+                                                        <fes:outputText value="認証コードの有効期間は、セキュリティ担当者が発行してから24時間です。" />
+                                                        <ui:remove>認証コードの有効期間は、セキュリティ担当者が発行してから24時間です。</ui:remove>
+                                                    </span>
+                                                </div>
+                                            </ui:fragment>
+                                            <!-- 認証コード有効期限切れ -->
+                                            <ui:fragment rendered="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.partsExpirationDescEnableFlag}">
+                                                <div>
+                                                    <fes:outputText value="認証コードの有効期限が切れています。" />
+                                                    <br />
+                                                    <fes:outputText value="セキュリティ担当者に認証コードの再発行を依頼してください。" />
+                                                </div>
+                                            </ui:fragment>
+                                            <!-- 認証コード誤入力規定回数越え -->
+                                            <ui:fragment rendered="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.partsFalseInputOverEnableFlag}">
+                                                <div>
+                                                    <fes:outputText value="認証コードを所定の回数あやまって入力したため無効になっています。" />
+                                                    <br />
+                                                    <fes:outputText value="セキュリティ担当者に認証コードの再発行を依頼してください。" />
+                                                </div>
+                                            </ui:fragment>
+                                            <!-- 正常時のみ画面表示 -->
+                                            <ui:fragment rendered="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.partsAuthCodeTitleEnableFlag}">
+                                                <div>
+                                                    <h2>
+                                                        <fes:outputText value="認証コード" />
+                                                        <ui:remove>認証コード</ui:remove>
+                                                    </h2>
+                                                </div>
+                                            </ui:fragment>
+                                            <!-- 正常時のみ画面表示 -->
+                                            <ui:fragment rendered="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.partsPublicDateEnableFlag}">
+                                                <div align="right">
+                                                    <fes:outputText value="発行日時：" />
+                                                    <fes:outputText value="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.authenticationCodeIssueDateStr}" />
+                                                    <ui:remove>発行日時：2016/4/10　16時10分24秒</ui:remove>
+                                                </div>
+                                            </ui:fragment>
+                                            <!-- 正常時のみ画面表示 -->
+                                            <ui:fragment rendered="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.partsAuthCodeDispEnableFlag}">
+                                                <table width="740" border="0" cellpadding="0" cellspacing="0" class="margintop10">
+                                                    <tr>
+                                                        <td class="bgC04" align="center">
+                                                            <table border="0" cellpadding="0" cellspacing="0" class="marginlr01 bold" style="font-size:70px;">
+                                                                <tr align="center">
+                                                                    <td width="120">
+                                                                        <fes:outputText value="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.authCodeOne}" />
+                                                                        <ui:remove>1</ui:remove>
+                                                                    </td>
+                                                                    <td width="120">
+                                                                        <fes:outputText value="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.authCodeTwo}" />
+                                                                        <ui:remove>2</ui:remove>
+                                                                    </td>
+                                                                    <td width="120">
+                                                                        <fes:outputText value="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.authCodeThree}" />
+                                                                        <ui:remove>3</ui:remove>
+                                                                    </td>
+                                                                    <td width="120">
+                                                                        <fes:outputText value="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.authCodeFour}" />
+                                                                        <ui:remove>a</ui:remove>
+                                                                    </td>
+                                                                    <td width="120">
+                                                                        <fes:outputText value="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.authCodeFive}" />
+                                                                        <ui:remove>5</ui:remove>
+                                                                    </td>
+                                                                    <td width="120">
+                                                                        <fes:outputText value="#{configurationInitialSettingAccoountPlusManagedBean.authCodeDispAccountPlusFormBean.authCodeSix}" />
+                                                                        <ui:remove>6</ui:remove>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </ui:fragment>
+                                        </fes:when>
+                                    </fes:choose>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="margintop25" />
+        <!-- フッター -->
+        <f:subview id="FOOTER">
+            <ui:include src="/rb/fes/views/common/parts/footer/main/Footer.xhtml" />
+            <ui:remove>
+                <center>
+                    <div id="include" />
+                    <script language="JavaScript" src="../../../../../include/footer_min.js"></script>
+                </center>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

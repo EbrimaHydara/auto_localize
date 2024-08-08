@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButton();">
+    <f:view>
+        <fes:cache value="false" />
+        <fes:setTabNumber number="7" />
+        <!-- ヘッダー -->
+        <f:subview id="HEADER">
+            <ui:include src="/rb/fes/views/common/parts/header/main/Header.xhtml" />
+            <ui:remove>
+                <div id="headerinclude" />
+                <script language="JavaScript" src="../../../../../include/header_min.js"></script>
+            </ui:remove>
+        </f:subview>
+        <center>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+                <tr align="center">
+                    <td>
+                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                            <tr>
+                                <td>
+                                    <!-- パンくず -->
+                                    <h:form id="BREAD_LIST">
+                                        <div class="breadlist">
+                                            <fes:commandLink value="トップ（MyAccount）" action="#{containerTransitionManagedBean.start}" actionID="START" immediate="true" class="c03">
+                                                <f:param id="NEXTNAVIGATION_myacnt" name="#{containerTransitionManagedBean.requestParameterName}" value="myaccount" />
+                                            </fes:commandLink>
+                                            <fes:outputText value=" > " />
+                                            <fes:commandLink value="商品･サービス一覧" action="#{containerTransitionManagedBean.start}" actionID="START" immediate="true" class="c03">
+                                                <f:param id="NEXTNAVIGATION_psl" name="#{containerTransitionManagedBean.requestParameterName}" value="product.service.list" />
+                                            </fes:commandLink>
+                                            <fes:outputText value=" > " />
+                                            <fes:commandLink value="セキュリティ設定" action="#{securityMenuManagedBean.start}" actionID="START" immediate="true" class="c03" />
+                                            <fes:outputText value=" > " />
+                                            <fes:commandLink value="楽天銀行アプリ認証" action="#{configurationInitialSettingManagedBean.start}" actionID="START" immediate="true" class="c03" />
+                                            <fes:outputText value=" > " />
+                                            <fes:outputText value="スマートフォン端末の登録解除" class="c03" />
+                                            <ui:remove>
+                                                <a href="#" class="c03">トップ(MyAccount)</a> &gt; <a href="#" class="c03">商品・サービス一覧</a> &gt; <a href="#" class="c03">セキュリティ設定</a> &gt; <a href="#" class="c03">楽天銀行アプリ認証</a> &gt; <span class="c03">スマートフォン端末の登録解除</span>
+                                            </ui:remove>
+                                        </div>
+                                    </h:form>
+                                    <h1>
+                                        <fes:outputText value="スマートフォン端末の登録解除" />
+                                        <ui:remove>スマートフォン端末の登録解除</ui:remove>
+                                    </h1>
+                                    <fes:outputText value="ご利用中のスマートフォン端末の登録を解除するための認証を行います。" />
+                                    <ui:remove>ご利用中のスマートフォン端末の登録を解除するための認証を行います。</ui:remove>
+                                    <!-- エラーメッセージ -->
+                                    <ui:fragment rendered="#{errorBean.errorFlg}">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginerror">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgC03" align="center">
+                                                    <table width="720" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="20">
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                            <td width="700">
+                                                                <font class="errortxt">
+                                                                    <fes:outputText value="#{errorBean.errorMessage}" />
+                                                                    <ui:remove>ここにエラーメッセージが表示されます</ui:remove>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:fragment>
+                                    <h2>
+                                        <fes:outputText value="お手続きの流れ" />
+                                        <ui:remove>お手続きの流れ</ui:remove>
+                                    </h2>
+                                    <h:form id="FORM" onsubmit="return checkDuplicatedSubmit();">
+                                        <table width="740" border="0" cellpadding="0" cellspacing="0" class="margintop10">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" height="15" width="740" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" height="15" width="740" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgG08">
+                                                    <div class="innerbox01">
+                                                        <table width="710" cellpadding="0" cellspacing="0" class="table00">
+                                                            <tr>
+                                                                <th class="th02" width="100">
+                                                                    <div class="innercell">
+                                                                        <span class="smediumbold">
+                                                                            <fes:outputText value="Step 1" />
+                                                                            <ui:remove>Step 1</ui:remove>
+                                                                        </span>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="解除するスマートフォンをご確認のうえ、登録済みのスマートフォン端末で「楽天銀行アプリ for Business」を起動してください。" />
+                                                                        <ui:remove>解除するスマートフォンをご確認のうえ、登録済みのスマートフォン端末で「楽天銀行アプリ for Business」を起動してください。</ui:remove>
+                                                                        <div class="margintop10">
+                                                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icon-bullet-01.gif" width="7" height="7" alt="" />
+                                                                            <ui:remove>
+                                                                                <img src="../../../../../img/common/icon-bullet-01.gif" width="7" height="7" alt="" />
+                                                                            </ui:remove>
+                                                                            <span class="marginleft5">
+                                                                                <fes:outputText value="解除するスマートフォン" />
+                                                                                <ui:remove>解除するスマートフォン</ui:remove>
+                                                                            </span>
+                                                                        </div>
+                                                                        <table border="0" cellpadding="0" cellspacing="0" class="table00 margintop5">
+                                                                            <tr>
+                                                                                <th width="50" class="th01line" style="text-align:center;">
+                                                                                    <div class="innercellsmall">
+                                                                                        <fes:outputText value="No." />
+                                                                                        <ui:remove>No.</ui:remove>
+                                                                                    </div>
+                                                                                </th>
+                                                                                <th width="280" class="th01">
+                                                                                    <div class="innercell">
+                                                                                        <fes:outputText value="登録名" />
+                                                                                        <ui:remove>登録名</ui:remove>
+                                                                                    </div>
+                                                                                </th>
+                                                                                <th width="120" class="th01">
+                                                                                    <div class="innercell">
+                                                                                        <fes:outputText value="機種名" />
+                                                                                        <ui:remove>機種名</ui:remove>
+                                                                                    </div>
+                                                                                </th>
+                                                                                <th width="100" class="th01">
+                                                                                    <div class="innercell">
+                                                                                        <fes:outputText value="登録日" />
+                                                                                        <ui:remove>登録日</ui:remove>
+                                                                                    </div>
+                                                                                </th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="td01linecenter">
+                                                                                    <div class="innercellsmall">
+                                                                                        <fes:outputText value="#{configurationInitialSettingManagedBean.deviceReleaseConfirmFormBean.no}" />
+                                                                                        <ui:remove>1</ui:remove>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="td01leftmiddle">
+                                                                                    <div class="innercell">
+                                                                                        <fes:outputText value="#{configurationInitialSettingManagedBean.deviceReleaseConfirmFormBean.registName}" />
+                                                                                        <ui:remove>会社のスマホ</ui:remove>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="td01leftmiddle" nowrap="nowrap">
+                                                                                    <div class="innercell">
+                                                                                        <fes:outputText value="#{configurationInitialSettingManagedBean.deviceReleaseConfirmFormBean.deviceName}" />
+                                                                                        <ui:remove>iPhone 5S</ui:remove>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td class="td01leftmiddlenone" nowrap="nowrap">
+                                                                                    <div class="innercell">
+                                                                                        <fes:outputText value="#{configurationInitialSettingManagedBean.deviceReleaseConfirmFormBean.registDateStr}" />
+                                                                                        <ui:remove>2014/10/10</ui:remove>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <div class="margintb01">
+                                                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_arrow_yellow.gif" alt="" height="8" width="9" class="listmarker02" />
+                                                                            <fes:commandLink value="" action="#{configurationInitialSettingManagedBean.confirm}" actionID="CONFIRM_USECANCEL" immediate="false">
+                                                                                <fes:outputText value="楽天銀行アプリ認証に登録しているスマートフォン端末がご利用になれない場合" />
+                                                                            </fes:commandLink>
+                                                                            <ui:remove>
+                                                                                <img src="../../../../../img/common/icn_arrow_yellow.gif" alt="" height="8" width="9" class="listmarker02" />
+                                                                                <a href="configurationInitialSetting.html">楽天銀行アプリ認証に登録しているスマートフォン端末がご利用になれない場合</a>
+                                                                            </ui:remove>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table width="710" cellpadding="0" cellspacing="0" class="table00 margintop10">
+                                                            <tr>
+                                                                <th class="th02" width="100">
+                                                                    <div class="innercell">
+                                                                        <span class="smediumbold">
+                                                                            <fes:outputText value="Step 2" />
+                                                                            <ui:remove>Step 2</ui:remove>
+                                                                        </span>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="「楽天銀行アプリ for Business」に表示されているワンタイムパスワードを入力してください。" />
+                                                                        <ui:remove>「楽天銀行アプリ for Business」に表示されているワンタイムパスワードを入力してください。</ui:remove>
+                                                                        <br />
+                                                                        <table border="0" cellpadding="0" cellspacing="0" class="margintop10">
+                                                                            <tr valign="top">
+                                                                                <td class="c01">
+                                                                                    <fes:outputText value="※" />
+                                                                                    <ui:remove>※</ui:remove>
+                                                                                </td>
+                                                                                <td class="c01">
+                                                                                    <fes:outputText value="楽天銀行アプリ認証のワンタイムパスワードは、30秒間有効です。30秒以上経過した場合は、再度アプリでワンタイムパスワードを確認して入力してください。" />
+                                                                                    <ui:remove>楽天銀行アプリ認証のワンタイムパスワードは、30秒間有効です。30秒以上経過した場合は、再度アプリでワンタイムパスワードを確認して入力してください。</ui:remove>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <table border="0" cellpadding="0" cellspacing="0" class="margintop10">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <fes:inputText id="TOTP_TOKEN" maxlength="6" value="#{configurationInitialSettingManagedBean.deviceReleaseConfirmFormBean.totpToken}" class="security_code" style="padding:5px;" />
+                                                                                    <ui:remove>
+                                                                                        <input type="text" maxlength="6" class="security_code" style="padding:5px;" />
+                                                                                    </ui:remove>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <fes:commandLink value="" action="#{configurationInitialSettingManagedBean.execute}" actionID="EXECUTE_DEVICE_RELEASE" immediate="false">
+                                                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/button/btn_authentication.gif" 
+                                                                                                          onmouseover="this.src='#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/button/btn_authentication_o.gif'" 
+                                                                                                          onmouseout="this.src='#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/button/btn_authentication.gif'" 
+                                                                                                          width="161" height="44" alt="認証" class="marginleft20" />
+                                                                                        <h:inputHidden id="TOKEN" value="#{systemDataBean.clientSideToken}" />
+                                                                                    </fes:commandLink>
+                                                                                    <ui:remove>
+                                                                                        <img src="../../../../../img/mainservice/Security/button/btn_authentication.gif" width="161" height="44" alt="認証" class="marginleft20" />
+                                                                                    </ui:remove>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <div class="margintop5" />
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table width="740" border="0" cellpadding="0" cellspacing="0" class="margintop2">
+                                            <tr>
+                                                <td class="bgG08">
+                                                    <div class="innerbox02">
+                                                        <fes:commandLink value="" action="#{configurationInitialSettingManagedBean.start}" actionID="START" immediate="false">
+                                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/button/btn_back.gif" 
+                                                                              onmouseover="this.src='#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/button/btn_back_o.gif'" 
+                                                                              onmouseout="this.src='#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Security/button/btn_back.gif'" 
+                                                                              width="172" height="41" alt="戻る" />
+                                                        </fes:commandLink>
+                                                        <ui:remove>
+                                                            <img src="../../../../../img/mainservice/Security/button/btn_back.gif" width="172" height="41" alt="戻る" />
+                                                        </ui:remove>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" width="740" height="15" alt="" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table03_bottom.gif" width="740" height="15" alt="" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </h:form>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="margintop25" />
+        <!-- フッター -->
+        <f:subview id="FOOTER">
+            <ui:include src="/rb/fes/views/common/parts/footer/main/Footer.xhtml" />
+            <ui:remove>
+                <center>
+                    <div id="include" />
+                    <script language="JavaScript" src="../../../../../include/footer_min.js"></script>
+                </center>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

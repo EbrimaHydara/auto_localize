@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButtonWithFocus('FORM:SECURITY_CODE');">
+    <f:view>
+    <!-- ヘッダー -->
+    <f:subview id="HEADER">
+        <ui:include src="/rb/fes/views/common/parts/header/login/HeaderLogin.xhtml" />
+        <ui:remove>
+            <div id="headerLogininclude" />
+            <script language="JavaScript" src="../../../../../include/headerLogin.js"></script>
+        </ui:remove>
+    </f:subview>
+    <center>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+            <tr align="center">
+                <td>
+                    <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                        <tr>
+                            <td>
+                                <!-- タイトル文言 -->
+                                <h1>
+                                    <fes:outputText value="ワンタイム認証に利用するメールアドレスの設定完了" />
+                                    <ui:remove>ワンタイム認証に利用するメールアドレスの設定完了</ui:remove>
+                                </h1>
+                                <!-- エラーメッセージ -->
+                                <ui:fragment rendered="#{errorBean.errorFlg}">
+                                    <table width="740" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bgC03" align="center">
+                                                <table width="710" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td width="20">
+                                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                            <ui:remove>
+                                                                <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                            </ui:remove>
+                                                        </td>
+                                                        <td width="690" class="c01">
+                                                            <fes:outputText value="#{errorBean.errorMessage}" />
+                                                            <ui:remove>ここにエラーメッセージが表示されます。</ui:remove>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </ui:fragment>
+                                <!-- ワンタイム認証に利用するメールアドレス設定完了案内 -->
+                                <div class="bold">
+                                    <fes:outputText value="ワンタイム認証に利用するメールアドレスの設定が完了しました。" />
+                                    <ui:remove>ワンタイム認証に利用するメールアドレスの設定が完了しました。</ui:remove>
+                                </div>
+                                <div class="margintop10">
+                                    <fes:outputText value="振込など、お手続きに" />
+                                    <fes:outputText value="ワンタイム認証が必要な場合" class="c01" />
+                                    <fes:outputText value="は、以下のメールアドレスに" />
+                                    <fes:outputText value="ワンタイムキーが届きます。" class="c01" />
+                                    <ui:remove>
+                                        振込など、お手続きに
+                                        <span class="c01">ワンタイム認証が必要な場合</span>
+                                        は、以下のメールアドレスに
+                                        <span class="c01">ワンタイムキーが届きます。</span>
+                                    </ui:remove>
+                                </div>
+                                <div class="margintop5">
+                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_popup.gif" alt="" width="11" height="11" class="listmarker02" />
+                                    <fes:outputLink value="https://www.rakuten-bank.co.jp/rd/fes/security/onetime/002.html" target="_blank">
+                                        <fes:outputText value="ワンタイム認証は振込などで利用するため、利用不可にならないように複数のメールアドレスを設定してください" />
+                                    </fes:outputLink>
+                                    <ui:remove>
+                                        <img src="../../../../../img/common/icn_popup.gif" alt="" width="11" height="11" class="listmarker02" />
+                                        <a href="https://www.rakuten-bank.co.jp/rd/fes/security/onetime/002.html">ワンタイム認証は振込などで利用するため、利用不可にならないように複数のメールアドレスを設定してください</a>
+                                    </ui:remove>
+                                </div>
+                                <table width="740" border="0" cellpadding="0" cellspacing="0" class="margintop30">
+                                    <tr>
+                                        <td>
+                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" width="740" height="15" class="margin0" />
+                                            <ui:remove>
+                                                <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" width="740" height="15" class="margin0" />
+                                            </ui:remove>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bgG08" align="center">
+                                            <div class="innerbox00">
+                                                <table class="table00" width="710" border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <th class="th02" width="210">
+                                                            <div class="innercellsmall">
+                                                                <fes:outputText value="ワンタイム認証に利用する" />
+                                                                <ui:remove>ワンタイム認証に利用する</ui:remove>
+                                                                <br />
+                                                                <fes:outputText value="メールアドレス" />
+                                                                <ui:remove>メールアドレス</ui:remove>
+                                                            </div>
+                                                        </th>
+                                                        <td class="td03">
+                                                            <div class="innercellsmall smediumbold">
+                                                                <fes:outputText value="#{jspFunctionManager.secretMailAddressFunction[checkStatusAddressControlManagedBean.checkStatusAddressControlFormBean.mailAddress]}" />
+                                                                <ui:remove>1234@mfs.ebank.co.jp</ui:remove>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                            <ui:remove>
+                                                <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                            </ui:remove>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <h:form id="FORM" onsubmit="return checkDuplicatedSubmit();">
+                                    <div align="center" class="margintop30">
+                                        <fes:commandButton value="　次へ　" action="#{checkStatusAddressControlManagedBean.event}" actionID="EVENT_NEXT" />
+                                        <ui:remove>
+                                            <form action="../SecretWordRegistration/CheckStatusSecretWordRegistrationStart.xhtml">
+                                                <input type="button" value="　次へ　" />
+                                            </form>
+                                        </ui:remove>
+                                    </div>
+                                    <div class="margintop10" />
+                                </h:form>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <div class="margintop25" />
+    <!-- フッター -->
+    <f:subview id="FOOTER">
+        <ui:include src="/rb/fes/views/common/parts/footer/login/FooterLogin.xhtml" />
+        <ui:remove>
+            <center>
+                <div id="footerLogininclude" />
+                <script language="JavaScript" src="../../../../../include/footerLogin.js"></script>
+            </center>
+        </ui:remove>
+    </f:subview>
+</f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

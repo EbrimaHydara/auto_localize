@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButton();">
+    <f:view>
+        <fes:cache value="false" />
+        <!-- ヘッダー -->
+        <f:subview id="HEADER">
+            <ui:include src="/rb/fes/views/common/parts/header/login/HeaderLogin.xhtml" />
+            <ui:remove>
+                <div id="headerLogininclude" />
+                <script language="JavaScript" src="../../../../../include/headerLogin.js"></script>
+            </ui:remove>
+        </f:subview>
+        <center>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+                <tr align="center">
+                    <td>
+                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                            <tr>
+                                <td>
+                                    <!-- タイトル文言 -->
+                                    <h1>
+                                        <fes:choose>
+                                            <fes:when condition="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.reconfirmed}">
+                                                <fes:outputText value="ご登録住所に変更はありませんか？" />
+                                            </fes:when>
+                                            <fes:otherwise>
+                                                <fes:outputText value="入力内容の確認" />
+                                                <ui:remove>入力内容の確認</ui:remove>
+                                            </fes:otherwise>
+                                        </fes:choose>
+                                    </h1>
+                                    <!-- エラーメッセージ -->
+                                    <ui:fragment rendered="#{errorBean.errorFlg}">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginerror">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgC03" align="center">
+                                                    <table width="720" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="20" valign="top">
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                            <td width="700">
+                                                                <font class="errortxt">
+                                                                    <fes:outputText value="#{errorBean.errorMessage}" />
+                                                                    <ui:remove>ここにエラーメッセージが表示されます</ui:remove>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:fragment>
+                                    <fes:choose>
+                                        <fes:when condition="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.reconfirmed}">
+                                            <fes:outputText value="お引越し等によりお届けいただいているご住所に変更がある場合はログインパスワード再設定用番号を発行することができません。ご入力内容に変更がないことを確認の上、お申し込みください。" />
+                                            <br />
+                                            <fes:outputText value="※ご登録内容に変更がある場合は、お手続きを中止し" />
+                                            <fes:outputLink value="https://www.rakuten-bank.co.jp/rd/fes/login/045.html" target="_blank">
+                                                <fes:outputText value="楽天銀行カスタマーセンター" />
+                                            </fes:outputLink>
+                                            <fes:outputText value="までお電話ください。" />
+                                        </fes:when>
+                                        <fes:otherwise>
+                                            <fes:outputText value="ご入力内容とお届けいただいている登録情報を楽天銀行で確認させていただきます。" />
+                                            <ui:remove>ご入力内容とお届けいただいている登録情報を楽天銀行で確認させていただきます。</ui:remove>
+                                            <br />
+                                            <fes:outputText value="ご入力内容とお届けいただいている登録情報が一致しない場合は、ログインパスワード再設定用番号は発行されません。" />
+                                            <ui:remove>ご入力内容とお届けいただいている登録情報が一致しない場合は、ログインパスワード再設定用番号は発行されません。</ui:remove>
+                                            <br />
+                                            <fes:outputText value="あらかじめ、ご了承ください。" />
+                                            <ui:remove>あらかじめ、ご了承ください。</ui:remove>
+                                        </fes:otherwise>
+                                    </fes:choose>
+                                    <h:form id="INPUT_FORM" onsubmit="return checkDuplicatedSubmit();">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop20">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgG08">
+                                                    <div class="innerbox01">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="710" class="table01" style="table-layout: fixed;">
+                                                            <tr>
+                                                                <th class="th02line" width="60">
+                                                                    <div class="innercell01">
+                                                                        <fes:outputText value="お名前" />
+                                                                        <ui:remove>お名前</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <th class="th02" width="140">
+                                                                    <div class="innercell01">
+                                                                        <fes:outputText value="漢字" />
+                                                                        <ui:remove>漢字</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none" width="500">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.kanjiName1}" />
+                                                                        <fes:outputText class="marginleft5" value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.kanjiName2}" />
+                                                                        <ui:remove>楽天<span class="marginleft5">太郎</span></ui:remove>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="th02line" rowspan="4">
+                                                                    <div class="innercell01">
+                                                                        <fes:outputText value="ご住所" />
+                                                                        <ui:remove>ご住所</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <th class="th02short">
+                                                                    <div class="innercell01">
+                                                                        <fes:outputText value="郵便番号" />
+                                                                        <ui:remove>郵便番号</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.zip1}" />
+                                                                        <fes:outputText value="-" />
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.zip2}" />
+                                                                        <ui:remove>158-0094</ui:remove>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="th02short">
+                                                                    <div class="innercell01">
+                                                                        <fes:outputText value="都道府県・市区町村" />
+                                                                        <ui:remove>都道府県・市区町村</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none border-top-fff">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.selectedKanjiPref}" />
+                                                                        <ui:remove>東京都世田谷区</ui:remove>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="th02short">
+                                                                    <div class="innercell01">
+                                                                        <fes:outputText value="番地" />
+                                                                        <ui:remove>番地</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none border-top-fff">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.kanjiBanchi}" />
+                                                                        <ui:remove>１－１４－１</ui:remove>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="th02short">
+                                                                    <div class="innercell01">
+                                                                        <fes:outputText value="建物名・号室" />
+                                                                        <ui:remove>建物名・号室</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none border-top-fff">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.kanjiBuilding}" />
+                                                                        <ui:remove>クリムゾンハウス２１０３</ui:remove>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="th02short" width="200" colspan="2">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="連絡先電話番号" />
+                                                                        <ui:remove>連絡先電話番号</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none">
+                                                                    <div class="innercell">
+                                                                        <table border="0" cellspacing="0" cellpadding="0">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.phoneNumber1}" />
+                                                                                    <ui:remove>03</ui:remove>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <fes:outputText class="padding3" value="-" />
+                                                                                    <ui:remove>-</ui:remove>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.phoneNumber2}" />
+                                                                                    <ui:remove>1234</ui:remove>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <fes:outputText class="padding3" value="-" />
+                                                                                    <ui:remove>-</ui:remove>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.phoneNumber3}" />
+                                                                                    <ui:remove>5678</ui:remove>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th class="th02short" colspan="2">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="生年月日" />
+                                                                        <ui:remove>生年月日</ui:remove>
+                                                                    </div>
+                                                                </th>
+                                                                <td class="td01none">
+                                                                    <div class="innercell">
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.selectedBirthdayYear}" />
+                                                                        <fes:outputText value="年" />
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.birthdayMonth}" />
+                                                                        <fes:outputText value="月" />
+                                                                        <fes:outputText value="#{loginPasswordReissueIdLogpassForgetManagedBean.loginPasswordReissueIdLogpassForgetFormBean.birthdayDay}" />
+                                                                        <fes:outputText value="日" />
+                                                                        <ui:remove>1994年12月02日</ui:remove>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop2">
+                                            <tr>
+                                                <td class="bgG08">
+                                                    <div class="innerbox02">
+                                                        <table width="710" border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td width="200">
+                                                                    <fes:commandLink value="修正する" action="#{loginPasswordReissueIdLogpassForgetManagedBean.back}" actionID="BACK" immediate="true" class="btn btn-default btn-outline txt-fff" />
+                                                                    <ui:remove>
+                                                                        <a href="ForgetStart.xhtml" class="btn btn-default btn-outline txt-fff" >修正する</a>
+                                                                    </ui:remove>
+                                                                </td>
+                                                                <td width="540" class="align-c-cell">
+                                                                    <fes:choose>
+                                                                        <fes:when condition="#{errorBean.errorFlg}">
+                                                                            <fes:commandLink value="ログインパスワード再設定用番号の発行を申し込む" action="#{loginPasswordReissueIdLogpassForgetManagedBean.execute}" actionID="EXECUTE" class="btn btn-default txt-fff disabled" style="width:370px" />
+                                                                        </fes:when>
+                                                                        <fes:otherwise>
+                                                                            <fes:commandLink value="ログインパスワード再設定用番号の発行を申し込む" action="#{loginPasswordReissueIdLogpassForgetManagedBean.execute}" actionID="EXECUTE" class="btn btn-default txt-fff" style="width:370px" />
+                                                                        </fes:otherwise>
+                                                                    </fes:choose>
+                                                                    <h:inputHidden id="TOKEN" value="#{systemDataBean.clientSideToken}" />
+                                                                    <ui:remove>
+                                                                        <a href="ForgetAccomplished.xhtml" class="btn btn-default txt-fff" style="width:370px" >ログインパスワード再設定用番号の発行を申し込む</a>
+                                                                    </ui:remove>
+                                                                </td>
+                                                                <td width="200">
+                                                                    <fes:outputText value=" " />
+                                                                    <ui:remove>&#160;</ui:remove>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="200">
+                                                                    <fes:outputText value=" " />
+                                                                    <ui:remove>&#160;</ui:remove>
+                                                                </td>
+                                                                <td width="540" class="align-c-cell">
+                                                                    <fes:commandLink value="お手続きを中止する" action="#{resetMenuManagedBean.start}" actionID="START" class="margintop20 btn btn-default btn-outline cancel" style="width:370px" />
+                                                                    <ui:remove>
+                                                                        <a href="../ResetMenu/ResetMenu.xhtml" class="margintop20 btn btn-default btn-outline cancel" style="width:370px">お手続きを中止する</a>
+                                                                    </ui:remove>
+                                                                </td>
+                                                                <td width="200">
+                                                                    <fes:outputText value=" " />
+                                                                    <ui:remove>&#160;</ui:remove>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </h:form>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="margintop25" />
+        <!-- フッター -->
+        <f:subview id="FOOTER">
+            <ui:include src="/rb/fes/views/common/parts/footer/login/FooterLogin.xhtml" />
+            <ui:remove>
+                <center>
+                    <div id="footerLogininclude" />
+                    <script language="JavaScript" src="../../../../../include/footerLogin.js"></script>
+                </center>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

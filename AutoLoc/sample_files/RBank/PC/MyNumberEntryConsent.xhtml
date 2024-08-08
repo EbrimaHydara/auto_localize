@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom"
+      xml:lang="ja" lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=Shift_JIS" />
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/responsiveStyle_basic.css" type="text/css" />
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/responsiveStyle_login.css" type="text/css" />
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/extendedStyle_myNumber.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" 
+            jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css"
+            jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+        <link rel="stylesheet" href="../../../../../css/responsiveStyle_basic.css" type="text/css"
+            jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/responsiveStyle_basic.css" />
+        <link rel="stylesheet" href="../../../../../css/responsiveStyle_login.css" type="text/css"
+            jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/responsiveStyle_login.css" />
+        <link rel="stylesheet" href="../../../../../css/extendedStyle_myNumber.css" type="text/css"
+            jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/extendedStyle_myNumber.css" />
+    </ui:remove> 
+</head>
+
+<!-- 共通BODY部 -->
+<body onload="activateDisabledButton()">
+
+    <f:view>
+        <!-- ↓キャッシュの設定（必要に応じて設定）↓ -->
+        <!-- <fes:cache value="false" /> -->
+        <!-- ↑キャッシュの設定↑ -->
+
+        <!-- HEADER START -->
+        <div id="header-container">
+            <div id="h-contents">
+                <div class="login-header-logo"><span><fes:outputText value="楽天銀行" /><ui:remove>楽天銀行</ui:remove></span></div>
+            </div>
+        </div>
+        <!-- HEADER END -->
+
+        <div id="container">
+            <!-- ↓サービス固有部↓ -->
+            <!-- エラーメッセージ -->
+              <ui:fragment rendered="#{errorBean.errorFlg}">
+                  <div class="error-box margintop40">
+                      <div class="box">
+                          <div class="column__title fs14l"><span class="icon marginbottom-minus3"></span>
+                              <span><fes:outputText value="#{errorBean.errorMessage}" /><ui:remove>ここにエラーメッセージが表示されます</ui:remove></span>
+                          </div>
+                      </div>
+                  </div>
+              </ui:fragment>
+            <!-- フォーム（開始）の設定 -->
+            <h:form id="INPUT_FORM" onSubmit="return checkDuplicatedSubmit()">
+
+                <div class="margintop30" style="border-bottom: 2px solid #ccc;">
+                    <fes:inlineFrame src="#{PROPERTIES_KEY['presentation.inlineframe.external.src.path']}/personal/prom_body01_SC1479.html" name="PROM_BODY01" width="100%" height="0" scrolling="no" frameborder="0" marginwidth="0" marginheight="0">
+                    </fes:inlineFrame>
+                    <ui:remove>
+                        <iframe src="../../../../../personal/prom_body01_SC1479.html" name="PROM_BODY01" width="100%" height="0" style="border:none; margin:0px; scrolling:no;" ></iframe>
+                    </ui:remove>
+                </div>
+                <div class="box">
+                    <fes:inlineFrame src="#{PROPERTIES_KEY['presentation.inlineframe.external.src.path']}/personal/prom_body02_SC1479.html" name="PROM_BODY02" width="100%" height="0" scrolling="no" frameborder="0" marginwidth="0" marginheight="0">
+                    </fes:inlineFrame>
+                    <ui:remove>
+                        <iframe src="../../../../../personal/prom_body02_SC1479.html" name="PROM_BODY02" width="100%" height="0" style="border:none; margin:0px; scrolling:no;" ></iframe>
+                    </ui:remove>
+                    <div class="margintop20 toggle-box paddingbottom10" style="border: 1px solid #8e8e8e;">
+                        <input type="checkbox" id="toggle-box1" />
+                        <label class="toggle-btn" for="toggle-box1"><fes:outputText value="預貯金口座付番に関する事務とは" /><ui:remove>預貯金口座付番に関する事務とは</ui:remove></label>
+                        <div class="toggle-contents">
+                            <fes:graphicImage  url="#{PROPERTIES_KEY['presentation.external.img.folder.path']}/img/ad/global_menu/img_mynumber02.gif" width="100%" alt="預貯金口座付番に関する事務とは、行政機関による、税務調査、社会保障における資力調査、預金保険法の規定に基づく名寄せ等のため、口座とマイナンバーを紐付けすること。" />
+                            <ui:remove>
+                                <img src="../../../../../img/ad/global_menu/img_mynumber02.gif" width="100%" alt="預貯金口座付番に関する事務とは、行政機関による、税務調査、社会保障における資力調査、預金保険法の規定に基づく名寄せ等のため、口座とマイナンバーを紐付けすること。" />
+                            </ui:remove>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="margintop40 marginbottom100 align-center">
+                    <div class="d-inlineblock">
+                        <fes:commandButton  value="同意して次へ進む"
+                                            actionID="EXECUTE"
+                                            class="btn btn-default btn-mainaction"
+                                            action="#{agreeWithNumberingChangeManagedBean.execute}">
+                            <f:param name="agreeFlag" value="true" />
+                        </fes:commandButton>
+                        <ui:remove>
+                            <input type="button" class="btn btn-default btn-mainaction" value="同意して次へ進む" />
+                        </ui:remove>
+                    </div>
+                    <div class="d-inlineblock marginleft20">
+                        <fes:commandButton  value="同意せずに次へ進む"
+                                            actionID="EXECUTE"
+                                            class="btn btn-default btn-mainaction btn-gray"
+                                            action="#{agreeWithNumberingChangeManagedBean.execute}">
+                            <f:param name="agreeFlag" value="false" />
+                        </fes:commandButton>
+                        <ui:remove>
+                            <input type="button" class="btn btn-default btn-mainaction btn-gray" value="同意せずに次へ進む" />
+                        </ui:remove>
+                    </div>
+                    <h:inputHidden id="TOKEN" value="#{agreeWithNumberingChangeManagedBean.systemDataBean.clientSideToken}"/>
+                    <div class="d-inlineblock marginleft20">
+                        <fes:commandLink  value="後で確認する"
+                            action="#{checkStatusManagedBean.event}"
+                            actionID="EVENT_CALL_AGREE_NUMBERING"
+                            class="sub01"
+                            immediate="true" />
+                        <ui:remove>
+                            <a href="" class="sub01">後で確認する</a>
+                        </ui:remove>
+                    </div>
+                </div>
+
+            </h:form>
+            <!-- フォーム（終了）の設定 -->
+
+        </div><!-- /#container -->
+
+        <div class="margintop25"></div>
+
+        <div class="margintop25" />
+        <!-- 画面固有部（フッター） -->
+        <f:subview id="FOOTER">
+            <center>
+                <ui:include src="/rb/fes/views/common/parts/footer/login/FooterLoginWide.xhtml" />
+                <ui:remove>
+                    ■インクルード  /rb/fes/views/common/parts/footer/login/FooterLoginWide.xhtml
+                </ui:remove>
+                <ui:include src="/rb/fes/views/common/parts/footer/SiteCatalyst.xhtml" />
+                <ui:remove>
+                    ■インクルード  /rb/fes/views/common/parts/footer/SiteCatalyst.xhtml
+                </ui:remove>
+            </center>
+        </f:subview>
+
+        <!-- 共通フッター部 -->
+    </f:view>
+
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

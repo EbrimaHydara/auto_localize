@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom"
+      xmlns:mbl="http://m.rakuten-bank.co.jp/jsf/custom"
+      xml:lang="ja" lang="ja" class="no-js">
+
+<head>
+    <ui:include src="/rb/mobile/views/mainservice/Security/LoginAuthentication/LogPassReissueForNormalLogin/common/parts/Header.xhtml" />
+    <ui:remove>
+        <title>楽天銀行</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="email=no" />
+        <link rel="stylesheet" href="../../../../../../../css/common/cwd2016/app.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/common/sys2016/app.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/sfesBaseStyle.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/basic.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/core.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/extendedStyle.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/module.css" type="text/css" />
+        <script language="JavaScript" src="../../../../../../../js/common/jquery.js" type="text/javascript"></script>
+        <script language="JavaScript" src="../../../../../../../js/common/sfesBaseScript.js" type="text/javascript"></script>
+    </ui:remove>
+</head>
+
+<body onload="window.opener=self;">
+    <f:view>
+        <!-- タイトルヘッダ -->
+        <header>
+            <div id="logo">
+                <ui:include src="/rb/mobile/views/common/parts/LogoBank.xhtml" />
+                <ui:remove>
+                    ■インクルード  /rb/mobile/views/common/parts/LogoBank.xhtml
+                </ui:remove>
+                <!-- sfesBaseScript.jsで文字の大きさを動的に変更する際に正しい文字数で判定できる様に、h1タグをインデントをつけず1行で実装。 -->
+                <h1 id="title"><fes:outputText value="ログインパスワードが不明な場合" /><ui:remove>ログインパスワードが不明な場合</ui:remove></h1>
+            </div>
+            <!-- /div#logo -->
+        </header>
+        <article>
+            <!-- section -->
+            <section class="outside">
+                <!-- エラーメッセージ -->
+                <f:subview id="error_top" rendered="#{errorBean.errorFlg}">
+                    <ui:include src="/rb/mobile/views/common/parts/ErrorMessage.xhtml" />
+                    <ui:remove>
+                        ■インクルード  /rb/mobile/views/common/parts/ErrorMessage.xhtml
+                    </ui:remove>
+                </f:subview>
+            </section>
+            <!-- /section -->
+            <div class="bottom mb20">
+                <fes:choose>
+                    <fes:when condition="#{mobileDataBean != null and mobileDataBean.insideBankApp}">
+                        <div class="col">
+                            <fes:outputLink value="#{logPassReissueForNormalLoginManagedBean.logPassReissueForNormalLoginFormBean.loginURL}" class="large-btn next">
+                                <fes:outputText value="ログイン画面に戻る" />
+                            </fes:outputLink>
+                        </div>
+                    </fes:when>
+                    <fes:otherwise>
+                        <div class="btn-group col">
+                            <fes:outputLink value="https://www.rakuten-bank.co.jp/rd/sfes/smartphone.html" class="large-btn next">
+                                <fes:outputText value="楽天銀行TOPへ" />
+                            </fes:outputLink>
+                            <ui:remove>
+                                <a href="https://www.rakuten-bank.co.jp/smartphone/" class="large-btn next">楽天銀行TOPへ</a>
+                            </ui:remove>
+                        </div>
+                    </fes:otherwise>
+                </fes:choose>
+                <!-- Footer start -->
+                <div class="footerInfo">
+                    <f:subview id="copyright">
+                        <ui:include src="/rb/mobile/views/mainservice/Security/LoginAuthentication/LogPassReissueForNormalLogin/common/parts/Footer.xhtml" />
+                        <ui:remove>
+                            ■インクルード  /rb/mobile/views/mainservice/Security/LoginAuthentication/LogPassReissueForNormalLogin/common/parts/Footer.xhtml
+                        </ui:remove>
+                    </f:subview>
+                </div>
+            </div>
+            <!-- Footer end -->
+        </article>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

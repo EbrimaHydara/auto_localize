@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButtonWithFocus('LOGIN:BRANCH_CODE');" onunload="closeSecurityBoardWindow();">
+    <f:view>
+        <fes:cache value="false" />
+        <!-- ヘッダー -->
+        <f:subview id="HEADER">
+            <ui:include src="/rb/fes/views/common/parts/header/login/HeaderLoginForCorporation.xhtml" />
+            <ui:remove>
+                <div id="headerLoginForCorporationinclude" />
+                <script language="JavaScript" src="../../../../../include/headerLoginForCorporation.js"></script>
+            </ui:remove>
+        </f:subview>
+        <center>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+                <tr align="center">
+                    <td>
+                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                            <tr>
+                                <td>
+                                    <!-- タイトル文言 -->
+                                    <h1 class="cp">
+                                        <fes:outputText value="ユーザIDの初期化" />
+                                        <ui:remove>ユーザIDの初期化</ui:remove>
+                                    </h1>
+                                    <!-- エラーメッセージ -->
+                                    <ui:fragment rendered="#{errorBean.errorFlg}">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginerror">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgC03" align="center">
+                                                    <table width="720" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="20" valign="top">
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                            <td width="700">
+                                                                <font class="errortxt">
+                                                                    <fes:outputText value="#{errorBean.errorMessage}" />
+                                                                    <ui:remove>ここにエラーメッセージが表示されます</ui:remove>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:fragment>
+                                    <fes:choose>
+                                        <fes:when condition="#{corpUserIDInitializeLoginManagedBean.corpUserIDInitializeFormBean.csAccountFlag == true}">
+                                            <fes:outputText value="口座管理プラスをご利用頂いている場合（※）は、ユーザーＩＤの初期化は行えません。" />
+                                            <br />
+                                            <fes:outputText value="※ ログイン時に口座グループ名、専用ユーザID、専用ログインパスワードをご入力されている場合。" />
+                                            <div class="margintop15" />
+                                            <fes:outputText value="口座管理プラスの管理者さま等、" />
+                                            <span class="c01 bold">
+                                                <fes:outputText value="ユーザ管理権限をお持ちのかたにお問い合わせください。" />
+                                            </span>
+                                            <br />
+                                            <fes:outputText value="ユーザ管理権限をお持ちのかたであれば、法人ビジネス口座にログイン後の「ユーザ情報の管理」からユーザIDの確認が可能です。" />
+                                        </fes:when>
+                                        <fes:otherwise>
+                                            <div class="margintl06">
+                                                <table width="725" border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td>
+                                                            <fes:outputText value="支店番号、口座番号、ログインパスワードを入力してください。ユーザＩＤを初期化します。 初期化されたユーザＩＤは支店番号と口座番号をつなげた10桁の数字になります。" />
+                                                            <ui:remove>支店番号、口座番号、ログインパスワードを入力してください。ユーザＩＤを初期化します。 初期化されたユーザＩＤは支店番号と口座番号をつなげた10桁の数字になります。</ui:remove>
+                                                            <br />
+                                                            <div class="margintop8">
+                                                                <fes:outputText value="※ 初期化を行うと以前にご登録いただいたユーザＩＤはご利用いただけなくなります。" />
+                                                                <ui:remove>※ 初期化を行うと以前にご登録いただいたユーザＩＤはご利用いただけなくなります。</ui:remove>
+                                                                <br />
+                                                                <fes:outputText value="※ 口座管理プラスをご利用のお客さまは、ご利用になれません。" />
+                                                                <ui:remove>※ 口座管理プラスをご利用のお客さまは、ご利用になれません。</ui:remove>
+                                                                <br />
+                                                                <fes:outputText value="※ ログインパスワードは半角英数記号混在 8～12文字でご登録いただいたものです。" />
+                                                                <ui:remove>※ ログインパスワードは半角英数記号混在 8～12文字でご登録いただいたものです。</ui:remove>
+                                                           </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </fes:otherwise>
+                                    </fes:choose>
+                                    <div class="margintop20" align="center">
+                                        <table width="549" border="0" cellspacing="0" cellpadding="0">
+                                            <fes:choose>
+                                                <fes:when condition="#{corpUserIDInitializeLoginManagedBean.corpUserIDInitializeFormBean.csAccountFlag == true}">
+                                                    <tr>
+                                                        <td align="center">
+                                                            <div class="innerbox00">
+                                                                <table border="0" cellspacing="0" cellpadding="0">
+                                                                    <h:form id="LOGIN" onsubmit="return checkDuplicatedSubmit();">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <div class="margintop25" align="center">
+                                                                                    <fes:commandButton value="　戻 る　" action="#{corpUserIDInitializeLoginManagedBean.event}" actionID="EVENT_MOVE" immediate="true" />
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </h:form>
+                                                                </table>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </fes:when>
+                                                <fes:otherwise>
+                                                    <tr>
+                                                        <td align="center">
+                                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table05_top.gif" alt="" width="549" height="15" class="margin0" />
+                                                            <ui:remove>
+                                                                <img src="../../../../../img/common/parts_table05_top.gif" alt="" width="549" height="15" class="margin0" />
+                                                            </ui:remove>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bgC02" align="center">
+                                                            <div class="innerbox00" style="position: relative;">
+                                                                <h:form id="SECURITY_BOARD" target="SECURITY_BOARD" onsubmit="document.forms['LOGIN'].elements['LOGIN:LOGIN_PASSWORD'].value = ''">
+                                                                    <div class="margintop3" style="position: absolute; right: 15px; top:84px;">
+                                                                        <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_lock.gif" alt="" width="11" height="11" class="listmarker04" />
+                                                                        <fes:commandLink value="セキュリティボードを使用" action="#{corpUserIDInitializeLoginManagedBean.createSecurityBoard}" actionID="LOGIN_SECURITY_BOARD" onclick="openSecurityBoardWindow();" />
+                                                                        <ui:remove>
+                                                                            <img src="../../../../../img/common/icn_lock.gif" alt="" width="11" height="11" class="listmarker04" />
+                                                                            <a href="" onclick="openSecurityBoardWindow();">セキュリティボードを使用</a>
+                                                                        </ui:remove>
+                                                                    </div>
+                                                                </h:form>
+                                                                <h:form id="LOGIN" onsubmit="return checkDuplicatedSubmit();">
+                                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                                        <tr>
+                                                                            <td colspan="2">
+                                                                                <table width="516" border="0" cellspacing="0" cellpadding="0" class="table00">
+                                                                                    <tr>
+                                                                                        <th class="th02short">
+                                                                                            <div class="innercell">
+                                                                                                <fes:outputText value="支店番号" />
+                                                                                                <ui:remove>支店番号</ui:remove>
+                                                                                            </div>
+                                                                                        </th>
+                                                                                        <td class="td01none">
+                                                                                            <div class="innercell">
+                                                                                                <fes:inputText id="BRANCH_CODE" class="login_password" value="#{corpUserIDInitializeLoginManagedBean.loginAuthenticationBean.branchCode}" autocomplete="off" maxlength="3" />
+                                                                                                <ui:remove>
+                                                                                                    <input type="text" class="login_password" autocomplete="off" maxlength="3" />
+                                                                                                </ui:remove>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th class="th02short">
+                                                                                            <div class="innercell">
+                                                                                                <fes:outputText value="口座番号" />
+                                                                                                <ui:remove>口座番号</ui:remove>
+                                                                                            </div>
+                                                                                        </th>
+                                                                                        <td class="td01none">
+                                                                                            <div class="innercell">
+                                                                                                <fes:inputText id="ACCOUNT_NUMBER" class="login_password" value="#{corpUserIDInitializeLoginManagedBean.loginAuthenticationBean.accountNumber}" autocomplete="off" maxlength="7" />
+                                                                                                <ui:remove>
+                                                                                                    <input type="text" class="login_password" autocomplete="off" maxlength="7" />
+                                                                                                </ui:remove>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th class="th02short">
+                                                                                            <div class="innercell">
+                                                                                                <fes:outputText value="ログインパスワード" />
+                                                                                                <ui:remove>ログインパスワード</ui:remove>
+                                                                                            </div>
+                                                                                        </th>
+                                                                                        <td class="td01none">
+                                                                                            <div class="innercell">
+                                                                                                <h:inputSecret id="LOGIN_PASSWORD" class="login_password" value="#{corpUserIDInitializeLoginManagedBean.loginAuthenticationBean.loginPassword}" />
+                                                                                                <ui:remove>
+                                                                                                    <input type="password" class="login_password" />
+                                                                                                </ui:remove>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="315">
+                                                                                <table width="315" border="0" cellspacing="0" cellpadding="0">
+                                                                                    <tr>
+                                                                                        <td align="left">
+                                                                                            <div class="margintop20">
+                                                                                                <fes:commandButton value="　戻 る　" action="#{corpUserIDInitializeLoginManagedBean.event}" actionID="EVENT_MOVE" immediate="true" />
+                                                                                                <ui:remove>
+                                                                                                    <input type="button" value="　戻 る　" />
+                                                                                                </ui:remove>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td align="center">
+                                                                                            <div class="margintop20">
+                                                                                                <fes:commandButton value="　次 へ　" action="#{corpUserIDInitializeLoginManagedBean.login}" actionID="LOGIN" />
+                                                                                                <ui:remove>
+                                                                                                    <input type="button" value="　次 へ　" />
+                                                                                                </ui:remove>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td align="right" valign="top" width="230">
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </h:form>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table05_bottom.gif" alt="" width="549" height="15" class="margin0" />
+                                                            <ui:remove>
+                                                                <img src="../../../../../img/common/parts_table05_bottom.gif" alt="" width="549" height="15" class="margin0" />
+                                                            </ui:remove>
+                                                        </td>
+                                                    </tr>
+                                                </fes:otherwise>
+                                            </fes:choose>
+                                        </table>
+                                    </div>
+                                    <div class="margintb02">
+                                        <fes:inlineFrame src="#{PROPERTIES_KEY['presentation.inlineframe.external.src.path']}/business/prom_body01_SC1165.html" name="PROM_BODY01" width="740" height="0" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" external="true" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="margintop25" />
+        <!-- フッター -->
+        <f:subview id="FOOTER">
+            <ui:include src="/rb/fes/views/common/parts/footer/login/FooterLoginForCorporation.xhtml" />
+            <ui:remove>
+                <center>
+                    <div id="footerLoginForCorporationinclude" />
+                    <script language="JavaScript" src="../../../../../include/footerLoginForCorporation.js"></script>
+                </center>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

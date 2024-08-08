@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom"
+      xmlns:mbl="http://m.rakuten-bank.co.jp/jsf/custom"
+      xml:lang="ja" lang="ja" class="no-js">
+
+<head>
+        <title>楽天銀行</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="email=no" />
+        <link rel="stylesheet" href="../../../../../../../css/common/cwd2016/app.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/common/sys2016/app.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/sfesBaseStyle.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/basic.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/core.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/extendedStyle.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../../../css/mainservice/logPassReissueForNormalLogin/module.css" type="text/css" />
+        <script language="JavaScript" src="../../../../../../../js/common/jquery.js" type="text/javascript"></script>
+        <script language="JavaScript" src="../../../../../../../js/common/sfesBaseScript.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <ui:composition>
+        <ui:fragment rendered="#{(mobileDataBean==null || mobileDataBean.isInsideBankApp() == false) }">
+            <footer>
+                <div class="footerInfo">
+                    <small>
+                        <fes:outputText value="Copyright &#169; 2001 Rakuten Bank, Ltd. All Rights Reserved." />
+                        <ui:remove>Copyright &#169; 2001 Rakuten Bank, Ltd. All Rights Reserved.</ui:remove>
+                    </small>
+                    <dl class="listDefine01">
+                        <dt>
+                            <fes:outputText value="商号" />
+                            <ui:remove>商号</ui:remove>
+                        </dt>
+                        <dd>
+                            <fes:outputText value="楽天銀行株式会社" />
+                            <ui:remove>楽天銀行株式会社</ui:remove>
+                        </dd>
+                        <dt>
+                            <fes:outputText value="登録番号" />
+                            <ui:remove>登録番号</ui:remove>
+                        </dt>
+                        <dd>
+                            <fes:outputText value="登録金融機関 関東財務局長（登金）第609号" />
+                            <ui:remove>登録金融機関 関東財務局長（登金）第609号</ui:remove>
+                        </dd>
+                        <dt>
+                            <fes:outputText value="加入協会" />
+                            <ui:remove>加入協会</ui:remove>
+                        </dt>
+                        <dd>
+                            <fes:outputText value="日本証券業協会、一般社団法人金融先物取引業協会" />
+                            <ui:remove>日本証券業協会、一般社団法人金融先物取引業協会</ui:remove>
+                        </dd>
+                    </dl>
+                </div>
+            </footer>
+        </ui:fragment>
+        <fes:choose>
+            <fes:when condition="#{mobileDataBean.outputTrackingTag==true}">
+                <f:subview id="tracking">
+                    <ui:include src="/rb/mobile/views/common/parts/SiteCatalyst.xhtml" />
+                </f:subview>
+            </fes:when>
+        </fes:choose>
+        <input type="hidden" id="specialBranchCodeForBaasControl" value="#{specialBranchUtility.getSpecialBranchCode()}" />
+        <script language="JavaScript" src="#{PROPERTIES_KEY['presentation.js.folder.path']}/sys2016/app_Baas.js?#{PROPERTIES_KEY['presentation.js.version']}" type="text/javascript"></script>
+    </ui:composition>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

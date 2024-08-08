@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>楽天銀行へようこそ</title>
+    <meta http-equiv="Content-type" content="text/html; charset=Shift_JIS" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.commonservice.js.folder.path']}/LoginPasswordCheck/Common/Common/LoginPasswordCheck.js?${PROPERTIES_KEY['presentation.js.version']}"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/commonservice/LoginPasswordCheck/jquery-ui.css?${PROPERTIES_KEY['presentation.css.version']}" type="text/css" />
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/commonservice/LoginPasswordCheck/tooltip.css?${PROPERTIES_KEY['presentation.css.version']}" type="text/css" />
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/extendedStyle_login.css?${PROPERTIES_KEY['presentation.css.version']}" type="text/css" />
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/extendedStyle_qr.css?${PROPERTIES_KEY['presentation.css.version']}" type="text/css" />
+    <meta name="robots" content="noindex,noarchive" />
+    <meta property="og:image" content="https://csf.rakuten-bank.co.jp/rb/fes/img/ad/messenger_preset_bank_icon.png" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <script language="JavaScript" src="../../../../../js/commonservice/LoginPasswordCheck/Common/Common/LoginPasswordCheck.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/LoginPasswordCheck/Common/Common/LoginPasswordCheck.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+        <link rel="stylesheet" href="../../../../../css/commonservice/LoginPasswordCheck/jquery-ui.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/commonservice/LoginPasswordCheck/jquery-ui.css" />
+        <link rel="stylesheet" href="../../../../../css/commonservice/LoginPasswordCheck/tooltip.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/commonservice/LoginPasswordCheck/tooltip.css" />
+        <link rel="stylesheet" href="../../../../../css/extendedStyle_login.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/extendedStyle_login.css" />
+        <link rel="stylesheet" href="../../../../../css/extendedStyle_qr.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/extendedStyle_qr.css" />
+    </ui:remove>
+
+    <script language="JavaScript">
+    //<![CDATA[
+        $(document).ready(function() {
+          $("#LOGIN\\:USER_ID").focus(function() {
+            $(this).css("border-bottom", "2px solid #f54c4c");
+            document.getElementById('icon-id').style.display = "none";
+          });
+          $("#LOGIN\\:USER_ID").blur(function() {
+            $(this).css("border-bottom", "1px solid #b6b6b6");
+            document.getElementById('icon-id').style.display = "";
+          });
+        });
+        $(document).ready(function() {
+          $("#LOGIN\\:LOGIN_PASSWORD").focus(function() {
+            $(this).css("border-bottom", "2px solid #f54c4c");
+            document.getElementById('icon-pass').style.display = "none";
+          });
+          $("#LOGIN\\:LOGIN_PASSWORD").blur(function() {
+            $(this).css("border-bottom", "1px solid #b6b6b6");
+            document.getElementById('icon-pass').style.display = "";
+          });
+        });
+    //]]>
+    </script>
+</head>
+
+<body onload="activateDisabledButtonWithFocusForLogin('LOGIN:USER_ID');" onunload="closeSecurityBoardWindow();" class="login-type wide">
+    <f:view>
+        <fes:cache value="false" />
+        <!-- ヘッダー -->
+        <div id="header-container">
+            <div id="h-contents" class="wide">
+                <div class="login-header-logo">
+                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/header/logo_01.gif" width="243" height="96" alt="楽天銀行" class="margin0" />
+                    <ui:remove>
+                        <img src="../../../../../img/common/header/logo_01.gif" width="243" height="96" alt="楽天銀行" class="margin0" />
+                    </ui:remove>
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div id="contents">
+                <div>
+                    <fes:inlineFrame src="#{PROPERTIES_KEY['presentation.inlineframe.external.src.path']}/personal/prom_body03_SC0576.html" name="PROM_BODY03" scrolling="no" frameborder="0" width="950" height="0" external="true" />
+                </div>
+                <div>
+                    <fes:inlineFrame src="#{PROPERTIES_KEY['presentation.inlineframe.external.src.path']}/personal/prom_body04_SC0576.html" name="PROM_BODY04" scrolling="no" frameborder="0" width="950" height="0" external="true" />
+                </div>
+                <div class="contents-inner">
+                    <div class="contents-main">
+                        <h1>
+                            <fes:outputText value="楽天銀行ログイン" />
+                            <ui:remove>楽天銀行ログイン</ui:remove>
+                        </h1>
+                        <div class="login-form wide">
+                            <div class="login-main">
+                                <div class="login-common">
+                                    <!-- セキュリティボード -->
+                                    <h:form id="SECURITY_BOARD" target="SECURITY_BOARD" onsubmit="document.forms['LOGIN'].elements['LOGIN:LOGIN_PASSWORD'].value = ''">
+                                        <div class="security-board">
+                                            <fes:commandLink value="セキュリティボードを使用" action="#{loginManagedBean.createSecurityBoard}" actionID="LOGIN_SECURITY_BOARD" onclick="javascript:setScProdVal('fes_login_SC0576_security');openSecurityBoardWindow();" onkeypress="javascript:setScProdVal('fes_login_SC0576_security');" class="mouseover">
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icon-external-link_off.png" alt="別ウィンドウで開く" height="16" class="img-middle marginleft3" />
+                                            </fes:commandLink>
+                                            <ui:remove>
+                                                <a href="../../../../common/login/SecurityBoardForLoginPassword.xhtml">
+                                                    セキュリティボードを使用
+                                                    <img src="../../../../../img/common/icon-external-link_off.png" alt="別ウィンドウで開く" width="16" class="img-middle marginleft3" />
+                                                </a>
+                                            </ui:remove>
+                                        </div>
+                                    </h:form>
+                                    <!-- ログイン -->
+                                    <h:form id="LOGIN" onsubmit="return checkDuplicatedSubmit();">
+                                        <div class="txt-item">
+                                            <fes:outputText value="ユーザID" />
+                                            <ui:remove>ユーザID</ui:remove>
+                                        </div>
+                                        <div class="login-wrap">
+                                            <fes:inputText id="USER_ID" value="#{loginManagedBean.loginAuthenticationBean.userID}" autocomplete="off" />
+                                            <ui:remove>
+                                                <input type="text" id="LOGIN:USER_ID" autocomplete="off" />
+                                            </ui:remove>
+                                            <fes:choose>
+                                                <fes:when condition="#{errorBean.errorFlg == true}">
+                                                    <div class="img-icon-error" id="icon-id" />
+                                                </fes:when>
+                                                <fes:otherwise>
+                                                    <div class="img-icon-id" id="icon-id" />
+                                                </fes:otherwise>
+                                            </fes:choose>
+                                        </div>
+                                        <div class="txt-note" style="visibility:visible;">
+                                            <fes:outputText value="半角英数字の8桁～12桁" />
+                                            <ui:remove>半角英数字の8桁～12桁</ui:remove>
+                                        </div>
+                                        <div class="txt-item">
+                                            <fes:outputText value="ログインパスワード" />
+                                            <ui:remove>ログインパスワード</ui:remove>
+                                        </div>
+                                        <div class="login-wrap">
+                                            <h:inputSecret id="LOGIN_PASSWORD" value="#{loginManagedBean.loginAuthenticationBean.loginPassword}" class="password" />
+                                            <h:inputHidden id="LOGIN_PASSWORD_CHECK" value="#{loginManagedBean.loginAuthenticationBean.tooltipCheckValue}" />
+                                            <ui:remove>
+                                                <input type="password" class="password" />
+                                            </ui:remove>
+                                            <fes:choose>
+                                                <fes:when condition="#{errorBean.errorFlg == true}">
+                                                    <div class="img-icon-error" id="icon-pass" />
+                                                </fes:when>
+                                                <fes:otherwise>
+                                                    <div class="img-icon-pass" id="icon-pass" />
+                                                </fes:otherwise>
+                                            </fes:choose>
+                                        </div>
+                                        <div class="txt-note" style="visibility:visible;">
+                                            <fes:outputLink value="javascript:openNewWindow('https://www.rakuten-bank.co.jp/rd/fes/password/001.html','','resizable,scrollbars');">
+                                                <fes:outputText value="パスワードについて" />
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icon-external-link_off.png" alt="別ウィンドウで開く" height="16" class="img-middle marginleft3" />
+                                            </fes:outputLink>
+                                            <ui:remove>
+                                                <a href="https://www.rakuten-bank.co.jp/rd/fes/password/001.html">
+                                                    パスワードについて
+                                                    <img src="../../../../../img/common/icon-external-link_off.png" alt="別ウィンドウで開く" width="16" class="img-middle marginleft3" />
+                                                </a>
+                                            </ui:remove>
+                                        </div>
+                                        <div class="btn-login01">
+                                            <fes:commandLink value="ログイン" action="#{loginManagedBean.login}" actionID="LOGIN" onclick="javascript:setScProdVal('fes_login_SC0576_login');" onkeypress="javascript:setScProdVal('fes_login_SC0576_login');" class="btn btn-default btn-login-01" />
+                                            <ui:remove>
+                                                <a href="SwitchPage.xhtml" class="btn btn-default btn-login-01" onclick="javascript:setScProdVal('fes_login_SC0576_login');" onkeypress="javascript:setScProdVal('fes_login_SC0576_login');">ログイン</a>
+                                            </ui:remove>
+                                        </div>
+                                        <!-- FraudAlert情報 -->
+                                        <fes:choose>
+                                            <fes:when condition="#{loginManagedBean.loginAuthenticationBean.effectFlag == true}">
+                                                <h:inputHidden id="FRAUD_ALERT_SESSION_ID" value="#{loginManagedBean.loginAuthenticationBean.sessionId}" />
+                                                <h:inputHidden id="FRAUD_ALERT_SITE_ID" value="#{loginManagedBean.loginAuthenticationBean.siteId}" />
+                                                <h:inputHidden id="FRAUD_ALERT_REQUEST_URL" value="#{loginManagedBean.loginAuthenticationBean.requestUrl}" />
+                                            </fes:when>
+                                        </fes:choose>
+                                    </h:form>
+                                </div>
+                            </div>
+                            <fes:choose>
+                                <fes:when condition="#{errorBean.errorFlg == true}">
+                                    <div class="login-side bg-circle_error">
+                                        <div class="icon-error">
+                                            <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icon-error.png" alt="" width="32" height="32" />
+                                            <ui:remove>
+                                                <img src="../../../../../img/common/icon-error.png" alt="" width="32" height="32" />
+                                            </ui:remove>
+                                        </div>
+                                        <div class="txt-error">
+                                            <fes:outputText value="#{errorBean.errorMessage}" />
+                                            <ui:remove>ここにエラーメッセージが表示されます</ui:remove>
+                                        </div>
+                                    </div>
+                                </fes:when>
+                                <fes:otherwise>
+                                    <div class="login-side bg-circle" />
+                                </fes:otherwise>
+                            </fes:choose>
+                        </div>
+                        <!-- QRログイン -->
+                        <fes:choose>
+                            <fes:when condition="#{loginManagedBean.loginFormBean.qrCodeLoginOpenFlag}">
+                                <h:form id="INPUT_FORM" onsubmit="return checkDuplicatedSubmit();">
+                                    <fes:choose>
+                                        <fes:when condition="#{errorBean.errorFlg || !loginManagedBean.loginFormBean.qrCodeLoginAuthenticationFormBean.qrcoadCreateFlag}">
+                                            <div class="login-qr">
+                                                <div class="qrtype01">
+                                                    <fes:outputText value="QRログイン" />
+                                                    <ui:remove>QRログイン</ui:remove>
+                                                </div>
+                                                <div class="qricon01">
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/mainservice/Inquiry/Qrcode/icon-qrlogin.png" width="80" height="80" alt="" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/mainservice/Inquiry/Qrcode/icon-qrlogin.png" width="80" height="80" alt="" />
+                                                    </ui:remove>
+                                                </div>
+                                                <div class="txt-qr-contents01">
+                                                    <fes:outputText value="楽天銀行アプリでログインできる方は、QRコードを読み込むことでログインできます。" />
+                                                    <ui:remove>楽天銀行アプリでログインできる方は、QRコードを読み込むことでログインできます。</ui:remove>
+                                                    <br />
+                                                    <fes:outputText value="※個人のお客さま限定のサービスです。" />
+                                                    <ui:remove>※個人のお客さま限定のサービスです。</ui:remove>
+                                                </div>
+                                                <div class="qr-content-btn01">
+                                                    <fes:commandLink value="QRログイン" action="#{loginManagedBean.event}" actionID="EVENT_CREATE_QRCODE" class="btn btn-default btn-outline btn-qr01" />
+                                                    <ui:remove>
+                                                        <a href="Login.xhtml" class="btn btn-default btn-outline btn-qr01">QRログイン</a>
+                                                    </ui:remove>
+                                                </div>
+                                            </div>
+                                        </fes:when>
+                                        <fes:otherwise>
+                                            <fes:when condition="#{!errorBean.errorFlg}">
+                                                <fes:choose>
+                                                    <fes:when condition="#{loginManagedBean.loginFormBean.qrCodeLoginProhibitedFlag}">
+                                                        <div id="QR_BAN" class="login-qr02">
+                                                            <div class="qrtype01">
+                                                                <fes:outputText value="QRログイン" />
+                                                                <ui:remove>QRログイン</ui:remove>
+                                                            </div>
+                                                            <div class="txt-qr-contents txt-error-qr">
+                                                                <fes:outputText value="現在、QRログインはご利用いただけません。" />
+                                                                <ui:remove>現在、QRログインはご利用いただけません。</ui:remove>
+                                                                <br />
+                                                                <fes:outputText value="しばらくたってから再度ご利用ください。" />
+                                                                <ui:remove>しばらくたってから再度ご利用ください。</ui:remove>
+                                                            </div>
+                                                            <div class="security-board txt-qr-contents03">
+                                                                <fes:outputLink value="javascript:openNewWindow('https://www.rakuten-bank.co.jp/rd/fes/login/043.html','_blank','')" class="link-type01 qr-link">
+                                                                    <fes:outputText value="QRログインの詳細へ" />
+                                                                </fes:outputLink>
+                                                                <ui:remove>
+                                                                    <a href="https://www.rakuten-bank.co.jp/rd/fes/login/043.html" class="link-type01 qr-link">QRログインの詳細へ</a>
+                                                                </ui:remove>
+                                                            </div>
+                                                        </div>
+                                                    </fes:when>
+                                                    <fes:otherwise>
+                                                        <!-- QRコード画像有効期間内 -->
+                                                        <div id="QR_ACTIVE" class="login-qr">
+                                                            <div class="qrtype01">
+                                                                <fes:outputText value="QRログイン" />
+                                                            </div>
+                                                            <div class="qricon02">
+                                                                <!-- QRコード動的画像出力 -->
+                                                                <center>
+                                                                    <fes:dynamicImage key="#{loginManagedBean.loginFormBean.qrCodeLoginAuthenticationFormBean.identificationNumber}" login="false" width="132" height="132" alt="" />
+                                                                </center>
+                                                            </div>
+                                                            <div class="txt-qr-contents02">
+                                                                <fes:outputText value="楽天銀行アプリの「QRログイン」で" />
+                                                                <br />
+                                                                <fes:outputText value="QRコードを読み取ってください。" />
+                                                            </div>
+                                                            <div id="LOGIN_AUTO_HIDDEN" style="display:none;">
+                                                                <fes:commandButton id="LOGIN_QRCODE" value="ログイン" action="#{loginManagedBean.login}" actionID="LOGIN_QRCODE" class="" />
+                                                            </div>
+                                                            <div class="security-board txt-qr-contents03">
+                                                                <fes:outputLink value="javascript:openNewWindow('https://www.rakuten-bank.co.jp/rd/fes/login/043.html','_blank','')" class="link-type01 qr-link">
+                                                                    <fes:outputText value="QRログインの詳細へ" />
+                                                                </fes:outputLink>
+                                                            </div>
+                                                        </div>
+                                                        <!-- QRコード画像有効期間外 -->
+                                                        <div id="QR_INACTIVE" class="login-qr02" style="display:none;">
+                                                            <div class="qrtype01">
+                                                                <fes:outputText value="QRログイン" />
+                                                            </div>
+                                                            <div class="txt-qr-contents txt-error-qr">
+                                                                <fes:outputText value="有効時間が過ぎました。" />
+                                                                <br />
+                                                                <fes:outputText value="「更新する」ボタンをクリックしてQRコードを更新してください。" />
+                                                            </div>
+                                                            <div class="qr-content-btn02">
+                                                                <fes:commandLink value="更新する" action="#{loginManagedBean.event}" actionID="EVENT_CREATE_QRCODE" class="btn btn-default-qr btn-qr02" />
+                                                            </div>
+                                                            <div class="security-board txt-qr-contents03">
+                                                                <fes:outputLink value="javascript:openNewWindow('https://www.rakuten-bank.co.jp/rd/fes/login/043.html','_blank','')" class="link-type01 qr-link">
+                                                                    <fes:outputText value="QRログインの詳細へ " />
+                                                                </fes:outputLink>
+                                                            </div>
+                                                        </div>
+                                                        <!-- QRコードログイン認証結果照会Wait時間（秒） -->
+                                                        <h:inputHidden id="QRCODELOGIN_WAIT_TIME" value="#{loginManagedBean.loginFormBean.qrCodeLoginAuthenticationFormBean.waitTime}" />
+                                                        <!-- QRコードログイン認証結果照会リクエスト間隔（秒） -->
+                                                        <h:inputHidden id="QRCODELOGIN_REQUEST_INTERVAL" value="#{loginManagedBean.loginFormBean.qrCodeLoginAuthenticationFormBean.requestInterval}" />
+                                                        <!-- QRコードログイン認証結果照会リクエスト継続時間（秒） -->
+                                                        <h:inputHidden id="QRCODELOGIN_REQUEST_LOOP_TIME" value="#{loginManagedBean.loginFormBean.qrCodeLoginAuthenticationFormBean.requestDuration}" />
+                                                        <!-- QRコードログイン認証結果照会(eBANK-WEB)用URL -->
+                                                        <input type="hidden" id="QRCODELOGIN_REQUEST_URL" value="#{loginManagedBean.getLoginFormBean().getQrCodeLoginAuthenticationFormBean().getEbankURL()}" />
+                                                        <script language="JavaScript" src="${PROPERTIES_KEY['presentation.commonservice.js.folder.path']}/Security/LoginAuthentication/QRLogin/qrLoginStatusCheck.js?${PROPERTIES_KEY['presentation.js.version']}"></script>
+                                                    </fes:otherwise>
+                                                </fes:choose>
+                                            </fes:when>
+                                        </fes:otherwise>
+                                    </fes:choose>
+                                </h:form>
+                            </fes:when>
+                        </fes:choose>
+                        <div class="margintop40">
+                            <fes:inlineFrame src="#{PROPERTIES_KEY['presentation.inlineframe.external.src.path']}/personal/prom_body05_SC0576.html" name="PROM_BODY05" scrolling="no" frameborder="0" width="626" height="0" external="true" />
+                        </div>
+                        <h:form id="LOGINPASSWORD_FORM_2" onsubmit="return checkDuplicatedSubmit();">
+                            <div class="section-box text-center">
+                                <fes:commandLink value="" action="#{resetMenuManagedBean.start}" actionID="START" onclick="javascript:setScProdVal('fes_login_SC0576_okomarinokata');" onkeypress="javascript:setScProdVal('fes_login_SC0576_okomarinokata');" class="btn btn-default btn-outline">
+                                    <fes:outputText value="ログイン全般でお困りのかた" />
+                                </fes:commandLink>
+                                <ui:remove>
+                                    <a href="../../ResetMenu/ResetMenu.xhtml" onclick="javascript:setScProdVal('fes_login_SC0576_okomarinokata');" onkeypress="javascript:setScProdVal('fes_login_SC0576_okomarinokata');" class="btn btn-default btn-outline">ログイン全般でお困りのかた</a>
+                                </ui:remove>
+                            </div>
+                        </h:form>
+                    </div>
+                    <div class="contents-aside">
+                        <div class="margintop40">
+                            <fes:inlineFrame src="#{PROPERTIES_KEY['presentation.inlineframe.external.src.path']}/personal/prom_body06_SC0576.html" name="PROM_BODY06" scrolling="no" frameborder="0" width="302" height="0" external="true" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- フッター -->
+        <center>
+            <f:subview id="FOOTER">
+                <ui:include src="/rb/fes/views/common/parts/footer/login/FooterLoginWide.xhtml" />
+                <!-- サイトカタリスト -->
+                <ui:include src="/rb/fes/views/common/parts/footer/SiteCatalyst.xhtml" />
+                <ui:remove>
+                    <div id="footerLoginWideinclude" />
+                    <script language="JavaScript" src="../../../../../include/footerLoginWide.js"></script>
+                </ui:remove>
+            </f:subview>
+        </center>
+    </f:view>
+    <!-- FraudAlert スクリプト埋め込み -->
+    <ui:fragment rendered="#{corpLoginManagedBean.loginAuthenticationBean.effectFlag}">
+        <ui:include src="/rb/fes/views/common/parts/footer/login/FraudAlertSessionIdRequest.xhtml" />
+    </ui:fragment>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

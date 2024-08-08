@@ -1,0 +1,841 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom" xml:lang="ja"
+      lang="ja">
+
+<head>
+    <title>Rakuten Bank</title>
+    <script language="JavaScript" src="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" type="text/css" />
+    <ui:remove>
+        <script language="JavaScript" src="../../../../../js/common/basicScripts.js" type="text/javascript" jsfc="h:outputScript" name="${PROPERTIES_KEY['presentation.js.folder.path']}/basicScripts.js"></script>
+        <link rel="stylesheet" href="../../../../../css/basicStyle.css" type="text/css" jsfc="h:outputStylesheet" name="${PROPERTIES_KEY['presentation.css.folder.path']}/basicStyle.css" />
+    </ui:remove>
+</head>
+
+<body onload="activateDisabledButton();">
+    <f:view>
+        <!-- ヘッダー -->
+        <f:subview id="HEADER">
+            <ui:include src="/rb/fes/views/common/parts/header/login/HeaderLogin.xhtml" />
+            <ui:remove>
+                <div id="headerLogininclude" />
+                <script language="JavaScript" src="../../../../../include/headerLogin.js"></script>
+            </ui:remove>
+        </f:subview>
+        <center>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="contents">
+                <tr align="center">
+                    <td>
+                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginlr01">
+                            <tr>
+                                <td>
+                                    <!-- タイトル文言 -->
+                                    <h1>
+                                        <fes:outputText value="登録情報の確認" />
+                                        <ui:remove>登録情報の確認</ui:remove>
+                                    </h1>
+                                    <!-- エラーメッセージ -->
+                                    <ui:fragment rendered="#{errorBean.errorFlg}">
+                                        <table width="740" border="0" cellspacing="0" cellpadding="0" class="marginerror">
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_top.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bgC03" align="center">
+                                                    <table width="720" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="20">
+                                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                <ui:remove>
+                                                                    <img src="../../../../../img/common/icn_alert.gif" alt="" width="16" height="15" class="margin0" />
+                                                                </ui:remove>
+                                                            </td>
+                                                            <td width="700">
+                                                                <font class="errortxt">
+                                                                    <fes:outputText value="#{errorBean.errorMessage}" />
+                                                                    <ui:remove>ここにエラーメッセージが表示されます。</ui:remove>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    <ui:remove>
+                                                        <img src="../../../../../img/common/parts_table04_bottom.gif" alt="" width="740" height="15" class="margin0" />
+                                                    </ui:remove>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ui:fragment>
+                                    <!-- 注意文言 -->
+                                    <fes:outputText value="以下の内容をご確認のうえ、「確認済」ボタンを押して次の画面にお進みください。" />
+                                    <ui:remove>以下の内容をご確認のうえ、「確認済」ボタンを押して次の画面にお進みください。</ui:remove>
+                                    <br />
+                                    <fes:outputText value="登録内容に誤りがある場合は、" />
+                                    <fes:outputLink value="https://www.rakuten-bank.co.jp/rd/fes/business/howto/002.html" target="_blank">
+                                        <fes:outputText value="楽天銀行ビジネス口座サポートデスク" />
+                                    </fes:outputLink>
+                                    <fes:outputText value="までご連絡ください。" />
+                                    <ui:remove>
+                                        <span>登録内容に誤りがある場合は、</span>
+                                        <a href="https://www.rakuten-bank.co.jp/rd/fes/business/howto/002.html">楽天銀行ビジネス口座サポートデスク</a>
+                                        <span>までご連絡ください。</span>
+                                    </ui:remove>
+                                    <!-- 開設口座情報 -->
+                                    <h2>
+                                        <fes:outputText value="開設口座情報" />
+                                        <ui:remove>開設口座情報</ui:remove>
+                                    </h2>
+                                    <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop5">
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bgG08" align="center">
+                                                <div class="innerbox00">
+                                                    <table class="table01" width="710" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <th width="270" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="支店（店番号）" />
+                                                                    <ui:remove>支店（店番号）</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.accountInfoFormBean.branchName}" />
+                                                                    <fes:outputText value="（" />
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.accountInfoFormBean.branchCode}" />
+                                                                    <fes:outputText value="）" />
+                                                                    <ui:remove>楽天支店（000）</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="270" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="口座番号" />
+                                                                    <ui:remove>口座番号</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.accountInfoFormBean.accountNumber}" />
+                                                                    <ui:remove>0000000</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" rowspan="2" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="口座名義" />
+                                                                    <ui:remove>口座名義</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="漢字" />
+                                                                    <ui:remove>漢字</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.accountInfoFormBean.kanjiName}" />
+                                                                    <ui:remove>楽天 銀行</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="フリガナ" />
+                                                                    <ui:remove>フリガナ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.accountInfoFormBean.kanaName}" />
+                                                                    <ui:remove>ラクテン ギンコウ</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="270" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="口座開設日" />
+                                                                    <ui:remove>口座開設日</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.accountInfoFormBean.accountStartDate}" convertType="date" formatType="YYYYMMDD_JP" />
+                                                                    <ui:remove>2021/02/25</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- 登記情報 -->
+                                    <h2>
+                                        <fes:outputText value="登記情報" />
+                                        <ui:remove>登記情報</ui:remove>
+                                    </h2>
+                                    <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop5">
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bgG08" align="center">
+                                                <div class="innerbox00">
+                                                    <table class="table01" width="710" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <th width="180" valign="top" rowspan="2" colspan="2" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="法人名" />
+                                                                    <ui:remove>法人名</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="漢字" />
+                                                                    <ui:remove>漢字</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.corporationKanjiName}" />
+                                                                    <ui:remove>楽天銀行</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="フリガナ" />
+                                                                    <ui:remove>フリガナ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.corporationKanaName}" />
+                                                                    <ui:remove>ラクテンギンコウ</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" rowspan="3" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="所在地" />
+                                                                    <ui:remove>所在地</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" rowspan="3" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="登記住所" />
+                                                                    <ui:remove>登記住所</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="郵便番号" />
+                                                                    <ui:remove>郵便番号</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.zip}" />
+                                                                    <ui:remove>000-0000</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="漢字" />
+                                                                    <ui:remove>漢字</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.kanjiAddress}" />
+                                                                    <ui:remove>東京都</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="フリガナ" />
+                                                                    <ui:remove>フリガナ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.kanaAddress}" />
+                                                                    <ui:remove>トウキョウト</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="270" valign="top" colspan="3" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="設立年月日" />
+                                                                    <ui:remove>設立年月日</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.establishDate}" convertType="date" formatType="YYYYMMDD_JP" class="bold" />
+                                                                    <fes:outputText value="※認証情報に利用しますので必ずご確認ください。" class="c01 marginleft10" />
+                                                                    <ui:remove>
+                                                                        <span class="bold">2021/02/26</span>
+                                                                        <span class="c01 marginleft10">※認証情報に利用しますので必ずご確認ください。</span>
+                                                                    </ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" rowspan="3" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="代表者" />
+                                                                    <ui:remove>代表者</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="役職名" />
+                                                                    <ui:remove>役職名</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.presidentPost}" />
+                                                                    <ui:remove>社長</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" rowspan="2" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="氏名" />
+                                                                    <ui:remove>氏名</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="漢字" />
+                                                                    <ui:remove>漢字</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.kanjiPresidentName}" />
+                                                                    <ui:remove>楽天 銀行</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="フリガナ" />
+                                                                    <ui:remove>フリガナ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.kanaPresidentName}" />
+                                                                    <ui:remove>ラクテン ギンコウ</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                     </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- 連絡先情報・口座管理者情報 -->
+                                    <h2>
+                                        <fes:outputText value="連絡先情報・口座管理者情報" />
+                                        <ui:remove>連絡先情報・口座管理者情報</ui:remove>
+                                    </h2>
+                                    <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop5">
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bgG08" align="center">
+                                                <div class="innerbox00">
+                                                    <table class="table01" width="710" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <th width="90" valign="top" rowspan="7" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="連絡先" />
+                                                                    <ui:remove>連絡先</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" rowspan="3" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="連絡先住所" />
+                                                                    <ui:remove>連絡先住所</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="郵便番号" />
+                                                                    <ui:remove>郵便番号</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.zip}" />
+                                                                    <ui:remove>000-0000</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="漢字" />
+                                                                    <ui:remove>漢字</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.kanjiAddress}" />
+                                                                    <ui:remove>東京都</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="フリガナ" />
+                                                                    <ui:remove>フリガナ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.kanaAddress}" />
+                                                                    <ui:remove>トウキョウト</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="電話番号" />
+                                                                    <ui:remove>電話番号</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{jspFunctionManager.secretPhoneNumberFunction[openingAccountCorporationManagedBean.contactInfoFormBean.phoneNumber]}" />
+                                                                    <ui:remove>00-0000-0***</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="FAX番号" />
+                                                                    <ui:remove>FAX番号</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{jspFunctionManager.secretPhoneNumberFunction[openingAccountCorporationManagedBean.contactInfoFormBean.faxNumber]}" />
+                                                                    <ui:remove>00-0000-0***</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="メールアドレス" />
+                                                                    <ui:remove>メールアドレス</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.email}" />
+                                                                    <ui:remove>rakuten@ebank.co.jp</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="ホームページ" />
+                                                                    <ui:remove>ホームページ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.homePageURL}" />
+                                                                    <ui:remove>https://---</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" rowspan="9" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="口座管理者" />
+                                                                    <ui:remove>口座管理者</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="部署名" />
+                                                                    <ui:remove>部署名</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.section}" />
+                                                                    <ui:remove>システム部</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="役職名" />
+                                                                    <ui:remove>役職名</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.position}" />
+                                                                    <ui:remove>部長</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" rowspan="2" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="氏名" />
+                                                                    <ui:remove>氏名</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="漢字" />
+                                                                    <ui:remove>漢字</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.kanjiClerkName}" />
+                                                                    <ui:remove>楽天 管理</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="フリガナ" />
+                                                                    <ui:remove>フリガナ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.contactInfoFormBean.kanaClerkName}" />
+                                                                    <ui:remove>ラクテン カンリ</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" rowspan="3" class="th02line">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="自宅住所" />
+                                                                    <ui:remove>自宅住所</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="郵便番号" />
+                                                                    <ui:remove>郵便番号</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="***-****　（表示しません）" />
+                                                                    <ui:remove>***-****　（表示しません）</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="漢字" />
+                                                                    <ui:remove>漢字</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="********************************　（表示しません）" />
+                                                                    <ui:remove>********************************　（表示しません）</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="90" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="フリガナ" />
+                                                                    <ui:remove>フリガナ</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="********************************　（表示しません）" />
+                                                                    <ui:remove>********************************　（表示しません）</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="生年月日" />
+                                                                    <ui:remove>生年月日</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="****年**月**日　（表示しません）" />
+                                                                    <ui:remove>****年**月**日　（表示しません）</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="180" valign="top" colspan="2" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="性別" />
+                                                                    <ui:remove>性別</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="***　（表示しません）" />
+                                                                    <ui:remove>***　（表示しません）</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- 振込限度額 -->
+                                    <h2>
+                                        <fes:outputText value="振込限度額" />
+                                        <ui:remove>振込限度額</ui:remove>
+                                    </h2>
+                                    <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop5">
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bgG08" align="center">
+                                                <div class="innerbox00">
+                                                    <table class="table01" width="710" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <th width="270" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="1回あたりの振込限度額" />
+                                                                    <ui:remove>1回あたりの振込限度額</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.userInfoFormBean.transferLimit}" convertType="amount" />
+                                                                    <fes:outputText value="円 まで" />
+                                                                    <ui:remove>5,000,000円 まで</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="270" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="1日あたりの振込限度額" />
+                                                                    <ui:remove>1日あたりの振込限度額</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="30,000,000円 まで" />
+                                                                    <ui:remove>30,000,000円 まで</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!--その他登録情報 -->
+                                    <h2>
+                                        <fes:outputText value="その他登録情報" />
+                                        <ui:remove>その他登録情報</ui:remove>
+                                    </h2>
+                                    <table width="740" border="0" cellspacing="0" cellpadding="0" class="margintop5">
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_top_nottl.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bgG08" align="center">
+                                                <div class="innerbox00">
+                                                    <table class="table01" width="710" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <th width="270" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="法人コード" />
+                                                                    <ui:remove>法人コード</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.corporationInfoFormBean.corporationCode}" />
+                                                                    <ui:remove>0000000</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th width="270" valign="top" class="th02">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="税務区分" />
+                                                                    <ui:remove>税務区分</ui:remove>
+                                                                </div>
+                                                            </th>
+                                                            <td width="440" valign="top" class="td03">
+                                                                <div class="innercellsmall">
+                                                                    <fes:outputText value="#{openingAccountCorporationManagedBean.managementInfoFormBean.taxTypeName}" />
+                                                                    <ui:remove>源泉分離課税</ui:remove>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <fes:graphicImage url="#{PROPERTIES_KEY['presentation.img.folder.path']}/img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                <ui:remove>
+                                                    <img src="../../../../../img/common/parts_table03_bottom.gif" alt="" class="margin0" />
+                                                </ui:remove>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- 表外部 -->
+                                    <div align="center" class="margintop20">
+                                        <h:form id="INPUT_FORM" onsubmit="return checkDuplicatedSubmit();">
+                                            <fes:commandButton value="　確認済　" action="#{openingAccountCorporationManagedBean.execute}" actionID="EXECUTE" />
+                                            <h:inputHidden id="TOKEN" value="#{systemDataBean.clientSideToken}" />
+                                        </h:form>
+                                        <ui:remove>
+                                            <form action="../PasswordNumberSetting/LoginPasswordNumberSettingStart.xhtml">
+                                                <input type="submit" value="　確認済　" />
+                                            </form>
+                                        </ui:remove>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="margintop25" />
+        <!-- フッター -->
+        <f:subview id="FOOTER">
+            <ui:include src="/rb/fes/views/common/parts/footer/login/FooterLogin.xhtml" />
+            <ui:remove>
+                <center>
+                    <div id="footerLogininclude" />
+                    <script language="JavaScript" src="../../../../../include/footerLogin.js"></script>
+                </center>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->

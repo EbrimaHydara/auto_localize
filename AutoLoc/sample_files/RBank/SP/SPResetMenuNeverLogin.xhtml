@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='Windows-31J' ?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:fes="http://fes.rakuten-bank.co.jp/jsf/custom"
+      xmlns:mbl="http://m.rakuten-bank.co.jp/jsf/custom"
+      xml:lang="ja" lang="ja" class="no-js">
+
+<head>
+    <ui:include src="/rb/mobile/views/common/parts/SFESHeader.xhtml" />
+    <ui:remove>
+        <title>楽天銀行</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=Shift_JIS" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="email=no" />
+        <link rel="stylesheet" href="../../../../../css/common/cwd2016/app.css" type="text/css" />
+        <link rel="stylesheet" href="../../../../../css/common/sys2016/app.css" type="text/css" />
+        <script language="JavaScript" src="../../../../../js/common/jquery.js" type="text/javascript"></script>
+    </ui:remove>
+</head>
+
+<body>
+    <f:view>
+        <div class="rf-grid-wide rf-grid--1 rf-global-header">
+            <div class="rf-grid-column">
+                <header id="header">
+                    <ui:include src="/rb/mobile/views/common/parts/TitleLeft.xhtml" />
+                    <ui:remove>
+                        ■インクルード  /rb/mobile/views/common/parts/TitleLeft.xhtml
+                    </ui:remove>
+                    <!-- 画面ﾀｲﾄﾙ -->
+                    <div class="rf-title-area">
+                        <!-- app.jsで文字の大きさを動的に変更する際に正しい文字数で判定できる様に、h1タグをインデントをつけず1行で実装。 -->
+                        <h1><fes:outputText value="一度もログインしたことがないお客さま" /><ui:remove>一度もログインしたことがないお客さま</ui:remove></h1>
+                    </div>
+                    <ui:include src="/rb/mobile/views/common/parts/TitleRight.xhtml" />
+                    <ui:remove>
+                        ■インクルード  /rb/mobile/views/common/parts/TitleRight.xhtml
+                    </ui:remove>
+                </header>
+            </div>
+        </div>
+        <ui:include src="/rb/mobile/views/common/parts/SFESLogout.xhtml" />
+        <ui:remove>
+            ■インクルード  /rb/mobile/views/common/parts/SFESLogout.xhtml
+        </ui:remove>
+        <!-- サービス固有部分 START -->
+        <main>
+            <article>
+                <h:form>
+                    <section class="rf-bg-neutral">
+                        <div class="rf-grid rf-grid-edge rf-grid--1">
+                            <div class="rf-grid-column">
+                                <div class="rf-accordion">
+                                    <!-- [必須]エラーメッセージ表示領域 -->
+                                    <f:subview id="error_top" rendered="#{errorBean.errorFlg}">
+                                        <ui:include src="/rb/mobile/views/common/parts/ErrorMessage2016.xhtml" />
+                                        <ui:remove>
+                                            ■インクルード  /rb/mobile/views/common/parts/ErrorMessage2016.xhtml
+                                        </ui:remove>
+                                    </f:subview>
+                                    <dl>
+                                        <dt id="content-1">
+                                            <a href="#content-1" aria-controls="content-1" aria-expanded="false" class="rf-accordion--trigger is-collapsed">
+                                                <fes:outputText value="ThankYouレターを持っていて、口座開設から1年以内のお客さま" />
+                                                <ui:remove>ThankYouレターを持っていて、口座開設から1年以内のお客さま</ui:remove>
+                                                <span aria-hidden="" class="rf-icon-ui-arrowheadup-lightgray" />
+                                                <span aria-hidden="" class="rf-icon-ui-arrowheaddown-lightgray" />
+                                            </a>
+                                        </dt>
+                                        <dd id="content-1" aria-hidden="true" class="is-collapsed">
+                                            <p>
+                                                <fes:outputText value="お手元に届きましたThankYouレターをご覧いただき、ログイン画面で以下のご入力をお試しください。" />
+                                                <ui:remove>お手元に届きましたThankYouレターをご覧いただき、ログイン画面で以下のご入力をお試しください。</ui:remove>
+                                            </p>
+                                            <table class="rf-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <th style="text-align:center; border-bottom:none;">
+                                                            <fes:outputText value="ユーザID" />
+                                                            <ui:remove>ユーザID</ui:remove>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <fes:outputText value="初回ログイン時はユーザIDが未設定です。" />
+                                                            <ui:remove>初回ログイン時はユーザIDが未設定です。</ui:remove>
+                                                            <br />
+                                                            <fes:outputText value="ThankYouレターに同封の台紙に記載されている" />
+                                                            <ui:remove>ThankYouレターに同封の台紙に記載されている</ui:remove><mark class="rf-color-error"><fes:outputText value="支店番号と口座番号をつなげた10桁の数字" /><ui:remove>支店番号と口座番号をつなげた10桁の数字</ui:remove></mark><fes:outputText value="を入力してください。" /><ui:remove>を入力してください。</ui:remove>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th style="text-align:center; border-bottom:none;">
+                                                            <fes:outputText value="ログインパスワード" />
+                                                            <ui:remove>ログインパスワード</ui:remove>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <fes:outputText value="ThankYouレターに同封の台紙に記載されている「仮ログインパスワード」を入力してください。" />
+                                                            <ui:remove>ThankYouレターに同封の台紙に記載されている「仮ログインパスワード」を入力してください。</ui:remove>
+                                                            <ul class="rf-list-ref-mark rf-small rf-color-error">
+                                                                <li>
+                                                                    <fes:outputText value="台紙の「仮ログインパスワード」欄が空欄のお客さまは、口座開設申込時に、ご自身で設定していただいたログインパスワード（半角英数字混在6桁～12桁）を入力してください。" />
+                                                                    <ui:remove>台紙の「仮ログインパスワード」欄が空欄のお客さまは、口座開設申込時に、ご自身で設定していただいたログインパスワード（半角英数字混在6桁～12桁）を入力してください。</ui:remove>
+                                                                </li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="rf-panel">
+                                                <p>
+                                                    <fes:outputText value="ご指定のログインパスワードを失念してしまった場合は、下記の「ログインパスワードをお忘れのかたはこちら」からお手続きを行ってください（初期設定前のユーザIDは支店番号と口座番号をつなげた10桁の数字です。）。" />
+                                                    <ui:remove>ご指定のログインパスワードを失念してしまった場合は、下記の「ログインパスワードをお忘れのかたはこちら」からお手続きを行ってください（初期設定前のユーザIDは支店番号と口座番号をつなげた10桁の数字です。）。</ui:remove>
+                                                    <br />
+                                                    <fes:outputText value="お手続き完了後、「ログインパスワード設定用番号の案内」を転送不要郵便でお送りしますので、お手元に届き次第、郵便物の案内に従ってログインパスワードを再設定してください。" />
+                                                    <ui:remove>お手続き完了後、「ログインパスワード設定用番号の案内」を転送不要郵便でお送りしますので、お手元に届き次第、郵便物の案内に従ってログインパスワードを再設定してください。</ui:remove>
+                                                    </p>
+                                                <div class="rf-align-right">
+                                                    <!--ログインパスワードをお忘れのかたはこちら -->
+                                                    <ui:remove>
+                                                        <a href="" class="rf-link-block">ログインパスワードをお忘れのかたはこちら
+                                                            <span class="rf-icon-ui-arrowheadright-lightgray" />
+                                                        </a>
+                                                    </ui:remove>
+                                                    <mbl:commandLink value="ログインパスワードをお忘れのかたはこちら" action="#{resetMenuManagedBean.event}" actionID="EVENT_TO_LOGINPASSWORD_REISSUE_ID_LOGPASS_FORGET" class="rf-link-block">
+                                                        <span aria-hidden="" class="rf-icon-ui-arrowheadright-lightgray" />
+                                                    </mbl:commandLink>
+                                                </div>
+                                                <p>
+                                                    <fes:outputText value="ご不明な場合は、お手数ですが楽天銀行カスタマーセンターまでご連絡ください。" />
+                                                    <ui:remove>ご不明な場合は、お手数ですが楽天銀行カスタマーセンターまでご連絡ください。</ui:remove>
+                                                </p>
+                                                <div class="rf-align-right">
+                                                    <span class="rf-mini">
+                                                        <fes:outputText value="楽天銀行カスタマーセンター " />
+                                                        <ui:remove>楽天銀行カスタマーセンター </ui:remove>
+                                                    </span>
+                                                    <a class="rf-beta" href="tel:0120-330-507">
+                                                        <fes:outputText value="0120-330-507" />
+                                                        <ui:remove>0120-330-507</ui:remove>
+                                                    </a>
+                                                </div>
+                                                <div class="rf-align-right rf-mini">
+                                                    <fes:outputText value="（受付：年中無休　24時間）" />
+                                                    <ui:remove>（受付：年中無休　24時間）</ui:remove>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt id="content-2">
+                                            <a href="#content-2" aria-controls="content-2" aria-expanded="false" class="rf-accordion--trigger is-collapsed">
+                                                <fes:outputText value="ThankYouレターを紛失している、または口座開設から1年以上経過しているお客さま" />
+                                                <ui:remove>ThankYouレターを紛失している、または口座開設から1年以上経過しているお客さま</ui:remove>
+                                                <span aria-hidden="" class="rf-icon-ui-arrowheadup-lightgray" />
+                                                <span aria-hidden="" class="rf-icon-ui-arrowheaddown-lightgray" />
+                                            </a>
+                                        </dt>
+                                        <dd id="content-2" aria-hidden="true" class="is-collapsed">
+                                            <p>
+                                                <fes:outputText value="Thank Youレターに同封してお送りした「仮ログインパスワード」の有効期間は1年です。" />
+                                                <ui:remove>Thank Youレターに同封してお送りした「仮ログインパスワード」の有効期間は1年です。</ui:remove>
+                                                <br />
+                                                <fes:outputText value="有効期間を経過している場合や「仮ログインパスワード」を紛失した場合は、仮ログインパスワードの再発行が必要となります。" />
+                                                <ui:remove>有効期間を経過している場合や「仮ログインパスワード」を紛失した場合は、仮ログインパスワードの再発行が必要となります。</ui:remove>
+                                                <br />
+                                                <fes:outputText value="仮ログインパスワードの再発行については楽天銀行カスタマーセンターまでご連絡ください。" />
+                                                <ui:remove>仮ログインパスワードの再発行については楽天銀行カスタマーセンターまでご連絡ください。</ui:remove>
+                                            </p>
+                                            <div class="rf-align-right">
+                                                <span class="rf-mini">
+                                                    <fes:outputText value="楽天銀行カスタマーセンター " />
+                                                    <ui:remove>楽天銀行カスタマーセンター </ui:remove>
+                                                </span>
+                                                <a class="rf-beta" href="tel:0120-330-507">
+                                                    <fes:outputText value="0120-330-507" />
+                                                    <ui:remove>0120-330-507</ui:remove>
+                                                </a>
+                                            </div>
+                                            <div class="rf-align-right rf-mini">
+                                                <fes:outputText value="（受付：年中無休　24時間）" />
+                                                <ui:remove>（受付：年中無休　24時間）</ui:remove>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="rf-grid rf-grid--1">
+                            <div class="rf-grid-column">
+                                <fieldset>
+                                    <!--前画面に戻る -->
+                                    <ui:remove>
+                                        <input type="submit" value="前画面に戻る" class="rf-button-tercary rf-block" />
+                                    </ui:remove>
+                                    <mbl:commandLink value="前画面に戻る" action="#{resetMenuManagedBean.start}" actionID="START" class="rf-button-tercary rf-block" />
+                                </fieldset>
+                            </div>
+                        </div>
+                    </section>
+                </h:form>
+            </article>
+        </main>
+        <div id="rf-js-scroll-top" data-footer-id="footer" class="rf-scroll-top rf-js-scroll-fixed">
+            <a href="#header">
+                <span class="rf-icon-ui-arrowup-white">
+                    <em>
+                        <fes:outputText value="ページの先頭へ" />
+                        <ui:remove>ページの先頭へ</ui:remove>
+                    </em>
+                </span>
+            </a>
+        </div>
+        <!-- サービス固有部分 END   -->
+        <f:subview id="copyright">
+            <ui:include src="/rb/mobile/views/common/parts/SFESFooter.xhtml" />
+            <ui:remove>
+                ■インクルード  /rb/mobile/views/common/parts/SFESFooter.xhtml
+                <script language="JavaScript" src="../../../../../js/common/siteCatalystScripts.js" type="text/javascript"></script>
+                <script language="JavaScript" src="../../../../../js/common/s_code.js" type="text/javascript"></script>
+                <script language="JavaScript" src="../../../../../js/common/cwd2016/modernizr.js" type="text/javascript"></script>
+                <script language="JavaScript" src="../../../../../js/common/cwd2016/app.js" type="text/javascript"></script>
+                <script language="JavaScript" src="../../../../../js/common/sys2016/app.js" type="text/javascript"></script>
+            </ui:remove>
+        </f:subview>
+    </f:view>
+</body>
+</html>
+
+<!-- Copyright (c) 2001 Rakuten Bank, Ltd. All Rights Reserved. -->
