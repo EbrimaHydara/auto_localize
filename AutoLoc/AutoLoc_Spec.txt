@@ -1,0 +1,101 @@
+Requirements Specification for the AutoLoc App:
+
+Overview:
+
+AutoLoc is a sophisticated app designed for automating the localization process of websites. It extracts all translatable texts from the website's source code across various file types and converts them into JSON files, facilitating easy translation. The application is developed using PySide6.
+
+Key Features:
+
+Automatic Text Extraction:
+
+Supports multiple file types.
+Extracts translatable texts into JSON files for each specified file type.
+Users can define which file types to localize.
+
+Localized Text Rendering:
+
+The extracted texts in JSON format can be rendered back into the website, maintaining the correct localization.
+
+Class-based File Handling:
+
+Each file type has a specific class that manages its localization process, ensuring appropriate handling according to file type characteristics.
+
+Installation and Compatibility:
+
+Compatible with all major operating systems.
+Includes an installer that handles the installation of all dependencies.
+The app is accessible via a UI icon, making it user-friendly and easy to execute.
+
+Usage:
+
+Upon launching, users can select the website's root directory through a provided button.
+The chosen path is registered as the source directory.
+A "locales" directory is created within this source directory to store resource files for each locale.
+AutoLoc streamlines the localization workflow, making it a vital tool for developers aiming to internationalize their websites efficiently.
+
+App Code File Structure:
+
+The following definitions describe the source code structure of the app:
+
+- AutoLoc
+    - app_ui
+        - main_app_window.py
+            - MainAppWindow: class
+        - header.py 
+            - HeaderWidget: class 
+        - side_bar_menus.py 
+            - SideBarMenusWidget: class
+        - footer.py 
+            - FooterWidget: class
+        - settings.py
+            - SettingsWidget: class
+        - projects.py
+            - ProjectsWidget: class
+        - project.py
+            - ProjectWidget: class
+        - add_project.py
+            - AddProjectWidget: class
+        - edit_project.py
+            - EditProjectWidget: class
+        - localization.py
+            - LocalizationWidget: class
+        - slyles.py 
+            - Styles: class 
+    - managers
+        - db_manager.py
+            - DBManager: class
+        - settings_manager.py
+            - SettingsManager: class
+        - projects_manager.py 
+            - ProjectsManager: class
+        - files_manager.py
+            - FilesManager: class
+    - localizers
+        - file_localizer.py
+            - FileLocalizer: class
+        - html_file_localizer.py
+            - HTMLFileLocalizer: class
+        - js_file_localizer.py
+            - JSFileLocalizer: class
+        - ejs_file_localizer.py
+            - EJSFileLocalizer: class
+        - ts_file_localizer.py
+            - TSFileLocalizer: class
+        - tsx_file_localizer.py
+            - TSXFileLocalizer: class
+        - vue_file_localizer.py
+            - VUEFileLocalizer: class
+        - json_file_localizer.py
+            - JSONFileLocalizer: class
+        - csv_file_localizer.py
+            - CSVFileLocalizer: class
+        - pdf_file_localizer.py
+            - PDFFileLocalizer: class
+        - xml_file_localizer.py
+            - XMLFileLocalizer: class
+    - autoloc.py (app's starter)
+
+
+Code and Functionality Definitions:
+
+
