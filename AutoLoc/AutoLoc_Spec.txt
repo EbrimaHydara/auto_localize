@@ -2,7 +2,7 @@ Requirements Specification for the AutoLoc App:
 
 Overview:
 
-AutoLoc is a sophisticated app designed for automating the localization process of websites. It extracts all translatable texts from the website's source code across various file types and converts them into JSON files, facilitating easy translation. The application is developed using PySide6.
+AutoLoc is a sophisticated app designed for automating the localization process of websites and mobile apps. It extracts all translatable texts from the website's or mobile app's source code across various file types and converts them into JSON files, facilitating easy translation. The application is developed using PySide6 Python framework and other relevant Python libraries.
 
 Key Features:
 
@@ -14,7 +14,7 @@ Users can define which file types to localize.
 
 Localized Text Rendering:
 
-The extracted texts in JSON format can be rendered back into the website, maintaining the correct localization.
+The extracted texts in JSON format can be rendered back into the website or mobile app, maintaining the correct localization.
 
 Class-based File Handling:
 
@@ -28,14 +28,14 @@ The app is accessible via a UI icon, making it user-friendly and easy to execute
 
 Usage:
 
-Upon launching, users can select the website's root directory through a provided button.
+Upon launching, users can select the website's or mobile app's root directory through a provided button.
 The chosen path is registered as the source directory.
 A "locales" directory is created within this source directory to store resource files for each locale.
-AutoLoc streamlines the localization workflow, making it a vital tool for developers aiming to internationalize their websites efficiently.
+AutoLoc streamlines the localization workflow, making it a vital tool for developers aiming to internationalize their source code efficiently.
 
 App Code File Structure:
 
-The following definitions describe the source code structure of the app:
+The following definitions describe the source code structure of the AutoLoc app:
 
 - AutoLoc
     - app_ui
@@ -43,8 +43,8 @@ The following definitions describe the source code structure of the app:
             - MainAppWindow: class
         - header.py 
             - HeaderWidget: class 
-        - side_bar_menus.py 
-            - SideBarMenusWidget: class
+        - side_bar.py 
+            - SideBarWidget: class
         - footer.py 
             - FooterWidget: class
         - settings.py
@@ -55,13 +55,20 @@ The following definitions describe the source code structure of the app:
             - ProjectWidget: class
         - add_project.py
             - AddProjectWidget: class
-        - edit_project.py
-            - EditProjectWidget: class
-        - localization.py
-            - LocalizationWidget: class
+        - update_project.py
+            - UpdateProjectWidget: class
+        - project_source_code.py
+            - ProjectSourceCodeWidget: class
+        - add_project_source_code.py
+            - AddProjectSourceCodeWidget: class
+        - update_project_source_code.py
+            - UpdateProjectSourceCodeWidget: class
         - slyles.py 
             - Styles: class 
+
     - managers
+        - app_manager.py
+            - AppManager: class
         - db_manager.py
             - DBManager: class
         - settings_manager.py
@@ -70,6 +77,10 @@ The following definitions describe the source code structure of the app:
             - ProjectsManager: class
         - files_manager.py
             - FilesManager: class
+        - l10n_manager.py 
+            - L10nManager: class 
+        
+
     - localizers
         - file_localizer.py
             - FileLocalizer: class
@@ -93,9 +104,288 @@ The following definitions describe the source code structure of the app:
             - PDFFileLocalizer: class
         - xml_file_localizer.py
             - XMLFileLocalizer: class
+
     - autoloc.py (app's starter)
 
 
 Code and Functionality Definitions:
+
+App's starter file:
+
+autoloc.py 
+    - Calls the AppManager to execute startup procedures before calling the MainAppWindow to show the app's UI:
+        - The AppManager ensures the following at the AutoLoc app startup:
+            - There must be an "AutoLoc" directory created during the app's installation in the host operating system (OS). The AppManager checks if this directory exists, otherwise it creates it. 
+            - The AppManager checks if there is an "autoloc.db" file inside the "AutoLoc/DB/" directory created during installation of the app on the host OS, otherwise, it creates it at app startup by calling the DBManager to create the DB file.
+            - The AppManager throws and shows errors in QMessageBox if there is any Exception/Error preventing the above procedures. The AppManager class should all the different and possible Exceptions/Errors handling logic to display in a QMessageBox if they occur. The QMessageBox should also advise the user on what to do to mitigate and fix the error. 
+
+    - Calls the MainAppWindow and executes the Application to start the UI if the AppManager passes on all its startup procedures without any failure.
+
+    - Note that the autoloc.py file is the AutoLoc app's only entry point.
+
+
+
+
+Class Definitions:
+
+The following is the definition of each class's functionality and implementation logic. The classes are developed in the following logical order to faciliate a smooth definition of the interrelationship among them. Inheritances will be explicitly defined by indicating which class inherits which class in the following definiton. Each class's functionality will also be described and finetuned as appropriate during the course of development. The logical order in which classes are defined is as follows:
+- managers module classes
+- localizers module classes
+- app_ui module classes 
+
+
+
+
+Classes: managers module classes:
+
+    - AppManager class:
+        - The AppManager ensures the following at the AutoLoc app startup:
+            - There must be an "AutoLoc" directory created during the app's installation in the host operating system (OS). The AppManager checks if this directory exists, otherwise it creates it. 
+            - The AppManager checks if there is an "autoloc.db" file inside the "[Host OS User Data Directory]AutoLoc/Data/DB/" directory created during installation of the app on the host OS, otherwise, it creates it at app startup by calling the DBManager to create the DB file.
+            - The AppManager throws and shows errors in QMessageBox if there is any Exception/Error preventing the above procedures. The AppManager class should all the different and possible Exceptions/Errors handling logic to display in a QMessageBox if they occur. The QMessageBox should also advise the user on what to do to mitigate and fix the error.
+        
+        - The AppManager is responsible for any OS specific definitions such as the creation of the "[Host OS User Data Directory]AutoLoc/Data/" directory based on the host OS the app is running. The [Host OS User Data Directory] represents any OS (Windows, Mac, and Linux) user data directory.
+
+        - It also defines and executes the following functions and functionalities:
+            - initialize_app() function which checks and makes sure of the above. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the MainAppWindow class.
+
+            - The initialize_app() function may call any number of other functions of the AppManager class to do its tasks.
+    
+
+
+    - DBManager class:
+        - Executes the following at its initialization:
+            - Creates an SQLite DB file and save it as "[Host OS User Data Directory]AutoLoc/DB/autoloc.db"
+            - Runs the create_db() function that creates the SQLite DB. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the MainAppWindow class.
+            - Runs the create_default_tables() function that creates the default tables of the DB. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the MainAppWindow class. 
+            - Runs the insert_default_records() function that inserts all default table records in the DB. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the MainAppWindow class.
+
+        - Creates the following tables if not exist in the create_default_tables() function:
+
+            - app_settings:
+                - id (primary key, autoincrement)
+                - ui_mode ("Light Mode" or "Dark Mode" - default = Light Mode)
+
+            - locales:
+                - id (primary key, autoincrement)
+                - full_name
+                - language_code
+                - country_code
+                - UNIQUE(name, language_code, country_code)
+            
+            - projects:
+                - id (primary key, autoincrement)
+                - project_name
+                - project_unique_id (hidden field, autogenerated in code logic)
+                - client_name
+                - project_description
+                - status ("In Progress", "Completed", "On Hold", "Terminated") - default = "In Progress"
+                - start_date
+                - end_date
+                - last_updated_date_time
+                - lead_egineer 
+                - UNIQUE(project_name, client_name, project_unique_id)
+
+            - project_source_codes:
+                - id (primary key, autoincrement)
+                - project_id
+                - name
+                - unique_id (hidden field, autogenerated in code logic)
+                - type
+                - description
+                - source_locale
+                - original_source_code_path (hidden field to be set by the FilesManager class later)
+                - original_commons_paths (hidden field to be set by the FilesManager class later)
+                - localized_source_code_path (hidden field to be set by the FilesManager class later)
+                - localized_commons_path (hidden field to be set by the FilesManager class later)
+                - locales_path (hidden field to be set by the FilesManager class later)
+                - status ("In Progress", "Completed", "On Hold", "Terminated") - default = "In Progress" 
+                - notes (optional)
+                - repository_link (optional)
+                - tms (optional)
+                - UNIQUE(project_id, name, unique_id, source_locale)
+                - FOREIGN KEY(project_id) REFERENCES projects(id)
+            
+            - project_source_code_file_types:
+                - id (primary key, autoincrement)
+                - full_name
+                - short_name
+                - extension
+                - required_procedure ("File Duplication", "String Marking & Extraction", "String Marking & Extraction with File Duplication")
+                - output_pattern ("Saved Next to Original", "Saved in "locales" Directory")
+                - string_resource_file_type 
+                - project_source_code_id
+                - UNIQUE(full_name, short_name, extension, project_source_code_id)
+                - FOREIGN KEY(project_source_code_id) REFERENCES project_source_codes(id)
+
+            - project_source_code_target_locales:
+                - id (primary key, autoincrement)
+                - full_name
+                - language_code
+                - country_code
+                - project_source_code_id
+                - UNIQUE(full_name, language_code, country_code, project_source_code_id)
+                - FOREIGN KEY(project_source_code_id) REFERENCES project_source_codes(id)
+
+        - Inserts the following records in the insert_default_records() function:
+            - locales = [
+                ('Japanese', 'ja', 'JP'),
+                ('English', 'en', 'US'),
+                ('Simplified Chinese', 'zh', 'CN'),
+                ('Traditional Chinese', 'zh', 'TW'),
+                ('Korean (South Korea)', 'ko', 'KR')
+            ]
+        
+        - Defines the reset_db() function to delete and recreate the DB file, the tables, and the default records. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the SettingsWidget class.
+        - Defines the following functions for general data management of any table in the DB:
+            - get_record() to get any record from any table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in an external QWidget class.
+            - get_records() to get all records from any table in a list. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in an external QWidget class.
+            - insert_record() to insert any record in any table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in an external QWidget class. 
+            - update_record() to update any record in any table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in an external QWidget class.
+            - delete_record() to delete any record in any table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in an external QWidget class.
+            - delete_records() to delete all records in any table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in an external QWidget class.
+        
+    
+
+    - SettingsManager class:
+        - The SettingsManager uses the DBManager, defines, and manages the CRUD functionality for the "app_settings" and the "locales" tables in the DB using the DBManager methods.
+        - It creates and manages the following:
+            - set_ui_mode() to toggle the app's UI mode between "Light Mode" and "Dark Mode" in the app_settings table, ui_mode column 
+            - get_locale() to get any specific locale from the locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the SettingsWidget class.
+            - get_locales() to get all the locales from the locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the SettingsWidget class. 
+            - add_locale() to add a new locale record to the locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the SettingsWidget class.
+            - update_locale() to update any locale record in the locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the SettingsWidget class.
+            - delete_locale() to delete any locale record in the locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the SettingsWidget class. 
+            _ delete_locales() to delete all locales in the locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the SettingsWidget class.
+    
+
+
+    - ProjectsManager class:
+        - It manages all the projects in the AutoLoc app.
+        - It uses the DBManager to define and execute all CRUD functionalities for projects.
+        - It defines and execute the following functions and functionalities:
+            For projects table records management:
+            - get_project() to get any specific project from the projects table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectWidget class and the ProjectsWidget class. 
+            - get_projects() to get all the projects from the projects table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectsWidget class. 
+            - add_project() to add a new project record to the projects table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the AddProjectWidget class.  
+            - update_project() to update any project record in the projects table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the EditProjectWidget class.  
+            - delete_project() to delete any project record from the projects table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectWidget class. 
+            _ delete_projects() to delete all projects from the projects table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectsWidget class.  
+
+            For project_source_codes table records management:
+            - get_project_source_code() to get any specific project_source_code from the project_source_codes table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - get_project_source_codes() to get all the project_source_codes of a specific project from the projects table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectWidget class. 
+            - add_project_source_code() to add a new project_source_code record for a specific project to the project_source_codes table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the AddProjectSourceCodeWidget class. 
+            - update_project_source_code() to update any project_source_code record of a specific project in the project_source_codes table. It also uses FilesManager class to delete and replace the project_source_code files with the new submitted file path's contents. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the EditProjectSourceCodeWidget class. 
+            - delete_project_source_code() to delete any project_source_code record of a specific project from the project_source_codes table. It also deletes the project_source_code's files using the FilesManager class passing the project_source_code_id to it. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            _ delete_project_source_codes() to delete all project_source_codes of a specific project from the project_source_codes table. It also deletes the project_source_codes' files using the FilesManager class passing the project_source_code_id to it for each iteration.This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectWidget class.
+
+            For project_source_code_file_types table records management:
+            - get_project_source_code_file_type() to get any specific project_source_code_file_type from the project_source_code_file_types table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - get_project_source_code_file_types() to get all the project_source_code_file_types of a specific project_source_code from the project_source_code_file_types table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - add_project_source_code_file_type() to add a new project_source_code_file_type record for a specific project_source_code to the project_source_code_file_types table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - update_project_source_code_file_type() to update any project_source_code_file_type record of a specific project_source_code in the project_source_code_file_types table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - delete_project_source_code_file_type() to delete any project_source_code_file_type record of a specific project_source_code from the project_source_code_file_types table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            _ delete_project_source_code_file_types() to delete all project_source_code_file_types of a specific project_source_code from the project_source_code_file_types table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+
+            For project_source_code_target_locales table records management:
+            - get_project_source_code_target_locale() to get any specific project_source_code_target_locale from the project_source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - get_project_source_code_target_locales() to get all the project_source_code_target_locales of a specific project_source_code from the project_source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - add_project_source_code_target_locale() to add a new project_source_code_target_locale record for a specific project_source_code to the project_source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - update_project_source_code_target_locale() to update any project_source_code_target_locale record of a specific project_source_code in the project_source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            - delete_project_source_code_target_locale() to delete any project_source_code_target_locale record of a specific project_source_code from the project_source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            _ delete_project_source_code_target_locales() to delete all project_source_code_target_locales of a specific project_source_code from the project_source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+
+
+
+    - FilesManager class:
+        - The FilesManager defines and executes all file management procedures of the app except the default "[Host OS User Data Directory]AutoLoc/Data/" directory creation handled by the AppManager class. 
+        - It uses the ProjectsManager class. 
+        - It takes project_source_code_id as argument at initialization.
+        - It defines and executes the following functions and functionalities:
+
+            - It should use the project_source_code_id to set for any project source code:
+                - the original_source_code_path variable targetting the "[Host OS User Data Directory]AutoLoc/Data/[Project_Name]_[Project_Unique_ID]/Original_Source_Codes/[Source_Code_Name]_[Source_Code_Unique_ID]/" directory.
+                - the localized_source_code_path variable targetting "[Host OS User Data Directory]AutoLoc/Data/[Project_Name]_[Project_Unique_ID]/Localized_Source_Codes/[Source_Code_Name]_[Source_Code_Unique_ID]/" directory.
+                - the locales_path variable targetting "[Host OS User Data Directory]AutoLoc/Data/[Project_Name]_[Project_Unique_ID]/Localized_Source_Codes/[Source_Code_Name]_[Source_Code_Unique_ID]/locales/" directory.
+
+            - copy_project_source_code(path) funtion to take in any project source code path and copies all its files maintaining the directories and files patterns of the source code into the original_source_code_path.
+            It then copies all the contents of the original_source_code_path to the localized_source_code_path. Note the path argument is captured from a file selection dialog field from ProjectSourceCodeWidget class. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - set_project_source_code_paths() function to save the original_source_code_path, the localized_source_code_path, and the locales_path for the specific project_source_code to the DB based on its ID. This function should update the project source code's records in the DB. It should be executed immediately after copy_project_source_code() function execution.
+            This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - set_project_source_code_commons_paths(commons_paths) function to receive and save the original_commons_paths list to DB and use them to define save the localized_commons_paths list for the specific project_source_code to the DB based on its ID. This function should update the project source code's records in the DB. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code() function to get and return a specific project source code. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code_original_path() function to get and return a specific project source code's original_source_code_path. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code_localized_path() function to get and return a specific project source code's localized_source_code_path. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code_locales_path() function to get and return a specific project source code's locales_path. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code_original_commons_paths() function to get and return a specific project source code's original_commons_paths. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code_localized_commons_paths() function to get and return a specific project source code's localized_commons_paths. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code_file_types() function to get and return all the defined file types for a specified project source code by ID from the DB in a list. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - get_project_source_code_grouped_files() function to get and return all files in groups from a specific project source code. It should return a list of dictionaries of all the files organized by file type using their file extension to group them in the dictionary. The dictionary should have the following keys:
+                - extension: the file extension of the group
+                - count: number of files in the group
+                - files: the actual files grouped in a list
+            This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class. 
+            
+            - get_project_source_code_source_locale() function to get and return the defined source locale for a specific project source code by ID from the DB. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+            
+            - get_project_source_code_target_locales() function to get and return all the defined target locales for a specific project source code by ID from the DB in a list. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - duplicate_file() function to duplicate and save a file if the value to the required_procedure attribute of its corresponding project_source_code_file_type = "File Duplication". It saves the duplicated file based on the output_pattern ("Saved Next to Original", "Saved in "locales" Directory") attribute of its corresponding project_source_code_file_type. This function does not mark or extract any strings. It just duplicates the file. This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - mark_and_extract_strings_of_file() function to mark and extract the translatable strings from a file if the value of the required_procedure attribute of its corresponding project_source_code_file_type = "String Marking & Extraction". It saves the extracted strings in a resource file of string_resource_file_type (e.g. JSON, XML, Properties, Strings) file type. It saves the resource file based on the output_pattern ("Saved Next to Original", "Saved in "locales" Directory") attribute of its corresponding project_source_code_file_type. 
+            This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+            - mark_and_extract_strings_and_duplicate_file() function to mark and extract the translatable strings from a file and duplicate it if the value of the required_procedure attribute of its corresponding project_source_code_file_type = "String Marking & Extraction with File Duplication". It saves the extracted strings in a resource file of string_resource_file_type (e.g. JSON, XML, Properties, Strings) file type. It saves both the file duplicate and the resource file based on the output_pattern ("Saved Next to Original", "Saved in "locales" Directory") attribute of its corresponding project_source_code_file_type. 
+            This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+    
+
+
+
+    - L10nManager class:
+        - The L10nManager inherits the FilesManager class.
+        - It imports and initializes all the classes in the "localizers" module.
+        - It defines and executes the following functions and functionalities:
+
+            - localize_source_code() function that takes in the returned list of dictionaries from get_project_source_code_grouped_files() function and checks for each group in the list:
+                - if the group's extension is ".html" then it calls the HTMLFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the HTML files in the groups list.
+                - if the group's extension is ".js" then it calls the JSFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the JS files in the groups list.
+                - if the group's extension is ".ejs" then it calls the EJSFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the EJS files in the groups list.
+                - if the group's extension is ".ts" then it calls the TSFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the TS files in the groups list.
+                - if the group's extension is ".tsx" then it calls the TSXFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the TSX files in the groups list.
+                - if the group's extension is ".json" then it calls the JSONFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the JSON files in the groups list.
+                - if the group's extension is ".csv" then it calls the CSVFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the CSV files in the groups list.
+                - if the group's extension is ".pdf" then it calls the PDFFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the PDF files in the groups list.
+                - if the group's extension is ".xml" then it calls the XMLFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the XML files in the groups list.
+                - if the group's extension is ".properties" then it calls the PropertyFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the Property files in the groups list.
+                - if the group's extension is ".strings" then it calls the StringsFilesLocalizer class of the localizers module and gives it as input/argument only the dictionary containing the Strings files in the groups list.
+            This function handles and returns all possible exceptions and errors displayable in a QMessageBox in the ProjectSourceCodeWidget class.
+
+
+
+Classes: localizers module classes:
+
+    - HTMLFilesLocalizer class:
+        - The HTMLFilesLocalizer takes a dictionary of the HTML files in a format as {"extension": ".html", "count": <files count>, "files": [<html files>]} as argument at initialization. 
+    - It inherits FilesManager class to use its file management functionalities. 
+    - It defines and executes the following functions and functionalities:
+        - 
+
+
+
+
+
+
+
 
 
