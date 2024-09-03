@@ -88,6 +88,8 @@ The following definitions describe the source code structure of the AutoLoc app:
         - web_localizers
             - web_app_based_localizer.py 
                 - WebAppBasedLocalizer: class
+            - web_app_file_handler.py 
+                - WebAppFileHandler: class
             - web_app_html_file_handler.py 
                 - WebAppHTMLFileHandler: class
             - web_app_js_file_handler.py 
@@ -109,9 +111,11 @@ The following definitions describe the source code structure of the AutoLoc app:
 
         - android_localizers
             - android_app_based_localizer.py 
-                - AndroidAppBasedLocalizer: class 
+                - AndroidAppBasedLocalizer: class
+            - android_app_file_handler.py 
+                - AndroidAppFileHandler: class 
             - android_app_xml_file_handler.py 
-                - AndroidAppXMLFileHandler: class 
+                - AndroidAppXMLFileHandler: class
             - android_app_java_file_handler.py 
                 - AndroidAppJavaFileHandler: class 
             - android_app_kotlin_file_handler.py 
@@ -120,6 +124,8 @@ The following definitions describe the source code structure of the AutoLoc app:
         - ios_localizers
             - ios_app_based_localizer.py
                 - IOSAppBasedLocalizer: class
+            - ios_app_file_handler.py 
+                - IOSAppFileHandler: class 
             - ios_app_swift_file_handler.py 
                 - IOSAppSwiftFileHandler: class 
             - ios_app_objc_m_file_handler.py 
@@ -191,17 +197,22 @@ Classes: managers module classes:
 
             - Runs the create_db() function that creates the SQLite DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in the MainAppWindow class.
 
-            - Runs the create_default_tables() function that creates the default tables of the DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+            - Runs the create_tables() function that creates the default tables of the DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
-            - Runs the insert_default_records() function that inserts all default table records in the DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            - Runs the insert_records() function that inserts all default table records in the DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
             - Please understand that the QMessageBoxes are not created within this class but only the exceptions/errors strings returned by the functions to be displayed later in a QWidget class that will call this class and its functions.
 
-        - Creates the following tables if not exist in the create_default_tables() function:
+        - Creates the following tables if not exist in the create_tables() function:
 
             - ui_modes:
                 - id (primary key, autoincrement)
                 - mode ("Light Mode" or "Dark Mode" - default = Light Mode)
+
+            
+            - l10n_settings:
+                - id (primary key, autoincrement)
+                - html_is_duplicated (True, False, default=False)
 
 
             - locales:
@@ -250,10 +261,14 @@ Classes: managers module classes:
                 - FOREIGN KEY(source_code_id) REFERENCES source_codes(id)
             
 
-        - Inserts the following records in the insert_default_records() function:
+        - Inserts the following records in the insert_records() function:
             - ui_modes = [
                 ('Light Mode'),
                 ('Dark Mode')
+            ]
+
+            - l10n_settings = [
+                ('False')
             ]
 
             - locales = [
@@ -289,21 +304,25 @@ Classes: managers module classes:
 
         - It creates and manages the following functions and functionalities:
 
-            - set_ui_mode() to toggle the app's UI mode between "Light Mode" and "Dark Mode" in the app_settings table, ui_mode column. This function uses the Styles class of the app_ui module to set the Light or Dark mode of the Styles class.
+            - set_ui_mode() function to toggle the app's UI mode between "Light Mode" and "Dark Mode" in the app_settings table, ui_mode column. This function uses the Styles class of the app_ui module to set the Light or Dark mode of the Styles class.
+
+            - set_html_is_duplicated() function to toggle the setting of html_is_duplicated column value in l10n_settings table in the DB to either True or False.
+
+            - html_is_duplicated() function to return the value of html_is_duplicated column of the l10n_settings table in the DB. 
 
             - reset_db() function call from the DBManager to execute its logic. This function is just a wrapper function for the DBManager's reset_db() function. 
 
-            - get_default_locales() to get all the default_locales from the default_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            - get_locales() to get all the locales from the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
-            - get_default_locale() to get any specific locale from the default_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            - get_locale() to get any specific locale from the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
-            - add_default_locale() to add a new locale record to the default_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            - add_locale() to add a new locale record to the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
-            - update_default_locale() to update any locale record in the default_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            - update_locale() to update any locale record in the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
-            - delete_default_locale() to delete any locale record in the default_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            - delete_locale() to delete any locale record in the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
-            _ delete_default_locales() to delete all default_locales in the default_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            _ delete_locales() to delete all locales in the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
         - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
 
@@ -352,6 +371,8 @@ Classes: managers module classes:
             - delete_source_code() to delete any source_code record of a specific project from the source_codes table. It also deletes the source_code's files using the FileManager class passing the source_code_id to it. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
             _ delete_source_codes() to delete all source_codes of a specific project from the source_codes table. It also deletes the source_codes' files using the FileManager class passing the source_code_id to it for each iteration.This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_source_code_source_locale() to get the source_code source locale from the source_code's record. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
             - get_source_code_target_locales() to get all the source_code_target_locales of a specific source_code from the source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
@@ -429,12 +450,17 @@ Classes: managers module classes:
         - The L10nManager defines and executes all localization management procedures of the app. 
         - It inherits the FileManager class.
         - It defines and executes the following functions and functionalities:
+            - reset_l10n() function to delete all the contents of the localized_source_code_path and then copy all the contents of the original_source_code_path to the localized_source_code_path. 
             
-            - localize_source_code() function to call the required classes from the localizers module to localize the files based on the source code's "type" attribute value. The specific class from the localizers module is called based on the "type" attribute of the source code as follows:
-                - if type = "Web App", then WebAppBasedLocalizer is called 
-                - if type = "Android App", then AndroidAppBasedLocalizer is called 
-                - if type = "iOS App", then IOSAppBasedLocalizer is called 
-                - if type = "Java App", then JavaAppBasedLocalizer is called
+            - localize_source_code() function to do the following:
+
+                - Calls the reset_l10n() function to delete and recopy all the contents of the localized_source_code_path from the original_source_code_path. 
+
+                - Calls the required classes from the localizers module to localize the files based on the source code's "type" attribute value. The specific class from the localizers module is called based on the "type" attribute of the source code as follows:
+                    - if type = "Web App", then WebAppBasedLocalizer is called 
+                    - if type = "Android App", then AndroidAppBasedLocalizer is called 
+                    - if type = "iOS App", then IOSAppBasedLocalizer is called 
+                    - if type = "Java App", then JavaAppBasedLocalizer is called
             When the function calls the appropriate class based on the source code's type attribute value, it passes it all the required arguments to initialize and execute its localization logic.  
             This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
@@ -445,7 +471,7 @@ Classes: managers module classes:
 
 Classes: localizers module classes:
 
-    - web_localizers module classes:
+    - web_localizers sub-module classes:
 
         - WebAppBasedLocalizer class:
             - The WebAppBasedLocalizer is the class responsible for localizing the source code having type = "Web App".
@@ -460,10 +486,61 @@ Classes: localizers module classes:
     
 
 
-    - WebAppHTMLFileHandler class: 
-        - 
+        - WebAppFileHandler class: 
+            - The WebAppFileHandler class is the base class for all web app file type handler classes. 
+            - It inherits FileManager class 
+            - It implements and executes the following functions and functionalities:
+                - It initializes the SettingManager class and assign a variable to use some of its functions. 
+
+                - It defines and creates locales_path variable as localized_source_code_path/locales/ at initialization.
+
+                - get_locales_path() function to return the locales folder path. 
+
+                - get_files_by_extension(extension) function to get and return all the file paths of the files with the parsed extension argument from the localized_source_code_path.
+
+                - generate_key() function to generate and return a unique string identifier key that will be assigned to either "data-i18n" attributes of HTML files, or non-namespaced keys in localized files. The key generated should be in the format: "str-1", "str-2", "str-3", etc. continuously attaching the number sequence during the process to "str".
+
+                - generate_namespaced_key(file_path) function to generate and return a unique string identifier key that will either be assigned to "data-i18n" attributes of HTML files, or replace the extracted strings from the file being processed. The file_path is the file being processed. The key generated should be in the format: "file_path:unique_id" where unique_id is in the format: "str-1", "str-2", "str-3", etc. continuously attaching the number sequence during the process to "str". 
+
+                - save_resource_file(data, locale, file, locale_type) function to save an extracted file's strings in JSON data format to a JSON file for the specified locale. The parameters are explained as follows: 
+                    - :param data: The JSON data to save.
+                    - :param locale: The locale information.
+                    - :param file: The path to the file being processed.
+                    - :param locale_type: The type of locale ('source' or 'target')
+                The functions saves the JSON resource file as locales_path/[locale's code]/[file's path without the extension].json. The [locale's code] stand for any locale code such as ja-JP, en-US, zh-CN, etc. for each locale (either source or target locale) specified in the parameters. The [file's path without extension] stands for the file's path being processed but without its extension (e.g. removing the .html) and replace the extension with .json and save the JSON data inside the JSOn file created and saved to the locales folder. 
+
+                - show_progress(files) function to send a QSignal to the L10nWidget class showing the progress in percentage of how many files have been successfully processed. The progress is displayed in a QProgressbar with white colored bar showing a progressive green color filling from left to right based on how much percentage has been completed of the processed files from 0% to 100%. The files parameter is a list of file paths.
+        
 
 
+        - WebAppHTMLFileHandler class:
+            - The WebAppHTMLFileHandler handles all HTML file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.target_tags = ['title', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'address', 'pre', 'blockquote', 'li', 'figcaption', 'caption', 'td', 'th', 'label', 'option']
+                    
+                    - self.special_tags = ['meta', 'img']
+
+                    - self.nav_tags = ['a', 'button']
+                    
+                    - self.formatting_tags = ['span', 'br', 'b', 'strong', 'i', 'em', 'mark', 'small', 'del', 'ins', 'sub', 'sup', 'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi', 'bdo', 'ruby', 'rt', 'rp', 'wbr']
+
+                    - self.html_files = self.get_files_by_extension('.html')
+                
+                - It uses the self.show_progress(self.html_files) to show the processed files progressbar in L10nWidget class. 
+
+                - localize_files() function to encapsulate the procedures to localize every HTML file as for example:
+                    for html_file in self.html_files:
+                        self._process_html_file(html_file)
+                
+                - _process_html_file(html_file) function should use the self.show_progress() function inherited from the parent class to display the progressbar for the processed files.
+        
+
+
+        
 
 
 
