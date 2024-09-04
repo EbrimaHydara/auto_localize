@@ -26,13 +26,7 @@ class HTMLFileLocalizer(FileLocalizer):
     def localize_html_files(self):
         """
         Localizes all HTML files in the project's root directory and subdirectories.
-        """
-        # Delete the locales directory to start fresh
-        # self.delete_locales_directory()
-        
-        # Delete previously localized files to start fresh
-        # self.delete_files_with_target_locales('.html')
-        
+        """        
         html_files = self.get_files_by_extension('.html')
         for html_file in html_files:
             self._process_html_file(html_file)
