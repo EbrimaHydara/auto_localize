@@ -502,7 +502,7 @@ Classes: localizers module classes:
 
                 - get_locales_path() function to return the locales folder path. 
 
-                - get_files_by_extension(extension) function to get and return all the file paths of the files with the parsed extension argument from the localized_source_code_path.
+                - get_files_by_extension(extension) function to get and return all the file paths of the files with the parsed extension argument from the localized_source_code_path. The files paths must start from the same level where the locales_path is situated. For example, if locales_path is "source_code_dir/locales/", then all files paths collected by this function should start from "source_code_dir/the/file/path/filename.extension". 
 
                 - generate_key() function to generate and return a unique string identifier key that will be assigned to either "data-i18n" attributes of HTML files, or non-namespaced keys in localized files. The key generated should be in the format: "str-1", "str-2", "str-3", etc. continuously attaching the number sequence during the process to "str".
 
@@ -513,9 +513,9 @@ Classes: localizers module classes:
                     - :param locale: The locale information.
                     - :param file: The path to the file being processed.
                     - :param locale_type: The type of locale ('source' or 'target')
-                The functions saves the JSON resource file as locales_path/[locale's code]/[file's path without the extension].json. The [locale's code] stand for any locale code such as ja-JP, en-US, zh-CN, etc. for each locale (either source or target locale) specified in the parameters. The [file's path without extension] stands for the file's path being processed but without its extension (e.g. removing the .html) and replace the extension with .json and save the JSON data inside the JSOn file created and saved to the locales folder. 
+                The functions saves the JSON resource file as locales_path/[locale's code]/[file's path without the extension].json. The [locale's code] stand for any locale code such as ja-JP, en-US, zh-CN, etc. for each locale (either source or target locale) specified in the parameters. The [file's path without extension] stands for the file's path being processed but without its extension (e.g. removing the .html) and replace the extension with .json and save the JSON data inside the JSOn file created and saved to the locales folder using the locales_path. 
                 This is just an example of implementation for the above function but please adopt it as appropriate for this class:
-                    - def _save_json_file(self, data, locale, html_file, locale_type):
+                    - def save_resource_file(self, data, locale, html_file, locale_type):
                         """
                         Saves the data to a JSON file for the specified locale.
 
@@ -607,6 +607,8 @@ Classes: localizers module classes:
                         re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
                         re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
                         ]
+                    
+                    - self.js_files = self.get_files_by_extension('.js')
 
                 - Please use the JSFileLocalizer class as a sample class for the WebAppJSFileHandler class with the following differences in the WebAppJSFileHandler:
                     - Adopt the following functions logic in definition, calling, and usage from the JSFileLocalizer class as appropriate for the WebAppJSFileHandler class:
@@ -636,6 +638,8 @@ Classes: localizers module classes:
                         re.compile(r'<%=\s*(.*?)\s*%>'),  # Matches rendered EJS content
                         ]
 
+                    - self.ejs_files = self.get_files_by_extension('.ejs')
+
                 - Please use the EJSFileLocalizer class as a sample class for the WebAppEJSFileHandler class with the following differences in the WebAppEJSFileHandler:
                     - Adopt the following functions logic in definition, calling, and usage from the EJSFileLocalizer class as appropriate for the WebAppEJSFileHandler class:
                         - localize_ejs_files()
@@ -664,6 +668,8 @@ Classes: localizers module classes:
                     - self.translatable_patterns = [
                         Please put here appropriate Regular Expression patterns appropriate for JSX translatable strings targetting. 
                         ]
+                    
+                    - self.jsx_files = self.get_files_by_extension('.jsx')
 
                 - Please use an imaginary JSXFileLocalizer class imitating the previous sample classes as a sample class for the WebAppJSXFileHandler class with the following differences in the WebAppJSXFileHandler:
                     - Adopt the following functions logic in definition, calling, and usage from the JSXFileLocalizer class as appropriate for the WebAppJSXFileHandler class:
@@ -696,6 +702,8 @@ Classes: localizers module classes:
                         re.compile(r'>{1}\s*(.*?)\s*<{1}'),         # Matches HTML content between tags
                         ]
                     - Please adjust the above patterns to fit for use in a Typescript (TS) file if necessary since the above was copied from a TSX file. 
+
+                    - self.ts_files = self.get_files_by_extension('.ts')
                 
                 - Please understand that the sample class provided is a TSX specific code. Hence understand the TSXFileLocalizer as the TSFileLocalizer provided above and adjust any necessary changes and requirements to fit TS code.
 
@@ -729,6 +737,8 @@ Classes: localizers module classes:
                         re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
                         re.compile(r'>{1}\s*(.*?)\s*<{1}'),         # Matches HTML content between tags
                         ]
+                    
+                    - self.tsx_files = self.get_files_by_extension('.tsx')
 
                 - Please use the TSXFileLocalizer class as a sample class for the WebAppTSXFileHandler class with the following differences in the WebAppTSXFileHandler:
                     - Adopt the following functions logic in definition, calling, and usage from the TSXFileLocalizer class as appropriate for the WebAppTSXFileHandler class:
@@ -751,7 +761,6 @@ Classes: localizers module classes:
 
 
 
-
         - WebAppVueFileHandler: class
             - The WebAppVUEFileHandler handles all VUE file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
@@ -762,6 +771,8 @@ Classes: localizers module classes:
                     - self.translatable_patterns = [
                         Please put here appropriate Regular Expression patterns appropriate for VUE translatable strings targetting. 
                         ]
+                    
+                    - self.vue_files = self.get_files_by_extension('.vue')
 
                 - Please use an imaginary VUEFileLocalizer class imitating the previous sample classes as a sample class for the WebAppVUEFileHandler class with the following differences in the WebAppVUEFileHandler:
                     - Adopt the following functions logic in definition, calling, and usage from the VUEFileLocalizer class as appropriate for the WebAppVUEFileHandler class:
@@ -786,6 +797,8 @@ Classes: localizers module classes:
             - It inherits the WebAppFileHandler class.
             - It implements and executes the following functions and functionalities:
 
+                - self.json_files = self.get_files_by_extension('.json')
+
                 - Please understand that the WebAppJSONFileHandler class only implements the logic to duplicate JSON files for each target locale saved using the save_resource_file() function inherited from WebAppFileHandler class.
                 - Adopt the following functions and logics:
                     - save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
@@ -800,6 +813,8 @@ Classes: localizers module classes:
             - The WebAppCSVFileHandler handles all CSV file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
             - It implements and executes the following functions and functionalities:
+
+                - self.csv_files = self.get_files_by_extension('.csv')
 
                 - Please understand that the WebAppCSVFileHandler class only implements the logic to duplicate CSV files for each target locale saved using the save_resource_file() function inherited from WebAppFileHandler class.
                 - Adopt the following functions and logics:
