@@ -485,11 +485,12 @@ Classes: localizers module classes:
         - WebAppBasedLocalizer class:
             - The WebAppBasedLocalizer is the class responsible for localizing the source code having type = "Web App".
             - It inherits the FileManager class.
+            - It ensures that every class it calls runs on its own QThread to avoid the app freezing or disrupted. 
             - It implements and executes the following functions and functionalities:
                 - get_file_type_counts() function to get all the file paths from the original_source_code_path and count each file type based on their file extension and record the count of each file extension in a the dictionary it returns.
 
-                - process_l10n() function that gets the dictionary returned from get_file_type_counts() function and if it is not empty, it executes the required file handler class for every file extension whose count is greater than zero. It uses if statements to control which classes gets executed only when its corresponding file extension count is greater than zero. If all none of the file extension counts is greater than zero, then this function throws and returns the necessary errors/exceptions. 
-                This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+                - process_l10n() function that gets the dictionary returned from get_file_type_counts() function and if it is not empty, it executes the required file handler class for every file extension whose count is greater than zero. It uses if statements to control which classes gets executed only when its corresponding file extension count is greater than zero. If none of the file extension counts is greater than zero, then this function throws and returns the necessary errors/exceptions. 
+                This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in L10nWidget.
             
             - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
     
@@ -554,6 +555,7 @@ Classes: localizers module classes:
         - WebAppHTMLFileHandler class:
             - The WebAppHTMLFileHandler handles all HTML file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
@@ -601,6 +603,7 @@ Classes: localizers module classes:
         - WebAppJSFileHandler: class
             - The WebAppJSFileHandler handles all JS file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
@@ -633,6 +636,7 @@ Classes: localizers module classes:
         - WebAppEJSFileHandler: class
             - The WebAppEJSFileHandler handles all EJS file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
@@ -664,6 +668,7 @@ Classes: localizers module classes:
         - WebAppJSXFileHandler: class
             - The WebAppJSXFileHandler handles all JSX file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
@@ -695,6 +700,7 @@ Classes: localizers module classes:
         - WebAppTSFileHandler: class
             - The WebAppTSFileHandler handles all TS file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
@@ -731,6 +737,7 @@ Classes: localizers module classes:
         - WebAppTSXFileHandler: class
             - The WebAppTSXFileHandler handles all TSX file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
@@ -767,6 +774,7 @@ Classes: localizers module classes:
         - WebAppVueFileHandler: class
             - The WebAppVUEFileHandler handles all VUE file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
@@ -798,6 +806,7 @@ Classes: localizers module classes:
         - WebAppJSONFileHandler: class
             - The WebAppJSONFileHandler handles all JSON file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - self.json_files = self.get_files_by_extension('.json')
@@ -815,6 +824,7 @@ Classes: localizers module classes:
         - WebAppCSVFileHandler: class
             - The WebAppCSVFileHandler handles all CSV file-specific localization procedures. 
             - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
             - It implements and executes the following functions and functionalities:
 
                 - self.csv_files = self.get_files_by_extension('.csv')
@@ -850,6 +860,7 @@ Classes: app_ui module classes and starter file:
         - The MainAppWindow is the main class of the AutoLoc app. It consolidates all the other classes logic in one place. It is the only class called in the autoloc.py file to start and run the app. 
         - It calls the AppManager and the DBManager to execute startup procedures as the first procedures of the app.
         - It makes sure the AppManager passes on all its startup procedures without any failure before any other process is allowed on the app.
+        - It implements and displays all the exceptions/errors QMessageBoxes from the AppManager class.
         - It defines the AutoLoc app's main layout which includes the following layouts with their corresponding widgets:
             - main_layout: MainAppWindow's layout 
             - header_layout: in main_layout to accommodate HeaderWidget
@@ -925,6 +936,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SettingManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
         - It renders an Object Data Form with the following:
             - Label: Dark Mode, Data: QCheckBox where checked = SettingManager.set_ui_mode('Dark Mode') and unchecked = SettingManager.set_ui_mode('Light Mode')
             - Label: Localization Setting, Data: QCheckBox where checked = SettingManager.set_html_is_duplicated('True') and unchecked = SettingManager.set_html_is_duplicated('False'), Data: key_format QRadio where "Simple Key" if selected will update SettingManager.set_key_format('Simple Key') and "Namespaced Key with File Path" if selected will update SettingManager.set_key_format('Namespaced Key with File Path')
@@ -938,6 +951,8 @@ Classes: app_ui module classes and starter file:
         - The LocalesWidget class is a QWidget class that defines the layout and components of the app's locales widget meant to be rendered in the SettingsStackedWidget class.
 
         - It uses the SettingManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
 
         - It renders a Table Data with the following:
             - Table Column Names:
@@ -962,6 +977,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SettingManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
         - It renders an Object Data with the following:
             - Labels:
                 - Name 
@@ -985,6 +1002,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SettingManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
         - It renders an Object Data Add Form with the following:
             - Labels:
                 - Name 
@@ -1005,6 +1024,8 @@ Classes: app_ui module classes and starter file:
         - The UpdateLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one locale widget meant to be rendered in the SettingsStackedWidget class.
 
         - It uses the SettingManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
 
         - It renders an Object Data Update Form with the following:
             - Labels:
@@ -1045,6 +1066,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the ProjectManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
+
         - It renders a Table Data with the following:
             - Table Column Names:
                 - Name 
@@ -1074,6 +1097,8 @@ Classes: app_ui module classes and starter file:
         - The ProjectWidget class is a QWidget class that defines the layout and components of the app's one project widget meant to be rendered in the ProjectsStackedWidget class.
 
         - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
 
         - It renders an Object Data with the following:
             - Labels:
@@ -1113,6 +1138,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the ProjectManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
+
         - It renders an Object Data Add Form with the following:
             - Labels:
                 - Name 
@@ -1147,6 +1174,8 @@ Classes: app_ui module classes and starter file:
         - The UpdateProjectWidget class is a QWidget class that defines the layout and components of the app's updating one project widget meant to be rendered in the ProjectsStackedWidget class.
 
         - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
 
         - It renders an Object Data Update Form with the following:
             - Labels:
@@ -1207,6 +1236,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
         - It renders a Table Data with the following:
             - Table Column Names:
                 - Project ID
@@ -1240,6 +1271,8 @@ Classes: app_ui module classes and starter file:
         - The SourceCodeWidget class is a QWidget class that defines the layout and components of the app's one source code widget meant to be rendered in the SourceCodesStackedWidget class.
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
         - It renders an Object Data with the following:
             - Labels:
@@ -1279,6 +1312,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
         - It renders an Object Data Add Form with the following:
             - Labels:
                 - Project ID
@@ -1314,6 +1349,8 @@ Classes: app_ui module classes and starter file:
         - The UpdateSourceCodeWidget class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered in the SourceCodesStackedWidget class.
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
         - It renders an Object Data Update Form with the following:
             - Labels:
@@ -1351,6 +1388,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
         - It renders a Table Data with the following:
             - Table Column Names:
                 - Source Code ID 
@@ -1380,6 +1419,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
         - It renders an Object Data with the following:
             - Labels:
                 - Source Code ID 
@@ -1407,6 +1448,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
         - It renders an Object Data Add Form with the following:
             - Labels:
                 - Source Code ID 
@@ -1433,6 +1476,8 @@ Classes: app_ui module classes and starter file:
 
         - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
 
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
         - It renders an Object Data Update Form with the following:
             - Labels:
                 - Labels:
@@ -1456,7 +1501,9 @@ Classes: app_ui module classes and starter file:
     - L10nWidget class:
         - The L10nWidget displays the localization process for each source code based on source code ID. It takes in the source code ID as argument and parse it to the L10nManager class to handle the localization procedures appropriate for the source code. 
 
-        - It uses the L10nManager class for all its CRUD and relevant functionalities.
+        - It uses the L10nManager class for all its relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the L10nManager, WebAppBasedLocalizer, and all the classes of the web_localizers module.
 
         - It is a QWidget class that defines the layout and components of the app's localization process widget meant to be rendered in the SourceCodesStackedWidget class.
             
