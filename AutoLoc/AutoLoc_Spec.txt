@@ -62,6 +62,7 @@ The following definitions describe the source code structure of the AutoLoc app:
             - SourceCodeWidget: class
             - AddSourceCodeWidget: class
             - UpdateSourceCodeWidget: class
+            - MergeSourceCodeLocalesCommonsWidget: class 
             - SourceCodeTargetLocalesWidget: class 
             - SourceCodeTargetLocaleWidget: class 
             - AddSourceCodeTargetLocaleWidget: class 
@@ -82,8 +83,6 @@ The following definitions describe the source code structure of the AutoLoc app:
             - ProjectManager: class
         - source_code_manager.py 
             - SourceCodeManager: class 
-        - file_manager.py
-            - FileManager: class 
         - l10n_manager.py 
             - L10nManager: class 
 
@@ -174,31 +173,39 @@ The following is the definition of each class's functionality and implementation
 Classes: managers module classes:
 
     - AppManager class:
-        - The AppManager ensures the following at the AutoLoc app startup:
-            - There must be a "[Host OS User Data Directory]AutoLoc/" directory created during the app's installation in the host operating system (OS). The AppManager checks if this directory exists, otherwise it creates it. 
-
-            - The AppManager checks if there is an "autoloc.db" file inside the "[Host OS User Data Directory]AutoLoc/Data/DB/" directory created during installation of the app on the host OS, otherwise, it creates it at app startup by calling the DBManager to create the DB file.
-
-            - The AppManager handles and returns all possible exceptions and errors displayable later in a QMessageBox in the MainAppWindow class if there is any Exception/Error preventing the above procedures.
+        - The AppManager manages the app's startup functionalities and runs its initialize_app() function at its initialization. 
         
-        - The AppManager is responsible for any OS specific definitions such as the creation of the "[Host OS User Data Directory]AutoLoc/Data/" directory based on the host OS the app is running. The [Host OS User Data Directory] represents any OS (Windows, Mac, and Linux) user data directory.
+        - The __init__ function defines the following variables before running the initialize_app():
 
-        - It also defines and executes the following functions and functionalities:
+            - app_data_path = "[Host OS User Data Directory]AutoLoc/Data"
 
-            - initialize_app() function which checks and makes sure of the above. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            - app_db_file_path = app_data_path/"DB/"
 
-            - The initialize_app() function may call any number of other functions of the AppManager class to do its tasks.
+            - initialize_app() function call 
+
+
+        - The AppManager defines and executes the following functions and functionalities:
+
+            - initialize_app() function that checks and ensures of the following:
+                - This function checks if the app_data_path exists, otherwise it creates it. It then checks if the app_db_file exists, otherwise it creates it as an SQLite DB file. The [Host OS User Data Directory] represents any OS (Windows, Mac, and Linux) user data directory. The function runs as the first startup procedure in any host OS anytime the app is started. 
+                This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in the MainAppWindow class if there is any Exception/Error preventing the above procedures.
+
+            - get_app_data_path() function to return the app_data_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_app_db_file_path() function to return the app_db_file_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
             - Please understand that the QMessageBoxes are not created within this class but only the exceptions/errors strings returned by the functions to be displayed in the MainAppWindow class that will call this class and its functions.
     
 
 
     - DBManager class:
-        - Executes the following at its initialization:
+        - The DBManager handles all DB related functionalities of the app.
+        - It uses the AppManager class to get the app_db_file_path to use for the creation of the "autoloc.db" SQLite file. 
+        - It executes the following at its initialization:
 
-            - Creates an SQLite DB file and save it as "[Host OS User Data Directory]AutoLoc/DB/autoloc.db".
+            - Gets the app_db_file_path from the AppManager.get_app_db_file_path(), establish connections to the DB and other necessary priliminaries. 
 
-            - Runs the create_db() function that creates the SQLite DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in the MainAppWindow class.
+            - Runs the create_db() function that creates the SQLite DB "autoloc.db" inside the app_db_file_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in the MainAppWindow class.
 
             - Runs the create_tables() function that creates the default tables of the DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
@@ -247,9 +254,9 @@ Classes: managers module classes:
                 - unique_id (hidden field, autogenerated in code logic using datetime as "YYYYMMDDHis")
                 - type (Web, Android, iOS, Java App)
                 - source_locale (ja-JP, en-US, zh-CN)
-                - original_source_code_path (Nullable and hidden field to be set by the FileManager class later)
-                - commons_paths (Nullable and hidden field to be set by the FileManager class later)
-                - localized_source_code_path (Nullable and hidden field to be set by the FileManager class later)
+                - original_source_code_path (Nullable and hidden field to be set by the SourceCodeManager class later)
+                - commons_paths (Nullable and hidden field to be set by the SourceCodeManager class later)
+                - localized_source_code_path (Nullable and hidden field to be set by the SourceCodeManager class later)
                 - status ("In Progress", "Completed", "On Hold", "Terminated") - default = "In Progress" 
                 - notes (Nullable and optional)
                 - UNIQUE(project_id, name, unique_id, source_locale)
@@ -363,23 +370,64 @@ Classes: managers module classes:
     - SourceCodeManager class:
         - It manages all the source codes in the AutoLoc app.
 
-        - It uses the DBManager to define and execute all CRUD functionalities for the source_codes table in the DB.
+        - It uses the AppManager to get the app_data_path to store its files. 
+
+        - It uses the DBManager to define and execute all CRUD functionalities for the source_codes and source_code_target_locales tables in the DB.
 
         - It takes in project_id argument at initialization.
 
+        - It defines the following in its __init__ function:
+            
+            - app_data_path = app_manager.get_app_data_path()
+
+            - source_code_path = app_data_path/"[Project_Name]_[Project_Unique_ID]/[Source_Code_Name]_[Source_Code_Unique_ID]/Original_Files/". 
+            Note: 
+                - the [Project_Name]= Parent Project's Name 
+                - the [Project_Unique_ID]= Parent Project's Unique ID 
+                - the [Source_Code_Name]= this Source Code's Name 
+                - the [Source_Code_Unique_ID]= this Source Code's Unique ID 
+
+            - original_source_code_path = source_code_path/"Original_Files/"
+
+            - localized_source_code_path = source_code_path/"Localized_Files/"
+
+            - locales_commons_paths = list(of commons_paths)
+
         - It defines and execute the following functions and functionalities:
+
+            - get_app_data_path() function that gets the app_data_path from AppManager.get_app_data_path(). This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
             - get_source_codes() to get all the source_codes of a specific project from the source_codes table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
             - get_source_code() to get any specific source_code from the source_codes table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
-            - add_source_code() to add a new source_code record for a specific project to the source_codes table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+            - add_source_code() to add a new source_code record for a specific project to the source_codes table. If it successfully adds the record to the DB, it then calls and runs the save_source_code_files() parsing it the source_code_upload_path from the form data. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
-            - update_source_code() to update any source_code record of a specific project in the source_codes table. It also uses FileManager class to delete and replace the source_code files with the new submitted file path's contents. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+            - update_source_code() to update any source_code record of a specific project in the source_codes table. It also uses SourceCodeManager class to delete and replace the source_code files with the new submitted file path's contents. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
-            - delete_source_code() to delete any source_code record of a specific project from the source_codes table. It also deletes the source_code's files using the FileManager class passing the source_code_id to it. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+            - delete_source_code() to delete any source_code record of a specific project from the source_codes table. It also deletes the source_code's files using the SourceCodeManager class passing the source_code_id to it. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
-            _ delete_source_codes() to delete all source_codes of a specific project from the source_codes table. It also deletes the source_codes' files using the FileManager class passing the source_code_id to it for each iteration.This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+            _ delete_source_codes() to delete all source_codes of a specific project from the source_codes table. It also deletes the source_codes' files using the SourceCodeManager class passing the source_code_id to it for each iteration.This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - save_source_code_files(source_code_upload_path) funtion to copy and save all the files from the source_code_upload_path discarding the root directories and maintain the files paths starting from the selected folder of the source code into the original_source_code_path.
+            It then copies all the contents of the original_source_code_path to the localized_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_original_source_code_path() function to get and return a specific project source code's original_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_localized_source_code_path() function to get and return a specific project source code's localized_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - set_locales_commons_paths(commons_paths list) function to perform the following only if commons_paths is not empty:
+                - Initialize and assign the veriable:
+                    - locales_commons_paths = commons_paths
+                
+                - Update the following record for the source code based on its ID in the DB:
+                    - locales_commons_paths
+                
+            This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_locales_commons_paths() function to get and return a specific project source code's locales_commons_paths list. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - merge_locale_commons(locales_commons_paths) function to merge the JSON files in each locales_commons_paths path into one single JSON file named as "commons.json" and save it in the commons_path.
 
             - get_source_code_source_locale() to get the source_code source locale from the source_code's record. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
@@ -399,65 +447,10 @@ Classes: managers module classes:
 
             
 
-    - FileManager class:
-        - The FileManager defines and executes all file management procedures of the app except the default "[Host OS User Data Directory]AutoLoc/Data/" directory creation handled by the AppManager class. 
-        - It inherits the SourceCodeManager class.
-        - It uses the project's and the source code's unique_id fields in the creation of the original_source_code_path and the localized_source_code_path variables.
-        - It defines and executes the following functions and functionalities:
-
-            - Execute the following at initialization:
-                - Define variables:
-                    - source_code_upload_path 
-                    - original_source_code_path
-                    - localized_source_code_path
-                    - source_code_commons_paths list 
-                
-                - Call the following functions:
-                    - get_source_code()
-                    - set_source_code_paths()
-                    - set_source_code_commons_paths()
-
-            
-            - get_source_code_files(source_code_upload_path) function to get the source code from the AddSourceCodeWidget class form's file dialog for a path. This function should also check if the provided path is empty or has files in it. If the path has files, this function should call copy_source_code_files() function to copy all the source code files according to its logic. 
-            This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
-
-            - set_source_code_paths() function to perform the following only if source_code_upload_path is not empty:
-                - Initialize and assign the veriables:
-                    - original_source_code_path = "[Host OS User Data Directory]AutoLoc/Data/[Project_Name]_[Project_Unique_ID]/Original_Source_Codes/[Source_Code_Name]_[Source_Code_Unique_ID]/" directory.
-
-                    - localized_source_code_path = "[Host OS User Data Directory]AutoLoc/Data/[Project_Name]_[Project_Unique_ID]/Localized_Source_Codes/[Source_Code_Name]_[Source_Code_Unique_ID]/" directory.
-                
-                - Update the following records for the source code based on its ID in the DB:
-                    - original_source_code_path
-                    - localized_source_code_path
-                
-            This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
-
-            - set_source_code_commons_paths(commons_paths list) function to perform the following only if commons_paths is not empty:
-                - Initialize and assign the veriable:
-                    - source_code_commons_paths = commons_paths
-                
-                - Update the following record for the source code based on its ID in the DB:
-                    - source_code_commons_paths
-                
-            This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
-
-            - get_original_source_code_path() function to get and return a specific project source code's original_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
-
-            - get_localized_source_code_path() function to get and return a specific project source code's localized_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
-
-            - get_source_code_commons_paths() function to get and return a specific project source code's source_code_commons_paths list. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
-
-            - copy_source_code_files(source_code_upload_path) funtion to copy all the files from the source_code_upload_path maintaining the directories and files patterns of the source code into the original_source_code_path.
-            It then copies all the contents of the original_source_code_path to the localized_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
-
-        - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
-
-
 
     - L10nManager class:
         - The L10nManager defines and executes all localization management procedures of the app. 
-        - It inherits the FileManager class.
+        - It inherits the SourceCodeManager class.
         - It defines and executes the following functions and functionalities:
             - reset_l10n() function to delete all the contents of the localized_source_code_path and then copy all the contents of the original_source_code_path to the localized_source_code_path. 
             
@@ -466,12 +459,12 @@ Classes: managers module classes:
                 - Calls the reset_l10n() function to delete and recopy all the contents of the localized_source_code_path from the original_source_code_path. 
 
                 - Calls the required classes from the localizers module to localize the files based on the source code's "type" attribute value. The specific class from the localizers module is called based on the "type" attribute of the source code as follows:
-                    - if type = "Web App", then WebAppBasedLocalizer is called 
-                    - if type = "Android App", then AndroidAppBasedLocalizer is called 
-                    - if type = "iOS App", then IOSAppBasedLocalizer is called 
-                    - if type = "Java App", then JavaAppBasedLocalizer is called
-            When the function calls the appropriate class based on the source code's type attribute value, it passes it all the required arguments to initialize and execute its localization logic.  
-            This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+                    - if type = "Web App", then WebAppBasedLocalizer's process_l10n() is called 
+                    - if type = "Android App", then AndroidAppBasedLocalizer's process_l10n() is called 
+                    - if type = "iOS App", then IOSAppBasedLocalizer's process_l10n() is called 
+                    - if type = "Java App", then JavaAppBasedLocalizer's process_l10n() is called
+                
+                - When the function calls the appropriate class based on the source code's type attribute value, it passes it all the required arguments to initialize and execute its localization logic. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
         - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
 
@@ -484,10 +477,10 @@ Classes: localizers module classes:
 
         - WebAppBasedLocalizer class:
             - The WebAppBasedLocalizer is the class responsible for localizing the source code having type = "Web App".
-            - It inherits the FileManager class.
+            - It inherits the SourceCodeManager class.
             - It ensures that every class it calls runs on its own QThread to avoid the app freezing or disrupted. 
             - It implements and executes the following functions and functionalities:
-                - get_file_type_counts() function to get all the file paths from the original_source_code_path and count each file type based on their file extension and record the count of each file extension in a the dictionary it returns.
+                - get_file_type_counts() function to get all the file paths from the localized_source_code_path and count each file type based on their file extension and record the count of each file extension in a the dictionary it returns.
 
                 - process_l10n() function that gets the dictionary returned from get_file_type_counts() function and if it is not empty, it executes the required file handler class for every file extension whose count is greater than zero. It uses if statements to control which classes gets executed only when its corresponding file extension count is greater than zero. If none of the file extension counts is greater than zero, then this function throws and returns the necessary errors/exceptions. 
                 This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in L10nWidget.
@@ -498,7 +491,7 @@ Classes: localizers module classes:
 
         - WebAppFileHandler class: 
             - The WebAppFileHandler class is the base class for all web app file type handler classes. 
-            - It inherits FileManager class 
+            - It inherits SourceCodeManager class 
             - It implements and executes the following functions and functionalities:
                 - It initializes the SettingManager class and assign a variable to use some of its functions. 
 
@@ -1215,6 +1208,7 @@ Classes: app_ui module classes and starter file:
             - SourceCodeWidget class
             - AddSourceCodeWidget class
             - UpdateSourceCodeWidget class
+            - MergeSourceCodeLocalesCommonsWidget class 
             - SourceCodeTargetLocalesWidget class
             - SourceCodeTargetLocaleWidget class 
             - AddSourceCodeTargetLocaleWidget class 
@@ -1300,6 +1294,7 @@ Classes: app_ui module classes and starter file:
                 - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
                     - "Delete": will delete the specific source code's record in the DB
                     - "Cancel": will abort the deletion of the record.
+                - The "Merge Commons" button renders the MergeSourceCodeLocalesCommonsWidget from the stack. 
                 - The "Localize" button renders the L10nWidget with this SourceCode's ID. The L10nWidget class is defined later below. 
 
         - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeWidget layouts and components are designed. 
@@ -1316,6 +1311,7 @@ Classes: app_ui module classes and starter file:
 
         - It renders an Object Data Add Form with the following:
             - Labels:
+                - Upload Source Code (file dialog for choosing and uploading a directory containing the source code)
                 - Project ID
                 - Name 
                 - Unique ID 
@@ -1335,12 +1331,12 @@ Classes: app_ui module classes and starter file:
                 - The source code's status 
                 - The source code's notes 
 
-            - Submit button under the form to submit the form data to the DB
+            - Submit button under the form to submit the form data to the DB. The submit will first get and copy the source code according to the L10nManager.copy_source_code_files() function. It then records the form data to the DB. Once the record is successfull, this class trigers the AddSourceCodeCommonsPathsWidget to render in the stack and parses it the source code ID. 
             
             - Buttons in form_buttons_layout: 
                 - The "Cancel" button aborts adding and renders the SourceCodesWidget class in the stack.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the AddSourceCodeWidget layouts and components are designed. 
+        - Please read the attached AutoLoc_App_Design PDF document to see how the AddSourceCodeWidget layouts and components are designed.  
 
 
 
@@ -1348,7 +1344,7 @@ Classes: app_ui module classes and starter file:
     - UpdateSourceCodeWidget class
         - The UpdateSourceCodeWidget class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered in the SourceCodesStackedWidget class.
 
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+        - It uses the SourceCodeManager and L10nManager classes for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
@@ -1379,6 +1375,31 @@ Classes: app_ui module classes and starter file:
                 - The "Cancel" button aborts updating and renders back the SourceCodeWidget object being updated in the stack.
             
         - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateSourceCodeWidget layouts and components are designed. 
+    
+
+
+
+    - MergeSourceCodeLocalesCommonsWidget class
+        - The MergeSourceCodeLocalesCommonsWidget class is a QWidget class that defines the layout and components of the app's merging source code commons paths widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data Add Form with the following:
+            - Labels:
+                - Source Code ID (autogenerated from the source code's ID at button click)
+                - Locales Commons Paths (file dialog for multiple directories selectable)
+            - Data:
+                - The source code's ID
+                - The locales commons paths in a list to save in DB  
+
+            - Submit button under the form to submit the form data to the SourceCodeManager's merge_locale_commons() function to merge the JSON files in each commons path into one JSON file named as "commons.json". 
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts adding and renders the SourceCodesWidget class in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the MergeSourceCodeLocalesCommonsWidget layouts and components are designed.
 
 
 
@@ -1518,3 +1539,11 @@ Classes: app_ui module classes and starter file:
         - It is called in any QWidget class requiring styling. 
 
 
+
+
+
+
+    NOTE:
+    - Make sure to add source code uploading functionality in AddSourceCodeWidget and handled by SourceCodeManager.
+    
+    - Make sure to separately process commons_paths files by each file handler and save them separately with a specific function. 
