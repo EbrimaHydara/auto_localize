@@ -427,7 +427,9 @@ Classes: managers module classes:
 
             - get_locales_commons_paths() function to get and return a specific project source code's locales_commons_paths list. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
-            - merge_locale_commons(locales_commons_paths) function to merge the JSON files in each locales_commons_paths path into one single JSON file named as "commons.json" and save it in the commons_path.
+            - merge_locale_commons(locales_commons_paths) function to merge the JSON files in each locales_commons_paths path into one single JSON file named as "commons.json" and save it in the commons_path. It performs this action only if the source code's status = "Completed", otherwise it throws an exception/error. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - export_files() function to zip and export the files'z zip to the OS Downloads folder for the specific source code based on its project unique ID and source code unique ID in the localized_source_code_path. It Downloads the entire localized_source_code_path's content in a zip file. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
 
             - get_source_code_source_locale() to get the source_code source locale from the source_code's record. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
 
@@ -1294,7 +1296,8 @@ Classes: app_ui module classes and starter file:
                 - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
                     - "Delete": will delete the specific source code's record in the DB
                     - "Cancel": will abort the deletion of the record.
-                - The "Merge Commons" button renders the MergeSourceCodeLocalesCommonsWidget from the stack. 
+                - The "Merge Commons" button renders the MergeSourceCodeLocalesCommonsWidget from the stack.
+                - The "Export Files" button triggers the SourceCodeManager's export_files() function and downloads the specific source code's files in a zip file in the Downloads folder of the host OS.  
                 - The "Localize" button renders the L10nWidget with this SourceCode's ID. The L10nWidget class is defined later below. 
 
         - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeWidget layouts and components are designed. 
