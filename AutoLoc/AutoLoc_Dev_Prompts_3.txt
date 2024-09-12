@@ -1,0 +1,362 @@
+Classes: localizers module classes:
+
+    - web_localizers sub-module classes:
+
+        - WebAppBasedLocalizer class:
+            - The WebAppBasedLocalizer is the class responsible for localizing the source code having type = "Web App".
+            - It inherits the SourceCodeManager class.
+            - It ensures that every class it calls runs on its own QThread to avoid the app freezing or disrupted. 
+            - It implements and executes the following functions and functionalities:
+                - get_file_type_counts() function to get all the file paths from the localized_source_code_path and count each file type based on their file extension and record the count of each file extension in a the dictionary it returns.
+
+                - process_l10n() function that gets the dictionary returned from get_file_type_counts() function and if it is not empty, it executes the required file handler class for every file extension whose count is greater than zero. It uses if statements to control which classes gets executed only when its corresponding file extension count is greater than zero. If none of the file extension counts is greater than zero, then this function throws and returns the necessary errors/exceptions. 
+                This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in L10nWidget.
+            
+            - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
+    
+
+
+        - WebAppFileHandler class: 
+            - The WebAppFileHandler class is the base class for all web app file type handler classes. 
+            - It inherits SourceCodeManager class 
+            - It implements and executes the following functions and functionalities:
+                - It initializes the SettingManager class and assign a variable to use some of its functions. 
+
+                - It defines and creates locales_path variable as localized_source_code_path/locales/ at initialization.
+
+                - get_locales_path() function to return the locales folder path. 
+
+                - get_files_by_extension(extension) function to get and return all the file paths of the files with the parsed extension argument from the localized_source_code_path. The files paths must start from the same level where the locales_path is situated. For example, if locales_path is "source_code_dir/locales/", then all files paths collected by this function should start from "source_code_dir/the/file/path/filename.extension". 
+
+                - generate_key() function to generate and return a unique string identifier key that will be assigned to either "data-i18n" attributes of HTML files, or non-namespaced keys in localized files. The key generated should be in the format: "str-1", "str-2", "str-3", etc. continuously attaching the number sequence during the process to "str".
+
+                - generate_namespaced_key(file_path) function to generate and return a unique string identifier key that will either be assigned to "data-i18n" attributes of HTML files, or replace the extracted strings from the file being processed. The file_path is the file being processed. The key generated should be in the format: "file_path:unique_id" where unique_id is in the format: "str-1", "str-2", "str-3", etc. continuously attaching the number sequence during the process to "str". 
+
+                - save_resource_file(data, locale, file, locale_type) function to save an extracted file's strings in JSON data format to a JSON file for the specified locale. The parameters are explained as follows: 
+                    - :param data: The JSON data to save.
+                    - :param locale: The locale information.
+                    - :param file: The path to the file being processed.
+                    - :param locale_type: The type of locale ('source' or 'target')
+                The functions saves the JSON resource file as locales_path/[locale's code]/[file's path without the extension].json. The [locale's code] stand for any locale code such as ja-JP, en-US, zh-CN, etc. for each locale (either source or target locale) specified in the parameters. The [file's path without extension] stands for the file's path being processed but without its extension (e.g. removing the .html) and replace the extension with .json and save the JSON data inside the JSOn file created and saved to the locales folder using the locales_path. 
+                This is just an example of implementation for the above function but please adopt it as appropriate for this class:
+                    - def save_resource_file(self, data, locale, html_file, locale_type):
+                        """
+                        Saves the data to a JSON file for the specified locale.
+
+                        :param data: The data to save.
+                        :param locale: The locale information.
+                        :param html_file: The path to the HTML file being processed.
+                        :param locale_type: The type of locale ('source' or 'target').
+                        """
+                        language_code, country_code = locale[2], locale[3]
+                        json_dir = os.path.join(self.locales_dir, f'{language_code}')
+                        json_path = os.path.join(json_dir, f'html_strings_{language_code}_{country_code}.json')
+                        os.makedirs(os.path.dirname(json_path), exist_ok=True)
+
+                        if os.path.exists(json_path):
+                            with open(json_path, 'r', encoding='utf-8') as file:
+                                existing_data = json.load(file)
+                        else:
+                            existing_data = {}
+
+                        for html_file_key, translations in data.items():
+                            if html_file_key not in existing_data:
+                                existing_data[html_file_key] = {}
+                            existing_data[html_file_key].update(translations)
+
+                        with open(json_path, 'w', encoding='utf-8') as file:
+                            json.dump(existing_data, file, ensure_ascii=False, indent=4)
+                    Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+
+                - show_progress(files) function to send a QSignal to the L10nWidget class showing the progress in percentage of how many files have been successfully processed. The progress is displayed in a QProgressbar with white colored bar showing a progressive green color filling from left to right based on how much percentage has been completed of the processed files from 0% to 100%. The files parameter is a list of file paths.
+        
+
+
+        - WebAppHTMLFileHandler class:
+            - The WebAppHTMLFileHandler handles all HTML file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.target_tags = ['title', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'address', 'pre', 'blockquote', 'li', 'figcaption', 'caption', 'td', 'th', 'label', 'option']
+                    
+                    - self.special_tags = ['meta', 'img']
+
+                    - self.nav_tags = ['a', 'button']
+                    
+                    - self.formatting_tags = ['span', 'br', 'b', 'strong', 'i', 'em', 'mark', 'small', 'del', 'ins', 'sub', 'sup', 'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi', 'bdo', 'ruby', 'rt', 'rp', 'wbr']
+
+                    - self.html_files = self.get_files_by_extension('.html')
+
+                - Please use the HTMLFileLocalizer class as a sample class for the WebAppHTMLFileHandler class with the following differences in the WebAppHTMLFileHandler:
+                    - If the SettingManager html_is_duplicated is equal to True, the localized HTML file version is duplicated and saved for each locale (source and target locales), otherwise, only the source locale's HTML version is saved to replace the original version. 
+                    - Adopt the following functions logic in definition, calling, and usage from the HTMLFileLocalizer class as appropriate for the WebAppHTMLFileHandler class:
+                        - localize_html_files()
+                        - _process_html_file() using show_progress() of parent class.
+                        - _mark_translatable_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of generate_short_uuid() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path". Do not include the "html-str-", "html-meta-", or "html-alt-" and similar  parts of the keys in this class. 
+                        - _duplicate_html_file() only if SettingManager html_is_duplicated() is equal to True, otherwise, only the localized original is saved.
+                        - _has_nav_or_formatting_tags()
+                        - _has_target_formatting_or_special_tags()
+                        - _is_inside_nav_or_formatting_tags()
+                        - _is_inside_nav_tags()
+                        - _extract_and_save_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of generate_short_uuid() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path" to add the file path to key or not. Do not include the "html-str-", "html-meta-", or "html-alt-" and similar  parts of the keys in this class.  
+                        - Use save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                        - _save_html_file() but do not duplicate the HTML unless the SettingManager html_is_duplicated() is True. 
+                        - DO NOT implement nor use the following functions and logics from the HTMLFileLocalizer class:
+                            - _create_load_translations_js_file()
+                            - _write_report()
+                            - _is_duplicate()
+                            - _insert_i18next_logic()
+                            - _insert_navigation_links()
+                            - insert_links()
+                            - _get_locale_file_path()
+                            - _get_seo_url()
+                            - contains_translatable_tags()
+                        
+                        - Please make sure all the other requirements are met by the WebAppHTMLFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppJSFileHandler: class
+            - The WebAppJSFileHandler handles all JS file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.translatable_patterns = [
+                        re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+                        re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
+                        re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
+                        ]
+                    
+                    - self.js_files = self.get_files_by_extension('.js')
+
+                - Please use the JSFileLocalizer class as a sample class for the WebAppJSFileHandler class with the following differences in the WebAppJSFileHandler:
+                    - Adopt the following functions logic in definition, calling, and usage from the JSFileLocalizer class as appropriate for the WebAppJSFileHandler class:
+                        - localize_js_files()
+                        - _process_js_file() using show_progress() of parent class.
+                        - _mark_translatable_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path". Do not include the "js-str-" and similar  parts of the keys in this class. 
+                        - _extract_and_save_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path" to add the file path to key or not. Do not include the "js-str-" and similar  parts of the keys in this class.  
+                        - Use save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                        - _save_js_file() 
+                        - _insert_i18next_import()
+                        - DO NOT implement nor use the following functions and logics from the JSFileLocalizer class:
+                            - _write_report()
+                        
+                        - Please make sure all the other requirements are met by the WebAppJSFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppEJSFileHandler: class
+            - The WebAppEJSFileHandler handles all EJS file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.translatable_patterns = [
+                        re.compile(r'<%=\s*(.*?)\s*%>'),  # Matches rendered EJS content
+                        ]
+
+                    - self.ejs_files = self.get_files_by_extension('.ejs')
+
+                - Please use the EJSFileLocalizer class as a sample class for the WebAppEJSFileHandler class with the following differences in the WebAppEJSFileHandler:
+                    - Adopt the following functions logic in definition, calling, and usage from the EJSFileLocalizer class as appropriate for the WebAppEJSFileHandler class:
+                        - localize_ejs_files()
+                        - _process_ejs_file() using show_progress() of parent class.
+                        - _mark_translatable_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path". Do not include the "ejs-str-" and similar  parts of the keys in this class. 
+                        - _extract_and_save_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path" to add the file path to key or not. Do not include the "ejs-str-" and similar  parts of the keys in this class.  
+                        - Use save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                        - _save_ejs_file() 
+                        - _insert_i18next_import()
+                        - DO NOT implement nor use the following functions and logics from the EJSFileLocalizer class:
+                            - _duplicate_ejs_file()
+                            - _write_report()
+                        
+                        - Please make sure all the other requirements are met by the WebAppEJSFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppJSXFileHandler: class
+            - The WebAppJSXFileHandler handles all JSX file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.translatable_patterns = [
+                        Please put here appropriate Regular Expression patterns appropriate for JSX translatable strings targetting. 
+                        ]
+                    
+                    - self.jsx_files = self.get_files_by_extension('.jsx')
+
+                - Please use an imaginary JSXFileLocalizer class imitating the previous sample classes as a sample class for the WebAppJSXFileHandler class with the following differences in the WebAppJSXFileHandler:
+                    - Adopt the following functions logic in definition, calling, and usage from the JSXFileLocalizer class as appropriate for the WebAppJSXFileHandler class:
+                        - localize_jsx_files()
+                        - _process_jsx_file() using show_progress() of parent class.
+                        - _mark_translatable_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path". Do not include the "jsx-str-" and similar  parts of the keys in this class. 
+                        - _extract_and_save_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path" to add the file path to key or not. Do not include the "jsx-str-" and similar  parts of the keys in this class.  
+                        - Use save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                        - _save_jsx_file() 
+                        - _insert_i18next_import()
+                        - DO NOT implement nor use the following functions and logics from the JSXFileLocalizer class:
+                            - _duplicate_jsx_file()
+                            - _write_report()
+                        
+                        - Please make sure all the other requirements are met by the WebAppJSXFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppTSFileHandler: class
+            - The WebAppTSFileHandler handles all TS file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.translatable_patterns = [
+                        re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+                        re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
+                        re.compile(r'>{1}\s*(.*?)\s*<{1}'),         # Matches HTML content between tags
+                        ]
+                    - Please adjust the above patterns to fit for use in a Typescript (TS) file if necessary since the above was copied from a TSX file. 
+
+                    - self.ts_files = self.get_files_by_extension('.ts')
+                
+                - Please understand that the sample class provided is a TSX specific code. Hence understand the TSXFileLocalizer as the TSFileLocalizer provided above and adjust any necessary changes and requirements to fit TS code.
+
+                - Please use the TSFileLocalizer class as a sample class for the WebAppTSFileHandler class with the following differences in the WebAppTSFileHandler:
+                    - Adopt the following functions logic in definition, calling, and usage from the TSFileLocalizer class as appropriate for the WebAppTSFileHandler class:
+                        - localize_ts_files()
+                        - _process_ts_file() using show_progress() of parent class.
+                        - _mark_translatable_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path". Do not include the "ts-str-" and similar  parts of the keys in this class. 
+                        - _extract_and_save_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path" to add the file path to key or not. Do not include the "ts-str-" and similar  parts of the keys in this class.  
+                        - Use save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                        - _save_ts_file() 
+                        - _insert_i18next_import()
+                        - DO NOT implement nor use the following functions and logics from the TSFileLocalizer class:
+                            - _duplicate_ts_file()
+                            - _write_report()
+                        
+                        - Please make sure all the other requirements are met by the WebAppTSFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppTSXFileHandler: class
+            - The WebAppTSXFileHandler handles all TSX file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.translatable_patterns = [
+                        re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+                        re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
+                        re.compile(r'>{1}\s*(.*?)\s*<{1}'),         # Matches HTML content between tags
+                        ]
+                    
+                    - self.tsx_files = self.get_files_by_extension('.tsx')
+
+                - Please use the TSXFileLocalizer class as a sample class for the WebAppTSXFileHandler class with the following differences in the WebAppTSXFileHandler:
+                    - Adopt the following functions logic in definition, calling, and usage from the TSXFileLocalizer class as appropriate for the WebAppTSXFileHandler class:
+                        - localize_tsx_files()
+                        - _process_tsx_file() using show_progress() of parent class.
+                        - _mark_translatable_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path". Do not include the "tsx-str-" and similar  parts of the keys in this class. 
+                        - _extract_and_save_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path" to add the file path to key or not. Do not include the "tsx-str-" and similar  parts of the keys in this class.  
+                        - Use save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                        - _save_tsx_file() 
+                        - _insert_i18next_import()
+                        - DO NOT implement nor use the following functions and logics from the TSXFileLocalizer class:
+                            - _duplicate_tsx_file()
+                            - _set_lang_attribute()
+                            - _insert_navigation_links()
+                            - _get_locale_file_path()
+                            - _write_report()
+                        
+                        - Please make sure all the other requirements are met by the WebAppTSXFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppVueFileHandler: class
+            - The WebAppVUEFileHandler handles all VUE file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - It defines the following variables at initialization:
+
+                    - self.translatable_patterns = [
+                        Please put here appropriate Regular Expression patterns appropriate for VUE translatable strings targetting. 
+                        ]
+                    
+                    - self.vue_files = self.get_files_by_extension('.vue')
+
+                - Please use an imaginary VUEFileLocalizer class imitating the previous sample classes as a sample class for the WebAppVUEFileHandler class with the following differences in the WebAppVUEFileHandler:
+                    - Adopt the following functions logic in definition, calling, and usage from the VUEFileLocalizer class as appropriate for the WebAppVUEFileHandler class:
+                        - localize_vue_files()
+                        - _process_vue_file() using show_progress() of parent class.
+                        - _mark_translatable_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path". Do not include the "vue-str-" and similar  parts of the keys in this class. 
+                        - _extract_and_save_strings() but use the inherited generate_key() or generate_namespaced_key() functions instead of uuid.uuid4() based on SettingManager get_key_format() is equal to "Simple Key" or "Namespaced Key with File Path" to add the file path to key or not. Do not include the "vue-str-" and similar  parts of the keys in this class.  
+                        - Use save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                        - _save_vue_file() 
+                        - _insert_i18next_import()
+                        - DO NOT implement nor use the following functions and logics from the VUEFileLocalizer class:
+                            - _duplicate_vue_file()
+                            - _write_report()
+                        
+                        - Please make sure all the other requirements are met by the WebAppVUEFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppJSONFileHandler: class
+            - The WebAppJSONFileHandler handles all JSON file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - self.json_files = self.get_files_by_extension('.json')
+
+                - Please understand that the WebAppJSONFileHandler class only implements the logic to duplicate JSON files for each target locale saved using the save_resource_file() function inherited from WebAppFileHandler class.
+                - Adopt the following functions and logics:
+                    - save_resource_file() from parent class instead of _save_json_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                    - _duplicate_json_file() to be used inside save_resource_file() if necessary to duplicate the JSON files for each target locale after saving them for the source locale. 
+                    
+                    - Please make sure all the other requirements are met by the WebAppJSONFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+        - WebAppCSVFileHandler: class
+            - The WebAppCSVFileHandler handles all CSV file-specific localization procedures. 
+            - It inherits the WebAppFileHandler class.
+            - It runs on its own QThread.
+            - It implements and executes the following functions and functionalities:
+
+                - self.csv_files = self.get_files_by_extension('.csv')
+
+                - Please understand that the WebAppCSVFileHandler class only implements the logic to duplicate CSV files for each target locale saved using the save_resource_file() function inherited from WebAppFileHandler class.
+                - Adopt the following functions and logics:
+                    - save_resource_file() from parent class instead of _save_csv_file() with similar logic. Please not that language_code, country_code = locale[2], locale[3] is not required because locale has a "code" attribute that has value as "en-US" combining both language_code and country_code in the same string. Use the "code" attribute of the locale or locale[2] to represent the code attribute. 
+                    - _duplicate_csv_file() to be used inside save_resource_file() if necessary to duplicate the CSV files for each target locale after saving them for the source locale. 
+                    
+                    - Please make sure all the other requirements are met by the WebAppCSVFileHandler that you deem appropriate for its functionalities.
+
+
+
+
+NOTE: The android_localizers, ios_localizers, and java_localizers modules classes will be defined later. 

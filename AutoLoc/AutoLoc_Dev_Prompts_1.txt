@@ -1,0 +1,170 @@
+AutoLoc App Development Requirement Specifications
+
+Requirement Specification for the AutoLoc App:
+
+Overview:
+
+AutoLoc is a sophisticated app designed for automating the localization process of any software source code such as websites and mobile apps. It extracts all translatable texts from the source code across various file types and converts them into locale resource files, facilitating easy translation. The application is developed using PySide6 Python framework and other relevant Python libraries.
+
+Key Features:
+
+Automatic Text Extraction:
+
+Supports multiple file types.
+Extracts translatable texts into resource files for each specified file type.
+Users can define which file types to localize.
+
+Localized Text Rendering:
+
+The extracted texts in the appropriate format can be rendered back into the sourc code, maintaining the correct localization.
+
+Class-based File Handling:
+
+Each file type has a specific class that manages its localization process, ensuring appropriate handling according to file type characteristics.
+
+Installation and Compatibility:
+
+Compatible with all major operating systems.
+Includes an installer that handles the installation of all dependencies.
+The app is accessible via a UI icon, making it user-friendly and easy to execute.
+
+App Code File Structure:
+
+The following definitions describe the file and class structure of the AutoLoc app:
+
+- AutoLoc
+
+    - app_ui
+        - main_app_window.py
+            - MainAppWindow: class
+        - header.py 
+            - HeaderWidget: class 
+        - side_bar.py 
+            - SideBarWidget: class
+        - footer.py 
+            - FooterWidget: class
+        - home.py 
+            - HomeWidget: class  
+        - settings.py
+            - SettingsStackedWidget: class 
+            - SettingsWidget: class 
+            - LocalesWidget: class
+            - LocaleWidget: class
+            - AddLocaleWidget: class
+            - UpdateLocaleWidget: class       
+        - projects.py
+            - ProjectsStackedWidget: class 
+            - ProjectsWidget: class
+            - ProjectWidget: class
+            - AddProjectWidget: class
+            - UpdateProjectWidget: class
+        - source_codes.py
+            - SourceCodesStackedWidget: class 
+            - SourceCodesWidget: class
+            - SourceCodeWidget: class
+            - AddSourceCodeWidget: class
+            - UpdateSourceCodeWidget: class
+            - MergeSourceCodeLocalesCommonsWidget: class 
+            - SourceCodeTargetLocalesWidget: class 
+            - SourceCodeTargetLocaleWidget: class 
+            - AddSourceCodeTargetLocaleWidget: class 
+            - UpdateSourceCodeTargetLocaleWidget: class 
+        - l10n.py 
+            - L10nWidget: class 
+        - slyles.py 
+            - Styles: class 
+
+    - managers
+        - app_manager.py
+            - AppManager: class
+        - db_manager.py
+            - DBManager: class
+        - setting_manager.py
+            - SettingManager: class
+        - project_manager.py 
+            - ProjectManager: class
+        - source_code_manager.py 
+            - SourceCodeManager: class 
+        - l10n_manager.py 
+            - L10nManager: class 
+
+    - localizers
+        - web_localizers
+            - web_app_based_localizer.py 
+                - WebAppBasedLocalizer: class
+            - web_app_file_handler.py 
+                - WebAppFileHandler: class
+            - web_app_html_file_handler.py 
+                - WebAppHTMLFileHandler: class
+            - web_app_js_file_handler.py 
+                - WebAppJSFileHandler: class 
+            - web_app_ejs_file_handler.py
+                - WebAppEJSFileHandler: class 
+            - web_app_jsx_file_handler.py
+                - WebAppJSXFileHandler: class 
+            - web_app_ts_file_handler.py 
+                - WebAppTSFileHandler: class 
+            - web_app_tsx_file_handler.py 
+                - WebAppTSXFileHandler: class
+            - web_app_vue_file_handler.py 
+                - WebAppVueFileHandler: class 
+            - web_app_json_file_handler.py 
+                - WebAppJSONFileHandler: class 
+            - web_app_csv_file_handler.py 
+                - WebAppCSVFileHandler: class
+
+        - android_localizers
+            - android_app_based_localizer.py 
+                - AndroidAppBasedLocalizer: class
+            - android_app_file_handler.py 
+                - AndroidAppFileHandler: class 
+            - android_app_xml_file_handler.py 
+                - AndroidAppXMLFileHandler: class
+            - android_app_java_file_handler.py 
+                - AndroidAppJavaFileHandler: class 
+            - android_app_kotlin_file_handler.py 
+                - AndroidAppKotlinFileHandler: class 
+
+        - ios_localizers
+            - ios_app_based_localizer.py
+                - IOSAppBasedLocalizer: class
+            - ios_app_file_handler.py 
+                - IOSAppFileHandler: class 
+            - ios_app_swift_file_handler.py 
+                - IOSAppSwiftFileHandler: class 
+            - ios_app_objc_m_file_handler.py 
+                - IOSAppObjcMFileHandler: class 
+            - ios_app_objc_h_file_handler.py 
+                - IOSAppObjcHFileHandler: class 
+            - ios_app_strings_file_handler.py 
+                - IOSAppStringsFileHandler: class
+            - ios_app_storyboard_file_handler.py 
+                - IOSAppStoryboardFileHandler: class
+            - ios_app_xib_file_handler.py 
+                - IOSAppXIBFileHandler: class
+            - ios_app_plist_file_handler.py 
+                - IOSAppPListFileHandler: class
+            
+        - java_localizers
+            - java_app_based_localizer.py
+                - JavaAppBasedLocalizer: class 
+            - java_app_xhtml_file_handler.py
+                - JavaAppXHTMLFileHandler: class 
+            - java_app_xml_file_handler.py
+                - JavaAppXMLFileHandler: class 
+            - java_app_java_file_handler.py
+                - JavaAppJavaFileHandler: class 
+            - java_app_properties_file_handler.py
+                - JavaAppPropertiesFileHandler: class 
+            
+    - autoloc.py (app's starter)
+
+
+Code and Functionality Definitions:
+
+Class Definitions:
+
+The following is the definition of each class's functionality and implementation logic. The classes are developed in the following logical order to faciliate a smooth definition of the interrelationship among them. Inheritances will be explicitly defined by indicating which class inherits which class in the following definiton. Each class's functionality will also be described and finetuned as appropriate during the course of development. The logical order in which classes are defined is as follows:
+- managers module classes
+- localizers module classes
+- app_ui module classes 

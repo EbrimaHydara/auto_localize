@@ -1,0 +1,353 @@
+Classes: managers module classes:
+
+    - PROMPT:
+    Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
+    Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+    Please provide any adjustments required in other classes affected by this class specification. Provide the changes/adjustments in code snippets under the class names affected in logical order after the full development of the class described below:
+
+    - AppManager class:
+        - The AppManager manages the app's startup functionalities and runs its initialize_app() function at its initialization. 
+        
+        - The __init__ function defines the following variables before running the initialize_app():
+
+            - app_data_path = "[Host OS User Data Directory]AutoLoc/Data"
+
+            - app_db_file_path = app_data_path/"DB/"
+
+            - initialize_app() function call 
+
+
+        - The AppManager defines and executes the following functions and functionalities:
+
+            - initialize_app() function that checks and ensures of the following:
+                - This function checks if the app_data_path exists, otherwise it creates it. It then checks if the app_db_file exists, otherwise it creates it as an SQLite DB file. The [Host OS User Data Directory] represents any OS (Windows, Mac, and Linux) user data directory. The function runs as the first startup procedure in any host OS anytime the app is started. 
+                This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in the MainAppWindow class if there is any Exception/Error preventing the above procedures.
+
+            - get_app_data_path() function to return the app_data_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_app_db_file_path() function to return the app_db_file_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - Please understand that the QMessageBoxes are not created within this class but only the exceptions/errors strings returned by the functions to be displayed in the MainAppWindow class that will call this class and its functions.
+    
+
+
+
+
+    - PROMPT:
+    Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
+    Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+    Please provide any adjustments required in other classes affected by this class specification. Provide the changes/adjustments in code snippets under the class names affected in logical order after the full development of the class described below:
+
+
+    - DBManager class:
+        - The DBManager handles all DB related functionalities of the app.
+        - It uses the AppManager class to get the app_db_file_path to use for the creation of the "autoloc.db" SQLite file. 
+        - It executes the following at its initialization:
+
+            - Gets the app_db_file_path from the AppManager.get_app_db_file_path(), establish connections to the DB and other necessary priliminaries. 
+
+            - Runs the create_db() function that creates the SQLite DB "autoloc.db" inside the app_db_file_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in the MainAppWindow class.
+
+            - Runs the create_tables() function that creates the default tables of the DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - Runs the insert_records() function that inserts all default table records in the DB. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - Please understand that the QMessageBoxes are not created within this class but only the exceptions/errors strings returned by the functions to be displayed later in a QWidget class that will call this class and its functions.
+
+        - Creates the following tables if not exist in the create_tables() function:
+
+            - ui_modes:
+                - id (primary key, autoincrement)
+                - mode ("Light Mode" or "Dark Mode" - default = Light Mode)
+
+            
+            - l10n_settings:
+                - id (primary key, autoincrement)
+                - html_is_duplicated (True, False, default=False)
+                - key_format ("Simple Key", "Namespaced Key with File Path")
+            
+            - app_settings: 
+                - id (primary key, autoincrement)
+                - dark_mode (Boolean: True/False)
+                - duplicate_html (Boolean: True/False)
+                - use_key_namespace (Boolean: True/False)
+            Note: app_settings always has only one record. It should never have more than one record. 
+
+
+            - locales:
+                - id (primary key, autoincrement)
+                - name (English (United States))
+                - code (en-US)
+                - UNIQUE(name, code)
+            
+
+            - projects:
+                - id (primary key, autoincrement)
+                - name
+                - unique_id (hidden field, autogenerated in code logic)
+                - client
+                - description
+                - status ("In Progress", "Completed", "On Hold", "Terminated") - default = "In Progress"
+                - start_date
+                - end_date
+                - last_updated_date
+                - lead_egineer 
+                - UNIQUE(name, client, unique_id)
+
+
+            - source_codes:
+                - id (primary key, autoincrement)
+                - project_id
+                - name
+                - unique_id (hidden field, autogenerated in code logic using datetime as "YYYYMMDDHis")
+                - type (Web, Android, iOS, Java App)
+                - source_locale (ja-JP, en-US, zh-CN)
+                - original_source_code_path (Nullable and hidden field to be set by the SourceCodeManager class later)
+                - commons_paths (Nullable and hidden field to be set by the SourceCodeManager class later)
+                - localized_source_code_path (Nullable and hidden field to be set by the SourceCodeManager class later)
+                - status ("In Progress", "Completed", "On Hold", "Terminated") - default = "In Progress" 
+                - notes (Nullable and optional)
+                - UNIQUE(project_id, name, unique_id, source_locale)
+                - FOREIGN KEY(project_id) REFERENCES projects(id)
+            
+
+            - source_code_target_locales:
+                - id (primary key, autoincrement)
+                - name
+                - code
+                - source_code_id
+                - UNIQUE(name, code, source_code_id)
+                - FOREIGN KEY(source_code_id) REFERENCES source_codes(id)
+            
+
+        - Inserts the following records in the insert_records() function:
+            - ui_modes = [
+                ('Light Mode'),
+                ('Dark Mode')
+            ]
+
+            - l10n_settings = [
+                ('False'),
+                ('Simple Key')
+            ]
+
+            - locales = [
+                ('Japanese', 'ja-JP'),
+                ('English (US)', 'en-US'),
+                ('Simplified Chinese (CN)', 'zh-CN'),
+                ('Traditional Chinese (TW)', 'zh-TW'),
+                ('Korean (South Korea)', 'ko-KR')
+            ]
+        
+        - Defines the reset_db() function to delete and recreate the DB file, the tables, and the default records. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+        - Defines the following functions for general data management of any table in the DB:
+
+            - get_record() to get any record from any table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in an external QWidget class.
+
+            - get_records() to get all records from any table in a list. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in an external QWidget class.
+
+            - insert_record() to insert any record in any table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in an external QWidget class. 
+
+            - update_record() to update any record in any table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in an external QWidget class.
+
+            - delete_record() to delete any record in any table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in an external QWidget class.
+
+            - delete_records() to delete all records in any table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in an external QWidget class.
+
+        - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
+        
+    
+
+
+
+    - PROMPT:
+    Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
+    Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+    Please provide any adjustments required in other classes affected by this class specification. Provide the changes/adjustments in code snippets under the class names affected in logical order after the full development of the class described below:
+
+
+    - SettingManager class:
+        - The SettingManager uses the DBManager to define and execute all its CRUD functionalities. It defines and manages the CRUD functionality for the app_settings tables in the DB using the DBManager methods.
+
+        - It creates and manages the following functions and functionalities:
+
+            - set_ui_mode() function to toggle the app's UI mode between "Light Mode" and "Dark Mode" in the app_settings table, ui_mode column. This function uses the Styles class of the app_ui module to set the Light or Dark mode of the Styles class.
+
+            - set_html_is_duplicated() function to toggle the setting of html_is_duplicated column value in l10n_settings table in the DB to either True or False.
+
+            - html_is_duplicated() function to return the value of html_is_duplicated column of the l10n_settings table in the DB. 
+
+            - set_key_format() function to set the key_format value of the l10n_settings table in the DB.
+
+            - get_key_format() function to get the key_format value of the l10n_settings table from the DB. 
+
+            - reset_db() function call from the DBManager to execute its logic. This function is just a wrapper function for the DBManager's reset_db() function. 
+
+            - get_locales() to get all the locales from the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_locale() to get any specific locale from the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - add_locale() to add a new locale record to the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - update_locale() to update any locale record in the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - delete_locale() to delete any locale record in the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            _ delete_locales() to delete all locales in the locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+        - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
+
+
+
+
+
+    - PROMPT:
+    Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
+    Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+    Please provide any adjustments required in other classes affected by this class specification. Provide the changes/adjustments in code snippets under the class names affected in logical order after the full development of the class described below:
+
+
+    - ProjectManager class:
+        - It manages all the projects in the AutoLoc app.
+
+        - It uses the DBManager to define and execute all CRUD functionalities for the projects table in the DB.
+
+        - It defines and execute the following functions and functionalities:
+
+            - get_projects() to get all the projects from the projects table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - get_project() to get any specific project from the projects table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - add_project() to add a new project record to the projects table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - update_project() to update any project record in the projects table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.  
+
+            - delete_project() to delete any project record from the projects table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            _ delete_projects() to delete all projects from the projects table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.  
+
+        - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
+
+
+
+
+
+
+    - PROMPT:
+    Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
+    Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+    Please provide any adjustments required in other classes affected by this class specification. Provide the changes/adjustments in code snippets under the class names affected in logical order after the full development of the class described below:
+
+
+    - SourceCodeManager class:
+        - It manages all the source codes in the AutoLoc app.
+
+        - It uses the AppManager to get the app_data_path to store its files. 
+
+        - It uses the DBManager to define and execute all CRUD functionalities for the source_codes and source_code_target_locales tables in the DB.
+
+        - It takes in project_id argument at initialization.
+
+        - It defines the following in its __init__ function:
+            
+            - app_data_path = app_manager.get_app_data_path()
+
+            - source_code_path = app_data_path/"[Project_Name]_[Project_Unique_ID]/[Source_Code_Name]_[Source_Code_Unique_ID]/Original_Files/". 
+            Note: 
+                - the [Project_Name]= Parent Project's Name 
+                - the [Project_Unique_ID]= Parent Project's Unique ID 
+                - the [Source_Code_Name]= this Source Code's Name 
+                - the [Source_Code_Unique_ID]= this Source Code's Unique ID 
+
+            - original_source_code_path = source_code_path/"Original_Files/"
+
+            - localized_source_code_path = source_code_path/"Localized_Files/"
+
+            - locales_commons_paths = list(of commons_paths)
+
+        - It defines and execute the following functions and functionalities:
+
+            - get_app_data_path() function that gets the app_data_path from AppManager.get_app_data_path(). This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - get_source_codes() to get all the source_codes of a specific project from the source_codes table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - get_source_code() to get any specific source_code from the source_codes table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - add_source_code() to add a new source_code record for a specific project to the source_codes table. If it successfully adds the record to the DB, it then calls and runs the save_source_code_files() parsing it the source_code_upload_path from the form data. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - update_source_code() to update any source_code record of a specific project in the source_codes table. It also uses SourceCodeManager class to delete and replace the source_code files with the new submitted file path's contents. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - delete_source_code() to delete any source_code record of a specific project from the source_codes table. It also deletes the source_code's files using the SourceCodeManager class passing the source_code_id to it. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            _ delete_source_codes() to delete all source_codes of a specific project from the source_codes table. It also deletes the source_codes' files using the SourceCodeManager class passing the source_code_id to it for each iteration.This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - save_source_code_files(source_code_upload_path) funtion to copy and save all the files from the source_code_upload_path discarding the root directories and maintain the files paths starting from the selected folder of the source code into the original_source_code_path.
+            It then copies all the contents of the original_source_code_path to the localized_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_original_source_code_path() function to get and return a specific project source code's original_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_localized_source_code_path() function to get and return a specific project source code's localized_source_code_path. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - set_locales_commons_paths(commons_paths list) function to perform the following only if commons_paths is not empty:
+                - Initialize and assign the veriable:
+                    - locales_commons_paths = commons_paths
+                
+                - Update the following record for the source code based on its ID in the DB:
+                    - locales_commons_paths
+                
+            This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_locales_commons_paths() function to get and return a specific project source code's locales_commons_paths list. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - merge_locale_commons(locales_commons_paths) function to merge the JSON files in each locales_commons_paths path into one single JSON file named as "commons.json" and save it in the commons_path. It performs this action only if the source code's status = "Completed", otherwise it throws an exception/error. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - export_files() function to zip and export the files'z zip to the OS Downloads folder for the specific source code based on its project unique ID and source code unique ID in the localized_source_code_path. It Downloads the entire localized_source_code_path's content in a zip file. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - get_source_code_source_locale() to get the source_code source locale from the source_code's record. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+            - get_source_code_target_locales() to get all the source_code_target_locales of a specific source_code from the source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - get_source_code_target_locale() to get any specific source_code_target_locale from the source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - add_source_code_target_locale() to add a new source_code_target_locale record for a specific source_code to the source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - update_source_code_target_locale() to update any source_code_target_locale record of a specific source_code in the source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            - delete_source_code_target_locale() to delete any source_code_target_locale record of a specific source_code from the source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+            _ delete_source_code_target_locales() to delete all source_code_target_locales of a specific source_code from the source_code_target_locales table. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox.
+
+        - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
+
+            
+
+
+
+
+    - PROMPT:
+    Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
+    Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+    Please provide any adjustments required in other classes affected by this class specification. Provide the changes/adjustments in code snippets under the class names affected in logical order after the full development of the class described below:
+
+    
+    - L10nManager class:
+        - The L10nManager defines and executes all localization management procedures of the app. 
+        - It inherits the SourceCodeManager class.
+        - It defines and executes the following functions and functionalities:
+            - reset_l10n() function to delete all the contents of the localized_source_code_path and then copy all the contents of the original_source_code_path to the localized_source_code_path. 
+            
+            - localize_source_code() function to do the following:
+
+                - Calls the reset_l10n() function to delete and recopy all the contents of the localized_source_code_path from the original_source_code_path. 
+
+                - Calls the required classes from the localizers module to localize the files based on the source code's "type" attribute value. The specific class from the localizers module is called based on the "type" attribute of the source code as follows:
+                    - if type = "Web App", then WebAppBasedLocalizer's process_l10n() is called 
+                    - if type = "Android App", then AndroidAppBasedLocalizer's process_l10n() is called 
+                    - if type = "iOS App", then IOSAppBasedLocalizer's process_l10n() is called 
+                    - if type = "Java App", then JavaAppBasedLocalizer's process_l10n() is called
+                
+                - When the function calls the appropriate class based on the source code's type attribute value, it passes it all the required arguments to initialize and execute its localization logic. This function handles and returns all possible exceptions and errors displayable later in a QMessageBox. 
+
+        - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
+

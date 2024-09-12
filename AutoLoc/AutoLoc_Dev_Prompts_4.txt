@@ -1,0 +1,702 @@
+Classes: app_ui module classes and starter file:
+
+    App's starter file:
+
+    - autoloc.py file:
+        - The autoloc.py file is the only entry point of the AutoLoc app.
+        - It calls the MainAppWindow and executes the Application to render the app's UI.
+        - It is the AutoLoc app's only allowed entry point of execution.
+
+
+
+
+    - MainAppWindow Class:
+        - The MainAppWindow is the main class of the AutoLoc app. It consolidates all the other classes logic in one place. It is the only class called in the autoloc.py file to start and run the app. 
+        - It calls the AppManager and the DBManager to execute startup procedures as the first procedures of the app.
+        - It makes sure the AppManager passes on all its startup procedures without any failure before any other process is allowed on the app.
+        - It implements and displays all the exceptions/errors QMessageBoxes from the AppManager class.
+        - It defines the AutoLoc app's main layout which includes the following layouts with their corresponding widgets:
+            - main_layout: MainAppWindow's layout 
+            - header_layout: in main_layout to accommodate HeaderWidget
+            - body_layout: inside main_layout to accommodate side_bar_layout and panel_layout
+            - side_bar_layout: in main_layout to accommodate SideBarWidget
+            - panel_layout: in main_layout to accommodate any QWidget, QStackedWidget, and QTabWidget of the app 
+            - footer_layout: in main_layout to accommodate FooterWidget
+            - Note: the panel_layout will accommodate any other QWidget class defined below.
+            - Please read the attached AutoLoc_App_Design PDF document to see how the MainAppWindow layouts are designed. 
+    
+
+
+    - HeaderWidget class
+        - The HeaderWidget class is a QWidget class that defines the layout and components of the app's header widget meant to be rendered in the header_layout of the MainAppWindow class. 
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the HeaderWidget layouts and components are designed. 
+
+
+
+
+    - SideBarWidget class
+        - The SideBarWidget class is a QWidget class that defines the layout and components of the app's sidebar widget meant to be rendered in the side_bar_layout of the MainAppWindow class.
+
+        - It defines all the sidebar buttons as the main menu items of the app.  
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SideBarWidget layouts and components are designed. 
+
+
+
+
+    - FooterWidget class
+        - The FooterWidget class is a QWidget class that defines the layout and components of the app's footer widget meant to be rendered in the footer_layout of the MainAppWindow class.
+
+        - It defines all the labels shown in the app's footer.  
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the FooterWidget layouts and components are designed. 
+
+
+
+
+    - HomeWidget class
+        - The HomeWidget class is a QWidget class that defines the layout and components of the app's home widget meant to be rendered in the panel_layout of the MainAppWindow class.
+
+        - It renders a banner image for the app.  
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the HomeWidget layouts and components are designed. 
+
+
+
+
+    - SettingsStackedWidget class
+        - The SettingsStackedWidget class is a QWidget class that defines the layout and components of the app's settings stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
+
+        - It renders in a stack all the following QWidget classes:
+            - SettingsWidget class
+            - LocalesWidget class
+            - LocaleWidget class
+            - AddLocaleWidget class
+            - UpdateLocaleWidget class
+
+        - It defines the following buttons in the stack_buttons_layout:
+            - "General" to point to SettingsWidget
+            - "Locales" to point LocalesWidget
+            - "Add Locale" to point to AddLocaleWidget
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SettingsStackedWidget layouts and components are designed following the sample for "Any QStackedWidget". 
+
+
+
+    
+    - SettingsWidget class
+        - The SettingsWidget class is a QWidget class that defines the layout and components of the app's settings widget meant to be rendered in the SettingsStackedWidget class.
+
+        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
+        - It renders an Object Data Form with the following:
+            - Label: Dark Mode, Data: QCheckBox where checked = SettingManager.set_ui_mode('Dark Mode') and unchecked = SettingManager.set_ui_mode('Light Mode')
+            - Label: Localization Setting, Data: QCheckBox where checked = SettingManager.set_html_is_duplicated('True') and unchecked = SettingManager.set_html_is_duplicated('False'), Data: key_format QRadio where "Simple Key" if selected will update SettingManager.set_key_format('Simple Key') and "Namespaced Key with File Path" if selected will update SettingManager.set_key_format('Namespaced Key with File Path')
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SettingsWidget layouts and components are designed. 
+
+
+
+
+    - LocalesWidget class
+        - The LocalesWidget class is a QWidget class that defines the layout and components of the app's locales widget meant to be rendered in the SettingsStackedWidget class.
+
+        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
+        - It renders a Table Data with the following:
+            - Table Column Names:
+                - Name 
+                - Code 
+            - Table Rows Data:
+                - Each locale's name 
+                - Each locale's code 
+            
+            - The "Add" button renders the AddLocaleWidget class in the stack.
+            - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
+                - "Delete All": will delete all locales records in the DB
+                - "Cancel": will abort the deletion of records. 
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the LocalesWidget layouts and components are designed. 
+
+
+
+
+    - LocaleWidget class
+        - The LocaleWidget class is a QWidget class that defines the layout and components of the app's one locale widget meant to be rendered in the SettingsStackedWidget class.
+
+        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
+        - It renders an Object Data with the following:
+            - Labels:
+                - Name 
+                - Code 
+            - Data:
+                - The locale's name 
+                - The locale's code
+            
+            - The "Add" button renders the AddLocaleWidget class in the stack.
+            - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
+                - "Delete": will delete the specific locale record in the DB
+                - "Cancel": will abort the deletion of the record.
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the LocaleWidget layouts and components are designed. 
+
+
+
+
+    - AddLocaleWidget class
+        - The AddLocaleWidget class is a QWidget class that defines the layout and components of the app's adding one locale widget meant to be rendered in the SettingsStackedWidget class.
+
+        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
+        - It renders an Object Data Add Form with the following:
+            - Labels:
+                - Name 
+                - Code 
+            - Data:
+                - The locale's name 
+                - The locale's code
+            - Submit button under the form to submit the form data to the DB
+            
+            - The "Cancel" button aborts adding and renders the LocalesWidget class in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the AddLocaleWidget layouts and components are designed. 
+
+
+
+
+    - UpdateLocaleWidget class
+        - The UpdateLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one locale widget meant to be rendered in the SettingsStackedWidget class.
+
+        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
+        - It renders an Object Data Update Form with the following:
+            - Labels:
+                - Name 
+                - Code 
+            - Data:
+                - The locale's name 
+                - The locale's code
+            - Submit button under the form to submit the form data to the DB
+            
+            - The "Cancel" button aborts updating and renders the LocaleWidget being updated in its Object Data record in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateLocaleWidget layouts and components are designed. 
+
+
+
+
+    - ProjectsStackedWidget class
+        - The ProjectsStackedWidget class is a QStackedWidget class that defines the layout and components of the app's projects stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
+
+        - It renders in a stack all the following QWidget classes:
+            - ProjectsWidget class
+            - ProjectWidget class
+            - AddProjectWidget class
+            - UpdateProjectWidget class
+
+        - It defines the following buttons in the stack_buttons_layout:
+            - "Projects" to point to ProjectsWidget
+            - "Add Project" to point AddProjectWidget
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the ProjectsStackedWidget layouts and components are designed following the sample for "Any QStackedWidget".
+
+
+
+
+    - ProjectsWidget class
+        - The ProjectsWidget class is a QWidget class that defines the layout and components of the app's projects widget meant to be rendered in the ProjectsStackedWidget class.
+
+        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
+
+        - It renders a Table Data with the following:
+            - Table Column Names:
+                - Name 
+                - Client
+                - Status 
+                - Start Date 
+                - End Date 
+
+            - Table Rows Data:
+                - Each project's name (this should be a link to the specific project opening in ProjectWidget)
+                - Each project's client 
+                - Each project's status 
+                - Each project's start date 
+                - Each project's end date  
+            
+            - The "Add" button renders the AddProjectWidget class in the stack.
+            - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
+                - "Delete All": will delete all projects records in the DB
+                - "Cancel": will abort the deletion of records. 
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the ProjectsWidget layouts and components are designed. 
+
+
+
+
+    - ProjectWidget class
+        - The ProjectWidget class is a QWidget class that defines the layout and components of the app's one project widget meant to be rendered in the ProjectsStackedWidget class.
+
+        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
+
+        - It renders an Object Data with the following:
+            - Labels:
+                - Name 
+                - Unique ID 
+                - Client
+                - Description 
+                - Status 
+                - Start Date 
+                - End Date 
+                - Last Updated Date 
+                - Lead Engineer 
+            - Data:
+                - The project's name
+                - The project's unique ID 
+                - The project's client 
+                - The project's description
+                - The project's status 
+                - The project's start date 
+                - The project's end date
+                - The project's last updated date 
+                - The project's lead engineer 
+            
+            - The "Add" button renders the AddProjectWidget class in the stack.
+            - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
+                - "Delete": will delete the specific project's record in the DB
+                - "Cancel": will abort the deletion of the record.
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the ProjectWidget layouts and components are designed. 
+
+
+
+
+
+    - AddProjectWidget class
+        - The AddProjectWidget class is a QWidget class that defines the layout and components of the app's adding one project widget meant to be rendered in the ProjectsStackedWidget class.
+
+        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
+
+        - It renders an Object Data Add Form with the following:
+            - Labels:
+                - Name 
+                - Unique ID 
+                - Client
+                - Description 
+                - Status 
+                - Start Date 
+                - End Date 
+                - Last Updated Date 
+                - Lead Engineer 
+            - Data:
+                - The project's name
+                - The project's unique ID 
+                - The project's client 
+                - The project's description
+                - The project's status 
+                - The project's start date 
+                - The project's end date
+                - The project's last updated date 
+                - The project's lead engineer 
+            - Submit button under the form to submit the form data to the DB
+            
+            - The "Cancel" button aborts adding and renders the ProjectsWidget class in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the AddProjectWidget layouts and components are designed. 
+
+
+
+
+    - UpdateProjectWidget class
+        - The UpdateProjectWidget class is a QWidget class that defines the layout and components of the app's updating one project widget meant to be rendered in the ProjectsStackedWidget class.
+
+        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
+
+        - It renders an Object Data Update Form with the following:
+            - Labels:
+                - Name 
+                - Unique ID 
+                - Client
+                - Description 
+                - Status 
+                - Start Date 
+                - End Date 
+                - Last Updated Date 
+                - Lead Engineer 
+            - Data:
+                - The project's name
+                - The project's unique ID 
+                - The project's client 
+                - The project's description
+                - The project's status 
+                - The project's start date 
+                - The project's end date
+                - The project's last updated date 
+                - The project's lead engineer 
+            - Submit button under the form to submit the form data to the DB
+            
+            - The "Cancel" button aborts updating and renders the ProjectsWidget class in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateProjectWidget layouts and components are designed. 
+
+
+
+
+    - SourceCodesStackedWidget class
+        - The SourceCodesStackedWidget class is a QStackedWidget class that defines the layout and components of the app's source codes stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
+
+        - It renders in a stack all the following QWidget classes:
+            - SourceCodesWidget class
+            - SourceCodeWidget class
+            - AddSourceCodeWidget class
+            - UpdateSourceCodeWidget class
+            - MergeSourceCodeLocalesCommonsWidget class 
+            - SourceCodeTargetLocalesWidget class
+            - SourceCodeTargetLocaleWidget class 
+            - AddSourceCodeTargetLocaleWidget class 
+            - UpdateSourceCodeTargetLocaleWidget class
+            - L10nWidget class 
+
+
+        - It defines the following buttons in the stack_buttons_layout:
+            - "Source Codes" to point to SourceCodesWidget
+            - "Add Source Code" to point AddSourceCodeWidget
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodesStackedWidget layouts and components are designed following the sample for "Any QStackedWidget".
+
+
+
+
+    - SourceCodesWidget class
+        - The SourceCodesWidget class is a QWidget class that defines the layout and components of the app's source codes widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders a Table Data with the following:
+            - Table Column Names:
+                - Project ID
+                - Name 
+                - Type 
+                - Source Locale
+                - Target Locales 
+                - Status 
+
+            - Table Rows Data:
+                - Each source code's name (this should be a link to the specific source code opening in SourceCodeWidget)
+                - Each source code's project name  
+                - Each source code's name 
+                - Each source code's type
+                - Each source code's source locale code
+                - Each source code's target locales codes in comma-separated list
+                - Each source code's status 
+            
+            - Buttons in form_buttons_layout: 
+                - The "Add" button renders the AddSourceCodeWidget class in the stack.
+                - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
+                    - "Delete All": will delete all source codes records in the DB
+                    - "Cancel": will abort the deletion of records. 
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodesWidget layouts and components are designed. 
+
+
+
+
+    - SourceCodeWidget class
+        - The SourceCodeWidget class is a QWidget class that defines the layout and components of the app's one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data with the following:
+            - Labels:
+                - Project ID
+                - Name 
+                - Unique ID 
+                - Type
+                - Source Locale 
+                - Original Code Path 
+                - Commons Paths 
+                - Localized Code Path 
+                - Status 
+                - Notes 
+            - Data:
+                - The source code's Project ID (showing Project's Name: Unique ID in a select field to select)
+                - The source code's Name
+                - The source code's unique ID 
+                - The source code's client 
+                - The source code's description
+                - The source code's status 
+                - The source code's notes 
+            
+            - Buttons in form_buttons_layout: 
+                - The "Add" button renders the AddSourceCodeWidget class in the stack.
+                - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
+                    - "Delete": will delete the specific source code's record in the DB
+                    - "Cancel": will abort the deletion of the record.
+                - The "Merge Commons" button renders the MergeSourceCodeLocalesCommonsWidget from the stack.
+                - The "Export Files" button triggers the SourceCodeManager's export_files() function and downloads the specific source code's files in a zip file in the Downloads folder of the host OS.  
+                - The "Localize" button renders the L10nWidget with this SourceCode's ID. The L10nWidget class is defined later below. 
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeWidget layouts and components are designed. 
+
+
+
+
+    - AddSourceCodeWidget class
+        - The AddSourceCodeWidget class is a QWidget class that defines the layout and components of the app's adding one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data Add Form with the following:
+            - Labels:
+                - Upload Source Code (file dialog for choosing and uploading a directory containing the source code)
+                - Project ID
+                - Name 
+                - Unique ID 
+                - Type
+                - Source Locale 
+                - Original Code Path 
+                - Commons Paths 
+                - Localized Code Path 
+                - Status 
+                - Notes 
+            - Data:
+                - The source code's Project ID (showing Project's Name: Unique ID in a select field to select)
+                - The source code's Name
+                - The source code's unique ID 
+                - The source code's client 
+                - The source code's description
+                - The source code's status 
+                - The source code's notes 
+
+            - Submit button under the form to submit the form data to the DB. The submit will first get and copy the source code according to the L10nManager.copy_source_code_files() function. It then records the form data to the DB. Once the record is successfull, this class trigers the AddSourceCodeCommonsPathsWidget to render in the stack and parses it the source code ID. 
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts adding and renders the SourceCodesWidget class in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the AddSourceCodeWidget layouts and components are designed.  
+
+
+
+
+    - UpdateSourceCodeWidget class
+        - The UpdateSourceCodeWidget class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager and L10nManager classes for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data Update Form with the following:
+            - Labels:
+                - Project ID
+                - Name 
+                - Unique ID 
+                - Type
+                - Source Locale 
+                - Original Code Path 
+                - Commons Paths 
+                - Localized Code Path 
+                - Status 
+                - Notes 
+            - Data:
+                - The source code's Project ID (showing Project's Name: Unique ID in a select field to select)
+                - The source code's Name
+                - The source code's unique ID 
+                - The source code's client 
+                - The source code's description
+                - The source code's status 
+                - The source code's notes
+
+            - Submit button under the form to submit the form data to the DB
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts updating and renders back the SourceCodeWidget object being updated in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateSourceCodeWidget layouts and components are designed. 
+    
+
+
+
+    - MergeSourceCodeLocalesCommonsWidget class
+        - The MergeSourceCodeLocalesCommonsWidget class is a QWidget class that defines the layout and components of the app's merging source code commons paths widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data Add Form with the following:
+            - Labels:
+                - Source Code ID (autogenerated from the source code's ID at button click)
+                - Locales Commons Paths (file dialog for multiple directories selectable)
+            - Data:
+                - The source code's ID
+                - The locales commons paths in a list to save in DB  
+
+            - Submit button under the form to submit the form data to the SourceCodeManager's merge_locale_commons() function to merge the JSON files in each commons path into one JSON file named as "commons.json". 
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts adding and renders the SourceCodesWidget class in the stack.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the MergeSourceCodeLocalesCommonsWidget layouts and components are designed.
+
+
+
+
+    - SourceCodeTargetLocalesWidget class
+        - The SourceCodeTargetLocalesWidget class is a QWidget class that defines the layout and components of the app's source code target locales widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders a Table Data with the following:
+            - Table Column Names:
+                - Source Code ID 
+                - Name 
+                - Code
+                - Action 
+
+            - Table Rows Data:
+                - Each traget locale's source code Name: Unique ID (this should be a link to the specific source code opening in SourceCodeWidget)
+                - Each source code target locale's name (this should be a link to the specific source code target locale opening in SourceCodeTargetLocaleWidget)
+                - Each source code target locale's code 
+                - Each source code target locale's "Delete" button to delete the specific source code target locale from the source code's records in DB  
+            
+            - Buttons in form_buttons_layout: 
+                - The "Add" button renders the AddSourceCodeTargetLocaleWidget class in the stack. The button click should pick along the source code's ID to the AddSourceCodeTargetLocaleWidget as argument. 
+                - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
+                    - "Delete All": will delete all source code target locales records in the DB for the specific source code by ID.
+                    - "Cancel": will abort the deletion of records. 
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeTargetLocalesWidget layouts and components are designed. 
+
+
+
+
+    - SourceCodeTargetLocaleWidget class
+        - The SourceCodeTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's one source code target locale widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data with the following:
+            - Labels:
+                - Source Code ID 
+                - Name 
+                - Code
+                - Action 
+            - Data:
+                - The traget locale's source code Name: Unique ID (this should be a link to the specific source code opening in SourceCodeWidget)
+                - The source code target locale's name (this should be a link to the specific source code target locale opening in SourceCodeTargetLocaleWidget)
+                - The source code target locale's code
+            
+            - Buttons in form_buttons_layout: 
+                - The "Add" button renders the AddSourceCodeTargetLocaleWidget class in the stack. This button's click should take along the source code's ID as argument to the AddSourceCodeTargetLocaleWidget. 
+                - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
+                    - "Delete": will delete the specific source code target locale's record in the DB
+                    - "Cancel": will abort the deletion of the record.
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeTargetLocaleWidget layouts and components are designed. 
+
+
+
+
+    - AddSourceCodeTargetLocaleWidget class
+        - The AddSourceCodeTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's adding one source code target locale widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data Add Form with the following:
+            - Labels:
+                - Source Code ID 
+                - Name 
+                - Code
+                - Action 
+            - Data:
+                - The traget locale's source code Name: Unique ID (automatically added from th source code's ID)
+                - The source code target locale's name (this should be a select field)
+                - The source code target locale's code (auto-updated select field based on the source code's name selection)
+
+            - Submit button under the form to submit the form data to the DB
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts adding and renders the SourceCodeTargetLocalesWidget class in the stack using the source code's ID too.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the AddSourceCodeTargetLocaleWidget layouts and components are designed. 
+
+
+
+
+    - UpdateSourceCodeTargetLocaleWidget class
+        - The UpdateSourceCodeTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one source code target locale widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It renders an Object Data Update Form with the following:
+            - Labels:
+                - Labels:
+                - Source Code ID 
+                - Name 
+                - Code
+                - Action 
+            - Data:
+                - The traget locale's source code Name: Unique ID (automatically added from th source code's ID)
+                - The source code target locale's name (this should be a select field)
+                - The source code target locale's code (auto-updated select field based on the source code's name selection)
+            - Submit button under the form to submit the form data to the DB
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts updating and renders back the SourceCodeTargetLocaleWidget object being updated in the stack using the source code's ID too.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateSourceCodeTargetLocaleWidget layouts and components are designed. 
+    
+
+
+    - L10nWidget class:
+        - The L10nWidget displays the localization process for each source code based on source code ID. It takes in the source code ID as argument and parse it to the L10nManager class to handle the localization procedures appropriate for the source code. 
+
+        - It uses the L10nManager class for all its relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the L10nManager, WebAppBasedLocalizer, and all the classes of the web_localizers module.
+
+        - It is a QWidget class that defines the layout and components of the app's localization process widget meant to be rendered in the SourceCodesStackedWidget class.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the L10nWidget layouts and components are designed. 
+
+
+
+
+    - Styles class 
+        - The Styles class of the AutoLoc app defines the CSS for styling all the layouts, widgets, buttons, labels, and other components of the app. 
+
+        - It is called in any QWidget class requiring styling. 
+
