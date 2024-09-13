@@ -1,0 +1,644 @@
+Read this file as the continuation of the first file given.
+
+7. setting_manager.py:
+
+from db_manager import DBManager
+from error_manager import (
+    InitializationError,
+    DatabaseError,
+    InvalidUserInputError,
+    LocaleManagementError,
+    FileTypeError
+)
+
+class SettingManager:
+    """
+    The SettingManager class is responsible for managing application settings,
+    locales, and file types using the DBManager's CRUD functionalities.
+    """
+
+    def __init__(self):
+        """
+        Initializes the SettingManager by creating an instance of DBManager.
+        """
+        try:
+            self.db_manager = DBManager()  # Initialize DBManager
+        except InitializationError as e:
+            raise InitializationError(f"SettingManager Initialization Error: {str(e)}")
+
+    def update_app_settings(self, settings):
+        """
+        Updates the application settings in the app_settings table.
+        :param settings: A dictionary containing the settings to update.
+        :return: The updated app settings record.
+        :raises DatabaseError: If there is an error during the update.
+        """
+        try:
+            return self.db_manager.update_record('app_settings', 1, settings)
+        except DatabaseError as e:
+            raise DatabaseError(f"SettingManager Update App Settings Error: {str(e)}")
+
+    def reset_db(self):
+        """
+        Resets the database by calling the reset_db method from DBManager.
+        :raises DatabaseError: If there is an error during the reset.
+        """
+        try:
+            self.db_manager.reset_db()
+        except DatabaseError as e:
+            raise DatabaseError(f"SettingManager Reset DB Error: {str(e)}")
+
+    def get_locales(self):
+        """
+        Retrieves all locales from the locales table.
+        :return: A list of all locales.
+        :raises LocaleManagementError: If there is an error during retrieval.
+        """
+        try:
+            return self.db_manager.get_records('locales')
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Get Locales Error: {str(e)}")
+
+    def get_locale(self, locale_id):
+        """
+        Retrieves a specific locale by ID from the locales table.
+        :param locale_id: The ID of the locale to retrieve.
+        :return: The locale record.
+        :raises LocaleManagementError: If there is an error during retrieval.
+        """
+        try:
+            return self.db_manager.get_record('locales', locale_id)
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Get Locale Error: {str(e)}")
+
+    def add_locale(self, name, code):
+        """
+        Adds a new locale to the locales table.
+        :param name: The name of the locale.
+        :param code: The code of the locale.
+        :return: The inserted locale record.
+        :raises LocaleManagementError: If there is an error during insertion.
+        """
+        try:
+            return self.db_manager.insert_record('locales', {'name': name, 'code': code})
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Add Locale Error: {str(e)}")
+
+    def update_locale(self, locale_id, data):
+        """
+        Updates a specific locale in the locales table.
+        :param locale_id: The ID of the locale to update.
+        :param data: A dictionary with updated locale information.
+        :return: The updated locale record.
+        :raises LocaleManagementError: If there is an error during update.
+        """
+        try:
+            return self.db_manager.update_record('locales', locale_id, data)
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Update Locale Error: {str(e)}")
+
+    def delete_locale(self, locale_id):
+        """
+        Deletes a specific locale from the locales table.
+        :param locale_id: The ID of the locale to delete.
+        :return: The deleted locale record.
+        :raises LocaleManagementError: If there is an error during deletion.
+        """
+        try:
+            return self.db_manager.delete_record('locales', locale_id)
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Delete Locale Error: {str(e)}")
+
+    def delete_locales(self):
+        """
+        Deletes all locales from the locales table.
+        :return: List of all deleted locale records.
+        :raises LocaleManagementError: If there is an error during deletion.
+        """
+        try:
+            return self.db_manager.delete_records('locales')
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Delete Locales Error: {str(e)}")
+
+    def get_file_types(self):
+        """
+        Retrieves all file types from the file_types table.
+        :return: A list of all file types.
+        :raises FileTypeError: If there is an error during retrieval.
+        """
+        try:
+            return self.db_manager.get_records('file_types')
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Get File Types Error: {str(e)}")
+
+    def get_file_type(self, file_type_id):
+        """
+        Retrieves a specific file type by ID from the file_types table.
+        :param file_type_id: The ID of the file type to retrieve.
+        :return: The file type record.
+        :raises FileTypeError: If there is an error during retrieval.
+        """
+        try:
+            return self.db_manager.get_record('file_types', file_type_id)
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Get File Type Error: {str(e)}")
+
+    def add_file_type(self, code_type, name, extension):
+        """
+        Adds a new file type to the file_types table.
+        :param code_type: The type of code (e.g., 'Web App').
+        :param name: The name of the file type.
+        :param extension: The file extension (e.g., '.html').
+        :return: The inserted file type record.
+        :raises FileTypeError: If there is an error during insertion.
+        """
+        try:
+            return self.db_manager.insert_record('file_types', {
+                'code_type': code_type,
+                'name': name,
+                'extension': extension,
+                'is_active': True
+            })
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Add File Type Error: {str(e)}")
+
+    def update_file_type(self, file_type_id, data):
+        """
+        Updates a specific file type in the file_types table.
+        :param file_type_id: The ID of the file type to update.
+        :param data: A dictionary with updated file type information.
+        :return: The updated file type record.
+        :raises FileTypeError: If there is an error during update.
+        """
+        try:
+            return self.db_manager.update_record('file_types', file_type_id, data)
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Update File Type Error: {str(e)}")
+
+    def delete_file_type(self, file_type_id):
+        """
+        Deletes a specific file type from the file_types table.
+        :param file_type_id: The ID of the file type to delete.
+        :return: The deleted file type record.
+        :raises FileTypeError: If there is an error during deletion.
+        """
+        try:
+            return self.db_manager.delete_record('file_types', file_type_id)
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Delete File Type Error: {str(e)}")
+
+    def delete_file_types(self):
+        """
+        Deletes all file types from the file_types table.
+        :return: List of all deleted file type records.
+        :raises FileTypeError: If there is an error during deletion.
+        """
+        try:
+            return self.db_manager.delete_records('file_types')
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Delete File Types Error: {str(e)}")
+
+
+8. test_setting_manager.py:
+
+    from setting_manager import SettingManager
+    from error_manager import (
+        InitializationError,
+        DatabaseError,
+        LocaleManagementError,
+        FileTypeError
+    )
+
+    # Create an instance of SettingManager
+    setting_manager = SettingManager()
+
+    # 1. Test `update_app_settings` function
+    try:
+        settings = {'dark_mode': True, 'duplicate_html': True, 'use_key_namespace': False}
+        updated_settings = setting_manager.update_app_settings(settings)
+        assert updated_settings['dark_mode'] is True, f"Expected True, got {updated_settings['dark_mode']}"
+        assert updated_settings['duplicate_html'] is True, f"Expected True, got {updated_settings['duplicate_html']}"
+        assert updated_settings['use_key_namespace'] is False, f"Expected False, got {updated_settings['use_key_namespace']}"
+        print("Test update_app_settings: Passed")
+    except DatabaseError as e:
+        print(f"Test update_app_settings: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test update_app_settings: Failed with Exception: {str(e)}")
+
+    # 2. Test `reset_db` function
+    try:
+        result = setting_manager.reset_db()
+        assert result is None, f"Unexpected result: {result}"
+        print("Test reset_db: Passed")
+    except DatabaseError as e:
+        print(f"Test reset_db: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test reset_db: Failed with Exception: {str(e)}")
+
+    # 3. Test `get_locales` function
+    try:
+        locales = setting_manager.get_locales()
+        assert isinstance(locales, list), f"Expected list, got {type(locales)}"
+        print("Test get_locales: Passed")
+    except LocaleManagementError as e:
+        print(f"Test get_locales: Failed with LocaleManagementError: {str(e)}")
+    except Exception as e:
+        print(f"Test get_locales: Failed with Exception: {str(e)}")
+
+    # # 4. Test `get_locale` function
+    # try:
+    #     locale_id = 1  # Assume 1 is a valid ID
+    #     locale = setting_manager.get_locale(locale_id)
+    #     assert isinstance(locale, sqlite3.Row), f"Expected sqlite3.Row, got {type(locale)}"
+    #     assert locale['id'] == locale_id, f"Expected ID {locale_id}, got {locale['id']}"
+    #     print("Test get_locale: Passed")
+    # except LocaleManagementError as e:
+    #     print(f"Test get_locale: Failed with LocaleManagementError: {str(e)}")
+    # except Exception as e:
+    #     print(f"Test get_locale: Failed with Exception: {str(e)}")
+
+    # 5. Test `add_locale` function
+    try:
+        new_locale = setting_manager.add_locale('Spanish', 'es-ES')
+        assert new_locale['name'] == 'Spanish', f"Expected 'Spanish', got {new_locale['name']}"
+        assert new_locale['code'] == 'es-ES', f"Expected 'es-ES', got {new_locale['code']}"
+        print("Test add_locale: Passed")
+    except LocaleManagementError as e:
+        print(f"Test add_locale: Failed with LocaleManagementError: {str(e)}")
+    except Exception as e:
+        print(f"Test add_locale: Failed with Exception: {str(e)}")
+
+    # 6. Test `update_locale` function
+    try:
+        locale_id = new_locale['id']
+        updated_locale = setting_manager.update_locale(locale_id, {'name': 'French', 'code': 'fr-FR'})
+        assert updated_locale['name'] == 'French', f"Expected 'French', got {updated_locale['name']}"
+        assert updated_locale['code'] == 'fr-FR', f"Expected 'fr-FR', got {updated_locale['code']}"
+        print("Test update_locale: Passed")
+    except LocaleManagementError as e:
+        print(f"Test update_locale: Failed with LocaleManagementError: {str(e)}")
+    except Exception as e:
+        print(f"Test update_locale: Failed with Exception: {str(e)}")
+
+    # 7. Test `delete_locale` function
+    try:
+        deleted_locale = setting_manager.delete_locale(locale_id)
+        assert deleted_locale['id'] == locale_id, f"Expected ID {locale_id}, got {deleted_locale['id']}"
+        assert deleted_locale['name'] == 'French', f"Expected 'French', got {deleted_locale['name']}"
+        print("Test delete_locale: Passed")
+    except LocaleManagementError as e:
+        print(f"Test delete_locale: Failed with LocaleManagementError: {str(e)}")
+    except Exception as e:
+        print(f"Test delete_locale: Failed with Exception: {str(e)}")
+
+    # 8. Test `delete_locales` function
+    try:
+        deleted_locales = setting_manager.delete_locales()
+        assert isinstance(deleted_locales, list), f"Expected list, got {type(deleted_locales)}"
+        print("Test delete_locales: Passed")
+    except LocaleManagementError as e:
+        print(f"Test delete_locales: Failed with LocaleManagementError: {str(e)}")
+    except Exception as e:
+        print(f"Test delete_locales: Failed with Exception: {str(e)}")
+
+    # 9. Test `get_file_types` function
+    try:
+        file_types = setting_manager.get_file_types()
+        assert isinstance(file_types, list), f"Expected list, got {type(file_types)}"
+        print("Test get_file_types: Passed")
+    except FileTypeError as e:
+        print(f"Test get_file_types: Failed with FileTypeError: {str(e)}")
+    except Exception as e:
+        print(f"Test get_file_types: Failed with Exception: {str(e)}")
+
+    # 10. Test `get_file_type` function
+    try:
+        file_type_id = 1  # Assume 1 is a valid ID
+        file_type = setting_manager.get_file_type(file_type_id)
+        assert isinstance(file_type, sqlite3.Row), f"Expected sqlite3.Row, got {type(file_type)}"
+        assert file_type['id'] == file_type_id, f"Expected ID {file_type_id}, got {file_type['id']}"
+        print("Test get_file_type: Passed")
+    except FileTypeError as e:
+        print(f"Test get_file_type: Failed with FileTypeError: {str(e)}")
+    except Exception as e:
+        print(f"Test get_file_type: Failed with Exception: {str(e)}")
+
+    # 11. Test `add_file_type` function
+    try:
+        new_file_type = setting_manager.add_file_type('Web App', 'CSS', '.css')
+        assert new_file_type['name'] == 'CSS', f"Expected 'CSS', got {new_file_type['name']}"
+        assert new_file_type['extension'] == '.css', f"Expected '.css', got {new_file_type['extension']}"
+        print("Test add_file_type: Passed")
+    except FileTypeError as e:
+        print(f"Test add_file_type: Failed with FileTypeError: {str(e)}")
+    except Exception as e:
+        print(f"Test add_file_type: Failed with Exception: {str(e)}")
+
+    # 12. Test `update_file_type` function
+    try:
+        file_type_id = new_file_type['id']
+        updated_file_type = setting_manager.update_file_type(file_type_id, {'name': 'JavaScript', 'extension': '.js'})
+        assert updated_file_type['name'] == 'JavaScript', f"Expected 'JavaScript', got {updated_file_type['name']}"
+        assert updated_file_type['extension'] == '.js', f"Expected '.js', got {updated_file_type['extension']}"
+        print("Test update_file_type: Passed")
+    except FileTypeError as e:
+        print(f"Test update_file_type: Failed with FileTypeError: {str(e)}")
+    except Exception as e:
+        print(f"Test update_file_type: Failed with Exception: {str(e)}")
+
+    # 13. Test `delete_file_type` function
+    try:
+        deleted_file_type = setting_manager.delete_file_type(file_type_id)
+        assert deleted_file_type['id'] == file_type_id, f"Expected ID {file_type_id}, got {deleted_file_type['id']}"
+        assert deleted_file_type['name'] == 'JavaScript', f"Expected 'JavaScript', got {deleted_file_type['name']}"
+        print("Test delete_file_type: Passed")
+    except FileTypeError as e:
+        print(f"Test delete_file_type: Failed with FileTypeError: {str(e)}")
+    except Exception as e:
+        print(f"Test delete_file_type: Failed with Exception: {str(e)}")
+
+    # 14. Test `delete_file_types` function
+    try:
+        deleted_file_types = setting_manager.delete_file_types()
+        assert isinstance(deleted_file_types, list), f"Expected list, got {type(deleted_file_types)}"
+        print("Test delete_file_types: Passed")
+    except FileTypeError as e:
+        print(f"Test delete_file_types: Failed with FileTypeError: {str(e)}")
+    except Exception as e:
+        print(f"Test delete_file_types: Failed with Exception: {str(e)}")
+
+
+
+9. project_manager.py:
+
+from db_manager import DBManager  # Import DBManager from the same module
+from datetime import datetime
+from error_manager import (
+    DatabaseError,
+    InitializationError,
+    InvalidUserInputError
+)
+
+class ProjectManager:
+    """
+    The ProjectManager class handles all project-related functionalities for the AutoLoc app.
+    It manages CRUD operations for projects using the DBManager.
+    """
+
+    def __init__(self):
+        try:
+            self.db_manager = DBManager()  # Initialize DBManager for database operations
+        except InitializationError as e:
+            raise InitializationError(f"ProjectManager Initialization Error: {str(e)}")
+
+    def get_projects(self):
+        """
+        Retrieves all projects from the projects table.
+        :return: A list of projects or an error message
+        """
+        try:
+            records = self.db_manager.get_records('projects')
+            return records
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Get Projects Error: {str(e)}")
+
+    def get_project(self, project_id):
+        """
+        Retrieves a specific project from the projects table.
+        :param project_id: The ID of the project to retrieve
+        :return: The project record or an error message
+        """
+        try:
+            record = self.db_manager.get_record('projects', project_id)
+            return record
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Get Project Error: {str(e)}")
+
+    def add_project(self, name, client, description, status="In Progress", start_date=None, end_date=None, lead_engineer=None):
+        """
+        Adds a new project record to the projects table.
+        :param name: Name of the project
+        :param client: Client associated with the project
+        :param description: Description of the project
+        :param status: Status of the project (default: "In Progress")
+        :param start_date: Start date of the project (optional)
+        :param end_date: End date of the project (optional)
+        :param lead_engineer: Lead engineer of the project (optional)
+        :return: The inserted project record or an error message
+        """
+        try:
+            unique_id = self._generate_unique_id(name, client)
+            current_date = datetime.now().strftime('%Y-%m-%d')
+            data = {
+                'name': name,
+                'unique_id': unique_id,
+                'client': client,
+                'description': description,
+                'status': status,
+                'start_date': start_date,
+                'end_date': end_date,
+                'last_updated_date': current_date,  # Set to the current date
+                'lead_engineer': lead_engineer
+            }
+            result = self.db_manager.insert_record('projects', data)
+            return result
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Add Project Error: {str(e)}")
+
+    def update_project(self, project_id, name, client, description, status="In Progress", start_date=None, end_date=None, lead_engineer=None):
+        """
+        Updates a project record in the projects table.
+        :param project_id: The ID of the project to update
+        :param name: New name of the project
+        :param client: New client associated with the project
+        :param description: New description of the project
+        :param status: New status of the project
+        :param start_date: New start date of the project (optional)
+        :param end_date: New end date of the project (optional)
+        :param lead_engineer: New lead engineer of the project (optional)
+        :return: The updated project record or an error message
+        """
+        try:
+            unique_id = self._generate_unique_id(name, client)
+            current_date = datetime.now().strftime('%Y-%m-%d')
+            data = {
+                'name': name,
+                'unique_id': unique_id,
+                'client': client,
+                'description': description,
+                'status': status,
+                'start_date': start_date,
+                'end_date': end_date,
+                'last_updated_date': current_date,  # Set to the current date
+                'lead_engineer': lead_engineer
+            }
+            result = self.db_manager.update_record('projects', project_id, data)
+            return result
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Update Project Error: {str(e)}")
+
+    def delete_project(self, project_id):
+        """
+        Deletes a specific project record from the projects table.
+        :param project_id: The ID of the project to delete
+        :return: The deleted project record or an error message
+        """
+        try:
+            result = self.db_manager.delete_record('projects', project_id)
+            return result
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Delete Project Error: {str(e)}")
+
+    def delete_projects(self):
+        """
+        Deletes all project records from the projects table.
+        :return: A list of deleted project records or an error message
+        """
+        try:
+            result = self.db_manager.delete_records('projects')
+            return result
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Delete Projects Error: {str(e)}")
+
+    def _abbreviate(self, text):
+        """
+        Creates an abbreviation from the given text by taking the first letter of each word.
+        :param text: The text to abbreviate
+        :return: The abbreviation as a string
+        """
+        try:
+            words = text.split()  # Split the text into words
+            abbreviation = ''.join(word[0].upper() for word in words)  # Take the first letter of each word and convert to uppercase
+            return abbreviation
+        except Exception as e:
+            raise Exception(f"ProjectManager Abbreviate Error: {str(e)}")
+
+    def _generate_unique_id(self, name, client):
+        """
+        Generates a unique identifier for a project based on the abbreviated name and client.
+        :param name: The project name
+        :param client: The client associated with the project
+        :return: A unique identifier string
+        """
+        try:
+            name_abbr = self._abbreviate(name)  # Abbreviate the project name
+            client_abbr = self._abbreviate(client)  # Abbreviate the client name
+            unique_id = f"{name_abbr}_{client_abbr}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            return unique_id
+        except Exception as e:
+            raise Exception(f"ProjectManager Generate Unique ID Error: {str(e)}")
+
+
+
+10. test_project_manager.py:
+
+    from project_manager import ProjectManager
+    from error_manager import (
+        DatabaseError,
+        InitializationError,
+        InvalidUserInputError
+    )
+
+    # Create an instance of ProjectManager
+    project_manager = ProjectManager()
+
+    # 1. Test `get_projects` function
+    try:
+        projects = project_manager.get_projects()
+        assert isinstance(projects, list), f"Expected list, got {type(projects)}"
+        print("Test get_projects: Passed")
+    except DatabaseError as e:
+        print(f"Test get_projects: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test get_projects: Failed with Exception: {str(e)}")
+
+    # 2. Test `get_project` function
+    try:
+        project_id = 1  # Assume 1 is a valid ID
+        project = project_manager.get_project(project_id)
+        assert isinstance(project, sqlite3.Row), f"Expected sqlite3.Row, got {type(project)}"
+        assert project['id'] == project_id, f"Expected ID {project_id}, got {project['id']}"
+        print("Test get_project: Passed")
+    except DatabaseError as e:
+        print(f"Test get_project: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test get_project: Failed with Exception: {str(e)}")
+
+    # 3. Test `add_project` function
+    try:
+        new_project = project_manager.add_project(
+            name="New Project",
+            client="Client A",
+            description="A test project",
+            status="In Progress",
+            start_date="2024-09-13",
+            end_date=None,
+            lead_engineer="Engineer A"
+        )
+        assert new_project['name'] == 'New Project', f"Expected 'New Project', got {new_project['name']}"
+        assert new_project['client'] == 'Client A', f"Expected 'Client A', got {new_project['client']}"
+        print("Test add_project: Passed")
+    except DatabaseError as e:
+        print(f"Test add_project: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test add_project: Failed with Exception: {str(e)}")
+
+    # 4. Test `update_project` function
+    try:
+        project_id = new_project['id']
+        updated_project = project_manager.update_project(
+            project_id,
+            name="Updated Project",
+            client="Client B",
+            description="Updated description",
+            status="Completed",
+            start_date="2024-09-13",
+            end_date="2024-12-31",
+            lead_engineer="Engineer B"
+        )
+        assert updated_project['name'] == 'Updated Project', f"Expected 'Updated Project', got {updated_project['name']}"
+        assert updated_project['client'] == 'Client B', f"Expected 'Client B', got {updated_project['client']}"
+        print("Test update_project: Passed")
+    except DatabaseError as e:
+        print(f"Test update_project: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test update_project: Failed with Exception: {str(e)}")
+
+    # 5. Test `delete_project` function
+    try:
+        deleted_project = project_manager.delete_project(project_id)
+        assert deleted_project['id'] == project_id, f"Expected ID {project_id}, got {deleted_project['id']}"
+        assert deleted_project['name'] == 'Updated Project', f"Expected 'Updated Project', got {deleted_project['name']}"
+        print("Test delete_project: Passed")
+    except DatabaseError as e:
+        print(f"Test delete_project: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test delete_project: Failed with Exception: {str(e)}")
+
+    # 6. Test `delete_projects` function
+    try:
+        deleted_projects = project_manager.delete_projects()
+        assert isinstance(deleted_projects, list), f"Expected list, got {type(deleted_projects)}"
+        print("Test delete_projects: Passed")
+    except DatabaseError as e:
+        print(f"Test delete_projects: Failed with DatabaseError: {str(e)}")
+    except Exception as e:
+        print(f"Test delete_projects: Failed with Exception: {str(e)}")
+
+    # 7. Test `_abbreviate` function
+    try:
+        text = "Sample Project"
+        abbreviation = project_manager._abbreviate(text)
+        assert abbreviation == "SP", f"Expected 'SP', got {abbreviation}"
+        print("Test _abbreviate: Passed")
+    except Exception as e:
+        print(f"Test _abbreviate: Failed with Exception: {str(e)}")
+
+    # 8. Test `_generate_unique_id` function
+    try:
+        unique_id = project_manager._generate_unique_id("Sample Project", "Client X")
+        assert isinstance(unique_id, str) and len(unique_id) > 0, f"Expected non-empty string, got {unique_id}"
+        print("Test _generate_unique_id: Passed")
+    except Exception as e:
+        print(f"Test _generate_unique_id: Failed with Exception: {str(e)}")
+

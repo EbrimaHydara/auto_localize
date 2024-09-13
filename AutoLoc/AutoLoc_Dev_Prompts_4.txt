@@ -370,10 +370,6 @@ Classes: app_ui module classes and starter file:
             - AddSourceCodeWidget class
             - UpdateSourceCodeWidget class
             - MergeSourceCodeLocalesCommonsWidget class 
-            - SourceCodeTargetLocalesWidget class
-            - SourceCodeTargetLocaleWidget class 
-            - AddSourceCodeTargetLocaleWidget class 
-            - UpdateSourceCodeTargetLocaleWidget class
             - L10nWidget class 
 
 
@@ -562,123 +558,9 @@ Classes: app_ui module classes and starter file:
                 - The "Cancel" button aborts adding and renders the SourceCodesWidget class in the stack.
             
         - Please read the attached AutoLoc_App_Design PDF document to see how the MergeSourceCodeLocalesCommonsWidget layouts and components are designed.
-
-
-
-
-    - SourceCodeTargetLocalesWidget class
-        - The SourceCodeTargetLocalesWidget class is a QWidget class that defines the layout and components of the app's source code target locales widget meant to be rendered in the SourceCodesStackedWidget class.
-
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
-
-        - It renders a Table Data with the following:
-            - Table Column Names:
-                - Source Code ID 
-                - Name 
-                - Code
-                - Action 
-
-            - Table Rows Data:
-                - Each traget locale's source code Name: Unique ID (this should be a link to the specific source code opening in SourceCodeWidget)
-                - Each source code target locale's name (this should be a link to the specific source code target locale opening in SourceCodeTargetLocaleWidget)
-                - Each source code target locale's code 
-                - Each source code target locale's "Delete" button to delete the specific source code target locale from the source code's records in DB  
-            
-            - Buttons in form_buttons_layout: 
-                - The "Add" button renders the AddSourceCodeTargetLocaleWidget class in the stack. The button click should pick along the source code's ID to the AddSourceCodeTargetLocaleWidget as argument. 
-                - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
-                    - "Delete All": will delete all source code target locales records in the DB for the specific source code by ID.
-                    - "Cancel": will abort the deletion of records. 
-
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeTargetLocalesWidget layouts and components are designed. 
-
-
-
-
-    - SourceCodeTargetLocaleWidget class
-        - The SourceCodeTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's one source code target locale widget meant to be rendered in the SourceCodesStackedWidget class.
-
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
-
-        - It renders an Object Data with the following:
-            - Labels:
-                - Source Code ID 
-                - Name 
-                - Code
-                - Action 
-            - Data:
-                - The traget locale's source code Name: Unique ID (this should be a link to the specific source code opening in SourceCodeWidget)
-                - The source code target locale's name (this should be a link to the specific source code target locale opening in SourceCodeTargetLocaleWidget)
-                - The source code target locale's code
-            
-            - Buttons in form_buttons_layout: 
-                - The "Add" button renders the AddSourceCodeTargetLocaleWidget class in the stack. This button's click should take along the source code's ID as argument to the AddSourceCodeTargetLocaleWidget. 
-                - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
-                    - "Delete": will delete the specific source code target locale's record in the DB
-                    - "Cancel": will abort the deletion of the record.
-
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeTargetLocaleWidget layouts and components are designed. 
-
-
-
-
-    - AddSourceCodeTargetLocaleWidget class
-        - The AddSourceCodeTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's adding one source code target locale widget meant to be rendered in the SourceCodesStackedWidget class.
-
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
-
-        - It renders an Object Data Add Form with the following:
-            - Labels:
-                - Source Code ID 
-                - Name 
-                - Code
-                - Action 
-            - Data:
-                - The traget locale's source code Name: Unique ID (automatically added from th source code's ID)
-                - The source code target locale's name (this should be a select field)
-                - The source code target locale's code (auto-updated select field based on the source code's name selection)
-
-            - Submit button under the form to submit the form data to the DB
-            
-            - Buttons in form_buttons_layout: 
-                - The "Cancel" button aborts adding and renders the SourceCodeTargetLocalesWidget class in the stack using the source code's ID too.
-            
-        - Please read the attached AutoLoc_App_Design PDF document to see how the AddSourceCodeTargetLocaleWidget layouts and components are designed. 
-
-
-
-
-    - UpdateSourceCodeTargetLocaleWidget class
-        - The UpdateSourceCodeTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one source code target locale widget meant to be rendered in the SourceCodesStackedWidget class.
-
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
-
-        - It renders an Object Data Update Form with the following:
-            - Labels:
-                - Labels:
-                - Source Code ID 
-                - Name 
-                - Code
-                - Action 
-            - Data:
-                - The traget locale's source code Name: Unique ID (automatically added from th source code's ID)
-                - The source code target locale's name (this should be a select field)
-                - The source code target locale's code (auto-updated select field based on the source code's name selection)
-            - Submit button under the form to submit the form data to the DB
-            
-            - Buttons in form_buttons_layout: 
-                - The "Cancel" button aborts updating and renders back the SourceCodeTargetLocaleWidget object being updated in the stack using the source code's ID too.
-            
-        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateSourceCodeTargetLocaleWidget layouts and components are designed. 
     
+
+
 
 
     - L10nWidget class:
@@ -691,6 +573,144 @@ Classes: app_ui module classes and starter file:
         - It is a QWidget class that defines the layout and components of the app's localization process widget meant to be rendered in the SourceCodesStackedWidget class.
             
         - Please read the attached AutoLoc_App_Design PDF document to see how the L10nWidget layouts and components are designed. 
+    
+
+
+
+
+
+    - TargetLocalesStackedWidget class
+        - The TargetLocalesStackedWidget class is a QStackedWidget class that defines the layout and components of the app's target locales stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
+
+        - It renders in a stack all the following QWidget classes:
+            - TargetLocalesWidget class
+            - TargetLocaleWidget class
+            - AddTargetLocaleWidget class
+            - UpdateTargetLocaleWidget class
+
+
+        - It defines the following buttons in the stack_buttons_layout:
+            - "Target Locales" to point to TargetLocalesWidget
+            - "Add Target Locale" to point AddTargetLocaleWidget
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the TargetLocalesStackedWidget layouts and components are designed following the sample for "Any QStackedWidget".
+
+
+
+
+    - TargetLocalesWidget class
+        - The TargetLocalesWidget class is a QWidget class that defines the layout and components of the app's target locale target locales widget meant to be rendered in the TargetLocalesStackedWidget class.
+
+        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
+
+        - It renders a Table Data with the following:
+            - Table Column Names:
+                - Target Locale ID 
+                - Name 
+                - Code
+                - Action 
+
+            - Table Rows Data:
+                - Each traget locale's target locale Name: Unique ID (this should be a link to the specific target locale opening in TargetLocaleWidget)
+                - Each target locale target locale's name (this should be a link to the specific target locale target locale opening in TargetLocaleWidget)
+                - Each target locale target locale's code 
+                - Each target locale target locale's "Delete" button to delete the specific target locale target locale from the target locale's records in DB  
+            
+            - Buttons in form_buttons_layout: 
+                - The "Add" button renders the AddTargetLocaleWidget class in the stack. The button click should pick along the target locale's ID to the AddTargetLocaleWidget as argument. 
+                - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
+                    - "Delete All": will delete all target locale target locales records in the DB for the specific target locale by ID.
+                    - "Cancel": will abort the deletion of records. 
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the TargetLocalesWidget layouts and components are designed. 
+
+
+
+
+    - TargetLocaleWidget class
+        - The TargetLocaleWidget class is a QWidget class that defines the layout and components of the app's one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
+
+        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
+
+        - It renders an Object Data with the following:
+            - Labels:
+                - Target Locale ID 
+                - Name 
+                - Code
+                - Action 
+            - Data:
+                - The traget locale's target locale Name: Unique ID (this should be a link to the specific target locale opening in TargetLocaleWidget)
+                - The target locale target locale's name (this should be a link to the specific target locale target locale opening in TargetLocaleWidget)
+                - The target locale target locale's code
+            
+            - Buttons in form_buttons_layout: 
+                - The "Add" button renders the AddTargetLocaleWidget class in the stack. This button's click should take along the target locale's ID as argument to the AddTargetLocaleWidget. 
+                - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
+                    - "Delete": will delete the specific target locale target locale's record in the DB
+                    - "Cancel": will abort the deletion of the record.
+
+        - Please read the attached AutoLoc_App_Design PDF document to see how the TargetLocaleWidget layouts and components are designed. 
+
+
+
+
+    - AddTargetLocaleWidget class
+        - The AddTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's adding one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
+
+        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
+
+        - It renders an Object Data Add Form with the following:
+            - Labels:
+                - Target Locale ID 
+                - Name 
+                - Code
+                - Action 
+            - Data:
+                - The traget locale's target locale Name: Unique ID (automatically added from th target locale's ID)
+                - The target locale target locale's name (this should be a select field)
+                - The target locale target locale's code (auto-updated select field based on the target locale's name selection)
+
+            - Submit button under the form to submit the form data to the DB
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts adding and renders the TargetLocalesWidget class in the stack using the target locale's ID too.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the AddTargetLocaleWidget layouts and components are designed. 
+
+
+
+
+    - UpdateTargetLocaleWidget class
+        - The UpdateTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
+
+        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
+
+        - It renders an Object Data Update Form with the following:
+            - Labels:
+                - Labels:
+                - Target Locale ID 
+                - Name 
+                - Code
+                - Action 
+            - Data:
+                - The traget locale's target locale Name: Unique ID (automatically added from th target locale's ID)
+                - The target locale target locale's name (this should be a select field)
+                - The target locale target locale's code (auto-updated select field based on the target locale's name selection)
+            - Submit button under the form to submit the form data to the DB
+            
+            - Buttons in form_buttons_layout: 
+                - The "Cancel" button aborts updating and renders back the TargetLocaleWidget object being updated in the stack using the target locale's ID too.
+            
+        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateTargetLocaleWidget layouts and components are designed. 
+    
 
 
 

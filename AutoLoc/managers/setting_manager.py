@@ -1,169 +1,195 @@
-from .db_manager import DBManager  # Import DBManager from the same module
-from app_ui.styles import Styles  # Import Styles class from app_ui module
+from db_manager import DBManager
+from error_manager import (
+    InitializationError,
+    DatabaseError,
+    InvalidUserInputError,
+    LocaleManagementError,
+    FileTypeError
+)
 
 class SettingManager:
     """
-    The SettingManager class handles all settings-related functionalities for the AutoLoc app.
-    It manages CRUD operations for the app settings using the DBManager.
+    The SettingManager class is responsible for managing application settings,
+    locales, and file types using the DBManager's CRUD functionalities.
     """
 
     def __init__(self):
-        try:
-            self.db_manager = DBManager()  # Initialize DBManager for database operations
-        except Exception as e:
-            raise Exception(f"SettingManager Initialization Error: {str(e)}")
-
-    def set_ui_mode(self, mode):
         """
-        Toggles the app's UI mode between "Light Mode" and "Dark Mode".
-        :param mode: "Light Mode" or "Dark Mode"
-        :return: Success message or error message
+        Initializes the SettingManager by creating an instance of DBManager.
         """
         try:
-            if mode not in ["Light Mode", "Dark Mode"]:
-                raise ValueError("Invalid UI mode specified.")
-            
-            # Update the mode in the database
-            result = self.db_manager.update_record('ui_modes', 1, {'mode': mode})  # Assuming ID = 1 for simplicity
+            self.db_manager = DBManager()  # Initialize DBManager
+        except InitializationError as e:
+            raise InitializationError(f"SettingManager Initialization Error: {str(e)}")
 
-            # Apply the mode to the app's UI using the Styles class
-            Styles.apply_mode(mode)
-            
-            return result
-        except Exception as e:
-            return f"SettingManager Set UI Mode Error: {str(e)}"
-
-    def set_html_is_duplicated(self, is_duplicated):
+    def update_app_settings(self, settings):
         """
-        Toggles the setting of 'html_is_duplicated' in the l10n_settings table.
-        :param is_duplicated: Boolean value to set
-        :return: Success message or error message
+        Updates the application settings in the app_settings table.
+        :param settings: A dictionary containing the settings to update.
+        :return: The updated app settings record.
+        :raises DatabaseError: If there is an error during the update.
         """
         try:
-            value = bool(is_duplicated)
-            result = self.db_manager.update_record('l10n_settings', 1, {'html_is_duplicated': value})
-            return result
-        except Exception as e:
-            return f"SettingManager Set HTML Is Duplicated Error: {str(e)}"
-
-    def html_is_duplicated(self):
-        """
-        Returns the value of 'html_is_duplicated' from the l10n_settings table.
-        :return: Boolean value or error message
-        """
-        try:
-            record = self.db_manager.get_record('l10n_settings', 1)
-            return record['html_is_duplicated'] if record else "Error retrieving HTML duplication setting."
-        except Exception as e:
-            return f"SettingManager Get HTML Is Duplicated Error: {str(e)}"
-
-    def set_key_format(self, key_format):
-        """
-        Sets the 'key_format' value in the l10n_settings table.
-        :param key_format: "Simple Key" or "Namespaced Key with File Path"
-        :return: Success message or error message
-        """
-        try:
-            if key_format not in ["Simple Key", "Namespaced Key with File Path"]:
-                raise ValueError("Invalid key format specified.")
-            result = self.db_manager.update_record('l10n_settings', 1, {'key_format': key_format})
-            return result
-        except Exception as e:
-            return f"SettingManager Set Key Format Error: {str(e)}"
-
-    def get_key_format(self):
-        """
-        Retrieves the 'key_format' value from the l10n_settings table.
-        :return: The key format value or error message
-        """
-        try:
-            record = self.db_manager.get_record('l10n_settings', 1)
-            return record['key_format'] if record else "Error retrieving key format."
-        except Exception as e:
-            return f"SettingManager Get Key Format Error: {str(e)}"
+            return self.db_manager.update_record('app_settings', 1, settings)
+        except DatabaseError as e:
+            raise DatabaseError(f"SettingManager Update App Settings Error: {str(e)}")
 
     def reset_db(self):
         """
-        Calls the reset_db function from DBManager to reset the database.
-        :return: Success message or error message
+        Resets the database by calling the reset_db method from DBManager.
+        :raises DatabaseError: If there is an error during the reset.
         """
         try:
-            result = self.db_manager.reset_db()
-            return result
-        except Exception as e:
-            return f"SettingManager Reset DB Error: {str(e)}"
+            self.db_manager.reset_db()
+        except DatabaseError as e:
+            raise DatabaseError(f"SettingManager Reset DB Error: {str(e)}")
 
     def get_locales(self):
         """
         Retrieves all locales from the locales table.
-        :return: A list of locales or error message
+        :return: A list of all locales.
+        :raises LocaleManagementError: If there is an error during retrieval.
         """
         try:
-            records = self.db_manager.get_records('locales')
-            return records
-        except Exception as e:
-            return f"SettingManager Get Locales Error: {str(e)}"
+            return self.db_manager.get_records('locales')
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Get Locales Error: {str(e)}")
 
     def get_locale(self, locale_id):
         """
-        Retrieves a specific locale from the locales table.
-        :param locale_id: The ID of the locale to retrieve
-        :return: The locale record or error message
+        Retrieves a specific locale by ID from the locales table.
+        :param locale_id: The ID of the locale to retrieve.
+        :return: The locale record.
+        :raises LocaleManagementError: If there is an error during retrieval.
         """
         try:
-            record = self.db_manager.get_record('locales', locale_id)
-            return record
-        except Exception as e:
-            return f"SettingManager Get Locale Error: {str(e)}"
+            return self.db_manager.get_record('locales', locale_id)
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Get Locale Error: {str(e)}")
 
     def add_locale(self, name, code):
         """
-        Adds a new locale record to the locales table.
-        :param name: Name of the locale
-        :param code: Code of the locale (e.g., 'en-US')
-        :return: Success message or error message
+        Adds a new locale to the locales table.
+        :param name: The name of the locale.
+        :param code: The code of the locale.
+        :return: The inserted locale record.
+        :raises LocaleManagementError: If there is an error during insertion.
         """
         try:
-            data = {'name': name, 'code': code}
-            result = self.db_manager.insert_record('locales', data)
-            return result
-        except Exception as e:
-            return f"SettingManager Add Locale Error: {str(e)}"
+            return self.db_manager.insert_record('locales', {'name': name, 'code': code})
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Add Locale Error: {str(e)}")
 
-    def update_locale(self, locale_id, name, code):
+    def update_locale(self, locale_id, data):
         """
-        Updates a locale record in the locales table.
-        :param locale_id: The ID of the locale to update
-        :param name: New name of the locale
-        :param code: New code of the locale
-        :return: Success message or error message
+        Updates a specific locale in the locales table.
+        :param locale_id: The ID of the locale to update.
+        :param data: A dictionary with updated locale information.
+        :return: The updated locale record.
+        :raises LocaleManagementError: If there is an error during update.
         """
         try:
-            data = {'name': name, 'code': code}
-            result = self.db_manager.update_record('locales', locale_id, data)
-            return result
-        except Exception as e:
-            return f"SettingManager Update Locale Error: {str(e)}"
+            return self.db_manager.update_record('locales', locale_id, data)
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Update Locale Error: {str(e)}")
 
     def delete_locale(self, locale_id):
         """
-        Deletes a specific locale record from the locales table.
-        :param locale_id: The ID of the locale to delete
-        :return: Success message or error message
+        Deletes a specific locale from the locales table.
+        :param locale_id: The ID of the locale to delete.
+        :return: The deleted locale record.
+        :raises LocaleManagementError: If there is an error during deletion.
         """
         try:
-            result = self.db_manager.delete_record('locales', locale_id)
-            return result
-        except Exception as e:
-            return f"SettingManager Delete Locale Error: {str(e)}"
+            return self.db_manager.delete_record('locales', locale_id)
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Delete Locale Error: {str(e)}")
 
     def delete_locales(self):
         """
-        Deletes all locale records from the locales table.
-        :return: Success message or error message
+        Deletes all locales from the locales table.
+        :return: List of all deleted locale records.
+        :raises LocaleManagementError: If there is an error during deletion.
         """
         try:
-            result = self.db_manager.delete_records('locales')
-            return result
-        except Exception as e:
-            return f"SettingManager Delete Locales Error: {str(e)}"
+            return self.db_manager.delete_records('locales')
+        except DatabaseError as e:
+            raise LocaleManagementError(f"SettingManager Delete Locales Error: {str(e)}")
+
+    def get_file_types(self):
+        """
+        Retrieves all file types from the file_types table.
+        :return: A list of all file types.
+        :raises FileTypeError: If there is an error during retrieval.
+        """
+        try:
+            return self.db_manager.get_records('file_types')
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Get File Types Error: {str(e)}")
+
+    def get_file_type(self, file_type_id):
+        """
+        Retrieves a specific file type by ID from the file_types table.
+        :param file_type_id: The ID of the file type to retrieve.
+        :return: The file type record.
+        :raises FileTypeError: If there is an error during retrieval.
+        """
+        try:
+            return self.db_manager.get_record('file_types', file_type_id)
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Get File Type Error: {str(e)}")
+
+    def add_file_type(self, code_type, name, extension):
+        """
+        Adds a new file type to the file_types table.
+        :param code_type: The type of code (e.g., 'Web App').
+        :param name: The name of the file type.
+        :param extension: The file extension (e.g., '.html').
+        :return: The inserted file type record.
+        :raises FileTypeError: If there is an error during insertion.
+        """
+        try:
+            return self.db_manager.insert_record('file_types', {
+                'code_type': code_type,
+                'name': name,
+                'extension': extension,
+                'is_active': True
+            })
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Add File Type Error: {str(e)}")
+
+    def update_file_type(self, file_type_id, data):
+        """
+        Updates a specific file type in the file_types table.
+        :param file_type_id: The ID of the file type to update.
+        :param data: A dictionary with updated file type information.
+        :return: The updated file type record.
+        :raises FileTypeError: If there is an error during update.
+        """
+        try:
+            return self.db_manager.update_record('file_types', file_type_id, data)
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Update File Type Error: {str(e)}")
+
+    def delete_file_type(self, file_type_id):
+        """
+        Deletes a specific file type from the file_types table.
+        :param file_type_id: The ID of the file type to delete.
+        :return: The deleted file type record.
+        :raises FileTypeError: If there is an error during deletion.
+        """
+        try:
+            return self.db_manager.delete_record('file_types', file_type_id)
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Delete File Type Error: {str(e)}")
+
+    def delete_file_types(self):
+        """
+        Deletes all file types from the file_types table.
+        :return: List of all deleted file type records.
+        :raises FileTypeError: If there is an error during deletion.
+        """
+        try:
+            return self.db_manager.delete_records('file_types')
+        except DatabaseError as e:
+            raise FileTypeError(f"SettingManager Delete File Types Error: {str(e)}")

@@ -1,5 +1,10 @@
-from .db_manager import DBManager  # Import DBManager from the same module
+from db_manager import DBManager  # Import DBManager from the same module
 from datetime import datetime
+from error_manager import (
+    DatabaseError,
+    InitializationError,
+    InvalidUserInputError
+)
 
 class ProjectManager:
     """
@@ -10,31 +15,31 @@ class ProjectManager:
     def __init__(self):
         try:
             self.db_manager = DBManager()  # Initialize DBManager for database operations
-        except Exception as e:
-            raise Exception(f"ProjectManager Initialization Error: {str(e)}")
+        except InitializationError as e:
+            raise InitializationError(f"ProjectManager Initialization Error: {str(e)}")
 
     def get_projects(self):
         """
         Retrieves all projects from the projects table.
-        :return: A list of projects or error message
+        :return: A list of projects or an error message
         """
         try:
             records = self.db_manager.get_records('projects')
             return records
-        except Exception as e:
-            return f"ProjectManager Get Projects Error: {str(e)}"
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Get Projects Error: {str(e)}")
 
     def get_project(self, project_id):
         """
         Retrieves a specific project from the projects table.
         :param project_id: The ID of the project to retrieve
-        :return: The project record or error message
+        :return: The project record or an error message
         """
         try:
             record = self.db_manager.get_record('projects', project_id)
             return record
-        except Exception as e:
-            return f"ProjectManager Get Project Error: {str(e)}"
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Get Project Error: {str(e)}")
 
     def add_project(self, name, client, description, status="In Progress", start_date=None, end_date=None, lead_engineer=None):
         """
@@ -46,7 +51,7 @@ class ProjectManager:
         :param start_date: Start date of the project (optional)
         :param end_date: End date of the project (optional)
         :param lead_engineer: Lead engineer of the project (optional)
-        :return: Success message or error message
+        :return: The inserted project record or an error message
         """
         try:
             unique_id = self._generate_unique_id(name, client)
@@ -64,8 +69,8 @@ class ProjectManager:
             }
             result = self.db_manager.insert_record('projects', data)
             return result
-        except Exception as e:
-            return f"ProjectManager Add Project Error: {str(e)}"
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Add Project Error: {str(e)}")
 
     def update_project(self, project_id, name, client, description, status="In Progress", start_date=None, end_date=None, lead_engineer=None):
         """
@@ -78,7 +83,7 @@ class ProjectManager:
         :param start_date: New start date of the project (optional)
         :param end_date: New end date of the project (optional)
         :param lead_engineer: New lead engineer of the project (optional)
-        :return: Success message or error message
+        :return: The updated project record or an error message
         """
         try:
             unique_id = self._generate_unique_id(name, client)
@@ -96,31 +101,31 @@ class ProjectManager:
             }
             result = self.db_manager.update_record('projects', project_id, data)
             return result
-        except Exception as e:
-            return f"ProjectManager Update Project Error: {str(e)}"
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Update Project Error: {str(e)}")
 
     def delete_project(self, project_id):
         """
         Deletes a specific project record from the projects table.
         :param project_id: The ID of the project to delete
-        :return: Success message or error message
+        :return: The deleted project record or an error message
         """
         try:
             result = self.db_manager.delete_record('projects', project_id)
             return result
-        except Exception as e:
-            return f"ProjectManager Delete Project Error: {str(e)}"
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Delete Project Error: {str(e)}")
 
     def delete_projects(self):
         """
         Deletes all project records from the projects table.
-        :return: Success message or error message
+        :return: A list of deleted project records or an error message
         """
         try:
             result = self.db_manager.delete_records('projects')
             return result
-        except Exception as e:
-            return f"ProjectManager Delete Projects Error: {str(e)}"
+        except DatabaseError as e:
+            raise DatabaseError(f"ProjectManager Delete Projects Error: {str(e)}")
 
     def _abbreviate(self, text):
         """
@@ -149,4 +154,3 @@ class ProjectManager:
             return unique_id
         except Exception as e:
             raise Exception(f"ProjectManager Generate Unique ID Error: {str(e)}")
-

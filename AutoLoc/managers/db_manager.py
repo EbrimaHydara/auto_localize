@@ -7,6 +7,7 @@ from error_manager import (
     FilePermissionError,
     InitializationError,
 )
+from default_data import CREATE_TABLE_STATEMENTS, DEFAULT_RECORDS
 
 class DBManager:
     """
@@ -33,6 +34,7 @@ class DBManager:
         """
         try:
             self.connection = sqlite3.connect(self.app_db_file_path)
+            self.connection.row_factory = sqlite3.Row  # Set row factory to return rows as sqlite3.Row objects
         except sqlite3.DatabaseError as e:
             raise DatabaseConnectionError(f"DBManager Connection Error: {str(e)}")
 
@@ -52,146 +54,37 @@ class DBManager:
         """
         try:
             cursor = self.connection.cursor()
-
-            # Create app_settings table
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS app_settings (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    dark_mode BOOLEAN DEFAULT FALSE,
-                    duplicate_html BOOLEAN DEFAULT FALSE,
-                    use_key_namespace BOOLEAN DEFAULT FALSE,
-                    UNIQUE(id)
-                )
-            """)
-
-            # Create file_types table
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS file_types (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    code_type TEXT,
-                    name TEXT,
-                    extension TEXT,
-                    is_active BOOLEAN DEFAULT TRUE,
-                    UNIQUE(code_type, name, extension)
-                )
-            """)
-
-            # Create other necessary tables
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS locales (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT,
-                    code TEXT,
-                    UNIQUE(name, code)
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS projects (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT,
-                    unique_id TEXT,
-                    client TEXT,
-                    description TEXT,
-                    status TEXT DEFAULT 'In Progress',
-                    start_date TEXT NULL,
-                    end_date TEXT NULL,
-                    last_updated_date TEXT NULL,
-                    lead_engineer TEXT NULL,
-                    UNIQUE(name, client, unique_id)
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS source_codes (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    project_id INTEGER,
-                    name TEXT,
-                    unique_id TEXT,
-                    code_type TEXT,
-                    source_locale TEXT,
-                    original_source_code_path TEXT NULL,
-                    commons_paths TEXT NULL,
-                    localized_source_code_path TEXT NULL,
-                    status TEXT DEFAULT 'In Progress',
-                    notes TEXT NULL,
-                    UNIQUE(project_id, name, unique_id, source_locale),
-                    FOREIGN KEY(project_id) REFERENCES projects(id)
-                )
-            """)
-            cursor.execute("""
-                CREATE TABLE IF NOT EXISTS target_locales (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT,
-                    code TEXT,
-                    source_code_id INTEGER,
-                    UNIQUE(name, code, source_code_id),
-                    FOREIGN KEY(source_code_id) REFERENCES source_codes(id)
-                )
-            """)
-
+            # Execute each create table statement from the imported dictionary
+            for table_name, create_statement in CREATE_TABLE_STATEMENTS.items():
+                cursor.execute(create_statement)
             self.connection.commit()
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Table Creation Error: {str(e)}")
 
     def insert_records(self):
         """
-        Inserts default records into the app_settings and file_types tables.
+        Inserts default records into the tables.
         """
         try:
             cursor = self.connection.cursor()
 
-            # Insert default record into app_settings table
-            cursor.execute("""
-                INSERT OR IGNORE INTO app_settings (id, dark_mode, duplicate_html, use_key_namespace) 
-                VALUES (1, FALSE, FALSE, FALSE)
-            """)
-
-            # Insert default records into locales table
-            cursor.executemany("INSERT OR IGNORE INTO locales (name, code) VALUES (?, ?)", [
-                ('Japanese', 'ja-JP'),
-                ('English (US)', 'en-US'),
-                ('Simplified Chinese (CN)', 'zh-CN'),
-                ('Traditional Chinese (TW)', 'zh-TW'),
-                ('Korean (South Korea)', 'ko-KR')
-            ])
-
-            # Insert default records into file_types table
-            file_types = [
-                ('Web App', 'HTML', '.html'),
-                ('Web App', 'JavaScript', '.js'),
-                ('Web App', 'Embedded JavaScript (EJS)', '.ejs'),
-                ('Web App', 'TypeScript', '.ts'),
-                ('Web App', 'TypeScript XML (TSX)', '.tsx'),
-                ('Web App', 'React JSX', '.jsx'),
-                ('Web App', 'Vue Single-File Component', '.vue'),
-                ('Web App', 'JSON', '.json'),
-
-                ('Android App', 'Android Layout XML Files', '.xml'),
-                ('Android App', 'Java Source File', '.java'),
-                ('Android App', 'Kotlin Source File', '.kt'),
-                ('Android App', 'Android Resource Files', '.xml'),
-                ('Android App', 'Android Manifest File', '.xml'),
-
-                ('iOS App', 'Swift Source File', '.swift'),
-                ('iOS App', 'Objective-C Implementation File', '.m'),
-                ('iOS App', 'Objective-C Header File', '.h'),
-                ('iOS App', 'iOS Localizable Strings File', '.strings'),
-                ('iOS App', 'Storyboard Interface File', '.storyboard'),
-                ('iOS App', 'XIB Interface Builder File', '.xib'),
-                ('iOS App', 'Property List Files', '.plist'),
-
-                ('Java App', 'JSF View Files', '.xhtml'),
-                ('Java App', 'Java XML File', '.xml'),
-                ('Java App', 'Java Source File', '.java'),
-                ('Java App', 'Java Properties File', '.properties')
-            ]
-
-            cursor.executemany("""
-                INSERT OR IGNORE INTO file_types (code_type, name, extension, is_active) 
-                VALUES (?, ?, ?, TRUE)
-            """, file_types)
+            # Insert default records from the imported dictionary
+            for table_name, records in DEFAULT_RECORDS.items():
+                if table_name == 'app_settings':
+                    cursor.executemany(f"""
+                        INSERT OR IGNORE INTO {table_name} (id, dark_mode, duplicate_html, use_key_namespace) 
+                        VALUES (?, ?, ?, ?)
+                    """, records)
+                elif table_name == 'locales':
+                    cursor.executemany(f"INSERT OR IGNORE INTO {table_name} (name, code) VALUES (?, ?)", records)
+                elif table_name == 'file_types':
+                    cursor.executemany(f"""
+                        INSERT OR IGNORE INTO {table_name} (code_type, name, extension, is_active) 
+                        VALUES (?, ?, ?, TRUE)
+                    """, records)
 
             self.connection.commit()
-            print("Default records inserted into the app_settings, locales, and file_types tables successfully.")
+            print("Default records inserted into the tables successfully.")
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Record Insertion Error: {str(e)}")
 
@@ -217,21 +110,37 @@ class DBManager:
             
             print("Database reset successfully by clearing all tables.")
         except (DatabaseError, DatabaseConnectionError) as e:
-            raise DatabaseError(f"DBManager Reset Error: {str(e)}")
-
-    def delete_records(self, table_name):
+            raise DatabaseError(f"DBManager DB Reset Error: {str(e)}")
+    
+    def get_records(self, table_name):
         """
-        Deletes all records from a given table.
-        :param table_name: The name of the table to clear
-        :return: Success message or error message
+        Retrieves all records from a given table.
+        :param table_name: The name of the table to query
+        :return: A list of records or an error message
         """
         try:
             cursor = self.connection.cursor()
-            cursor.execute(f"DELETE FROM {table_name}")
-            self.connection.commit()
-            return "All records deleted successfully"
+            cursor.execute(f"SELECT * FROM {table_name}")
+            return cursor.fetchall()
         except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Delete Records Error: {str(e)}")
+            raise DatabaseError(f"DBManager Get Records Error from {table_name}: {str(e)}")
+    
+    def get_child_records(self, table_name, column, value):
+        """
+        Retrieves all child records from a given table where the specified column matches the provided value.
+        :param table_name: The name of the table to query.
+        :param column: The column name to filter by (e.g., 'project_id').
+        :param value: The value to filter the records by (e.g., the specific project ID).
+        :return: A list of records or raises a DatabaseError.
+        """
+        try:
+            cursor = self.connection.cursor()
+            query = f"SELECT * FROM {table_name} WHERE {column} = ?"
+            cursor.execute(query, (value,))
+            return cursor.fetchall()
+        except sqlite3.DatabaseError as e:
+            raise DatabaseError(f"DBManager Get Child Records Error in {table_name}: {str(e)}")
+
 
     def get_record(self, table_name, record_id):
         """
@@ -245,27 +154,14 @@ class DBManager:
             cursor.execute(f"SELECT * FROM {table_name} WHERE id = ?", (record_id,))
             return cursor.fetchone()
         except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Get Record Error: {str(e)}")
-
-    def get_records(self, table_name):
-        """
-        Retrieves all records from a given table.
-        :param table_name: The name of the table to query
-        :return: A list of records or an error message
-        """
-        try:
-            cursor = self.connection.cursor()
-            cursor.execute(f"SELECT * FROM {table_name}")
-            return cursor.fetchall()
-        except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Get Records Error: {str(e)}")
-
+            raise DatabaseError(f"DBManager Get Record Error from {table_name}: {str(e)}")
+    
     def insert_record(self, table_name, data):
         """
         Inserts a record into a specified table.
         :param table_name: The name of the table to insert data into
         :param data: A dictionary containing column names as keys and data as values
-        :return: Success message or error message
+        :return: The inserted record or an error message
         """
         try:
             cursor = self.connection.cursor()
@@ -273,9 +169,10 @@ class DBManager:
             placeholders = ', '.join(['?'] * len(data))
             cursor.execute(f"INSERT INTO {table_name} ({columns}) VALUES ({placeholders})", tuple(data.values()))
             self.connection.commit()
-            return "Record inserted successfully"
+            # Fetch and return the inserted record
+            return self.get_record(table_name, cursor.lastrowid)
         except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Insert Record Error: {str(e)}")
+            raise DatabaseError(f"DBManager Insert Record Error in {table_name}: {str(e)}")
 
     def update_record(self, table_name, record_id, data):
         """
@@ -283,7 +180,7 @@ class DBManager:
         :param table_name: The name of the table to update
         :param record_id: The ID of the record to update
         :param data: A dictionary containing column names as keys and updated data as values
-        :return: Success message or error message
+        :return: The updated record or an error message
         """
         try:
             cursor = self.connection.cursor()
@@ -291,24 +188,43 @@ class DBManager:
             values = list(data.values()) + [record_id]
             cursor.execute(f"UPDATE {table_name} SET {updates} WHERE id = ?", values)
             self.connection.commit()
-            return "Record updated successfully"
+            # Fetch and return the updated record
+            return self.get_record(table_name, record_id)
         except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Update Record Error: {str(e)}")
+            raise DatabaseError(f"DBManager Update Record Error in {table_name}: {str(e)}")
 
     def delete_record(self, table_name, record_id):
         """
         Deletes a specific record from a given table.
         :param table_name: The name of the table to delete data from
         :param record_id: The ID of the record to delete
-        :return: Success message or error message
+        :return: The deleted record or an error message
         """
         try:
+            # Fetch the record before deletion
+            record_to_delete = self.get_record(table_name, record_id)
             cursor = self.connection.cursor()
             cursor.execute(f"DELETE FROM {table_name} WHERE id = ?", (record_id,))
             self.connection.commit()
-            return "Record deleted successfully"
+            return record_to_delete  # Return the deleted record
         except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Delete Record Error: {str(e)}")
+            raise DatabaseError(f"DBManager Delete Record Error from {table_name}: {str(e)}")
+    
+    def delete_records(self, table_name):
+        """
+        Deletes all records from a given table.
+        :param table_name: The name of the table to clear
+        :return: List of all deleted records or an error message
+        """
+        try:
+            # Fetch all records before deletion
+            records_to_delete = self.get_records(table_name)
+            cursor = self.connection.cursor()
+            cursor.execute(f"DELETE FROM {table_name}")
+            self.connection.commit()
+            return records_to_delete  # Return all deleted records
+        except sqlite3.DatabaseError as e:
+            raise DatabaseError(f"DBManager Delete Records Error from {table_name}: {str(e)}")
 
     def close_connection(self):
         """
