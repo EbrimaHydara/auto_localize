@@ -4,27 +4,29 @@ Classes: localizers module classes:
 
         - WebAppBasedLocalizer class:
             - The WebAppBasedLocalizer is the class responsible for localizing the source code having type = "Web App".
-            - It inherits the SourceCodeManager class.
+            - It takes source_code_id as argument at initialization.
             - It ensures that every class it calls runs on its own QThread to avoid the app freezing or disrupted. 
             - It implements and executes the following functions and functionalities:
                 - get_file_type_counts() function to get all the file paths from the localized_source_code_path and count each file type based on their file extension and record the count of each file extension in a the dictionary it returns.
 
-                - process_l10n() function that gets the dictionary returned from get_file_type_counts() function and if it is not empty, it executes the required file handler class for every file extension whose count is greater than zero. It uses if statements to control which classes gets executed only when its corresponding file extension count is greater than zero. If none of the file extension counts is greater than zero, then this function throws and returns the necessary errors/exceptions. 
-                This function handles and returns all possible exceptions and errors displayable later in a QMessageBox in L10nWidget.
+                - process_l10n() function that gets the dictionary returned from get_file_type_counts() function and if it is not empty, it executes the required file handler class for every file extension whose count is greater than zero. It uses 'if statements' to control which classes gets executed only when its corresponding file extension count is greater than zero. If none of the file extension counts is greater than zero, then this function raises the necessary errors/exceptions. 
+                Every file handler class being executed should call its show_progress() function to display its localization procedure's progress in L10nWidget class.
             
-            - Please understand that the QMessageBoxes are not created within this class. This class only creates and returns the exceptions/errors strings through its functions to be displayed later in any corresponding QWidget class that will call this class's functions.
+            - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
+
+
     
 
 
         - WebAppFileHandler class: 
             - The WebAppFileHandler class is the base class for all web app file type handler classes. 
-            - It inherits SourceCodeManager class 
+            - It takes in source_code_id as argument at initialization.
             - It implements and executes the following functions and functionalities:
-                - It initializes the SettingManager class and assign a variable to use some of its functions. 
+                - It uses the SettingManager and SourceCodeManager classes to check some settings and get source code attributes. 
 
-                - It defines and creates locales_path variable as localized_source_code_path/locales/ at initialization.
+                - It defines and creates 'locales_path' variable pointing at localized_source_code_path/locales/ during initialization. The localized_source_code_path comes from the source code being localized. 
 
-                - get_locales_path() function to return the locales folder path. 
+                - get_locales_path() function to return the locales_path. 
 
                 - get_files_by_extension(extension) function to get and return all the file paths of the files with the parsed extension argument from the localized_source_code_path. The files paths must start from the same level where the locales_path is situated. For example, if locales_path is "source_code_dir/locales/", then all files paths collected by this function should start from "source_code_dir/the/file/path/filename.extension". 
 

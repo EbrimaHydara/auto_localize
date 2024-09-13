@@ -112,35 +112,32 @@ class DBManager:
         except (DatabaseError, DatabaseConnectionError) as e:
             raise DatabaseError(f"DBManager DB Reset Error: {str(e)}")
     
-    def get_records(self, table_name):
+    def get_records(self, table_name, condition=None):
         """
-        Retrieves all records from a given table.
-        :param table_name: The name of the table to query
-        :return: A list of records or an error message
-        """
-        try:
-            cursor = self.connection.cursor()
-            cursor.execute(f"SELECT * FROM {table_name}")
-            return cursor.fetchall()
-        except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Get Records Error from {table_name}: {str(e)}")
-    
-    def get_child_records(self, table_name, column, value):
-        """
-        Retrieves all child records from a given table where the specified column matches the provided value.
+        Retrieves all records from a given table based on the specified condition.
         :param table_name: The name of the table to query.
-        :param column: The column name to filter by (e.g., 'project_id').
-        :param value: The value to filter the records by (e.g., the specific project ID).
+        :param condition: A dictionary containing the column and value to filter records (e.g., {'column_name': value}).
         :return: A list of records or raises a DatabaseError.
         """
         try:
             cursor = self.connection.cursor()
-            query = f"SELECT * FROM {table_name} WHERE {column} = ?"
-            cursor.execute(query, (value,))
-            return cursor.fetchall()
-        except sqlite3.DatabaseError as e:
-            raise DatabaseError(f"DBManager Get Child Records Error in {table_name}: {str(e)}")
 
+            if condition:
+                # Extract column and value from the condition
+                column = list(condition.keys())[0]
+                value = list(condition.values())[0]
+
+                # Fetch records matching the condition
+                cursor.execute(f"SELECT * FROM {table_name} WHERE {column} = ?", (value,))
+            else:
+                # Fetch all records if no condition is provided
+                cursor.execute(f"SELECT * FROM {table_name}")
+
+            # Retrieve all records
+            records = cursor.fetchall()
+            return records
+        except sqlite3.DatabaseError as e:
+            raise DatabaseError(f"DBManager Get Records Error from {table_name}: {str(e)}")
 
     def get_record(self, table_name, record_id):
         """
@@ -210,19 +207,40 @@ class DBManager:
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Delete Record Error from {table_name}: {str(e)}")
     
-    def delete_records(self, table_name):
+    def delete_records(self, table_name, condition=None):
         """
-        Deletes all records from a given table.
-        :param table_name: The name of the table to clear
-        :return: List of all deleted records or an error message
+        Deletes all records from a given table based on the condition and returns the deleted records.
+        :param table_name: The name of the table to clear.
+        :param condition: A dictionary containing the column and value to filter records to delete.
+        :return: A list of all deleted records or raises a DatabaseError.
         """
         try:
-            # Fetch all records before deletion
-            records_to_delete = self.get_records(table_name)
             cursor = self.connection.cursor()
-            cursor.execute(f"DELETE FROM {table_name}")
+
+            if condition:
+                # Extract column and value from the condition
+                column = list(condition.keys())[0]
+                value = list(condition.values())[0]
+
+                # Fetch records to delete
+                cursor.execute(f"SELECT * FROM {table_name} WHERE {column} = ?", (value,))
+                records_to_delete = cursor.fetchall()
+
+                # Delete the records
+                cursor.execute(f"DELETE FROM {table_name} WHERE {column} = ?", (value,))
+            else:
+                # Fetch all records to delete
+                cursor.execute(f"SELECT * FROM {table_name}")
+                records_to_delete = cursor.fetchall()
+
+                # Delete all records
+                cursor.execute(f"DELETE FROM {table_name}")
+
+            # Commit the changes
             self.connection.commit()
-            return records_to_delete  # Return all deleted records
+
+            # Return the list of deleted records
+            return records_to_delete
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Delete Records Error from {table_name}: {str(e)}")
 

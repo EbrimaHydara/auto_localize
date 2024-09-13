@@ -55,7 +55,7 @@ CREATE_TABLE_STATEMENTS = {
             original_source_code_path TEXT NULL,
             commons_paths TEXT NULL,
             localized_source_code_path TEXT NULL,
-            status TEXT DEFAULT 'In Progress',
+            status TEXT,
             notes TEXT NULL,
             UNIQUE(project_id, name, unique_id, source_locale),
             FOREIGN KEY(project_id) REFERENCES projects(id)

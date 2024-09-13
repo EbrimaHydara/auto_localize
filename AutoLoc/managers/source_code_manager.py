@@ -40,10 +40,9 @@ class SourceCodeManager:
         Retrieves all source codes for a specific project.
         """
         try:
-            return self.db_manager.get_child_records('source_codes', 'project_id', self.project_id)
+            return self.db_manager.get_records('source_codes', {'project_id': self.project_id})
         except DatabaseError as e:
             raise DatabaseError(f"SourceCodeManager Get Source Codes Error: {str(e)}")
-
 
     def get_source_code(self, source_code_id):
         """
@@ -75,7 +74,7 @@ class SourceCodeManager:
                 'unique_id': self._generate_unique_id(name),
                 'code_type': code_type,
                 'source_locale': source_locale,
-                'status': 'Pending'
+                'status': 'Unlocalized'
             }
             return self.db_manager.insert_record('source_codes', data)
         except DatabaseError as e:

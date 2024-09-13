@@ -1,23 +1,23 @@
-import os
-import shutil
-import sqlite3
-from datetime import datetime
-from source_code_manager import SourceCodeManager
-from error_manager import (
-    DatabaseError,
-    InitializationError,
-    InvalidUserInputError,
-    FilePermissionError
-)
+# import os
+# import shutil
+# import sqlite3
+# from datetime import datetime
+# from source_code_manager import SourceCodeManager
+# from error_manager import (
+#     DatabaseError,
+#     InitializationError,
+#     InvalidUserInputError,
+#     FilePermissionError
+# )
 
-# Sample data for testing
-project_id = 2  # Assume this is a valid project ID
-source_code_name = "Test Source Code"
-source_code_type = "Web App"
-source_code_locale = "en-US"
+# # Sample data for testing
+# project_id = 2  # Assume this is a valid project ID
+# source_code_name = "My New Source Code"
+# source_code_type = "Web App"
+# source_code_locale = "ja-JP"
 
-# Create an instance of SourceCodeManager
-source_code_manager = SourceCodeManager(project_id)
+# # Create an instance of SourceCodeManager
+# source_code_manager = SourceCodeManager(project_id)
 
 # # 1. Test `_generate_unique_id` function
 # try:
@@ -95,7 +95,7 @@ source_code_manager = SourceCodeManager(project_id)
 
 # # 8. Test `add_source_code_files` function
 # try:
-#     source_code_id = 2
+#     source_code_id = 3
 #     # os.makedirs('../../../Sample Source Code', exist_ok=True)
 #     source_code_manager.add_source_code_files(source_code_id, '../../../Sample Source Code')
 #     assert os.path.exists(source_code_manager.original_source_code_path), "Original source code path does not exist."

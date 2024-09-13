@@ -1,73 +1,92 @@
-from .source_code_manager import SourceCodeManager  # Import SourceCodeManager from the same module
-from localizers.web_localizers.web_app_based_localizer import WebAppBasedLocalizer 
-from localizers.android_localizers.android_app_based_localizer import AndroidAppBasedLocalizer
-from localizers.ios_localizers.ios_app_based_localizer import IOSAppBasedLocalizer
-from localizers.java_localizers.java_app_based_localizer import JavaAppBasedLocalizer
+from source_code_manager import SourceCodeManager
+from localizers.web_localizers import WebAppBasedLocalizer
+from localizers.android_localizers import AndroidAppBasedLocalizer
+from localizers.ios_localizers import IOSAppBasedLocalizer
+from localizers.java_localizers import JavaAppBasedLocalizer
+from error_manager import (
+    LocalizationError,
+    InitializationError,
+    InvalidUserInputError,
+    FilePermissionError
+)
+import shutil
+import os
 
-class L10nManager(SourceCodeManager):
+class L10nManager:
     """
-    The L10nManager class handles all localization management procedures of the AutoLoc app.
-    It inherits the SourceCodeManager class and extends its functionalities to perform localization tasks.
+    The L10nManager class defines and executes all localization management procedures of the AutoLoc app.
     """
 
-    def __init__(self, project_id):
-        super().__init__(project_id)  # Initialize the base class (SourceCodeManager)
-    
-    def reset_l10n(self):
+    def __init__(self, project_id, source_code_id):
         """
-        Deletes all the contents of the localized_source_code_path and then copies all contents 
-        from the original_source_code_path to the localized_source_code_path.
-        :return: Success message or error message
+        Initializes the L10nManager with the provided project_id and source_code_id.
         """
         try:
-            # Delete contents of the localized directory
-            if os.path.exists(self.localized_source_code_path):
-                shutil.rmtree(self.localized_source_code_path)
+            self.project_id = project_id
+            self.source_code_id = source_code_id
+            self.source_code_manager = SourceCodeManager(source_code_id)  # Initialize SourceCodeManager
+            self.source_code = self.source_code_manager.get_source_code(source_code_id)  # Retrieve the source code data
+            self.code_type = self.source_code['code_type']
+        except InitializationError as e:
+            raise InitializationError(f"L10nManager Initialization Error: {str(e)}")
 
-            # Copy contents from the original source path to localized path
-            shutil.copytree(self.original_source_code_path, self.localized_source_code_path)
-            return "Localization reset successfully."
-        except Exception as e:
-            return f"L10nManager Reset Localization Error: {str(e)}"
+    def reset_l10n(self):
+        """
+        Resets localization by deleting all localized files and restoring original files.
+        """
+        try:
+            original_path = self.source_code_manager.get_original_source_code_path(self.source_code_id)
+            localized_path = self.source_code_manager.get_localized_source_code_path(self.source_code_id)
+
+            # Delete the contents of the localized source code path
+            if os.path.exists(localized_path):
+                shutil.rmtree(localized_path)
+            os.makedirs(localized_path)
+
+            # Copy contents from the original source code path to the localized path
+            shutil.copytree(original_path, localized_path, dirs_exist_ok=True)
+            print(f"Localization reset completed for source code ID: {self.source_code_id}")
+
+        except (FilePermissionError, shutil.Error, FileNotFoundError) as e:
+            raise LocalizationError(f"L10nManager Reset L10n Error: {str(e)}")
 
     def localize_source_code(self):
         """
-        Performs the localization process for the source code by calling the appropriate localizer class.
-        :return: Success message or error message
+        Localizes the source code based on its code type.
         """
         try:
-            # Reset localization before starting the localization process
-            reset_result = self.reset_l10n()
-            if "Error" in reset_result:
-                return reset_result
+            # Check source code status
+            if self.source_code['status'] == "Localized":
+                raise InvalidUserInputError(f"Source code ID: {self.source_code_id} has already been localized.")
 
-            # Retrieve source code details to determine the type of localization
-            source_codes = self.get_source_codes()
-            for source_code in source_codes:
-                code_type = source_code.get('code_type')
+            elif self.source_code['status'] == "Unlocalized":
+                # Reset localization
+                self.reset_l10n()
 
-                if code_type == "Web App":
-                    # Localize using WebAppBasedLocalizer
-                    localizer = WebAppBasedLocalizer(self.localized_source_code_path)
-                    result = localizer.process_l10n()
-                elif code_type == "Android App":
-                    # Localize using AndroidAppBasedLocalizer
-                    localizer = AndroidAppBasedLocalizer(self.localized_source_code_path)
-                    result = localizer.process_l10n()
-                elif code_type == "iOS App":
-                    # Localize using IOSAppBasedLocalizer
-                    localizer = IOSAppBasedLocalizer(self.localized_source_code_path)
-                    result = localizer.process_l10n()
-                elif code_type == "Java App":
-                    # Localize using JavaAppBasedLocalizer
-                    localizer = JavaAppBasedLocalizer(self.localized_source_code_path)
-                    result = localizer.process_l10n()
+                # Determine the localizer based on code_type
+                if self.code_type == "Web App":
+                    localizer = WebAppBasedLocalizer()
+                elif self.code_type == "Android App":
+                    localizer = AndroidAppBasedLocalizer()
+                elif self.code_type == "iOS App":
+                    localizer = IOSAppBasedLocalizer()
+                elif self.code_type == "Java App":
+                    localizer = JavaAppBasedLocalizer()
                 else:
-                    raise ValueError(f"Unsupported source code type: {code_type}")
+                    raise InvalidUserInputError(f"L10nManager Error: Unsupported code_type '{self.code_type}' for localization.")
 
-                if "Error" in result:
-                    return result
+                # Call the appropriate localizer's process_l10n function
+                localizer.process_l10n(self.source_code_id)
 
-            return "Localization completed successfully."
+                # Update source code status to 'Localized'
+                self.source_code_manager.update_source_code(self.source_code_id, {'status': 'Localized'})
+                print(f"Localization completed for source code ID: {self.source_code_id}")
+
+            else:
+                raise InvalidUserInputError(f"L10nManager Error: Invalid status '{self.source_code['status']}' for source code ID: {self.source_code_id}")
+
+        except (InvalidUserInputError, LocalizationError) as e:
+            raise LocalizationError(f"L10nManager Localization Error: {str(e)}")
+
         except Exception as e:
-            return f"L10nManager Localize Source Code Error: {str(e)}"
+            raise LocalizationError(f"L10nManager Unexpected Error: {str(e)}")

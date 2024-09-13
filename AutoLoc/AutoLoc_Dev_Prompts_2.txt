@@ -353,21 +353,26 @@ Classes: managers module classes:
     
     - L10nManager class:
         - The L10nManager defines and executes all localization management procedures of the app. 
-        - It inherits the SourceCodeManager class.
+        - It takes project_id and source_code_id arguments at initialization.
+        - It uses the SourceCodeManager class to get the source code's code_type attribute value.
+        - It imports and uses the following classes:
+            - localizers.web_localizers.WebAppBasedLocalizer 
+            - localizers.android_localizers.AndroidAppBasedLocalizer
+            - localizers.ios_localizers.IOSAppBasedLocalizer
+            - localizers.java_localizers.JavaAppBasedLocalizer
         - It defines and executes the following functions and functionalities:
-            - reset_l10n() function to delete all the contents of the localized_source_code_path and then copy all the contents of the original_source_code_path to the localized_source_code_path. 
+            - reset_l10n(source_code_id) function to delete all the contents of the localized_source_code_path of the source code and then copy all the contents of the original_source_code_path to the localized_source_code_path. 
             
-            - localize_source_code() function to do the following:
+            - localize_source_code(source_code_id) function to do the following:
 
-                - Calls the reset_l10n() function to delete and recopy all the contents of the localized_source_code_path from the original_source_code_path. 
-
-                - Calls the required classes from the localizers module to localize the files based on the source code's "type" attribute value. The specific class from the localizers module is called based on the "type" attribute of the source code as follows:
-                    - if type = "Web App", then WebAppBasedLocalizer's process_l10n() is called 
-                    - if type = "Android App", then AndroidAppBasedLocalizer's process_l10n() is called 
-                    - if type = "iOS App", then IOSAppBasedLocalizer's process_l10n() is called 
-                    - if type = "Java App", then JavaAppBasedLocalizer's process_l10n() is called
-                
-                - When the function calls the appropriate class based on the source code's type attribute value, it passes it all the required arguments to initialize and execute its localization logic. This function raises the appropriate exception error from error_manager module. 
+                - Calls the reset_l10n(source_code_id) function to delete and recopy all the contents of the localized_source_code_path from the original_source_code_path only if the source code's status = "Localized". 
+                - If the source code's status = "Localized", it then raises an exception that the source code has already been localized.
+                - If the source code's status = "Unlocalized", it then calls the required classes from the localizers module to localize the files based on the source code's "code_type" attribute value. The specific class from the localizers module is called based on the "code_type" attribute of the source code as follows:
+                    - if code_type = "Web App", then WebAppBasedLocalizer's process_l10n() is called 
+                    - if code_type = "Android App", then AndroidAppBasedLocalizer's process_l10n() is called 
+                    - if code_type = "iOS App", then IOSAppBasedLocalizer's process_l10n() is called 
+                    - if code_type = "Java App", then JavaAppBasedLocalizer's process_l10n() is called
+                    - if code_type = None, then raises an appropriate exception. 
 
         - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
 
