@@ -21,7 +21,19 @@ class SettingManager:
             self.db_manager = DBManager()  # Initialize DBManager
         except InitializationError as e:
             raise InitializationError(f"SettingManager Initialization Error: {str(e)}")
-
+    
+    def get_app_settings(self):
+        """
+        Retrieves the application settings from the app_settings table.
+        :return: The application settings record.
+        :raises DatabaseError: If there is an error during retrieval.
+        """
+        try:
+            # Assuming there's only one settings record with ID = 1
+            return self.db_manager.get_record('app_settings', 1)
+        except DatabaseError as e:
+            raise DatabaseError(f"SettingManager Get App Settings Error: {str(e)}")
+            
     def update_app_settings(self, settings):
         """
         Updates the application settings in the app_settings table.
