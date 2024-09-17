@@ -1,0 +1,27 @@
+- AndroidAppFileLocalizer class: 
+            - The AndroidAppFileLocalizer class is the base class for all android app file type localizer classes in the android_localizers module. 
+            - It uses the SettingManager and SourceCodeManager classes.
+            - It takes in source_code_id as argument at initialization.
+            - It defines self.app_settings = self.setting_manager.get_app_settings()
+            - It defines and creates self.locales_path variable pointing at source_code.localized_source_code_path/"locales" at initialization.
+            - It defines self.source_locale = self.source_code.source_locale at initialization.
+            - It defines self.target_locales = self.setting_manager.get_target_locales(source_code_id) at initialization.
+            
+            - It implements and executes the following functions and functionalities:
+
+                - get_work_progress(files) function that gets and returns the percentage of files completed in localize_files() function of any child class of this class. The returned percentage is intended for a QProgressBar in the L10nWidget class later.  
+
+                - generate_key(file_path) function to generate and return a unique string identifier key that will be assigned to any extracted string's replacement key value and as identifier in the JSON file keeping the extracted strings of the file. The key generated should be in the format: "str-1", "str-2", "str-3", etc. or "[file_path]str-1", "[file_path]str-2", "[file_path]str-3" if self.app_settings['use_key_namespace'] = True.
+
+                - save_resource_files(data, file_path) function to save an extracted file's strings in JSON data format to a JSON file for the self.source_locale and each target locale in self.target_locales. This function saves the same JSON data for each locale JSON file. The parameters are explained as follows: 
+                    - :param data: The JSON data to save.
+                    - :param file: The path to the file being processed.
+                    The function saves the JSON resource file as self.locales_path/[locale's code]/[file's path without the extension].json. The [locale's code] stand for any locale code such as ja-JP, en-US, zh-CN, etc. for each locale (either source or target locale) specified in the parameters. The [file's path without extension] stands for the file's path being processed but without its extension (e.g. removing the .html) and replace the extension with .json and save the JSON data inside the JSON file created and saved to the locales folder using the self.locales_path.
+                    For example, the saved JSON resource files should have the following similar paths:
+                        - self.locales_path/ja-JP/file/path/being/extracted/file.json
+                        - self.locales_path/en-US/file/path/being/extracted/file.json 
+                        - self.locales_path/zh-CN/file/path/being/extracted/file.json 
+                        - self.locales_path/zh-TW/file/path/being/extracted/file.json
+                        - self.locales_path/ko-KR/file/path/being/extracted/file.json
+                
+                - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
