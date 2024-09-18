@@ -1,0 +1,100 @@
+<% const pagetitle = "光コラボレーションモデル事業者様一覧" -%>
+<% const directories = [{path:"area/", label:"通信・エリア"},{path:"area/rakuten-casa/broadband/", label:"指定インターネット回線一覧"}] -%>
+<% const namespace = "hikari-collaboration" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten Casaをご利用いただける光コラボレーション事業者様一覧です。',
+    keywords: '',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const directory = "hikari-collaboration" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/rakuten-casa/broadband/hikari-collaboration/hikari-collaboration.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container u-Adjust_Mt-24">
+  <div>
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Align-right u-Adjust_Mt-16">2023年12月1日更新</p>
+    <p class="u-Adjust_Mt-24">Rakuten Casaをご利用いただける光コラボレーション事業者様一覧です。<br>お客様が契約しているインターネット事業者様が該当するか、Rakuten Casaをお申し込み前にご確認ください。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※ 光コラボレーション事業者様によってはRakuten Casa設置に制約がある場合もあります。</p>
+    <p class="c-Txt_Cap">※ 光コラボレーションモデル回線のサービスタイプ名称は、光コラボレーション事業者様によって異なるため、ご契約の事業者様に確認をお願いいたします。通信速度10Gbps以上のプランまたは従量課金制プランは非対応となります。</p>
+  </div>
+  <div class="<%= namespace %>-Utility_Mt-50">
+    <div class="<%= namespace %>-Text_font-28">五十音順で選択して確認する</div>
+    <div class="c-Txt_Cap u-Adjust_Mt-8">※ 「株式会社」「有限会社」「一般社団法人」などを除いた事業者様名でご確認ください。<br>※ 敬称略</div>
+    <div id="searchresult"></div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-area-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-area.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <div class="l-System_Container">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/area.hikari-search.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

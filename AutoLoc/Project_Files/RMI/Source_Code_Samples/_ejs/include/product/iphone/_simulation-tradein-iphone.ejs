@@ -1,0 +1,78 @@
+<%
+const {tradeinProductName, maxTradeinPrice, capacity, carrier, currentDir, namespace} = priceDetailConfig
+const carrierName = carrier ? carrier : '楽天モバイル'
+const capacityText  = (capacity !== 1) ? 'GB' : 'TB'
+-%>
+<div class="<%= namespace %>-Simulation_Choice-wrapper" id="js-content-top" aria-hidden="true">
+  <%# スクロール計測 %>
+  <div class="u-Rat_Appear-height" data-ratid="<%= currentDir %>_scroll-02_tradein" data-ratevent="appear">&nbsp;</div>
+
+  <h2 class="c-Heading_Lv4 <%= namespace %>-Simulation_Choice-title <%= namespace %>-Simulation_Choice-title-b">スマホ下取りサービス</h2>
+  <div class="c-Theme-Light u-Adjust_Mt-8">
+    <p><span class="c-Txt_Emp-02"><%- tradeinProductName %>を下取りに出すと、最大<%- maxTradeinPrice.toLocaleString() %>円相当になります。</span></p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※<%- carrier %>の<%- capacity %><%- capacityText %>を下取りに出した場合</p>
+    <p class="u-Adjust_Mt-8">
+      <a href="<%= sitepath %>service/tradein/?l-id=product_iphone_<%= currentDir %>_simulation_service_tradein" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener">スマホ下取りサービスの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+    </p>
+  </div>
+
+  <ul class="<%= namespace %>-Tradein_Radio-2col-vertical">
+    <li>
+      <label class="c-Form_Radioblock <%= namespace %>-Simulation_Choice-payment-list-radioblock">
+        <input type="radio" name="use-tradein" class="js-tradein" value="use" autocomplete="off" data-ratid="<%= currentDir %>_tradein-01" data-ratevent="click" data-ratparam="all">
+        <span class="c-Form_Radioblock-wrap <%= namespace %>-Simulation_Choice-payment-list-btn-comment">
+          <span class="c-Form_Radio-icon"></span>
+          <span class="c-Form_Radioblock-label">利用する<span id="js-upgradeProgram-apeal"></span></span>
+        </span>
+      </label>
+    </li>
+    <li>
+      <label class="c-Form_Radioblock">
+        <input type="radio" name="use-tradein"  class="js-tradein" value="nouse" autocomplete="off" data-ratid="<%= currentDir %>_tradein-02" data-ratevent="click" data-ratparam="all">
+        <span class="c-Form_Radioblock-wrap <%= namespace %>-Simulation_Choice-payment-list-btn-comment">
+          <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">利用しない</span>
+        </span>
+      </label>
+    </li>
+  </ul>
+
+  <div id="js-tradein-container" aria-hidden="true">
+    <div class="product-iphone-Tradein" id="js-question">
+      <div class="product-iphone-Tradein_Container" style="width: 100%">
+        <h3 class="c-Heading_Lv4 u-Adjust_Mt-24">1.購入したキャリアを選択</h3>
+        <div class="c-Form_Select u-Adjust_Mt-8">
+          <select id="js-tradein-carrier" name="carrier" data-ratid="<%= currentDir %>_tradein-03" data-ratevent="click" data-ratparam="all">
+            <option value="">携帯電話会社を選択</option>
+            <option value="Rakuten">楽天モバイル</option>
+            <option value="docomo">NTTドコモ</option>
+            <option value="au">au</option>
+            <option value="Softbank">SoftBank</option>
+            <option value="Generic">その他（SIMフリー）</option>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+
+        <div class="js-tradein-select" aria-hidden="true">
+          <h3 class="c-Heading_Lv4 u-Adjust_Mt-24">2. モデルを選択</h3>
+          <div class="c-Form_Select u-Adjust_Mt-8">
+            <select id="js-tradein-device" name="device" data-ratid="<%= currentDir %>_tradein-04" data-ratevent="click" data-ratparam="all">
+            </select>
+            <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+          </div>
+        </div>
+
+        <div class="js-tradein-select" aria-hidden="true">
+          <h3 class="c-Heading_Lv4 u-Adjust_Mt-24">3. 容量を選択</h3>
+          <div class="c-Form_Select u-Adjust_Mt-8">
+            <select id="js-tradein-storage" name="storage" data-ratid="<%= currentDir %>_tradein-05" data-ratevent="click" data-ratparam="all">
+            </select>
+            <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="js-tradein-result"></div>
+
+  </div>
+</div>

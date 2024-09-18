@@ -1,0 +1,2341 @@
+<% const pagetitle = "楽天ブックスご利用中のお客様へ 楽天モバイルオンライン申し込みで2,000ポイントプレゼントキャンペーン" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "books" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '楽天ブックスご利用中のお客様へ 楽天モバイルオンライン申し込みで2,000ポイントプレゼントキャンペーン',
+  keywords: '',
+  noindex: false,
+  pathname: filepath
+});
+%>
+<% const information = {
+  campaignState:'finish',
+  campaignFinishSchedule:'2023年9月1日'
+}; %>
+<% const hiddenItem = "false" -%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/books/books.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/_entry-button/rex-overwrite_v2.css?20240424">
+<%_  if (information.campaignState !== 'finish') { _%>
+<%- include('/inc/_saikyo-plan-css') %>
+<%_ } _%>
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script defer="defer" src="https://r.r10s.jp/com/js/c/common/entry_button/1.1/entry_button-1.1.0.min.js"></script>
+<link rel="dns-prefetch" href="https://cdn.rex.contents.rakuten.co.jp">
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header',{applyHide:true}) %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List <%= namespace %>-Layout_Label-list">
+        <li class="c-Label_Normal">初めて申込限定</li>
+        <li class="c-Label_Normal">プランのみ申込可</li>
+        <li class="c-Label_Normal">Rakuten Link利用必要</li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Hero_Return">
+      <div class="l-System_Container <%= namespace %>-Hero_Container">
+        <div class="<%= namespace %>-Hero_Main">
+          <h1><img src="<%= sitepath %>assets/img/campaign/books/img-heading-pc_230403.png?230403" alt="毎月開催 本ページから楽天モバイル初めてのお申し込みで最大5,000ポイントプレゼント！" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/books/img-heading-sp_230403.png?230403" alt="毎月開催 本ページから楽天モバイル初めてのお申し込みで最大5,000ポイントプレゼント！" class="<%= namespace %>-Utility_Img-sp"></h1>
+        </div>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Body">
+      <div class="l-System_Container">
+      <% if (information.campaignState == 'finish') { %>
+        <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-24 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= information.campaignFinishSchedule %>をもちまして終了いたしました。<br>
+          このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+      <% } else { %>
+        <!-- else -->
+      <% } %>
+        <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+          <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です。</li>
+          <li class="c-Txt_Emp-02"><span>※</span>Rakuten Linkアプリのご利用が必要です。</li>
+          <li><span>※</span>併用可能キャンペーン以外は併用できません。</li>
+          <li><span>※</span>特典（期間限定ポイント）の進呈には条件があります。必ず<a href="#campaign-rule">詳細</a>をご確認ください。</li>
+        </ul>
+        <div class="kv-Attention">
+          <p><span class="c-Icon_Sign-warning-f"></span>お申し込み前に必ずご確認ください</p>
+          <ul class="u-Adjust_Mt-8">
+            <li><span>・</span>本ページの「お申し込みはこちら」ボタンよりお手続きください。本ページ以外からお手続きされた場合は特典適用対象外となります。</li>
+            <li><span>・</span>「お申し込み内容」画面でクーポンコード14桁の英数字が表示されていることをご確認のうえ、お申し込みを完了してください。表示されていない場合は特典適用対象外となるため、再度本ページの「お申し込みはこちら」ボタンよりお申し込みをやり直してください。</li>
+            <li><span>※</span>詳細は<a href="#campaign-caution" class="js-scroll">お申し込みの注意点</a>をご確認ください。</li>
+          </ul>
+        </div>
+      </div>
+      <div id="first_entry_button" class="<%= namespace %>-Layout_Entry-Area u-Adjust_Mt-24">
+        <p class="c-Txt_Emp-02 <%= namespace %>-Utility_Mt-unique u-Adjust_Align-center">お申し込み期間：2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+        <p class="u-Adjust_Mt-16 c-Txt_Emp-01 <%= namespace %>-Utility_Mt-unique u-Adjust_Align-center">クーポンコード：BKSREG00000002</p>
+      <% if (information.campaignState == 'finish') { %>
+        <div class="u-Adjust_Mt-8 u-Adjust_Align-center"><div class="c-Btn_Primary-large fin">お申し込みはこちら</div></div>
+      <% } else { %>
+        <!-- else -->
+        <div class="u-Adjust_Mt-8 u-Adjust_Align-center"><a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=BKSREG00000002&l-id=campaign_books_coupon_link01" class="c-Btn_Primary-large"><span id="js-trigger">お申し込みはこちら</span></a></div>
+      <% } %>
+      </div>
+
+      <div class="l-System_Container u-Adjust_Mt-48">
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-40 u-Adjust_Align-center">ポイントの内訳</h2>
+        <ul class="<%= namespace %>-Pointdetails u-Adjust_Mt-16">
+          <li>
+            <div class="ttl_Img">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-02-sp_230703.png?230703">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-02_230703.png?230703" alt="本キャンペーンの条件達成で">
+              </picture>
+            </div>
+            <div class="point_Box">
+              <div class="point_Img">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-03-sp_230703.png?230703">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-03_230703.png?230703" alt="もれなく2,000ポイント">
+                </picture>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="<%= namespace %>-Pointdetails_Icon">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-01.png?221201" alt="＋">
+            </div>
+            <div class="ttl_Img">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-04-sp_230703.png?230703">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-04_230703.png?230703" alt="楽天モバイル初めてお申し込みで※1">
+              </picture>
+            </div>
+            <div class="point_Box">
+              <div class="point_Img">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-05-sp_230703.png?230703">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-05_230703.png?230703" alt="3,000ポイント">
+                </picture>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <p class="<%= namespace %>-Pointdetails_Cap c-Txt_Cap">※詳しくは<a class="js-scroll" href="#campaign-rule">キャンペーンルール</a>をご確認ください。</p>
+        <p class="c-Txt_Cap <%= namespace %>-Txt_Left-sp">※1 Rakuten Hand 5G及びRakuten WiFi Pocket 2Cを回線とともに購入した場合対象外<br>
+          <a href="<%= sitepath %>campaign/referral/">紹介キャンペーン</a>経由でのお申し込みは対象外</p>
+        <p class="<%= namespace %>-Pointdetails_Cap c-Txt_Cap u-Adjust_Mt-0 c-Txt_Emp-02">※「Rakuten最強プラン（データタイプ）」は対象外</p>
+
+        <div id="campaign-conditions">
+          <div class="<%= namespace %>-Conditions u-Adjust_Mt-40">
+            <h2 class="c-Heading_Lv2 u-Adjust_Align-center">参加方法</h2>
+            <ul class="<%= namespace %>-Conditions_Flow u-Adjust_Mt-16">
+              <li>
+                <h4 class="u-Adjust_Align-center c-Heading_Lv4">本ページから<br>
+                  楽天モバイルのお申し込み</h4>
+                <div class="<%= namespace %>-Conditions_Img <%= namespace %>-Layout_Break-pc">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-01_230703.png?230703" alt="">
+                </div>
+                <p class="c-Txt_Cap u-Adjust_Align-center">※詳しくは<a href="#campaign-flow" class="js-scroll">キャンペーンの流れ</a>をご確認ください</p>
+              </li>
+              <li>
+                <div class="<%= namespace %>-Conditions_Icon"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-04.png?230703" alt="＋"></div>
+                <h4 class="u-Adjust_Align-center c-Heading_Lv4">プランのご利用<sup class="c-Txt_Emp-02">※</sup></h4>
+                <div class="<%= namespace %>-Conditions_Img <%= namespace %>-Layout_Break-pc">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-02.png?230703" alt="">
+                </div>
+                <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Align-center <%= namespace %>-Layout_Break-pc">※期限：2023年9月30日（土）23:59まで</p>
+              </li>
+              <li>
+                <div class="<%= namespace %>-Conditions_Icon"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-04.png?230703" alt="＋"></div>
+                <h4 class="u-Adjust_Align-center c-Heading_Lv4">Rakuten Linkで<span class="txt-Nl">10秒以上通話</span><sup class="c-Txt_Emp-02">※</sup></h4>
+                <div class="<%= namespace %>-Conditions_Img <%= namespace %>-Layout_Break-pc">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-03.png?230703" alt="">
+                </div>
+                <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Align-center <%= namespace %>-Layout_Break-pc">※期限：2023年9月30日（土）23:59まで</p>
+              </li>
+            </ul>
+            <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Align-center <%= namespace %>-Layout_Break-sp u-Adjust_Mt-8">※期限：2023年9月30日（土）23:59まで</p>
+          </div>
+        </div>
+
+        <h2 id="campaign-caution" class="c-Heading_Lv2 nav-Pad u-Adjust_Align-center">お申し込みの注意点</h2>
+        <p class="c-Txt_Emp-01 u-Adjust_Mt-32 <%= namespace %>-Caution_Text"><span class="c-Txt_Emp-02">ポイントを獲得するには、「お申し込みはこちら」ボタンからのお手続きが必要となります。</span><br>
+          「お申し込み内容」画面であらかじめクーポンコードが表示されていることをご確認のうえ、<span class="txt_nl">お申し込みを完了してください。</span>
+        </p>
+        <ul class="<%= namespace %>-Caution_Img u-Adjust_Mt-32">
+          <li class="u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-01_230501.png?230501" alt="お申し込みはこちらボタン イメージ">
+          </li>
+          <li class="<%= namespace %>-Caution_Img-arrow u-Adjust_Align-center">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01-sp.png?230319">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01.png?230501" alt="">
+            </picture>
+          </li>
+          <li class="u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-02_230501.png?230501" alt="クーポンコードBKSREG00000002が適用されました">
+          </li>
+          <li class="<%= namespace %>-Caution_Img-arrow u-Adjust_Align-center">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01-sp.png?230319">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01.png?230501" alt="">
+            </picture>
+          </li>
+          <li class="u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-03_230501.png?230501" alt="BKSREG00000002 クーポンが適用されています">
+          </li>
+        </ul>
+        <p class="c-Txt_Cap u-Adjust_Mt-24 <%= namespace %>-Caution_Text <%= namespace %>-Caution_Text-cap">※本ページの「お申し込みはこちら」ボタン以外からお手続きされた場合には特典適用対象外となります。</p>
+        <div class="c-Accordion u-Adjust_Mt-32">
+          <button id="accordion-12" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-12"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お申し込み画面で以下の状況が発生した場合、再度「お申し込みはこちら」ボタンからお申し込みをやり直してください。</button>
+          <div id="accordion-content-12" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-12" aria-hidden="true" style="display: none;">
+            <ul class="<%= namespace %>-Caution_Img u-Adjust_Mt-32">
+              <li class="u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-04_230601.png?230601" alt="">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-16">お申し込み内容にクーポンコードが<br>
+                  表示されていない場合</p>
+              </li>
+              <li class="u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-05_230501.png?230501" alt="">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-16">システムメンテナンスの<br>
+                  お知らせが表示された場合</p>
+                <p class="c-Txt_Cap">※メンテナンス終了後に<br>
+                  お申し込みください</p>
+              </li>
+              <li class="u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-06_230501.png?230501" alt="">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-16">タイムアウトが表示された場合</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-13" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-13"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイル（ドコモ回線・au回線）をご利用中の方もキャンペーンにご参加いただけますが、こちらもご確認ください。</button>
+          <div id="accordion-content-13" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-13" aria-hidden="true" style="display: none;">
+            <ul class="<%= namespace %>-Caution_List">
+              <li><span class="list-Num">（1）</span>メンバーズステーション経由のプラン変更（移行）は本キャンペーンの適用対象となりません。<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_books_ms&mno_migration=1" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を発行のうえ、本ページからお申し込みください。</li>
+              <li class="u-Adjust_Mt-8"><span class="list-Num">（2）</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</li>
+              <li class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">オプションサービスを引き継ぎたい場合</span><br>
+                本ページからお申し込みした場合、オプションサービスはすべて解約となります。</li>
+            </ul>
+            <p class="u-Adjust_Mt-16">上記（1）（2）は通話SIMご利用の方の注意点となります。データSIMご利用中の方は、メンバーズステーション経由のプラン移行（変更）はできないため、本キャンペーンより新規でお申し込みください。</p>
+          </div>
+        </div>
+
+        <h1 id="campaign-flow" class="c-Heading_Lv1 u-Adjust_Align-center nav-Pad">キャンペーンの流れ</h1>
+        <div class="<%= namespace %>-Layout_Step u-Adjust_Mt-24">
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1" data-ratid="campaign_<%= namespace %>_flow-step1" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><span class="c-Txt_Emp-02 step-no">STEP1　</span>楽天モバイルのお申し込み</button>
+            <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1"
+              aria-hidden="true">
+              <div class="u-Adjust_Mt-16">
+                <div>
+                  <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-24">
+                    <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                      <img src="<%= sitepath %>assets/img/campaign/books/img-flow-02_230703.png?230703" alt="">
+                    </div>
+                    <div>
+                      <h4 class="c-Heading_Lv4 u-Adjust_Mt-8">本ページから楽天モバイルに申し込む</h4>
+                      <p class="u-Adjust_Mt-8">2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+                      <ul class="<%= namespace %>-Table_Rule-Cap">
+                        <li class="u-Adjust_Mt-8 c-Txt_Emp-02"><span>※</span>未成年の方のお申し込み方法は別途<a href="<%= sitepath %>flow/for-minors/?l-id=campaign_books_flow_for-minors" class="js-scroll" data-ratid="campaign_books_PlanStart" data-ratevent="click" data-ratparam="all">こちら</a>のご案内ページをご確認ください。</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <ul class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+                    <li>
+                      <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-8">
+                        <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                          <img src="<%= sitepath %>assets/img/campaign/books/img-flow-03.png?220819" alt="">
+                        </div>
+                        <div>
+                          <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                          <div class="u-Adjust_Mt-8">
+                            <ul class="<%= namespace %>-Flow_List-link c-List_Text-disc">
+                              <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/?l-id=campaign_books_guide_verify" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                              <li class="u-Adjust_Mt-8">楽天会員ログイン用のユーザID、パスワード</li>
+                              <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/?l-id=campaign_books_guide_payment" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a>
+                                <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                                  <span>※</span>ご契約者本人名義と異なるクレジットカードをご利用希望のお客様は、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001238/?l-id=campaign_books_faq_00001238">こちらのご案内ページ</a>を必ず事前にご確認ください。</p>
+                                <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                                  <span>※</span>MNPワンストップ未対応の携帯電話会社から乗り換えの方は、MNP予約番号の取得が必要です。MNPワンストップ対象の携帯電話会社は<a href="<%= sitepath %>guide/mnp/#carrier">こちら</a>からご確認ください。</p>
+                                <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                                  <span>※</span>ショップでのお手続きは、ワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</p></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="<%= namespace %>-Flow_List-step-unlimit u-Adjust_Mt-24 <%= namespace %>-Layout_Step-ptn2">
+                    <div class="<%= namespace %>-Flow_List-content <%= namespace %>-Flow_List-detail-left">
+                      <div class="<%= namespace %>-Flow_List-detail">
+                        <div class="step-pran-change"><span class="c-Icon_New-user-f c-Txt_Emp-02"></span><h4 class="c-Heading_Lv4 u-Adjust_Mt-8 u-Adjust_Mb-16"> 新規電話番号／他社から乗り換え（MNP）</h4></div>
+                      <% if (information.campaignState == 'finish') { %>
+                        <p class="u-Adjust_Align-center"><div class="c-Btn_Primary-large fin">お申し込みはこちら</div></p>
+                      <% } else { %>
+                      <!-- else -->
+                        <p class="u-Adjust_Align-center"><a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=BKSREG00000002&l-id=campaign_books_coupon_link02" class="c-Btn_Primary-large <%= namespace %>-Flow_List-button-secondly u-Adjust_Mt-24">お申し込みはこちら</a></p>
+                      <% } %>
+                        <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>fee/saikyo-plan/?l-id=campaign_books_fee_saikyo-plan" class="c-Link_Txt-inline">Rakuten最強プランの詳細<span class="c-Icon_Chevron-right"></span></a></p>
+                        <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/flow/application/?l-id=campaign_books_guide_flow_application" class="c-Link_Txt-inline">Rakuten最強プラン<br class="<%= namespace %>-Layout_Break-sp">お申し込み方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                      </div>
+                    </div>
+
+                    <div class="<%= namespace %>-Flow_List-content <%= namespace %>-Flow_List-detail-right">
+                      <div class="<%= namespace %>-Flow_List-detail">
+                        <div class="step-pran-change"><span class="c-Icon_Paper-plane-l c-Txt_Emp-02"></span>
+                        <h4 id="members" class="c-Heading_Lv4 u-Adjust_Mt-8 u-Adjust_Mb-16">ドコモ回線・au回線の楽天モバイルから移行</h4></div>
+                        <div class="u-Adjust_Mt-16">
+                          <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">メンバーズステーションにてMNP予約番号を発行のうえ、本ページからお申し込みください。</p>
+                          <p class="u-Adjust_Align-center"><a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_books_ms1&mno_migration=1" class="c-Btn_Secondly-large <%= namespace %>-Flow_List-button-secondly u-Adjust_Mt-24"><span>メンバーズステーションにてMNP予約番号を発行する</span></a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+                    <li class="<%= namespace %>-Flow_List-Single_Arrow">
+                      <div class="list_ttl">
+                        <h4 class="c-Heading_Lv4 u-Adjust_Mt-8">「Rakuten最強プラン」お申し込み画面に移動し、お手続きください。</h4>
+                        <p class="u-Adjust_Mt-8 c-Txt_Normal-s">※「お申し込みはこちら」ボタン以外からお手続きされた場合は、特典適用対象外となります。</p>
+                      </div>
+                      <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-48 top">
+                        <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                          <img src="<%= sitepath %>assets/img/campaign/books/img-flow-07_221201.png?221201" alt="">
+                        </div>
+                        <div>
+                          <p class="u-Adjust_Mt-8">「お申し込みはこちら」ボタンからお申し込み画面に進み、製品選択など手順に従って進めてください。</p>
+                        </div>
+                      </div>
+                      <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-48">
+                        <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                          <img src="<%= sitepath %>assets/img/campaign/books/img-flow-08_230403.png?230403" alt="">
+                        </div>
+                        <div>
+                          <p class="text_cap u-Adjust_Mt-8">「お申し込み内容」でクーポンコードが表示されていることを必ずご確認のうえ、お申し込みを完了してください。</p>
+                          <p class="u-Adjust_Mt-8 c-Txt_Normal-s">※該当の項目が表示されていない場合、特典適用対象外となるため、再度本ページの「お申し込みはこちら」ボタンよりお申し込みをやり直してください。</p>
+                        </div>
+                      </div>
+
+                        <!-- else -->
+                      <p class="c-Txt_Emp-02 <%= namespace %>-Utility_Mt-unique u-Adjust_Align-center">お申し込み期間：2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Align-center">クーポンコード：BKSREG00000002</p>
+                      <p class="u-Adjust_Mt-16 c-Txt_Normal-ss c-Txt_Emp-02"><a href="#campaign-caution" class="js-scroll">お申し込みの注意点</a>を必ずご確認のうえ、以下のお申し込みボタンよりお手続きください。</p>
+                    <% if (information.campaignState == 'finish') { %>
+                      <div class="u-Adjust_Mt-8 u-Adjust_Align-center"><div class="c-Btn_Primary-large fin">お申し込みはこちら</div></div>
+                    <% } else { %>
+                      <!-- else -->
+                      <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=BKSREG00000002&l-id=campaign_books_coupon_link03" class="c-Btn_Primary-large"><span>お申し込みはこちら</span></a></div>
+                    <% } %>
+                      <p class="u-Adjust_Mt-16 c-Txt_Normal-ss">本ページの「お申し込みはこちら」ボタン以外からお手続きされた場合、特典適用対象外となります。</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2" data-ratid="campaign_books_flow-step2" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><span class="c-Txt_Emp-02 step-no">STEP2　</span>「Rakuten最強プラン」 利用開始</button>
+            <div id="accordion-content-2" class="<%= namespace %>-Layout_Step-ptn1 c-Accordion_Panel js-Accordion_Panel" role="region"
+              aria-labelledby="accordion-2" aria-hidden="true">
+              <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+                <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                  <img src="<%= sitepath %>assets/img/campaign/books/img-flow-04_230703.png?230703" alt="">
+                </div>
+                <div>
+                  <h4 class="c-Heading_Lv4 u-Adjust_Mt-8">楽天モバイルの開通手続きを行い「Rakuten最強プラン」 を利用開始する</h4>
+                  <p class="u-Adjust_Mt-8">2023年9月30日（土）23:59まで</p>
+                  <ul class="<%= namespace %>-Table_Rule-Cap">
+                    <li class="u-Adjust_Mt-8 c-Txt_Emp-02"><span>※</span>店舗（楽天モバイルショップ）でのお申し込みの場合、対象外となります。あらかじめご了承ください。</li>
+                    <li><span>※</span><a href="#campaign-rule-plan" class="js-scroll" data-ratid="campaign_books_PlanStart" data-ratevent="click" data-ratparam="all">プラン利用開始日の定義はこちら</a>。</li>
+                  </ul>
+                  <div class="u-Adjust_Mt-24">
+                    <p><a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/" class="c-Btn_Regular <%= namespace %>-Flow_List-button"><span>スタートガイド（利用開始手順書）はこちら</span></a></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button type="button" id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3" data-ratid="campaign_books_flow-step3" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><span class="c-Txt_Emp-02 step-no">STEP3　</span>Rakuten Linkアプリから発信で10秒以上通話</button>
+            <div id="accordion-content-3" class="<%= namespace %>-Layout_Step-ptn1 c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+              <ul class="<%= namespace %>-Flow_List">
+                <li>
+                  <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+                    <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                      <img src="<%= sitepath %>assets/img/campaign/books/img-flow-05_230703.png?230703" alt="">
+                    </div>
+                    <div>
+                      <h4 class="c-Heading_Lv4 u-Adjust_Mt-8">Rakuten Linkアプリで発信し10秒以上通話する</h4>
+                      <p class="u-Adjust_Mt-8">2023年9月30日（土）23:59まで</p>
+                      <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>電話の発信時、（0570）などから始まる他社接続サービス、一部特番（188）への通話については、特典対象外。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>service/rakuten-link/?l-id=campaign_books_service_rakuten-link" class="c-Link_Txt-inline" target="_blank">Rakuten Link アプリの詳細を見る<span class="c-Icon_New-window-l"></span></a></p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= namespace %>-Step_Last-arrow">
+          <img src="<%= sitepath %>assets/img/campaign/books/img-step-arrow-01.png?230403" alt="">
+        </div>
+
+        <ul class="<%= namespace %>-Step_Last u-Adjust_Align-center">
+          <li>
+            <p class="c-Txt_Emp-01">2,000ポイント<br class="<%= namespace %>-Layout_Break-sp">プレゼント！</p>
+            <p class="c-Txt_Cap u-Adjust_Align-center">※ 期間限定ポイント</p>
+          </li>
+          <li class="u-Adjust_Mt-16">
+            <div class="<%= namespace %>-Step_Last-icon"><img src="<%= sitepath %>assets/img/campaign/books/img-step-01.png?230403" alt="＋"></div>
+            <p class="<%= namespace %>-Step_Last-text01 c-Txt_Emp-01">楽天モバイル<br class="<%= namespace %>-Layout_Break-sp">初めてお申し込みでだれでも</p>
+            <p class="c-Txt_Emp-01">3,000ポイント<br class="<%= namespace %>-Layout_Break-sp">プレゼント！</p>
+            <p class="c-Txt_Cap u-Adjust_Align-center">※ Rakuten Hand 5G及びRakuten WiFi Pocket 2Cを回線とともに購入した場合対象外</p>
+            <p class="<%= namespace %>-Step_Last-text02 u-Adjust_Mt-8"><a href="#campaign-rule02" class="c-Link_Txt-inline js-scroll"><span class="c-Icon_Arrow-down-l"></span>詳細を見る</a></p>
+          </li>
+        </ul>
+        <div class="u-Adjust_Align-center">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/books/img-step-02-sp.png?230403">
+            <img src="<%= sitepath %>assets/img/campaign/books/img-step-02.png?230403" alt="合わせて最大5,000ポイントをGET！">
+          </picture>
+        </div>
+
+      <% if (information.campaignState == 'finish') { %>
+      <% } else { %>
+        <!-- else -->
+        <h2 id="ekyc" class="c-Heading_Lv2 u-Adjust_Align-center u-Adjust_Mt-40">AIかんたん本人確認<br class="<%= namespace %>-Layout_Break-Sp">（eKYC）</h2>
+        <p class="u-Adjust_Mt-16 rule_link-cap">スマートフォン（Web／アプリ）からのお申し込みの際、「AIかんたん本人確認（eKYC）」をご利用いただけます。<br>
+          Webでお申し込み後、最短3分でつながる！※</p>
+        <div>
+          <div class="u-Adjust_Align-center">
+            <div data-ratId="ended-movie_campaign_books_pc" data-ratEvent="click" data-ratParam="all" id="RatEnded_PC"></div>
+            <div class="<%= namespace %>-Layout-Display_Pc u-Adjust_Mt-16">
+            <div style="position: relative; display: block; max-width: 100%;margin:0 auto;">
+                <div style="padding-top: 56.25%;"><video class="video-js vjs-fluid js-bc-player"
+                  data-account="5068808272001"
+                  data-player="default"
+                  data-embed="default"
+                  controls=""
+                  data-video-id="6328254050112"
+                  data-playlist-id=""
+                  data-application-id=""
+                  data-ratid="play-movie_campaign_books_pc"
+                  style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;"></video></div>
+            </div>
+            </div>
+            <div data-ratId="ended-movie_campaign_books_sp" data-ratEvent="click" data-ratParam="all" id="RatEnded_SP"></div>
+            <div class="<%= namespace %>-Layout-Display_Sp u-Adjust_Mt-16">
+            <div style="position: relative; display: block; max-width: 100%;margin:0 auto;">
+                <div style="padding-top: 56.25%;"><video class="video-js vjs-fluid js-bc-player"
+                  data-account="5068808272001"
+                  data-player="default"
+                  data-embed="default"
+                  controls=""
+                  data-video-id="6328254050112"
+                  data-playlist-id=""
+                  data-application-id=""
+                  data-ratid="play-movie_campaign_books_sp"
+                  style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;"></video></div>
+            </div>
+            </div>
+          </div>
+          <div class="i-unlimit-vii-plan-Detail">
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※SIMフリーの製品でない場合、SIMロック解除が必要です。eKYC（AIかんたん本人確認）は、「my 楽天モバイル」アプリ/Webにてご利用いただけます。</p>
+          </div>
+        </div>
+      <% } %>
+      </div>
+
+
+    <% if (information.campaignState == 'finish') { %>
+    <% } else { %>
+      <!-- else -->
+      <div class="u-Adjust_Mt-32">
+        <%- include('/inc/_saikyo-plan') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+          <a href="<%= sitepath %>fee/saikyo-plan/?l-id=saikyo-plan-banner_fee_saikyo-plan" class="c-Btn_Primary-large">楽天モバイル・料金プランの<span class="<%= namespace %>-Txt_Nl">詳細を見る</span></a>
+        </div>
+        <div class="l-Media_Grid bnr_area u-Adjust_Align-center">
+          <div class="l-Media_Image">
+            <a href="<%= sitepath %>tips/1st-step-point/?l-id=campaign_books_tips_1st-step-point">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-01-sp_230403.png?230403">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-01_230403.png?230403" alt="はじめてのユーザーガイド楽天モバイル活用術もっと！楽天ポイントをもらう編">
+              </picture>
+            </a>
+          </div>
+          <div class="l-Media_Image">
+            <a href="<%= sitepath %>uservoice/?l-id=campaign_<%= namespace %>_uservoice">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-02-sp.png?230201">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-02.png?230201" alt="実際に使った感想をお聞きしました。楽天モバイルの評判をご紹介">
+              </picture>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% } %>
+      <div class="l-System_Container">
+        <h2 id="faq" class="c-Heading_Lv2 nav-Pad u-Adjust_Align-center u-Adjust_Mb-16">よくあるご質問</h2>
+        <p class="c-Txt_Cap u-Adjust_Mt-16 <%= namespace %>-Caution_Text">※キャンペーン詳細は、<a href="#campaign-rule">こちら</a>からご確認ください。</p>
+        <div class="_sample u-Adjust_Mt-16 u-Adjust_Mb-40">
+          <div class="c-Accordion">
+            <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンのポイント獲得の対象になっているか確認したいです。</button>
+            <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true" style="display: none;">
+              <p>お申し込み後に、キャンペーン適用できているかどうかは、お客様自身でご確認いただくことができません。「お申し込み内容」であらかじめクーポンコード14桁の英数字が表示されていることをご確認のうえ、お申し込みを完了してください。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-6"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーン期間内に楽天モバイルに申し込みができているか、確認方法はありますか？</button>
+            <div id="accordion-content-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-6" aria-hidden="true" style="display: none;">
+              <p>以下2種類の方法があります。<br>
+                1.お申し込み完了メールを確認する<br>
+                2.「<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile" target="_blank" class="c-Link_Txt-inline">my 楽天モバイル<span class="c-Icon_New-window-l"></span></a>」の申し込み履歴から確認する<br>
+                詳しい手順は<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001827/" target="_blank" class="c-Link_Txt-inline">こちら<span class="c-Icon_New-window-l"></span></a>からもご確認いただけます。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-7"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>メンバーズステーションで、MNP予約番号を発行する方法を教えてください。</button>
+            <div id="accordion-content-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-7" aria-hidden="true" style="display: none;">
+              <p>MNP（携帯電話ナンバーポータビリティ）をご利用いただくことで、現在お使いの電話番号がそのままお使いいただけます。<br>
+                <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_books_ms2&mno_migration=1" target="_blank" class="c-Link_Txt-inline">メンバーズステーショントップページ<span class="c-Icon_New-window-l"></span></a>の「MNP予約番号発行・確認について」をタップし、MNP予約番号を発行してください。MNP予約番号発行手数料は発生しません。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-8"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>申し込み後に、本人確認書類の不備などで再提出になった場合でもキャンペーンは適用されますか？</button>
+            <div id="accordion-content-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-8" aria-hidden="true" style="display: none;">
+              <p>お申し込み後に、書類の再提出などいただきお申し込みが完了できた場合は、キャンペーンが適用されます。ただし、お申し込み画面内で入力された情報と本人確認書類の内容が一致しないなどの理由で楽天モバイルが定める審査に基づき、お申し込みをキャンセルさせていただく場合、キャンペーンは適用できません。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-9"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ポイントの進呈はいつになりますか？</button>
+            <div id="accordion-content-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-9" aria-hidden="true">
+                <p>「Rakuten最強プラン」のお申し込み後、期限までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈いたします。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※例）8月に「Rakuten最強プラン」のお申し込みをし、9月末日までにすべての条件を達成した場合、その3カ月後である2023年12月末日ごろに進呈となります</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="<%= namespace %>-Layout_Entry-Area u-Adjust_Mt-16">
+        <p class="c-Txt_Emp-02 <%= namespace %>-Utility_Mt-unique u-Adjust_Align-center">お申し込み期間：2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+        <p class="u-Adjust_Mt-16 c-Txt_Emp-01 <%= namespace %>-Utility_Mt-unique u-Adjust_Align-center">クーポンコード：BKSREG00000002</p>
+        <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16 c-Txt_Emp-02"><a href="#campaign-caution" class="js-scroll">お申し込みの注意点</a>を必ずご確認のうえ、以下のお申し込みボタンよりお手続きください。</p>
+      <% if (information.campaignState == 'finish') { %>
+        <div class="u-Adjust_Mt-8 u-Adjust_Align-center"><div class="c-Btn_Primary-large fin">お申し込みはこちら</div></div>
+      <% } else { %>
+        <!-- else -->
+        <div class="u-Adjust_Mt-24 u-Adjust_Align-center"><a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=BKSREG00000002&l-id=campaign_books_coupon_link04" class="c-Btn_Primary-large"><span>お申し込みはこちら</span></a></div>
+      <% } %>
+        <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">本ページの「お申し込みはこちら」ボタン以外からお手続きされた場合、特典適用対象外となります。</p>
+      </div>
+
+      <div class="l-System_Container">
+        <div id="campaign-rule" class="nav-Pad">
+          <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-0">
+            <h3 class="c-Heading_Lv3 u-Adjust_Align-left">楽天ブックスご利用中のお客様へ 楽天モバイルオンライン申し込みで2,000ポイントプレゼントキャンペーン</h3>
+          <% if (information.campaignState == 'finish') { %>
+            <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-24 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= information.campaignFinishSchedule %>をもちまして終了いたしました。<br>
+              このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+          <% } else { %>
+            <!-- else -->
+          <% } %>
+            <div class="u-Adjust_Mt-24">
+              <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                <dl>
+                  <dt>キャンペーンコード</dt>
+                  <dd>
+                    <p>1880</p>
+                    <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                      <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                    </ul>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>キャンペーン期間</dt>
+                  <dd>
+                    <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                    <p>　- Web　2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+                    <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                    <p>2023年9月30日（土）23:59まで</p>
+                    <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                    <p>2023年9月30日（土）23:59まで</p>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>キャンペーン条件</dt>
+                  <dd>
+                    <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                    <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天モバイルを初めてお申し込みいただいた場合に適用となります。</p>
+                    <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                      <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                      <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                      <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                      <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                    </ul>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                      <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                      <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                      <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                      <li>・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                      <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                    </ul>
+                    <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li id="campaign-rule-plan" class=" nav-Pad">【プラン利用開始日とは】<br><br>
+                        <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                        （1）当社に配送完了データが通知された日<br>
+                        （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                        <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                        プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                        <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                        プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                    </ul>
+                    <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                    <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                      Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                    <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                        「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span>電話の発信時、（0570）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                    </ul>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>キャンペーン特典（楽天ポイント）</dt>
+                  <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                  <dd>
+                    <p>2,000ポイント</p>
+                  </dd>
+                  <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                  <dd>
+                    <p>「Rakuten最強プラン」のお申し込み後、期限までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span>例）8月に「Rakuten最強プラン」のお申し込みをし、2023年9月末日までにすべての条件を達成した場合、その3カ月後である2023年12月末日ごろに進呈となります</li>
+                      <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                      <li><span>※</span>権利の譲渡はできません</li>
+                    </ul>
+                  </dd>
+                  <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                  <dd>
+                    <p>ポイント進呈日を含めて6カ月</p>
+                    <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                      <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません</li>
+                    </ul>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>特典適用対象外</dt>
+                  <dd>
+                    <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントのキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                      <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                      <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                      <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                      <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                      <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                      <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                      <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                      <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                      <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                      <li><span>※</span>過去に同一名義で「Rakuten最強プラン」「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります</li>
+                      <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                      <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                      <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                      <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                      <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                      <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                      <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」をお申込みした場合</li>
+                      <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                    </ul>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>併用可能キャンペーン</dt>
+                  <dd>
+                    <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                    <p>【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                      <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                      <li><span>※</span>「【楽天モバイル】Rakuten最強プラン紹介キャンペーン（キャンペーンコード：1784）」のご紹介経由でお申し込みした場合は対象外となります</li>
+                    </ul>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>注意事項</dt>
+                  <dd>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                      <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                      <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                      <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合や弊社が不正と判断した場合は、特典ポイント進呈の対象外となる場合がございます</li>
+                      <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                      <li><span>※</span>記載の内容は2023年8月1日（火）時点の情報となります</li>
+                    </ul>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-Pad" id="campaign-rule02">
+            <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1526', level: 'h3', year: '2023', class: '' }}) %>
+          </div>
+        </div>
+
+        <div class="c-Accordion u-Adjust_Mt-48" id="past-campaigns">
+          <button id="accordion-11" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-11"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>過去のキャンペーン</button>
+          <div id="accordion-content-11" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-11" aria-hidden="true">
+            <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-0">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天ブックスご利用中のお客様へ 楽天モバイルオンライン申し込みで2,000ポイントプレゼントキャンペーン</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1880</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>　- Web　2023年7月3日（月）9:00～2023年8月1日（火）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年8月31日（木）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年8月31日（木）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天モバイルを初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                        <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典（楽天ポイント）</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>2,000ポイント</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                    <dd>
+                      <p>「Rakuten最強プラン」のお申し込み後、期限までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）7月に「Rakuten最強プラン」のお申し込みをし、2023年8月末日までにすべての条件を達成した場合、その3カ月後である2023年11月末日ごろに進呈となります</li>
+                        <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                    <dd>
+                      <p>ポイント進呈日を含めて6カ月</p>
+                      <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                        <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントのキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten最強プラン」「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」をお申込みした場合</li>
+                        <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」のご契約が過去にある場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                        <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合や弊社が不正と判断した場合は、特典ポイント進呈の対象外となる場合がございます</li>
+                        <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                        <li><span>※</span>記載の内容は2023年7月3日（月）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天ブックスご利用中のお客様へ 楽天モバイルオンライン申し込みで2,000ポイントプレゼントキャンペーン</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1880</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>　- Web　2023年6月1日(木) 9:00～2023年7月3日(月) 8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年7月31日（月）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年7月31日（月）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天モバイルを初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典（楽天ポイント）</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>2,000ポイント</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                    <dd>
+                      <p>「Rakuten最強プラン」のお申し込み後、期限までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）6月に「Rakuten最強プラン」のお申し込みをし、2023年7月末日までにすべての条件を達成した場合、その3カ月後である2023年10月末日ごろに進呈となります</li>
+                        <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                    <dd>
+                      <p>ポイント進呈日を含めて6カ月</p>
+                      <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                        <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントのキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten最強プラン」「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                        <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2023年6月1日（木）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天ブックスご利用中のお客様へ 楽天モバイルオンライン申し込みで2,000ポイントプレゼントキャンペーン</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1880</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2023年5月1日（月）9:00～2023年6月1日（木）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年6月30日（金）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年6月30日（金）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天モバイルを初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典（楽天ポイント）</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>2,000ポイント</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                    <dd>
+                      <p>「Rakuten最強プラン」のお申し込み後、期限までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）6月に「Rakuten最強プラン」のお申し込みをし、2023年7月末日までにすべての条件を達成した場合、その3カ月後である2023年10月末日ごろに進呈となります</li>
+                        <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                    <dd>
+                      <p>ポイント進呈日を含めて6カ月</p>
+                      <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                        <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントのキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten最強プラン」「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                        <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2023年6月1日（木）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天ブックスご利用中のお客様へ 楽天モバイルオンライン申し込みで2,000ポイントプレゼントキャンペーン</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1880</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2023年4月3日（月）9:00～2023年5月1日（月）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年5月31日（水）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年5月31日（水）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典（楽天ポイント）</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>2,000ポイント</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                    <dd>
+                      <p>「Rakuten UN-LIMIT VII」のお申し込み後、期限までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）4月に「Rakuten UN-LIMIT VII」のお申し込みをし、2023年5月末日までにすべての条件を達成した場合、その3カ月後である2023年8月末日ごろに進呈となります</li>
+                        <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                    <dd>
+                      <p>ポイント進呈日を含めて6カ月</p>
+                      <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                        <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります。</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten UN-LIMIT VII）セットでご注文した場合は特典適用対象外となります。</li>
+                        <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten UN-LIMIT VII」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                        <li><span>※</span>2023年4月14日（金）9:00より特典適用対象外を追加いたしました。</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2023年4月14日（金）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">楽天ブックスで1回のご注文で税込み500円以上ご購入＆楽天モバイルオンライン申し込みで1,000円OFFクーポンプレゼントキャンペーン　ルール</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1581</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2023年3月1日（水）9:00～2023年4月3日（月）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年4月30日（日）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年4月30日（日）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">楽天ブックス利用期限</p>
+                      <p>2023年4月30日（日）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【4】楽天ブックスで、1回のご注文で税込み500円以上のお買い物</p>
+                      <p>楽天ブックス条件達成期限内に楽天ブックスで1回のご注文で税込み500円以上ご購入（ご注文完了）が条件となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電子書籍（楽天kobo）・ダウンロード商品は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>お客様都合によるキャンセルの場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>商品が欠品や発売延期・中止などで発送できない場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>コンビニ決済手数料、代引き決済手数料、ギフトラッピング料は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>メンテナンスなどで、ご注文いただけない場合がございますが、キャンペーン期間を延長することはございません。何とぞご了承ください。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンが進呈されるまでにキャンセルとなった取引は、キャンペーン対象外となります<br>
+                        （ただし、キャンセル取引以外で1回のご注文で税込み500円以上ご購入を満たしていればクーポン進呈対象となります）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンを使用した場合でも、1回のご注文で税込み500円以上ご購入の場合キャンペーン対象となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- アプリ・WEBのどちらでのお買い物もキャンペーンの対象になります</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>楽天ブックス 1,000円クーポン</p>
+                      <p>[クーポン対象商品]</p>
+                      <p>・楽天ブックス商品</p>
+                      <p>※電子書籍・ダウンロード商品を除く／1回あたりの最低利用金額：1,001円（税込）以上</p>
+                      <p>[注意事項]</p>
+                      <p>・楽天ブックスのクーポンの使い方・条件など詳細は<a href="https://books.faq.rakuten.net/s/article/000015939?_ebx=exsu11io86.1642402183.7mfsz17" target="_blank" class="c-Link_Txt-inline">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン進呈日</dt>
+                    <dd>
+                      <p>「Rakuten UN-LIMIT VII 」のお申し込み月の翌月末日までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）3月に「Rakuten UN-LIMIT VII」のお申し込みをし、2023年4月末日までにすべての条件を達成した場合、その3カ月後である2023年7月末日ごろに進呈となります</li>
+                        <li><span>※</span>クーポンの進呈は、楽天ブックスより行います</li>
+                        <li><span>※</span>クーポンの進呈が完了しましたら、楽天モバイルより通知を行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン有効期間</dt>
+                    <dd>
+                      <p>クーポン進呈日を含めて3カ月</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります。</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>クーポン進呈までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2023年3月1日（水）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">楽天ブックスで1回のご注文で税込み500円以上ご購入＆楽天モバイルオンライン申し込みで1,000円OFFクーポンプレゼントキャンペーン　ルール</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1581</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2023年2月1日（水）9:00～2023年3月1日（水）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年3月31日（金）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年3月31日（金）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">楽天ブックス利用期限</p>
+                      <p>2023年3月31日（金）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001962/#sec3" target="_blank" class="c-Link_Txt-inline">キャンペーンが適用されているか、いつポイントが付与されるか知りたい<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【4】楽天ブックスで、1回のご注文で税込み500円以上のお買い物</p>
+                      <p>楽天ブックス条件達成期限内に楽天ブックスで1回のご注文で税込み500円以上ご購入（ご注文完了）が条件となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電子書籍（楽天kobo）・ダウンロード商品は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>お客様都合によるキャンセルの場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>商品が欠品や発売延期・中止などで発送できない場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>コンビニ決済手数料、代引き決済手数料、ギフトラッピング料は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>メンテナンスなどで、ご注文いただけない場合がございますが、キャンペーン期間を延長することはございません。何とぞご了承ください。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンが進呈されるまでにキャンセルとなった取引は、キャンペーン対象外となります<br>
+                        （ただし、キャンセル取引以外で1回のご注文で税込み500円以上ご購入を満たしていればクーポン進呈対象となります）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンを使用した場合でも、1回のご注文で税込み500円以上ご購入の場合キャンペーン対象となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- アプリ・WEBのどちらでのお買い物もキャンペーンの対象になります</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>楽天ブックス 1,000円クーポン</p>
+                      <p>[クーポン対象商品]</p>
+                      <p>・楽天ブックス商品</p>
+                      <p>※電子書籍・ダウンロード商品を除く／1回あたりの最低利用金額：1,001円（税込）以上</p>
+                      <p>[注意事項]</p>
+                      <p>・楽天ブックスのクーポンの使い方・条件など詳細は<a href="https://books.faq.rakuten.net/s/article/000015939?_ebx=exsu11io86.1642402183.7mfsz17" target="_blank" class="c-Link_Txt-inline">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン進呈日</dt>
+                    <dd>
+                      <p>「Rakuten UN-LIMIT VII 」のお申し込み月の翌月末日までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）2月に「Rakuten UN-LIMIT VII」のお申し込みをし、2023年3月末日までにすべての条件を達成した場合、その3カ月後である2023年6月末日ごろに進呈となります</li>
+                        <li><span>※</span>クーポンの進呈は、楽天ブックスより行います</li>
+                        <li><span>※</span>クーポンの進呈が完了しましたら、楽天モバイルより通知を行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン有効期間</dt>
+                    <dd>
+                      <p>クーポン進呈日を含めて3カ月</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります。</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>クーポン進呈までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2023年2月1日（水）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">楽天ブックス1回のご注文で税込み500円以上ご購入&楽天モバイルオンライン申し込みで1,000円OFFクーポンプレゼントキャンペーン　ルール</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1581</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2023年1月6日（金）9:00～2023年2月1日（水）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年2月28日（火）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年2月28日（火）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">楽天ブックス利用期限</p>
+                      <p>2023年2月28日（火）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>にてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・最低利用期間が残っている場合<br>契約解除料が発生する可能性がございます。この情報は<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル(ドコモ回線・au回線)をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001962/#sec3" target="_blank" class="c-Link_Txt-inline">キャンペーンが適用されているか、いつポイントが付与されるか知りたい<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【4】楽天ブックスで、1回のご注文で税込み500円以上のお買い物</p>
+                      <p>楽天ブックス条件達成期限内に楽天ブックスで1回のご注文で税込み500円以上ご購入（ご注文完了）が条件となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電子書籍（楽天kobo）・ダウンロード商品は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>お客様都合によるキャンセルの場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>商品が欠品や発売延期・中止などで発送できない場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>コンビニ決済手数料、代引き決済手数料、ギフトラッピング料は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>メンテナンスなどで、ご注文いただけない場合がございますが、キャンペーン期間を延長することはございません。何とぞご了承ください。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンが付与されるまでにキャンセルとなった取引は、キャンペーン対象外となります<br>
+                        （ただし、キャンセル取引以外で1回のご注文で税込み500円以上ご購入を満たしていればクーポン付与対象となります）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンを使用した場合でも、1回のご注文で税込み500円以上ご購入の場合キャンペーン対象となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- アプリ・WEBのどちらでのお買い物もキャンペーンの対象になります</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>楽天ブックス 1,000円クーポン</p>
+                      <p>[クーポン対象商品]</p>
+                      <p>・楽天ブックス商品</p>
+                      <p>※電子書籍・ダウンロード商品を除く／1回あたりの最低利用金額：1,001円(税込)以上</p>
+                      <p>[注意事項]</p>
+                      <p>・楽天ブックスのクーポンの使い方・条件など詳細は<a href="https://books.faq.rakuten.net/s/article/000015939?_ebx=exsu11io86.1642402183.7mfsz17" target="_blank" class="c-Link_Txt-inline">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン付与日</dt>
+                    <dd>
+                      <p>「Rakuten UN-LIMIT VII 」のお申し込み月の翌月末日までにすべての条件を達成した場合、利用期限月の3か月後末日ごろに付与</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）1月に「Rakuten UN-LIMIT VII」のお申し込みをし、2023年2月末日までにすべての条件を達成した場合、その3か月後である2023年5月末日ごろに付与となります</li>
+                        <li><span>※</span>クーポンの付与は、楽天ブックスより行います</li>
+                        <li><span>※</span>クーポンの付与が完了しましたら、楽天モバイルより通知を行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン有効期間</dt>
+                    <dd>
+                      <p>クーポン付与日を含めて3カ月</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより付与ポイント数やクーポン割引額が多いRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、付与ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル(ドコモ回線・au回線)をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります。</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>クーポン付与までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2023年1月6日（金）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">楽天ブックス1回のご注文で税込み500円以上ご購入&楽天モバイルオンライン申し込みで1,000円OFFクーポンプレゼントキャンペーン　ルール</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1581</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2022年12月1日（木）9:00～2023年1月6日（金）8:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>2023年1月31日（火）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>2023年1月31日（火）23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">楽天ブックス利用期限</p>
+                      <p>2023年1月31日（火）23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）のメンバーズステーションにてMNP予約番号を取得し、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。 </li>
+                        <li>・最低利用期間が残っている場合<br>契約解除料が発生する可能性がございます。この情報は<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten">メンバーズステーション</a>からご確認ください。</li>
+                        <li>・オプションサービスを引き継ぎたい場合<br>本ページからお申し込みした際、オプションサービスはすべて解約となります。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">【お申し込み時の注意事項】</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li>・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります</li>
+                        <li>・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります</li>
+                        <li>・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください</li>
+                        <li>・楽天モバイル(ドコモ回線・au回線)をお使いのお客様が、メンバーズステーションより、プラン変更（移行）した場合、キャンペーンの適用はございません</li>
+                        <li>・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten Link」のご利用<br>「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001962/#sec3" target="_blank" class="c-Link_Txt-inline">キャンペーンが適用されているか、いつポイントが付与されるか知りたい<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【4】楽天ブックスで、1回のご注文で税込み500円以上のお買い物</p>
+                      <p>楽天ブックス条件達成期限内に楽天ブックスで1回のご注文で税込み500円以上ご購入（ご注文完了）が条件となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電子書籍（楽天kobo）・ダウンロード商品は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>お客様都合によるキャンセルの場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>商品が欠品や発売延期・中止などで発送できない場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>コンビニ決済手数料、代引き決済手数料、ギフトラッピング料は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>メンテナンスなどで、ご注文いただけない場合がございますが、キャンペーン期間を延長することはございません。何とぞご了承ください。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンが付与されるまでにキャンセルとなった取引は、キャンペーン対象外となります<br>
+                        （ただし、キャンセル取引以外で1回のご注文で税込み500円以上ご購入を満たしていればクーポン付与対象となります）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンを使用した場合でも、1回のご注文で税込み500円以上ご購入の場合キャンペーン対象となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- アプリ・WEBのどちらでのお買い物もキャンペーンの対象になります</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>楽天ブックス 1,000円クーポン</p>
+                      <p>[クーポン対象商品]</p>
+                      <p>・楽天ブックス商品</p>
+                      <p>※電子書籍・ダウンロード商品を除く／1回あたりの最低利用金額：1,001円(税込)以上</p>
+                      <p>[注意事項]</p>
+                      <p>・楽天ブックスのクーポンの使い方・条件など詳細は<a href="https://books.faq.rakuten.net/s/article/000015939?_ebx=exsu11io86.1642402183.7mfsz17" target="_blank" class="c-Link_Txt-inline">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン付与日</dt>
+                    <dd>
+                      <p>「Rakuten UN-LIMIT VII 」のお申し込み月の翌月末日までにすべての条件を達成した場合、利用期限月の3か月後末日ごろに付与</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）12月に「Rakuten UN-LIMIT VII」のお申し込みをし、2023年1月末日までにすべての条件を達成した場合、その3か月後である2023年4月末日ごろに付与となります</li>
+                        <li><span>※</span>クーポンの付与は、楽天ブックスより行います</li>
+                        <li><span>※</span>クーポンの付与が完了しましたら、楽天モバイルより通知を行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン有効期間</dt>
+                    <dd>
+                      <p>クーポン付与日を含めて3カ月</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより付与ポイント数やクーポン割引額が多い Rakuten UN-LIMIT VII お申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合<br>
+                          （複数のRakuten UN-LIMIT VII お申し込みでポイントまたはクーポン等プレゼントキャンペーンの対象となった場合、付与ポイント数やクーポン割引額等が一番多いキャンペーンのみが適用され、同額の場合はポイント・クーポン等問わずエントリー日時の早いキャンペーンが優先して適用されます。）</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                        <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                        <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                        <li><span>※</span>楽天モバイル(ドコモ回線・au回線)をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                        <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合<br>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                        <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>プランのお申し込み時の楽天ID、楽天モバイルにご登録の楽天IDが同一でない場合</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります。</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>クーポン付与までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2022年12月1日（木）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">楽天ブックス1回のご注文で税込み500円以上ご購入&楽天モバイルオンライン申し込みで1,000円OFFクーポンプレゼントキャンペーン　ルール</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1581</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">エントリー期間</p>
+                      <p>2022年11月1日（火）9:00～終了日未定（毎月開催）</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2022年11月1日（火）9:00～終了日未定（毎月開催）</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>プランのお申し込み月の翌月末日23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>プランのお申し込み月の翌月末日23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">楽天ブックス利用期限</p>
+                      <p>プランのお申し込み月の翌月末日23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】、【5】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】キャンペーンへのエントリー<br>
+                        エントリー期間内に本キャンペーンページでエントリー</p>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>エントリー前のお申し込みはクーポン付与の対象になりません</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【4】「Rakuten Link」のご利用<br>「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001962/#sec3" target="_blank" class="c-Link_Txt-inline">キャンペーンが適用されているか、いつポイントが付与されるか知りたい<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【5】楽天ブックスで、1回のご注文で税込み500円以上のお買い物</p>
+                      <p>楽天ブックス条件達成期限内に楽天ブックスで1回のご注文で税込み500円以上ご購入（ご注文完了）が条件となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電子書籍（楽天kobo）・ダウンロード商品は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>お客様都合によるキャンセルの場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>商品が欠品や発売延期・中止などで発送できない場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>コンビニ決済手数料、代引き決済手数料、ギフトラッピング料は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>メンテナンスなどで、ご注文いただけない場合がございますが、キャンペーン期間を延長することはございません。何とぞご了承ください。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンが付与されるまでにキャンセルとなった取引は、キャンペーン対象外となります<br>
+                        （ただし、キャンセル取引以外で1回のご注文で税込み500円以上ご購入を満たしていればクーポン付与対象となります）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンを使用した場合でも、1回のご注文で税込み500円以上ご購入の場合キャンペーン対象となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- アプリ・WEBのどちらでのお買い物もキャンペーンの対象になります</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>楽天ブックス 1,000円クーポン</p>
+                      <p>[クーポン対象商品]</p>
+                      <p>・楽天ブックス商品</p>
+                      <p>※電子書籍・ダウンロード商品を除く／1回あたりの最低利用金額：1,001円(税込)以上</p>
+                      <p>[注意事項]</p>
+                      <p>・楽天ブックスのクーポンの使い方・条件など詳細は<a href="https://books.faq.rakuten.net/s/article/000015939?_ebx=exsu11io86.1642402183.7mfsz17" target="_blank" class="c-Link_Txt-inline">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン付与日</dt>
+                    <dd>
+                      <p>「Rakuten UN-LIMIT VII 」のお申し込み月の翌月末日までにすべての条件を達成した場合、利用期限月の3か月後末日ごろに付与</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）11月に「Rakuten UN-LIMIT VII」のお申し込みをし、12月末日までにすべての条件を達成した場合、その3か月後である2023年3月末日ごろに付与となります</li>
+                        <li><span>※</span>クーポンの付与は、楽天ブックスより行います</li>
+                        <li><span>※</span>クーポンの付与が完了しましたら、楽天モバイルより通知を行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン有効期間</dt>
+                    <dd>
+                      <p>クーポン付与日を含めて3カ月</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより付与ポイント数やクーポン割引額が多い Rakuten UN-LIMIT VII お申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合<br>
+                          （複数のRakuten UN-LIMIT VII お申し込みでポイントまたはクーポン等プレゼントキャンペーンの対象となった場合、付与ポイント数やクーポン割引額等が一番多いキャンペーンのみが適用され、同額の場合はポイント・クーポン等問わずエントリー日時の早いキャンペーンが優先して適用されます。）</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります。</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>クーポン付与までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2022年11月1日（火）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">楽天ブックス1回のご注文で税込み500円以上ご購入&楽天モバイルオンライン申し込みで1,000円OFFクーポンプレゼントキャンペーン　ルール</div>
+              <div class="u-Adjust_Mt-24">
+                <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                  <dl>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1581</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">エントリー期間</p>
+                      <p>2022年10月3日（月）9:00～終了日未定（毎月開催）</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プランのお申し込み期間</p>
+                      <p>- Web　2022年10月3日（月）9:00～終了日未定（毎月開催）</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                      <p>プランのお申し込み月の翌月末日23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                      <p>プランのお申し込み月の翌月末日23:59まで</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">楽天ブックス利用期限</p>
+                      <p>プランのお申し込み月の翌月末日23:59まで</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】、【5】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-02">※特典はお一人様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</p>
+                      <p class="u-Adjust_Mt-8">【1】キャンペーンへのエントリー<br>
+                        エントリー期間内に本キャンペーンページでエントリー</p>
+                      <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                        <li><span>※</span>エントリー前のお申し込みはクーポン付与の対象になりません</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【3】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li>【プラン利用開始日とは】<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                          （1）当社に配送完了データが通知された日<br>
+                          （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                          <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                          プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【4】「Rakuten Link」のご利用<br>「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                        Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                          「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001962/#sec3" target="_blank" class="c-Link_Txt-inline">キャンペーンが適用されているか、いつポイントが付与されるか知りたい<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">【5】楽天ブックスで、1回のご注文で税込み500円以上のお買い物</p>
+                      <p>楽天ブックス条件達成期限内に楽天ブックスで1回のご注文で税込み500円以上ご購入（ご注文完了）が条件となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>電子書籍（楽天kobo）・ダウンロード商品は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>お客様都合によるキャンセルの場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>商品が欠品や発売延期・中止などで発送できない場合は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>コンビニ決済手数料、代引き決済手数料、ギフトラッピング料は、キャンペーンの対象外です。</li>
+                        <li><span>※</span>メンテナンスなどで、ご注文いただけない場合がございますが、キャンペーン期間を延長することはございません。何とぞご了承ください。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンが付与されるまでにキャンセルとなった取引は、キャンペーン対象外となります<br>
+                        （ただし、キャンセル取引以外で1回のご注文で税込み500円以上ご購入を満たしていればクーポン付与対象となります）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- クーポンを使用した場合でも、1回のご注文で税込み500円以上ご購入の場合キャンペーン対象となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">- アプリ・WEBのどちらでのお買い物もキャンペーンの対象になります</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>キャンペーン特典</dt>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                    <dd>
+                      <p>楽天ブックス 1,000円クーポン</p>
+                      <p>[クーポン対象商品]</p>
+                      <p>・楽天ブックス商品</p>
+                      <p>※電子書籍・ダウンロード商品を除く／1回あたりの最低利用金額：1,001円(税込)以上</p>
+                      <p>[注意事項]</p>
+                      <p>・楽天ブックスのクーポンの使い方・条件など詳細は<a href="https://books.faq.rakuten.net/s/article/000015939?_ebx=exsu11io86.1642402183.7mfsz17" target="_blank" class="c-Link_Txt-inline">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</p>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン付与日</dt>
+                    <dd>
+                      <p>「Rakuten UN-LIMIT VII」のお申し込み月の翌月末日までにすべての条件を達成した場合、利用期限月の翌々月末日ごろに付与</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>例）10月に「Rakuten UN-LIMIT VII」のお申し込みをし、11月末日までにすべての条件を達成した場合、その翌々月である1月末日ごろに付与となります</li>
+                        <li><span>※</span>クーポンの付与は、楽天ブックスより行います</li>
+                        <li><span>※</span>クーポンの付与が完了しましたら、楽天モバイルより通知を行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-campaign-Rule_Title-sub">クーポン有効期間</dt>
+                    <dd>
+                      <p>クーポン付与日を含めて3カ月</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                        <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより付与ポイント数やクーポン割引額が多い Rakuten UN-LIMIT VII お申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合<br>
+                          （複数のRakuten UN-LIMIT VII お申し込みでポイントまたはクーポン等プレゼントキャンペーンの対象となった場合、付与ポイント数やクーポン割引額等が一番多いキャンペーンのみが適用され、同額の場合はポイント・クーポン等問わずエントリー日時の早いキャンペーンが優先して適用されます。）</li>
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>本キャンペーン適用が、おひとり様1契約を超える場合は対象外となります</li>
+                        <li><span>※</span>過去に同一名義で「Rakuten UN-LIMIT VII」をご契約いただいたことがある場合は対象外となります。</li>
+                        <li><span>※</span>開通手続きを店舗（楽天モバイルショップ）で行った場合</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください</li>
+                        <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                        <li><span>※</span>クーポン付与までに楽天会員から退会している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                        <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p>【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                      <p class="u-Adjust_Mt-16">【Rakuten UN-LIMIT VII】データ1GB／月以下だった方限定！プラン料金最大4カ月実質無料キャンペーン（キャンペーンコード：1527）</p>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2022年10月3日（月）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReX UX Survey: Mounting point for embedded components -->
+    <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+
+    <div id="js-fixed-btn" class="<%= namespace %>-Layout_Bottom-fixed fixed-top" aria-expanded="false" role="region">
+      <div class="<%= namespace %>-Layout_Bottom-fixed-inner">
+        <div class="<%= namespace %>-Layout_Bottom-fixed-link-box-pc">
+          <ul class="fixed-Link">
+            <li><a href="#campaign-caution" class="js-scroll">お申し込みの注意点</a></li>
+            <li><a href="#campaign-flow" class="js-scroll">キャンペーンの流れ</a></li>
+            <li><a href="#faq" class="js-scroll">よくあるご質問</a></li>
+          </ul>
+        </div>
+        <div class="<%= namespace %>-Layout_Bottom-fixed-link-box-sp">
+          <div class="<%= namespace %>-Layout_Bottom-fixed-link-sp">
+            <ul class="fixed-Link">
+              <li><a href="#campaign-caution" class="js-scroll">注意点</a></li>
+              <li><a href="#campaign-flow" class="js-scroll">キャンペーンの流れ</a></li>
+              <li><a href="#faq" class="js-scroll">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+      <% if (information.campaignState == 'finish') { %>
+      <% } else { %>
+        <!-- else -->
+        <div class="<%= namespace %>-Layout_Bottom-fixed-btn-box">
+          <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=BKSREG00000002&l-id=campaign_books_f_coupon_link" class="c-Btn_Primary-large <%= namespace %>-Layout_Bottom-fixed-btn">お申し込みはこちら</a>
+          <div class="nav-Btn">
+            <div class="nav-Btn_Arrow">
+              <span class="c-Icon_Chevron-left"></span>
+            </div>
+          </div>
+        </div>
+      <% } %>
+      </div>
+    </div>
+
+    <footer class="g-Footer u-Adjust_Mt-64 <%= namespace %>-Layout_Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+  <script>
+    (function($){
+        const trigger = document.getElementById('js-trigger');
+        const fixedBtn = document.getElementById('js-fixed-btn');
+        function fixedBottomBtn() {
+            let scrollY = window.pageYOffset;
+            const triggerRect = trigger.getBoundingClientRect();
+            const triggerY = scrollY + triggerRect.top;
+
+        if ( scrollY > triggerY ) {
+          fixedBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          fixedBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+      if( fixedBtn && trigger ) {
+        window.addEventListener('scroll', fixedBottomBtn);
+      }
+    })();
+  </script>
+  <script>
+    (function($){
+        $(function(){
+          $('.accordion1_opan').on('click', function(){
+            $('#accordion-1').attr('aria-expanded', 'true');
+            $('#accordion-content-1').attr('aria-hidden', 'false');
+            $('#accordion-content-1').slideDown(200);
+          });
+          $('.js-ac-members').on('click',function() {
+            var n = window.location.href.slice(window.location.href.indexOf('?') + 4);
+            var p = $("#members").offset().top;
+            $('html,body').animate({ scrollTop: p }, 'slow');
+            return false;
+          });
+          $('.nav-Btn').on('click',function() {
+            $('.nav-Btn_Arrow').toggleClass('nav-On');
+            $('.<%= namespace %>-Layout_Bottom-fixed-link-sp').slideToggle();
+          });
+        });
+    })(jQuery);
+  </script>
+<% if (information.campaignState == 'finish') { %>
+<% } else { %>
+  <!-- else -->
+  <script>
+    function playended(){
+      const Videoid_01_pc = $('.<%= namespace %>-Layout-Display_Pc .video-js').attr('id');
+      const Videoclass_01_pc = document.getElementById(Videoid_01_pc);
+      if(Videoclass_01_pc.classList.contains('vjs-ended') == true ){
+        document.getElementById("RatEnded_PC").click();
+        $(Videoclass_01_pc).removeClass('vjs-ended');
+      };
+      const Videoid_01_sp = $('.<%= namespace %>-Layout-Display_Sp .video-js').attr('id');
+      const Videoclass_01_sp = document.getElementById(Videoid_01_sp);
+      if(Videoclass_01_sp.classList.contains('vjs-ended') == true ){
+        document.getElementById("RatEnded_SP").click();
+        $(Videoclass_01_sp).removeClass('vjs-ended');
+      };
+    }
+    setInterval(playended, 1000);
+  </script>
+<% } %>
+
+  <!-- ReX UX Survey: Config -->
+  <script>
+  window.rexSurveyConfig = {"language":"ja","surveyId":"39499","cId":{"name":"answers[39499_269617]","value":""},"embedded":true,"url":{"name":"answers[39499_269618]"},"triggerIdName":"trigger","reappearancePeriodWithRespond":"10","reappearancePeriodWithoutRespond":"10","enableDisplaySuppressionPerPage":true,"enableFormAction":true,"displayStartDate":"","displayEndDate":"","permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":false},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。","thanksDisplaySeconds":3},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[39499_269619]","value":"746867"},{"name":"answers[39499_269619]","value":"746868"},{"name":"answers[39499_269619]","value":"746869"},{"name":"answers[39499_269619]","value":"746870"},{"name":"answers[39499_269619]","value":"746871"}],"txt0":"わかりづらかった","txt1":"わかりやすかった","checked":4},"inquiry":{"available":true,"checkList":{"questionType":"multipleAnswer","available":true,"question":"あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ","shuffleChoices":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":"ポイント獲得の条件や流れがわかりにくい"},{"name":"answers[39499_269620][]","value":"746873","label":"文字数や情報量が多すぎてわかりにくい"},{"name":"answers[39499_269620][]","value":"746874","label":"色や文字サイズ等のデザインが見にくい"},{"name":"answers[39499_269620][]","value":"746875","label":"楽天モバイルの申し込み方法がわかりにくい"},{"name":"answers[39499_269620][]","value":"746876","label":"キャンペーンに申し込むメリットを感じない"},{"name":"answers[39499_269620][]","value":"746877","label":"その他(次の設問でご記入ください)"},{"name":"answers[39499_269620][]","value":"746878","label":" 特に無い"}]},"freeInput":{"available":true,"name":"answers[39499_269621]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のため使用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":""},{"name":"answers[39499_269620][]","value":"746873","label":""},{"name":"answers[39499_269620][]","value":"746874","label":""},{"name":"answers[39499_269620][]","value":"746875","label":""},{"name":"answers[39499_269620][]","value":"746876","label":""},{"name":"answers[39499_269620][]","value":"746877","label":""},{"name":"answers[39499_269620][]","value":"746878","label":""}]}},"ua":{"name":"answers[39499_269622]"},"href":{"name":"answers[39499_269623]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+  </script>
+  <!-- ReX UX Survey: Script -->
+  <script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/2.1.0/js/main.js" defer></script>
+
+<% if (information.campaignState == 'finish') { %>
+<% } else { %>
+  <!-- else -->
+  <script src="https://players.brightcove.net/5068808272001/default_default/index.min.js"></script>
+<% } %>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<% const pagetitle = "データ移行・バックアップ" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/setting/android/", label:"Android製品の設定手順"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルの機種変更方法や他社から楽天モバイルに乗り換え・変更される際のデータ移行方法はこちら。Rakuten Mini、Rakuten BIGほか、スマートフォン（スマホ）、タブレットのデータ移行・バックアップ手順をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-24">機種変更や他社から楽天モバイルにMNPされる際などに、お使いの機種から新しい機種へデータを移行する方法や、万一の事態に備えて、データのバックアップ方法をご案内します。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">アプリを使用したデータ移行・バックアップ</h2>
+    <p class="u-Adjust_Mt-8">「Googleドライブ」アプリを利用してデータ移行・バックアップを行います。</p>
+
+    <p class="u-Adjust_Mt-40">ダウンロードはこちらから</p>
+    <p class="u-Adjust_Mt-8"><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.docs" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="192" height="57" alt=""></a></p>
+    <div class="guide-Info u-Adjust_Mt-48">
+      <h4 class="c-Heading_Lv4">【移行元の製品（AndroidもしくはiPhoneの場合）】</h4>
+      <ol class="c-List_Text-decimal u-Adjust_Mt-16 u-Adjust_Pl-16 u-Adjust_Pr-8">
+        <li>「Googleドライブ」アプリを開きます。</li>
+        <li>メニュー アイコン→[バックアップ] をタップします。</li>
+        <li>移行したい項目をタップします。</li>
+      </ol>
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-40">【移行後の製品（Androidの場合）】</h4>
+      <ol class="c-List_Text-decimal u-Adjust_Mt-16 u-Adjust_Pl-16 u-Adjust_Pr-8">
+        <li>Googleアカウントにログインした状態にします。</li>
+        <li>「設定」→[同期]で、移行したい項目がオンになっていれば同期されます。</li>
+      </ol>
+    </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">移行できるデータ</h3>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>電話帳</li>
+      <li>写真、動画</li>
+      <li>アプリ（LINE、Facebook、Twitter、おサイフケータイ）</li>
+    </ul>
+    <p class="u-Adjust_Mt-32">アプリ内の情報は引き継がれないため、お客さまご自身で行っていただく必要があります。下記よりご確認ください。</p>
+    <p class="u-Adjust_Mt-8"><a href="#section01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>アプリのデータ移行方法はこちら</a></p>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-48">移行できる機種</h3>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>AndroidからAndroidの方</li>
+      <li>iPhoneからAndroidの方</li>
+    </ul>
+
+    <h3 id="section01" class="c-Heading_Lv3 u-Adjust_Mt-48">アプリのデータ移行方法</h3>
+    <p class="u-Adjust_Mt-16">機種変更・故障修理の際は、必ず事前に各サービスのご案内をご確認ください。</p>
+    <ul class="c-Link_List u-Adjust_Mt-16">
+      <li><a href="http://official-blog.line.me/ja/archives/53494977.html" target="_blank">LINE<span class="c-Icon_Chevron-right"></span></a></li>
+      <li><a href="https://www.facebook.com/help/606547816098744" target="_blank">Facebook<span class="c-Icon_Chevron-right"></span></a></li>
+      <li><a href="https://help.twitter.com/ja" target="_blank">Twitter<span class="c-Icon_Chevron-right"></span></a></li>
+    </ul>
+    <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">おサイフケータイ</h4>
+    <ul class="c-Link_List u-Adjust_Mt-16">
+      <li><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/exchange/" target="_blank">楽天Edy<span class="c-Icon_Chevron-right"></span></a></li>
+      <li><a href="https://www.jreast.co.jp/mobilesuica/procedure/chg_model.html" target="_blank">モバイルsuica<span class="c-Icon_Chevron-right"></span></a></li>
+      <li><a href="https://id-credit.com/support/index.html" target="_blank">iD<span class="c-Icon_Chevron-right"></span></a></li>
+      <li><a href="https://www.waon.net/card/mobile/#change" target="_blank">WAON<span class="c-Icon_Chevron-right"></span></a></li>
+      <li><a href="https://www.nanaco-net.jp/howto/change/" target="_blank">nanaco<span class="c-Icon_Chevron-right"></span></a></li>
+      <li><a href="https://www.quicpay.jp/support/change.html" target="_blank">QUICpay<span class="c-Icon_Chevron-right"></span></a></li>
+    </ul>
+    <p class="c-Txt_Cap u-Adjust_Mt-24">※各サービス事業者の案内をご確認ください。</p>
+    <p class="c-Txt_Cap">※ <a href="<%= sitepath %>guide/osaifu-lock/" class="c-Link_Txt">おサイフケータイ ロックの設定・解除方法はこちら</a>をご確認ください。</p>
+
+    <%- include('/include/guide/_faq') %>
+
+    <div class="u-Adjust_Pt-64 u-Adjust_Pb-56">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+    <%- include('/include/_related-media.ejs', { articles: [
+      {
+        title: "携帯電話会社を乗り換える方法とは？手順を解説",
+        link: "https://network.mobile.rakuten.co.jp/sumakatsu/contents/articles/2020/00005/?l-id=guide_data-migration_media_00005"
+      },
+      {
+        title: "MNP（携帯電話番号ポータビリティ）予約番号とは？ 事前に知っておきたい知識と取得のために必要な手続き",
+        link: "https://network.mobile.rakuten.co.jp/sumakatsu/contents/articles/2020/00006/?l-id=guide_data-migration_media_00006"
+      }
+    ] }) %>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

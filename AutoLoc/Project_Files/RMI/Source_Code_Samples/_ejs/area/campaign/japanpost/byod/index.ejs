@@ -1,0 +1,327 @@
+<% const pagetitle = "Rakuten最強プランのお申し込みで、20,000ポイントプレゼントキャンペーン"
+const directories = [{path:"area/", label:"通信・エリア"}]
+const namespace = "japanpost-byod"
+const byod = "日本郵政グループ従業員様・ご家族様限定"
+const entryData = "2024年5月13日（月）9:00～2024年10月31日（木）23:59"
+const campaignState = ""
+const couponCode = "WPSJPG00000001"
+const enddate = "2024年10月31日"
+const japanpostdata = "日本郵政グループ従業員・ご家族様限定キャンペーン窓口 050-5443-6493(営業時間9:00-17:00※定休日無し)"
+-%>
+<%-
+include('/_header', {
+  pagetitle,
+  directories,
+  description: 'Rakuten最強プランのお申し込みで、20,000ポイントプレゼントキャンペーンです。',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/campaign/japanpost/byod/japanpost-byod.css">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <%- include('/include/_breadcrumbs', {
+      type: 'head',
+      pagetitle,
+      directories,
+    }) %>
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List">
+        <li class="c-Label_Normal">エントリー必要</li>
+      </ul>
+      <ul class="c-Label_List">
+        <li class="c-Label_Normal">ご契約者様対象</li>
+      </ul>
+      <p class="<%= namespace %>-Layout_Label-point">ポイント：進呈日を含めて6カ月の期間限定ポイント</p>
+    </div>
+
+    <div class="<%= namespace %>-Hero">
+      <div class="<%= namespace %>-Hero_Container">
+        <p class="<%= namespace %>-Layout_kv"><%= byod %></p>
+        <h1>
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/japanpost/byod/jp-byod-KV-sp.png" width="100%">
+            <img src="<%= sitepath %>assets/img/area/campaign/japanpost/byod/jp-byod-KV-pc.png" width="1440" height="345" alt="<%= pagetitle %>">
+          </picture>
+        </h1>
+      </div>
+    </div>
+
+    <div class="l-System_Container u-Adjust_Mt-8">
+      <p class="c-Txt_Cap">
+        ※アンケートを送信するとエントリー完了となります<br>
+        <span class="c-Txt_Emp-02">※「Rakuten最強プラン（データタイプ）」は対象外です</span><br>
+        ※特典は日本郵政グループ従業員様とそのご家族様ともにキャンペーン期間中おひとり様1度のみとなります<br>
+        ※進呈するポイントは期間限定ポイントとなり、条件がございます。詳しくは<a href="#campaign-rule2258" class="c-Link_Txt js-scroll">キャンペーンルール</a>をご確認ください<br>
+        ※すでに楽天モバイルをご契約されている方でも、2回線目のプラン契約時にキャンペーン条件を満たせば特典対象となります<br>
+        ※1 本キャンペーンにエントリー後の月末時点で、「Rakuten最強プラン」をご利用中の方が対象です<br>
+        ※1 エントリーの翌月以降は、翌月以降の月末時点での「Rakuten最強プラン」のご利用状況により、特典が適用されます<br>
+      </p>
+
+      <% if (campaignState === 'finish') { %>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+          <p class="c-Txt_Emp-02 c-Heading_Lv4">
+            本キャンペーンは<%= enddate %>23時59分をもちまして終了いたしました。<br>
+            このページに掲載されている情報は、キャンペーン終了時点のものです。
+          </p>
+        </div>
+      <% } %>
+
+      <div class="u-Adjust_Align-center">
+        <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%= japanpostdata %></p>
+        <p class="u-Adjust_Mt-24 u-Adjust_Mb-24">
+          <span class="c-Txt_Emp-01 ">【キャンペーン期間】</span>
+          <br class="u-Show_Sp">
+          <%= entryData %>
+        </p>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Bg">
+      <div class="l-System_Container u-Adjust_Pt-48">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center ">キャンペーンの流れ</h2>
+        <ul class="<%= namespace %>-Layout_Flow c-Flow">
+          <li class="<%= namespace %>-Layout_whitebox">
+            <h3><span class="<%= namespace %>-Layout_Flow-step">STEP 1</span><span>アンケートに回答してエントリー</span></h3>
+            <div class="<%= namespace %>-Layout_Flow-detail">
+              <img src="<%= sitepath %>assets/img/area/campaign/common/img-step1.png" class="u-Adjust_Align-center" width="314" height="97" alt="<%= pagetitle %>">
+              <div class="u-Adjust_Align-left u-Adjust_Mt-24">
+                <p>アンケート画面に進んで設問に回答してください</p>
+                <div class="u-Adjust_Mt-16">
+                  <a class="c-Btn_Primary-large" aria-disabled="false" href="<%= sitepath %>area/questionare/japanpost/?cp=byod&l-id=mi_rmb_web_20240415_jp_byod_questionnare"><span>アンケート画面に進む</span></a>
+                </div>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap u-Adjust_Align-left">
+                  ※ご家族のお申し込みをされる場合でも、アンケート画面では従業員様ご本人の情報を入力してください<br>
+                  ※ご自身とご家族がそれぞれご契約する場合には、楽天IDが異なれば、同じ従業員様氏名で複数アンケート回答してもキャンペーン適用対象となります<br>
+                  ※エントリーにはご契約者様の楽天IDが必要です
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="<%= namespace %>-Layout_whitebox">
+            <h3><span class="<%= namespace %>-Layout_Flow-step">STEP 2</span><span>楽天モバイルのお申し込み</span></h3>
+            <div class="<%= namespace %>-Layout_Flow-detail">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/byod/img-01-sp.png" width="100%">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/byod/img-01-pc.png" width="314" height="97" alt="<%= pagetitle %>">
+              </picture>
+              <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-0">
+                <div class="<%= namespace %>-Layout_Flow-coupon">
+                  <p class="c-Txt_Emp-02">クーポンコード: <%= couponCode %></p>
+                </div>
+                <p class="u-Adjust_Mt-16">WebまたはショップでRakuten最強プランをお申し込みください</p>
+                <ul class="<%= namespace %>-Layout_Btn-col u-Adjust_Mt-16">
+                  <li class="<%= namespace %>-Utility_Justify-content-sp">
+                    <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=WPSJPG00000001&l-id=area_campaign_japanpost_byod" class="c-Btn_Primary <%= namespace %>-Layout_Btn"><span>新規／乗り換え（MNP）お申し込み</span></a>
+                  </li>
+                  <li class="<%= namespace %>-Utility_Justify-content-sp">
+                    <a href="<%= sitepath %>shop/?l-id=campaign_japanpost_byod_shop_01" class="c-Btn_Secondly <%= namespace %>-Layout_Btn"><span>お近くのショップを探す</span></a>
+                  </li>
+                </ul>
+                <p class="c-Txt_Normal-s u-Adjust_Mt-16 c-Txt_Emp-02">
+                  ※お申し込み後に本キャンペーンにエントリーした場合、特典適用対象外となります<br>
+                  ※ショップでご契約される場合は、本キャンペーンを適用する旨のご申告と合わせて本画面を店舗スタッフにお見せください
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="<%= namespace %>-Layout_whitebox">
+            <h3>
+              <span class="<%= namespace %>-Layout_Flow-step">STEP 3</span><span>「Rakuten最強プラン」利用開始</span>
+            </h3>
+            <div class="<%= namespace %>-Layout_Flow-detail">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/byod/img-02-pc.png" class="u-Show_Xxo" width="304" height="135" alt="「Rakuten最強プラン」利用開始">
+              <div>
+                <div class="<%= namespace %>-Layout_Flow-detail-sp">
+                  <img src="<%= sitepath %>assets/img/campaign/japanpost/byod/img-02-sp.png" class="u-Show_Oox" width="84" height="67" alt="「Rakuten最強プラン」利用開始">
+                  <p class="u-Adjust_Align-left"><span class="c-Txt_Emp-01">期限:</span><br class="u-Show_Oox">プランお申し込みの翌月末日23:59まで</p>
+                </div>
+                <div class="u-Adjust_Mt-16 <%= namespace %>-Utility_Justify-content-sp">
+                  <a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/?l-id=campaign_japanpost_byod_faq_detail_00001648" class="c-Btn_Regular <%= namespace %>-Layout_Btn"><span>プラン利用開始手順を見る</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="<%= namespace %>-Layout_whitebox-last">
+            <h3><span class="<%= namespace %>-Layout_Flow-step">キャンペーン特典のポイント進呈！</span></h3>
+            <div class="<%= namespace %>-Layout_Flow-detail <%= namespace %>-Layout_Flow-detail <%= namespace %>-Layout_Flow-detail-img-center">
+              <div class="u-Adjust_Align-center" style="width: auto;">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/byod/img-04-pc-231027.png" width="314" height="91" alt="キャンペーン特典のポイント進呈！">
+              </div>
+              <div>
+                <div class="<%= namespace %>-Layout_Flow-detail-point">
+                  <div class="<%= namespace %>-Layout_Flow-detail-point-item">
+                    <div class="<%= namespace %>-Layout_Flow-detail-point-title u-Adjust_Align-center">
+                      <p class="c-Txt_Emp-01">初めてプランお申し込みで</p>
+                      <p class="c-Txt_Emp-02">
+                        <span class="<%= namespace %>-Layout_Flow-detail-point-num">20,000</span>ポイント
+                      </p>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Flow-detail-point-txt u-Adjust_Mt-8">
+                      <p class="c-Txt_Emp-01">【プランお申込み期間】</p>
+                        <p><span class="c-Txt_Emp-01">Web  </span>2024年5月13日（月）9:00～<br><%= enddate %>（木）23:59</p>
+                        <p><span class="c-Txt_Emp-01">店舗  </span>2024年5月13日（月）開店～<br><%= enddate %>（木）閉店</p>
+                      <p class="u-Adjust_Mt-8"><a href="#campaign-rule2258" class="c-Link_Txt-inline js-scroll">詳しくはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>-Layout_Flow-detail-point-item">
+                    <div class="<%= namespace %>-Layout_Flow-detail-point-title u-Adjust_Align-center">
+                      <p class="c-Txt_Emp-01">楽天モバイルご契約中</p>
+                      <p class="c-Txt_Emp-02">
+                        毎月<span class="<%= namespace %>-Layout_Flow-detail-point-num">500</span>ポイント
+                      </p>
+                    </div>
+                    <div class="u-Adjust_Align-center u-Adjust_Mt-8">
+                      <p class="c-Txt_Emp-01">【エントリー期間】</p>
+                        <p>2024年5月13日（月）9:00～<br><%= enddate %>（木）23:59</p>
+                        <p class="<%= namespace %>-Layout_Flow-detail-point-space"><a href="#campaign-rule2262" class="c-Link_Txt-inline js-scroll">詳しくはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="l-System_Container u-Adjust_Mt-48 u-Adjust_Pb-56" id="how">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">楽天モバイルの<br class="u-Show_Oox">お申し込み方法</h2>
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="<%= namespace %>-Layout_whitebox-tab c-Tab_Item js-tab-nest" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Web</li>
+            <li class="<%= namespace %>-Layout_whitebox-tab c-Tab_Item js-tab-nest" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">ショップ</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+            <div class="u-Adjust_Mt-24">
+              <div class="<%= namespace %>-Layout_whitebox l-Media_Grid c-Theme-Borderbox">
+                <div class="l-Media_Image c-Flow_Image">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/japanpost/byod/img-05-sp.png" width="232">
+                    <img src="<%= sitepath %>assets/img/campaign/japanpost/byod/img-05-pc.png" width="280" height="180" alt="本人確認書類">
+                  </picture>
+                </div>
+                <div>
+                  <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/?l-id=campaign_japanpost_byod_guide_verify" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                    <li class="u-Adjust_Mt-8">楽天会員ID、パスワード</li>
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/?l-id=campaign_japanpost_byod_guide_payment" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                  <p class="u-Adjust_Mt-8 c-Txt_Cap">※<a href="<%= sitepath %>flow/for-minors/?l-id=campaign_japanpost_byod_flow_for-minors">未成年の方のお申し込み方法はこちら</a></p>
+                  <p class="u-Adjust_Mt-8 c-Txt_Cap">※MNPワンストップ未対応の携帯電話会社から乗り換えの方は、MNP予約番号の取得が必要です。MNPワンストップ対象の携帯電話会社は<a href="<%= sitepath %>guide/mnp/#career" class="c-Link_Txt">こちら</a>からご確認ください。</p>
+                  <p class="u-Adjust_Mt-8 c-Txt_Cap">※ ショップでのお手続きは、ワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</p>
+                </div>
+              </div>
+              <div class="l-Media_Grid-half u-Adjust_Mt-24">
+                <div class="<%= namespace %>-Layout_whitebox c-Theme-Borderbox">
+                  <div class="u-Align_Lcc">
+                    <p class="<%= namespace %>-Utility_Icon-title"><span class="c-Icon_New-user-f u-Adjust_Pr-8"></span><span class="c-Txt_Emp-01">新規電話番号／他社から乗り換え（MNP）</span></p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/application/?lid-r=campaign_japanpost_byod_guide_application_02" class="c-Btn_Primary-large">Rakuten最強プランに申し込む</a></p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>fee/saikyo-plan/?l-id=campaign_japanpost_byod_fee_saikyo-plan_02" class="c-Link_Txt-inline">Rakuten最強プランの詳細<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/flow/application/?l-id=campaign_japanpost_byod_guide_flow_application_02" class="c-Link_Txt-inline">Rakuten最強プランの申し込み方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_whitebox c-Theme-Borderbox">
+                  <div class="u-Align_Lcc">
+                    <p class="<%= namespace %>-Utility_Icon-title"><span class="c-Icon_Paper-plane-l u-Adjust_Pr-8"></span><span class="c-Txt_Emp-01 u-Adjust_Align-left">楽天モバイル（ドコモ・au回線）から<br class="u-Show_Xxo">プラン変更（移行）</span></p>
+                    <p class="u-Adjust_Mt-24">
+                      <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_japanpost_byod_ms_02&mno_migration=1" class="c-Btn_Secondly-large top-Description_Btn-text">
+                        <span>メンバーズステーションから<br class="<%= namespace %>-Utility_Br-pc">プラン変更（移行）する</span>
+                      </a>
+                    </p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/migration/?l-id=campaign_japanpost_byod_guide_migration_02" class="c-Link_Txt-inline">スーパーホーダイ・組み合わせプラン（※）との比較<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-0 c-Txt_Cap">※2020年4月8日に受付終了のドコモ回線・au回線使用プラン</p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/mnp/migration/?l-id=campaign_japanpost_byod_guide_mnp_migration_02" class="c-Link_Txt-inline">楽天モバイル（楽天回線）への移行方法<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>flow/mvno-user-registration/?l-id=campaign_japanpost_byod_flow_mvno-user-registration_02" class="c-Link_Txt-inline">利用者登録をされている方の移行方法 <span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+            <div class="u-Adjust_Align-center">
+              <p class="c-Txt_Emp-02 c-Txt_Normal-s u-Adjust_Mt-24">※ショップでご契約される場合は、本キャンペーンを適用する旨のご申告と合わせて本画面を店舗スタッフにお見せください</p>
+              <a href="<%= sitepath %>shop/?l-id=campaign_japanpost_byod_shop_02" class="c-Btn_Secondly-large u-Adjust_Mt-8">お近くのショップを探す</a>
+            </div>
+            <div class="<%= namespace %>-Layout_whitebox c-Theme-Borderbox u-Adjust_Mt-24">
+              <div class="l-Media_Grid" style="align-items: center;">
+                <div class="l-Media_Image c-Flow_Image">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/japanpost/byod/img-05-sp.png" width="232">
+                    <img src="<%= sitepath %>assets/img/campaign/japanpost/byod/img-05-pc.png" width="280" height="180" alt="本人確認書類">
+                  </picture>
+                </div>
+                <div>
+                  <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/?l-id=campaign_japanpost_byod_guide_verify_shop" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                    <li class="u-Adjust_Mt-8">楽天会員ID、パスワード</li>
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/?l-id=campaign_japanpost_byod_guide_payment_shop" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">※<a href="<%= sitepath %>flow/for-minors/?l-id=campaign_japanpost_byod_flow_for-minors_shop">未成年の方のお申し込み方法はこちら</a></p>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">※ショップでのお手続きは、ワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Utility_Sp-space u-Adjust_Mt-64">
+      <%- include('/inc/_saikyo') %>
+    </div>
+
+    <div class="l-System_Container u-Adjust_Mt-64">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/area/campaign/japanpost/byod/img-connection-sp.png" width="343">
+        <img src="<%= sitepath %>assets/img/area/campaign/japanpost/byod/img-connection-pc.png" width="1032" height="627" alt="つながりやすさを日々改善中">
+      </picture>
+      <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 c-Txt_Cap">
+        ※1 2023年6月時点。人口カバー率は、国勢調査に用いられる約500m区画において、50%以上の場所で通信可能なエリアを基に算出。※2 質問内容：楽天モバイルをご契約された当初に比べて、現在の楽天モバイルの電波・通信に対するあなたのお気持ちに変化はありましたか？最もあなたのお気持ちにあてはまるものをお選びください。※3  一部地域はパートナー回線エリアになります。建物内等、場合によってつながりにくい場合がございます。アンケートの一部を抜粋して掲載しております。質問内容：楽天モバイルを利用しているなかで、ご契約した当初より電波がよくなったといった感じた、シーンや場面があれば具体的なエピソードを教えてください。■アンケートについて 調査企画：楽天モバイル株式会社 調査協力：株式会社エクスクリエ（株式会社クロス・マーケティンググループ）調査期間：2024年2月1日～2月6日 回答者数：90,983人
+      </p>
+    </div>
+
+    <div class="l-System_Container u-Adjust_Mt-64">
+      <%_ if (campaignState === "finish") { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Mb-32">
+          <p class="c-Txt_Normal-m c-Txt_Emp-02">
+            本キャンペーンは<%= enddate %>をもちまして終了いたしました。<br>
+            このページに掲載されている情報は、キャンペーン終了時点のものです。
+          </p>
+        </div>
+      <%_ } _%>
+      <!-- 2258 -->
+      <div id="campaign-rule2258">
+        <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2258', level: 'h2', year: '2024', class: 'u-Adjust_Mt-24' }}) %>
+      </div>
+      <!-- 2262 -->
+      <div id="campaign-rule2262">
+        <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2262', level: 'h2', year: '2024', class: 'u-Adjust_Mt-24' }}) %>
+      </div>
+    </div>
+
+    <footer class="g-Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <%- include('/include/_breadcrumbs', {
+          type: 'foot',
+          pagetitle,
+          directories,
+        }) %>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+</body>
+</html>

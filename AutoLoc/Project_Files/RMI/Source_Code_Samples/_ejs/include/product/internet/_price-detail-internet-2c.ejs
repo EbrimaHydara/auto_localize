@@ -1,0 +1,205 @@
+<%#
+  * 製品価格コンポーネント
+  *** （テーマ）
+  * @param {string} theme - 必須 - カラーテーマ（'Light' || 'Dark'|| 'Rakuten'）
+  * @return {html} - product-detail-Theme_{theme}-price など、色の変更が必要になるclassがつきます
+  *
+  *** （一括払い）
+  * @param {number} price - 必須 - 71980
+  * @return {string} - 製品価格
+  *
+  * @param {number} priceBefore - 任意 - 99800
+  * @return {string} - 値引き前の製品価格
+  *
+  * @param {string} addAnnotation - 任意 - '※2'
+  * @return {string} - 値引き前の製品価格に脚注番号をふる
+  *
+  *　製品購入還元がある場合セットで設定するーーーーー
+  * @param {number} pointBackPriceModel - 任意 - 1000
+  * @return {string} - 製品購入で別途割引がある場合の割引額ポイント
+  *
+  * @param {html} pointModelText - pointBackPriceModelがある場合設定する- `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  * @return {html} - 製品購入還元で「製品購入で2,000ポイント※1」の「」内のテキスト　※HTML形式で出力
+  * ーーーーー
+  *
+  * @param {number} pointBackPrice - 必須 - 21300
+  * @return {string} - ポイント還元での最大値引額
+  *
+  * @param {html} pointBackText - 必須 - `最大${point}ポイント<sub>※1,2</sub>`,
+  * @return {html} - ポイント還元で「最大22,000ポイント※1,2」の「」内のテキスト　※HTML形式で出力
+  *
+  * @param {html} pointEntryText - 任意 - 実質価格からさらに値引きがある場合に設定する - `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  * @return {html} - 実質価格から、さらに値引きがある時「さらに、エントリー＆抽選で2,000ポイント※2」の「」内のテキスト　※HTML形式で出力
+  *
+  *** （分割払い）
+  * @param {number} division24 - 必須 - 2999
+  * @return {string} - 24回払いの月のお支払い額
+  *
+  * @param {number} division24Before - 任意 - 4158
+  * @return {string} - 24回払いの月のお支払い額値引き前
+  *
+  * @param {number} division48 - 必須 - 1499
+  * @return {string} - 48回払いの月のお支払い額
+  *
+  * @param {number} division48Before - 任意 - 2079
+  * @return {string} - 48回払いの月のお支払い額値引き前
+  *
+  *** （購入ボタン）
+  *　この３のどれかを設定する、何も設定しないとボタン周りは表示されないーーーーー
+  * @param {string} singleBtnPath - カラーバリエーションが無い場合 && 自社商品でない場合設定する - 'guide/application/?ref=product'
+  * @return {html} - 購入ボタンのリンクパス（１色の商品用）
+  *
+  * @param {string} productName - バンドルボタンの時に設定するこれを設定したら - 'rakuten-big'
+  * @return {html} - ./custom-cta/{productName}.ejsが読み込まれます。
+  *
+  * @param {string} hasModal - バンドルボタンの時に設定するこれを設定したら - 'rakuten-big'
+  * @return {html} - 購入ボタンがモーダルの場合設定する
+  * ーーーーー
+  *
+  *** （おすすめオプション）
+  * @param {string} optionPattern - 任意 - （'tradein' || 'non-tradein'|| 'special-a'）基本3パターン、今後、増減する可能性あり
+  * @return {html} - パターンを選択、設定しない場合は出力されない
+  *
+  * @param {string} lid - 必須 - 'rakuten-mini'
+  * @return {html} - ポイント訴求 と スマホ交換保証プラス と スマホ下取りサービス　のl-id
+  *
+  * @param {string} tradeinProductName - optionPattern: 'tradein' の時のみ設定 - 'HUAWEI nova 3'
+  * @return {string} - 下取り対象商品の名前を出力
+  *
+  * @param {number} maxTradeinPrice - optionPattern: 'tradein' の時のみ設定 - 6475
+  * @return {string} - 下取りの最大価格
+  *
+  * @param {number} capacity - optionPattern: 'tradein' の時のみ設定 - 123
+  * @return {string} - 注釈4の容量（MB数）を出力
+  *
+  * @param {number} carrier - 下取り製品のキャリアが"楽天モバイル"以外の時に設定（デフォルトは、"楽天モバイル"） - 'NTTドコモ'
+  * @return {string} - 下取り製品のキャリア名を出力
+  * ーーーーー
+  *
+  * @param {number} pointAppealBtnCapNo - 必須 - 3
+  * @return {string} - ポイント訴求の脚注番号
+_%>
+<% const namespace = "rakuten-wifi-pocket-2c" -%>
+<% const {
+  theme,
+  addAnnotation,
+  price,
+  priceBefore,
+  pointBackPriceModel,
+  pointBackPrice,
+  pointEntry,
+  pointModelText,
+  pointBackText,
+  pointEntryText,
+  division24,
+  division24Before,
+  division48,
+  division48Before,
+  singleBtnPath,
+  productName,
+  tradeinProductName,
+  hasModal,
+  optionPattern,
+  lid,
+  capacity,
+  maxTradeinPrice,
+  pointAppealBtnCapNo,
+  carrier,
+} = priceDetailConfig -%>
+<% const practicallyprice = pointBackPriceModel ? price - pointBackPriceModel - pointBackPrice
+                          : price - pointBackPrice -%>
+<% const annotation = addAnnotation ? addAnnotation : null -%>
+<div class="<%= namespace %>-Price_Container">
+  <p class="<%= namespace %>-Utility_Show-sp c-Txt_Cap u-Adjust_Align-right u-Adjust_Mt-32">※表記の金額はすべて税込です。</p>
+  <div class="l-Media_Grid-small <%= namespace %>-Price_Grid">
+    <div class="<%= namespace %>-Price_Method <%= namespace %>-Theme_<%= theme %>-method">一括払い</div>
+    <div>
+      <div class="<%= namespace %>-Price_Method-detail-primary <%= namespace %>-Theme_<%= theme %>-border-bottom">
+      <p class="<%= namespace %>-Utility_Show-pc c-Txt_Cap u-Adjust_Align-right">※表記の金額はすべて税込です。</p>
+      <div>
+          <div>製品価格（税込）</div>
+          <div class="<%= namespace %>-Price_Pay">
+            <%# 値引き前の製品価格がある場合（打ち消し価格が表示される）_%>
+            <%_ if (typeof priceBefore !== 'undefined') { _%>
+            <%_ if (typeof priceBefore === 'number') { _%>
+              <span class="<%= namespace %>-Price_Strikethrough"><%= priceBefore.toLocaleString() %>円<span><%= annotation %> &rarr;</span></span>
+            <%_ } else if (typeof priceBefore === 'string') { _%>
+              <span class="<%= namespace %>-Price_Strikethrough" style="text-decoration: none;"><%= priceBefore %><span><%= annotation %> &rarr;</span></span>
+            <%_ } _%>
+            <%_ } _%>
+            <span class="<%= namespace %>-Price_Num"><%= price.toLocaleString() %></span>円</div>
+        </div>
+        <%# ２段階値引き_%>
+        <%_ if (typeof pointModelText !== 'undefined' && typeof pointBackPriceModel !== 'undefined' && typeof pointBackPrice !== 'undefined') { _%>
+          <div class="c-Txt_Emp-02">
+            <div class="<%= namespace %>-Price_Pointback"><%- pointModelText %></div>
+            <div class="<%= namespace %>-Price_Pay" style="font-weight: 500;"><span class="<%= namespace %>-Price_Num">-<%= pointBackPriceModel.toLocaleString() %></span>円</div>
+          </div>
+          <!-- <div class="c-Txt_Emp-02">
+            <div class="<%= namespace %>-Price_Pointback"><%- pointBackText %></div>
+            <div class="<%= namespace %>-Price_Pay"><span class="<%= namespace %>-Price_Num">-<%= pointBackPrice.toLocaleString() %></span>pt</div>
+          </div> -->
+          <%# 1段階値引き_%>
+        <%_ } else { _%>
+          <div class="c-Txt_Emp-02">
+            <div class="<%= namespace %>-Price_Pointback"><%- pointBackText %></div>
+            <div class="<%= namespace %>-Price_Pay" style="font-weight: 500;"><span class="<%= namespace %>-Price_Num">-<%= pointBackPrice.toLocaleString() %></span>Pt</div>
+          </div>
+        <%_ } _%>
+      </div>
+      <%# 実質価格０円_%>
+      <%_ if (practicallyprice <= 0) { _%>
+        <div class="c-Txt_Normal-m u-Adjust_Align-right c-Txt_Emp-02">ポイント還元で<span class="<%= namespace %>-Price_Practically-txt">実質</span><span class="<%= namespace %>-Price_Zero">0</span>円</div>
+      <%# 実質価格70パーセント以上_%>
+      <%_ } else if (practicallyprice >= price * 0.7) { _%>
+        <div class="c-Txt_Normal-m u-Adjust_Align-right <%= namespace %>-Price_Font-bold">ポイント還元で<br class="<%= namespace %>-Price_Br-sp-sm"><span class="<%= namespace %>-Price_Practically-txt">実質</span><span class="<%= namespace %>-Price_Practically-num <%= namespace %>-Price_Font-normal"><%= practicallyprice.toLocaleString() %></span>円</div>
+      <%# 実質価格70パーセント未満_%>
+      <%_ } else { _%>
+        <!-- <div class="c-Txt_Normal-m u-Adjust_Align-right c-Txt_Emp-02">ポイント還元で<br class="<%= namespace %>-Price_Br-sp-sm"><span class="<%= namespace %>-Price_Practically-txt">実質</span><span class="<%= namespace %>-Price_Practically-num"><%= practicallyprice.toLocaleString() %></span>円</div> -->
+        <div class="c-Txt_Normal-m u-Adjust_Align-right c-Txt_Emp-02"><span class="<%= namespace %>-Price_Practically-num"><%= practicallyprice.toLocaleString() %></span>円</div>
+        <%_ } _%>
+      <%# 抽選で当たるポイントがある_%>
+      <%_ if (typeof pointEntryText !== 'undefined') { _%>
+        <div class="c-Txt_Emp-02 u-Adjust_Align-right <%= namespace %>-Price_Entry"><%- pointEntryText %></div>
+      <%_ } _%>
+    </div>
+  </div>
+  <div class="l-Media_Grid-small <%= namespace %>-Price_Grid">
+    <div class="<%= namespace %>-Price_Method <%= namespace %>-Theme_<%= theme %>-method">分割払い</div>
+    <div>
+      <div class="<%= namespace %>-Price_Method-detail-secondary">
+        <div class="<%= namespace %>-Price_Method-detail-secondary-inner">
+          <div class="<%= namespace %>-Price_Method-detail-secondary-item">
+            <div>24回払い<sub>※</sub></div>
+            <div>
+              <%# 24回払い、値引き前の製品価格がある場合（打ち消し価格が表示される）_%>
+              <%_ if (typeof division24Before !== 'undefined') { _%>
+                <span class="<%= namespace %>-Price_Strikethrough"><%= division24Before.toLocaleString() %>円<span> &rarr;</span></span>
+              <%_ } _%>
+              <span class="<%= namespace %>-Price_Num"><%= division24.toLocaleString() %></span>円/月
+            </div>
+          </div>
+          <div class="<%= namespace %>-Price_Method-detail-secondary-item">
+            <div>48回払い<sub>※</sub> （楽天カード限定）</div>
+            <div>
+              <%# 48回払い、値引き前の製品価格がある場合（打ち消し価格が表示される）_%>
+              <%_ if (typeof division48Before !== 'undefined') { _%>
+                <span class="<%= namespace %>-Price_Strikethrough"><%= division48Before.toLocaleString() %>円<span> &rarr;</span></span>
+              <%_ } _%>
+              <span class="<%= namespace %>-Price_Num"><%= division48.toLocaleString() %></span>円/月
+            </div>
+          </div>
+        </div>
+        <p class="<%= namespace %>-Price_Recomend u-Adjust_Mt-8 c-Theme-Light"><span>ご購入は楽天カードがオススメ！</span>楽天カードなら分割手数料0円！</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="<%= namespace %>-Price_Container">
+  <a href="<%= sitepath %>guide/payment/point/?l-id=product_rakuten-wifi-pocket-2c_pointpayment" class="<%= namespace %>-Price_Btn-point-appeal-2c u-Adjust_Mt-16"><span class="<%= namespace %>-Price_Btn-point-appeal-2c-text">期間限定ポイントもOK！製品の購入に楽天ポイントが使えます<span class="<%= namespace %>-Price_Btn-point-appeal-2c-cap">※<%= pointAppealBtnCapNo %></span></span><span class="c-Icon_Chevron-right"></span></a>
+</div>
+<div class="<%= namespace %>-Price_Cta">
+  <%_ if (typeof optionPattern !== 'undefined') { _%>
+    <%- include(`/include/product/internet/option-pattern/_${optionPattern}-internet`, {priceDetailConfig, namespace}) %>
+  <%_ } _%>
+</div>

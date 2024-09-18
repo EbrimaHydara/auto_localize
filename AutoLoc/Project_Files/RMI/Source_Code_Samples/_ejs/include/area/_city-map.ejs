@@ -1,0 +1,350 @@
+<%_
+const pagearea = jData.directory2 ? jData.city : jData.pref;
+const coverage = jData.cover_ratio.slice( 0, -1 );
+const [intPart, decPart] = coverage.split('.').map(String);
+const imgPath = "/assets/img/area/city/"
+const namespace = "area-city"
+
+const rankInfo = { icon: ["icon-1", "icon-2", "icon-3", "icon-4", "icon-5", "icon-6", "icon-7", "icon-8" ] }
+const caption1 = "※1 データ高速無制限エリアであっても、地下、屋内、大きな商業ビルの屋内等の場所、電波の状況等によって通信速度が変化する場合あり"
+const caption2 = "※2 2023年9月時点。人口カバー率は、国勢調査に用いられる約500m区画において、50%以上の場所で通信可能なエリアを基に算出"
+const caption3 = "※3 2023/6/13～2023/9/12の期間に記録されたモバイル測定値によるOpensignalデータを基に当社が作成。<br>©2023 Opensignal Inc."
+const caption4 = "※3 2023/6/1～2023/8/30の期間に記録されたモバイル測定値によるOpensignalデータを基に当社が作成。<br>©2023 Opensignal Inc."
+const caption5 = "※4 Rankとは、Opensignal社の分析に基づき、主要4キャリアを比較した評価。高評価の順にRank1～4となり、Rankは同率になる可能性があります。"
+
+const cityCaption6 = "※4 5つ星評価とは、Opensignal社の分析に基づき、主要4キャリアを比較した評価。高評価の順に5～1つ星となり、評価は同率になる可能性があります。"
+const kochi = jData.directory2 === "39201";
+const okayama = jData.directory2 === "33101";
+const soka = jData.directory2 === "11221";
+_%>
+
+<section class="<%= namespace %>-Layout_Bg-pink u-Adjust_Pb-24">
+  <%_ if( jData.directory2 ) { _%>
+    <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="city_situation" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } else { _%>
+    <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="prefecture_situation" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } _%>
+  <% if (rankInfo && Array.isArray(rankInfo.icon)) { %>
+    <%
+      const {icon} = rankInfo;
+      const iconLabel = [
+        'ビデオ視聴',
+        'ライブストリーミング',
+        'モバイルゲーム',
+        '音声アプリ通話',
+        'ダウンロード・スピード',
+        'アップロード・スピード',
+        '一貫した品質',
+        '利用率',
+      ];
+      const createAlt = iconName => {
+        const n = Number(iconName.split('-')[1]);
+        return iconLabel[n-1];
+      };
+      const iconData = [jData.os_video, jData.os_live, jData.os_game, jData.os_music, jData.os_dl, jData.os_ul, jData['os_consistent-quality'], jData['os_utilization']];
+      const lastIcon = [jData['os_out-of-range']];
+
+      const hasValue = iconData.filter(value => value === '1');
+      const lastIconValue = lastIcon.filter(value => value === '1');
+
+      const secondSet = iconData.slice(6);
+      const iconSet= secondSet.concat(lastIcon);
+      let hasValueInSecondSet = iconSet.some(value => value === "1");
+      const hasValueLength = hasValue.length + lastIconValue.length;
+
+      const itemCnt = hasValue.length + lastIconValue.length;
+      %>
+    <div class="<%= namespace %>-Layout_Arrow u-Adjust_Pt-16 u-Adjust_Pb-16" id="city-map">
+      <%# map top %>
+      <div class="u-Adjust_Align-center">
+        <img src="<%= imgPath %>map/Map-title-icon.png" class="<%= namespace %>-Layout_Icon" alt="エリア・通信品質">
+        <span class="<%= namespace %>-Layout_Title">エリア・通信品質</span>
+      </div>
+    </div>
+    <h2 class="<%= namespace %>-Map_Heading">つながるエリアぞくぞく。<br class="u-Show_Oxx">あなたの住む街でも快適に！</h2>
+    <div class="<%= namespace %>-Map l-System_Container" id="js-nav">
+    <% if (hasValue.length > 0 || lastIconValue.length > 0) { %>
+      <!-- left -->
+      <div class="<%= namespace %>-Map_Box">
+        <div class="<%= namespace %>-Map_Data-title">
+          <p class="<%= namespace %>-Layout_Bg-primary <%= namespace %>-Map_Label"><%= pagearea %>の</p>
+        </div>
+        <h3 class="<%= namespace %>-Map_Title">人口カバー率
+          <span class="<%= namespace %>-Map_Title-l"><%= intPart %></span>.<span class="<%= namespace %>-Map_Title-m"><%= decPart %>%</span>
+          <span class="<%= namespace %>-Map_Title-l-pc">!</span><span class="<%= namespace %>-Map_Title-cap">※1,2</span>
+        </h3>
+        <div class="u-Adjust_Align-center">
+          <% if (!jData.directory2) { %>
+            <img src="/assets/img/area/pref/map/<%= jData.area_map %>" width="856" height="473" alt="<%= pagearea %>のサービスエリアと楽天モバイルショップ情報">
+            <% } else { %>
+            <img src="<%= imgPath %>map/area-map/<%= jData.area_map %>" width="856" height="473" alt="<%= pagearea %> のサービスエリアと楽天モバイルショップ情報">
+          <% } %>
+        </div>
+        <div class="<%= namespace %>-Map_Guide-txt">
+          <p class="<%= namespace %>-Map_Guide-resident">データ高速無制限エリア</p>
+        </div>
+        <div class="u-Adjust_Mt-16">
+          <p class="u-Adjust_Mt-8 c-Txt_Cap"><%- caption1 %></p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap"><%- caption2 %></p>
+        </div>
+        <div class="c-Infobox_Standing-info <%= namespace %>-Layout-Info-box u-Adjust_Mt-32">
+          <p class="<%= namespace %>-Layout_Info-txt c-Txt_Emp-02">快適な通信環境ご提供のため、「Rakuten最強プラン」プロジェクトが進行中！</p>
+          <div class="<%= namespace %>-Map_Item-link">
+            <a href="<%= sitepath %>area/saikyo-plan-project/?l-id=area_<%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_notice_area" class="c-Link_Txt-inline">
+              つながりやすさを改善！<br class="u-Show_Oxx">新たな基地局設置情報を見る
+              <span class="c-Icon_Chevron-right"></span>
+            </a>
+          </div>
+        </div>
+        <% if ( kochi || okayama || soka) { %>
+        <% if ( kochi ) { %>
+        <div class="<%= namespace %>-Map_City-margin u-Adjust_Align-center">
+          <a href="<%= sitepath %>area/?l-id=area_city_kochi_39201_areamap#area" class="c-Btn_Regular"><span>サービスエリアマップを見る</span></a>
+        </div>
+        <% } %>
+        <% if ( okayama ) { %>
+        <div class="<%= namespace %>-Map_City-margin u-Adjust_Align-center">
+          <a href="<%= sitepath %>area/?l-id=area_city_okayama_33101_areamap#area" class="c-Btn_Regular"><span>サービスエリアマップを見る</span></a>
+        </div>
+        <% } %>
+        <% if ( soka ) { %>
+        <div class="<%= namespace %>-Map_City-margin u-Adjust_Align-center">
+          <a href="<%= sitepath %>area/?l-id=area_city_saitama_11221_areamap#area" class="c-Btn_Regular"><span>サービスエリアマップを見る</span></a>
+        </div>
+        <% } %>
+        <% } %>
+      </div>
+      <!-- right -->
+      <div class="<%= namespace %>-Map_Box u-Adjust_Mt-24 u-Adjust_Mt-pc-0">
+        <% if ( kochi ||okayama || soka) { %>
+          <%- include('/include/area/_city-opensignal') %>
+        <% } else { %>
+        <%_ if( jData.directory2 ) { _%>
+          <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="city_opensignal" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+        <%_ } else { _%>
+          <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="prefecture_opensignal" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+        <%_ } _%>
+        <div class="<%= namespace %>-Map_Data-title">
+          <p class="<%= namespace %>-Layout_Bg-primary <%= namespace %>-Map_Label"><%= pagearea %>では</p>
+        </div>
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>map/Map-rank-1-sp.png" width="100%">
+          <img src="<%= imgPath %>map/Map-rank-1-pc.png" width="460" height="50" alt="<%= pagearea %> 通信品質の評価でRank1※3獲得!">
+        </picture>
+        <p class="<%= namespace %>-Map_RankTitle">
+          <% if (jData.directory2) { %>
+            ※7項目中
+          <% } else { %>
+            ※9項目中
+          <% } %>
+          <%= itemCnt %>項目
+        </p>
+        <div class="<%= namespace %>-Layout_Sub-label u-Adjust_Mt-8">
+          <p class="<%= namespace %>-Layout_Sub-label-title">利用シーン別の体感品質</p>
+        </div>
+        <% if (!jData.directory2) { %>
+          <ul class="<%= namespace %>-Map_IconList-3col">
+            <% iconData.slice(0, 6).forEach((value, index) => { %>
+              <% if (value === "1") { %>
+                <li>
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>map/icon/Map-sp-icon-<%= index + 1 %>.png" width="100%">
+                    <img src="<%= imgPath %>map/icon/Map-pc-ken-icon-<%= index + 1 %>.png" width="146" height="102" alt="<%= createAlt(`icon-${index + 1}`) %>">
+                  </picture>
+                </li>
+              <% } %>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <ul class="<%= namespace %>-Map_IconList-2col">
+            <% iconData.slice(0, 6).forEach((value, index) => { %>
+              <% if (value === "1") { %>
+                <li>
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>map/icon/Map-sp-icon-<%= index + 1 %>.png" width="100%">
+                    <img src="<%= imgPath %>map/icon/Map-pc-shi-icon-<%= index + 1 %>.png" width="224" height="102" alt="<%= createAlt(`icon-${index + 1}`) %>">
+                  </picture>
+                </li>
+              <% } %>
+            <% }); %>
+          </ul>
+        <% } %>
+
+        <% if (hasValueInSecondSet) { %>
+          <div class="<%= namespace %>-Layout_Sub-label u-Adjust_Mt-16">
+            <p class="<%= namespace %>-Layout_Sub-label-title">ネットワーク体感品質</p>
+          </div>
+          <div class="u-Adjust_Mt-8">
+            <ul class="<%= namespace %>-Map_IconList-subcol">
+              <% secondSet.forEach((value, index) => { %>
+                <% if (value === "1") { %>
+                  <li>
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>map/icon/Map-sp-icon-<%= index + 7 %>.png" width="100%" height="105">
+                      <img src="<%= imgPath %>map/icon/Map-pc-icon-<%= index + 7 %>.png" width="146" height="102" alt="<%= createAlt(`icon-${index + 7}`) %>">
+                    </picture>
+                  </li>
+                <% } %>
+              <% }); %>
+              <% if (jData['os_out-of-range'] === '1') { %>
+                <li>
+                  <picture>
+                  <% if( jData.directory2 ) { %>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>map/icon/Map-icon-city-sp-9.png" width="100%" height="105">
+                    <img src="<%= imgPath %>map/icon/Map-icon-city-pc-9.png" width="146" height="102" alt="カバレッジ">
+                  <% } else { %>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>map/icon/Map-icon-pref-sp-9.png" width="100%" height="105">
+                    <img src="<%= imgPath %>map/icon/Map-icon-pref-pc-9.png" width="146" height="102" alt="非圏外率">
+                  <% } %>
+                  </picture>
+                </li>
+              <% } %>
+            </ul>
+          </div>
+        <% } else { %>
+        <% } %>
+        <% } %>
+
+        <div class="<%= (kochi || okayama || soka) ? 'u-Adjust_Align-center u-Adjust_Mt-24' : 'u-Adjust_Align-center u-Adjust_Mt-16' %>">
+          <img src="<%= imgPath %>map/Map-logo-opensignal.png" width="170" height="32" alt="OPENSIGNAL">
+        </div>
+        <% if (!jData.directory2) { %>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap"><%- caption3 %></p>
+        <% } else { %>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap"><%- caption4 %></p>
+        <% } %>
+        <% if (kochi || okayama || soka ) { %>
+          <p class="<%= namespace %>-Map_Txt-m u-Adjust_Mt-8"><%- cityCaption6 %></p>
+        <% } else { %>
+          <p class="<%= namespace %>-Map_Txt-m u-Adjust_Mt-8"><%- caption5 %></p>
+        <% } %>
+        <!-- modal -->
+        <div class="<%= namespace %>-Map_Modal u-Adjust_Mt-8">
+          <% if ( kochi || soka || okayama ) { %>
+            <a href="https://www.opensignal.com/2023/14/08/Understanding%20mobile%20network%20experience%3A%20What%20do%20Opensignal%27s%20metrics%20mean%3F-jp" class="c-Link_Txt-icon-front <%= namespace %>-Layout_Icon-blank" target="_blank">評価指標の説明を見る<span class="c-Icon_New-window-l"></span></a>
+          <% } else { %>
+            <a href="#modal2"
+            <%_ if( jData.directory2 ) { _%>
+              data-ratid="city_opensignal-explanation" data-ratevent="click" data-ratparam="all"
+            <%_ } else { _%>
+              data-ratid="prefecture_opensignal-explanation" data-ratevent="click" data-ratparam="all"
+            <%_ } _%>
+              class="c-Link_Txt-icon-front js-Modal"><span class="c-Icon_Zoom-in-l"></span>評価指標の説明を見る</a>
+          <% } %>
+          <div id="modal2" style="display:none;">
+            <h3>評価指標の説明</h3>
+            <p class="<%= namespace %>-Map_Modal-txt u-Adjust_Mt-16">Opensignalの品質評価指標は以下のように定義されています。</p>
+            <div class="<%= namespace %>-Layout_Sub-label  u-Adjust_Mt-32">
+              <p class="<%= namespace %>-Layout_Sub-label-title">利用シーン別の体感品質</p>
+            </div>
+            <div class="_sample u-Adjust_Mt-16">
+              <dl class="c-Dl_Origin">
+                <% if (iconData[0] === '1') { %>
+                <div>
+                  <dt>ビデオ視聴</dt>
+                  <dd>ビデオの読み込み時間、失速、ビデオの解像度を考慮した、Opensignalのユーザーが体感するモバイルビデオの品質。</dd>
+                </div>
+                <% } %>
+                <% if (iconData[1] === '1') { %>
+                <div>
+                  <dt>ライブストリーミング</dt>
+                  <dd>モバイルデバイスにストリーミングされるライブビデオの品質で、最初の遅れや合計失速時間などの指標から算出される。</dd>
+                </div>
+                <% } %>
+                <% if (iconData[2] === '1') { %>
+                <div>
+                  <dt>モバイルゲーム</dt>
+                  <dd>オペレーターのネットワーク上でOpensignalのユーザーがどのようにリアルタイムのマルチプレイヤーモバイルゲームを体感するかの指標。</dd>
+                </div>
+                <% } %>
+                <% if (iconData[3] === '1') { %>
+                <div>
+                  <dt>音声アプリ通話</dt>
+                  <dd>オーバー・ザ・トップ（OTT）音声サービス（WhatsApp、Skype、Facebook Messengerなどのモバイル音声アプリ）の体感品質。</dd>
+                </div>
+                <% } %>
+                <% if (iconData[4] === '1') { %>
+                <div>
+                  <dt>ダウンロード・スピード</dt>
+                  <dd>オペレーターのネットワークでOpensignalのユーザーが体感した平均ダウンロードスピード。</dd>
+                </div>
+                <% } %>
+                <% if (iconData[5] === '1') { %>
+                <div>
+                  <dt>アップロード・スピード</dt>
+                  <dd>オペレーターのネットワークでOpensignalのユーザーが体感した平均アップロードスピード。</dd>
+                </div>
+                <% } %>
+              </dl>
+            </div>
+            <% if (hasValueInSecondSet) { %>
+              <div class="<%= namespace %>-Layout_Sub-label  u-Adjust_Mt-40">
+                <p class="<%= namespace %>-Layout_Sub-label-title">ネットワーク体感品質</p>
+              </div>
+              <div class="_sample u-Adjust_Mt-16">
+                <dl class="c-Dl_Origin">
+                  <% if (iconData[6] === '1') { %>
+                    <div>
+                      <dt>一貫した品質</dt>
+                      <dd>ネットワーク上のOpensignalのユーザー体感が、一般的なアプリケーションの要件をサポートするのに十分であった頻度を示す指標。</dd>
+                    </div>
+                  <% } %>
+                  <% if (iconData[7] === '1') { %>
+                    <div>
+                      <dt>利用率</dt>
+                      <dd>Opensignalのユーザーが最もよく利用する場所でネットワークに接続している時間の割合。</dd>
+                    </div>
+                  <% } %>
+                  <% if (jData['os_out-of-range'] === '1') { %>
+                    <div>
+                    <% if (jData.directory2) { %>
+                      <dt>カバレッジ</dt>
+                    <% } else { %>
+                      <dt>非圏外率</dt>
+                    <% } %>
+                    <dd>Opensignalのユーザーがオペレーターのネットワークの地理的範囲をどのように体感しているかを示す指標。</dd>
+                  </div>
+                  <% } %>
+                </dl>
+                <p class="c-Txt_Cap u-Adjust_Mt-24">
+                  ※さらに詳細な説明は<a href="https://www.opensignal.com/japan?scid=wi_<%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_opensignal" target="_blank" class="c-Link_Txt-inline-icon" rel="noopener noreferrer">Opensignal社のWebサイト<span class="c-Icon_New-window-l"></span></a>をご参照ください。
+                </p>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div> <!-- right done -->
+    <% } else { %>
+      <!-- iconが undefinedの場合 -->
+        <div class="<%= namespace %>-Map_Box">
+          <div class="<%= namespace %>-Map_Data-title">
+            <p class="<%= namespace %>-Layout_Bg-primary <%= namespace %>-Map_Label"><%= pagearea %>の</p>
+          </div>
+          <h3 class="<%= namespace %>-Map_Title">人口カバー率<span class="<%= namespace %>-Map_Title-l"><%= intPart %></span>.<span class="<%= namespace %>-Map_Title-m"><%= decPart %>%</span><span class="<%= namespace %>-Map_Title-l-pc">!</span><span class="<%= namespace %>-Map_Title-cap">※1,2</span></h3>
+          <div class="u-Adjust_Align-center">
+            <% if (!jData.directory2) { %>
+              <img src="/assets/img/area/pref/map/<%= jData.area_map %>" width="856" height="473" alt="<%= pagearea %>のサービスエリアと楽天モバイルショップ情報">
+              <% } else { %>
+              <img src="<%= imgPath %>map/area-map/<%= jData.area_map %>" width="856" height="473" alt="<%= pagearea %> のサービスエリアと楽天モバイルショップ情報">
+            <% } %>
+          </div>
+          <div class="<%= namespace %>-Map_Guide-txt">
+            <p class="<%= namespace %>-Map_Guide-resident">データ高速無制限エリア</p>
+          </div>
+          <div class="u-Adjust_Mt-16">
+            <p class="u-Adjust_Mt-8 c-Txt_Cap"><%- caption1 %></p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap"><%- caption2 %></p>
+          </div>
+          <div class="c-Infobox_Standing-info <%= namespace %>-Layout-Info-box u-Adjust_Mt-32">
+            <p class="<%= namespace %>-Layout_Info-txt c-Txt_Emp-02">快適な通信環境ご提供のため、「Rakuten最強プラン」プロジェクトが進行中！</p>
+            <div class="<%= namespace %>-Map_Item-link">
+              <a href="<%= sitepath %>area/saikyo-plan-project/?l-id=area_<%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_notice_area" class="c-Link_Txt-inline">
+                つながりやすさを改善！<br class="u-Show_Oxx">新たな基地局設置情報を見る<span class="c-Icon_Chevron-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+    <% } %>
+    </div> <!-- l-System_Container -->
+  <% } %>
+</section>

@@ -1,0 +1,238 @@
+<% const pagetitle = "特番通話（ご利用方法）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/plan/internal-voice/", label:"通話/通信サービス（国内）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '特番通話（楽天モバイル）のご利用方法はこちら。110番（警察）や#4桁特番など、緊急時の特番通話の利用についてご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <div class="u-Adjust_Mt-64">
+      <ul>
+        <li><a href="<%= sitepath %>service/special-number-service/" class="c-Btn_Regular-semiauto"><span>特長・サービス内容を見る</span></a></li>
+      </ul>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto-use">ご利用方法</h2>
+    <p class="u-Adjust_Mt-24">下記の番号におかけいただくことで、特番通話を利用できます。<br>
+    番号によっては、通話料が発生します。</p>
+    <ul class="c-List_Cap u-Adjust_Mt-16">
+      <li><span>※</span>特番通話をご利用するための設定は不要です。</li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">主な特番通話</h2>
+    <dl class="c-List_Dl-origin u-Adjust_Mt-24">
+
+      <div>
+        <dt>消防・救急への緊急通報<span class="c-Txt_Normal-ss u-Adjust_Ml-8">※1</span></dt>
+        <dd>（局番なし）119</dd>
+      </div>
+
+      <div>
+        <dt>警察への緊急通報<span class="c-Txt_Normal-ss u-Adjust_Ml-8">※1</span></dt>
+        <dd>（局番なし）110</dd>
+      </div>
+
+      <div>
+        <dt>海上で事件・事故が起きた時の緊急通報<span class="c-Txt_Normal-ss u-Adjust_Ml-8">※1</span></dt>
+        <dd>（局番なし）118</dd>
+      </div>
+
+      <div>
+        <dt>災害用伝言ダイヤル（有料）</dt>
+        <dd>（局番なし）171</dd>
+      </div>
+
+      <div>
+        <dt>天気予報（有料）</dt>
+        <dd>知りたい地域の市外局番＋177</dd>
+      </div>
+      <div>
+        <dt>時報サービス（有料）</dt>
+        <dd>（局番なし）117</dd>
+      </div>
+      <div>
+        <dt>消費者ホットライン（有料）</dt>
+        <dd>（局番なし）188</dd>
+      </div>
+      <div>
+        <dt>児童相談所全国共通ダイヤル</dt>
+        <dd>（局番なし）189</dd>
+      </div>
+      <div>
+        <dt>留守番電話（有料）</dt>
+        <dd>（局番なし）1417</dd>
+      </div>
+      <div>
+        <dt>#4桁特番（#7000 〜 #9999）の事業者・団体（番号により有料）</dt>
+        <dd>
+          <p class="c-Txt_Normal">総務省消防庁（救急安心センター事業）</p>
+          <p>#7119</p>
+
+          <p class="u-Adjust_Mt-16">こども相談24時間ホットライン（京都府からの発信のみ提供）</p>
+          <p>#7333</p>
+
+          <p class="u-Adjust_Mt-16">一般向け救急電話相談（香川県からの発信のみ提供）</p>
+          <p>#7899</p>
+
+          <p class="u-Adjust_Mt-16">厚生労働省　子ども医療電話相談事業</p>
+          <p>#8000</p>
+
+          <p class="u-Adjust_Mt-16">DV相談ナビ</p>
+          <p>#8008</p>
+
+          <p class="u-Adjust_Mt-16">公益財団法人 日本道路交通情報センター</p>
+          <p>#8011</p>
+
+          <p class="u-Adjust_Mt-16">安全運転相談電話</p>
+          <p>#8080</p>
+
+          <p class="u-Adjust_Mt-16">警察庁 性犯罪被害相談電話（全国統一）</p>
+          <p>#8103</p>
+
+          <p class="u-Adjust_Mt-16">JAF ロードサービス救援コール</p>
+          <p>#8139</p>
+
+          <p class="u-Adjust_Mt-16">性犯罪・性暴力被害者のためのワンストップ支援センター全国共通短縮番号</p>
+          <p>#8891</p>
+
+          <p class="u-Adjust_Mt-16">警察相談専用電話</p>
+          <p>#9110</p>
+
+          <p class="u-Adjust_Mt-16">国土交通省　道路緊急ダイヤル</p>
+          <p>#9910</p>
+        </dd>
+      </div>
+    </dl>
+    <ul class="c-List_Cap-wide u-Adjust_Mt-8">
+      <li><span>※1</span>GPSの受信状況や携帯電話の電波状況によっては、正確な位置を通知できない可能性もありますので、緊急通報（110番、118番、119番）の際には、口頭でも現在地や目標物等を伝えるようにしてください。</li>
+      <li><span>※1</span>「184」を頭に付けて緊急通報（110番、118番、119番）をダイヤルした場合、緊急通報時であっても、電話番号や位置情報等は通知されません。（「電気通信事業における個人情報保護ガイドライン」に基づき、利用者の意思を尊重し、選択できるようにするものです。）ただし、緊急通報受理機関が人の生命等に差し迫った危険があると判断した場合には、発信者の位置情報を取得する場合があります。</li>
+    </ul>
+
+    <h2 class="c-Heading_Lv3 u-Adjust_Mt-64">ご利用いただける主なプレフィックス番号</h2>
+    <dl class="c-List_Dl-origin u-Adjust_Mt-24">
+
+      <div>
+        <dt>フリーダイヤル</dt>
+        <dd>0120 または 0800</dd>
+      </div>
+      <div>
+        <dt>ナビダイヤル</dt>
+        <dd>0570</dd>
+      </div>
+      <div>
+        <dt>その他事業者プレフィックス</dt>
+        <dd>
+          <p class="u-Adjust_Txt-break">
+          0031／0032／0035／0037／0041／0051／0053／0057／0061／0063／0066／0067／0077／0078／0083／00847／0088-21、22、24、25、29、41、81、82、85、86、99／009120／009121／009192</p>
+          </dd>
+      </div>
+      <div>
+        <dt>番号非通知</dt>
+        <dd>184</dd>
+      </div>
+      <div>
+        <dt>番号通知</dt>
+        <dd>186</dd>
+      </div>
+    </dl>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">注意事項</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+      <li>（0570）などの他社接続サービス、一部特番（188）、当社が指定する電話番号（機械的な発信などにより、長時間又は多数の通信を一定期間継続して接続する電話番号）などへの発信は無料の対象外となります。</li>
+    </ul>
+
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

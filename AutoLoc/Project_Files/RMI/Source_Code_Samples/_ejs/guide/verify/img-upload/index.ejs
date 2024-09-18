@@ -1,0 +1,154 @@
+<% const pagetitle = "本人確認書類アップロード方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/application/verification/", label:"本人確認"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '本人確認書類アップロード方法をご案内します。楽天モバイルでは、Webページでのお申し込み時にご契約者様の本人確認書類を撮影した画像・写真のアップロードが必要です',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <div class="guide-Info u-Adjust_Mt-32">
+      <ul class="c-List_Text-disc">
+        <li>全体が写るように撮影してください。</li>
+        <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+        <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします（カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます）。</li>
+      </ul>
+    </div>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">※イメージは運転免許証の場合です。</p>
+
+    <ol class="c-Flow">
+      <li><span class="c-Txt_Alphanumeric-m">1</span>
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">お申し込みフローで「本人確認書類のアップロード画面」が表示されます。</h4>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/verify/main-image-upload-01.png" width="300" height="588" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li><span class="c-Txt_Alphanumeric-m">2</span>
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">「書類タイプ」をご選択いただき、読み取ってください。</h4>
+        <div class="guide-Info u-Adjust_Mt-16">
+          <p class="u-Adjust_Mb-8">以下の点に注意してください。</p>
+          <ul class="c-List_Text-disc">
+            <li>画像が不鮮明（ぼやけている、ぶれている、画質が荒い等）および反射していないこと</li>
+            <li>全体が写っていること（文字、公安印等が切れていない）</li>
+            <li>契約書情報の住所と本人確認書類の住所が完全一致していること</li>
+            <li>画像ファイルサイズが15MB以上の場合、アップロードできません。解像度を変更するなどファイルサイズを小さくしてアップロードしてください。</li>
+          </ul>
+        </div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/verify/main-image-upload-02.png" width="300" height="470" alt="" class="c-Img_Capture"></figure>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※書類によっては、表面・裏面のアップロードが必要です。</p>
+      </li>
+      <li><span class="c-Txt_Alphanumeric-m">3</span>
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">「次へ進む」ボタンをクリックしてください。</h4>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/verify/main-image-upload-03.png" width="300" height="470" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li><span class="c-Txt_Alphanumeric-m">4</span>
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">もう一度アップロードする場合は以下をクリックしてください。</h4>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/verify/main-image-upload-04.png" width="300" height="470" alt="" class="c-Img_Capture"></figure>
+        <div class="guide-Info u-Adjust_Mt-16">
+          <ul class="c-List_Text-disc">
+            <li>本人確認が完了しましたら、ご登録のメールアドレスに本人確認完了のメールをお送りします。</li>
+            <li>不備があった場合には、「【重要】楽天モバイル本人確認書類の不備による再アップロードのお願い」のメールをお送りします。</li>
+          </ul>
+          <ul class="c-List_Note u-Adjust_Mt-16">
+            <li><span>※</span>本メールは、不備があったお客様にのみ、本人確認書類をご提出（アップロード）いただいた後、数時間～１営業日以内にお送りします。</li>
+            <li>詳しくは<a href="<%= sitepath %>faq/detail/00001515/">よくあるご質問ページ</a>をご確認ください。</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+
+    <div class="u-Adjust_Pt-64">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

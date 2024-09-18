@@ -1,0 +1,163 @@
+<% const {namespace} = productInfo -%>
+<section class="<%= namespace %>-Hero">
+  <div class="<%= namespace %>-Hero_Data">
+    <div>
+      <h1 class="c-Heading_Lv1 <%= namespace %>-Hero_Name"><%- productInfo.name %></h1>
+      <%_ if (typeof productInfo.is5g == 'undefined' || productInfo.is5g) { _%>
+        <div class="<%= namespace %>-Hero_Name-5g">
+          <img src="<%= sitepath %>assets/img/common/icon-5g.png" width="52" alt="5G" class="u-Adjust_Mr-16 u-Adjust_Mt-16">
+          <img src="/assets/img/product/iphone/icon-rm-iphone-upgrade-wide.png" width="232" class="u-Adjust_Mt-16" alt="">
+        </div>
+      <%_ } else { _%>
+        <div class="<%= namespace %>-Hero_Name-5g">
+          <img src="/assets/img/product/iphone/icon-rm-iphone-upgrade-wide.png" width="232" class="u-Adjust_Mt-16" alt="">
+        </div>
+      <%_ } _%>
+
+      <div class="<%= namespace %>-Layout_PC">
+        <%_ if( productInfo.color.length > 0 ) { _%>
+          <ul class="<%= namespace %>-Hero_Color">
+            <%_ productInfo.color.forEach((value, index) => { _%>
+              <%_ if( index === 0 ) { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="true">
+              <%_ } else { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="false">
+              <%_ } _%>
+                <%_ if( value.name === 'ホワイト' ) { _%>
+                  <div style="background: <%- value.code %>; border: 1px solid #D1D1E0;"></div>
+                  <p><%- value.name %></p>
+                <%_ } else if ( value.name === '（PRODUCT）RED&#8482;' ) { _%>
+                  <div style="background: <%- value.code %>"></div>
+                  <p class="u-Adjust_Mt-8" ><%- value.name %></p>
+                <%_ } else { _%>
+                  <div style="background: <%- value.code %>"></div>
+                  <p><%- value.name %></p>
+                <%_ } _%>
+                </li>
+            <%_ }); _%>
+          </ul>
+        <%_ } _%>
+
+        <ul class="<%= namespace %>-Hero_Cta">
+          <li class="js-apply-btn">
+              <%_ if( productInfo.nostack ) { _%>
+                <%_ if( !productInfo.nosell ) { _%>
+                <span class="c-Btn_Primary-large" aria-disabled="true"><span>在庫切れ</span></span>
+                <%_ } _%>
+              <%_ } else { _%>
+                <a href="<%- productInfo.url %>" class="c-Btn_Primary-large u-Adjust_Mt-8 js-cta"><%- productInfo.ctalabel %></a>
+              <%_ } _%>
+          </li>
+          <%_ if( productInfo.ichiba.flag ) { _%>
+            <li>
+              <a href="<%- productInfo.ichiba.url %>" class="c-Btn_Primary">楽天市場で購入する</a>
+              <p>※送料無料</p>
+            </li>
+          <%_ } _%>
+        </ul>
+        <div class="js-btn-after"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Hero_Main">
+    <%_ productInfo.slider.forEach((value, index) => { _%>
+      <%_ if( productInfo.color.length <= 0 ) { _%>
+        <ul class="<%= namespace %>-Hero_Main-view c-Carousel js-product-main js-device">
+      <%_ } else if( index === 0 ) { _%>
+        <ul class="<%= namespace %>-Hero_Main-view c-Carousel js-main<%- index + 1 %> js-device" aria-hidden="false">
+      <%_ } else { _%>
+        <ul class="<%= namespace %>-Hero_Main-view c-Carousel js-main<%- index + 1 %> js-device" aria-hidden="true">
+      <%_ } _%>
+        <%_ value.forEach((ele, index) => { _%>
+          <li><span><img data-lazy="<%- ele %>" alt=""></span></li>
+        <%_ }); _%>
+        </ul>
+
+      <%_ if( index === 0 ) { _%>
+        <ul class="<%= namespace %>-Hero_Main-thumbnail thumbnail<%- index + 1 %> is-open">
+      <%_ } else { _%>
+        <ul class="<%= namespace %>-Hero_Main-thumbnail thumbnail<%- index + 1 %>">
+      <%_ } _%>
+        <%_ value.forEach((ele, index) => { _%>
+          <li class="thumbnail-item"><span><img src="<%- ele %>" alt=""></span></li>
+        <%_ }); _%>
+        <%_ if( productInfo.movie.flag ) { _%>
+          <li>
+            <a class="js-video" href="<%- productInfo.movie.url %>">
+              <span><img src="<%- productInfo.movie.thumbnail %>" alt=""></span>
+            </a>
+          </li>
+        <%_ } _%>
+        </ul>
+    <%_ }); _%>
+
+
+    <div class="c-Carousel_Nav <%= namespace %>-Layout_Carousel"></div>
+  </div>
+
+  <div class="<%= namespace %>-Layout_SP">
+    <div class="<%= namespace %>-Hero_Data">
+      <div>
+        <%_ if( productInfo.color.length > 0 ) { _%>
+          <ul class="<%= namespace %>-Hero_Color">
+            <%_ productInfo.color.forEach((value, index) => { _%>
+              <%_ if( index === 0 ) { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="true">
+              <%_ } else { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="false">
+              <%_ } _%>
+                <%_ if( value.name === 'ホワイト' ) { _%>
+                  <div style="background: <%- value.code %>; border: 1px solid #D1D1E0;"></div>
+                  <p><%- value.name %></p>
+                <%_ } else if ( value.name === '（PRODUCT）RED&#8482;' ) { _%>
+                  <div style="background: <%- value.code %>"></div>
+                  <p class="u-Adjust_Mt-8" ><%- value.name %></p>
+                <%_ } else { _%>
+                  <div style="background: <%- value.code %>"></div>
+                  <p><%- value.name %></p>
+                <%_ } _%>
+                </li>
+            <%_ }); _%>
+          </ul>
+        <%_ } _%>
+      </div>
+
+      <ul class="<%= namespace %>-Hero_Cta">
+        <%_ if( !productInfo.nosell ) { _%>
+          <li class="js-apply-btn u-Adjust_Align-center">
+              <%_ if( productInfo.nostack ) { _%>
+                <span class="c-Btn_Primary-large" aria-disabled="true"><span>在庫切れ</span></span>
+              <%_ } else { _%>
+                <a href="<%- productInfo.url %>" class="c-Btn_Primary-large js-cta"><%- productInfo.ctalabel %></a>
+              <%_ } _%>
+            <div class="<%= namespace %>-Layout_Attention">
+              <p class="u-Adjust_Mt-16 c-Txt_Emp-01" style="font-size: 18px;">【ご購入前にご確認ください】</p>
+              <ul class="c-List_Text-disc c-Txt_Normal u-Adjust_Align-left u-Adjust_Mt-8">
+                <li class="u-Adjust_Mt-8">
+                  iPhone本体は、楽天モバイル公式サイト・楽天モバイル公式 楽天市場店・楽天モバイルショップあわせて<span class="c-Txt_Emp-02">おひとり様1点限りのご注文</span>とさせていただきます。購入手続き後、当社で審査を実施し、完了をもって購入契約成立となります。<br>ただし、当社所定の条件に該当する場合、注文キャンセルとなる可能性がございます。キャンセルの際は、登録メールアドレス宛にご連絡します。
+                </li>
+              </ul>
+            </div>
+          </li>
+        <%_ } _%>
+        <%_ if( productInfo.ichiba.flag ) { _%>
+          <li>
+            <a href="<%- productInfo.ichiba.url %>" class="c-Btn_Primary">楽天市場で購入する</a>
+            <p>※送料無料</p>
+          </li>
+        <%_ } _%>
+      </ul>
+      <div class="js-btn-after"></div>
+    </div>
+  </div>
+</section>
+<%_ if( !productInfo.nosell ) { _%>
+<div class="<%= namespace %>-Layout_Attention <%= namespace %>-Layout_PC">
+  <p class="c-Txt_Emp-01 u-Adjust_Align-center" style="font-size: 18px;">【ご購入前にご確認ください】</p>
+  <ul class="c-List_Text-disc c-Txt_Normal u-Adjust_Align-left u-Adjust_Mt-8">
+    <li class="u-Adjust_Mt-8">
+      iPhone本体は、楽天モバイル公式サイト・楽天モバイル公式 楽天市場店・楽天モバイルショップあわせて<span class="c-Txt_Emp-02">おひとり様1点限りのご注文</span>とさせていただきます。購入手続き後、当社で審査を実施し、完了をもって購入契約成立となります。<br>ただし、当社所定の条件に該当する場合、注文キャンセルとなる可能性がございます。キャンセルの際は、登録メールアドレス宛にご連絡します。</li>
+  </ul>
+</div>
+<%_ } _%>

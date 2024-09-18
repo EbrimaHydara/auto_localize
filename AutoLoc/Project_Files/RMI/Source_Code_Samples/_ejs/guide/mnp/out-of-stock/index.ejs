@@ -1,0 +1,123 @@
+<% const pagetitle = "MNP（他社からの電話番号乗り換え）でご購入時の注意事項" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/application/mnp/", label:"他社からの乗り換え（MNP）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルを、MNP（他社からの電話番号乗り換え）でお申し込み時の注意事項をご案内いたします。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container u-Adjust_Mb-40">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img src="<%= sitepath %>assets/img/guide/mnp/out-of-stock/img01-pc.png" alt="" class="guide-Utility_Show-pc"><img src="<%= sitepath %>assets/img/guide/mnp/out-of-stock/img01-sp.png" alt="" class="guide-Utility_Show-sp"></div>
+
+    <ul class="c-List_Text-disc-emp u-Adjust_Mt-24">
+      <li>製品のお届けにお時間がかかってしまった場合、製品の到着後に「MNP転入を開始する」ボタンを押下後、「MNP検証失敗」と表示される場合がございます。</li>
+      <li>お申し込み時に登録されたメールアドレス宛に「【重要】[楽天モバイル]他社からの電話番号引き継ぎ（MNP）申請中断のお知らせ」をお送りしておりますので、お手数ですが、メール本文のご案内に従って、MNP開通手続きを行ってください。</li>
+    </ul>
+
+    <ul class="u-Adjust_Mt-16 u-Adjust_Ml-16">
+      <li><p><a href="<%= sitepath %>faq/detail/00001641/?l-id=guide_mnp_out-of-stock_faq_detail_00001641" class="c-Link_Txt-icon">MNP予約番号の更新方法を見る<span class="c-Icon_Chevron-right"></span></a></p></li>
+      <li class="u-Adjust_Mt-8"><p><a href="<%= sitepath %>guide/mnp/flow/?l-id=guide_mnp_out-of-stock_guide_mnp_flow" class="c-Link_Txt-icon">MNP開通手続き方法を見る<span class="c-Icon_Chevron-right"></span></a></p></li>
+    </ul>
+
+    <ul class="c-List_Text-disc-emp u-Adjust_Mt-16">
+      <li>楽天モバイル（ドコモ回線・au回線）からRakuten最強プランへのプラン変更（移行）でお申し込みいただいた回線が「MNP予約番号期限切れ」もしくは「MNP検証失敗」となった場合は<a href="<%= sitepath %>support/">楽天モバイル コミュニケーションセンター</a>までご連絡ください。</li>
+    </ul>
+
+    <ul class="c-List_Note u-Adjust_Mt-24">
+      <li><span>※</span>製品の入荷時期について、個別にお問い合わせいただいてもお答えしかねます。あらかじめご了承ください。</li>
+      <li><span>※</span>キャンセルご希望の場合は、「<a href="<%= sitepath %>faq/detail/00001971/">お申し込み後のキャンセルについて</a>」ページをご確認ください。</li>
+  </ul>
+
+  </div>
+
+  <div class="l-System_Container">
+    <%- include('/include/guide/_faq') %>
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-service.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-service.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

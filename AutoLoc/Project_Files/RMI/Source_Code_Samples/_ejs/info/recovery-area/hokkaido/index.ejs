@@ -1,0 +1,127 @@
+<% const pagetitle = "復旧エリアマップ（北海道）" -%>
+<% const namespace = "recovery-area" -%>
+<%- include('/info/recovery-area/_map-valiables') _%>
+<%-
+  include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイルのスマートフォン・携帯電話・WiFiルーターの通信エリア、電波状況の情報をご紹介します。',
+    noindex: true,
+    pathname: filepath,
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/info/recovery-area/recovery-area.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/info/recovery-area/recovery-area-map.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header-simple') %>
+
+<div class="<%= namespace %>-Top">
+  <div class="l-System_Container">
+    <div class="<%= namespace %>-Top_Map">
+      <h2 class="c-Heading_Lv2" id="area">復旧エリアマップ（北海道）</h2>
+
+      <div class="<%= namespace %>-Top_Map-body u-Adjust_Mt-8 js-disaster-map" aria-hidden="true">
+        <p><time id="js-update-time" datetime=""></time></p>
+        <p id="js-disaster-annotation" aria-hidden="true"></p>
+        <p id="js-error-txt" class="c-Txt_Cap" aria-hidden="true">※復旧エリア情報は順次更新されます。</p>
+        <div class="<%= namespace %>-Map u-Adjust_Mt-24">
+          <div id="place-search-wrapper">
+            <div class="c-Search_Container form-group">
+              <input type="text" class="form-control controls c-Search_Input" id="pac-input" aria-label="地図を検索" placeholder="市区町村名や住所を入力">
+              <div class="c-Search_Btn">
+                <span class="c-Icon_Search c-Search_Icon glyphicon-search"></span>
+              </div>
+            </div>
+            <div class="u-Adjust_Mt-16">
+              <div id="legend">
+                <div class="<%= namespace %>-Top_Map-flexrow">
+                  <ul class="<%= namespace %>-Top_Map-legend js-<%= namespace %>-target">
+                    <li class="<%= namespace %>-Top_Map-legend-active"><%= activeArea %></li>
+                    <li class="<%= namespace %>-Top_Map-legend-partner"><%= partnerArea %></li>
+                    <li class="<%= namespace %>-Top_Map-legend-inactive"><%= inactiveArea %></li>
+                    <li class="<%= namespace %>-Top_Map-legend-partner-inactive"><%= inactivePartnerArea %></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-wrap">
+            <div id="map" data-update="<%= mapUpdate %>"></div>
+            <button type="button" id="map-loc-button" class="c-Btn_Regular c-Btn_Icon" style="min-width: auto;"><span class="c-Icon_Location-f"></span><span>現在地</span></button>
+            <a href="<%= sitepath %>info/recovery-area/hokkaido/map.html" class="<%= namespace %>-Top_Btn-fullscreen" aria-label="全画面表示"><span class="c-Icon_Product-fullscreen"></span></a>
+          </div>
+        </div>
+
+        <div id="js-area-links-container" class="u-Adjust_Mt-16 c-Theme-Borderbox" style="display: none;">
+          <h3 class="c-Heading_Lv4">ほかのエリアのマップを見る</h3>
+          <nav class="u-Adjust_Mt-16">
+            <ul id="js-area-links" class="<%= namespace %>-List_Links">
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/tohoku/" class="c-Link_Txt">復旧エリアマップ（東北）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/kanto/" class="c-Link_Txt">復旧エリアマップ（関東）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/shinetsu-hokuriku/" class="c-Link_Txt">復旧エリアマップ（甲信越・北陸）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/tokai/" class="c-Link_Txt">復旧エリアマップ（東海）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/kansai/" class="c-Link_Txt">復旧エリアマップ（関西）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/chugoku/" class="c-Link_Txt">復旧エリアマップ（中国）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/shikoku/" class="c-Link_Txt">復旧エリアマップ（四国）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/kyushu/" class="c-Link_Txt">復旧エリアマップ（九州）</a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>info/recovery-area/okinawa/" class="c-Link_Txt">復旧エリアマップ（沖縄）</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <%- include('../include/_annotation-block') _%>
+      </div>
+
+      <div class="u-Adjust_Mt-8 js-normal" aria-hidden="true">
+        <p>
+          現在、復旧エリアマップは公開しておりません。<br>
+          災害による障害発生時、携帯電話がご利用になれない、またはご利用しづらいサービスエリアの情報および復旧状況を公開します。
+        </p>
+      </div>
+
+      <ul class="<%= namespace %>-List_Center u-Adjust_Mt-48">
+        <li>
+          <a href="<%= sitepath %>information/" class="c-Btn_Regular-large"><span>お知らせ一覧へ戻る</span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>" class="c-Btn_Regular-large"><span>トップページへ戻る</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+  <%- include('/include/_footer-simple') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/info.recovery-area.hokkaido.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

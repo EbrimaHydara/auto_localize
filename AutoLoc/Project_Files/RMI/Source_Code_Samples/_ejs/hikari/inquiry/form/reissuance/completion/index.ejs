@@ -1,0 +1,44 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "開通通知発行のお申し込み受付 完了" -%>
+<% const directories = [{path: hikariroot.path + "inquiry/", label:"お問い合わせ"}] -%>
+<%-
+	include('/_header', {
+	pagetitle: pagetitle,
+	directories: directories,
+	description: '楽天ひかりの開通通知発行のお申し込みの受付完了画面です。',
+	noindex: false,
+	pathname: filepath,
+  ishikari: true,
+  canonical_custom: 'https://network.mobile.rakuten.co.jp/hikari/inquiry/form/consult/completion/',
+	});
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/inquiry/form/consult/consult.css?20240424">
+<%- include('/include/_append-head-hikari') %>
+
+</head>
+<body>
+
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+  <%- include('/hikari/include/_header', { headerType: 'normal', pagetitle: pagetitle, directories: directories, tax: false }) %>
+  <%- include('/include/hikari/form/completion/_completion', {
+	pagetitle: '開通通知発行のお申し込み受付',
+	description:'開通通知発行のお申し込みを受け付けました。',
+	description2:'ご契約住所に到着するまで1週間～10日ほどお待ちください。',
+	isinquiry:true,
+	isbutton:true,
+	isreissuarance:true,
+}) %>
+
+<footer class="g-Footer">
+  <%- include('/hikari/include/_footer', { pagetitle: pagetitle, directories: directories, hiddenFooterCta: true, hiddenCta: true, hiddenMenu: true, hiddenPopask: true, hiddenBacktop: true }) %>
+</footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<script src="<%= sitepath %>assets/js/hikari/inquiry.form.consult.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<%
+const carouselShopLimited = [
+  {//パンダデザインshop_240315
+    href: `${sitepath}shop/panda-desgin-shop/?l-id=shop_include_shop_panda-desgin-shop`,
+    imgPath: `${sitepath}assets/img/bnr/bnr-panda-design-shop-328-185-240220.png`,
+    alt:  '楽天モバイルショップ全店舗がお買いものパンダデザインにリニューアル！',
+  },
+  {//お買いものパンダLINEスタンプ_240315
+    href: `https://event.rakuten.co.jp/okaimonopanda/line/mobileshop/?scid=wi_grp_gmx_linemobileshop_mno_shop_include_campaign`,
+    imgPath: `${sitepath}assets/img/bnr/bnr-panda-line-stamp-328-185.png`,
+    alt:  'お買いものパンダ「最強ポジティブ」LINEスタンプGET！',
+    target: '_blank',
+  },
+];
+-%>
+
+<div>
+  <h2 class="c-Heading_Lv2">ショップ限定キャンペーン</h2>
+  <div class="c-Carousel js-Carousel-multi u-Adjust_Mt-24">
+    <%_ carouselShopLimited.forEach((item, idx) => { -%>
+    <a href="<%- item.href %>"<% if( item.target ) { %> target="<%- item.target %>" <%_ } _%>>
+      <%_ if (idx < 4) { _%>
+      <img src="<%- item.imgPath %>" width="328" height="185" alt="<%- item.alt %>">
+      <%_ } else { _%>
+      <img data-lazy="<%- item.imgPath %>" width="328" height="185" alt="<%- item.alt %>">
+      <%_ } _%>
+    </a>
+    <%_ }) -%>
+  </div>
+  <div class="c-Carousel_Nav-v2-wrap">
+    <div class="c-Carousel_Nav-v2"></div>
+    <div class="c-Carousel_Nav-v2-bar"></div>
+  </div>
+</div>

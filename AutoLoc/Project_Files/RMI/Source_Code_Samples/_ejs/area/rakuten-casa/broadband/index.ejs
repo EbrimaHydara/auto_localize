@@ -1,0 +1,546 @@
+<% const pagetitle = "指定インターネット回線一覧" -%>
+<% const directories = [{path:"area/", label:"通信・エリア"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '',
+    keywords: '',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const directory = "rakuten-casa" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/casa/area-casa.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="area-casa-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-32">楽天モバイルが指定するRakuten Casa対応インターネット回線一覧です。<br>お客様が契約しているインターネット回線か、お申し込み前にご確認ください。<br>
+    NTT回線をご利用中の場合、お申し込みの際にお客様IDをご入力いただくと、審査通過までのお手続きがスムーズです。各事業者のページにてご確認ください。
+    </p>
+    <div class="c-Accordion u-Adjust_Mt-48">
+      <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>NTT東日本（東日本電信電話株式会社）</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>フレッツ 光ネクスト（光コラボレーションモデル回線含む）</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>ファミリータイプ</li>
+                <li>マンションタイプ</li>
+                <li>ファミリー・ハイスピードタイプ</li>
+                <li>マンション・ハイスピードタイプ</li>
+                <li>ギガファミリー・スマートタイプ</li>
+                <li>ギガマンション・スマートタイプ</li>
+                <li>ファミリー・ギガラインタイプ</li>
+                <li>マンション・ギガラインタイプ</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-32">
+          <div>
+            <dt>光コラボレーションモデル事業者様</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li><a href="https://hikari.faq.rakuten.net/faq/show/1090" class="c-Link_Txt-inline" target="_blank">楽天ひかり<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hwKn0T" class="c-Link_Txt-inline" target="_blank">ドコモ光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://www.softbank.jp/support/faq/view/25160" class="c-Link_Txt-inline" target="_blank">SoftBank光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hwHkCe" class="c-Link_Txt-inline" target="_blank">ビッグローブ光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hwhBN7" class="c-Link_Txt-inline" target="_blank">OCN光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hyU6Ka" class="c-Link_Txt-inline" target="_blank">ぷらら光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hDApQk" class="c-Link_Txt-inline" target="_blank">So-net光プラス<span class="c-Icon_New-window-l"></span></a></li>
+              </ul>
+              <p class="u-Adjust_Mt-24">各事業者様のページにて、お客様ID（CAF + 10桁、または COP + 8桁）をご確認いただけます。</p>
+              <p class="u-Adjust_Mt-24">そのほかの光コラボレーションモデル事業者様をご利用の方はコミュニケーションセンターまでお問い合わせください。</p>
+              <a href="<%= sitepath %>area/rakuten-casa/broadband/hikari-collaboration/">光コラボレーションモデル事業者様一覧</a>
+            </dd>
+          </div>
+        </dl>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※光コラボレーション事業者によっては、フェムトセル設置に制約・諸条件がある場合があります。</p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>NTT西日本（西日本電信電話株式会社）</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>フレッツ 光ネクスト（光コラボレーションモデル回線含む）</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>ファミリータイプ</li>
+                <li>マンションタイプ</li>
+                <li>ファミリー・ハイスピードタイプ</li>
+                <li>マンション・ハイスピードタイプ</li>
+                <li>ファミリー・スーパーハイスピードタイプ隼</li>
+                <li>マンション・スーパーハイスピードタイプ隼</li>
+                <li>ビジネスタイプ</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+
+        <dl class="c-Dl_Origin u-Adjust_Mt-32">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>フレッツ 光マイタウン ネクスト</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>ファミリー・スーパーハイスピードタイプ 隼</li>
+                <li>ファミリータイプ</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+
+        <dl class="c-Dl_Origin u-Adjust_Mt-32">
+          <div>
+            <dt>光コラボレーションモデル事業者様</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li><a href="https://hikari.faq.rakuten.net/faq/show/1090" class="c-Link_Txt-inline" target="_blank">楽天ひかり<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hwKn0T" class="c-Link_Txt-inline" target="_blank">ドコモ光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://www.softbank.jp/support/faq/view/25160" class="c-Link_Txt-inline" target="_blank">SoftBank光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hwHkCe" class="c-Link_Txt-inline" target="_blank">ビッグローブ光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hwhBN7" class="c-Link_Txt-inline" target="_blank">OCN光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hyU6Ka" class="c-Link_Txt-inline" target="_blank">ぷらら光<span class="c-Icon_New-window-l"></span></a></li>
+                <li><a href="https://r10.to/hDApQk" class="c-Link_Txt-inline" target="_blank">So-net光プラス<span class="c-Icon_New-window-l"></span></a></li>
+              </ul>
+              <p class="u-Adjust_Mt-24">各事業者様のページにて、お客様ID（CAF + 10桁、または COP + 8桁）をご確認いただけます。</p>
+              <p class="u-Adjust_Mt-24">そのほかの光コラボレーションモデル事業者様をご利用の方はコミュニケーションセンターまでお問い合わせください。</p>
+              <a href="<%= sitepath %>area/rakuten-casa/broadband/hikari-collaboration/">光コラボレーションモデル事業者様一覧</a>
+            </dd>
+          </div>
+        </dl>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※光コラボレーション事業者によっては、フェムトセル設置に制約・諸条件がある場合があります。</p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>JCOM株式会社</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>J:COM NET</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>J:COM NET 1Gコース</li>
+                <li>J:COM NET 320Mコース</li>
+                <li>J:COM NET 120Mコース</li>
+                <li>J:COM NET 40Mコース</li>
+                <li>J:COM NET 光1Gコース</li>
+                <li>J:COM NET 光5Gコース</li>
+                <li>J:COM NET 光10Gコース</li>
+                <li>J:COM NET 光1Gコース on auひかり</li>
+                <li>J:COM NET 光5Gコース on auひかり</li>
+                <li>J:COM NET 光10Gコース on auひかり</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>KDDI株式会社</button>
+      <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>auひかり</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>auひかりホーム</li>
+                <li>auひかりマンション</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常7営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ソニーネットワークコミュニケーションズ株式会社</button>
+      <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>NURO光</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>NURO 光 G2T</li>
+                <li>NURO 光 G2D</li>
+                <li>NURO 光 G2N</li>
+                <li>NURO 光 2ギガ（3年契約）プラン</li>
+                <li>NURO 光 2ギガ（2年契約）プラン</li>
+                <li>NURO 光 2ギガ（契約期間なし）プラン</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※Rakuten Casaの申し込みにあたり、設置申込者様が契約可能かの確認のため、楽天モバイル株式会社から通知を受けた情報に関し、ソニーネットワークコミュニケーションズ株式会社よりお客様のNURO回線加入者情報(氏名、住所、回線加入状況)を楽天モバイル株式会社へ電子的手段により第三者提供いたします。</p>
+        <p class="c-Txt_Cap">※ソニーネットワークコミュニケーションズ株式会社からの第三者提供に関するお問い合わせ(提供停止などを含む)は<a href="https://www.sonynetwork.co.jp/corporation/privacy/houteikouhyou.html" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からお問い合わせください。</p>
+        <p class="c-Txt_Cap">※NURO 光 for マンション（M2Tプラン、M2Dプラン、M2プラン）等は対象外となります。</p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-6"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>中部テレコミュニケーション株式会社（CTC）</button>
+      <div id="accordion-content-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-6" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>コミュファ光</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>300Mホーム</li>
+                <li>1Gホーム</li>
+                <li>5GホームEX</li>
+                <li>10GホームEX</li>
+                <li>300MマンションF</li>
+                <li>1GマンションF</li>
+                <li>5GマンションF EX</li>
+                <li>10GマンションF EX</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※ISP選択型および30Mサービス（30Mホーム、30MマンションF、タイプK）については対象外。</p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-7"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>株式会社ファミリーネット・ジャパン</button>
+      <div id="accordion-content-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-7" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>サイバーホーム</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <p>ー</p>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※「サイバーホーム」をご利用であっても「Rakuten Casa」が提供出来ない場合もございます。（FTTH方式は対象外となります）</p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-8"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>株式会社QTnet</button>
+      <div id="accordion-content-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-8" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>BBIQ</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>ＢＢＩＱホームタイプ １００メガコース 定額プラン</li>
+                <li>ＢＢＩＱホームタイプ １００メガコース ＳＴＥＰプラン</li>
+                <li>ＢＢＩＱホームタイプ 1ギガコース</li>
+                <li>ＢＢＩＱホームタイプ 6ギガコース</li>
+                <li>ＢＢＩＱホームタイプ 10ギガコース</li>
+                <li>ＢＢＩＱマンション[ダイレクト]タイプ １００メガコース 定額プラン</li>
+                <li>ＢＢＩＱマンション[ダイレクト]タイプ １００メガコース ＳＴＥＰプラン</li>
+                <li>ＢＢＩＱマンション[ダイレクト]タイプ 1ギガコース</li>
+                <li>ＢＢＩＱマンション[ダイレクト]タイプ 6ギガコース</li>
+                <li>ＢＢＩＱマンション[ダイレクト]タイプ 10ギガコース</li>
+                <li>ＢＢＩＱマンションタイプ １００メガコース 定額プラン</li>
+                <li>ＢＢＩＱマンションタイプ １００メガコース ＳＴＥＰプラン</li>
+                <li>ＢＢＩＱマンションタイプ 1ギガコース</li>
+                <li>ＢＢＩＱマンションタイプ 6ギガコース</li>
+                <li>ＢＢＩＱマンションタイプ 10ギガコース</li>
+                <li>ＢＢＩＱマンションタイプ[棟内ＬＡＮ方式] １００メガコース 定額プラン</li>
+                <li>ＢＢＩＱマンションタイプ[棟内ＬＡＮ方式] １００メガコース ＳＴＥＰプラン</li>
+                <li>ＢＢＩＱマンションタイプ[棟内ＬＡＮ方式] 1ギガコース</li>
+                <li>ＢＢＩＱオフィスタイプ １００メガコース</li>
+                <li>ＢＢＩＱオフィスタイプ 1ギガコース</li>
+                <li>ＢＢＩＱオフィスタイプ 6ギガコース</li>
+                <li>ＢＢＩＱオフィスタイプ 10ギガコース</li>
+                <li>ＢＢＩＱプラスタイプ １００メガコース</li>
+                <li>ＢＢＩＱプラスタイプ 1ギガコース</li>
+                <li>ＢＢＩＱプラスタイプ 6ギガコース</li>
+                <li>ＢＢＩＱプラスタイプ 10ギガコース</li>
+                <li>マンションまるごとＢＢＩＱ １００メガコース</li>
+                <li>マンションまるごとＢＢＩＱ 1ギガコース</li>
+                <li>マンションまるごとＢＢＩＱ 6ギガコース</li>
+                <li>マンションまるごとＢＢＩＱ 10ギガコース</li>
+                <li>マンションまるごとＢＢＩＱオフィスタイプ 1ギガコース</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※お使いのルーターにVPN（IPSec IKE）パススルー機能が必要になります。ルーターの初期設定がOFFになっている場合があります。必ずONに設定してください。設定方法等の詳細は<a class="c-Link_Txt-inline" href="https://www.qtnet.co.jp/inquire/" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>へお問い合わせください。</p>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-9"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>つなぐネットコミュニケーションズ（アルテリア・ネットワークス）</button>
+      <div id="accordion-content-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-9" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>インターネット接続サービス「UCOM光 レジデンス」（ユーコムヒカリ レジデンス）</p>
+              <p>インターネット接続サービス「e-mansion」（イーマンション）</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>マンション全戸一括タイプ</li>
+                <li>マンション全戸オールギガタイプ</li>
+                <li>マンション全戸オールギガBタイプ</li>
+                <li>マンション全戸オールギガ光配線タイプ</li>
+                <li>マンション全戸オールギガ光配線Bタイプ</li>
+                <li>マンション全戸セレクトタイプ</li>
+                <li>マンション全戸セパレートタイプ</li>
+                <li>マンション全戸一括シンプルタイプ</li>
+                <li>マンション全戸一括マルチタイプ</li>
+                <li>マンション全戸一括Five.A</li>
+                <li>e-mansion</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常14営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-10" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-10"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>イッツ・コミュニケーションズ株式会社</button>
+      <div id="accordion-content-10" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-10" aria-hidden="true">
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>サービス名</dt>
+            <dd>
+              <p>イッツコムひかり</p>
+              <p>かっとびメガ160</p>
+              <p>かっとびワイド</p>
+            </dd>
+          </div>
+          <div>
+            <dt>サービスタイプ</dt>
+            <dd>
+              <ul class="c-List_Text-disc">
+                <li>イッツコムひかりホームタイプ2ギガコース</li>
+                <li>イッツコムひかりホームタイプ1ギガコース</li>
+                <li>イッツコムひかりホームタイプ300メガコース</li>
+                <li>イッツコムひかりホームタイプ30メガコース</li>
+                <li>マンションタイプ600メガコース</li>
+                <li>マンションタイプ300メガコース</li>
+                <li>マンションタイプ100メガコース</li>
+                <li>マンションタイプ30メガコース</li>
+                <li>かっとびメガ160</li>
+                <li>かっとびワイド</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <dl class="c-Dl_Origin u-Adjust_Mt-8">
+          <div>
+            <dt>Rakuten Casa発送目安</dt>
+            <dd>
+              <p>ご契約者様情報確認後、通常10営業日程度。</p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <p class="c-Txt_Cap u-Adjust_Mt-48">※2023年12月現在のインターネット回線一覧になります。その他インターネット回線については、順次対応予定です。</p>
+    <p class="c-Txt_Cap">※上記回線であっても、ご利用環境によってはRakuten Casaを設置できない場合があります。</p>
+    <p class="c-Txt_Cap">※光コラボレーション事業者によってはRakuten Casa設置に制約がある場合があります。</p>
+    <p class="c-Txt_Cap">※光コラボレーションモデル回線のサービスタイプ名称は、光コラボレーション事業者によって異なるため、ご契約の事業者に確認をお願いいたします。通信速度10Gbps以上のプランまたは従量課金制プランは非対応となります。</p>
+
+    <!-- <ul class="u-Adjust_Mt-64">
+      <li><a href="<%= sitepath %>area/rakuten-casa/" class="c-Btn_Regular-semiauto"><span>Rakuten Casaの案内を見る</span></a></li>
+    </ul> -->
+
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-service-v2.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

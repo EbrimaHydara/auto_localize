@@ -1,0 +1,43 @@
+<% const campaignHold = [
+  { id: 1, link: 'referral/?l-id=fee_saikyo-plan_campaign_referral01', imgpc:'bnr-referral-328-185-230922.png', imgsp:'bnr-referral-343-108-230922.png', title:'楽天モバイル紹介キャンペーン'},
+  { id: 2, link: 'start-point/?l-id=fee_saikyo-plan_campaign_start-point', imgpc:'bnr-start-point-328-185-231222.png', imgsp:'bnr-start-point-343-108-231222.png', title:'スマホトク得乗り換えキャンペーン！最大12,000円相当分おトク！'},
+  { id: 3, link: 'iphone-point/?l-id=fee_saikyo-plan_campaign_iphone-point', imgpc:'bnr-iphone-point-328-185-231222.png', imgsp:'bnr-iphone-point-343-108-231222.png', title:'楽天モバイルを初めて申し込み＆電話番号そのまま他社から乗り換え＆対象iPhone購入で最大12,000ポイント還元！'},
+  ]
+-%>
+<!-- バナー2 -->
+<!-- PC -->
+<div class="u-Show_Xxo">
+  <div class="u-Adjust_Pt-24">
+    <div class="u-Rat_Appear-height" data-ratid="saikyo-plan_scroll-01_campaign-banner" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+    <div class="saikyo-plan-Banners_Lead-layout">
+      <% campaignHold.forEach((item) => { %>
+      <div class="saikyo-plan-Banners_Lead-item">
+        <a href="<%= sitepath %>campaign/<%= item.link %>" class="c-Banner_Hover-act">
+          <img src="<%= sitepath %>assets/img/bnr/<%= item.imgpc %>" width="328" height="185" alt="<%= item.title %>" loading="lazy">
+        </a>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+<!-- //PC -->
+
+<!-- SP -->
+<div class="u-Show_Oox">
+  <div class="u-Adjust_Pt-24">
+    <div class="u-Rat_Appear-height" data-ratid="saikyo-plan_scroll-01_campaign-banner" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+    <div id="js-campaignCarousel-sp" class="c-Carousel saikyo-plan-Appeal_Campaign">
+      <% campaignHold.forEach((item) => { %>
+      <a href="<%= sitepath %>campaign/<%= item.link %>" class="c-Banner_Hover-act">
+        <img src="<%= sitepath %>assets/img/bnr/<%= item.imgsp %>" width="802" height="252" alt="<%= item.title %>" loading="lazy">
+      </a>
+      <% }); %>
+    </div>
+    <div class="c-Carousel_Nav-v2-wrap">
+      <div class="c-Carousel_Nav-v2"></div>
+      <div class="c-Carousel_Nav-v2-bar"></div>
+    </div>
+  </div>
+</div>
+<!-- //SP -->
+<!-- //バナー2 -->

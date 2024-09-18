@@ -1,0 +1,587 @@
+<% const pagetitle = "iPhone 12 Pro（5G対応）製品情報" -%>
+<% const directory = "iphone-12-pro" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/iphone/", label:"iPhone"}] -%>
+<% const currentDir = "iphone-12-pro" %>
+<% const l_id = `product_${currentDir}` %>
+<% const namespace = `product-${currentDir}` -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+<% const priceDetailConfig = {
+  tradeinProductName: 'iPhone 11 Pro Max',
+  optionPattern: 'tradein',
+  lid: directory,
+  capacity: 512,
+  maxTradeinPrice: 33000,
+  carrier: 'SIMフリー',
+}
+-%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "【販売終了】iPhone 12 Pro（楽天モバイル）製品紹介。価格・スペック・デュアルカメラ仕様・特長・5G対応ほか｜アイフォン トゥエルブ プロ（Apple）",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/product-iphone.css?20240426">
+<script src="https://r.r10s.jp/com/ap/target/phoenix-2.7.2.min.js"></script>
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+<style>
+  .modaal-video-wrap {
+    margin: 0 !important;
+  }
+</style>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= namespace %>-Layout_Hero">
+  <div class="l-System_Container">
+    <p class="c-Txt_Cap u-Adjust_Align-right">※表記の金額はすべて税込です。</p>
+
+    <div class="<%= namespace %>_Section-end u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Mr-16 u-Adjust_Ml-16">
+      <p class="c-Txt_Emp-01 c-Txt_Normal-l">iPhone 12 Proは、販売終了をいたしました。</p>
+    </div>
+  </div>
+
+  <div class="l-System_Container">
+    <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+      <a href="<%= sitepath %>product/iphone/iphone-13-pro/?l-id=iphone-12-pro_iphone-13-pro" class="c-Btn_Regular-large"><span>iPhone 13 Pro詳細・購入はこちら</span></a>
+    </div>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Mb-24">
+      <a href="<%= sitepath %>product/iphone/?l-id=product_iphone_iphone-12-pro_product_iphone" class="c-Link_Txt-inline-icon js-scroll">iPhone一覧を見る<span class="c-Icon_Chevron-right"></span></a>
+    </div>
+
+    <div class="<%= namespace %>-Hero_Reference u-Adjust_Mt-32 u-Adjust_Mb-24">
+      <a href="#scroll-product-iphone-list" class="c-Link_Txt-inline-icon js-scroll">iPhoneのほかのモデルを見る<span class="c-Icon_Arrow-down-l"></span></a>
+    </div>
+    <%
+      const productInfo = {
+        'name': 'iPhone 12 Pro',
+        namespace: namespace,
+        ctalabel: 'iPhone 12 Proを購入する',
+        'nostack': true,
+        'nosell': true,
+        'color': [
+          {
+            'code': '#2D4E5C',
+            'name': 'パシフィック<br>ブルー'
+          },
+          {
+            'code': '#FCEBD3',
+            'name': 'ゴールド'
+          },
+          {
+            'code': '#E3E4DF',
+            'name': 'シルバー'
+          },
+          {
+            'code': '#52514D',
+            'name': 'グラファイト'
+          },
+        ],
+        'url': 'https://portal.mobile.rakuten.co.jp/equipment-details?exid=317389&selectAvailable=true&l-id=iphone-12-pro_top_bss-iphone-12-pro',
+        'urlTop': `https://portal.mobile.rakuten.co.jp/equipment-details?exid=317389&selectAvailable=true&l-id=${currentDir}_top_bss-${currentDir}`,
+        'urlFeeSimulation': `https://portal.mobile.rakuten.co.jp/equipment-details?exid=317389&selectAvailable=true&l-id=${currentDir}_fee-simulation_bss-${currentDir}`,
+        'urlBottom': `https://portal.mobile.rakuten.co.jp/equipment-details?exid=317389&selectAvailable=true&l-id=${currentDir}_bottom_bss-${currentDir}`,
+        'ichiba': {
+          'flag': false,
+          'url': '',
+        },
+        'slider': [
+          [
+            `/assets/img/product/iphone/${currentDir}/pht-device-00.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-01.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-02.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-03.png?210424`,
+          ],
+          [
+            `/assets/img/product/iphone/${currentDir}/pht-device-04.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-05.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-06.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-07.png?210424`,
+          ],
+          [
+            `/assets/img/product/iphone/${currentDir}/pht-device-08.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-09.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-10.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-11.png?210424`,
+          ],
+          [
+            `/assets/img/product/iphone/${currentDir}/pht-device-12.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-13.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-14.png?210424`,
+            `/assets/img/product/iphone/${currentDir}/pht-device-15.png?210424`,
+          ],
+        ],
+        'movie': {
+          'flag': true,
+          'url': 'https://www.youtube.com/embed/ihjGqflszcE',
+          'thumbnail': '/assets/img/product/iphone/iphone-12-pro/apple-movie.png',
+        },
+      }
+    %>
+    <%- include('/include/product/iphone/_product-info.ejs', { productInfo: productInfo }) %>
+
+  </div>
+</div>
+
+<div class="<%= namespace %>-Spec_Panel l-System_Container" id="tab-content2" role="tabpanel" aria-labelledby="製品詳細・スペック" style="margin: auto">
+  <div class="u-Adjust_Mt-40">
+    <section class="<%= namespace %>-Spec_Section-1">
+      <%# スクロール計測 %>
+      <div class="u-Rat_Appear-height" data-ratid="<%= directory %>_scroll-08_product-detail" data-ratevent="appear">&nbsp;</div>
+      <div class="<%= namespace %>-Spec_Section-1-bg">
+        <div class="<%= namespace %>-Spec_Section-1-flex">
+          <div>
+            <div class="<%= namespace %>-Utility_Disp-sp u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/logo-phone.png" alt="" width="102">
+              <p class="<%= namespace %>-Spec_Section-1-catch">次の世界へ、<br>より早く。</p>
+            </div>
+            <div>
+              <img class="<%= namespace %>-Utility_Disp-pc" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/logo-phone.png" alt="" width="133">
+              <p class="<%= namespace %>-Spec_Section-1-catch <%= namespace %>-Utility_Disp-pc">次の世界へ、<br>より早く。</p>
+              <p class="<%= namespace %>-Spec_Section-1-lead">5Gの速さ。スマートフォンで最速の<br class="<%= namespace %>-Utility_Disp-sp">A14 Bionicチップ。暗い場所で<br class="<%= namespace %>-Utility_Disp-sp">撮った写真を次のレベルへ<br class="<%= namespace %>-Utility_Disp-sp">引き上げる、Proのカメラシステム。<br>iPhone 12 Pro Maxなら、<br class="<%= namespace %>-Utility_Disp-sp">さらにその上の<br class="<%= namespace %>-Utility_Disp-pc">性能を<br class="<%= namespace %>-Utility_Disp-sp">持つカメラが使えます。</p>
+            </div>
+            <div class="<%= namespace %>-Spec_Section-1-btn">
+              <a href="<%= sitepath %>product/iphone/iphone-12-pro/">購入する</a>
+            </div>
+          </div>
+          <div class="<%= namespace %>-Spec_Section-1-visual">
+            <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-1-1.png" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section class="<%= namespace %>-Spec_Section-2">
+      <div class="<%= namespace %>-Spec_Section-2-bg">
+        <div class="<%= namespace %>-Spec_Section-2-flex">
+          <div>
+            <img class="<%= namespace %>-Utility_Disp-pc" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-2-1.png" alt="">
+          </div>
+          <div>
+            <div>
+              <p class="<%= namespace %>-Spec_Section-2-heading">デザインとディスプレイ</p>
+              <p class="<%= namespace %>-Spec_Section-2-catch">美しさと強さを<br>極めたデザイン。</p>
+              <div class="<%= namespace %>-Utility_Disp-sp u-Adjust_Mt-32">
+                <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-2-1.png" alt="">
+              </div>
+              <p class="<%= namespace %>-Spec_Section-2-lead">エッジからエッジまで広がる<br>Super Retina XDRディスプレイ。<br>耐落下性能を4倍向上させる<br>Ceramic Shieldで守ります<span>1</span>。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="<%= namespace %>-Spec_Section-3">
+      <div class="<%= namespace %>-Spec_Section-3-bg">
+        <div class="<%= namespace %>-Spec_Section-3-flex">
+          <div>
+            <div>
+              <p class="<%= namespace %>-Spec_Section-3-heading">5GをiPhoneで</p>
+              <p class="<%= namespace %>-Spec_Section-3-catch">こんにちは、5G。</p>
+              <p class="<%= namespace %>-Spec_Section-3-exp-1">どこまでも速く。<br>データ転送の遅延はどこまでも少なく。<br>だからダウンロードがさらに高速。<br>ビデオのストリーミングはさらに高画質。<br>ゲームプレイの反応もさらに向上。<br>様々な操作もリアルタイムで<span>3</span>。</p>
+              <div class="<%= namespace %>-Spec_Section-3-exp-2">
+                <div>
+                  <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/antenna.png"  width="30" alt="">
+                </div>
+                <div>
+                  <p>スマートフォンの中で<span>最も多くの5G周波数帯に対応</span>。<br class="<%= namespace %>-Utility_Disp-pc">5Gのエリアをより幅広くカバーできます</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-3-1.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="<%= namespace %>-Spec_Section-4">
+      <div class="<%= namespace %>-Spec_Section-4-bg">
+        <div class="<%= namespace %>-Spec_Section-4-flex">
+          <div>
+            <img class="<%= namespace %>-Spec_Section-4-visual <%= namespace %>-Utility_Disp-pc" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-4-1.png" alt="">
+          </div>
+          <div>
+            <div>
+              <p class="<%= namespace %>-Spec_Section-4-heading">A14 Bionic</p>
+              <p class="<%= namespace %>-Spec_Section-4-catch">どこまでも可能性を<br>広げるチップ。</p>
+              <div>
+                <img class="<%= namespace %>-Spec_Section-4-visual <%= namespace %>-Utility_Disp-sp" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-4-1.png" alt="">
+              </div>
+              <div class="<%= namespace %>-Spec_Section-4-exp-1">
+                <div>
+                  <p>速さも、パワーも、効率の良さも<br class="<%= namespace %>-Utility_Disp-sp">次のレベルに。<br class="<%= namespace %>-Utility_Disp-pc">業界初、5ナノメートルチップの登場です。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="<%= namespace %>-Spec_Section-5">
+      <div class="<%= namespace %>-Spec_Section-5-bg">
+        <div class="<%= namespace %>-Spec_Section-5-flex">
+          <div>
+            <div>
+              <p class="<%= namespace %>-Spec_Section-5-heading">LiDARテクノロジー</p>
+              <p class="<%= namespace %>-Spec_Section-5-catch">光の速さのAR。</p>
+              <div class="<%= namespace %>-Spec_Section-5-exp-1 <%= namespace %>-Utility_Disp-pc">
+                <div>
+                  <p>LiDARが、ナノ秒の速さで精密な<br class="<%= namespace %>-Utility_Disp-sp">深度マップを<br class="<%= namespace %>-Utility_Disp-pc">作成。AR体験の中で<br class="<%= namespace %>-Utility_Disp-sp">オブジェクトが瞬時に<br class="<%= namespace %>-Utility_Disp-pc">配置され、<br class="<%= namespace %>-Utility_Disp-sp">その位置もより正確になります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img class="<%= namespace %>-Spec_Section-5-visual" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-5-1.png" alt="">
+            <div class="<%= namespace %>-Spec_Section-5-exp-1 <%= namespace %>-Utility_Disp-sp">
+              <div>
+                <p>LiDARが、ナノ秒の速さで精密な<br class="<%= namespace %>-Utility_Disp-sp">深度マップを<br class="<%= namespace %>-Utility_Disp-pc">作成。AR体験の中で<br class="<%= namespace %>-Utility_Disp-sp">オブジェクトが瞬時に<br class="<%= namespace %>-Utility_Disp-pc">配置され、<br class="<%= namespace %>-Utility_Disp-sp">その位置もより正確になります。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="<%= namespace %>-Spec_Section-6">
+      <div class="<%= namespace %>-Spec_Section-6-bg">
+        <div class="<%= namespace %>-Spec_Section-6-flex">
+          <div>
+            <img class="<%= namespace %>-Utility_Disp-pc" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-6-1.png" alt="">
+          </div>
+          <div>
+            <div>
+              <p class="<%= namespace %>-Spec_Section-6-heading">Proのカメラシステム</p>
+              <p class="<%= namespace %>-Spec_Section-6-catch">ナイトモードの<br>新しい夜明けです。</p>
+              <p class="<%= namespace %>-Spec_Section-6-exp-1">ナイトモードが広角と超広角カメラにも。<br>薄暗い場所でも自然な色をさらに美しくとらえられます。新しい広角カメラは、これまでよりも光を27パーセント多く取り込むことができます。</p>
+              <div class="u-Adjust_Mt-32">
+                <img class="<%= namespace %>-Utility_Disp-sp" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-6-1.png" alt="">
+              </div>
+              <div class="<%= namespace %>-Spec_Section-6-exp-2">
+                <p>iPhone 12 Pro Maxは、さらに性能が高い<br class="<%= namespace %>-Utility_Disp-pc">カメラを搭載</p>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Spec_Section-6-exp-3">
+              <div>
+                <div class="<%= namespace %>-Spec_Section-6-exp-3-contents">
+                  <p>87</p>
+                  <p>%</p>
+                </div>
+                <p class="<%= namespace %>-Spec_Section-6-exp-3-sub">暗い場所での<br>性能が向上</p>
+              </div>
+              <div>
+                <div class="<%= namespace %>-Spec_Section-6-exp-3-contents-2">
+                  <p>5<span>倍</span></p>
+                </div>
+                <p class="<%= namespace %>-Spec_Section-6-exp-3-sub">の光学ズームレンジ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="<%= namespace %>-Spec_Section-7">
+      <div class="<%= namespace %>-Spec_Section-7-bg">
+        <div class="<%= namespace %>-Spec_Section-7-flex">
+          <div>
+            <div>
+              <p class="<%= namespace %>-Spec_Section-7-heading">Dolby Visionのビデオ撮影</p>
+              <p class="<%= namespace %>-Spec_Section-7-catch">驚きです。<br>カラーの数が60倍。</p>
+              <p class="<%= namespace %>-Spec_Section-7-exp-1">10ビットのHDR撮影で、ビデオが<br class="<%= namespace %>-Utility_Disp-sp">より現実の世界に<br class="<%= namespace %>-Utility_Disp-pc">近いクオリティに。<br class="<%= namespace %>-Utility_Disp-sp">Dolby Visionで撮ったビデオを<br class="<%= namespace %>-Utility_Disp-pc">編集、再生、共有するのも簡単です。</p>
+              <div class="<%= namespace %>-Spec_Section-7-exp-4 <%= namespace %>-Utility_Disp-sp">
+                <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-7-2.png" alt="">
+              </div>
+              <div class="<%= namespace %>-Spec_Section-7-exp-2">
+                <div>
+                  <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/dolbyvision.png"  width="30" alt="">
+                </div>
+                <div>
+                  <p>Dolby Visionで撮影できる<span>初めてのカメラ</span>。</p>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Spec_Section-7-exp-3">
+                <div>
+                  <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/airplay.png"  width="30" alt="">
+                </div>
+                <div>
+                  <p><span>AirPlay</span>で4KのDolby Visionビデオを<br class="<%= namespace %>-Utility_Disp-sp">Apple TVと<br class="<%= namespace %>-Utility_Disp-pc">スマートテレビにストリーミング<span>3</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img class="<%= namespace %>-Utility_Disp-pc" src="<%= sitepath %>assets/img/product/iphone/iphone-12-pro/section-7-1.png" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="<%= namespace %>-Spec_Section-other">
+      <div class="<%= namespace %>-Spec_Section-other-bg">
+        <div class="<%= namespace %>-Spec_Section-other">
+          <div class="<%= namespace %>-Spec_Section-other-inner">
+            <section class="<%= namespace %>-Spec_Section-other-difference">
+              <div class="c-Theme-White">
+                <p class="<%= namespace %>-Spec_Section-other-difference-heading">iPhoneが好きになる理由</p>
+                <p class="<%= namespace %>-Spec_Section-other-difference-catch">ほかのスマートフォン<br class="<%= namespace %>-Utility_Disp-sp">とはまったく違います。</p>
+                <div class="<%= namespace %>-Spec_Section-other-difference-exp">
+                  <div>
+                    <div>
+                      <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/flick.png" alt="">
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">簡単に使える</p>
+                      <p>すべてがシンプルで<br class="<%= namespace %>-Utility_Disp-sp">直感的。<br class="<%= namespace %>-Utility_Disp-pc">タップと<br class="<%= namespace %>-Utility_Disp-sp">スワイプだけで簡単に<br>操作できます。</p>
+                    </div>
+                    <div>
+                      <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/a14bionic.png" alt="">
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">賢さがある性能</p>
+                      <p>Appleが設計した<br class="<%= namespace %>-Utility_Disp-sp">チップが、<br class="<%= namespace %>-Utility_Disp-pc">あらゆる<br class="<%= namespace %>-Utility_Disp-sp">ことを速く、賢くできる<br>ようにします。電力<br class="<%= namespace %>-Utility_Disp-sp">効率も<br class="<%= namespace %>-Utility_Disp-pc">優れています。</p>
+                    </div>
+                    <div>
+                      <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/display-two.png" alt="">
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">高い耐久性と下取り価値</p>
+                      <p>iPhoneはほかの<br class="<%= namespace %>-Utility_Disp-sp">スマート<br class="<%= namespace %>-Utility_Disp-pc">フォンよりも<br class="<%= namespace %>-Utility_Disp-sp">長く使えて、<br class="<%= namespace %>-Utility_Disp-pc">価値が<br class="<%= namespace %>-Utility_Disp-sp">長く続くように<br class="<%= namespace %>-Utility_Disp-pc">設計<br class="<%= namespace %>-Utility_Disp-sp">されています。</p>
+                    </div>
+                    <div>
+                      <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/security.png" alt="">
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プライバシーを守る</p>
+                      <p>iPhoneのあらゆる<br class="<%= namespace %>-Utility_Disp-sp">部分が、<br class="<%= namespace %>-Utility_Disp-pc">あなたの<br class="<%= namespace %>-Utility_Disp-sp">個人情報を守る<br class="<%= namespace %>-Utility_Disp-pc">ように<br class="<%= namespace %>-Utility_Disp-sp">作られています。</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="<%= namespace %>-Spec_Section-other-comparison">
+              <div class="c-Theme-White <%= namespace %>-Spec_Section-other-comparison-infobox u-Adjust_Mt-16">
+                <%# スクロール計測 %>
+                <div class="u-Rat_Appear-height" data-ratid="<%= directory %>_scroll-09_comparison" data-ratevent="appear">&nbsp;</div>
+                <p class="<%= namespace %>-Spec_Section-other-comparison-heading">比較する</p>
+                <p class="<%= namespace %>-Spec_Section-other-comparison-catch">あなたにぴったりのiPhoneを見つけよう。</p>
+                <div class="<%= namespace %>-Spec_Section-other-comparison_List">
+                  <div class="<%= namespace %>-Spec_Section-other-comparison_List-content">
+                    <div class="<%= namespace %>-Spec_Section-other-comparison_Select1-iphone12-mini"><%- include('/include/product/iphone/comparison/iphone-12-pro/_iphone_12_pro') %></div>
+                  </div>
+                  <div class="<%= namespace %>-Spec_Section-other-comparison_List-content">
+                    <div class="<%= namespace %>-Spec_Section-other-comparison_Select2-iphone12"><%- include('/include/product/iphone/comparison/iphone-12-pro/_iphone_12_pro_max') %></div>
+                  </div>
+                  <div class="<%= namespace %>-Spec_Section-other-comparison_List-content">
+                    <div class="<%= namespace %>-Spec_Section-other-comparison_Select3-iphone12-pro"><%- include('/include/product/iphone/comparison/iphone-12-pro/_iphone_12') %></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="<%= namespace %>-Spec_Section-other-accessory">
+              <div class="c-Theme-White <%= namespace %>-Spec_Section-other-accessory-infobox u-Adjust_Mt-16">
+                <div class="<%= namespace %>-Spec_Section-other-accessory-flex">
+                  <div>
+                    <div>
+                      <p class="<%= namespace %>-Spec_Section-other-accessory-heading">MagSafeアクセサリ</p>
+                      <p class="<%= namespace %>-Spec_Section-other-accessory-catch">ケースも、カード入れも、<br>その両方も。磁力で<br>ピタッと装着。</p>
+                      <p class="<%= namespace %>-Spec_Section-other-accessory-exp">装着が簡単で、よりすばやくワイヤレス<br class="<%= namespace %>-Utility_Disp-sp">充電ができる<br class="<%= namespace %>-Utility_Disp-pc">アクセサリの新しいエコ<br class="<%= namespace %>-Utility_Disp-sp">システム。組み合わせは<br class="<%= namespace %>-Utility_Disp-pc">数えきれない<br class="<%= namespace %>-Utility_Disp-sp">ほど。だからコーディネートが思いの<br class="<%= namespace %>-Utility_Disp-sp">ままです。</p>
+                    </div>
+                  </div>
+                  <div>
+                    <img class="<%= namespace %>-Spec_Section-other-accessory-visual" src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/section-other-accessory-1.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="<%= namespace %>-Spec_Section-other-care">
+              <div class="c-Theme-White u-Adjust_Mt-16">
+                <div class="<%= namespace %>-Spec_Section-other-care-flex">
+                  <div>
+                    <div>
+                      <p class="<%= namespace %>-Spec_Section-other-care-heading">AppleCare+</p>
+                      <p class="<%= namespace %>-Spec_Section-other-care-catch">スペシャリストによる<br>サポートを延長できます。</p>
+                      <ul class="<%= namespace %>-Spec_Section-other-care-exp-list">
+                        <li>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/icon-check.png" width="16px" alt="">
+                          </div>
+                          <p>Apple認定技術者によるサービス </p>
+                        </li>
+                        <li>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/icon-check.png" width="16px" alt="">
+                          </div>
+                          <p>サポートへの優先アクセス</p>
+                        </li>
+                        <li>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/icon-check.png" width="16px" alt="">
+                          </div>
+                          <p>修理と交換に対応</p>
+                        </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                  <div>
+                    <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/section-other-care-1.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="<%= namespace %>-Spec_Section-other-music">
+              <div class="c-Theme-White u-Adjust_Mt-16">
+                <div class="<%= namespace %>-Spec_Section-other-music-flex">
+                  <div>
+                    <div>
+                      <div class="<%= namespace %>-Spec_Section-other-music-logo">
+                        <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/music.png" width="65" alt="">
+                      </div>
+                      <p class="<%= namespace %>-Spec_Section-other-music-catch">7,000万曲に<br>飛び込もう。</p>
+                      <p class="<%= namespace %>-Spec_Section-other-music-exp">広告なしで7,000万曲をストリーミング。<br class="<%= namespace %>-Utility_Disp-sp">お気に入りの曲を<br class="<%= namespace %>-Utility_Disp-pc">ダウンロードすれば、<br class="<%= namespace %>-Utility_Disp-sp">オフラインでも再生できます。</p>
+                    </div>
+
+                  </div>
+                  <div>
+                    <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/section-other-music-1.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="<%= namespace %>-Spec_Section-other-airtag">
+              <div class="c-Theme-White <%= namespace %>-Spec_Section-other-airtag-infobox u-Adjust_Mt-16">
+                <div class="<%= namespace %>-Spec_Section-other-airtag-flex">
+                  <div>
+                    <div>
+                      <div class="<%= namespace %>-Spec_Section-other-airtag-logo">
+                        <img src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/airtag.png" width="72" alt="">
+                      </div>
+                      <p class="<%= namespace %>-Spec_Section-other-airtag-catch">探し物を見つける<br>最も簡単な方法。</p>
+                      <p class="<%= namespace %>-Spec_Section-other-airtag-exp">大切な物にはAirTagを取りつけて、<br class="<%= namespace %>-Utility_Disp-sp">すぐに見つかるようにして<br class="<%= namespace %>-Utility_Disp-pc">おきましょう。<br class="<%= namespace %>-Utility_Disp-sp">「探す」アプリで簡単に場所がわかります。</p>
+                    </div>
+
+                  </div>
+                  <div>
+                    <img class="<%= namespace %>-Utility_Disp-pc" src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/section-other-airtag-1.png" alt="">
+                    <img class="<%= namespace %>-Utility_Disp-sp" src="<%= sitepath %>assets/img/product/iphone/iphone-12-mini/section-other-airtag-1-sp.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </section>
+            <div class="<%= namespace %>-Spec_Section-other-note">
+              <%# スクロール計測 %>
+              <div class="u-Rat_Appear-height" data-ratid="<%= directory %>_scroll-10_disclaimer" data-ratevent="appear">&nbsp;</div>
+              <p class="c-Txt_Cap">1. 耐久性<br>iPhone 12およびiPhone 12 ProのCeramic Shieldの前面と一世代前のiPhoneの比較にもとづきます。</p>
+              <p class="c-Txt_Cap">2. 携帯電話/ワイヤレス通信方式<br>データプランが必要です。 5GとLTEは特定の国の特定の通信事業者で利用できます。 速度は論理上のスループットにもとづくもので、使用する場所の条件および通信事業者によって変わります。 5GおよびLTE対応の詳細については通信事業者にお問い合わせください。 apple.com/jp/iphone/cellularもあわせてご覧ください。</p>
+              <p class="c-Txt_Cap">3. AirPlayストリーミング<br>Apple TVまたはAirPlay対応テレビが必要です。</p>
+              <p class="c-Txt_Cap">4. ディスプレイ<br>ディスプレイは美しい曲線を描くように四隅に丸みを持たせてデザインされており、標準的な長方形に収まります。 標準的な長方形として対角線の長さを測った場合のスクリーンのサイズは、5.42インチ（iPhone 12 mini）、5.85インチ（iPhone 11 Pro、iPhone XS、iPhone X）、6.06インチ（iPhone 12 Pro、iPhone 12、iPhone 11、iPhone XR）、6.46インチ（iPhone 11 Pro Max、iPhone XS Max）、6.68インチ（iPhone 12 Pro Max）です。 実際の表示領域はこれより小さくなります。</p>
+              <p class="c-Txt_Cap">5. 電源とバッテリー<br>バッテリーに関する各数値はネットワーク構成やその他の多くの要素によって変わり、実際の結果は異なる場合があります。 バッテリーは充電回数に限りがあり、将来的にはApple正規サービスプロバイダによる交換が必要になる場合があります。 バッテリー駆動時間と充電サイクルは使用方法と設定によって異なります。 詳しくはapple.com/jp/batteriesおよびapple.com/jp/iphone/battery.htmlをご覧ください。</p>
+              <p class="c-Txt_Cap">利用できる機能<br>国や地域によっては一部の機能を利用できない場合があります。</p>
+              <p class="c-Txt_Cap">iPhoneの商標は、アイホン株式会社のライセンスにもとづき使用されています。</p>
+              <p class="c-Txt_Cap">その他の免責事項：</p>
+              <p class="c-Txt_Cap">アクセサリ<br>アクセサリは別売りです。</p>
+              <p class="c-Txt_Cap">Apple Music<br>Apple Musicを利用するにはサブスクリプションが必要です。</p>
+            </div>
+            <div class="<%= namespace %>-Spec_Section-other-note u-Adjust_Mt-40">
+              <%# スクロール計測 %>
+              <div class="u-Rat_Appear-height" data-ratid="<%= directory %>_scroll-11_feature" data-ratevent="appear">&nbsp;</div>
+              <h4 class="c-Heading_Lv2">主な特長</h4>
+              <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                <li>6.1インチSuper Retina XDRディスプレイ<small>2</small></li>
+                <li>どんなスマートフォンのガラスよりも頑丈なCeramicShield</li>
+                <li>超高速ダウンロードと高品質なストリーミングができる5G<small>1</small></li>
+                <li>スマートフォンで最速のA14 Bionicチップ</li>
+                <li>超広角、広角、望遠カメラを持ち、4倍の光学ズームレンジがあるProの12MPカメラシステム。ナイトモード、Deep Fusion、スマートHDR3、Apple ProRAW、4KドルビービジョンでのHDR撮影に対応LiDARスキャナで進化したAR体験とナイトモードのポートレートを</li>
+                <li>ナイトモードと4KドルビービジョンでのHDR撮影に対応した12MP TrueDepthフロントカメラ</li>
+                <li>業界をリードするIP68の耐水性能<small>5</small></li>
+                <li>装着が簡単で、よりすばやくワイヤレス充電ができるMagSafeアクセサリに対応<small>4</small></li>
+                <li>再設計されたホーム画面上のウィジェット、まったく新しいAppライブラリ、App Clipなどが使えるiOS14</li>
+              </ul>
+              <div class="u-Adjust_Mt-32">
+                <p class="c-Txt_Cap">1 データプランが必要です。5Gは特定の国の特定の通信事業者で利用できます。速度は使用する場所の条件と通信事業者によって変わります。5G対応の詳細については通信事業者にお問い合わせください。<a href="https://www.apple.com/jp/iphone/cellular/" target="_blank" rel="noopener noreferrer">apple.com/jp/iphone/cellular</a>もあわせてご覧ください。</p>
+                <p class="c-Txt_Cap">2 ディスプレイは四隅が丸みを帯びています。長方形として対角線の長さを測った場合のスクリーンのサイズは6.06インチです。実際の表示領域はこれより小さくなります。</p>
+                <p class="c-Txt_Cap">4 アクセサリは別売りです。</p>
+                <p class="c-Txt_Cap">5 iPhone 12 Proは防沫性能、耐水性能、防塵性能を備えており、実験室の管理された条件下でのテストにより、IEC規格60529にもとづくIP68等級に適合しています（最大水深6メートルで最大30分間）。防沫性能、耐水性能、防塵性能は永続的に維持されるものではありません。通常の使用によって耐性が低下する可能性があります。iPhoneが濡れている場合は充電しないでください。クリーニングと乾燥の方法についてはユーザガイドをご覧ください。液体による損傷は保証の対象になりません。</p>
+                <p class="c-Txt_Cap">iPhoneの商標は、アイホン株式会社のライセンスにもとづき使用されています</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<%- include('/include/product/iphone/_equipment.ejs', { l_id: '' }) %>
+
+<div class="l-System_Container u-Adjust_Pb-64">
+  <p class="c-Txt_Cap">*データプランが必要です。5Gは特定の国の特定の通信事業者で利用できます。速度は使用する場所の条件と通信事業者によって変わります。5G対応の詳細については通信事業者にお問い合わせください。<a href="https://www.apple.com/jp/iphone/cellular/" target="_blank" rel="noopener noreferrer">apple.com/jp/iphone/cellular</a>もあわせてご覧ください。</p>
+  <p class="c-Txt_Cap">Appleは、環境に関する目標の達成に向けた取り組みを続けています。その一環として、iPhone 12 Pro MaxとiPhone 12 Proには電源アダプタとEarPodsが付属していません。今お使いのApple電源アダプタとヘッドフォンを利用するか、別売りのアクセサリを購入してください。 </p>
+  <p class="c-Txt_Cap u-Adjust_Mt-16">Apple、Appleのロゴ、Apple Music、iPad、iPhone、AirPods、AirPods Pro、iTunes、Safariは、米国および他の国々で登録されたApple Inc.の商標です。</p>
+  <p class="c-Txt_Cap">iPhoneの商標は、アイホン株式会社のライセンスに基づき使用されています。</p>
+  <p class="c-Txt_Cap">App Store、AppleCare、iCloud、iTunes Storeは、Apple Inc.のサービスマークです。</p>
+  <p class="c-Txt_Cap">iOS商標は、米国Ciscoのライセンスに基づき使用されています。</p>
+  <p class="c-Txt_Cap">RetinaはApple Inc.の商標です。</p>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/_append-body') %>
+<script src="<%= sitepath %>assets/js/product.iphone.common.bundle.js?20240522"></script>
+
+</body>
+</html>

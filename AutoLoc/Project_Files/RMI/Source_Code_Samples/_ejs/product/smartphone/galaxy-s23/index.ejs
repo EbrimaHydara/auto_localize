@@ -1,0 +1,781 @@
+<% const pagetitle = "Galaxy S23" -%>
+<% const directory = "galaxy-s23" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/smartphone/", label:"Android"}] -%>
+<% const namespace = "product-Galaxy-s23" -%>
+<%# const theme = "Dark" -%>
+<% const theme = "Light" -%>
+<% const point = 6000 -%>
+<% const pointModel = 3000 -%>
+<%# const pointEntry = 5000 -%>
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+*/
+const bundleFlag = 'bundle';
+const exid = 600628;
+-%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+<% const priceDetailConfig = {
+  bundleFlag: bundleFlag,
+  theme: theme,
+  price: 147700,
+  // priceBefore: ,
+  pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>円相当の<br class="product-detail-Utility_Show-sp">ポイント還元<sub>※3</sub></span>`,
+  pointBackTextA: `<span>楽天モバイルお申し込みで<br class="product-detail-Utility_Show-sp"><span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当のポイント還元<sub>※1,4</sub></span>`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 6154,
+  // division24Before: ,
+  division48: 3077,
+  // division48Before: ,
+  division48last: 3081,
+  tradeinProductName: 'Galaxy S22',
+  optionPattern: 'one-option',
+  lid: directory,
+  capacity: 256,
+  maxTradeinPrice: 26970,
+  pointAppealBtnCapNo: 5,
+  carrier: 'docomo',
+  //　notificationEmail: 'true',
+  //　notificationEmailLink: '/product/reservation/reno7-a/'
+  discountPrice: 6000,
+  applyPoint: 6000,
+  firstTimeApplyPoint: 6000,
+  mnp: false,
+  anchorId: 'campaign-rule1526',
+  trakingId: directory,
+  exid: exid
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: "Galaxy S23（サムスン）の価格・特徴・スペックの確認と購入はこちら。最大12,000ポイント還元※も！オンライン簡単手続きが便利！※初めて申込等条件あり",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inc/i-product-head.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%
+const modalInfo = [
+  {
+    question: {
+      title: '色を選択',
+      warning: '購入する製品の色を選択してください。',
+      type: 'color',
+      value: 'color',
+      select: [
+        {
+          'id': 'black',
+          'name': 'ブラック',
+          'sub': '',
+          'color': '#292B2E',
+          'checked': false,
+        },
+        {
+          'id': 'green',
+          'name': 'グリーン',
+          'sub': '',
+          'color': '#C8E6D7',
+          'checked': false,
+          'disabled': false,
+        }
+      ],
+      upperinfo: ``,
+      lowerinfo: ``
+    },
+  },
+  {
+    question: {
+      title: 'SIMタイプ・プラン（Rakuten UN-LIMIT VI）を選択',
+      warning: 'プランを選択してください。',
+      type: 'radio',
+      value: 'plan',
+      select: [
+        {
+          'id': 'sim',
+          'name': 'nanoSIM＋プランで申し込む',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nosim',
+          'name': 'プランを申し込まない（製品のみ購入）',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: ``,
+      lowerinfo: `
+        <p class="c-Txt_Cap">※製品のみ購入の場合、SIM購入（プラン選択）は不要です。</p>
+      `
+    }
+  },
+  {
+    question: {
+      title: 'スマホ交換保証プラスを選択',
+      warning: 'スマホ交換保証プラスを選択してください。',
+      type: 'radio',
+      value: 'warranty',
+      select: [
+        {
+          'id': 'warranty',
+          'name': '申し込む：715円／月（税込）',
+          'sub': '',
+          'checked': true,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nowarranty',
+          'name': '申し込まない',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: `
+        <p class="c-Txt_Emp-02">加入できるのは購入時のみ</p>
+        <p class="u-Adjust_Mt-8">楽天モバイルで購入したスマートフォンやモバイルルーターの故障・紛失時に、最短で当日<sub>※</sub>に新品同等の同一機種を交換品としてお届けします。</p>
+        <small>※対象地域：東京／神奈川／千葉／埼玉（12時までに受付の場合）</small>
+        <p>サービスの詳細は、こちらの<a href="/service/replacement-warranty-plus/?l-id=product_reno7-a_cpn_01">スマホ交換保証プラス</a>をご参照ください。</p>
+      `,
+      lowerinfo: ``
+    }
+  }
+]
+%>
+
+<%_ if (bundleFlag !== true) { _%>
+<script>
+const urlList = {
+  'black_sim_warranty': '/',
+  'black_sim_nowarranty': '/',
+  'black_nosim_warranty': '/',
+  'black_nosim_nowarranty': 'https://onboarding.mobile.rakuten.co.jp/equipment-details?exid=<%= exid %>&selectAvailable=true',
+  'green_sim_warranty': '/',
+  'green_sim_nowarranty': '/',
+  'green_nosim_warranty': '/',
+  'green_nosim_nowarranty': '/',
+}
+</script>
+<%- include('/include/product/_purchase-modal', { modalInfo: modalInfo }) %>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<%
+  const NavItems = [
+    {label: '価格', href: 'price'},
+    {label: '関連アクセサリ', href: 'accessory'},
+    {label: '特長', href: 'feature'},
+    {label: 'スペック', href: 'spec'}
+  ]
+%>
+
+  <div id="js-header-nav-dummy"></div>
+  <%- include('/include/product/smartphone/_nav-follow-btn', {pagetitle, NavItems, directory, exid, }) %>
+
+  <div class="product-detail-Layout_Hero-with-bnr <%= namespace %>_Hero">
+    <div class="l-System_Container u-Adjust_Pt-16">
+      <%- include('/include/product/bnr/_product-head-bnr-7', {
+        lid: 'product_smartphone_' + directory + '_campaign_start-point',
+        isDark: false,
+        isShow: true,
+    }) _%>
+
+      <section class="product-detail-Hero">
+        <div class="product-detail-Hero_Data">
+          <div>
+            <h1 class="co-Heading_Lv1 product-detail-Hero_Name"><img src="<%= sitepath %>assets/img/product/<%= directory %>/logo.png" alt="<%= pagetitle %>" style="max-width: 248px"></h1>
+            <p class="product-detail-Hero_Maker">Samsung</p>
+            <p class="product-detail-Hero_Copy">ワクワク体験を手のひらに</p>
+
+            <div class="product-detail-Utility_Show-pc">
+              <div>
+                <%_ if (bundleFlag === 'bundle') { _%>
+                  <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= bundleFlag %>">
+                    <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+                  </div>
+                  <%_ } else if(bundleFlag === 'stock') { _%>
+                  <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large">購入する</a>
+                  </div>
+                  <%_ } else if(bundleFlag === 'soldout') { _%>
+                  <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+                  <%_ } else if(bundleFlag === 'backorder') { _%>
+                  <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+                  <%_ } _%>
+              </div>
+              <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>-Txt_Icon-front">
+                <span class="<%= namespace %>-Txt_Icon-front-icon"></span>
+                <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+              </p>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">※5G通信は対応エリアでご利用可能です。</p>
+            </div>
+          </div>
+        </div>
+        <div class="product-detail-Hero_Main u-Adjust_Mt-0">
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+            <li><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-color product-detail-Theme_<%= theme %>-color">
+            <li data-ratid="<%= directory %>_color-01" data-ratevent="click" data-ratparam="all" class="js-color js-color1" aria-current="true"><span style="background:#F0EAE0"></span></li>
+            <li data-ratid="<%= directory %>_color-02" data-ratevent="click" data-ratparam="all" class="js-color js-color2" aria-current="false"><span style="background:#231F20"></span></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+            <li><img id="<%= directory %>_color-01_thumbnail-01" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img id="<%= directory %>_color-01_thumbnail-02" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img id="<%= directory %>_color-01_thumbnail-03" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img id="<%= directory %>_color-01_thumbnail-04" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+            <li><img id="<%= directory %>_color-02_thumbnail-01" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+            <li><img id="<%= directory %>_color-02_thumbnail-02" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+            <li><img id="<%= directory %>_color-02_thumbnail-03" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+            <li><img id="<%= directory %>_color-02_thumbnail-04" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail3 js-device" aria-hidden="true">
+            <li><img id="<%= directory %>_color-03_thumbnail-01" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt=""></li>
+            <li><img id="<%= directory %>_color-03_thumbnail-02" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt=""></li>
+            <li><img id="<%= directory %>_color-03_thumbnail-03" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-10.png" alt=""></li>
+            <li><img id="<%= directory %>_color-03_thumbnail-04" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-11.png" alt=""></li>
+          </ul>
+
+          <%# サムネクリック計測 %>
+          <div id="js-force-click-target" data-ratid="dummy" data-ratevent="click" data-ratparam="all"></div>
+        </div>
+      </section>
+
+      <div class="product-detail-Hero_Show-sp product-detail-Utility_Show-sp u-Adjust_Mt-24">
+
+        <div>
+          <%_ if (bundleFlag === 'bundle') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= bundleFlag %>">
+            <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+          </div>
+          <%_ } else if(bundleFlag === 'stock') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large">購入する</a>
+          </div>
+          <%_ } else if(bundleFlag === 'soldout') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">2023年4月20日発売予定</a></div>
+          <%_ } else if(bundleFlag === 'backorder') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+          <%_ } _%>
+      </div>
+        <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>-Txt_Icon-front">
+          <span class="<%= namespace %>-Txt_Icon-front-icon"></span>
+          <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+        <p class="u-Adjust_Mt-24" style="font-size: 12px;">
+          ※5G通信は対応エリアでご利用可能です。
+        </p>
+      </div>
+      </div>
+    </div>
+
+  <div class="product-detail-Layout_Main">
+    <div class="product-detail-Price product-detail-Theme_<%= theme %>-price">
+      <%- include('/include/product/smartphone/_price-detail-basic', {priceDetailConfig, bundleFlag}) %>
+      <div class="l-System_Container u-Adjust_Mt-32">
+        <p class="u-Adjust_Align-center c-Txt_Emp-01" style="font-size: 18px;">【ご購入前にご確認ください】</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>購入手続き後、当社で審査を実施し、完了をもって購入契約成立となります。ただし、当社所定の条件に該当する場合、注文キャンセルとなる可能性がございます。キャンセルの際は、登録メールアドレス宛にご連絡します。</li>
+          <li><span class="c-Txt_Emp-02">充電器は別売りとなっております。</span>「購入する」ボタンを押下後、製品をカートに追加する際に、必要なアクセサリも同時にご購入ください。アクセサリの詳細は「関連アクセサリ」からご確認ください。</li>
+        </ul>
+      </div>
+
+      <%
+      const relatedAccessoryConf = {
+        namespace,
+        directory,
+        relatedAccessory: [
+          {
+            title: 'OwltechAC充電器（20W）',
+            url: 'product/accessory/owltech-apd20c1a1bk/?l-id=product_galaxy-s23_owltech-apd20c1a1bk',
+            image: 'assets/img/accessory/owltech-apd20c1a1bk/pht-accessory-00.png',
+            price: '2,618'
+          },
+          {
+            title: 'Galaxy S23 平面ガラスフィルム 高光沢',
+            url: 'product/accessory/rselect-rmsmglxs23f0222cl/?l-id=product_galaxy-s23_rselect-rmsmglxs23f0222cl',
+            image: 'assets/img/accessory/rselect-rmsmglxs23f0222cl/pht-accessory-00.png',
+            price: '2,400'
+          },
+          {
+            title: 'Galaxy S23 ハイブリッドクリアケース',
+            url: 'product/accessory/rselect-rmsmglxs23c0223cl/?l-id=product_galaxy-s23_rselect-rmsmglxs23c0223cl',
+            image: 'assets/img/accessory/rselect-rmsmglxs23c0223cl/pht-accessory-00.png',
+            price: '2,480'
+          },
+          {
+            title: 'Galaxy S23 Smart View Wallet Case ブラック',
+            url: 'product/accessory/samsung-ef-zs911cbegjp/?l-id=product_galaxy-s23_samsung-ef-zs911cbegjp',
+            image: 'assets/img/accessory/samsung-ef-zs911cbegjp/pht-accessory-00.png',
+            price: '8,250'
+          },
+        ]
+      }
+      -%>
+      <div id="accessory">
+        <%- include('/include/product/_related-carousel', { relatedAccessoryConf }) _%>
+      </div>
+
+      <%- include('/include/product/smartphone/_price-detail-notes') _%>
+    </div>
+
+    <div class="u-Adjust_Mt-56 u-Adjust_Pb-56">
+      <div class="l-System_Container">
+        <div class="product-detail-Spec">
+          <ul class="product-detail-Spec_<%= theme %>">
+            <li aria-current="true"><span class="c-Icon_Product-waterproof"></span>防水</li>
+            <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>おサイフケータイ</li>
+            <li aria-current="true"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+            <li aria-current="true"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+            <li aria-current="true"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+            <li aria-current="true"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+            <li aria-current="true"><span class="c-Icon_Product-connection"></span>高速通信</li>
+          </ul>
+          <p class="u-Adjust_Mt-64"><a data-ratid="<%= directory %>_spec-anchor" data-ratevent="click" data-ratparam="all" href="#spec" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>基本スペックを見る</a></p>
+      </div>
+
+    <section id="feature" class="product-detail-Layout_Section">
+    <%# スクロール計測 %>
+    <h2 data-ratid="galaxy-s-23_scroll-03_feature" data-ratevent="appear" data-ratparam="all" class="c-Heading_Lv2-rich">特長</h2>
+
+    <ul class="product-detail-Catch <%= namespace %>_Catch">
+      <li><a data-ratid="galaxy-s-23_feature-anchor-01" data-ratevent="click" data-ratparam="all" href="#feature1" class="js-scroll"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">感動をシェアする<br>ナイトグラフィー</span></a></li>
+      <li><a data-ratid="galaxy-s-23_feature-anchor-02" data-ratevent="click" data-ratparam="all" href="#feature2" class="js-scroll" style="font-feature-settings: 'palt' on;"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">大容量バッテリー</span></a></li>
+      <li><a data-ratid="galaxy-s-23_feature-anchor-03" data-ratevent="click" data-ratparam="all" href="#feature3" class="js-scroll"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">高性能が詰まった<br>手になじむサイズ感</span></a></li>
+    </ul>
+
+
+    <section class="product-detail-Feature" id="feature1">
+      <h2 class="c-Heading_Lv2 <%= namespace %>_Util_Mt-24-32">感動をシェアするナイトグラフィー</h2>
+      <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/ksp01-230406.png" alt=""></figure>
+      <h3 class="c-Heading_Lv3">夜でもとびっきりの一枚を</h3>
+      <p class="product-detail-Feature_Txt">
+        夜に撮る友達とのセルフィ―は、進化<span class="c-Txt_Cap">※1</span>したフロントカメラが、AIによる色味の調整で、暗所でもナチュラルで温かみのある仕上がりにします。デュアルピクセルオートフォーカス対応で、正確かつ素早くフォーカスが決まるから、撮りたい一瞬を逃しません。
+      </p>
+      <h3 class="c-Heading_Lv3">約5,000万画素のメインカメラ。レンズに映るすべての瞬間がより鮮明に。</h3>
+      <p class="product-detail-Feature_Txt">
+        メインの広角カメラは約5,000万画素のセンサーを搭載しました。明るい場所では細部まで映し出す高画素モードで撮影し、思い出を思い通りのままトリミングできます。
+      </p>
+      <p class="c-Txt_Cap u-Adjust_Mt-16">
+        ※1 Galaxy S22比較、メーカー調べ。
+      </p>
+    </section>
+
+    <section class="product-detail-Feature" id="feature2">
+      <h2 class="c-Heading_Lv2 <%= namespace %>_Util_Mt-24-32">大容量バッテリー</h2>
+      <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/ksp02-230406.png" alt=""></figure>
+      <h3 class="c-Heading_Lv3">一日中使いたい！ずっと長く使いたい！に応える長持ち設計</h3>
+      <p class="product-detail-Feature_Txt">
+        従来より<span class="c-Txt_Cap">※2</span>電池容量が200mAhアップし、一日中使いたい！の気持ちに応えるスマホ。さらに30分で約50％充電<span class="c-Txt_Cap">※3</span>できる急速充電対応で忙しいときでもすぐにチャージできます。前面・背面パネルにはCorning® Gorilla® Glass Victus®<span class="c-Txt_Cap">※4</span> 2採用で耐久性も向上。再生ガラス使用で環境にもやさしい。
+      </p>
+      <h3 class="c-Heading_Lv3">さらに明るく<span class="c-Txt_Cap">※2</span>、目に優しいディスプレイで SmartThings。快適なスマホライフを。</h3>
+      <p class="product-detail-Feature_Txt">
+        太陽の下、曇り空、オフィスなど環境に合わせて画面の色味を調整するビジョンブースターの進化<span class="c-Txt_Cap">※5</span>で、従来より<span class="c-Txt_Cap">※2</span>視認性が改善しました。さらに、目の保護モードでは画面のコントラストを最適化して、目への負担を軽減する新機能も搭載しています。
+      </p>
+      <p class="c-Txt_Cap u-Adjust_Mt-16">
+        ※2 Galaxy S22比較、メーカー調べ。<br>
+        ※3 充電時間は、ご利用環境やご利用状況によって異なります。<br>
+        ※4 Corning、Gorilla、VictusはCorning Incorporatedの登録商標です。<br>
+        ※5 設定から有効化する必要があります。目の保護モード有効時、ビジョンブースター機能はオフとなります。
+      </p>
+    </section>
+    <section class="product-detail-Feature" id="feature3">
+      <h2 class="c-Heading_Lv2 <%= namespace %>_Util_Mt-24-32">高性能が詰まった手になじむサイズ感</h2>
+      <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/ksp03-230406.png" alt=""></figure>
+
+      <h3 class="c-Heading_Lv3">余裕のパワーと安定の冷却設計</h3>
+      <p class="product-detail-Feature_Txt">
+        Galaxy史上最速<span class="c-Txt_Cap">※6</span>チップ「Snapdragon® <span class="c-Txt_Cap">※7</span> 8 Gen 2 Mobile Platform for Galaxy」とベイパーチャンバー冷却システムを搭載。従来<span class="c-Txt_Cap">※8</span>よりも高い冷却性能で安定したパフォーマンスを実現。
+      </p>
+      <h3 class="c-Heading_Lv3">自然由来の落ち着いたカラーリング</h3>
+      <p class="product-detail-Feature_Txt">
+        天然染料や再生素材から生まれた2種類のカラーで、長く持っていたくなるような、飽きのこない1台です。
+      </p>
+      <p class="c-Txt_Cap u-Adjust_Mt-16">
+        ※6 2023年4月6日時点、メーカー調べ。<br>
+        ※7 Snapdragonは、Qualcomm Technologies, Inc.およびその子会社の製品です。<br>
+        ※8 Galaxy S22比較、メーカー調べ。
+      </p>
+    </section>
+  </section>
+
+  <%# スクロール計測 %>
+  <div class="u-Rat_Appear-height" data-ratid="galaxy-s-23_scroll-04_feature" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <div class="product-detail-Layout_Sub <%= namespace %>_Sub">
+    <div class="l-System_Container">
+      <section class="product-detail-Layout_Section">
+        <section class="product-detail-Feature_Sub">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other01-230406.png" alt=""></figure>
+          <div class="product-detail-Feature_Txt">
+            <h3 class="c-Heading_Lv4">動画撮影が苦手な方もサポート</h3>
+            <p>スーパーHDRにより明るい場所の白飛び、暗い場所の黒つぶれが発生しやすい部分も、ディテールを細かく表現。友達や家族の表情をしっかり捉えて高品質な写真を残せます。暗い場所でも、フレームをリアルタイムで合成するビデオマルチフレーム処理により、ノイズを抑えた動画撮影ができます。</p>
+          </div>
+        </section>
+        <section class="product-detail-Feature_Sub">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other02-230406.png" alt=""></figure>
+          <div class="product-detail-Feature_Txt">
+            <h3 class="c-Heading_Lv4">近づけない場面でも、グッと近づけてくれる</h3>
+            <p>屋外イベントやパレードなど、被写体に近づいて撮影できない場面でも、ズームの倍率が20倍を超えるとズームロック機能が動作し、手ブレを抑えてくっきりと映し出せます。</p>
+          </div>
+        </section>
+        <section class="product-detail-Feature_Sub">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other03-230406.png" alt=""></figure>
+          <div class="product-detail-Feature_Txt">
+            <h3 class="c-Heading_Lv4">Expert RAWで輝く星をあなたの手に</h3>
+            <p>高解像度のRAWフォーマットで明るく精細な写真を撮影できるExpert RAWアプリ<span class="c-Txt_Cap">※9</span>で、カメラを星空へ向けると、天体や星座も息をのむほど鮮明に撮影できます。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">
+              ※9 Expert RAWアプリは、Galaxy Storeからダウンロード可能な無料アプリです。
+            </p>
+          </div>
+        </section>
+        <section class="product-detail-Feature_Sub">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other04-230406.png" alt=""></figure>
+          <div class="product-detail-Feature_Txt">
+            <h3 class="c-Heading_Lv4">Galaxyの便利機能でもっと楽しく、もっと便利に！</h3>
+            <p>お気に入りの動画をロック画面に設定したり、スマホ全体のテーマカラーを好きな色に設定するなど、自分好みにカスタマイズができます。ギャラリーアプリのAIリマスター画像補正を使えば、昔の写真も簡単にキレイに、鮮やかな思い出を蘇らせることができます。</p>
+          </div>
+        </section>
+        <section class="product-detail-Feature_Sub">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other05-230406.png" alt=""></figure>
+          <div class="product-detail-Feature_Txt">
+            <h3 class="c-Heading_Lv4">地球環境にやさしいデザイン</h3>
+            <p>外装に再生ガラスや再生PETフィルム、着色に天然染料を使用しています。また、スマートフォンの梱包材には、再生紙と紙素材の保護フィルムを採用しました。<span class="c-Txt_Cap">※10</span></p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">
+              ※10 再生PETフィルム、再生ガラス、海洋再生プラスチックは、環境主張検証（ECV）を受けています。
+            </p>
+          </div>
+        </section>
+        <section class="product-detail-Feature_Sub">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other06-230406.png" alt=""></figure>
+          <div class="product-detail-Feature_Txt">
+            <h3 class="c-Heading_Lv4">Smart Switchで簡単データ移行</h3>
+            <p>
+              Galaxyなら面倒なデータ移行もSmart Switch<span class="c-Txt_Cap">※11</span>を使えばかんたんに。Wi-Fi®やアカウント情報は移行前の端末からQRコードを読み取るだけです。
+            </p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">
+              ※ 画像はイメージです。<br>
+              ※11 Smart Switchがサポートする機種およびコンテンツはメーカーとモデルにより異なります。詳細は<a href="https://www.samsung.com/jp/apps/smart-switch/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener">Samsung公式サイト<span class="c-Icon_New-window-l"></span></a>をご確認ください。
+            </p>
+          </div>
+        </section>
+      </section>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+
+<div style="background: #F7F7F7;">
+  <div class="product-detail-Layout_Other">
+    <div class="l-System_Container">
+
+      <%- include('/include/product/_compensation') %>
+
+      <section class="product-detail-Layout_Section" id="spec">
+        <h2 data-ratid="<%= directory %>_scroll-06_spec" data-ratevent="appear" data-ratparam="all" class="c-Heading_Lv2">スペック</h2>
+        <dl class="c-Dl">
+          <div>
+            <dt>製品名</dt>
+            <dd>
+              Galaxy S23
+            </dd>
+          </div>
+          <div>
+            <dt>色</dt>
+            <dd>
+              クリーム / ファントム ブラック
+            </dd>
+          </div>
+          <div>
+            <dt>サイズ</dt>
+            <dd>
+              約146 x 約71 x 約7.6 (mm)
+            </dd>
+          </div>
+          <div>
+            <dt>質量</dt>
+            <dd>
+              約168g
+            </dd>
+          </div>
+          <div>
+            <dt>ディスプレイ</dt>
+            <dd>
+              <p>サイズ / 種類</p>
+              約6.1インチ / Dynamic AMOLED（有機EL）
+              <p class="u-Adjust_Mt-16">解像度</p>
+              FHD+ / 2,340 × 1,080
+            </dd>
+          </div>
+          <div>
+            <dt>連続待受時間（LTE）</dt>
+            <dd>
+              約410時間
+            </dd>
+          </div>
+          <div>
+            <dt>連続通話（通信）時間（LTE）</dt>
+            <dd>
+              約39時間
+            </dd>
+          </div>
+          <div>
+            <dt>CPU</dt>
+            <dd>
+              Snapdragon® 8 Gen 2 Mobile Platform for Galaxy / オクタコア 3.36GHz x 1 + 2.8GHz x 4 + 2GHz x 3
+            </dd>
+          </div>
+          <div>
+            <dt>OS ※1</dt>
+            <dd>
+              Android™ 13
+            </dd>
+          </div>
+          <div>
+            <dt>内部メモリ（RAM / ROM）</dt>
+            <dd>
+              8GB (RAM) / 256GB (ROM)
+            </dd>
+          </div>
+          <div>
+            <dt>メインカメラ（外側）</dt>
+            <dd>
+              約1,200万画素 (超広角) + 約5,000万画素 (広角) + 約1,000万画素 (望遠)
+            </dd>
+          </div>
+          <div>
+            <dt>フロントカメラ（内側）</dt>
+            <dd>
+              約1,200万画素 (広角)
+            </dd>
+          </div>
+          <div>
+            <dt>バッテリー容量</dt>
+            <dd>
+              3,900mAh
+            </dd>
+          </div>
+          <div>
+            <dt>ワイヤレス充電</dt>
+            <dd>
+              対応
+            </dd>
+          </div>
+          <div>
+            <dt>おサイフケータイ / NFC</dt>
+            <dd>
+              対応 / 対応
+            </dd>
+          </div>
+          <div>
+            <dt>防水 / 防塵</dt>
+            <dd>
+              対応 (IPX5・IPX8 / IP6X)
+            </dd>
+          </div>
+          <div>
+            <dt>生体認証（指紋 / 顔）</dt>
+            <dd>
+              対応 / 対応
+            </dd>
+          </div>
+          <div>
+            <dt>Wi-Fi規格</dt>
+            <dd>
+              IEEE 802.11 a/b/g/n/ac/ax
+            </dd>
+          </div>
+          <div>
+            <dt>テザリング（Wi-Fi）</dt>
+            <dd>
+              10台
+            </dd>
+          </div>
+          <div>
+            <dt>SIMタイプ</dt>
+            <dd>
+              nanoSIM / eSIM
+            </dd>
+          </div>
+          <div>
+            <dt>付属品</dt>
+            <dd>
+              クイックスタートガイド x 1 / USBケーブル(CtoC)(試供品) x 1 / SIM取り出しツール(試供品) x 1
+            </dd>
+          </div>
+        </dl>
+
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html?l-id=product_<%= directory %>_spec_<%= directory %>" class="c-Link_Txt-inline-icon">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">
+          ※1発売時点のOSのバージョンを記載しています。最新のOSバージョン情報は<a href="<%= sitepath %>information/software/galaxy-s23/">こちら</a>をご確認ください。
+        </p>
+
+        <div class="u-Adjust_Mt-32">
+          <%_ if (bundleFlag === 'bundle') { _%>
+          <div class="u-Adjust_Align-center <%= bundleFlag %>">
+            <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-3_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+          </div>
+          <%_ } else if(bundleFlag === 'stock') { _%>
+          <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large">購入する</a></div>
+          <%_ } else if(bundleFlag === 'soldout') { _%>
+          <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+          <%_ } else if(bundleFlag === 'backorder') { _%>
+          <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+          <%_ } _%>
+        </div>
+
+        <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>-Txt_Icon-front">
+          <span class="<%= namespace %>-Txt_Icon-front-icon"></span>
+          <a data-ratid="product_detail-page_order-button-3_bss" data-ratevent="click" data-ratparam="all" href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+      </section>
+
+      <div id="previously-seen"></div>
+      <div id="js-same-brand"></div>
+
+      <section class="product-detail-Layout_Section">
+        <h2 class="c-Heading_Lv2">設定・サポート</h2>
+        <div>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/inquiry/?l-id=product_<%= directory %>_guide_inquiry" class="c-Link_Txt-inline-icon">製品の初期不良による交換・設定・修理等サポートについて<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+      </section>
+
+      <div class="u-Adjust_Mt-64">
+        <%- include('/inc/_saikyo') %>
+      </div>
+
+    </div>
+    <div class="u-Adjust_Mt-40">
+      <%- include('/include/product/_support') %>
+      <%- include('/include/product/smartphone/_footer-notes') _%>
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/product/_same-brand-js') %>
+<script src="<%= sitepath %>assets/js/product.android-tradein.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+<script>
+  const deviceName01 = '<%= directory %>_color-01_thumbnail-';
+  const deviceName02 = '<%= directory %>_color-02_thumbnail-';
+  const deviceName03 = '<%= directory %>_color-03_thumbnail-';
+  const ratIds = [
+    `${deviceName01}01`,
+    `${deviceName01}02`,
+    `${deviceName01}03`,
+    `${deviceName01}04`,
+    `${deviceName02}01`,
+    `${deviceName02}02`,
+    `${deviceName02}03`,
+    `${deviceName02}04`,
+    `${deviceName03}01`,
+    `${deviceName03}02`,
+    `${deviceName03}03`,
+    `${deviceName03}04`,
+  ];
+  const forceClickRatId = e => {
+    const forceClickTarget = document.getElementById('js-force-click-target');
+    forceClickTarget.dataset.ratid = e.target.id;
+    forceClickTarget.click();
+  }
+  ratIds.forEach(e => document.getElementById(e).addEventListener('click', forceClickRatId));
+</script>
+
+</body>
+</html>

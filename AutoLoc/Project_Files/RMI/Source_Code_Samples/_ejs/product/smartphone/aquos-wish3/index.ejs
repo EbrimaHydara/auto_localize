@@ -1,0 +1,560 @@
+<% const pagetitle = "AQUOS wish3" -%>
+<% const directory = "aquos-wish3" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/smartphone/", label:"Android"}] -%>
+<% const namespace = "product-Aquos-wish3" -%>
+<%# const theme = "Dark" -%>
+<% const theme = "Light" -%>
+<% const point = 3000 -%>
+<%# const pointModel = 2000 -%>
+<%# const pointEntry = 5000 -%>
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+  予約注文 → 'reserve'
+
+*/
+const bundleFlag = 'bundle';
+const exid = 600659;
+-%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+<% const priceDetailConfig = {
+  bundleFlag: bundleFlag,
+  theme: theme,
+  price: 29700,
+  // priceBefore: 35800,
+  // pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  // pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  pointBackTextA: `<span>楽天モバイルお申し込みで<br class="product-detail-Utility_Show-sp"><span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当のポイント還元<sub>※1,3</sub></span>`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 1237,
+  // division24Before: ,
+  division48: 618,
+  // division48Before: ,
+  division48last: 654,
+  tradeinProductName: 'AQUOS wish',
+  optionPattern: 'one-option',
+  lid: directory,
+  capacity: 64,
+  maxTradeinPrice: 2160,
+  pointAppealBtnCapNo: 4,
+  carrier: '楽天モバイル',
+  //　notificationEmail: 'true',
+  //　notificationEmailLink: '/product/reservation/reno7-a/'
+  discountPrice: 6000,
+  applyPoint: 0,
+  firstTimeApplyPoint: 13000,
+  mnp: false,
+  anchorId: '',
+  trakingId: directory,
+  exid: exid,
+  btnLabel: 'AQUOS wish3を予約注文する',
+  year: 2023,
+  month: 11,
+  day: 28,
+  // PriceBeforeUnnumberedAnnotationText: '楽天モバイルでの販売価格（販売期間：2023年7月6日～2024年1月16日）',
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: "AQUOS wish3（アクオス）の価格・特徴・スペックの確認と購入はこちら。楽天モバイルお申し込み＆AQUOS wish3ご購入で20,000円値引き！※対象プラン等条件あり",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inc/i-product-head.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+<%
+  const NavItems = [
+    {label: '価格', href: 'price'},
+    {label: '関連アクセサリ', href: 'accessory'},
+    {label: '特長', href: 'feature'},
+    {label: 'スペック', href: 'spec'}
+  ]
+%>
+
+<div id="js-header-nav-dummy"></div>
+<%- include('/include/product/smartphone/_nav-follow-btn', {pagetitle, NavItems, directory, exid, }) %>
+
+<div class="product-detail-Layout_Hero-with-bnr <%= namespace %>_Hero">
+  <div class="l-System_Container u-Adjust_Pt-16">
+    <%- include('/include/product/bnr/_product-head-bnr', {
+      lid: 'product_' + directory + '_bnr_campaign_start-point',
+      isDark: false,
+      isShow: false,
+    }) _%>
+
+    <a class="c-Banner_Hover-act" href="<%= sitepath %>campaign/android-discount/?l-id=product_smartphone_aquos-wish3_campaign_android-discount">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-discount-aquos-wish3-sp.png" width="343" height="76">
+        <img src="<%= sitepath %>assets/img/bnr/bnr-discount-aquos-wish3-pc.png" width="1032" height="75" alt="楽天モバイルお申し込み＆AQUOS wish3ご購入で20,000円値引き" loading="lazy">
+      </picture>
+    </a>
+    <section class="product-detail-Hero">
+      <div class="product-detail-Hero_Data">
+        <div>
+          <h1 class="co-Heading_Lv1 product-detail-Hero_Name"><img src="<%= sitepath %>assets/img/product/<%= directory %>/logo.png" alt="<%= pagetitle %>" width="354"></h1>
+          <p class="product-detail-Hero_Maker">SHARP</p>
+          <p class="product-detail-Hero_Copy">シンプルであんしん。みんなに心地よい使いやすさ</p>
+          <div class="product-detail-Utility_Show-pc">
+            <div>
+              <%_ if (bundleFlag === 'bundle') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= bundleFlag %>">
+                  <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+                </div>
+                <%_ } else if(bundleFlag === 'stock') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large">購入する</a>
+                </div>
+                <%_ } else if(bundleFlag === 'soldout') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+                <%_ } else if(bundleFlag === 'backorder') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+                <%_ } else if(bundleFlag === 'reserve') { _%>
+                  <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                    <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">AQUOS wish3を予約注文する</a>
+                  </div>
+                <%_ } _%>
+            </div>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>_Icon-front">
+              <span class="<%= namespace %>_Icon-front-icon"></span>
+              <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+            </p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※5G通信は対応エリアでご利用可能です。</p>
+          </div>
+        </div>
+      </div>
+      <div class="product-detail-Hero_Main u-Adjust_Mt-0">
+        <ul class="product-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+          <li><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+        </ul>
+        <ul class="product-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+        </ul>
+        <ul class="product-detail-Hero_Main-device c-Carousel js-main3 js-device" aria-hidden="true">
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-10.png" alt=""></li>
+          <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-11.png" alt=""></li>
+        </ul>
+
+        <ul class="product-detail-Hero_Main-color product-detail-Theme_<%= theme %>-color">
+          <li data-ratid="<%= directory %>_color-01" data-ratevent="click" data-ratparam="all" class="js-color js-color1" aria-current="true"><span style="background:#B7C7C5"></span></li>
+          <li data-ratid="<%= directory %>_color-02" data-ratevent="click" data-ratparam="all" class="js-color js-color2" aria-current="false"><span style="background:#EFECE4"></span></li>
+          <li data-ratid="<%= directory %>_color-03" data-ratevent="click" data-ratparam="all" class="js-color js-color3" aria-current="false"><span style="background:#434852"></span></li>
+        </ul>
+
+        <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+          <li><img id="<%= directory %>_color-01_thumbnail-01" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+          <li><img id="<%= directory %>_color-01_thumbnail-02" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+          <li><img id="<%= directory %>_color-01_thumbnail-03" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+          <li><img id="<%= directory %>_color-01_thumbnail-04" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+        </ul>
+        <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+          <li><img id="<%= directory %>_color-02_thumbnail-01" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+          <li><img id="<%= directory %>_color-02_thumbnail-02" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+          <li><img id="<%= directory %>_color-02_thumbnail-03" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+          <li><img id="<%= directory %>_color-02_thumbnail-04" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+        </ul>
+        <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail3 js-device" aria-hidden="true">
+          <li><img id="<%= directory %>_color-03_thumbnail-01" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt=""></li>
+          <li><img id="<%= directory %>_color-03_thumbnail-02" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt=""></li>
+          <li><img id="<%= directory %>_color-03_thumbnail-03" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-10.png" alt=""></li>
+          <li><img id="<%= directory %>_color-03_thumbnail-04" data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-11.png" alt=""></li>
+        </ul>
+        <%# サムネクリック計測 %>
+        <div id="js-force-click-target" data-ratid="dummy" data-ratevent="click" data-ratparam="all"></div>
+      </div>
+    </section>
+
+    <div class="product-detail-Hero_Show-sp product-detail-Utility_Show-sp u-Adjust_Mt-24">
+      <div>
+        <%_ if (bundleFlag === 'bundle') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= bundleFlag %>">
+          <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+        </div>
+        <%_ } else if(bundleFlag === 'stock') { _%>
+        <a class="c-Btn_Primary-large">購入する</a>
+        </div>
+        <%_ } else if(bundleFlag === 'soldout') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">2023年4月20日発売予定</a></div>
+        <%_ } else if(bundleFlag === 'backorder') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+        <%_ } else if(bundleFlag === 'reserve') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">AQUOS wish3を予約注文する</a>
+          </div>
+        <%_ } _%>
+      </div>
+      <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>_Icon-front">
+        <span class="<%= namespace %>_Icon-front-icon"></span>
+        <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+      </p>
+      <p class="u-Adjust_Mt-24" style="font-size: 12px;">
+        ※5G通信は対応エリアでご利用可能です。
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="product-detail-Layout_Main">
+  <div class="product-detail-Price product-detail-Theme_<%= theme %>-price">
+    <%- include('/include/product/smartphone/_price-detail-basic', {priceDetailConfig, bundleFlag}) %>
+    <div class="l-System_Container u-Adjust_Mt-32">
+      <p class="u-Adjust_Align-center c-Txt_Emp-01" style="font-size: 18px;">【ご購入前にご確認ください】</p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li>購入手続き後、当社で審査を実施し、完了をもって購入契約成立となります。ただし、当社所定の条件に該当する場合、注文キャンセルとなる可能性がございます。キャンセルの際は、登録メールアドレス宛にご連絡します。</li>
+        <li><span class="c-Txt_Emp-02">充電器・ケーブルは別売りとなっております。</span>「購入する」ボタンを押下後、製品をカートに追加する際に、必要なアクセサリも同時にご購入ください。アクセサリの詳細は「関連アクセサリ」からご確認ください。</li>
+      </ul>
+    </div>
+
+    <%
+    const relatedAccessoryConf = {
+      namespace,
+      directory,
+      relatedAccessory: [
+        {
+          title: 'OwltechAC充電器（20W）',
+          url: `product/accessory/owltech-apd20c1a1bk/?l-id=product_${directory}_owltech-apd20c1a1bk`,
+          image: 'assets/img/accessory/owltech-apd20c1a1bk/pht-accessory-00.png',
+          price: '2,618'
+        },
+        {
+          title: 'USB Type-A to Type-C シリコンケーブル 1m（ブラック/ホワイト）',
+          url: `product/accessory/owltech-owlcbsac10bk/?l-id=product_${directory}_owltech-owlcbsac10bk`,
+          image: 'assets/img/accessory/owltech-owlcbsac10bk/pht-accessory-00.png',
+          price: '1,080'
+        },
+        {
+          title: 'USB Type-C to Type-C シリコンケーブル 2m（ブラック）',
+          url: `product/accessory/mot-scbccg200-bk/?l-id=product_${directory}_mot-scbccg200-bk`,
+          image: 'assets/img/accessory/mot-scbccg200-bk/pht-accessory-00.png',
+          price: '1,480'
+        },
+        {
+          title: 'USB Type-A to Type-C シリコンケーブル 2m（ブラック/ホワイト）',
+          url: `product/accessory/mot-scbacg200-bk/?l-id=product_${directory}_mot-scbacg200-bk`,
+          image: 'assets/img/accessory/mot-scbacg200-bk/pht-accessory-00.png',
+          price: '1,280'
+        },
+        {
+          title: 'AQUOS wish3 ハイブリッドクリアケース',
+          url: `product/accessory/rselect-rmshaqs025c0229cl/?l-id=product_${directory}_rselect-rmshaqs025c0229cl`,
+          image: 'assets/img/accessory/rselect-rmshaqs025c0229cl/pht-accessory-00.png',
+          price: '1,980'
+        },
+        {
+          title: 'AQUOS wish3 平面ガラスフィルム 高光沢',
+          url: `product/accessory/rselect-rmshaqs025f0228cl/?l-id=product_${directory}_rselect-rmshaqs025f0228cl`,
+          image: 'assets/img/accessory/rselect-rmshaqs025f0228cl/pht-accessory-00.png',
+          price: '2,280'
+        },
+      ]
+    }
+    -%>
+    <div id="accessory">
+      <%- include('/include/product/_related-carousel', { relatedAccessoryConf }) _%>
+    </div>
+
+    <%- include('/include/product/smartphone/_price-detail-notes-discount') _%>
+  </div>
+
+  <div class="u-Adjust_Mt-56 u-Adjust_Pb-56">
+    <div class="l-System_Container">
+      <div class="product-detail-Spec">
+        <ul class="product-detail-Spec_<%= theme %>">
+          <li aria-current="true"><span class="c-Icon_Product-waterproof"></span>防水</li>
+          <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>おサイフケータイ</li>
+          <li aria-current="false"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+          <li aria-current="true"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+          <li aria-current="false"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+          <li aria-current="false"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+          <li aria-current="true"><span class="c-Icon_Product-connection"></span>高速通信</li>
+        </ul>
+        <p class="u-Adjust_Mt-64"><a data-ratid="<%= directory %>_spec-anchor" data-ratevent="click" data-ratparam="all" href="#spec" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>基本スペックを見る</a></p>
+      </div>
+
+      <section id="feature" class="product-detail-Layout_Section">
+        <%# スクロール計測 %>
+        <h2 data-ratid="<%= directory %>_scroll-03_feature" data-ratevent="appear" data-ratparam="all" class="c-Heading_Lv2-rich">特長</h2>
+
+        <ul class="product-detail-Catch <%= namespace %>_Catch">
+          <li><a data-ratid="<%= directory %>_feature-anchor-01" data-ratevent="click" data-ratparam="all" href="#feature1" class="js-scroll"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">コンパクトで使いやすい、心地よい手触りとニュアンスカラー</span></a></li>
+          <li><a data-ratid="<%= directory %>_feature-anchor-02" data-ratevent="click" data-ratparam="all" href="#feature2" class="js-scroll"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">家族みんなが使いやすい。<br>スマホデビューにもぴったりな機能満載</span></a></li>
+          <li><a data-ratid="<%= directory %>_feature-anchor-03" data-ratevent="click" data-ratparam="all" href="#feature3" class="js-scroll"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">落としても安心の丈夫さと防水対応。電池の劣化を抑えて長く使える</span></a></li>
+        </ul>
+
+        <section class="product-detail-Feature" id="feature1">
+          <h2 class="c-Heading_Lv2">コンパクトで使いやすい、心地よい手触りとニュアンスカラー</h2>
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-01.png" width="1032" height="386" alt=""></figure>
+          <p class="product-detail-Feature_Txt">
+            さらさらしたやさしい手触りの質感と心地よいカラー。<br>
+            コンパクトなサイズ感で手に取りやすく、片手でも快適に操作できる。<br>
+            シンプルな構造だから直感的に迷わず使いやすい。
+          </p>
+        </section>
+
+        <section class="product-detail-Feature" id="feature2">
+          <h2 class="c-Heading_Lv2">家族みんなが使いやすい。スマホデビューにもぴったりな機能満載</h2>
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-02.png" width="1032" height="386" alt=""></figure>
+          <p class="product-detail-Feature_Txt">
+            読みやすい文字サイズやかんたんで見やすいホーム画面にできる「かんたんモード」。<br>
+            お子様向けにもぴったり、保護者の不安に応える機能を手軽に設定できる「ジュニアモード」。<br>
+            家族みんながあんしんして使える。
+          </p>
+        </section>
+        <section class="product-detail-Feature" id="feature3">
+          <h2 class="c-Heading_Lv2">落としても安心の丈夫さと防水対応。電池の劣化を抑えて長く使える</h2>
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-03.png" width="1032" height="386" alt=""></figure>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※事前に設定が必要です。
+          </p>
+          <p class="product-detail-Feature_Txt u-Adjust_Mt-16">
+            耐衝撃をはじめとした18項目のMIL規格に対応<span class="c-Txt_Cap">※1</span>。<br>
+            さらに、IPX5/7の防水とIP6Xの防塵に対応<span class="c-Txt_Cap">※2</span>。毎日のさまざまなシーンであんしんして使える。<br>
+            電池の劣化を軽減する「インテリジェントチャージ」 を搭載。
+          </p>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">
+            ※1 米国国防総省の調達基準（MIL-STD-810H）の18項目、耐衝撃（落下）、防水（浸漬）、防水（雨滴）、防塵、防塵（風塵）、耐振動、防湿、高温保管（固定）、高温保管（変動）、高温動作（固定）、高温動作（変動）、低温動作、低温保管、温度耐久（温度衝撃）、低圧保管、低圧動作、氷結（結露）、氷結（氷結）に準拠した試験を実施。なお、すべての衝撃に対して、無破損、無故障を保証するものではありません。<br>
+            ※2 IPX5とは、内径6.3mmの注水ノズルを使用し、約3mの距離から約12.5リットル／分の水を最低3分間注水する条件であらゆる方向から噴流を当てても電話機としての機能を有することを意味します。IPX7とは、常温で水道水、かつ静水の水深1mの水槽に電話機を静かに沈め、約30分間水底に放置しても、電話機内部に浸水せず、電話機としての機能を有することを意味します。IP6Xとは、保護度合いを指し、直径75μm以下の塵埃(じんあい)が入った装置に電話機を8時間入れてかくはんさせ、取り出したときに電話機の内部に塵埃が侵入しない機能を有することを意味します。
+          </p>
+        </section>
+      </section>
+
+      <%# スクロール計測 %>
+      <div class="u-Rat_Appear-height" data-ratid="<%= directory %>_scroll-04_feature" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+      <div class="product-detail-Layout_Sub <%= namespace %>_Sub">
+        <div class="l-System_Container">
+          <section class="product-detail-Layout_Section">
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-01.png" width="488" height="182" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">再生プラスチック材使用の環境配慮デザイン</h3>
+                <p>スマホ筐体への再生プラスチック材使用率を35%→60％へ向上<span class="c-Txt_Cap">※3</span>。再生紙を利用したECO梱包。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※3 AQUOS wishとの比較において。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-02.png"  width="488" height="182" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">サッと使える顔認証(マスク対応)など、AQUOSならではの便利な機能満載</h3>
+                <p>外出先でも画面を見るだけで素早く操作ができる顔認証(マスク対応)<span class="c-Txt_Cap">※4</span>や簡単に画面キャプチャーが撮れる「Clip Now<span class="c-Txt_Cap">※4</span>」などAQUOSならではの便利な機能を搭載。スマホが快適に使える。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※4 事前に設定が必要です。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-03.png" width="488" height="182" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">人物も夜景もカメラまかせで、かんたんキレイに写真が撮れる</h3>
+                <p>
+                  人の肌などのディテールも美しく映し出す新画質エンジン「ProPix4 lite」を搭載。<br>
+                  カメラを向けるだけで被写体やシーンを検出し、ナイトモードなど自動でぴったりのモードをセレクトする「AIオート」や、黒つぶれや白飛びを抑えた撮影ができる「オートHDR」に対応したカメラ。シーンに応じた写真が、かんたんキレイに撮れる。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-04.png" width="488" height="182" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">アルコール除菌シートでの拭き取り対応<span class="c-Txt_Cap">※5</span>でいつもキレイに使える</h3>
+                <p>汚れてもアルコール除菌シートでさっと拭き取りができる<span class="c-Txt_Cap">※5</span>。毎日使うものだから、いつも清潔にできてうれしい。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※5 エタノール70%での1,000回の拭き取り試験を実施。塗装の剥がれや変色、退色に大きな変化がないことを確認しています。ただし、製品の有する性能は試験環境下での確認であり、すべての剥がれや変色、退色しないことを保証するものではありません。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-05.png" width="488" height="182" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">OSバージョンアップであんしんして長く使える</h3>
+                <p>
+                  発売から 2 年間最大 2 回の OS バージョンアップに対応しているので長く使える。
+                </p>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="product-detail-Layout_Other">
+  <div class="l-System_Container">
+
+    <%- include('/include/product/_compensation') %>
+
+    <section class="product-detail-Layout_Section" id="spec">
+      <h2 data-ratid="<%= directory %>_scroll-06_spec" data-ratevent="appear" data-ratparam="all" class="c-Heading_Lv2">スペック</h2>
+      <div id="js-spec-list"><%#
+        vue rendering area
+        - src/vue/product/smartphone/spec/SpecDtList.vue
+        - src/csv/spec-aquos-wish3.csv _%>
+      </div>
+
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html?l-id=product_<%= directory %>_spec_<%= directory %>" class="c-Link_Txt-inline-icon">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+      <div class="u-Adjust_Mt-32">
+        <%_ if (bundleFlag === 'bundle') { _%>
+        <div class="u-Adjust_Align-center <%= bundleFlag %>">
+          <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-3_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+        </div>
+        <%_ } else if(bundleFlag === 'stock') { _%>
+        <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large">購入する</a></div>
+        <%_ } else if(bundleFlag === 'soldout') { _%>
+        <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+        <%_ } else if(bundleFlag === 'backorder') { _%>
+        <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+        <%_ } else if(bundleFlag === 'reserve') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-3_bss" data-ratevent="click" data-ratparam="all">AQUOS wish3を予約注文する</a>
+          </div>
+        <%_ } _%>
+      </div>
+
+      <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>_Icon-front">
+        <span class="<%= namespace %>_Icon-front-icon"></span>
+        <a data-ratid="product_detail-page_order-button-3_bss" data-ratevent="click" data-ratparam="all" href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+      </p>
+    </section>
+
+    <div id="previously-seen"></div>
+    <div id="js-same-brand"></div>
+
+    <section class="product-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">設定・サポート</h2>
+      <div>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/inquiry/?l-id=product_<%= directory %>_guide_inquiry" class="c-Link_Txt-inline-icon">製品の初期不良による交換・設定・修理等サポートについて<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-64">
+      <%- include('/inc/_saikyo') %>
+    </div>
+
+  </div>
+  <div class="u-Adjust_Mt-40">
+    <%- include('/include/product/_support') %>
+    <%- include('/include/product/smartphone/_footer-notes-discount') _%>
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/product/_same-brand-js') %>
+<script src="<%= sitepath %>assets/js/product.android-tradein.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/product.spec.aquos-wish3.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+<script>
+  const deviceName01 = '<%= directory %>_color-01_thumbnail-';
+  const deviceName02 = '<%= directory %>_color-02_thumbnail-';
+  const deviceName03 = '<%= directory %>_color-03_thumbnail-';
+
+  const ratIds = [
+    `${deviceName01}01`,
+    `${deviceName01}02`,
+    `${deviceName01}03`,
+    `${deviceName01}04`,
+    `${deviceName02}01`,
+    `${deviceName02}02`,
+    `${deviceName02}03`,
+    `${deviceName02}04`,
+    `${deviceName03}01`,
+    `${deviceName03}02`,
+    `${deviceName03}03`,
+    `${deviceName03}04`,
+  ];
+  const forceClickRatId = e => {
+    const forceClickTarget = document.getElementById('js-force-click-target');
+    forceClickTarget.dataset.ratid = e.target.id;
+    forceClickTarget.click();
+  }
+  ratIds.forEach(e => document.getElementById(e).addEventListener('click', forceClickRatId));
+</script>
+
+</body>
+</html>

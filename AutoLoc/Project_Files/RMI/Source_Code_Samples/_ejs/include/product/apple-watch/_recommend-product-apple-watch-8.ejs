@@ -1,0 +1,89 @@
+<%_
+  /**
+   * 　このCSSを読み込んでいないページでは
+   * /assets/css/product/apple-watch/product-apple-watch.css
+   *
+   * このcssを読み込んで使う
+   * /assets/css/product/apple-watch/apple-watch-recommend/product-apple-watch-recommend.css
+  */
+  const tradeinTitle = (typeof customTradeinTitle !== 'undefined') ? customTradeinTitle : 'スマホ下取りサービス';
+_%>
+<div class="product-apple-watch-Recommend">
+  <div class="l-System_Container">
+    <%# スクロール計測 %>
+    <div class="u-Rat_Appear-height" data-ratid="<%= currentDir %>_scroll-09_option" data-ratevent="appear">&nbsp;</div>
+    <h3 class="c-Heading_Lv3">Apple Watchを使うなら楽天モバイルがおすすめ</h3>
+    <div>
+      <ul class="product-apple-watch-Recommend_List">
+        <li class="c-Theme-Light">
+          <div>
+            <p class="c-Txt_Emp-01"><a href="<%= sitepath %>service/number-share/?l-id=<%= currentDir %>_service_number-share" class="c-Link_Txt">電話番号シェアサービス</a></p>
+            <div class="product-apple-watch-Recommend_Grid u-Adjust_Mt-16">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/common/icon-shareservice-240301.png" alt="電話番号シェアサービス">
+              </div>
+              <div>
+                <p>
+                  1つの電話番号を、iPhoneとApple Watchで共有して利用できるサービスです。iPhoneが側になくても、Apple Watchだけで音声通話・データ通信を利用できます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="c-Theme-Light">
+          <div>
+            <p class="c-Txt_Emp-01"><a href="<%= sitepath %>fee/apple-watch-family-sharing/?l-id=<%= currentDir %>_fee_apple-watch-family-sharing" class="c-Link_Txt">Apple Watch ファミリー共有</a></p>
+            <div class="product-apple-watch-Recommend_Grid u-Adjust_Mt-16">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/common/icon-apple-watch-family-sharing.png" alt="Apple Watchファミリー共有">
+              </div>
+              <div>
+                <p>iPhoneを持っていないお子さまやシニアのご家族も、Apple Watchだけで音声通話・データ通信を利用できるサービスです。</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="c-Theme-Light">
+          <div>
+            <p class="c-Txt_Emp-01"><a href="<%= sitepath %>service/applewatch-care/?l-id=<%= currentDir %>_service_applewatch-care" class="c-Link_Txt">あんしん保証with AppleCare Services for Apple Watch</a></p>
+            <div class="product-apple-watch-Recommend_Grid u-Adjust_Mt-16">
+              <div class="l-Media_Image">
+                <img src="/assets/img/product/img-service-applecare.png?220413" alt="AppleCare Service">
+              </div>
+              <div>
+                <p class="c-Txt_Emp-02">加入できるのは購入時のみ</p>
+                <p class="u-Adjust_Mt-8">Apple Watchの修理や製品サポートをApple 公式のサービス同等の内容でご利用いただけます。</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="c-Theme-Light">
+          <div>
+            <p class="c-Txt_Emp-01"><a href="<%= sitepath %>service/tradein/?l-id=product_<%= currentDir %>_service_trade-in" class="c-Link_Txt"><%- tradeinTitle %><br>（Apple Watch・iPadも対象）</a></p>
+            <div class="product-apple-watch-Recommend_Grid u-Adjust_Mt-16">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/img-service-tradein-230222.png" alt="スマホ下取りサービス">
+              </div>
+              <div>
+                <% if (typeof tradeinProduct != 'undefined' && tradeinPrice != 'undefined') { %>
+                <p class="c-Txt_Emp-02"><%- tradeinProduct %>を下取りに出すと、最大<%- tradeinPrice %>円相当になります。</p>
+                <% } %>
+                <% if (typeof tradeinProductDetail != 'undefined') { %>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap">※<%- tradeinProductDetail %>を下取りに出した場合<br>
+                  ※下取り金額は電子マネーの楽天キャッシュでの受け取りとなります。<br>
+
+                  <% if (typeof date ==='undefined') { %>
+                    ※上記下取り金額は2023年7月25日時点のものとなります。
+                  <% }else{ %>
+                    ※上記下取り金額は<%- date %>のものとなります。
+                  <% } %>
+                </p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

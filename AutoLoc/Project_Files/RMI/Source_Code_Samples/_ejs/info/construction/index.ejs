@@ -1,0 +1,141 @@
+<% const pagetitle = "メンテナンス工事のお知らせ" -%>
+<% const directories = [{path:"info/", label:"お知らせ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'メンテナンス工事のお知らせページ。新着情報や各種お知らせ情報をご案内します',
+    keywords: '',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "お知らせ" -%>
+<% const nameSpace = "info-construction" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/info/construction/info-construction.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+    <%_ if (dir.path !== "") { _%>
+    <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ } else { _%>
+    <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+    <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">お客様によりよいサービスをご提供できるよう、機能向上のためのメンテナンス工事を実施いたします。工事中は一部サービスが中断する場合がありますので、何卒ご理解いただきますよう、よろしくお願い申し上げます。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※工事情報は随時更新しておりますが、天候や諸事情により予告なく日時・対象地域が変更となる場合があります。あらかじめご容赦願います。</p>
+
+    <ul class="<%= nameSpace %>-Layout_Anchor">
+      <li><a href="#short" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>短期メンテナンス工事</a></li>
+      <li><a href="#long" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>長期メンテナンス工事</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 <%= nameSpace %>-Layout_Headline" id="short">短期メンテナンス工事</h2>
+    <p class="info-construction-Table_Cap u-Adjust_Align-right u-Adjust_Mt-16" id="js-maintenance-short-update-wrap"><span id="js-maintenance-short-update"></span>更新</p>
+
+    <div id="js-maintenance-short-notice-wrap">
+      <p class="u-Adjust_Mt-24">対象地域において数時間、一部サービスが中断する場合があります。都道府県を選択し、メンテナンス情報をご確認ください。</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">※工事状況によっては、工事終了時間を超える場合があります。<br>
+        ※天候や諸事情により、予告なく日時・対象地域が変更となる場合があります。<br>
+        ※工事時間帯に送信されたSMSや着信通知、留守番電話のメッセージは、工事終了後に配信いたします。
+      </p>
+    </div>
+
+    <h3 id="js-maintenance-short-title" class="c-Heading_Lv3 u-Adjust_Mt-24">都道府県を選択する</h3>
+    <div class="c-Form_Select info-construction-Layout_Select u-Adjust_Mt-16">
+      <select id="js-maintenance-short-select">
+        <option value="">都道府県を選択</option>
+      </select>
+      <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+    </div>
+
+    <div class="info-construction-Table_Wrap" id="js-maintenance-short"></div>
+
+    <h2 class="c-Heading_Lv2 <%= nameSpace %>-Layout_Headline" id="long">長期メンテナンス工事</h2>
+    <p class="info-construction-Table_Cap u-Adjust_Align-right u-Adjust_Mt-16" id="js-maintenance-long-update-wrap"><span id="js-maintenance-long-update"></span>更新</p>
+    <div id="js-maintenance-long-notice-wrap">
+      <p class="u-Adjust_Mt-24">工事の内容によって、実施期間・お客様への影響が異なります。 </p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">※工事状況によっては、期間延長となる場合があります。</p>
+    </div>
+
+    <h3 id="js-maintenance-long-title" class="c-Heading_Lv3 u-Adjust_Mt-24">都道府県を選択する</h3>
+    <div class="c-Form_Select info-construction-Layout_Select u-Adjust_Mt-16">
+      <select id="js-maintenance-long-select">
+        <option value="">都道府県を選択</option>
+      </select>
+      <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+    </div>
+
+
+    <div class="info-construction-Table_Wrap" id="js-maintenance-long"></div>
+
+    <div class="u-Adjust_Pt-80">
+    <div class="u-Adjust_Pt-80">
+      <div class="info-construction-Layout_Inline"><a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="info-construction-Layout_Inline"><a href="https://www.kddi.com/corporate/kddi/public/roaming/" target="_blank" class="c-Btn_Regular"><span>パートナー回線 メンテナンス・障害情報<span class="c-Icon_New-window-l u-Adjust_Ml-8"></span></span></a></div>
+    </div>
+    </div>
+    <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+
+
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-news-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/info.construction.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

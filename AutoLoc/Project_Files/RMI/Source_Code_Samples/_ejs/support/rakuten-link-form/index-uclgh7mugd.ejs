@@ -1,0 +1,36 @@
+<% const pagetitle = "Rakuten Linkに関するお問い合わせ" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}] -%>
+<% const namespace = "support-link-form" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten Linkアプリに関するトラブル解決方法を、メールでご案内いたします。項目を選択のうえ、必要情報をご入力ください。',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+</head>
+<body>
+<div id="body"></div>
+
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script>
+const authcode = location.search.split('code=')[1].split('&')[0];
+$.ajax({
+        url: 'https://uat1-api-linkage.rmb-lab.jp/linkapi/GetInfo',
+        // url: 'https://preprod-api-linkage.rmb-lab.jp/linkapi/GetInfo',
+        // url: 'https://uat1-link-form-api-80-rmobile-bss-uat1-linkageapi.jpe2-caas1-dev1.caas.jpe2b.r-local.net/linkapi/GetInfo',
+        headers: {
+            "Authorization":"Bearer zRgYGhbWcRnnaBGE27aSGK+tN_Lwn9a",
+            "Content-Type": "application/json; charset=utf-8"
+        },
+        data: {
+            "code": authcode,
+        }
+    }).done(function(data) {
+        console.log(data);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<% const pagetitle = "ご解約について" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/contract/", label:"契約内容・お手続き"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    ancList: [
+      {
+        path: '#cancellation01',
+        name: '回線の利用をやめて解約を行う場合'
+      },
+      {
+        path: '#cancellation02',
+        name: 'ご契約者がお亡くなりになった場合',
+      },
+      {
+        path: '#cancellation03',
+        name: '初期契約解除を行いたい',
+      },
+      {
+        path: '#cancellation04',
+        name: 'お申し込みをキャンセルしたい（利用開始前）',
+      }
+    ],
+    isUserCategory: true
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboをご契約中の方が、解約をご希望の場合にmy 楽天モバイル（アプリ・Web）からお手続きしていただく方法をご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-32">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">Rakuten Turboのご解約はmy 楽天モバイルから、お手続きができます。</p>
+      </section>
+
+      <section id="plan01" class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">ご解約の前に</h2>
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3 u-Adjust_Mt-24">繋がりにくいときは設置場所の変更をお試しください！<span class="c-Txt_Cap c-Txt_Weight-normal">※</span></h3>
+        <div class="l-Media_Grid u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+            <p class="u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/img-01.png" width="328" height="178" alt="ご解約の前に">
+            </p>
+          </div>
+          <div>
+            <p>ご自宅では以下のスペースへの設置をおすすめします。</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>窓から近く、平らで安定した場所</li>
+              <li>
+                電波を遮る障害物（金属など）が近くにない場所
+                <ul class="u-Adjust_Mt-8">
+                  <li class="c-Txt_Cap">※ コンセントへさす必要があります。</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="u-Adjust_Mt-24">
+              <a href="<%= sitepath %>internet/turbo/support/setting/troubleshooting/" class="c-Btn_Secondly-large c-Txt_Normal"><span>それでも繋がりにくい場合はこちら</span></a>
+            </div>
+          </div>
+        </div>
+        <h3 class="u-Adjust_Mt-40 c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">より高速な通信には、楽天ひかりがオススメです。<span class="c-Txt_Cap c-Txt_Weight-normal">※</span></h3>
+        <div class="u-Adjust_Mt-24">
+          <a class="c-Banner_Hover-act" href="<%= sitepath %>hikari/campaign/six-month-free/?l-id=rmt_internet_turbo_support_contract_cancel_hikari_campaign_six-month-free_01">
+            <picture>
+              <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/internet/turbo/bnr/bnr-six-month-free-343-108-240122.png" width="343" height="108">
+              <img src="<%= sitepath %>assets/img/internet/turbo/bnr/bnr-six-month-free-1032-160-240122.png" alt="楽天ひかり初めてお申し込み&楽天モバイルご利用で楽天ひかりの月額基本料6カ月0円 ※契約解除料、その他条件あり さらに楽天市場のお買い物がポイント毎日全員7倍" width="1032" height="160">
+            </picture>
+          </a>
+        </div>
+        <ul class="u-Adjust_Mt-24">
+          <li class="c-Txt_Cap">
+            ※ Rakuten Turboご契約中の方で楽天ひかりにサービスを切り替える場合、Rakuten Turboのご解約が必要になります。
+          </li>
+        </ul>
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3 u-Adjust_Mt-40">お引越し先でもそのまま<span class="c-Txt_Cap c-Txt_Weight-normal">※1</span>使えます！<span class="c-Txt_Cap c-Txt_Weight-normal">※2</span></h3>
+        <div class="l-Media_Grid u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+            <p class="u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/img-02.png" width="328" height="178" alt="お引越し先でもそのまま使えます！　※1 ※2">
+            </p>
+          </div>
+          <div>
+            <p>お引越し先でRakuten TurboのWi-Fi設定を行うことで、今お使いの製品をそのままご利用いただけます。</p>
+            <ul class="u-Adjust_Mt-16">
+              <li class="c-Txt_Cap">※1 設置先住所の変更が必要です。変更方法は<a href="<%= sitepath %>internet/turbo/support/contract/house-moving/" class="c-Link_Txt">こちら</a>をご確認ください。</li>
+              <li class="c-Txt_Cap">※2 Rakuten Turbo対応サービスエリアでのみご利用可能です。</li>
+            </ul>
+            <div class="u-Adjust_Mt-24">
+              <a href="<%= sitepath %>internet/turbo/area/" class="c-Btn_Secondly-large c-Txt_Normal"><span>Rakuten Turbo対応サービスエリアを確認する</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plan02" class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">ご解約に伴う費用について</h2>
+        <p class="u-Adjust_Mt-16">解約に伴う費用は以下の通りです。</p>
+        <dl class="c-Dl_Origin u-Adjust_Mt-24">
+          <div>
+            <dt>プラン料金</dt>
+            <dd>解約日までの日割り計算</dd>
+          </div>
+          <div>
+            <dt>契約解除料</dt>
+            <dd>0円</dd>
+          </div>
+          <div>
+            <dt>製品代金</dt>
+            <dd>
+              残額のお支払いは継続<span class="c-Txt_Cap c-Txt_Weight-normal">※</span><br>
+              <span class="c-Txt_Cap u-Adjust_Mt-8">※残りのお支払い回数や金額はご利用のカード会社へお問い合わせください。</span>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="plan03" class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">ご解約時の注意事項</h2>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>おトクなプラン料金キャンペーンはサービスご解約と同時に終了となります。​</li>
+          <li>製品を分割払いでご購入された場合、サービスご解約後も製品代金をお支払いいただく必要がございます。​</li>
+          <li>ご解約後に再びサービスをお申し込みされる場合、製品をもう一度ご購入ください。​</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Mt-64">
+      <div class="l-System_Container">
+        <h2 id="plan04" class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">Rakuten Turboのご解約方法</h2>
+      </div>
+      <div class="c-Theme-Light u-Adjust_Mt-24 <%= namespace %>-Anchor">
+        <div class="l-System_Container">
+          <ul class="<%= namespace %>-Anchor_Area_Col2">
+            <% pageInfo.ancList.forEach(function(item) { -%>
+            <li>
+              <a href="<%= item.path %>" class="js-scroll c-Link_Txt-icon-front" data-auto-rat="anchor"><span class="c-Icon_Arrow-down-l"></span><%= item.name %></a>
+            </li>
+            <% }); -%>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="l-System_Container">
+      <section id="cancellation01" class="u-Adjust_Mt-48">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">回線の利用をやめて解約を行う場合</h3>
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-method-menu1" role="tab" aria-selected="true" aria-controls="tab-method-content1">Webでお手続き</li>
+            <li class="c-Tab_Item" id="tab-method-menu2" role="tab" aria-selected="false" aria-controls="tab-method-content2">アプリでお手続き</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-method-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-method-menu1">
+            <ol class="c-Flow">
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイル「ホーム」画面を開く</h4>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="c-Txt_Cap">※「ホーム画面へ進む」をタップしてログインすると、手順２の画面が表示されます。</li>
+                  <li class="c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my 楽天モバイル]ログインできません</a>」をご確認ください。</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <a href="<%= ecarepath %>my-rakuten-mobile/" data-lid_no="02" target="_blank" rel="noopener noreferrer" class="c-Btn_Secondly-large c-Txt_Normal">ホーム画面へ進む<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                </p>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 解約したい回線（Rakuten Turbo#回線名）が表示されていることを確認する</h4>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-02-01.png" alt="2. 解約したい回線（Rakuten Turbo#回線名）が表示されていることを確認する" width="300" height="599" class="c-Img_Capture">
+                </div>
+                <p class="u-Adjust_Mt-24 c-Txt_Cap">※楽天モバイルやRakuten Turboを複数回線ご契約中の方は、画面上部の「電話番号」または「Rakuten Turbo #回線名」をタップすると、ご契約中の回線を切り替えられます。</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-02-02.png" alt="2. 解約したい回線（Rakuten Turbo#回線名）が表示されていることを確認する" width="300" height="498" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 「その他のお手続き」をタップし、「Rakuten Turboの解約」をタップする</h4>
+                <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-03-01.png" alt="3. 「その他のお手続き」をタップし、「Rakuten Turboの解約」をタップする" width="300" height="654" class="c-Img_Capture">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-03-02-240215.png" alt="3. 「その他のお手続き」をタップし、「Rakuten Turboの解約」をタップする" width="300" height="514" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. 注意事項を確認し、「次へ進む」をタップする</h4>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-04.png" alt="4. 注意事項を確認し、「次へ進む」をタップする" width="300" height="527" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. ワンタイムパスワードを入力し、「認証する」をタップする</h4>
+                <p class="c-Txt_Cap u-Adjust_Mt-24">※ワンタイムパスワードは、ご登録されているメールアドレス宛にお送りする「[楽天モバイル]ワンタイムパスワード発行完了のお知らせ」というメールに記載されています。<br>
+                ※メールが届かないなど、ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt-inline" data-lid_no="01">こちら</a>をご参照ください。</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-08.png" alt="5. ワンタイムパスワードを入力し、「認証する」をタップする" width="300" height="527" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">6. アンケートに回答し、「次へ進む」をタップする</h4>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-05.png" alt="6. アンケートに回答し、「次へ進む」をタップする" width="300" height="660" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">7. お申込み内容を確認し、「解約を完了する」をタップする</h4>
+                <p class="u-Adjust_Mt-16 c-Txt_Emp-02 c-Txt_Normal-s">※「解約を完了する」をタップすると解約が完了します。解約のキャンセルは出来ませんのでご注意ください。</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-06.png" alt="7. お申込み内容を確認し、「解約を完了する」をタップする" width="300" height="337" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">8. 解約完了画面を確認する</h4>
+                <p class="u-Adjust_Mt-16">お手続きが完了しましたら、「解約手続き完了」と表示されます。また、ご登録のメールアドレス宛に「解約完了のお知らせ」メールをお送りいたします。</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-07.png" alt="8. 解約完了画面を確認する" width="300" height="403" class="c-Img_Capture">
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="c-Tab_Panel" id="tab-method-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-method-menu2">
+            <p class="u-Adjust_Mt-16">※アプリが最新バージョンでない場合、一部機能が利用できなかったり、ご案内した内容や見た目が異なる場合があります。その場合は、アプリのバージョンをアップデートいただくか、Web版のmy 楽天モバイルをご利用ください</p>
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイルを起動する</h4>
+                <div class="c-Box_App u-Adjust_Mt-16">
+                  <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル" width="96" height="96"></div>
+                  <div class="c-Box_App-txt">
+                    <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                    <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                    <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Layout_Contract_App-link">
+                      <li class="<%= namespace %>-Layout_Contract_App-link-item">
+                        <div><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" rel="noopener noreferrer"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-googleplay.png" width="162" height="48" alt="Google Play"></a></div>
+                        <div><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank" rel="noopener noreferrer"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-appstore.png" width="131" height="48" alt="Apple Store"></a></div>
+                      </li>
+                      <li>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular"><span>詳細を見る</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 解約したい回線（Rakuten Turbo#回線名）が表示されていることを確認する</h4>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-02-01.png" alt="2. 解約したい回線（Rakuten Turbo#回線名）が表示されていることを確認する" width="300" height="599" class="c-Img_Capture">
+                </div>
+                <p class="u-Adjust_Mt-24 c-Txt_Cap">※楽天モバイルやRakuten Turboを複数回線ご契約中の方は、画面上部の「電話番号」または「Rakuten Turbo #回線名」をタップすると、ご契約中の回線を切り替えられます。</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-02-02.png" alt="2. 解約したい回線（Rakuten Turbo#回線名）が表示されていることを確認する" width="300" height="498" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 「その他のお手続き」をタップし、「解約」をタップする</h4>
+                <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-03-01.png" alt="3. 「その他のお手続き」をタップし、「解約」をタップする" width="300" height="654" class="c-Img_Capture">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-03-02-240215.png" alt="3. 「その他のお手続き」をタップし、「解約」をタップする" width="300" height="457" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. 注意事項を確認し、「次へ進む」をタップする</h4>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-04.png" alt="4. 注意事項を確認し、「次へ進む」をタップする" width="300" height="527" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. ワンタイムパスワードを入力し、「認証する」をタップする</h4>
+                <p class="c-Txt_Cap u-Adjust_Mt-24">※ワンタイムパスワードは、ご登録されているメールアドレス宛にお送りする「[楽天モバイル]ワンタイムパスワード発行完了のお知らせ」というメールに記載されています。<br>
+                ※メールが届かないなど、ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt-inline" data-lid_no="02">こちら</a>をご参照ください</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-08.png" alt="5. ワンタイムパスワードを入力し、「認証する」をタップする" width="300" height="527" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">6. アンケートに回答し、「次へ進む」をタップする</h4>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-05.png" alt="6. アンケートに回答し、「次へ進む」をタップする" width="300" height="660" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">7. お申し込み内容を確認し、「解約を完了する」をタップする</h4>
+                <p class="u-Adjust_Mt-16 c-Txt_Emp-02 c-Txt_Normal-s">※「解約を完了する」をタップすると解約が完了します。解約のキャンセルは出来ませんのでご注意ください。</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-06.png" alt="7. お申し込み内容を確認し、「解約を完了する」をタップする" width="300" height="337" class="c-Img_Capture">
+                </div>
+              </li>
+              <li>
+                <h4 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">8. 解約完了画面を確認する</h4>
+                <p class="u-Adjust_Mt-16">お手続きが完了しましたら、「回線の解約手続き完了」と表示されます。 また、ご登録のメールアドレス宛に「解約完了のお知らせ」メールをお送りいたします。</p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/cancel/cap-07.png" alt="8. 解約完了画面を確認する" width="300" height="403" class="c-Img_Capture">
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <p class="u-Adjust_Mt-16">以上で完了です。</p>
+      </section>
+
+      <section id="cancellation02" class="u-Adjust_Mt-40">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">ご契約者がお亡くなりになった場合</h3>
+        <p class="u-Adjust_Mt-16">書面によるお手続きが必要です。</p>
+        <p>詳細は以下をご確認ください。</p>
+        <div>
+          <a href="<%= sitepath %>faq/detail/10000638/" class="c-Link_Txt-inline">ご契約者がお亡くなりになった場合の解約手続きを見る<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </section>
+
+      <section id="cancellation03" class="u-Adjust_Mt-40">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">初期契約解除を行いたい</h3>
+        <p class="u-Adjust_Mt-16">書面にてお手続きが必要です。</p>
+        <p>詳細は以下をご確認ください。</p>
+        <div>
+          <a href="<%= sitepath %>internet/turbo/support/contract/initial-contract/" class="c-Link_Txt-inline">初期契約解除についてを見る<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </section>
+
+      <section id="cancellation04" class="u-Adjust_Mt-40">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">お申し込みをキャンセルしたい（利用開始前）</h3>
+        <p class="u-Adjust_Mt-16">製品発送前のお客様はmy 楽天モバイルからキャンセルが可能です。お手続き方法は以下のページをご確認ください。</p>
+        <p>なお、製品発送後のキャンセルについては条件があります。</p>
+        <div>
+          <a href="<%= sitepath %>faq/detail/10000588/" class="c-Link_Txt-inline">キャンセルのお手続き方法を見る<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/internet/turbo/support/_smallcategory-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

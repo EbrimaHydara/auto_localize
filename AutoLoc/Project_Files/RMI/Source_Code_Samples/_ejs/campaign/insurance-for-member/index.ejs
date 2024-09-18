@@ -1,0 +1,1144 @@
+<% const pagetitle = "【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "insurance-for-member" -%>
+<% const information = {
+  campaignState:'finish',
+  hiddenItem:'false',
+  campaignFinishSchedule:'2023年9月29日'
+}; %>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント',
+  keywords: '',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/insurance-for-member/insurance-for-member.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/_entry-button/rex-overwrite_v2.css?20240424">
+<%_  if (information.campaignState !== 'finish') { _%>
+<%- include('/inc/_saikyo-css') %>
+<%_ } _%>
+<!-- ReX Campaign Button: stylesheet -->
+<link rel="stylesheet" href="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/css/main.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script defer="defer" src="https://r.r10s.jp/com/js/c/common/entry_button/1.1/entry_button-1.1.0.min.js"></script>
+<link rel="dns-prefetch" href="https://cdn.rex.contents.rakuten.co.jp">
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Layout-Label">
+      <ul class="c-Label_List <%= namespace %>-Layout-Label_List">
+        <li class="c-Label_Normal">ご契約者様限定</li>
+        <li class="c-Label_Normal">エントリー必要</li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Hero_Return">
+      <div class="l-System_Container <%= namespace %>-Hero_Container">
+        <div class="<%= namespace %>-Hero_Main">
+          <h1><img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-heading-pc.png?230329" alt="楽天モバイル×楽天生命 楽天モバイル 楽天生命にご契約中の方へ 毎月エントリーで毎月もらえる 600ポイントプレゼント！" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-heading-sp.png?230329" alt="楽天モバイル×楽天生命 楽天モバイル 楽天生命にご契約中の方へ 毎月エントリーで毎月もらえる 600ポイントプレゼント！" class="<%= namespace %>-Utility_Img-sp"></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Body">
+      <div class="l-System_Container">
+        <% if (information.campaignState == 'finish') { %>
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= information.campaignFinishSchedule %>をもちまして終了いたしました。<br>
+          このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+        <% } else { %>
+          <!-- else -->
+        <% } %>
+        <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+          <li><span>※</span>本キャンペーンは毎月開催しますが、予告なく内容の変更、中止もしくは延長させていただく場合があります。</li>
+          <li><span>※</span>付与日を含めて6カ月の期間限定ポイントです。</li>
+        </ul>
+      </div>
+
+      <div class="u-Adjust_Mt-16">
+      <% if (information.campaignState == 'finish') { %>
+      <% } else { %>
+        <!-- else -->
+        <div id="first_entry_button" class="<%= namespace %>-Layout_Entry-Area">
+          <p class="c-Txt_Emp-02 u-Adjust_Align-center">エントリー期間：2023年8月31日（木）10:00～2023年9月29日（金）9:59</p>
+          <!-- mounting point for button 1 --><div id="rex-ceb-01" class="campaign-Rexoverwrite"></div>
+          <div id="js-trigger"></div>
+        </div>
+      <% } %>
+
+        <div class="info_anchor">
+          <div class="info_anchor_inner l-System_Container">
+            <ul>
+              <li class="u-Adjust_Mt-8"><a href="#info-content" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>楽天ポイント利用でおトク！</a></li>
+              <li class="u-Adjust_Mt-8"><a href="#campaign-rule" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="l-System_Container">
+        <div class="campaign_conditions u-Adjust_Mt-40">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">キャンペーンの<span class="txt_nl">達成条件</span></h2>
+          <p class="u-Adjust_Mt-16">本キャンペーンには達成条件が設定されています。詳細は<a href="#campaign-rule" class="js-scroll">キャンペーンルール</a>をご確認ください。</p>
+
+          <ul class="conditions_flow u-Adjust_Mt-16">
+            <li>
+              <div class="conditions_img">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-02-sp.png?230329">
+                  <img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-02.png?230329" alt="このページからエントリー">
+                </picture>
+              </div>
+              <p class="u-Adjust_Align-center u-Adjust_Mt-8"><a href="#first_entry_button" class="c-Link_Txt-inline"><span class="c-Icon_Arrow-up-l"></span>エントリーはこちら</a></p>
+            </li>
+            <li>
+              <div class="conditions_icon"><img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-01.png?230329" alt="＋"></div>
+              <div class="conditions_img">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-03-sp_230601.png?230601">
+                  <img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-03_230601.png?230601" alt="Rakuten最強プランにご契約中">
+                </picture>
+              </div>
+              <p class="u-Adjust_Align-left u-Adjust_Mt-8">※キャンペーン期間内に、新規でご契約の方も対象となります。<br>
+                詳細は<a href="#campaign-rule" class="js-scroll">キャンペーンルール</a>をご確認ください。</p>
+              <p class="u-Adjust_Align-center u-Adjust_Mt-8"><a href="#campaign-flow" class="js-scroll c-Link_Txt-inline"><span class="c-Icon_Arrow-down-l"></span>お申し込みはこちら</a></p>
+            </li>
+            <li>
+              <div class="conditions_icon"><img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-01.png?230329" alt="＋"></div>
+              <div class="conditions_img">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-04-sp.png?230329">
+                  <img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-04.png?230329" alt="楽天生命にご契約中">
+                </picture>
+              </div>
+              <p class="c-Txt_Emp-02 u-Adjust_Align-left u-Adjust_Mt-8">※2023年11月1日（水）時点で契約されている方が対象となります。</p>
+              <p class="u-Adjust_Align-left u-Adjust_Mt-8">※対象の生命保険は<a href="#campaign-rule" class="js-scroll">キャンペーンルール</a>をご確認ください。</p>
+              <p class="u-Adjust_Align-center u-Adjust_Mt-8"><a href="#insurance-contract" class="js-scroll c-Link_Txt-inline"><span class="c-Icon_Arrow-down-l"></span>楽天生命契約情報の確認</a></p>
+            </li>
+          </ul>
+
+          <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+            <img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-conditions-05.png?230329" alt="">
+          </div>
+          <p class="conditions_achievement c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-8">条件を達成して<span class="txt-nl">600ポイントGET！</span></p>
+          <p class="align_center_pc c-Txt_Cap u-Adjust_Mt-8">※付与日から6カ月間有効の期間限定ポイントとなります。</p>
+        </div>
+
+        <div class="u-Adjust_Align-center u-Adjust_Mt-48">
+          <p class="c-Txt_Emp-01">＼ 楽天モバイルのお申し込みはこちら ／</p>
+          <div class="<%= namespace %>-Layout_Entrycompleted u-Adjust_Mt-16">
+            <div><a href="<%= sitepath %>guide/application/?lid-r=campaign_insurance-for-member_guide_application01" class="c-Btn_Primary-large"><span>新規／乗り換え（MNP）お申し込み</span></a></div>
+            <div><a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_insurance-for-member_ms1&mno_migration=1" class="c-Btn_Secondly-large"><span><span class="<%= namespace %>-Layout_Entrycompleted-btn">スーパーホーダイ・組み合わせプランからの</span><br>プラン変更（移行）お申し込み</span></a></div>
+          </div>
+          <p id="insurance-contract" class="c-Txt_Emp-01 u-Adjust_Mt-24">＼ 楽天生命のご契約内容はこちら ／</p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <div><a href="https://hoken.rakuten.co.jp/applicant/" class="c-Btn_Secondly-large" target="_blank">楽天生命契約情報の確認<span class="c-Icon_New-window-l"></span></a></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="info-content" class="u-Adjust_Mt-40 info_area">
+        <div class="l-System_Container">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">楽天ポイント利用で<span class="txt-nl">月々のお支払いがおトク！</span></h2>
+          <p class="align_center_pc u-Adjust_Mt-16">本キャンペーンで獲得した楽天ポイントは、楽天モバイルの月々のお支払いにご利用いただけます。<br>
+            固定費のお支払いに役立ち、家計節約の味方に！</p>
+
+          <div class="info_inner u-Adjust_Mt-32">
+            <h2 class="c-Heading_Lv3 u-Adjust_Align-center">例：本キャンペーンに6回（6カ月）エントリーし、3,600ポイント獲得した場合</h2>
+            <div class="info_contents u-Adjust_Align-center u-Adjust_Mt-16">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-01-sp.png?230329">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-01.png?230329" alt="ポイント利用分を引いた差額をお支払いで、6カ月分のお支払いのうち3カ月分は無料！">
+              </picture>
+            </div>
+            <p class="c-Txt_Cap u-Adjust_Mt-24 align_center_pc">※一度にご利用できるポイント数は1～30,000（ダイヤモンド会員の方は～500,000） ポイントです。</p>
+          </div>
+          <div class="info_btn u-Adjust_Align-center u-Adjust_Mt-32">
+            <a href="<%= sitepath %>fee/simulation/?l-id=campaign_insurance-for-member_fee_un-limit_simulation" class="c-Btn_Regular <%= namespace %>-Flow_List-button">プラン料金シミュレーション</a>
+          </div>
+          <div class="info_btn u-Adjust_Align-center u-Adjust_Mt-32">
+            <a href="<%= sitepath %>guide/point-payment/?tab-list=tab-menu2&l-id=campaign_insurance-for-member_guide_point-payment" class="c-Btn_Regular <%= namespace %>-Flow_List-button">月々のお支払いにポイントを使う方法</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-40 u-Adjust_Align-center" id="campaign-flow">楽天モバイルの<span class="txt-nl">お申し込み方法</span></h2>
+        <div class="<%= namespace %>-Layout_step u-Adjust_Mt-24">
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1" data-ratid="campaign_insurance-for-member_flow-step1" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><span class="c-Txt_Emp-02 step-no">STEP1　</span>楽天モバイルのお申し込み</button>
+            <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1"
+              aria-hidden="true">
+              <ul class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+                <li>
+                  <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-8">
+                    <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                      <img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-flow-01.png?230329" alt="">
+                    </div>
+                    <div>
+                      <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                      <div class="u-Adjust_Mt-8">
+                        <ul class="<%= namespace %>-Flow_List-link c-List_Text-disc">
+                          <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/?l-id=campaign_insurance-for-member_guide_verify" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                          <li class="u-Adjust_Mt-8">楽天ID、パスワード</li>
+                          <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/?l-id=campaign_insurance-for-member_guide_payment" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a>
+                            <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                              <span>※</span>未成年の方のお申し込み方法は<a href="<%= sitepath %>flow/for-minors/?l-id=campaign_insurance-for-member_flow_for-minors">こちら</a>をご確認ください</p>
+                            <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                              <span>※</span>MNPワンストップ未対応の携帯電話会社から乗り換えの方は、MNP予約番号の取得が必要です。MNPワンストップ対象の携帯電話会社は<a href="<%= sitepath %>guide/mnp/#carrier">こちら</a>からご確認ください。</p>
+                            <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                              <span>※</span>ショップでのお手続きは、ワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="<%= namespace %>-Flow_List-step-unlimit u-Adjust_Mt-24 <%= namespace %>-Layout_step-ptn2">
+                <div class="<%= namespace %>-Flow_List-content <%= namespace %>-Flow_List-detail-left">
+                  <div class="<%= namespace %>-Flow_List-detail">
+                    <div class="step-pran-change"><span class="c-Icon_New-user-f c-Txt_Emp-02"></span><h4 class="c-Heading_Lv4 u-Adjust_Mt-8 u-Adjust_Mb-16"> 新規電話番号／他社から乗り換え（MNP）</h4></div>
+                    <p class="u-Adjust_Align-center"><a href="<%= sitepath %>guide/application/?lid-r=campaign_insurance-for-member_guide_application02" class="c-Btn_Primary-large <%= namespace %>-Flow_List-button-secondly u-Adjust_Mt-24"><span>Rakuten最強プランに<br>
+                      申し込む</span></a></p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>fee/saikyo-plan/?l-id=campaign_insurance-for-member_fee_saikyo-plan" class="c-Link_Txt-inline">Rakuten最強プランの詳細<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/flow/application/?l-id=campaign_insurance-for-member_guide_flow_application" class="c-Link_Txt-inline">Rakuten最強プラン<br class="<%= namespace %>-Layout-<%= namespace %>_Sp">お申し込み方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Flow_List-content <%= namespace %>-Flow_List-detail-right">
+                  <div class="<%= namespace %>-Flow_List-detail">
+                    <div class="step-pran-change"><span class="c-Icon_Paper-plane-l c-Txt_Emp-02"></span>
+                    <h4 class="c-Heading_Lv4 u-Adjust_Mt-8 u-Adjust_Mb-16">楽天モバイル（ドコモ・au回線）からプラン変更（移行）</h4></div>
+                    <div class="u-Adjust_Mt-16">
+                      <p class="u-Adjust_Align-center"><a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_insurance-for-member_ms2&mno_migration=1" class="c-Btn_Secondly-large <%= namespace %>-Flow_List-button-secondly u-Adjust_Mt-24"><span>メンバーズステーションから<br>
+                        プラン変更（移行）する</span></a></p>
+                    </div>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/migration/?l-id=campaign_insurance-for-member_guide_migration" class="c-Link_Txt-inline">スーパーホーダイ・組み合わせプラン（※）との比較<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※2020年4月8日に受付終了のドコモ回線・au回線使用プラン</p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/mnp/migration/?l-id=campaign_insurance-for-member_guide_mnp_migration" class="c-Link_Txt-inline">Rakuten最強プランへの移行方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>flow/mvno-user-registration/?l-id=campaign_insurance-for-member_flow_mvno-user-registration" class="c-Link_Txt-inline">利用者登録でご利用中の方の移行方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2" data-ratid="campaign_insurance-for-member_flow-step2" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><span class="c-Txt_Emp-02 step-no">STEP2　</span>「Rakuten最強プラン」 利用開始</button>
+            <div id="accordion-content-2" class="<%= namespace %>-Layout_step-ptn1 c-Accordion_Panel js-Accordion_Panel" role="region"
+              aria-labelledby="accordion-2" aria-hidden="true">
+              <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+                <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                  <img src="<%= sitepath %>assets/img/campaign/insurance-for-member/img-flow-02.png?230329" alt="">
+                </div>
+                <div>
+                  <p class="u-Adjust_Mt-8">期限：2023年10月31日（火）9:59まで</p>
+                  <div class="u-Adjust_Mt-16">
+                    <p class="<%= namespace %>-Layout-insurance-for-member_Sp-center-btn"><a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/?l-id=campaign_insurance-for-member_faq_detail_00001648" class="c-Btn_Regular <%= namespace %>-Flow_List-button"><span>プラン利用開始手順</span></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% if (information.campaignState == 'finish') { %>
+      <% } else { %>
+        <!-- else -->
+        <div id="unlimit-vi-plan" class="u-Adjust_Mt-40">
+          <%- include('/inc/_saikyo') %>
+        </div>
+      <% } %>
+      </div>
+
+    <% if (information.campaignState == 'finish') { %>
+    <% } else { %>
+      <!-- else -->
+      <div class="<%= namespace %>-Layout_Entry-Area u-Adjust_Mt-40">
+        <p class="c-Txt_Emp-02 u-Adjust_Align-center">エントリー期間：2023年8月31日（木）10:00～2023年9月29日（金）9:59</p>
+        <!-- mounting point for button 2 --><div id="rex-ceb-02" class="campaign-Rexoverwrite"></div>
+      </div>
+    <% } %>
+
+      <div class="l-System_Container">
+        <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-40" id="campaign-rule">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-left">【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント　ルール</h2>
+        <% if (information.campaignState == 'finish') { %>
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= information.campaignFinishSchedule %>をもちまして終了いたしました。<br>
+          このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+        <% } else { %>
+          <!-- else -->
+        <% } %>
+          <div class="u-Adjust_Mt-24">
+          <dl class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+            <dt>キャンペーンコード</dt>
+            <dd>
+              <p>1836</p>
+              <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください。</li>
+              </ul>
+            </dd>
+            <dt>キャンペーン期間</dt>
+            <dd>
+              <p class="c-Txt_Emp-01">エントリー期間</p>
+              <p>2023年8月31日（木）10:00～2023年9月29日（金）9:59</p>
+              <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+              <p>- Web　2023年8月31日（木）10:00～2023年9月29日（金）9:59</p>
+              <p>- 店舗（楽天モバイルショップ）2023年8月31日（木）開店～2023年9月28日（木）閉店</p>
+              <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+              <p>2023年10月31日（火）9:59まで</p>
+            </dd>
+            <dt>キャンペーン条件</dt>
+            <dd>
+              <p>上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+              <p>（【1】、【2】、【3】、【4】は順不同）</p>
+              <p class="u-Adjust_Mt-16">【1】本キャンペーンのご案内が届いた方</p>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                <li><span>※</span>ご案内はメール、Push通知のお知らせを予定しております。</li>
+                <li><span>※</span>他の方から転送されたメール、URLリンクは対象外となります。</li>
+              </ul>
+              <p class="u-Adjust_Mt-16">【2】キャンペーンへのエントリー</p>
+              <p class="u-Adjust_Mt-8">エントリー期間内に本キャンペーンページでエントリー</p>
+              <p class="u-Adjust_Mt-16">【3】対象の生命保険をご契約中の方</p>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                <li><span>※</span>2023年11月1日（水）時点で契約されている方が対象となります。</li>
+              </ul>
+              <p class="u-Adjust_Mt-8">＜対象の生命保険＞<br>
+                楽天生命スーパー定期保険<br>
+                楽天生命スーパー終身保険<br>
+                楽天生命スーパー医療保険 戻るんです<br>
+                楽天生命スーパー医療保険<br>
+                楽天生命スーパーたよれる医療保険<br>
+                楽天生命スーパーがん保険<br>
+                楽天生命あんしんプラス（女性サポート）<br>
+                楽天生命のスーパー2000<br>
+                楽天生命認知症保険</p>
+              <p class="u-Adjust_Mt-16">【4】「Rakuten最強プラン」ご利用中の方</p>
+              <p class="u-Adjust_Mt-8">本キャンペーン開始時点で「Rakuten最強プラン」の未契約者である場合は、2023年8月31日（木）10:00～2023年9月29日（金）9:59までに、以下（i）（ii）にて対象となります。</p>
+              <p class="u-Adjust_Mt-8">（i）「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み<br>
+                （1）新規お申し込み<br>
+                （2）他社からの乗り換え（MNP）でお申し込み<br>
+                （3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+              <p class="u-Adjust_Mt-8">（ii）「Rakuten最強プラン」利用開始</p>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li>【プラン利用開始日とは】<br><br>
+                  <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                  （1）楽天モバイル株式会社に配送完了データが通知された日<br>
+                  （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                  <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                  プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                  <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                  プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+              </ul>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span>※</span>ドコモ回線・au回線用プランのスーパーホーダイ、組み合わせプラン、コミコミプランは、本キャンペーンの対象外となります。</li>
+                <li><span>※</span>旧FREETEL SIM、DMM mobile SIMは本キャンペーンの対象外となります。</li>
+                <li><span>※</span>本キャンペーン開始前に、「Rakuten最強プラン」をお申し込みされた方は、エントリー期間内のプラン利用開始が必要です。</li>
+                <li><span>※</span>店頭でのお申し込みは、2023年9月28日（木）閉店までが期限となります。</li>
+              </ul>
+            </dd>
+            <dt>キャンペーン特典 （楽天ポイント）</dt>
+            <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+            <dd>
+              <p>600ポイントプレゼント</p>
+            </dd>
+            <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント付与日</dt>
+            <dd>
+              <p>ポイント付与は2023年11月末ごろになります。</p>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                <li><span>※</span>権利の譲渡はできません。</li>
+              </ul>
+            </dd>
+            <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+            <dd>
+              <p>ポイント付与日を含めて6カ月</p>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+              </ul>
+            </dd>
+            <dt>特典適用対象外</dt>
+            <dd>
+              <p>以下の条件に当てはまる場合は、特典適用対象外となります。</p>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等によりお申し込みキャンセルとなった場合</li>
+                <li><span>※</span>ポイント付与までに楽天会員から退会している場合</li>
+                <li><span>※</span>そのほか、当社が会員として不適格であると合理的な根拠に基づき判断した場合</li>
+                <li><span>※</span>期間内に楽天モバイルの契約者変更（譲渡・承継）を受けた方</li>
+                <li><span>※</span>楽天モバイル株式会社、楽天生命保険株式会社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                <li><span>※</span>キャンペーン開始前に楽天モバイルを解約されている場合</li>
+                <li><span>※</span>エントリーした楽天IDが、楽天モバイル・楽天生命にご登録の楽天IDと同一でない場合</li>
+                <li><span>※</span>対象の保険にお申し込みいただいても、ご契約内容や健康状態によって、お見積り、ご契約できない場合</li>
+                <li><span>※</span>楽天生命が定める基準日において楽天会員を退会されている場合</li>
+                <li><span>※</span>楽天生命が定める基準日において対象保険商品の契約が解約等により有効ではない場合</li>
+              </ul>
+            </dd>
+            <dt>注意事項</dt>
+            <dd>
+              <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください。</li>
+                <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります。</li>
+                <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合や弊社が不正と判断した場合は、特典ポイント付与の対象外となる場合がございます。</li>
+                <li><span>※</span>記載の内容は2023年8月31日（木）時点の情報となります。</li>
+                <li><span>※</span>本キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合があります。</li>
+                <li><span>※</span>本キャンペーン期間内でのポイント付与はおひとり様1回のみ対象です。</li>
+                <li><span>※</span>ポイント付与のため、キャンペーン対象者様の楽天IDを楽天モバイル株式会社と楽天生命株式会社間で受け渡しいたします。あらかじめご了承ください。</li>
+              </ul>
+            </dd>
+          </dl>
+          </div>
+        </div>
+
+        <div class="c-Accordion u-Adjust_Mt-40" id="past-campaigns">
+          <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>過去のキャンペーン</button>
+          <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+            <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-0">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント　ルール</div>
+              <div class="u-Adjust_Mt-24">
+              <dl class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                <dt>キャンペーンコード</dt>
+                <dd>
+                  <p>1836</p>
+                  <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                    <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン期間</dt>
+                <dd>
+                  <p class="c-Txt_Emp-01">エントリー期間</p>
+                  <p>2023年7月31日（月）10:00～2023年8月31日（木）9:59</p>
+                  <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                  <p>- Web　2023年7月31日（月）10:00～2023年8月31日（木）9:59</p>
+                  <p>- 店舗（楽天モバイルショップ）2023年7月31日（月）開店～2023年8月30日（水）閉店</p>
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                  <p>2023年9月30日（土）9:59まで</p>
+                </dd>
+                <dt>キャンペーン条件</dt>
+                <dd>
+                  <p>上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                  <p>（【1】、【2】、【3】、【4】は順不同）</p>
+                  <p class="u-Adjust_Mt-16">【1】本キャンペーンのご案内が届いた方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>ご案内はメール、Push通知のお知らせを予定しております。</li>
+                    <li><span>※</span>他の方から転送されたメール、URLリンクは対象外となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-16">【2】キャンペーンへのエントリー</p>
+                  <p class="u-Adjust_Mt-8">エントリー期間内に本キャンペーンページでエントリー</p>
+                  <p class="u-Adjust_Mt-16">【3】対象の生命保険をご契約中の方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>2023年10月1日（日）時点で契約されている方が対象となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-8">＜対象の生命保険＞<br>
+                    楽天生命スーパー定期保険<br>
+                    楽天生命スーパー終身保険<br>
+                    楽天生命スーパー医療保険 戻るんです<br>
+                    楽天生命スーパー医療保険<br>
+                    楽天生命スーパーたよれる医療保険<br>
+                    楽天生命スーパーがん保険<br>
+                    楽天生命あんしんプラス（女性サポート）<br>
+                    楽天生命のスーパー2000<br>
+                    楽天生命認知症保険</p>
+                  <p class="u-Adjust_Mt-16">【4】「Rakuten最強プラン」ご利用中の方</p>
+                  <p class="u-Adjust_Mt-8">本キャンペーン開始時点で「Rakuten最強プラン」の未契約者である場合は、2023年7月31日（月）10:00～2023年8月31日（木）9:59までに、以下（i）（ii）にて対象となります。</p>
+                  <p class="u-Adjust_Mt-8">（i）「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み<br>
+                    （1）新規お申し込み<br>
+                    （2）他社からの乗り換え（MNP）でお申し込み<br>
+                    （3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                  <p class="u-Adjust_Mt-8">（ii）「Rakuten最強プラン」利用開始</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li>【プラン利用開始日とは】<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                      （1）楽天モバイル株式会社に配送完了データが通知された日<br>
+                      （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                  </ul>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>ドコモ回線・au回線用プランのスーパーホーダイ、組み合わせプラン、コミコミプランは、本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>旧FREETEL SIM、DMM mobile SIMは本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>本キャンペーン開始前に、「Rakuten最強プラン」をお申し込みされた方は、エントリー期間内のプラン利用開始が必要です。</li>
+                    <li><span>※</span>店頭でのお申し込みは、2023年8月30日（水）閉店までが期限となります。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン特典 （楽天ポイント）</dt>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                <dd>
+                  <p>600ポイントプレゼント</p>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント付与日</dt>
+                <dd>
+                  <p>ポイント付与は2023年10月末ごろになります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                    <li><span>※</span>権利の譲渡はできません。</li>
+                  </ul>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                <dd>
+                  <p>ポイント付与日を含めて6カ月</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                    <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                  </ul>
+                </dd>
+                <dt>特典適用対象外</dt>
+                <dd>
+                  <p>以下の条件に当てはまる場合は、特典適用対象外となります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                    <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等によりお申し込みキャンセルとなった場合</li>
+                    <li><span>※</span>ポイント付与までに楽天会員から退会している場合</li>
+                    <li><span>※</span>そのほか、当社が会員として不適格であると合理的な根拠に基づき判断した場合</li>
+                    <li><span>※</span>期間内に楽天モバイルの契約者変更（譲渡・承継）を受けた方</li>
+                    <li><span>※</span>楽天モバイル株式会社、楽天生命保険株式会社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                    <li><span>※</span>キャンペーン開始前に楽天モバイルを解約されている場合</li>
+                    <li><span>※</span>エントリーした楽天IDが、楽天モバイル・楽天生命にご登録の楽天IDと同一でない場合</li>
+                    <li><span>※</span>対象の保険にお申し込みいただいても、ご契約内容や健康状態によって、お見積り、ご契約できない場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において楽天会員を退会されている場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において対象保険商品の契約が解約等により有効ではない場合</li>
+                  </ul>
+                </dd>
+                <dt>注意事項</dt>
+                <dd>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                    <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください。</li>
+                    <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります。</li>
+                    <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合や弊社が不正と判断した場合は、特典ポイント付与の対象外となる場合がございます。</li>
+                    <li><span>※</span>記載の内容は2023年7月31日（月）時点の情報となります。</li>
+                    <li><span>※</span>本キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                    <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合があります。</li>
+                    <li><span>※</span>本キャンペーン期間内でのポイント付与はおひとり様1回のみ対象です。</li>
+                    <li><span>※</span>ポイント付与のため、キャンペーン対象者様の楽天IDを楽天モバイル株式会社と楽天生命株式会社間で受け渡しいたします。あらかじめご了承ください。</li>
+                  </ul>
+                </dd>
+              </dl>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント　ルール</div>
+              <div class="u-Adjust_Mt-24">
+              <dl class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                <dt>キャンペーンコード</dt>
+                <dd>
+                  <p>1836</p>
+                  <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                    <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン期間</dt>
+                <dd>
+                  <p class="c-Txt_Emp-01">エントリー期間</p>
+                  <p>2023年6月30日（金）10:00～2023年7月31日（月）9:59</p>
+                  <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                  <p>- Web　2023年6月30日（金）10:00～2023年7月31日（月）9:59</p>
+                  <p>- 店舗（楽天モバイルショップ） 2023年6月30日（金）開店～2023年7月30日（日）閉店</p>
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                  <p>2023年8月31日（木）9:59まで</p>
+                </dd>
+                <dt>キャンペーン条件</dt>
+                <dd>
+                  <p>上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                  <p>（【1】、【2】、【3】、【4】は順不同）</p>
+                  <p class="u-Adjust_Mt-16">【1】本キャンペーンのご案内が届いた方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>ご案内はメール、Push通知のお知らせを予定しております。</li>
+                    <li><span>※</span>他の方から転送されたメール、URLリンクは対象外となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-16">【2】キャンペーンへのエントリー</p>
+                  <p class="u-Adjust_Mt-8">エントリー期間内に本キャンペーンページでエントリー</p>
+                  <p class="u-Adjust_Mt-16">【3】対象の生命保険をご契約中の方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>2023年9月1日（金）時点で契約されている方が対象となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-8">＜対象の生命保険＞<br>
+                    楽天生命スーパー定期保険<br>
+                    楽天生命スーパー終身保険<br>
+                    楽天生命スーパー医療保険 戻るんです<br>
+                    楽天生命スーパー医療保険<br>
+                    楽天生命スーパーたよれる医療保険<br>
+                    楽天生命スーパーがん保険<br>
+                    楽天生命あんしんプラス（女性サポート）<br>
+                    楽天生命のスーパー2000<br>
+                    楽天生命認知症保険</p>
+                  <p class="u-Adjust_Mt-16">【4】「Rakuten最強プラン」ご利用中の方</p>
+                  <p class="u-Adjust_Mt-8">本キャンペーン開始時点で「Rakuten最強プラン」の未契約者である場合は、2023年6月30日（金）10:00～2023年7月31日（月）9:59までに、以下（i）（ii）にて対象となります。</p>
+                  <p class="u-Adjust_Mt-8">（i）「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み<br>
+                    （1）新規お申し込み<br>
+                    （2）他社からの乗り換え（MNP）でお申し込み<br>
+                    （3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                  <p class="u-Adjust_Mt-8">（ii）「Rakuten最強プラン」利用開始</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li>【プラン利用開始日とは】<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                      （1）楽天モバイル株式会社に配送完了データが通知された日<br>
+                      （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                  </ul>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>ドコモ回線・au回線用プランのスーパーホーダイ、組み合わせプラン、コミコミプランは、本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>旧FREETEL SIM、DMM mobile SIMは本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>本キャンペーン開始前に、「Rakuten最強プラン」をお申し込みされた方は、エントリー期間内のプラン利用開始が必要です。</li>
+                    <li><span>※</span>店頭でのお申し込みは、2023年7月30日（日）閉店までが期限となります。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン特典 （楽天ポイント）</dt>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                <dd>
+                  <p>600ポイントプレゼント</p>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント付与日</dt>
+                <dd>
+                  <p>ポイント付与は2023年9月末ごろになります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                    <li><span>※</span>権利の譲渡はできません。</li>
+                  </ul>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                <dd>
+                  <p>ポイント付与日を含めて6カ月</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                    <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                  </ul>
+                </dd>
+                <dt>特典適用対象外</dt>
+                <dd>
+                  <p>以下の条件に当てはまる場合は、特典適用対象外となります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                    <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等によりお申し込みキャンセルとなった場合</li>
+                    <li><span>※</span>ポイント付与までに楽天会員から退会している場合</li>
+                    <li><span>※</span>そのほか、当社が会員として不適格であると合理的な根拠に基づき判断した場合</li>
+                    <li><span>※</span>期間内に楽天モバイルの契約者変更（譲渡・承継）を受けた方</li>
+                    <li><span>※</span>楽天モバイル株式会社、楽天生命保険株式会社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                    <li><span>※</span>キャンペーン開始前に楽天モバイルを解約されている場合</li>
+                    <li><span>※</span>エントリーした楽天IDが、楽天モバイル・楽天生命にご登録の楽天IDと同一でない場合</li>
+                    <li><span>※</span>対象の保険にお申し込みいただいても、ご契約内容や健康状態によって、お見積り、ご契約できない場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において楽天会員を退会されている場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において対象保険商品の契約が解約等により有効ではない場合</li>
+                  </ul>
+                </dd>
+                <dt>注意事項</dt>
+                <dd>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                    <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください。</li>
+                    <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります。</li>
+                    <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合や弊社が不正と判断した場合は、特典ポイント付与の対象外となる場合がございます。</li>
+                    <li><span>※</span>記載の内容は2023年6月30日（金）時点の情報となります。</li>
+                    <li><span>※</span>本キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                    <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合があります。</li>
+                    <li><span>※</span>本キャンペーン期間内でのポイント付与はおひとり様1回のみ対象です。</li>
+                    <li><span>※</span>ポイント付与のため、キャンペーン対象者様の楽天IDを楽天モバイル株式会社と楽天生命株式会社間で受け渡しいたします。あらかじめご了承ください。</li>
+                  </ul>
+                </dd>
+              </dl>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント　ルール</div>
+              <div class="u-Adjust_Mt-24">
+              <dl class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                <dt>キャンペーンコード</dt>
+                <dd>
+                  <p>1836</p>
+                  <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                    <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン期間</dt>
+                <dd>
+                  <p class="c-Txt_Emp-01">エントリー期間</p>
+                  <p>2023年5月31日（水）10:00～2023年6月30日（金）9:59</p>
+                  <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                  <p>- Web　2023年5月31日（水）10:00～2023年6月30日（金）9:59</p>
+                  <p>- 店舗（楽天モバイルショップ）2023年5月31日（水）開店～2023年6月29日（木）閉店</p>
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                  <p>2023年7月31日（月）9:59まで</p>
+                </dd>
+                <dt>キャンペーン条件</dt>
+                <dd>
+                  <p>上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                  <p>（【1】、【2】、【3】、【4】は順不同）</p>
+                  <p class="u-Adjust_Mt-16">【1】本キャンペーンのご案内が届いた方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>ご案内はメール、Push通知のお知らせを予定しております。</li>
+                    <li><span>※</span>他の方から転送されたメール、URLリンクは対象外となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-16">【2】キャンペーンへのエントリー</p>
+                  <p class="u-Adjust_Mt-8">エントリー期間内に本キャンペーンページでエントリー</p>
+                  <p class="u-Adjust_Mt-16">【3】対象の生命保険をご契約中の方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>2023年8月1日（火）時点で契約されている方が対象となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-8">＜対象の生命保険＞<br>
+                    楽天生命スーパー定期保険<br>
+                    楽天生命スーパー終身保険<br>
+                    楽天生命スーパー医療保険 戻るんです<br>
+                    楽天生命スーパー医療保険<br>
+                    楽天生命スーパーたよれる医療保険<br>
+                    楽天生命スーパーがん保険<br>
+                    楽天生命あんしんプラス（女性サポート）<br>
+                    楽天生命のスーパー2000<br>
+                    楽天生命認知症保険</p>
+                  <p class="u-Adjust_Mt-16">【4】「Rakuten最強プラン」ご利用中の方</p>
+                  <p class="u-Adjust_Mt-8">本キャンペーン開始時点で「Rakuten最強プラン」の未契約者である場合は、2023年5月31日（水）10:00～2023年6月30日（金）9:59までに、以下（i）（ii）にて対象となります。</p>
+                  <p class="u-Adjust_Mt-8">（i）「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み<br>
+                    （1）新規お申し込み<br>
+                    （2）他社からの乗り換え（MNP）でお申し込み<br>
+                    （3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                  <p class="u-Adjust_Mt-8">（ii）「Rakuten最強プラン」の利用開始されている方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li>【プラン利用開始日とは】<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                      （1）楽天モバイル株式会社に配送完了データが通知された日<br>
+                      （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                  </ul>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>ドコモ回線・au回線用プランのスーパーホーダイ、組み合わせプラン、コミコミプランは、本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>旧FREETEL SIM、DMM mobile SIMは本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>本キャンペーン開始前に、「Rakuten最強プラン」をお申し込みされた方は、エントリー期間内のプラン利用開始が必要です。</li>
+                    <li><span>※</span>「Rakuten UN-LIMIT VII」にご契約された方は、6月1日（木）に自動で「Rakuten最強プラン」にプラン移行いたします。</li>
+                    <li><span>※</span>店頭でのお申し込みは、2023年6月29日（木）閉店までが期限となります。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン特典 （楽天ポイント）</dt>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                <dd>
+                  <p>600ポイントプレゼント</p>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント付与日</dt>
+                <dd>
+                  <p>ポイント付与は2023年8月末ごろになります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                    <li><span>※</span>権利の譲渡はできません。</li>
+                  </ul>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                <dd>
+                  <p>ポイント付与日を含めて6カ月</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                    <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                  </ul>
+                </dd>
+                <dt>特典適用対象外</dt>
+                <dd>
+                  <p>以下の条件に当てはまる場合は、特典適用対象外となります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                    <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等によりお申し込みキャンセルとなった場合</li>
+                    <li><span>※</span>ポイント付与までに楽天会員から退会している場合</li>
+                    <li><span>※</span>そのほか、当社が会員として不適格であると合理的な根拠に基づき判断した場合</li>
+                    <li><span>※</span>期間内に楽天モバイルの契約者変更（譲渡・承継）を受けた方</li>
+                    <li><span>※</span>楽天モバイル株式会社、楽天生命保険株式会社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                    <li><span>※</span>キャンペーン開始前に楽天モバイルを解約されている場合</li>
+                    <li><span>※</span>エントリーした楽天IDが、楽天モバイル・楽天生命にご登録の楽天IDと同一でない場合</li>
+                    <li><span>※</span>対象の保険にお申し込みいただいても、ご契約内容や健康状態によって、お見積り、ご契約できない場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において楽天会員を退会されている場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において対象保険商品の契約が解約等により有効ではない場合</li>
+                  </ul>
+                </dd>
+                <dt>注意事項</dt>
+                <dd>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                    <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください。</li>
+                    <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります。</li>
+                    <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります。</li>
+                    <li><span>※</span>記載の内容は2023年6月1日（木）時点の情報となります。</li>
+                    <li><span>※</span>本キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                    <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合があります。</li>
+                    <li><span>※</span>本キャンペーン期間内でのポイント付与はおひとり様1回のみ対象です。</li>
+                    <li><span>※</span>ポイント進呈のため、キャンペーン対象者様の楽天IDを楽天モバイル株式会社と楽天生命株式会社間で受け渡しいたします。あらかじめご了承ください。</li>
+                  </ul>
+                </dd>
+              </dl>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント　ルール</div>
+              <div class="u-Adjust_Mt-24">
+              <dl class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                <dt>キャンペーンコード</dt>
+                <dd>
+                  <p>1836</p>
+                  <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                    <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン期間</dt>
+                <dd>
+                  <p class="c-Txt_Emp-01">エントリー期間</p>
+                  <p>2023年4月28日（金）10:00～2023年5月31日（水）9:59</p>
+                  <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                  <p>- Web　2023年4月28日（金）10:00～2023年5月31日（水）9:59</p>
+                  <p>- 店舗（楽天モバイルショップ）2023年4月28日（金）開店～2023年5月30日（火）閉店</p>
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                  <p>2023年6月30日（金）9:59まで</p>
+                </dd>
+                <dt>キャンペーン条件</dt>
+                <dd>
+                  <p>上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                  <p>（【1】、【2】、【3】、【4】は順不同）</p>
+                  <p class="u-Adjust_Mt-16">【1】本キャンペーンのご案内が届いた方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>ご案内はメール、Push通知のお知らせを予定しております。</li>
+                    <li><span>※</span>他の方から転送されたメール、URLリンクは対象外となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-16">【2】キャンペーンへのエントリー</p>
+                  <p class="u-Adjust_Mt-8">エントリー期間内に本キャンペーンページでエントリー</p>
+                  <p class="u-Adjust_Mt-16">【3】対象の生命保険をご契約中の方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>2023年7月1日時点で契約されている方が対象となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-8">＜対象の生命保険＞<br>
+                    楽天生命スーパー定期保険<br>
+                    楽天生命スーパー終身保険<br>
+                    楽天生命スーパー医療保険 戻るんです<br>
+                    楽天生命スーパー医療保険<br>
+                    楽天生命スーパーたよれる医療保険<br>
+                    楽天生命スーパーがん保険<br>
+                    楽天生命あんしんプラス（女性サポート）<br>
+                    楽天生命のスーパー2000<br>
+                    楽天生命認知症保険</p>
+                  <p class="u-Adjust_Mt-16">【4】「Rakuten UN-LIMIT VII」ご利用中の方</p>
+                  <p class="u-Adjust_Mt-8">本キャンペーン開始時点で「Rakuten UN-LIMIT VII」の未契約者である場合は、以下（i）（ii）にて対象となります。</p>
+                  <p class="u-Adjust_Mt-8">（i）「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み<br>
+                    （1）新規お申し込み<br>
+                    （2）他社からの乗り換え（MNP）でお申し込み<br>
+                    （3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                  <p class="u-Adjust_Mt-8">（ii）「Rakuten UN-LIMIT VII」のプラン利用開始されている方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li>【プラン利用開始日とは】<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                      （1）楽天モバイル株式会社に配送完了データが通知された日<br>
+                      （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                  </ul>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>ドコモ回線・au回線用プランのスーパーホーダイ、組み合わせプラン、コミコミプランは、本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>旧FREETEL SIM、DMM mobile SIMは本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>本キャンペーン開始前に、「Rakuten UN-LIMIT VII」をお申し込みされた方は、エントリー期間内のプラン利用開始が必要です。</li>
+                    <li><span>※</span>店頭でのお申し込みは、2023年5月30日（火）閉店までが期限となります。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン特典 （楽天ポイント）</dt>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                <dd>
+                  <p>600ポイントプレゼント</p>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント付与日</dt>
+                <dd>
+                  <p>ポイント付与は2023年7月末ごろになります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                    <li><span>※</span>権利の譲渡はできません。</li>
+                  </ul>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                <dd>
+                  <p>ポイント付与日を含めて6カ月</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                    <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                  </ul>
+                </dd>
+                <dt>特典適用対象外</dt>
+                <dd>
+                  <p>以下の条件に当てはまる場合は、特典適用対象外となります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                    <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等によりお申し込みキャンセルとなった場合</li>
+                    <li><span>※</span>ポイント付与までに楽天会員から退会している場合</li>
+                    <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                    <li><span>※</span>期間内に楽天モバイルの契約者変更（譲渡・承継）を受けた方</li>
+                    <li><span>※</span>楽天モバイル株式会社、楽天生命保険株式会社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                    <li><span>※</span>キャンペーン開始前に楽天モバイルを解約されている場合</li>
+                    <li><span>※</span>エントリーした楽天IDが、楽天モバイル・楽天生命にご登録の楽天IDと同一でない場合</li>
+                    <li><span>※</span>対象の保険にお申し込みいただいても、ご契約内容や健康状態によって、お見積り、ご契約できない場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において楽天会員を退会されている場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において対象保険商品の契約が解約等により有効ではない場合</li>
+                  </ul>
+                </dd>
+                <dt>注意事項</dt>
+                <dd>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                    <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください。</li>
+                    <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります。</li>
+                    <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります。</li>
+                    <li><span>※</span>記載の内容は2023年4月28日（金）時点の情報となります。</li>
+                    <li><span>※</span>本キャンペーン参加にかかる費用 （通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                    <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合があります。</li>
+                    <li><span>※</span>本キャンペーン期間内でのポイント付与はおひとり様1回のみ対象です。</li>
+                    <li><span>※</span>店舗毎にゴールデンウィーク期間の営業時間が異なりますので、事前に最寄り店舗の営業時間をご確認下さい。</li>
+                    <li><span>※</span>ポイント進呈のため、キャンペーン対象者様の楽天IDを楽天モバイル株式会社と楽天生命株式会社間で受け渡しいたします。あらかじめご了承ください。</li>
+                  </ul>
+                </dd>
+              </dl>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Rule">
+              <div class="c-Txt_Emp-01">【毎月開催】楽天モバイル×楽天生命ご契約者様限定！エントリーで600ポイントプレゼント　ルール</div>
+              <div class="u-Adjust_Mt-24">
+              <dl class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                <dt>キャンペーンコード</dt>
+                <dd>
+                  <p>1836</p>
+                  <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                    <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン期間</dt>
+                <dd>
+                  <p class="c-Txt_Emp-01">エントリー期間</p>
+                  <p>2023年3月29日（水）10:00～2023年4月28日（金）9:59</p>
+                  <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                  <p>- Web　2023年3月29日（水）10:00～2023年4月28日（金）9:59</p>
+                  <p>- 店舗（楽天モバイルショップ）2023年3月29日（水）開店～2023年4月27日（木）閉店</p>
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                  <p>2023年5月28日（日）9:59まで</p>
+                </dd>
+                <dt>キャンペーン条件</dt>
+                <dd>
+                  <p>上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                  <p>（【1】、【2】、【3】、【4】は順不同）</p>
+                  <p class="u-Adjust_Mt-16">【1】本キャンペーンのご案内が届いた方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>ご案内はメール、Push通知のお知らせを予定しております。</li>
+                    <li><span>※</span>他の方から転送されたメール、URLリンクは対象外となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-16">【2】キャンペーンへのエントリー</p>
+                  <p class="u-Adjust_Mt-8">エントリー期間内に本キャンペーンページでエントリー</p>
+                  <p class="u-Adjust_Mt-16">【3】対象の生命保険をご契約中の方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                    <li><span>※</span>2023年6月1日時点で契約されている方が対象となります。</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-8">＜対象の生命保険＞<br>
+                    楽天生命スーパー定期保険<br>
+                    楽天生命スーパー終身保険<br>
+                    楽天生命スーパー医療保険 戻るんです<br>
+                    楽天生命スーパー医療保険<br>
+                    楽天生命スーパーたよれる医療保険<br>
+                    楽天生命スーパーがん保険<br>
+                    楽天生命あんしんプラス（女性サポート）<br>
+                    楽天生命のスーパー2000<br>
+                    楽天生命認知症保険</p>
+                  <p class="u-Adjust_Mt-16">【4】「Rakuten UN-LIMIT VII」ご利用中の方</p>
+                  <p class="u-Adjust_Mt-8">本キャンペーン開始時点で「Rakuten UN-LIMIT VII」の未契約者である場合は、以下（i）（ii）にて対象となります。</p>
+                  <p class="u-Adjust_Mt-8">（i）「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み<br>
+                    （1）新規お申し込み<br>
+                    （2）他社からの乗り換え（MNP）でお申し込み<br>
+                    （3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                  <p class="u-Adjust_Mt-8">（ii）「Rakuten UN-LIMIT VII」のプラン利用開始されている方</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li>【プラン利用開始日とは】<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                      （1）楽天モバイル株式会社に配送完了データが通知された日<br>
+                      （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                      <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                      プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                  </ul>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>ドコモ回線・au回線用プランのスーパーホーダイ、組み合わせプラン、コミコミプランは、本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>旧FREETEL SIM、DMM mobile SIMは本キャンペーンの対象外となります。</li>
+                    <li><span>※</span>本キャンペーン開始前に、「Rakuten UN-LIMIT VII」をお申し込みされた方は、エントリー期間内のプラン利用開始が必要です。</li>
+                    <li><span>※</span>店頭でのお申し込みは、2023年4月27日（木）閉店までが期限となります。</li>
+                  </ul>
+                </dd>
+                <dt>キャンペーン特典 （楽天ポイント）</dt>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                <dd>
+                  <p>600ポイントプレゼント</p>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント付与日</dt>
+                <dd>
+                  <p>ポイント付与は2023年6月末ごろになります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                    <li><span>※</span>権利の譲渡はできません。</li>
+                  </ul>
+                </dd>
+                <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                <dd>
+                  <p>ポイント付与日を含めて6カ月</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                    <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                  </ul>
+                </dd>
+                <dt>特典適用対象外</dt>
+                <dd>
+                  <p>以下の条件に当てはまる場合は、特典適用対象外となります。</p>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                    <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                    <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等によりお申し込みキャンセルとなった場合</li>
+                    <li><span>※</span>ポイント付与までに楽天会員から退会している場合</li>
+                    <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                    <li><span>※</span>期間内に楽天モバイルの契約者変更（譲渡・承継）を受けた方</li>
+                    <li><span>※</span>楽天モバイル株式会社、楽天生命保険株式会社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                    <li><span>※</span>キャンペーン開始前に楽天モバイルを解約されている場合</li>
+                    <li><span>※</span>エントリーした楽天IDが、楽天モバイル・楽天生命にご登録の楽天IDと同一でない場合</li>
+                    <li><span>※</span>対象の保険にお申し込みいただいても、ご契約内容や健康状態によって、お見積り、ご契約できない場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において楽天会員を退会されている場合</li>
+                    <li><span>※</span>楽天生命が定める基準日において対象保険商品の契約が解約等により有効ではない場合</li>
+                  </ul>
+                </dd>
+                <dt>注意事項</dt>
+                <dd>
+                  <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                    <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください。</li>
+                    <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります。</li>
+                    <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります。</li>
+                    <li><span>※</span>記載の内容は2023年3月29日（水）時点の情報となります。</li>
+                    <li><span>※</span>本キャンペーン参加にかかる費用 （通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                    <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合があります。</li>
+                    <li><span>※</span>本キャンペーン期間内でのポイント付与はおひとり様1回のみ対象です。</li>
+                    <li><span>※</span>店舗毎にゴールデンウィーク期間の営業時間が異なりますので、事前に最寄り店舗の営業時間をご確認下さい。</li>
+                    <li><span>※</span>ポイント進呈のため、キャンペーン対象者様の楽天IDを楽天モバイル株式会社と楽天生命株式会社間で受け渡しいたします。あらかじめご了承ください。</li>
+                  </ul>
+                </dd>
+              </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="bnr_area">
+        <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+          <a href="<%= sitepath %>tips/gservice/?l-id=campaign_insurance-for-member_tips_gservice">
+            <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-01.png?230329" alt="70以上のサービスの中から楽天モバイルご契約者様向けに厳選　楽天のおトクなサービス" class="<%= namespace %>-Utility_Img-pc">
+            <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-01-sp.png?230329" alt="楽天モバイルご契約者様へ 楽天のおトクなサービス" class="<%= namespace %>-Utility_Img-sp">
+          </a>
+        </div>
+      </div>
+
+      <% if (information.hiddenItem == 'finish') { %>
+      <% } else { %>
+        <!-- else -->
+      <% } %>
+
+        <div class="u-Adjust_Mt-40">
+          <!-- ReX UX Survey: Mounting point for embedded components -->
+          <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+        </div>
+      </div>
+    </div>
+
+  <% if (information.campaignState == 'finish') { %>
+    <footer class="g-Footer <%= namespace %>-Layout_Footer Fin">
+  <% } else { %>
+    <!-- else -->
+    <div id="js-fixed-btn" class="<%= namespace %>-Layout_Bottom-fixed" aria-expanded="false" role="region">
+      <div id="close"><span class="c-Icon_X"></span></div>
+      <!-- mounting point for button 3 --><div id="rex-ceb-03" class="campaign-Rexoverwrite"></div>
+    </div>
+    <footer class="g-Footer <%= namespace %>-Layout_Footer">
+  <% } %>
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+  <!-- ReX UX Survey: Config -->
+  <script>
+    window.rexSurveyConfig = {"surveyId":"36980","cId":{"name":"answers[36980_254387]","value":""},"embedded":true,"url":{"name":"answers[36980_254388]"},"triggerIdName":"trigger","expirationPeriod":30,"enableDisplaySuppressionPerPage":true,"enableFormAction":true,"permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問) ","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":true},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。"},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[36980_254389]","value":"704767"},{"name":"answers[36980_254389]","value":"704768"},{"name":"answers[36980_254389]","value":"704769"},{"name":"answers[36980_254389]","value":"704770"},{"name":"answers[36980_254389]","value":"704771"}],"txt0":"薦めたくない","txt1":"薦めたい","checked":4},"inquiry":{"checkList":{"available":true,"question":"あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ","options":[{"name":"answers[36980_254390][]","value":"704772","label":"キャンペーン特典が魅力的でない"},{"name":"answers[36980_254390][]","value":"704773","label":"キャンペーンの達成条件が分かりにくい"},{"name":"answers[36980_254390][]","value":"704774","label":"キャンペーンのWebサイトが分かりにくい"},{"name":"answers[36980_254390][]","value":"704775","label":"キャンペーンの期間が短い"},{"name":"answers[36980_254390][]","value":"704776","label":"キャンペーン対象のサービス特性が分かりにくい"},{"name":"answers[36980_254390][]","value":"704777","label":"特になし"},{"name":"answers[36980_254390][]","value":"704778","label":""}]},"freeInput":{"available":true,"name":"answers[36980_254391]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のためご利用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[36980_254390][]","value":"704772","label":""},{"name":"answers[36980_254390][]","value":"704773","label":""},{"name":"answers[36980_254390][]","value":"704774","label":""},{"name":"answers[36980_254390][]","value":"704775","label":""},{"name":"answers[36980_254390][]","value":"704776","label":""},{"name":"answers[36980_254390][]","value":"704777","label":""},{"name":"answers[36980_254390][]","value":"704778","label":""}]}},"ua":{"name":"answers[36980_254392]"},"href":{"name":"answers[36980_254393]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+  </script>
+
+  <!-- ReX UX Survey: Script -->
+  <script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/1.5.0/js/main.js" defer></script>
+  <!-- ReX Campaign Entry Button: Configuration -->
+  <script>
+  var rexButtons = [{"code":"/rmobile/insuranceformember/230823","theme":"red","wide":false,"showCelebration":false,"below":{"checkboxText":"メルマガやアンケートなどをSMSやメールで受け取る","html":"※楽天モバイルよりSMSや<a href=\"https://my.rakuten.co.jp/\">楽天会員情報</a><span class=\"c-Txt_Emp-01\">ご登録のメールアドレス</span>にお送りする<span class=\"c-Txt_Emp-01\">楽天モバイルニュース</span>などおトクな情報等を<span class=\"c-Txt_Emp-01\">受け取らない方はチェックを外してください。</span>","isCheckboxMandatory":false,"isChecked":true},"ids":["rex-ceb-01","rex-ceb-02","rex-ceb-03"]}]
+  </script>
+  <script>
+    (function($){
+        const trigger = document.getElementById('js-trigger');
+        const fixedBtn = document.getElementById('js-fixed-btn');
+        function fixedBottomBtn() {
+            let scrollY = window.pageYOffset;
+            const triggerRect = trigger.getBoundingClientRect();
+            const triggerY = scrollY + triggerRect.top;
+
+            if ( scrollY > triggerY ) {
+                fixedBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                fixedBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+        if( fixedBtn && trigger ) {
+            window.addEventListener('scroll', fixedBottomBtn);
+        }
+    })();
+  </script>
+  <script>
+    $('#close').click(function() {
+      $('.g-Footer').removeClass('<%= namespace %>-Layout_Footer');
+      $('.<%= namespace %>-Layout_Bottom-fixed').addClass('hidden');
+    })
+  </script>
+
+  <!-- ReX Campaign Entry Button: Script -->
+  <script src="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/js/main.js" defer></script>
+</body>
+</html>

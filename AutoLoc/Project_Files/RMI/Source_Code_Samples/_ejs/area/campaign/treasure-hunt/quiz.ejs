@@ -1,0 +1,352 @@
+<%
+  const pagetitle = '#ここでもつながる楽天モバイル 日本列島宝探し';
+  const directories = [{path:"area/", label:"通信・エリア", subpath:"area/campaign/treasure-hunt/" ,sublabel:"#ここでもつながる楽天モバイル「日本列島宝探し」"}];
+  const namespace = "treasureHunt-Quiz";
+  -%>
+<%-
+  include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのつながりやすさを日本全国で体験！総額650万ポイントがあたる！楽天会員なら参加OK。謎を解いて秘宝を発見せよ！日本列島宝さがし',
+    keywords: '',
+    noindex: false,
+    pathname: filepath,
+    browseragent: false,
+    ogp_img: 'https://network.mobile.rakuten.co.jp/assets/img/area/campaign/treasure-hunt/ogp.png'
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/campaign/treasure-hunt/quiz/treasure-hunt-quiz.css?20240508">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <% directories.forEach(function (dir) { %>
+    <li><a href="<%= sitepath + dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+    <% if (dir.subpath) { %>
+    <li><a href="<%= sitepath + dir.subpath %>"><%= dir.sublabel %></a><span class="c-Icon_Chevron-right"></span></li>
+    <% } %>
+    <% }) %>
+    <li aria-current="true">謎解き</li>
+  </ul>
+</div>
+<div class="<%= namespace %>_Wrapper u-Adjust_Pb-56">
+  <div class="<%= namespace %>_Container">
+    <p class="c-Txt_Emp-02 <%= namespace %>_Tag u-Adjust_Align-center u-Adjust_Py-16">#ここでもつながる楽天モバイル</p>
+    <h1 class="u-Adjust_Align-center <%= namespace %>_Title js-title-text"></h1>
+    <div class="u-Adjust_Align-center">
+      <!-- 謎解きフォーム -->
+      <div id="js-form-area" class="u-Adjust_Mt-8 u-Adjust_Mt-pc-32">
+        <% const keywords = [
+          "word_first",
+          "word_second",
+          "word_third"
+        ];%>
+
+        <div class="<%= namespace %>_Flex-row <%= namespace %>_Flex-row--center u-Adjust_Px-16">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-lead.png" width="122" height="74">
+            <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-lead.png" alt="" width="150" height="91">
+          </picture>
+          <p class="u-Weight_Bold <%= namespace %>_Lead u-Align_Llc">3つの謎を解いて宝箱の情報をゲットしよう！</p>
+        </div>
+        <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+          <% for (let i = 0; i < keywords.length; i++) {%>
+            <div class="<%_ if( i === 0 ) { _%>u-Adjust_Mt-0 <%_ } else { _%> u-Adjust_Mt-56 <%_ } _%>">
+              <div>
+                <h3 class="<%= namespace %>_Question">
+                  第<span class="<%= namespace %>_Question-large"><%= i + 1 %></span>問
+                </h3>
+                <div class="u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" class="js-quiz-form-question-img-sp">
+                    <img class="js-quiz-form-question-img" alt="">
+                  </picture>
+                </div>
+              </div>
+              <div class="<%= namespace %>_Edit-area">
+                <div class="u-Adjust_Mt-16">
+                  <div class="c-Accordion-emp" data-ratid="mi_rmb_web_202404_treasure-hunt_q<%= (i + 1) %>hint1" data-ratevent="click" data-ratparam="all">
+                    <button type="button" id="accordion-emp-<%=  1  + (i * 2) %>" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-<%=1 +  (i * 2) %>-content">
+                        <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+                        <span class="c-Accordion-emp_Trigger-txt">ヒント1</span>
+                    </button>
+                    <div id="accordion-emp-<%= 1 + (i * 2) %>-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel js-hint-panel u-Adjust_Align-left" role="region" aria-labelledby="accordion-emp-<%=1 +  (i * 2) %>" aria-hidden="true"></div>
+                  </div>
+                  <div class="c-Accordion-emp u-Adjust_Mt-16" data-ratid="mi_rmb_web_202404_treasure-hunt_q<%= (i + 1) %>hint2" data-ratevent="click" data-ratparam="all">
+                    <button type="button" id="accordion-emp-<%=  2 * (i + 1) %>" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-<%= 2 *  (i + 1) %>-content">
+                        <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+                        <span class="c-Accordion-emp_Trigger-txt">ヒント2</span>
+                    </button>
+                    <div id="accordion-emp-<%= 2 * (i + 1) %>-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel js-hint-panel u-Adjust_Align-left" role="region" aria-labelledby="accordion-emp-<%=2 *  (i + 1) %>" aria-hidden="true"></div>
+                  </div>
+                    <div class="c-Accordion-emp u-Adjust_Mt-16 <%= namespace %>_Edit-bigHint" data-ratid="mi_rmb_web_202404_treasure-hunt_q1hint3" data-ratevent="click" data-ratparam="all">
+                      <button type="button" id="accordion-emp-big-hint-<%= i + 1 %>" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-big-hint-<%= i + 1 %>-content">
+                          <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+                          <span class="c-Accordion-emp_Trigger-txt">大ヒント！</span>
+                      </button>
+                      <div id="accordion-emp-big-hint-<%= i + 1 %>-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel js-hint-big-panel u-Adjust_Align-left" role="region" aria-labelledby="accordion-emp-big-hint-<%= i + 1 %>" aria-hidden="true">
+                      </div>
+                    </div>
+                </div>
+                <div class="u-Adjust_Mt-16">
+                  <div class="<%= namespace %>_Flex-row u-Adjust_Mt-24">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-edit.png" width="26" height="26">
+                      <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-edit.png" alt="" width="30" height="30">
+                    </picture>
+                    <p class="<%= namespace %>_Edit-box-title u-Weight_Bold">第<%= i + 1 %>問の答えを入力</p>
+                  </div>
+                  <input type="text" placeholder="答えを入力してください" name="<%= keywords[i] %>" class="<%= namespace %>_Edit-box js-quiz-form-input u-Adjust_Mt-8 u-Adjust_Align-left">
+                </div>
+              </div>
+            </div>
+          <% } %>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-48 c-Btn_Primary-large <%= namespace %>_Btn" id="js-quiz-form-submit" data-ratid="mi_rmb_web_202404_treasure-hunt_answer" data-ratevent="click" data-ratparam="all">
+          <button>答えを送信する</button>
+        </div>
+      </div>
+
+      <!-- エラーメッセージ -->
+      <p id="js-error" class="c-Txt_Normal-m c-Txt_Emp-02" style="display:none">URLが間違っています、入力しなおしてください</p>
+
+      <!-- (不正解の時のみ表示)結果コンテンツ -->
+      <div id="js-wrong-result">
+        <div class="u-Weight_Bold c-Txt_Normal-m u-Adjust_Mt-24">答えの結果は…<br>
+          <div class="<%= namespace %>_Flex-row <%= namespace %>_Flex-row--center u-Adjust_Mt-24">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-wrong.png" width="101">
+              <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-wrong.png" alt="" width="158">
+            </picture>
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-wrong-text.png" width="144">
+              <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-wrong-text.png" alt="残念全問正解ならず！" width="226">
+            </picture>
+          </div>
+        </div>
+        <dl id="js-area-confirm-content" class="u-Adjust_Mt-16 u-Adjust_Mt-pc-24 <%= namespace %>_WhiteBox <%= namespace %>_WhiteBox--middle u-Adjust_Pt-16">
+          <% for (let i = 0; i < keywords.length; i++){%>
+            <div class="<%= namespace %>_WhiteBox-item c-Txt_Normal-m u-Weight_Bold u-Adjust_Mb-8">
+              <dt>第<%= i + 1 %>問：</dt>
+              <dd class="js-quiz-form-result"></dd>
+            </div>
+          <% } %>
+        </dl>
+        <div class="<%= namespace %>_Flex <%= namespace %>_Flex--gap-wide <%= namespace %>_Flex--col-end u-Adjust_Mt-40">
+          <div class="u-Adjust_Align-center">
+            <p class="c-Txt_Emp-02">
+              <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-retry.png" alt="全問正解するまでチャレンジ！正解した答えも再入力してね" width="328">
+            </p>
+            <button id="js-area-date-submit" class="c-Btn_Secondly-large u-Adjust_Mt-8 <%= namespace %>_Btn-back" data-ratid="mi_rmb_web_202404_treasure-hunt_challenge" data-ratevent="click" data-ratparam="all"><span><span>再チャレンジする</span></span></button>
+          </div>
+          <div class="u-Adjust_Align-center">
+            <a href="./?l-id=mi_rmb_web_202404_treasure-hunt_anotherchallenge#treasure-question" class="c-Btn_Regular-large <%= namespace %>_Btn-back"><span><span>別の宝箱の謎解きをする</span></span></a>
+          </div>
+        </div>
+      </div>
+      <!-- (正解の時のみ表示)正解コンテンツ -->
+      <div class="<%= namespace %>_Container--narrow" id="js-correct-form">
+        <div class="u-Adjust_Mt-24">
+          <div class="u-Weight_Bold c-Txt_Normal-m">答えの結果は…<br>
+            <div class="<%= namespace %>_Flex-row <%= namespace %>_Flex-row--center u-Adjust_Mt-24">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-correct.png" width="120">
+                <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-correct.png" alt="" width="166">
+              </picture>
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-correct-text.png" width="186">
+                <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-correct-text.png" alt="3問正解！おめでとう！" width="258">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-40 u-Adjust_Mt-pc-64">
+          <div class="<%= namespace %>_Comment-title u-Show_Xxo">
+            <h2 class="js-place-text"></h2>
+          </div>
+          <div class="<%= namespace %>_Comment-title u-Show_Oox">
+            <h2 class="js-place-text-sp"></h2>
+          </div>
+          <p class="<%= namespace %>_Comment-text u-Show_Xxo">
+            <span class="c-Txt_Marker-accent3" id="js-treasure-area"></span>
+          </p>
+          <p class="u-Adjust_Mt-pc-16 <%= namespace %>_Comment-text u-Show_Oox">
+            <span class="c-Txt_Marker-accent3" id="js-treasure-area-sp"></span>
+          </p>
+          <div class="u-Adjust_Mt-24 <%= namespace %>_Comment-tag">
+            <p class="u-Weight_Bold">現地に向かって<br class="u-Show_Oox"><span class="c-Txt_Emp-02">「ここでもつながる」</span>を体験しよう！</p>
+          </div>
+          <iframe id="js-correct-map" class="<%= namespace %>_Map u-Adjust_Mt-16" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="<%= namespace %>_Flex <%= namespace %>_Flex--gap-narrow <%= namespace %>_Flex--col-center u-Adjust_Mt-24">
+            <div class="<%= namespace %>_WhiteBox <%= namespace %>_WhiteBox--narrow">
+              <p class="u-Adjust_Mt-0">
+                <span class="<%= namespace %>_Lead u-Weight_Bold">宝箱の解錠コードは</span><br>
+                <span class="<%= namespace %>_WhiteBox-text c-Txt_Emp-02" id="js-correct-code"></span>
+              </p>
+            </div>
+            <div class="<%= namespace %>_Flex-row <%= namespace %>_Flex--col-center <%= namespace %>_Caution">
+              <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-caution.png" alt="" width="65" class="u-Adjust_Mt-pc-8">
+              <div class="u-Adjust_Ml-8 <%= namespace %>_Caution-text">
+                <p class="c-Txt_Emp-02 u-Adjust_Align-left">【注意事項】<br>
+                  解錠コードは宝箱の鍵の解錠と最後の謎にアクセスするために必要です。<br>
+                  必ずスクリーンショットやメモをとって現地へお持ちください。
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-left">※解錠コードはお問い合わせいただいてもお答えできません。</p>
+              </div>
+            </div>
+          </div>
+          <div class="c-Accordion-emp u-Adjust_Mt-24">
+            <button type="button" id="accordion-emp-caution-1" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-caution-1-content">
+                <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+                <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">【必読】</span>宝箱スポットへお出かけの際の注意事項</span>
+            </button>
+            <div id="accordion-emp-caution-1-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel u-Adjust_Align-left" role="region" aria-labelledby="accordion-emp-caution-1" aria-hidden="true">
+              <h3 class="c-Heading_Lv4">必要なもの</h3>
+              <ul class="c-List_Text-disc">
+                <li>上記の4ケタの宝箱解錠コード。</li>
+                <li>現地でQRコードを読み込み、最後の謎の回答を送信する必要があるので、スマートフォンなどカメラ付きでインターネット接続できる端末。</li>
+                <li>謎解き用の筆記用具があると便利です。</li>
+              </ul>
+              <h3 class="c-Heading_Lv4 u-Adjust_Mt-16">お出かけの際の注意</h3>
+              <ul class="c-List_Text-disc c-Txt_Emp-02" id="js-caption-list">
+              </ul>
+              <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                <li class="u-Adjust_Mt-8">宝箱スポットまでの交通費はお客様負担になります。</li>
+                <li class="u-Adjust_Mt-8">宝箱が設置されている場所によっては、天候などの影響により足場が悪くなる経路がある箇所もあるため、運動靴の着用を推奨いたします。</li>
+                <li class="u-Adjust_Mt-8">参加時に発生したゴミ類は、基本的には各自持ち帰りをお願いします。</li>
+                <li class="u-Adjust_Mt-8">スポット到着後、宝箱をお探しになる際は、周りでご観光されている方々へもご配慮いただきながらお楽しみください。</li>
+                <li class="u-Adjust_Mt-8">公共の道路や施設内で座り込むことはトラブルの原因になりますので、ご遠慮いただくようお願いいたします。</li>
+                <li class="u-Adjust_Mt-8">宝箱が設置されている場所は屋外になるため、事故やトラブルを避けるため夜間の宝探しはお控えください。</li>
+                <li class="u-Adjust_Mt-8">事前に宝箱設置場所および到着経路の安全確認を行なっておりますが、宝探し参加中に万が一、事件、事故、盗難などが起こっても主催者は一切責任は負いかねます。十分に気をつけてご参加ください。</li>
+                <li class="u-Adjust_Mt-8">自然災害等の予期せぬ事態が発生した場合は、お客様ご自身の安全確保を優先してください。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-56 u-Adjust_Mt-pc-64">
+          <div class="<%= namespace %>_Comment-title">
+            <h2>現地で解ける最後の謎</h2>
+          </div>
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" class="js-quiz-form-question-final-sp">
+            <img class="js-quiz-form-question-final" alt="">
+          </picture>
+          <p class="u-Adjust_Mt-16 u-Align_Llc">
+            宝箱の中のQRコードを読み取ると、最後の謎の問題、ヒント、解答入力欄が表示されます。<br>
+            ヒントを参考に宝箱の周辺で探索し、謎解きにチャレンジしてください。
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-56 u-Adjust_Mt-pc-64">
+          <div class="<%= namespace %>_Comment-title">
+            <h2>特典ゲットのチャンス！</h2>
+          </div>
+          <div class="u-Adjust_Mt-8">
+            <a href="https://twitter.com/intent/tweet?text=楽天モバイルの“日本列島宝探し”に参加中！%20https://r10.to/hUeex6&hashtags=ここでもつながる楽天モバイル&scid=mi_rmb_web_202404_treasure-hunt_lastanswer_x" class="c-Btn_Primary-large" target="_blank" rel="noopener noreferrer">Xで宝探し参加宣言を投稿する<span class="c-Icon_New-window-l"></span></a>
+          </div>
+          <div class="<%= namespace %>_WhiteBox <%= namespace %>_WhiteBox--wide u-Adjust_Mt-24">
+            <p class="<%= namespace %>_WhiteBox-text-default c-Txt_Emp-02 u-Align_Llc u-Adjust_Pt-pc-24">Xで「#ここでもつながる楽天モバイル」をつけて宝探し参加宣言を投稿すると、<br class="u-Show_Xxo">下記特典の対象になります！</p>
+            <div class="<%= namespace %>_Flex-row">
+              <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                <li>特典1（参加者全員で約306万ポイント山分け<span class="c-Txt_Cap">※</span>）</li>
+                <li class="u-Adjust_Mt-0">特典2（抽選で合計 約344万ポイントプレゼント<span class="c-Txt_Cap">※</span>）<br>
+                  <span class="u-Weight_Bold">抽選権5口</span>をゲット!
+                </li>
+              </ul>
+              <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-chance-icon.png" alt="" width="108">
+            </div>
+            <div class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-pc-80">
+              <p>
+                ※6カ月の期間限定ポイント。すべての条件を満たしたことが確認された人に2024年7月末ごろに付与。
+              </p>
+              <p>
+                ※その他条件あり。
+              </p>
+            </div>
+          </div>
+          <div class="c-Accordion-emp u-Adjust_Mt-24">
+            <button type="button" id="accordion-emp-caution-2" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-caution-2-content">
+                <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+                <span class="c-Accordion-emp_Trigger-txt">X投稿に関する注意事項</span>
+            </button>
+            <div id="accordion-emp-caution-2-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel u-Adjust_Align-left" role="region" aria-labelledby="accordion-emp-caution-2" aria-hidden="true">
+              <h3 class="c-Heading_Lv4">特典対象となる投稿条件</h3>
+              <p>本キャンペーンの宝探しに参加している様子や感想などを、指定のハッシュタグ<br>
+                「<span class="c-Txt_Emp-02">#ここでもつながる楽天モバイル</span>」をつけてXで投稿する。
+              </p>
+              <div class="u-Adjust_Mt-16">
+                <div class="u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-post.png" alt="投稿例" width="247">
+                </div>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※Xアカウントを公開設定にしてポストしてください。非公開ポストは特典対象外となるためご注意ください。<br>
+                  ※投稿いただいた写真や動画などのポスト内容を「#ここでもつながる楽天モバイル 日本列島宝探し」の特設ページ（本ページ）でご紹介させていただく場合がございます。<br>
+                <span class="c-Txt_Emp-02">※投稿タイミングはキャンペーン期間中（2024/4/25 10:00～2024/5/27 10:00）ならいつでもOK！</span>
+                </p>
+              </div>
+              <h3 class="c-Heading_Lv4 u-Adjust_Mt-16">その他</h3>
+              <p class="u-Adjust_Mt-8">多くの方に謎解きをお楽しみいただくために、謎解きの解答や宝箱設置箇所の詳細情報をブログやSNS、インターネット上に公開することはお控えください。</p>
+              <p class="u-Adjust_Mt-8">ただし、謎解きの正解に関わらない宝箱周辺の景色などの写真などは、ぜひご投稿ください。本キャンペーンを楽しんでいる様子をぜひSNSにて発信していただければ幸いです。</p>
+            </div>
+          </div>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+          <p class="c-Txt_Emp-02">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-more-sp.png" width="258">
+              <img src="<%= sitepath %>assets/img/area/campaign/treasure-hunt/quiz/img-more-pc.png" alt="もっと近くの地域に宝箱が隠されているかも!?" width="400">
+            </picture>
+
+          </p>
+          <a href="./?l-id=mi_rmb_web_202404_treasure-hunt_lastanswer_anotherq#treasure-question" class="c-Btn_Regular-large u-Adjust_Mt-8"><span><span>別の宝箱の謎解きをする</span></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="g-Footer areaCampaign-Layout_Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-news.ejs') %>
+    <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !=='undefined' ) { _%>
+        <%_ let dirs=[]; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !=="" ) { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <li><a href="<%= sitepath %><%= dir.subpath %>"><%= dir.sublabel %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true">謎解き</li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/area.campaign.treasure-hunt.quiz.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/area.campaign.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

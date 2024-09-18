@@ -1,0 +1,82 @@
+<%_
+  (typeof ratId !== 'undefined') ? _ratId = ratId : _ratId = '';
+  const imgpath = `${sitepath}assets/img/inc/about-rakuten-mobile/`;
+
+  const createLid = page => {
+    return (typeof baseLId !== 'undefined') ? `?l-id=${baseLId}_conaboutmobile_${page}` : '';
+  }
+
+  const linkItem = [
+    {
+      href: `fee/saikyo-plan/${createLid('fee_saikyo-plan')}`,
+      img: 'img-saikyo-plan.png',
+      txt: '料金プラン'
+    },
+    {
+      href: `fee/zero/${createLid('fee_zero')}`,
+      img: 'img-zero.png',
+      txt: 'お申し込み<br class="u-Show_Oxx">手数料'
+    },
+    {
+      href: `area/${createLid('area')}`,
+      img: 'img-area.png',
+      txt: 'サービス<br class="u-Show_Oxx">エリア'
+    },
+    {
+      href: `product/${createLid('product')}`,
+      img: 'img-product.png',
+      txt: '製品'
+    },
+    {
+      href: `product/byod/${createLid('product_byod')}`,
+      img: 'img-byod.png',
+      txt: 'ご利用製品の<br class="u-Show_Oxx">対応確認'
+    },
+    {
+      href: `service/${createLid('service')}`,
+      img: 'img-service.png',
+      txt: 'オプション<br class="u-Show_Oxx">サービス'
+    },
+    {
+      href: `guide/point/${createLid('guide_point')}`,
+      img: 'img-point.png',
+      txt: 'おトクな<br class="u-Show_Oxx">楽天ポイント'
+    },
+    {
+      href: `service/rakuten-link/${createLid('service_rakuten-link')}`,
+      img: 'img-rakuten-link.png',
+      txt: 'Rakuten Link<br class="u-Show_Oxx">アプリ'
+    },
+    {
+      href: `campaign/${createLid('campaign')}`,
+      img: 'img-campaign.png',
+      txt: 'キャンペーン<br class="u-Show_Oxx">一覧'
+    },
+    {
+      href: `product/sim/${createLid('product_sim')}`,
+      img: 'img-sim.png',
+      txt: 'SIMの使い方'
+    },
+  ];
+_%>
+<div class="l-System_Container">
+  <%_ if (_ratId !== '') { _%>
+  <h3 class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="<%= _ratId %>" data-ratevent="appear" data-ratparam="all">楽天モバイルについて</h3>
+  <%_ } else { _%>
+  <h3 class="c-Heading_Lv2 u-Adjust_Align-center">楽天モバイルについて</h3>
+  <%_ } _%>
+
+  <p class="u-Adjust_Align-center c-Txt_Emp-01 u-Adjust_Mt-8">詳細は以下の各リンク先にてご確認ください</p>
+  <div class="u-Adjust_Mt-24">
+    <ul class="i-About-rakuten-mobile">
+    <%_ linkItem.forEach(item => { _%>
+      <li>
+        <a href="<%= sitepath %><%= item.href %>" class="c-Card_Normal">
+          <img src="<%= imgpath %><%= item.img %>" width="208" height="104" alt="" loading="lazy">
+          <span class="c-Txt_Emp-01 c-Txt_Normal-m"><%- item.txt %></span>
+        </a>
+      </li>
+    <%_ }) _%>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,598 @@
+<% const pagetitle = "お支払い方法の確認・変更方法" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/payment/", label:"請求・お支払い方法"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    ancList: [
+      {
+        path: '#anc01',
+        name: 'お支払い方法の確認手順'
+      },
+      {
+        path: '#anc02',
+        name: 'クレジットカード・デビットカード情報を変更する',
+      },
+      {
+        path: '#anc03',
+        name: '口座振替のご指定口座を変更する',
+      },
+      {
+        path: '#anc04',
+        name: '楽天ポイントの利用設定を変更する',
+      }
+    ],
+    isUserCategory: true
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboのプラン料金、製品代金のお支払い方法を、my 楽天モバイル（アプリ・Web）で確認・変更する方法をご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-32">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">ご利用料金のお支払い方法の確認、クレジットカード、口座振替への変更手順についてご案内します。お支払い方法変更は、my 楽天モバイルよりお手続きいただけます。</p>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">変更した支払い方法の適用月について</h2>
+        <p class="u-Adjust_Mt-16">お支払い方法を変更した時期により、新しい支払い方法の適用月が異なります。</p>
+        <dl class="c-Dl_Origin u-Adjust_Mt-24">
+          <div>
+            <dt>毎月1～3日</dt>
+            <dd><span class="c-Txt_Emp-01">当月の請求</span>から適用</dd>
+          </div>
+          <div>
+            <dt>毎月4日～月末</dt>
+            <dd><span class="c-Txt_Emp-01">翌月の請求</span>から適用</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+
+    <div class="l-System c-Theme-Light u-Adjust_Mt-32 <%= namespace %>-Anchor">
+      <div class="l-System_Container">
+        <ul class="<%= namespace %>-Anchor_Area">
+          <% pageInfo.ancList.forEach(function(item) { -%>
+          <li>
+            <a href="<%= item.path %>" class="js-scroll c-Link_Txt-icon-front" data-auto-rat="anchor"><span class="c-Icon_Arrow-down-l"></span><%= item.name %></a>
+          </li>
+          <% }); -%>
+        </ul>
+      </div>
+    </div>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-40">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2" id="anc01">お支払い方法の確認手順</h2>
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-method-menu1" role="tab" aria-selected="true" aria-controls="tab-method-content1">Webで確認する</li>
+            <li class="c-Tab_Item" id="tab-method-menu2" role="tab" aria-selected="false" aria-controls="tab-method-content2">アプリで確認する</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-method-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-method-menu1">
+            <ol class="c-Flow">
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイル「支払い情報」画面を開く</h3>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="c-Txt_Cap">※「支払い情報へ進む」をタップしてログインすると、手順２の画面が表示されます。</li>
+                  <li class="c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" data-lid_no="01" class="c-Link_Txt">[my 楽天モバイル]ログインできません</a>」をご確認ください。</li>
+                </ul>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <a href="<%= ecarepath %>dashboard#payment" target="_blank" rel="noopener noreferrer" class="c-Btn_Secondly-large c-Txt_Normal">支払い情報へ進む<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2.「支払い情報」内にある「お支払い方法」のプルダウンをタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-1.png" alt="2. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする" width="298" height="484" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. お支払い方法を確認する</h3>
+                <p class="u-Adjust_Mt-16">「ご登録の支払い方法」が表示されている項目が現在設定されているお支払い方法です。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/payment-web-flow-4.png" alt="3. お支払い方法を確認する" width="298" height="334" class="c-Img_Capture">
+                </p>
+              </li>
+            </ol>
+          </div>
+          <div class="c-Tab_Panel" id="tab-method-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-method-menu2">
+            <p class="u-Adjust_Mt-16">※アプリが最新バージョンでない場合、一部機能が利用できなかったり、ご案内した内容や見た目が異なる場合があります。その場合は、アプリのバージョンをアップデートいただくか、Web版のmy 楽天モバイルをご利用ください</p>
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+                <div class="c-Box_App u-Adjust_Mt-16">
+                  <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル" width="96" height="96"></div>
+                  <div class="c-Box_App-txt">
+                    <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                    <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                    <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Layout_Contract_App-link">
+                      <li class="<%= namespace %>-Layout_Contract_App-link-item">
+                        <div><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" rel="noopener noreferrer" data-lid_no="01"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-googleplay.png" width="162" height="48" alt="Google Play"></a></div>
+                        <div><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank" rel="noopener noreferrer" data-lid_no="01"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-appstore.png" width="131" height="48" alt="Apple Store"></a></div>
+                      </li>
+                      <li>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular" data-lid_no="01"><span>詳細を見る</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 画面下メニューの「利用料金」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-8.png" alt="2. 「支払画面下メニューの「利用料金」をタップする" width="621" height="116">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 「お支払い情報」内の「お支払い方法設定」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-9.png" alt="3. 「お支払い情報」内の「お支払い方法設定」をタップする" width="447" height="332">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする</h3>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※お支払い方法が登録されていない場合は「変更する」をタップしてください。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-1.png" alt="4. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする" width="298" height="484" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. お支払い方法を確認する</h3>
+                <p class="u-Adjust_Mt-16">「ご登録の支払い方法」が表示されている項目が現在設定されているお支払い方法です。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/payment-web-flow-4.png" alt="5. お支払い方法を確認する" width="300" height="336" class="c-Img_Capture">
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <p class="u-Adjust_Mt-24">以上でお支払い方法の確認は完了です。</p>
+        <div class="c-Accordion u-Adjust_Mt-24">
+          <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>契約者以外の名義のクレジットカード・金融機関口座のご登録とお支払いについて</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+            <p>ご契約者様の年齢により、ご利用いただける内容が異なります。</p>
+            <ul class="u-Adjust_Mt-16">
+              <li class="c-Txt_Cap">※金融機関によっては異なる名義の登録ができない場合があります。また、法人口座は対応しておりません。</li>
+              <li class="c-Txt_Cap">※クレジットカードや金融機関口座の名義人と同席のうえ、名義人による操作のもとお支払い方法の設定を行ってください。</li>
+            </ul>
+            <p class="u-Adjust_Mt-16 c-Txt_Emp-01">ご契約者様が18歳未満の場合</p>
+            <p class="u-Adjust_Mt-16">クレジットカードや金融機関口座の名義が、ご契約者様または保護者の名義の場合にお支払い設定ができます。</p>
+            <p class="u-Adjust_Mt-16 c-Txt_Emp-01">ご契約者様が18歳以上の場合</p>
+            <p class="u-Adjust_Mt-16">クレジットカードや金融機関口座の名義がご契約者様と異なっていてもお支払い設定ができます。<br>お支払い方法で、ご契約者名義と異なるクレジットカードを登録した場合でも、契約回線に紐づけられている楽天IDにて保有している楽天ポイントをお支払いに充てることができます。</p>
+            <p class="u-Adjust_Mt-16">ご契約者様以外の名義で支払った場合でも、利用料金100円（税別）につき1ポイントが、楽天モバイルご契約者様に進呈されます。保有している楽天ポイントをお支払いに充てることもできます。</p>
+            <p class="c-Txt_Cap">※ポイント進呈の対象については<a href="<%= sitepath %>internet/turbo/support/plan/point-guide/">こちら</a>をご確認ください。</p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>法人クレジットカード・法人口座のご登録について</button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+            <ul class="c-List_Text-disc u-Adjust_Pt-16">
+              <li>法人クレジットカードもご利用可能です。<br>※JCBの法人クレジットカードで有効期限が2099年99月になっているものはご利用いただけません。</li>
+              <li>法人の金融機関口座はご利用いただけません。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2" id="anc02">クレジットカード・デビットカードでのお支払い方法を変更する</h2>
+        <p class="u-Adjust_Mt-24 u-Adjust_Mb-16">お支払い設定をしたクレジットカード・デビットカードの変更は「my 楽天モバイル」でお手続きができます。「楽天ID」と「パスワード」が必要となりますので事前にご準備ください。</p>
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-method-menu3" role="tab" aria-selected="true" aria-controls="tab-method-content3">Webで確認する</li>
+            <li class="c-Tab_Item" id="tab-method-menu4" role="tab" aria-selected="false" aria-controls="tab-method-content4">アプリで確認する</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-method-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-method-menu3">
+            <ol class="c-Flow">
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイル「支払い情報」画面を開く</h3>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="c-Txt_Cap">※「支払い情報へ進む」をタップしてログインすると、手順２の画面が表示されます。</li>
+                  <li class="c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" data-lid_no="02" class="c-Link_Txt">[my 楽天モバイル]ログインできません</a>」をご確認ください。</li>
+                </ul>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <a href="<%= ecarepath %>dashboard#payment" data-lid_no="02" target="_blank" rel="noopener noreferrer" class="c-Btn_Secondly-large c-Txt_Normal">支払い情報へ進む<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2.「支払い情報」内にある「お支払い方法」のプルダウンをタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-web-flow-5.png" alt="2. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする" width="298" height="484" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 「新しいカードを利用（自分名義）」をタップする</h3>
+                <p class="u-Adjust_Mt-16">※クレジットカード・デビットカードの有効期限を更新する場合も、「新しいカードを利用（自分名義）」をタップしてください。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-5.png" alt="3. 「新しいカードを利用（自分名義）」をタップする" width="298" height="334" class="c-Img_Capture">
+                </p>
+                <div class="c-Accordion u-Adjust_Mt-40">
+                  <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>登録済みのクレジットカードに変更する場合</button>
+                  <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+                    <p class="u-Adjust_Mt-16">すでに登録済みのクレジットカードに変更する場合、以下の手順で設定いただけます。</p>
+                    <p class="u-Adjust_Mt-16">1. 支払いに利用するクレジットカードを選択</p>
+                    <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/change/card-app-flow-14.png" alt="" width="300" height="389" class="c-Img_Capture"></p>
+                    <p class="u-Adjust_Mt-16">2. 画面下部の「保存する」をタップ</p>
+                    <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/change/card-app-flow-15.png" alt="" width="300" height="222" class="c-Img_Capture"></p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. カード情報を入力し、「登録を完了する」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-web-flow-6.png" alt="4. カード情報を入力し、「登録を完了する」をタップする" width="298" height="406" class="c-Img_Capture">
+                </p>
+                <div class="c-Accordion u-Adjust_Mt-40">
+                  <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>契約者以外の名義のクレジットカードに支払い方法を変更する場合</button>
+                  <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true">
+                    <p class="u-Adjust_Mt-16">クレジットカードの名義人も同席のうえ、名義人による操作のもとお支払い方法の設定を行ってください。</p>
+                    <p class="u-Adjust_Mt-16">1. 「新しいカードを利用(他人名義)」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-6.png" alt="1. 「新しいカードを利用（他人名義）」をタップする" width="298" height="334" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">2. 必要な情報を入力し、「次へ進む」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-2.png" alt="2. 必要な情報を入力し、「次へ進む」をタップする" width="298" height="498" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">3. クレジットカードの名義人の情報を入力し、「次へ進む」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-7.png" alt="3. クレジットカードの名義人の情報を入力し、「次へ進む」をタップする" width="298" height="557" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">4. 表示された画面にクレジットカードの名義人とご連絡がとれる最新の情報を入力し、「次へ進む」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-3.png" alt="4. 表示された画面にクレジットカードの名義人とご連絡がとれる最新の情報を入力し、「次へ進む」をタップする" width="298" height="538" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">5. 記入した内容を確認し、［登録を完了する］を選択すると登録が完了します</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-4.png" alt="5. 記入した内容を確認し、［登録を完了する］を選択すると登録が完了します" width="298" height="467" class="c-Img_Capture">
+                    </p>
+                  </div>
+                </div>
+                <div class="c-Accordion">
+                  <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>クレジットカードがエラーになり登録できない場合</button>
+                  <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true">
+                    <p class="u-Adjust_Mt-16">クレジットカードの有効期限を更新する際にエラーが表示される場合は、「<a href="<%= sitepath %>faq/detail/10000363/" data-lid_no="01">クレジットカードの有効期限を更新したいが登録できない</a>」をご確認ください。<br>
+                      <br>
+                      上記以外でエラーが表示される場合は<br>
+                      「<a href="<%= sitepath %>faq/detail/10000251/" data-lid_no="01">クレジットカード登録の際に、エラーが出て登録ができない</a>」をご確認ください。
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. お手続き完了</h3>
+                <p class="u-Adjust_Mt-16">以上で変更手続きは完了です。<br>お手続き完了後、ご登録のメールアドレス宛に、<span class="c-Txt_Emp-02">「 [ 楽天モバイル ] 支払い方法変更完了のお知らせ」</span>メールをお送りいたします。</p>
+              </li>
+            </ol>
+          </div>
+          <div class="c-Tab_Panel" id="tab-method-content4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-method-menu4">
+            <p class="u-Adjust_Mt-16">※アプリが最新バージョンでない場合、一部機能が利用できなかったり、ご案内した内容や見た目が異なる場合があります。その場合は、アプリのバージョンをアップデートいただくか、Web版のmy 楽天モバイルをご利用ください</p>
+            <ol class="c-Flow">
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+                <div class="c-Box_App u-Adjust_Mt-16">
+                  <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル" width="96" height="96"></div>
+                  <div class="c-Box_App-txt">
+                    <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                    <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                    <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Layout_Contract_App-link">
+                      <li class="<%= namespace %>-Layout_Contract_App-link-item">
+                        <div><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" rel="noopener noreferrer" data-lid_no="02"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-googleplay.png" width="162" height="48" alt="Google Play"></a></div>
+                        <div><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank" rel="noopener noreferrer" data-lid_no="02"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-appstore.png" width="131" height="48" alt="Apple Store"></a></div>
+                      </li>
+                      <li>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular" data-lid_no="02"><span>詳細を見る</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 画面下メニューの「利用料金」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-8.png" alt="2. 画面下メニューの「利用料金」をタップする" width="621" height="116">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 「お支払い情報」内の「お支払い方法設定」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-9.png" alt="3. 「お支払い情報」内の「お支払い方法設定」をタップする" width="447" height="332">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする</h3>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※お支払い方法が登録されていない場合は「変更する」をタップしてください。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-1.png" alt="4. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする" width="300" height="487" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. 「新しいカードを利用(自分名義)」をタップする</h3>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※クレジットカード・デビットカードの有効期限を更新する場合も、「新しいカードを利用（自分名義）」をタップしてください。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-5.png" alt="5. 「新しいカードを利用(自分名義)」をタップする" width="447" height="332">
+                </p>
+                <div class="c-Accordion u-Adjust_Mt-40">
+                  <button id="accordion-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-6"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>登録済みのクレジットカードに変更する場合</button>
+                  <div id="accordion-content-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-6" aria-hidden="true">
+                    <p class="u-Adjust_Mt-16">すでに登録済みのクレジットカードに変更する場合、以下の手順で設定いただけます。</p>
+                    <p class="u-Adjust_Mt-16">1. 支払いに利用するクレジットカードを選択</p>
+                    <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/change/card-app-flow-14.png" alt="" width="300" height="389" class="c-Img_Capture"></p>
+                    <p class="u-Adjust_Mt-16">2. 画面下部の「保存する」をタップ</p>
+                    <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/change/card-app-flow-15.png" alt="" width="300" height="222" class="c-Img_Capture"></p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">6. カード情報を入力し、「登録を完了する」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-web-flow-6.png" alt="6. カード情報を入力し、「登録を完了する」をタップする" width="300" height="409" class="c-Img_Capture">
+                </p>
+                <div class="c-Accordion u-Adjust_Mt-40">
+                  <button id="accordion-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-7" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>契約者以外の名義のクレジットカードに支払い方法を変更する場合</button>
+                  <div id="accordion-content-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-7" aria-hidden="true">
+                    <p class="u-Adjust_Mt-16">クレジットカードの名義人も同席のうえ、名義人による操作のもとお支払い方法の設定を行ってください。</p>
+                    <p class="u-Adjust_Mt-16">1. 「新しいカードを利用(他人名義)」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-6.png" alt="1. 「新しいカードを利用（他人名義）」をタップする" width="298" height="334" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">2. 必要な情報を入力し、「次へ進む」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-2.png" alt="2. 必要な情報を入力し、「次へ進む」をタップする" width="298" height="498" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">3. クレジットカードの名義人の情報を入力し、「次へ進む」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-7.png" alt="3. クレジットカードの名義人の情報を入力し、「次へ進む」をタップする" width="298" height="557" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">4. 表示された画面にクレジットカードの名義人とご連絡がとれる最新の情報を入力し、「次へ進む」をタップする</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-3.png" alt="4. 表示された画面にクレジットカードの名義人とご連絡がとれる最新の情報を入力し、「次へ進む」をタップする" width="298" height="538" class="c-Img_Capture">
+                    </p>
+                    <p class="u-Adjust_Mt-24">5. 記入した内容を確認し、［登録を完了する］を選択すると登録が完了します</p>
+                    <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-4.png" alt="5. 記入した内容を確認し、［登録を完了する］を選択すると登録が完了します" width="298" height="467" class="c-Img_Capture">
+                    </p>
+                  </div>
+                </div>
+                <div class="c-Accordion">
+                  <button id="accordion-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-8" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>クレジットカードがエラーになり登録できない場合</button>
+                  <div id="accordion-content-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-8" aria-hidden="true">
+                    <p class="u-Adjust_Mt-16">クレジットカードの有効期限を更新する際にエラーが表示される場合は、「<a href="<%= sitepath %>faq/detail/10000363/" data-lid_no="02">クレジットカードの有効期限を更新したいが登録できない</a>」をご確認ください。<br>
+                      <br>
+                      上記以外でエラーが表示される場合は<br>
+                      「<a href="<%= sitepath %>faq/detail/10000251/" data-lid_no="02">クレジットカード登録の際に、エラーが出て登録ができない</a>」をご確認ください。
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">7. お手続き完了</h3>
+                <p class="u-Adjust_Mt-16">以上で変更手続きは完了です。<br>お手続き完了後、ご登録のメールアドレス宛に、<span class="c-Txt_Emp-02">「 [ 楽天モバイル ] 支払い方法変更完了のお知らせ」</span>メールをお送りいたします。</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2" id="anc03">口座振替のお支払い方法を変更する</h2>
+        <p class="u-Adjust_Mt-16">口座振替で利用している銀行口座の確認や変更は、「my 楽天モバイル」で行うことができます。「楽天ID」と「パスワード」が必要となりますので事前にご準備ください。</p>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/autopay/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">ご利用可能な金融機関を見る<span class="c-Icon_New-window-l"></span></a></p>
+        <p class="u-Adjust_Mt-16 u-Adjust_Mb-24">口座振替をご利用の際は、引き落とし時に100円（税込110円）の手数料がかかります。</p>        <div class="c-Tab js-Tab">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-method-menu5" role="tab" aria-selected="true" aria-controls="tab-method-content5">Webで確認する</li>
+            <li class="c-Tab_Item" id="tab-method-menu6" role="tab" aria-selected="false" aria-controls="tab-method-content6">アプリで確認する</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-method-content5" role="tabpanel" aria-hidden="false" aria-labelledby="tab-method-menu5">
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイル「支払い情報」画面を開く</h3>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="c-Txt_Cap">※「支払い情報へ進む」をタップしてログインすると、手順２の画面が表示されます。</li>
+                  <li class="c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt" data-lid_no="03">[my 楽天モバイル]ログインできません</a>」をご確認ください。</li>
+                </ul>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <a href="<%= ecarepath %>dashboard#payment" data-lid_no="03" target="_blank" rel="noopener noreferrer" class="c-Btn_Secondly-large c-Txt_Normal">支払い情報へ進む<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-5.png" alt="2. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする" width="298" height="484" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 「口座振替」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-6.png" alt="3. 「口座振替」をタップする" width="298" height="334" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. ご利用になる金融機関を選択する</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-7.png" alt="4. ご利用になる金融機関を選択する" width="298" height="493" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. 選択した金融機関名を確認後「金融機関へ」をタップし、画面の案内にしたがって手続きを完了させる</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-13.png" alt="5. 選択した金融機関名を確認後「金融機関へ」をタップし、画面の案内にしたがって手続きを完了させる" width="300" height="753" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">6. 登録した銀行口座が表示されていることを確認する</h3>
+                <p class="u-Adjust_Mt-16">「お支払い方法」のプルダウンに登録した銀行口座が表示されていることを確認してください。<br>手続き完了後、ご登録のメールアドレス宛に、<span class="c-Txt_Emp-02">「 [ 楽天モバイル ] 支払い方法変更完了のお知らせ」</span>メールをお送りいたします。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-8.png" alt="6. 登録した銀行口座が表示されていることを確認する" width="300" height="644" class="c-Img_Capture">
+                </p>
+              </li>
+            </ol>
+          </div>
+          <div class="c-Tab_Panel" id="tab-method-content6" role="tabpanel" aria-hidden="true" aria-labelledby="tab-method-menu6">
+            <p class="u-Adjust_Mt-16">※アプリが最新バージョンでない場合、一部機能が利用できなかったり、ご案内した内容や見た目が異なる場合があります。その場合は、アプリのバージョンをアップデートいただくか、Web版のmy 楽天モバイルをご利用ください</p>
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+                <div class="c-Box_App u-Adjust_Mt-16">
+                  <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル" width="96" height="96"></div>
+                  <div class="c-Box_App-txt">
+                    <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                    <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                    <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Layout_Contract_App-link">
+                      <li class="<%= namespace %>-Layout_Contract_App-link-item">
+                        <div><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" rel="noopener noreferrer" data-lid_no="03"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-googleplay.png" width="162" height="48" alt="Google Play"></a></div>
+                        <div><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank" rel="noopener noreferrer" data-lid_no="03"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-appstore.png" width="131" height="48" alt="Apple Store"></a></div>
+                      </li>
+                      <li>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular" data-lid_no="03"><span>詳細を見る</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 画面下の「利用料金」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-8.png" alt="2. 「支払画面下の「利用料金」をタップする" width="621" height="116">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 「お支払い情報」内の「お支払い方法設定」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/card-app-flow-9.png" alt="3. 「お支払い情報」内の「お支払い方法設定」をタップする" width="447" height="332">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする</h3>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※お支払い方法が登録されていない場合は「変更する」をタップしてください。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-5.png" alt="4. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする" width="300" height="487" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. 「口座振替」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-9.png" alt="5. 「口座振替」をタップする" width="300" height="375" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">6. 「my 楽天モバイル」にログインする</h3>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" data-lid_no="04" class="c-Link_Txt">[my 楽天モバイル]ログインできません</a>」をご確認ください。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-10.png" alt="6. 「my 楽天モバイル」にログインする" width="300" height="322" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">7. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-11.png" alt="7. 「支払い情報」内にある「お支払い方法」のプルダウンをタップする" width="300" height="432" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">8. 「口座振替」をタップする</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-9.png" alt="8. 「口座振替」をタップする" width="300" height="375" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">9. ご利用になる金融機関を選択する</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-12.png" alt="9. ご利用になる金融機関を選択する" width="300" height="753" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">10. 選択した金融機関名を確認後「金融機関へ」をタップし、画面の案内にしたがって手続きを完了させる</h3>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-13.png" alt="10. 選択した金融機関名を確認後「金融機関へ」をタップし、画面の案内にしたがって手続きを完了させる" width="300" height="644" class="c-Img_Capture">
+                </p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">11. 登録した銀行口座が表示されていることを確認する</h3>
+                <p class="u-Adjust_Mt-16">「お支払い方法」のプルダウンに登録した銀行口座が表示されていることを確認してください。<br>手続き完了後、ご登録のメールアドレス宛に、「 [ 楽天モバイル ] 支払い方法変更完了のお知らせ」メールをお送りいたします。</p>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/change/transfer-web-flow-8.png" alt="11. 登録した銀行口座が表示されていることを確認する" width="300" height="501" class="c-Img_Capture">
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2" id="anc04">楽天ポイントの利用設定を変更する</h2>
+        <p class="u-Adjust_Mt-24">楽天ポイントは1ポイント＝1円として、月々のお支払いにご利用いただけます。利用設定している楽天ポイント数の確認や変更は、「my 楽天モバイル」で行うことができます。</p>
+        <p class="u-Adjust_Mt-16">ポイントの利用は「すべて使う」、「一部使う」、「利用しない」からお選びいただけます。</p>
+        <p class="u-Adjust_Mt-24 c-Txt_Cap c-Txt_Emp-02 ">※お支払い方法にクレジットカード・デビットカードを登録している場合のみ、ご利用いただけます。</p>
+
+        <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+          <a href="<%= sitepath %>guide/point-payment/#sub02" target="_blank" class="c-Btn_Regular-large" data-ratId="guide_ecare_payment_02" data-ratEvent="click" data-ratParam="all">利用設定方法を見る</a>
+        </div>
+
+        <div class="c-Accordion u-Adjust_Mt-40">
+          <button id="accordion-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-9"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>利用時の注意事項</button>
+          <div id="accordion-content-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-9" aria-hidden="true">
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li class="u-Adjust_Mt-16">
+                期間限定ポイント→通常ポイント→楽天キャッシュの順に使用されます。
+              </li>
+              <li class="u-Adjust_Mt-16">一度に利用できるポイント数は1～30,000 (ダイヤモンド会員の方は～500,000) ポイントです。</li>
+              <li class="u-Adjust_Mt-16">適用となる楽天ポイント口座は、請求料金の確定時に登録している口座となります。</li>
+              <li class="u-Adjust_Mt-16">利用ポイント数は月内で変更可能ですが、月末を過ぎると翌月の充当ポイント数の変更／キャンセルはできません。</li>
+              <li class="u-Adjust_Mt-16">期間限定ポイントをご利用の場合、ご利用料金請求時（毎月11日ごろ） に有効期限を過ぎているポイントは失効となり、ご利用いただけません。</li>
+              <li class="u-Adjust_Mt-16">ポイント充当時に「利用ポイント数」が不足している場合は、お申し込み時に選択したクレジットカード／デビットカードに課金されます。</li>
+              <li class="u-Adjust_Mt-16">ご利用料金請求時（毎月11日ごろ） にクレジットカード／デビットカードの引き落としができない場合、コンビニ払込票（ハガキ）をお送りいたします。コンビニ払込票（ハガキ）では楽天ポイントはご利用できません。</li>
+              <li class="u-Adjust_Mt-16">クレジットカード／デビットカードのお払い情報が有効でない場合、楽天ポイントはご利用できません。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+  </div>
+
+  <%- include('/include/_common-js') %>
+  <%- include('/include/internet/turbo/support/_smallcategory-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

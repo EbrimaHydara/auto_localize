@@ -1,0 +1,964 @@
+<% const pagetitle = "【ショップ限定】Rakuten Turbo（ラクテン ターボ）キャッシュバックキャンペーン" -%>
+<% const namespace = "turbo-Shop-limited-cb" %>
+<% const imgDir = `${sitepath}assets/img/internet/turbo/campaign/shop-limited-cb/` %>
+<% const isClosed = "true" -%>
+<%
+  /*
+  * title: string
+  * link: string
+  * date: yyyy-mm-dd
+  * external: boolean
+  */
+  const informationList = [];
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    description: 'ショップ限定6,000円、スマホとセットで使えば1,000円。合わせて最大7,000円のキャッシュバックキャンペーン！さらにプラン料金もおトクなキャンペーンも実施中！キャンペーン楽天モバイルのホームルーターRakuten Turbo（ラクテン ターボ）。工事不要ですぐに使えるおうちのWiFi',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true,
+    turbotop: false,
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/internet/turbo/campaign/shop-limited-cb/shop-limited-cb.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/internet/turbo/inc/i-turbo-campaign-close.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle: '【ショップ限定】Rakuten Turbo（ラクテン ターボ）キャッシュバックキャンペーン',
+      tax: false,
+      breadcrumbs: true,
+      headerType: 'campaign',
+    }) %>
+
+    <%- include('/include/internet/turbo/campaign/_campaign-close', {isClosed: isClosed}) %>
+
+
+    <section class="<%= namespace %>-Kv">
+      <!-- <div class="l-System_Container">
+        <p class="<%= namespace %>-Kv_Attention <%= namespace %>_Utility-display-pc c-Txt_Cap">※表記の金額は特に記載のある場合を除き全て税込です。※5Gは一部エリアのみ</p>
+      </div> -->
+      <div class="<%= namespace %>-Kv_Container">
+        <h1 class="<%= namespace %>-Kv_Img">
+          <picture>
+            <source media="(max-width: 834px)" srcset="<%= imgDir %>kv-sp-230323.png" width="375" height="469">
+            <img src="<%= imgDir %>kv-pc-230323.png" alt="Rakuten Turbo 工事不要！すぐに使える、おうちのWiFi 期間限定特価キャンペーン プラン料金+製品代（48回払い）コミコミ980円/月 [4カ月目~3年目]4,551円/月[4年目]5,706円/月[5年目以降]4,840円/月 さらに最大7,000円キャッシュバック中! ショップお申し込み限定 6,000円キャッシュバック※4 + スマホとセットで使えば1,000円キャッシュバック 契約時事務手数料 無料※3" width="1141" height="571">
+          </picture>
+
+        </h1>
+      </div>
+    </section>
+
+
+
+    <% if(informationList.length > 0) { %>
+      <section class="<%= namespace %>-Info">
+        <div class="l-System_Container">
+          <div class="<%= namespace %>-Info_Container">
+            <p class="<%= namespace %>-Info_Head">お知らせ</p>
+            <ul class="<%= namespace %>-Info_List">
+              <% informationList.forEach(info => { %>
+                <%
+                  const date = new Date(info.date);
+                  const formatDate = `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`;
+                %>
+                <li class="<%= namespace %>-Info_Item">
+                  <div class="<%= namespace %>-Info_Item-time">
+                    <time datetime="<%= info.date %>"><%= formatDate %></time>
+                  </div>
+                  <p class="<%= namespace %>-Info_Item-text">
+                    <% if(info.link) { %>
+                      <a href="<%= info.link %>" <%= info.external ? 'target=_blank' : '' %> class="<%= namespace %>-Info_Item-link c-Link_Txt-icon"><%= info.title %></a>
+                      <% if(info.external) { %>
+                        <span class="<%= namespace %>-Info_Item-link-icon c-Icon_New-window-l"></span>
+                      <% } %>
+                    <% } else { %>
+                      <%= info.title %>
+                    <% } %>
+                  </p>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+      </section>
+    <% } %>
+
+    <section class="<%= namespace %>_txt-box u-Adjust_Pt-16 u-Adjust_Pb-24">
+      <div class="l-System_Container">
+        <p class="<%= namespace %>_Utility-layout-center"><a href="#campaign-rule-1" class="c-Link_Txt-icon-front js-scroll" data-auto-rat="anchor"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルールを見る</a></p>
+
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※1 1カ月目は980円（プラン料金102円の日割り額と製品代金878円の合算料金）2、3カ月目は968円※2 契約期間中。Rakuten TurboとRakuten Turbo 5Gを同時契約が必要※3 1回線目のみ適用。2回線目以降の申し込みの場合は3,300円発生※4 6,000円キャッシュバックの条件は以下の2つ ①楽天モバイルショップにてRakuten Turbo 5GとRakuten Turboを申し込むこと②Rakuten Turboを申し込みの翌月末までに利用開始すること※5 1,000円キャッシュバックの条件は以下の3つ ①Rakuten Turbo 5GとRakuten Turboをキャンペーン期間内に申し込むこと②Rakuten Turboを申し込みの翌月末までに利用開始すること③Rakuten UN-LIMIT VIIをRakuten Turbo利用開始の翌月末に利用していること※Rakuten Turboはプラン、Rakuten Turbo 5Gは製品を指します※製品代金（41,580円）48回払いは楽天カードのみ※キャンペーンは予告なく中止・変更する場合あり※表記の金額は特に記載のある場合を除き全て税込です※5Gは一部エリアのみ</p>
+
+      </div>
+    </section>
+
+    <section class="<%= namespace %>-Hero">
+      <div class="l-System_Container">
+        <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+          <h2 class="c-Heading_Lv2">キャンペーン適用イメージ</h2>
+          <div class="u-Adjust_Mt-16">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= imgDir %>img01-sp.png?230323" width="343" height="604">
+            <img src="<%= imgDir %>img01-pc.png?230323" alt="期間限定特価キャンペーン [はじめの3カ月]プラン料金+製品代コミコミ980円/月※1 ショップ申し込み5/9(火)まで" width="1032" height="278">
+          </picture>
+          </div>
+          <div class="u-Adjust_Mt-40">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= imgDir %>img02-sp.png?230323" width="343" height="604">
+              <img src="<%= imgDir %>img02-pc.png?230323" alt="さらに最大7,000円キャッシュバック中! ショップお申し込み限定 6,000円キャッシュバック※4 + スマホとセットで使えば1,000円キャッシュバック※5" width="1032" height="278">
+            </picture>
+          </div>
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※1 1カ月目は980円（プラン料金102円の日割り額と製品代金878円の合算料金）2、3カ月目は968円※2 契約期間中。Rakuten TurboとRakuten Turbo 5Gを同時契約が必要※3 1回線目のみ適用。2回線目以降の申し込みの場合は3,300円発生※4 6,000円キャッシュバックの条件は以下の2つ ①楽天モバイルショップにてRakuten Turbo 5GとRakuten Turboを申し込むこと②Rakuten Turboを申し込みの翌月末までに利用開始すること※5 1,000円キャッシュバックの条件は以下の3つ ①Rakuten Turbo 5GとRakuten Turboをキャンペーン期間内に申し込むこと②Rakuten Turboを申し込みの翌月末までに利用開始すること③Rakuten UN-LIMIT VIIをRakuten Turbo利用開始の翌月末に利用していること※6 おトクなキャンペーン終了後。 課金開始日が2日以降の場合、 初月の通信割の日割り額と1,155円の差額を37カ月目に適用。※月の途中でご解約される場合、3カ月目まではプラン料金102円、4カ月目以降はプラン料金3,685円、37カ月目以降はプラン料金4,840円の日割り金額を請求します※日割り計算で生じた端数は切り捨てとなります※Rakuten Turboはプラン、Rakuten Turbo 5Gは製品を指します※製品代金（41,580円）48回払いは楽天カードのみ※キャンペーンは予告なく中止・変更する場合あり</p>
+      </div>
+    </section>
+
+    <section class="<%= namespace %>-Image">
+      <div class="l-System_Container">
+        <div class="<%= namespace %>-Image_Container">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">毎月のお支払いイメージ</h2>
+          <p class="c-Txt_Normal-m c-Txt_Emp-01 u-Adjust_Align-center">（製品代金を分割48回払いの場合）</p>
+          <div class="<%= namespace %>-Image_Main">
+            <div class="<%= namespace %>-Image_Main-container">
+              <div class="<%= namespace %>-Image_Main-fee">
+                <div class="<%= namespace %>-Image_Main-fee-head">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= imgDir %>image-01-head-sp-230323.png" width="324" height="44">
+                    <img src="<%= imgDir %>image-01-head-pc-230323.png" alt="1~3カ月*1 3カ月間プラン料金割引キャンペーン適用でお支払い合計980円" width="504" height="50">
+                  </picture>
+                </div>
+                <div class="c-Accordion u-Adjust_Mt-8">
+                  <button id="accordion-breakdown-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-breakdown-1" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>内訳を見る</button>
+                  <div id="accordion-content-breakdown-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-breakdown-1" aria-hidden="true" style="display:none;">
+                    <div class="<%= namespace %>-Image_Main-fee-body u-Adjust_Mt-8">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= imgDir %>image-01-body-sp-230323.png" width="295" height="101">
+                        <img src="<%= imgDir %>image-01-body-pc-230323.png" alt="3カ月間プラン料金割引キャンペーン適用でプラン料金102円+契約事務手数料0円*2+製品代金866円/月 初月のみ878円/月" width="468" height="74" loading="lazy">
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Image_Main-arrow <%= namespace %>_Utility-display-pc">
+                  <svg width="74" height="20" viewbox="0 0 74 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M37 20L2.66567e-07 0L74 0L37 20Z" fill="#FF008C"/>
+                  </svg>
+                </div>
+                <div class="<%= namespace %>-Image_Main-arrow <%= namespace %>_Utility-display-sp">
+                  <svg width="28" height="21" viewbox="0 0 28 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.0994 20.1648L0.198809 4.52533e-05L28 4.76837e-05L14.0994 20.1648Z" fill="#FF008C"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="<%= namespace %>-Image_Main-fee u-Adjust_Mt-16">
+                <div class="<%= namespace %>-Image_Main-fee-head">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= imgDir %>image-02-head-sp-230323.png" width="324" height="46">
+                    <img src="<%= imgDir %>image-02-head-pc-230323.png" alt="4~36カ月*3 常時開催おトクなプラン料金キャンペーン適用でお支払い合計4,551円" width="504" height="50">
+                  </picture>
+                </div>
+                <div class="c-Accordion u-Adjust_Mt-8">
+                  <button id="accordion-breakdown-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-breakdown-2" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>内訳を見る</button>
+                  <div id="accordion-content-breakdown-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-breakdown-2" aria-hidden="true" style="display:none;">
+                    <div class="<%= namespace %>-Image_Main-fee-body u-Adjust_Mt-8">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= imgDir %>image-02-body-sp-230323.png" width="295" height="77">
+                        <img src="<%= imgDir %>image-02-body-pc-230323.png" alt="常時開催おトクなプラン料金キャンペーン適用でプラン料金3,685円+契約事務手数料0円*2+製品代金866円/月" width="468" height="74" loading="lazy">
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Image_Main-arrow <%= namespace %>_Utility-display-pc">
+                  <svg width="74" height="20" viewbox="0 0 74 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M37 20L2.66567e-07 0L74 0L37 20Z" fill="#FF008C"/>
+                  </svg>
+                </div>
+                <div class="<%= namespace %>-Image_Main-arrow <%= namespace %>_Utility-display-sp">
+                  <svg width="28" height="21" viewbox="0 0 28 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.0994 20.1648L0.198809 4.52533e-05L28 4.76837e-05L14.0994 20.1648Z" fill="#FF008C"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="<%= namespace %>-Image_Main-fee u-Adjust_Mt-8">
+                <div class="<%= namespace %>-Image_Main-fee-head">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= imgDir %>image-03-head-sp-230323.png" width="324" height="49">
+                    <img src="<%= imgDir %>image-03-head-pc-230323.png" alt="37~48カ月*4 お支払い合計5,706円" width="504" height="50">
+                  </picture>
+                </div>
+                <div class="c-Accordion u-Adjust_Mt-8">
+                  <button id="accordion-breakdown-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-breakdown-3" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>内訳を見る</button>
+                  <div id="accordion-content-breakdown-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-breakdown-3" aria-hidden="true" style="display:none;">
+                    <div class="<%= namespace %>-Image_Main-fee-body u-Adjust_Mt-8">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= imgDir %>image-03-body-sp-230323.png" width="292" height="70">
+                        <img src="<%= imgDir %>image-03-body-pc-230323.png" alt="プラン料金4,840円 + 製品代金866円/月" width="468" height="74" loading="lazy">
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Image_Main-arrow <%= namespace %>_Utility-display-pc">
+                  <svg width="74" height="20" viewbox="0 0 74 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M37 20L2.66567e-07 0L74 0L37 20Z" fill="#FF008C"/>
+                  </svg>
+                </div>
+                <div class="<%= namespace %>-Image_Main-arrow <%= namespace %>_Utility-display-sp">
+                  <svg width="28" height="21" viewbox="0 0 28 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.0994 20.1648L0.198809 4.52533e-05L28 4.76837e-05L14.0994 20.1648Z" fill="#FF008C"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Image_Main-fee <%= namespace %>-Image_Main-fee--border">
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= imgDir %>image-04-head-sp-230323.png" width="327" height="64">
+                  <img src="<%= imgDir %>image-04-head-pc-230323.png" alt="49ヶ月以降 お支払い合計4,840円(プラン料金)" width="391" height="58" loading="lazy">
+                </picture>
+              </div>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">
+                ※1 ショップお申し込み期間限定5/9まで。1カ月目は980円（プラン料金102円の日割り額と製品代金878円の合算料金）。2、3カ月目は968円※2 「契約事務手数料無料」 キャンペーン適用の場合。 Rakuten Turbo 5Gの同時購入が必要 ※3 常時開催。契約期間中。Rakuten TurboとRakuten Turbo 5Gを同時契約が必要※4 おトクなキャンペーン終了後。 課金開始日が2日以降の場合、 初月の通信割の日割り額と1,155円の差額を37カ月目に適用※月の途中でご解約される場合、3カ月目まではプラン料金102円、4カ月目以降はプラン料金3,685円、37カ月目以降はプラン料金4,840円の日割り金額を請求します※日割り計算で生じた端数は切り捨てとなります
+              </p>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+    </section>
+
+    <section class="<%= namespace %>-Feature">
+      <div class="l-System_Container">
+      <div class="<%= namespace %>-Feature_Lead u-Adjust_Pt-48">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">Rakuten Turbo 5Gの特長</h2>
+          <div class="u-Adjust_Mt-32 u-Adjust_Align-center <%= namespace %>_Utility-Show-pc">
+              <img src="<%= imgDir %>feature-icons-pc.png?230323" alt="Wi-Fi6 有線LAN QRコード接続 WPS対応" width="456" height="108">
+          </div>
+          <div class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>_Utility-Show-sp">
+            <img src="<%= imgDir %>feature-icons-sp.png?230323" alt="Wi-Fi6 有線LAN QRコード接続 WPS対応" width="456" height="108">
+        </div>
+      </div>
+
+      <div class="<%= namespace %>-Feature_Head">
+
+          <div class="<%= namespace %>-Feature_Item-01 u-Adjust_Mt-48">
+            <div>
+              <h3 class="c-Heading_Lv3">工事不要、コンセントにさすだけ。</h3>
+              <p class="u-Adjust_Mt-16">煩わしい工事も不要だから、その日から使える。Wi-Fiへの接続も、QRコードの読み込みや、WPSのボタン１つでかんたん。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※QRコード（かんたん接続用コード）が記載されたシールは製品に同梱されています。</p>
+            </div>
+            <div class="u-Adjust_Mt-8 <%= namespace %>-Feature_Item-img">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= imgDir %>feature-01-sp.png?230323" width="342" height="379">
+                <img src="<%= imgDir %>feature-01-pc.png?230323" alt="" width="1032" height="320" loading="lazy">
+              </picture>
+            </div>
+          </div>
+
+        <div class="<%= namespace %>-Feature_Item-02 u-Adjust_Mt-48">
+          <div>
+            <h3 class="c-Heading_Lv3">5Gをフルに活かした高速通信</h3>
+            <p class="u-Adjust_Mt-16">5G対応。 下り最大2.14Gbpsの高速で、安定した通信環境を。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※5Gは一部エリアのみ</p>
+          </div>
+          <div class="u-Adjust_Mt-8 <%= namespace %>-Feature_Item-img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= imgDir %>feature-02-sp.png?230323" width="342" height="379">
+              <img src="<%= imgDir %>feature-02-pc.png?230323" alt="" width="1032" height="320" loading="lazy">
+            </picture>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+    </section>
+
+
+    <section class="<%= namespace %>-Flow">
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">
+          ご利用までの流れ
+        </h2>
+        <div class="<%= namespace %>-Flow_Body">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= imgDir %>flow-sp.png?230323" width="344" height="509">
+            <img src="<%= imgDir %>flow-pc.png?230323" alt="STEP1 楽天モバイルショップを探す STEP2 ショップで対応エリアを確認、お申し込み STEP3 製品を受け取り ※在庫がない場合は後日郵送いたします STEP4 コンセントにさしてWi-Fiを設定、ご利用開始" width="1032" height="233" loading="lazy">
+          </picture>
+        </div>
+
+        <div class="<%= namespace %>_Find-Shop u-Adjust_Mt-40">
+          <div class="l-System_Container <%= namespace %>-Summary-box">
+            <div class="<%= namespace %>_Find-Shop-inner">
+              <h3 class="c-Heading_Lv3 u-Adjust_Align-center">Rakuten Turbo取り扱いショップを探す</h3>
+              <div class="<%= namespace %>_Find-Shop-flex u-Adjust_Mt-16">
+                <div class="<%= namespace %>_Utility-Show-pc">
+                  <img src="<%= imgDir %>img-pc.png?230323" width="280" height="180" alt="STEP1 楽天モバイルショップを探す STEP2 ショップで対応エリアを確認、お申し込み STEP3 製品を受け取り STEP4 コンセントにさしてWi-Fiを設定、ご利用開始" width="1032" height="233" loading="lazy">
+                </div>
+                <div class="<%= namespace %>_Find-Shop-box">
+                <p class="<%= namespace %>_Find-Shop-txt">ご来店の際は、Webでできる<span class="c-Txt_Emp-02">「来店予約」</span>が便利です。予約された方を優先的ご案内しますので、混雑を気にせずに都合の良い時間にご来店いただけます。<br>
+                  各ショップページの<span class="c-Txt_Emp-02">「来店予約」ボタン</span>よりご予約ください。</p>
+                <p class="<%= namespace %>_Find-Shop-txt u-Adjust_Mt-8">各ショップごとに製品の在庫状況が異なります。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※カウンターが空き次第のご案内となり、多少の待ち時間をいただく場合がございます。<br>
+                  ※ショップページに「来店予約」ボタンがないショップでは、来店予約を行っておりません。ご了承ください。</p>
+                </div>
+                <div class="<%= namespace %>_Utility-Show-sp <%= namespace %>_Find-Shop-btn-wrap u-Adjust_Align-center u-Adjust_Mt-16">
+                  <a class="c-Btn_Primary-large <%= namespace %>_Find-Shop-btn" href="<%= sitepath %>shop/?l-id=rhk_mno_shop-detail">お近くのショップを探す</a>
+                </div>
+                <div class="<%= namespace %>_Utility-Show-sp <%= namespace %>_Utility-text-center-sp u-Adjust_Mt-16">
+                  <img src="<%= imgDir %>img-sp.png?230323" width="235" height="145" alt="STEP1 楽天モバイルショップを探す STEP2 ショップで対応エリアを確認、お申し込み STEP3 製品を受け取り STEP4 コンセントにさしてWi-Fiを設定、ご利用開始" width="1032" height="233" loading="lazy">
+                </div>
+                </div>
+                <div class="<%= namespace %>_Utility-Show-pc <%= namespace %>_Find-Shop-btn-wrap u-Adjust_Align-center u-Adjust_Mt-16">
+                  <a class="c-Btn_Primary-large <%= namespace %>_Find-Shop-btn" href="<%= sitepath %>shop/?l-id=rhk_mno_shop-detail">お近くのショップを探す</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="u-Adjust_Mt-56">
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">よくあるご質問</h2>
+        <div class="u-Adjust_Mt-24">
+          <div class="c-Accordion">
+            <button id="accordion-faq-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-1" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天ひかりとRakuten Turboの違いを教えてください</button>
+            <div id="accordion-content-faq-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-1" aria-hidden="true" style="display:none;">
+              <p>Rakuten Turboは、据え置き型ルーターを設置し、楽天モバイルの電波で接続するインターネット回線です。<br>楽天ひかりは、光ファイバーケーブルを建物内に直接引き込んで接続するインターネット回線です。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-2" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Rakuten UN-LIMITを契約していないが、Rakuten Turboを契約できますか？</button>
+            <div id="accordion-content-faq-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-2" aria-hidden="true" style="display:none;">
+              <p>Rakuten UN-LIMITの契約がなくてもRakuten Turboを契約できます。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-3" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>店頭で製品を受け取ることはできますか？</button>
+            <div id="accordion-content-faq-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-3" aria-hidden="true" style="display:none;">
+              <p>Webでお申し込みいただいた場合は、「配送」となります。<br>
+                「店頭受け取り」は選択できません。<br>
+                店舗で購入いただいた場合は、「店頭受け取り」または、「配送」を選択することができます。</p>
+              <p class="c-Txt_Cap">※店舗でご購入いただいた場合でも、在庫状況によってお引き渡し方法を選択いただけない場合がございます。</p>
+              </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-4" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>好きな場所で使えますか？</button>
+            <div id="accordion-content-faq-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-4" aria-hidden="true" style="display:none;">
+              <p>日本国内の楽天回線エリア内であればお使いいただけます。設置先の推奨環境を下記よりご確認ください。<br>
+                ・窓際など、電波を受け取りやすい場所に設置できること<br>
+                ・Wi-Fiの電波と干渉する機器（電子レンジ、テレビなど）から離して設置できること<br>
+                ・高層階（およそ16階以上）ではない場所に設置できること<br>
+                なお、ご登録いただいている設置先住所のみでご利用いただけます。
+              </p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-5" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>契約期間の縛りや最低利用期間の定めはありますか？</button>
+            <div id="accordion-content-faq-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-5" aria-hidden="true" style="display:none;">
+              <p>Rakuten Turboに契約期間の縛りや最低利用期間はありません。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-6" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>複数の機器で同時に利用することはできますか？</button>
+            <div id="accordion-content-faq-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-6" aria-hidden="true" style="display:none;">
+              <p>Rakuten Turbo 5Gは最大128台のWi-Fi機器を同時接続ができます。また、LANケーブルを接続し、有線接続で使用することができます。</p>
+              <p class="u-Adjust_Mt-16">LANケーブルの差込口は2つあり、それぞれにケーブルを挿入して有線接続で使用することができます。なお、LANケーブルを接続中も、Wi-Fi接続を利用することができます。</p>
+              <p class="u-Adjust_Mt-16">接続方法や接続可能台数等の詳細は製品の取扱説明書をご確認ください。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-7" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>LANケーブルを繋ぐ接続ポートはありますか？</button>
+            <div id="accordion-content-faq-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-7" aria-hidden="true" style="display:none;">
+              <p>Rakuten Turbo 5Gには有線で接続するためのLANポートが2つあります。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-8" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>通信速度を教えてください</button>
+            <div id="accordion-content-faq-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-8" aria-hidden="true" style="display:none;">
+              <p>通信速度はベストエフォート方式による提供となります。<br>実際の通信速度は、ご利用場所、通信環境、ネットワークの混雑状況、対応製品によって変わります。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-9" data-auto-rat="faqac"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャッシュバックの受け取り方法を教えてください</button>
+            <div id="accordion-content-faq-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-9" aria-hidden="true" style="display:none;">
+              <p>受け取り方法については、<a href="<%= sitepath %>faq/detail/10000735" class="c-Link_Txt-inline">[Rakuten Turbo] キャッシュバックの受け取り方法を確認したい</a>をご確認ください。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="u-Adjust_Pt-64">
+      <div class="l-System_Container">
+        <div id="campaign-rule-1" class="js-campaign-accordion">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">おトクなプラン料金キャンペーンルール</h2>
+          <p class="<%= namespace %>_Utility-text-center-pc u-Adjust_Mt-24">お申し込みの前にキャンペーンルールを必ず確認してください</p>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button id="accordion-campaign-rule-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-campaign-rule-1" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンルールを見る</button>
+            <div id="accordion-content-campaign-rule-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-campaign-rule-1" aria-hidden="true">
+              <dl class="c-Dl_Origin">
+                <div>
+                  <dt>キャンペーンコード</dt>
+                  <dd>
+                    <p>1635</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>キャンペーン期間</dt>
+                  <dd>
+                    <p>プランのお申し込み・製品のご購入期間</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">Web</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年1月26日（木）9:00～2023年5月10日（水）8:59</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">店舗（楽天モバイルショップ）</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年3月10日（金）開店～2023年5月9日（火）閉店</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※2023年4月25日（火）終了日を変更しました。</p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>キャンペーン条件</dt>
+                  <dd>
+                    <p>上記各項目の期間内に①、②の条件をすべて満たした楽天会員の方</p>
+                    <p class="u-Adjust_Mt-8">①プランと製品を同時申し込み※1</p>
+                    <p class="u-Adjust_Mt-8">②プランの課金開始※2</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※1 プランはRakuten Turbo、製品はRakuten Turbo 5Gのことを指します。<br>※2 プランの課金は本サービスの提供を開始した日、または製品の着荷日いずれか早い日を1日目として9日目から開始します。</p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>特典内容</dt>
+                  <dd>
+                    <p>プラン料金のお支払い開始当月から3年間、プラン料金が月額3,685円（4年目以降のプラン料金より1,155円おトク）</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      ※4年目以降のプラン料金は月額4,840円となります<br>※お支払い開始当月のプラン料金は3,685円の日割り金額となります。37カ月目のプラン料金は4,840円からお支払い開始当月の1,155円の日割り額の残額を差し引いた金額となります<br>（例）課金開始日が5月10日の場合、1カ月目は1,155円の日割り額の819円をプラン料金4,840円から割引いたします。37カ月目は1,155円と819円の差額336円をプラン料金4,840円から割引いたします
+                    </p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>特典適用対象外</dt>
+                  <dd>
+                    <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      ※当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合<br>
+                      ※本人確認の不備等により申し込みキャンセルとなった場合<br>
+                      ※楽天会員から退会している場合<br>
+                      ※当社または楽天グループ株式会社が定める規約などに違反した場合<br>
+                      ※そのほか、当社が会員として不適格であると判断した場合
+                    </p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>併用可能キャンペーン</dt>
+                  <dd>
+                    <p>以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      契約事務手数料無料キャンペーン（キャンペーンコード：1636）<br>3カ月間プラン料金割引キャンペーン（キャンペーンコード：1822）<br>Rakuten TurboとRakuten UN-LIMIT VII利用開始で1,000円キャッシュバックキャンペーン（キャンペーンコード：1837）<br>【ショップ限定】Rakuten Turbo利用開始で6,000円キャッシュバックキャンペーン（キャンペーンコード：1847）
+                    </p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>注意事項</dt>
+                  <dd>
+                    <p class="c-Txt_Cap">
+                      ※本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください<br>
+                      ※本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法上の範囲内に制限される場合があります<br>
+                      ※製品の台数には限りがございます。なくなり次第終了とさせていただく場合があります<br>
+                      ※本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります<br>
+                      ※本キャンペーン期間中に月の途中でご解約される場合、解約月のプラン料金は3,685円の日割り金額となります<br>
+                      ※日割り計算で生じた端数は切り捨てとなります<br>
+                      ※記載の内容は2023年4月25日（火）時点の情報となります
+                    </p>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div id="campaign-rule-2" class="u-Adjust_Mt-64 js-campaign-accordion">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">契約事務手数料無料キャンペーンルール</h2>
+          <p class="<%= namespace %>_Utility-text-center-pc u-Adjust_Mt-24">お申し込みの前にキャンペーンルールを必ず確認してください</p>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button id="accordion-campaign-rule-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-campaign-rule-2" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンルールを見る</button>
+            <div id="accordion-content-campaign-rule-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-campaign-rule-2" aria-hidden="true">
+              <dl class="c-Dl_Origin">
+                <div>
+                  <dt>キャンペーンコード</dt>
+                  <dd>
+                    <p>1636</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>キャンペーン期間</dt>
+                  <dd>
+                    <p>プランのお申し込み期間</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">Web</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年1月26日（木）9:00～2023年5月10日（水）8:59</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">店舗（楽天モバイルショップ）</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年3月10日（金）開店～2023年5月9日（火）閉店</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※2023年4月25日（火）終了日を変更しました。</p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>キャンペーン条件</dt>
+                  <dd>
+                    <p>上記項目の期間内に以下の条件を満たした楽天会員の方</p>
+                    <p class="u-Adjust_Mt-8">Rakuten Turboのお申し込み</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      ※Rakuten Turboはプラン名のことを指します<br>※契約事務手数料無料キャンペーンはお1人様、1度のみ、最初にお申し込みいただいた1回線目に適用となります
+                    </p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>特典内容</dt>
+                  <dd>契約事務手数料0円</dd>
+                </div>
+                <div>
+                  <dt>特典適用対象外</dt>
+                  <dd>
+                    <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      ※当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合<br>
+                      ※本人確認の不備等により申し込みキャンセルとなった場合<br>
+                      ※楽天会員から退会している場合<br>
+                      ※当社または楽天グループ株式会社が定める規約などに違反した場合<br>
+                      ※そのほか、当社が会員として不適格であると判断した場合
+                    </p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>併用可能キャンペーン</dt>
+                  <dd>
+                    <p>以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      おトクなプラン料金キャンペーン（キャンペーンコード：1635）<br>3カ月間プラン料金割引キャンペーン（キャンペーンコード：1822）<br>Rakuten TurboとRakuten UN-LIMIT VII利用開始で1,000円キャッシュバックキャンペーン（キャンペーンコード：1837）<br>【ショップ限定】Rakuten Turbo利用開始で6,000円キャッシュバックキャンペーン（キャンペーンコード：1847）
+                    </p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>注意事項</dt>
+                  <dd>
+                    <p class="c-Txt_Cap">
+                      ※本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください<br>
+                      ※本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法上の範囲内に制限される場合があります<br>
+                      ※製品の台数には限りがございます。なくなり次第終了とさせていただく場合があります<br>
+                      ※本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります<br>※記載の内容は2023年4月25日（火）時点の情報となります
+                    </p>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="campaign-rule-3" class="u-Adjust_Mt-64 js-campaign-accordion">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">Rakuten TurboとRakuten UN-LIMIT VII利用開始で1,000円キャッシュバックキャンペーン</h2>
+          <p class="<%= namespace %>_Utility-text-center-pc u-Adjust_Mt-24">お申し込みの前にキャンペーンルールを必ず確認してください</p>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button id="accordion-campaign-rule-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-campaign-rule-3" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンルールを見る</button>
+            <div id="accordion-content-campaign-rule-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-campaign-rule-3" aria-hidden="true">
+              <div class="u-Adjust_Mt-8 term-Scroll c-Table_Wrap-scroll c-Table-Scroll js-scrollable scroll-hint" id="scroll-table-new-4" style="position: relative; overflow: auto;">
+              <table class="c-Table_Container">
+                <colgroup>
+                  <col width="15%">
+                  <col width="15%">
+                  <col>
+                </colgroup>
+                <tbody class="c-Dl_Origin">
+                  <tr>
+                    <th colspan="2">キャンペーンコード</th>
+                    <td>
+                      <p>1837</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">キャンペーン期間</th>
+                    <td>
+                      <p>プランのお申し込み・製品のご購入期間※1</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">Web</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年3月10日（金）9:00～2023年5月10日（水）8:59※2</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">店舗（楽天モバイルショップ）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年3月10日（金）開店～2023年5月9日（火）閉店</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※1 2023年4月25日（火）終了日を変更しました。</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※2 2023年5月2日（火）記載（キャンペーン開始日）に誤りがあったため修正しました。</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">「Rakuten Turbo」利用開始期限</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">「Rakuten Turbo」と「Rakuten Turbo 5G」のお申し込みの翌月末日23：59まで</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">キャンペーン条件</th>
+                    <td>
+                      <p>上記各項目の期間内に①、②、③の条件をすべて満たした楽天会員の方</p>
+                      <p class="u-Adjust_Mt-8">①「Rakuten Turbo」と「Rakuten Turbo 5G」を申し込み</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">本ルール内では、Rakuten Turboはプラン名、Rakuten Turbo 5Gは製品名のことを指します</p>
+                      <p class="u-Adjust_Mt-8">②「Rakuten Turbo」を期限までにご利用開始</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">【利用開始とは】<br>利用開始日は下記のいずれか早い方を1日目として、9日目に該当する日となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（1）当社に配送完了データが通知されたこと</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（2）「Rakuten Turbo」にて楽天回線の電波が利用できるようになったこと</p>
+                      <p class="u-Adjust_Mt-8">③「Rakuten UN-LIMIT VII」プランご利用中、または、「Rakuten UN-LIMIT VII」へのお申し込み＆プラン利用開始</p>
+                      <p class="u-Adjust_Mt-8">「Rakuten Turbo」の利用が確認された月の翌月末日に「Rakuten UN-LIMIT VII」のプランを利用している必要があります。本キャンペーン開始時点で「Rakuten UN-LIMIT VII」をプラン利用開始されていない場合は、プラン利用開始が必要となります。既にプラン利用開始されている場合は、新たなお手続きは不要となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">【お申し込みとは】<br>本キャンペーン開始時点で「Rakuten UN-LIMIT VII」の未契約者である場合は、下記（1）-（3）いずれかの方法で「お申し込み」いただく必要があります。</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（1）新規お申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（2）他社からのMNPでお申し込み</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                      <p class="u-Adjust_Mt-8">【プラン利用開始とは】<br>新規お申し込みの場合 （1）（2）のいずれか早い方がプラン利用開始となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（1）当社に配送完了データが通知されたこと</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになったこと</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th rowspan="3">キャンペーン特典</th>
+                    <th>特典内容</th>
+                    <td>1,000円（税込）をキャッシュバック<br><span class="c-Txt_Cap">※権利の譲渡はできません</span></td>
+                  </tr>
+                  <tr>
+                    <th>キャッシュバック日</th>
+                    <td>
+                      <p>「Rakuten Turbo」の利用が確認された月の翌々月末日ごろに進呈</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※例）3月に「Rakuten Turbo」の利用開始が確認された場合には、その翌々月である5月末日ごろに進呈となります<br>※権利の譲渡はできません</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>詳細</th>
+                    <td>
+                      <p>楽天銀行のメール送金サービス「かんたん振込（メルマネ）」を利用して、キャッシュバック特典の送金を行います<br>事前に連絡先メールアドレスの設定や受け取り方法をご確認ください<br>誤った情報の入力など、受け取りの手続きの不備によりキャッシュバックの受け取りができなかった場合でも、再送はいたしませんので、あらかじめご了承ください</p>
+                      <p class="u-Adjust_Mt-8">＜メールの配信先＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">送金通知メールは、Rakuten Turboご利用開始月から翌月の時点でRakuten Turboに登録されている連絡先メールアドレス宛にお送りいたします</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※送金通知メールの受信にあたり、『～@ac.rakuten-bank.co.jp』『～@mobile.rakuten.co.jp』のすべてを受け取れる連絡先メールアドレスであること、受信拒否の設定をしているなど、配信先メールアドレスを必ずご確認ください<br>※キャッシュバック進呈月まではメールアドレスを変更されないようお願いいたします。メールアドレスを変更されますと、「送金通知メール」が不達となる可能性がございます</p>
+                      <p class="u-Adjust_Mt-8">＜メール配信日＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">楽天銀行からの送金通知メール配信：Rakuten Turboご利用開始月の翌々月末頃</p>
+                      <p class="u-Adjust_Mt-8">＜受け取り方法＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">受取手続きが不要なお客様</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼楽天銀行の口座を既にお持ちで、楽天銀行にご登録のサービス用メールアドレスと同一のメールアドレスでRakuten Turboにご登録されている方</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※お持ちの楽天銀行の口座に自動入金となり、受取手続きは必要ありません。なお、その他の方法での受取はできませんのでご注意ください<br>※Rakuten Turboにご登録のメールアドレスは、my 楽天モバイルに<a class="c-Link_Txt-inline" href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile?l-id=header_mno_my-rakuten-mobile" target="_blank" data-lid_no="01">ログイン</a>後、「契約者情報」→「連絡先情報」にてご確認ください<br>※楽天銀行にご登録のメールアドレスは、楽天銀行口座にログイン後、「登録情報の変更」→「メール設定」にてご確認ください。確認方法は<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/register/service-mail-address.html" target="_blank">こちら</a>をご確認ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">受取手続きが必要なお客様</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※「受取手続きが不要なお客様」に該当しない場合は受取手続きが必要となります。送金通知メールに沿って下記いずれかのお手続きを行ってください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼楽天銀行口座で受け取る場合（楽天銀行口座をお持ちの方）</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/transfer/mailmoney/receive-rakuten-bank.html" target="_blank" data-lid_no="02">受け取り方法の詳細</a>をご確認いただき、お手続きをお願いいたします</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼楽天銀行口座を開設して受け取る場合</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/transfer/mailmoney/receive-account.html" target="_blank" data-lid_no="03">受け取り方法の詳細</a>をご確認いただき、お手続きをお願いいたします</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼他行口座で受け取る</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※受け取り方法、<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/transfer/mailmoney/receive-other.html" target="_blank" data-lid_no="04">受け取り可能な金融機関の詳細</a>をご確認いただき、お手続きをお願いいたします</p>
+                      <p class="u-Adjust_Mt-8">＜注意事項＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・お受け取りの口座名義は、Rakuten Turboに登録された契約者名義（カナ）と同一である必要があり、異なる名義の口座ではお受け取りになれませんのでご注意ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・以下に該当する場合、送金通知メールが不達となる可能性があります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">過去に楽天銀行の口座情報として登録したメールアドレスを変更し、かつ、変更前のメールアドレスをRakuten Turboに登録している場合<br>楽天銀行口座に利用制限（停止等）がかかっている場合<br>Rakuten Turboの契約者名（カナ）と楽天銀行の口座名義（カナ）が同一ではない場合</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・送金通知メールの送信より45日以内にお手続きいただけなかった場合、特典は無効となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・お客様情報の変更は、Rakuten Turboご利用開始月から翌月までにご対応ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・誤った情報の入力等、受け取りの手続きの不備によりキャッシュバックの受け取りができなかった場合でも、再送はいたしませんので、あらかじめご了承ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・送金通知メール送信にあたり、楽天銀行株式会社にお客様のお名前、Rakuten Turboにてご登録いただきましたメールアドレスの受け渡しを行います。特典進呈後、楽天銀行の送金履歴としてお客様の情報が残りますので事前にご了承ください。お客様の情報の取扱いについて、詳しくは<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/policy/privacy/" target="_blank" data-lid_no="06">「楽天銀行のプライバシーポリシー」</a>をご確認ください</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">特典適用対象外</th>
+                    <td>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">
+                        ※当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合<br>
+                        ※「Rakuten TurboとRakuten UN-LIMIT VII利用開始で1,000円キャッシュバックキャンペーン」の適用回数が、おひとり様1契約1回を超える場合は対象外となります<br>
+                        ※楽天モバイルショップ、楽天モバイルオンライン以外で購入した場合<br>
+                        ※ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合<br>
+                        ※「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>
+                        プラン利用開始の手続き方法につきましては、<a href="<%= sitepath %>faq/detail/00001648/" class="c-Link_Txt-inline">こちら</a>のSIMカード版スタートガイドまたはeSIM版スタートガイドを参照ください<br>
+                        ※期限までに「Rakuten Turbo」を利用されなかった場合<br>
+                        ※キャッシュバック進呈までに「Rakuten Turbo」の解約手続きを行なった場合<br>
+                        ※キャッシュバック進呈までに楽天会員から退会している場合<br>
+                        ※当社または楽天グループ株式会社が定める規約などに違反した場合<br>
+                        ※そのほか、当社が会員として不適格であると判断した場合</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">併用可能キャンペーン</th>
+                    <td>
+                      <p>以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">
+                        おトクなプラン料金キャンペーン（キャンペーンコード：1635）<br>契約事務手数料無料キャンペーン（キャンペーンコード：1636）<br>3カ月間プラン料金割引キャンペーン（キャンペーンコード：1822）<br>【ショップ限定】Rakuten Turbo利用開始で6,000円キャッシュバックキャンペーン（キャンペーンコード：1847）</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">注意事項</th>
+                    <td>
+                      <p class="c-Txt_Cap">※本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください<br>※本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法上の範囲内に制限される場合があります<br>※製品の台数には限りがございます。なくなり次第終了とさせていただく場合があります<br>※本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります<br>
+                        ※記載の内容は2023年5月2日（火）時点の情報となります</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="campaign-rule-4" class="u-Adjust_Mt-64 js-campaign-accordion">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">3カ月間プラン料金割引キャンペーン</h2>
+          <p class="<%= namespace %>_Utility-text-center-pc u-Adjust_Mt-24">お申し込みの前にキャンペーンルールを必ず確認してください</p>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button id="accordion-campaign-rule-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-campaign-rule-4" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンルールを見る</button>
+            <div id="accordion-content-campaign-rule-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-campaign-rule-4" aria-hidden="true">
+              <div class="u-Adjust_Mt-8 term-Scroll c-Table_Wrap-scroll c-Table-Scroll js-scrollable scroll-hint" id="scroll-table-new-4" style="position: relative; overflow: auto;">
+              <table class="c-Table_Container">
+                <colgroup>
+                  <col width="15%">
+                  <col width="15%">
+                  <col>
+                </colgroup>
+                <tbody class="c-Dl_Origin">
+                  <tr>
+                    <th colspan="2">キャンペーンコード</th>
+                    <td>
+                      <p>1822</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">キャンペーン期間</th>
+                    <td>
+                      <p>プランのお申し込み期間</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">Web</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年3月10日（金）9：00～2023年5月10日（水）8：59</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">店舗</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年3月10日（金）開店～2023年5月9日（火）閉店</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">「Rakuten Turbo」利用開始期限</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">「Rakuten Turbo」と「Rakuten Turbo 5G」の申し込みの翌月末日23：59まで</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">キャンペーン条件</th>
+                    <td>
+                      <p>上記各項目の期間内に①、②の条件をすべて満たした楽天会員の方</p>
+                      <p class="u-Adjust_Mt-8">①「Rakuten Turbo」と「Rakuten Turbo 5G」の同時申し込み</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">Rakuten Turboはプラン、Rakuten Turbo 5Gは製品のことを指します</p>
+                      <p class="u-Adjust_Mt-8">②「Rakuten Turbo」を期限までにご利用開始</p>
+                      <p class="u-Adjust_Mt-8">【利用開始とは】<br>利用開始日は下記のいずれか早い方を1日目として、9日目に該当する日となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（1）当社に配送完了データが通知されたこと</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（2）プランにて楽天回線の電波が利用できるようになったこと</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>キャンペーン特典</th>
+                    <th>特典内容</th>
+                    <td>プラン料金を3カ月間3,583円割引<br><span class="c-Txt_Cap">※4カ月目以降のプラン料金は月額3,685円となり、37カ月目以降のプラン料金は月額4,840円となります（おトクなプラン料金キャンペーン適用の場合）<br>※お支払い開始当月の割引金額は特典割引金額3,583円の日割り金額となります。4カ月目の割引金額はお支払い開始当月の3,583円の割引額の残額となります<br>（例）課金開始日が3月22日の場合、1カ月目は3,583円の日割り額の1,155円を割引いたします。4カ月目は3,583円と1,155円の差額2,428円を割引いたします</span></td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">特典適用対象外</th>
+                    <td>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">
+                        ※当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合<br>※楽天モバイルショップ、楽天モバイルオンライン、以外で購入した場合<br>※本人確認の不備等により申し込みキャンセルとなった場合<br>※期限までに「Rakuten Turbo」を利用されなかった場合<br>※楽天会員から退会している場合<br>※当社または楽天グループ株式会社が定める規約などに違反した場合<br>※そのほか、当社が会員として不適格であると判断した場合</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">注意事項</th>
+                    <td>
+                      <p class="c-Txt_Cap">※本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください<br>※本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法上の範囲内に制限される場合があります<br>※製品の台数には限りがございます。なくなり次第終了とさせていただく場合があります<br>※本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります<br>※記載の内容は2023年3月10日（金）時点の情報となります</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="campaign-rule-5" class="u-Adjust_Mt-64 js-campaign-accordion">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">【ショップ限定】Rakuten Turbo利用開始で6,000円キャッシュバックキャンペーン</h2>
+          <p class="<%= namespace %>_Utility-text-center-pc u-Adjust_Mt-24">お申し込みの前にキャンペーンルールを必ず確認してください</p>
+          <div class="c-Accordion u-Adjust_Mt-16">
+            <button id="accordion-campaign-rule-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-campaign-rule-5" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンルールを見る</button>
+            <div id="accordion-content-campaign-rule-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-campaign-rule-5" aria-hidden="true">
+              <div class="u-Adjust_Mt-8 term-Scroll c-Table_Wrap-scroll c-Table-Scroll js-scrollable scroll-hint" id="scroll-table-new-5" style="position: relative; overflow: auto;">
+              <table class="c-Table_Container">
+                <colgroup>
+                  <col width="15%">
+                  <col width="15%">
+                  <col>
+                </colgroup>
+                <tbody class="c-Dl_Origin">
+                  <tr>
+                    <th colspan="2">キャンペーンコード</th>
+                    <td>
+                      <p>1847</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">キャンペーン期間</th>
+                    <td>
+                      <p>プランのお申し込み・製品のご購入期間</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">店舗（楽天モバイルショップ）</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">2023年3月10日（金）開店 ～2023年5月9日（火）閉店</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※2023年4月25日（火）終了日を変更しました。</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">「Rakuten Turbo」利用開始期限</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">「Rakuten Turbo」と「Rakuten Turbo 5G」の申し込みの翌月末日23：59まで</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">キャンペーン条件</th>
+                    <td>
+                      <p>上記各項目の期間内に①、②の条件をすべて満たした楽天会員の方</p>
+                      <p class="u-Adjust_Mt-8">①店舗（楽天モバイルショップ）にて、「Rakuten Turbo」と「Rakuten Turbo 5G」を申し込み</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">本ルール内では、Rakuten Turboはプラン名、Rakuten Turbo 5Gは製品名のことを指します</p>
+                      <p class="u-Adjust_Mt-8">②「Rakuten Turbo」を期限までにご利用開始</p>
+                      <p class="u-Adjust_Mt-8">利用開始日とは下記のいずれか早い方を1日目として、9日目に該当する日となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（1）当社に配送完了データが通知されたこと</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">（2）「Rakuten Turbo」にて楽天回線の電波が利用できるようになったこと</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th rowspan="3">キャンペーン特典 （キャッシュバック）</th>
+                    <th>特典内容</th>
+                    <td>6,000円（税込）をキャッシュバック<br><span class="c-Txt_Cap">※権利の譲渡はできません</span></td>
+                  </tr>
+                  <tr>
+                    <th>キャッシュバック日</th>
+                    <td>
+                      <p>「Rakuten Turbo」の利用が確認された月の翌々月末日ごろに進呈</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※例）3月に「Rakuten Turbo」の利用開始が確認された場合には、その翌々月である5月末日ごろに進呈となります
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>詳細</th>
+                    <td>
+                      <p>
+                        楽天銀行のメール送金サービス「かんたん振込（メルマネ）」を利用して、キャッシュバック特典の送金を行います。<br>
+                        事前に連絡先メールアドレスの設定や受け取り方法をご確認ください。<br>
+                        誤った情報の入力など、受け取りの手続きの不備によりキャッシュバックの受け取りができなかった場合でも、再送はいたしません。あらかじめご了承ください。</p>
+                      <p class="u-Adjust_Mt-8">＜メールの配信先＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">送金通知メールは、Rakuten Turboご利用開始月から翌月の時点でRakuten Turboに登録されている連絡先メールアドレス宛にお送りいたします</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※送金通知メールの受信にあたり、『～@ac.rakuten-bank.co.jp』『～@mobile.rakuten.co.jp』のすべてを受け取れる連絡先メールアドレスであること、受信拒否の設定をしているなど、配信先メールアドレスを必ずご確認ください<br>※キャッシュバック進呈月まではメールアドレスを変更されないようお願いいたします。メールアドレスを変更されますと、「送金通知メール」が不達となる可能性がございます</p>
+                      <p class="u-Adjust_Mt-8">＜メール配信日＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">楽天銀行からの送金通知メール配信：Rakuten Turboご利用開始月の翌々月末頃</p>
+                      <p class="u-Adjust_Mt-8">＜受け取り方法＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">受取手続きが不要なお客様</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼楽天銀行の口座を既にお持ちで、楽天銀行にご登録のサービス用メールアドレスと同一のメールアドレスでRakuten Turboにご登録されている方</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※お持ちの楽天銀行の口座に自動入金となり、受取手続きは必要ありません。なお、その他の方法での受取はできませんのでご注意ください<br>※Rakuten Turboにご登録のメールアドレスは、my 楽天モバイルに<a class="c-Link_Txt-inline" href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile" target="_blank">ログイン</a>後、「契約者情報」→「連絡先情報」にてご確認ください<br>※楽天銀行にご登録のメールアドレスは、楽天銀行口座にログイン後、「登録情報の変更」→「メール設定」にてご確認ください。確認方法は<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/register/service-mail-address.html" target="_blank" data-lid_no="12">こちら</a>をご確認ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">受取手続きが必要なお客様</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※「受取手続きが不要なお客様」に該当しない場合は受取手続きが必要となります。送金通知メールに沿って下記いずれかのお手続きを行ってください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼楽天銀行口座で受け取る場合（楽天銀行口座をお持ちの方）</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/transfer/mailmoney/receive-rakuten-bank.html" target="_blank" data-lid_no="08">受け取り方法の詳細</a>をご確認いただき、お手続きをお願いいたします</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼楽天銀行口座を開設して受け取る場合</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/transfer/mailmoney/receive-account.html" target="_blank" data-lid_no="09">受け取り方法の詳細</a>をご確認いただき、お手続きをお願いいたします</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">▼他行口座で受け取る</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Pl-16">※受け取り方法、<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/guide/transfer/mailmoney/receive-other.html" target="_blank" data-lid_no="10">受け取り可能な金融機関の詳細</a>をご確認いただき、お手続きをお願いいたします</p>
+                      <p class="u-Adjust_Mt-8">＜注意事項＞</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・お受け取りの口座名義は、Rakuten Turboに登録された契約者名義（カナ）と同一である必要があり、異なる名義の口座ではお受け取りになれませんのでご注意ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・以下に該当する場合、送金通知メールが不達となる可能性があります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-32">過去に楽天銀行の口座情報として登録したメールアドレスを変更し、かつ、変更前のメールアドレスをRakuten Turboに登録している場合<br>楽天銀行口座に利用制限（停止等）がかかっている場合<br>Rakuten Turboの契約者名（カナ）と楽天銀行の口座名義（カナ）が同一ではない場合</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・送金通知メールの送信より45日以内にお手続きいただけなかった場合、特典は無効となります</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・お客様情報の変更は、Rakuten Turboご利用開始月から翌月までにご対応ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・誤った情報の入力等、受け取りの手続きの不備によりキャッシュバックの受け取りができなかった場合でも、再送はいたしませんので、あらかじめご了承ください</p>
+                      <p class="u-Adjust_Mt-8 u-Adjust_Pl-16">・送金通知メール送信にあたり、楽天銀行株式会社にお客様のお名前、Rakuten Turboにてご登録いただきましたメールアドレスの受け渡しを行います。特典進呈後、楽天銀行の送金履歴としてお客様の情報が残りますので事前にご了承ください。お客様の情報の取扱いについて、詳しくは<a class="c-Link_Txt-inline" href="https://www.rakuten-bank.co.jp/policy/privacy/" target="_blank" data-lid_no="11">「楽天銀行のプライバシーポリシー」</a>をご確認ください</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">特典適用対象外</th>
+                    <td>
+                      <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">
+                        ※当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合<br>
+                        ※「【ショップ限定】Rakuten Turbo利用開始で6,000円キャッシュバックキャンペーン」の適用回数が、おひとり様1契約1回を超える場合<br>
+                        ※楽天モバイルショップ以外で購入した場合<br>
+                        ※期限までに「Rakuten Turbo」を利用されなかった場合<br>
+                        ※キャッシュバック進呈までに「Rakuten Turbo」の解約手続きを行なった場合<br>
+                        ※キャッシュバック進呈までに楽天会員から退会している場合<br>
+                        ※当社または楽天グループ株式会社が定める規約などに違反した場合<br>
+                        ※そのほか、当社が会員として不適格であると判断した場合</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">併用可能キャンペーン</th>
+                    <td>
+                      <p>以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">
+                        おトクなプラン料金キャンペーン（キャンペーンコード：1635）<br>
+                        契約事務手数料無料キャンペーン（キャンペーンコード：1636）<br>
+                        3カ月間プラン料金割引キャンペーン（キャンペーンコード：1822）<br>
+                        Rakuten TurboとRakuten UN-LIMIT VII利用開始で1,000円キャッシュバックキャンペーン（キャンペーンコード：1837）</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="2">注意事項</th>
+                    <td>
+                      <p class="c-Txt_Cap">
+                        ※本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください<br>
+                        ※本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります<br>
+                        ※製品の台数には限りがございます。なくなり次第終了とさせていただく場合があります<br>
+                        ※本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります<br>
+                        ※記載の内容は2023年4月25日（火）時点の情報となります</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <p class="u-Adjust_Mt-24 u-Adjust_Mb-80">
+          <a href="<%= sitepath %>terms/" class="c-Link_Txt-inline">利用規約・重要事項説明書<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+      </div>
+    </section>
+
+
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <!-- <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div> -->
+      <%- include('/include/internet/turbo/_footer', {
+        pagetitle: '【ショップ限定】Rakuten Turbo（ラクテン ターボ）キャッシュバックキャンペーン',
+        breadcrumbs: true,
+        customroot: {path: `${rootpath}`, label: 'トップ'},
+        directories:[{path:"campaign/", label:"キャンペーン・特典"}],
+      }) %>
+    </div>
+  </div>
+
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+  <script>
+    const openAccordionWithHash = () => {
+      let id = location.hash;
+      if (!!location.hash) {
+        const campaignElms = document.querySelectorAll('.js-campaign-accordion');
+        campaignElms.forEach(elm => {
+          if (`#${elm.id}` === location.hash) {
+            const accordionTrigger = elm.querySelector('.js-Accordion_Trigger');
+            const accordionPanel = elm.querySelector('.js-Accordion_Panel');
+            accordionTrigger.setAttribute('aria-expanded', 'true');
+            accordionPanel.setAttribute('aria-hidden', 'false');
+            accordionPanel.style.display = 'block';
+          }
+        })
+      }
+    }
+    openAccordionWithHash();
+
+    window.addEventListener('hashchange', () => {
+      openAccordionWithHash();
+    }, false)
+  </script>
+
+</body>
+</html>

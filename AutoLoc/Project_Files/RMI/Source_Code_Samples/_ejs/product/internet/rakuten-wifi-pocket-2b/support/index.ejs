@@ -1,0 +1,126 @@
+<% const pagetitle = "Rakuten WiFi Pocket 2B サポート情報" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/internet/", label:"Wi-Fiルーター／周辺機器"}, {path:"product/internet/rakuten-wifi-pocket-2b/", label:"Rakuten WiFi Pocket 2B"}] -%>
+<%-
+  include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten WiFi Pocket 2B のお客様サポートページ。ソフトウェアアップデート情報や故障・修理など、製品に関わる情報をご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<!-- insert-info.js -->
+<div id="emergency-info"></div>
+
+<div class="u-Adjust_Pb-64">
+  <div class="l-System_Container u-Adjust_Mt-32">
+    <h1 class="c-Heading_Lv1">Rakuten WiFi Pocket 2B サポート情報</h1>
+    <p class="u-Adjust_Mt-24">お客様に安心してご利用いただくために、Rakuten WiFi Pocket 2B のサポート情報をご案内いたします。</p>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64">ソフトウェアアップデート</h3>
+
+    <%#_ <p class="u-Adjust_Mt-24">現在のアップデート情報はございません。</p> _%>
+    <p class="u-Adjust_Mt-24">最新情報をご案内いたします。</p>
+    <div>最終更新日：<span id="update-software"></span></div>
+    <div class="u-Adjust_Mt-24">
+      <a href="/information/software/rakuten-wifi-pocket-2b/" class="c-Btn_Regular"><span>ソフトウェアアップデート詳細へ</span></a>
+    </div>
+
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64">故障・修理保証</h3>
+    <p class="u-Adjust_Mt-24">製品の修理や交換が必要な場合は、製品修理保証をご確認いただき、お問い合わせください。</p>
+    <div class="u-Adjust_Mt-24">
+      <a href="<%= sitepath %>product/internet/rakuten-wifi-pocket-2b/support/repair-warranty/" class="c-Btn_Regular"><span>製品修理保証を見る</span></a>
+    </div>
+    <div class="u-Adjust_Mt-24">
+      <a href="<%= sitepath %>product/internet/rakuten-wifi-pocket-2b/support/repair/" class="c-Link_Txt-icon">修理・交換のお手続き方法を確認する<span class="c-Icon_Chevron-right"></span></a>
+    </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64">安全性に関する重要な情報</h3>
+    <p class="u-Adjust_Mt-24">製品を安全に正しくご使用いただくための注意事項をご確認ください。</p>
+    <div class="u-Adjust_Mt-24">
+      <a href="<%= sitepath %>product/internet/rakuten-wifi-pocket-2b/support/safety-info/" class="c-Btn_Regular"><span>安全性に関する重要な情報を見る</span></a>
+    </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64">よくあるご質問</h3>
+    <p class="u-Adjust_Mt-24">Rakuten WiFi Pocket 2B に関するよくあるご質問をご確認いただけます。</p>
+    <div class="u-Adjust_Mt-24">
+      <a href="<%= sitepath %>support/product/wifi-pocket/" class="c-Btn_Regular"><span>よくあるご質問を見る</span></a>
+    </div>
+
+    <h3 class="c-Heading_Lv4 u-Adjust_Mt-64">関連情報</h3>
+    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/sar/" class="c-Link_Txt-icon">携帯電話の比吸収率（SAR）について<span class="c-Icon_Chevron-right"></span></a></p>
+    <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/compatible-band/" class="c-Link_Txt-icon">製品の他社回線対応状況について<span class="c-Icon_Chevron-right"></span></a></p>
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-top-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-product.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/product.insert-info.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

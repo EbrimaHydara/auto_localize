@@ -1,0 +1,386 @@
+<% const pagetitle = "楽天モバイルWiFi by エコネクト（お申し込み方法・ご利用方法）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/plan/service/", label:"オプションサービス"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '「楽天モバイルWiFi by エコネクト」のお申し込み方法・設定方法・ご利用方法はこちら。駅や街中の飲食店、ホテルなど、日本全国で高速インターネット（Wi-Fi）接続ができるサービスです。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <div class="u-Adjust_Mt-64">
+      <ul>
+        <li><a href="<%= sitepath %>service/rakutenmobile-wifi/" class="c-Btn_Regular"><span>特長・サービス内容を見る</span></a></li>
+      </ul>
+    </div>
+
+    <ul class="<%= nameSpace %>-Layout_Anchorlink">
+      <li><a href="#howto-AppConnect" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>接続時のアプリについて</a></li>
+      <li><a href="#howto-apply" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>お申し込み方法</a></li>
+      <li><a href="#howto-use" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用方法</a></li>
+      <li><a href="#howto-changingModels" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>機種変更時の引き継ぎ方法</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto-AppConnect">接続時のアプリについて</h2>
+    <div>
+      <p class="u-Adjust_Mt-24">
+        2023年9月1日（金）以降「楽天モバイルWiFi by エコネクト」の接続時に利用するアプリが「エコネクトWi-Fiアプリ」から「ギガぞうアプリ」に変更になりましたので、ダウンロードをお願いします。<br>
+        <span class="c-Txt_Emp-02">※「エコネクトWi-Fiアプリ」は2023年10月1日（日）で提供を終了いたしました。</span><br>
+        <br>
+        <span class="c-Txt_Emp-02">エコネクトアプリサービス終了後、Wi-Fi接続アプリの変更手続きをしなかった場合、エコネクトアプリサービスはご利用いただけなくなりますが、「楽天モバイルWiFi by エコネクト」のご契約は継続となります。</span>まだ接続時のアプリの変更をされていないお客さまは、お手続きを完了されるようお願いいたします。
+      </p>
+    </div>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-40" id="gigazou">ギガぞうアプリ</h3>
+    <div class="u-Adjust_Mt-16">
+      <div class="c-Box_App">
+        <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/guide/common/gigazou.png" alt="ギガぞうアプリ"></div>
+        <div class="c-Box_App-txt">
+          <p class="c-Box_App-ttl">ギガぞうアプリ</p>
+          <ul class="c-Box_App-link u-Adjust_Mt-16">
+            <li class="<%= nameSpace %>-App_Btn-store">
+              <div class="<%= nameSpace %>-App_Btn-store-zou-item">
+                <a href="https://play.google.com/store/apps/details?id=jp.ne.wi2.psa" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a>
+              </div>
+              <div class="<%= nameSpace %>-App_Btn-store-zou-item">
+                <a href="https://apps.apple.com/JP/app/id1296143623" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">お問い合わせ先</h3>
+      <div class="c-Theme-Light u-Adjust_Mt-16">
+      <p class="c-Txt_Emp-01">エコネクトサポートセンター</p>
+      <p class="u-Adjust_Mt-16">
+        営業時間　10:00 ～ 18:00（年中無休）<br>
+        電話番号　<a href="tel:0120500982" class="c-Link_Txt">0120-500-982</a>
+      </p>
+      <p class="u-Adjust_Mt-16 c-Txt_Cap">
+        ※こちらの窓口ではギガぞうアプリの仕様に関する内容のみ受け付けております。ご契約に係る内容は回答致しかねますのでご了承ください。
+      </p>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto-apply">お申し込み方法</h2>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">楽天モバイル新規お申し込み時</h3>
+    <p class="u-Adjust_Mt-24">
+      お申し込みの際、料金プラン詳細画面にある「サービス」の項目から「追加する」ボタンをタップしてください。
+    </p>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">楽天モバイルご契約中</h3>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+    <ul class="c-Tab_Items" role="tablist">
+      <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webでお手続き</li>
+      <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリでお手続き</li>
+    </ul>
+  <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li>
+        <h4 class="c-Heading_Lv4">
+          1. my 楽天モバイル「契約プラン」画面を開く
+        </h4>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">※「契約プランへ進む」をタップしてログインすると、手順２の画面が表示されます。</p>
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my
+            楽天モバイル]ログインできません</a>」をご確認ください。</p>
+        <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+          <a href="https://portal.mobile.rakuten.co.jp/dashboard#plans" target="_blank" class="c-Btn_Secondly-large"
+            data-ratId="guide_ecare_plans" data-ratEvent="click" data-ratParam="all">契約プランへ進む</a>
+        </p>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          2. 「オプションサービスの追加・解約」をタップする
+        </h4>
+        <div class="c-Accordion u-Adjust_Mt-16">
+          <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルを2回線以上ご契約中の場合</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+            <p class="u-Adjust_Mt-8">楽天モバイルを2回線以上契約されている場合は、以下の手順で表示する電話番号を切り替えることができます。</p>
+            <h5 class="c-Heading_Lv5 u-Adjust_Mt-24">1. 画面で表示されている電話番号をタップする</h5>
+            <div class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-01-230623.png" alt="" width="298" height="139" loading="lazy" class="c-Img_Capture"></div>
+            <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">2. 回線を表示したい電話番号をタップする</h5>
+            <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>チェックがついている電話番号が、現在表示されている回線です。</p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-02-230623.png" alt="" width="298" height="243" loading="lazy" class="c-Img_Capture"></div>
+            <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">3. 表示されている電話番号が切り替わっていることを確認する</h5>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-03-230623.png" alt="" width="298" height="222" loading="lazy" class="c-Img_Capture"></div>
+          </div>
+        </div>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+              src="<%= sitepath %>assets/img/guide/rakutenmobile-wifi/img-05-230623.png" width="300" height="" alt=""
+              class="c-Img_Capture"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          3. オプションサービスの「楽天モバイルWiFi by エコネクト」のスイッチをONにし、画面下部の「変更する」をタップ
+        </h4>
+        <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/guide/rakutenmobile-wifi/img-06-230623.png" width="311" height="768" loading="lazy" alt="" class="c-Img_Capture">
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li>
+        <h4 class="c-Heading_Lv4">
+          1. my 楽天モバイルを起動する
+        </h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="c-Box_App">
+            <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+            <div class="c-Box_App-txt">
+              <p class="c-Box_App-ttl">my 楽天モバイル</p>
+              <ul class="c-Box_App-link u-Adjust_Mt-16">
+                <li class="<%= nameSpace %>-App_Btn-store">
+                  <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                  <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                </li>
+                <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          2. 画面下の「契約プラン」をタップする
+        </h4>
+        <p class="u-Adjust_Mt-16">現在の通話サービスやオプションサービスのご契約状況をご確認いただけます。</p>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/users-information/img-01.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          3.「オプションサービスの追加・解約」をタップする
+        </h4>
+        <div class="c-Accordion u-Adjust_Mt-16">
+          <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルを2回線以上ご契約中の場合</button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+            <p class="u-Adjust_Mt-8">楽天モバイルを2回線以上契約されている場合は、以下の手順で表示する電話番号を切り替えることができます。</p>
+            <h5 class="c-Heading_Lv5 u-Adjust_Mt-24">1. 画面で表示されている電話番号をタップする</h5>
+            <div class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-01-230623.png" alt="" width="298" height="139" loading="lazy" class="c-Img_Capture"></div>
+            <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">2. 回線を表示したい電話番号をタップする</h5>
+            <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>チェックがついている電話番号が、現在表示されている回線です。</p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-04-230623.png" alt="" width="298" height="243" loading="lazy" class="c-Img_Capture"></div>
+            <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">3. 表示されている電話番号が切り替わっていることを確認する</h5>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-03-230623.png" alt="" width="298" height="222" loading="lazy" class="c-Img_Capture"></div>
+          </div>
+        </div>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakutenmobile-wifi/img-02-230623.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          ４.オプションサービスの「楽天モバイルWiFi by エコネクト」のスイッチをONにし、画面下部の「変更する」をタップする
+        </h4>
+        <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/guide/rakutenmobile-wifi/img-03-230623.png" width="311" height="779" loading="lazy" alt="" class="c-Img_Capture">
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>
+<p class="u-Adjust_Mt-32">
+  以上でお申し込みは完了です。<br>
+  オプションサービスのご利用開始にはアプリの設定が必要となります。<br>
+  以下の「ご利用方法」へお進みください。
+</p>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto-use">ご利用方法</h2>
+  <p class="u-Adjust_Mt-24">お申し込み後、ご登録のメールアドレスに届く「[楽天モバイルWiFi by エコネクト] ご利用開始のお知らせ」メールをご確認ください。</p>
+  <p class="u-Adjust_Mt-24">※2023年9月1日（金）以降、接続時に利用するアプリケーションはギガぞうアプリに変更となりました。</p>
+  <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">ギガぞうアプリの場合</h4>
+  <div class="c-Tab js-Tab u-Adjust_Mt-24">
+    <div class="c-Tab_Panel" id="gigazou-step" role="tabpanel" aria-hidden="false" aria-labelledby="gigazou-step">
+      <ul class="u-Adjust_Mt-16 c-Flow">
+        <li>
+          <h4 class="c-Heading_Lv4">1. メール内に記載のインストールURLもしくは下記から「ギガぞう」をインストール</h4>
+          <div class="u-Adjust_Mt-64">
+            <div class="c-Box_App">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/guide/common/gigazou.png" alt="ギガぞうアプリ"></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">ギガぞうアプリ</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-zou-item">
+                      <a href="https://play.google.com/store/apps/details?id=jp.ne.wi2.psa" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a>
+                    </div>
+                    <div class="<%= nameSpace %>-App_Btn-store-zou-item">
+                      <a href="https://apps.apple.com/JP/app/id1296143623" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">2. アプリを開き、「ログイン」ボタンをタップする</h4>
+          <div>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">3. 「提携事業者のIDでログインする」をタップする</h4>
+          <div>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">4. 「エコネクトIDでログインする」をタップする</h4>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">5.  アプリにログイン</h4>
+          <p class="u-Adjust_Mt-16">お申し込み後に届いたメールに記載されているエコネクトIDとパスワードを入力し、「ログイン」をタップしてください。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">6.  ご利用規約をご確認いただき、「同意する」をタップする</h4>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step6.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">7.  OpenRomingエンドユーザー利用規約を確認の上、Wi-Fi接続設定の「設定する」をタップする</h4>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step7-1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step7-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">8.  「接続」をタップする</h4>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step8.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">9.  「OK」をタップする</h4>
+          <p class="u-Adjust_Mt-16">周囲にWi2_clubのWi-fiがない場合、下記の表示がでますが、OKをタップすれば問題ございません。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step9.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">10.  「次へ進む」をタップする</h4>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step10.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">11.  通知許可の設定をする</h4>
+          <p class="u-Adjust_Mt-16">通知送信許可のポップアップが表示されるので、どちらか選択しタップしてください。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step11-1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/gigazou-step11-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <p class="u-Adjust_Mt-32">以上でご利用開始の準備は完了です。</p>
+
+  <div>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto-changingModels">機種変更時の引き継ぎ方法</h2>
+    <ol class="c-List_Ordered u-Adjust_Mt-16">
+      <li>移行先のスマートフォンに、ギガぞうアプリをインストールしてください。
+        <div class="u-Adjust_Mt-16"><a href="#gigazou" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-up-l"></span> ギガぞうアプリをインストール</a></div>
+      </li>
+      <li>アプリを起動し、お手持ちのエコネクトID、パスワードを入力してください。</li>
+      <li>認証完了後、ご利用開始となります。</li>
+    </ol>
+    <p class="u-Adjust_Mt-16 c-Txt_Cap">※認証可能台数は3台までとなります。</p>
+    <p class="c-Txt_Cap">すでにお客様が3台でエコネクトを利用しており、4台目の認証になる場合は、上記の「3」の手順後、解除する製品を選択し認証解除する必要があります。</p>
+  </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">注意事項</h3>
+    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+      <li>月途中で加入された場合、月額利用料が日割りとなります。</li>
+      <li>無料期間以降に月途中で解約された場合、月額利用料が日割りとなります。</li>
+      <li>
+        ご利用可能なSSIDは「Wi2」「Wi2_club」「wifi_square」「Wi2_free」となります。<br>
+        ※2022年9月30日（金）をもって、以下対象SSIDのサービス提供を終了いたしました。<br>
+        対象SSID： 「mobilepoint」 「mobilepoint1」 「mobilepoint2」<br>
+        （2023年9月1日（金）時点）
+      </li>
+    </ul>
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

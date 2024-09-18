@@ -1,0 +1,348 @@
+<% const pagetitle = "OPPO A55s 5G" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/setting/", label:"各種製品の初期設定"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'OPPO A55sの初期設定方法はこちら。SIMカードでご契約の楽天モバイル(楽天回線)の端末初期設定方法について、ソフトウエアアップデートやSIM差し替え方法などをご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1">初期設定方法（<%= pagetitle %>）</h1>
+
+    <p class="u-Adjust_Mt-24">以下の手順に沿って、設定を行ってください。</p>
+    <p><span class="c-Txt_Emp-02">Wi-Fi環境</span>での設定を推奨します。</p>
+    <p>他社からの電話番号乗り換え（MNP）の方は、初期設定の前にMNP開通手続きを行ってください。</p>
+    <ul class="u-Adjust_Mt-32">
+      <li><a href="<%= sitepath %>guide/mnp/flow/" class="c-Btn_Regular"><span>MNP開通手続きの詳細はこちら</span></a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">動画でかんたん初期設定</h2>
+
+    <div class="guide-Layout_Video-pc u-Adjust_Mt-40">
+      <!-- ::: PIP-Maker Start ::: -->
+      <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+      <div id="pipmakerfwrx"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+      <script type="text/javascript">
+      pipmaker.priority = ["WebGL", "HTML5"];
+      pipmaker.embed("//www.pip-maker.com/?view=fwrx", "pipmakerfwrx", 800, 450);
+      </script>
+      <!-- ::: PIP-Maker End ::: -->
+    </div>
+    <div class="guide-Layout_Video-sp u-Adjust_Mt-32">
+      <!-- ::: PIP-Maker Start ::: -->
+      <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+      <div id="pipmakerfwrxsp"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+      <script type="text/javascript">
+      pipmaker.priority = ["WebGL", "HTML5"];
+      pipmaker.embed("//www.pip-maker.com/?view=fwrx", "pipmakerfwrxsp", 320, 180);
+      </script>
+      <!-- ::: PIP-Maker End ::: -->
+    </div>
+
+    <div class="c-Tab js-Tab">
+      <ul class="c-Tab_Items <%= nameSpace %>-Layout_Tab u-Adjust_Mt-56" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">nanoSIM</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">eSIM</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">初期設定手順</h2>
+        <ol class="c-Flow">
+          <li><h3 class="c-Heading_Lv3">1. SIMを挿入してください。</h3></li>
+          <li><h3 class="c-Heading_Lv3">2. 製品の電源を入れ、「日本語」を選択し、「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">3. 利用規約に同意し、（チェックをいれ）「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">4. 「モバイルデータ通信を使用」をONにして「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">5. 利用するWi-Fiネットワークを選択し、Wi-Fiに接続してください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">6. 画面の指示に従って、不要の場合は「コピーしない」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="c-Txt_Cap u-Adjust_Mt-24">※別の端末からアプリなどを移行する場合は、「次へ」をタップして画面に従ってデータ引継ぎを実施してください。</p>
+          </li>
+          <li><h3 class="c-Heading_Lv3">7. 画面の指示に従って、Googleアカウント設定、Googleサービスの同意をしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">8. 「続行」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup08.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">9. 「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup09.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">10. 内容をお読みいただき、声を登録する場合は「同意する」をタップして画面に従って声を登録をしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup10.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="c-Txt_Cap u-Adjust_Mt-24">※声を登録しない場合は「スキップ」をタップしてください。</p>
+          </li>
+          <li><h3 class="c-Heading_Lv3">11. Google Payにカードを追加する場合は、「カードを追加」をタップして画面に従ってカードを追加してください。</h3></li>
+          <li><h3 class="c-Heading_Lv3">12. 「他のメールアカウント」「壁紙」「追加するアプリ」を変更する場合は画面に従ってください。設定しない場合は「いいえ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup12.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">13. 画面の指示に従って、端末のロック解除方法を設定してください。設定しない場合は「後で」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup13.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">14. 画面の指示に従って、HeyTapアカウントにサインインしてください。設定しない場合は「後で」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup14.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">15. ソフトウェアを最新に保持するには夜間自動アップデートをONにすることをおすすめします。選択して「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup15.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">16. データのインポートはご利用状況に応じて設定してください。例では新しく利用を想定して「次へ」を選択しています。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup16.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">17. パーソナルカスタマイズは必要に応じて設定してください。例では変更せずに「次へ」を選択しています。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup17.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">18. 設定がすべて完了し、ようこそ画面がでます。「さあ、はじめよう」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup18.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">19. 初期設定は完了です。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/nanosim/setup19.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+
+        </ol>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">STEP1.初期設定手順</h2>
+        <ol class="c-Flow">
+          <li><h3 class="c-Heading_Lv3">1. 製品の電源を入れ、リストをスクロールし、「日本語」を選択し、「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup01.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">2. 利用規約に同意し、チェックをいれ「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">3. 利用するWi-Fiネットワークを選択し、Wi-Fiに接続してください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">4. 画面の指示に従って、不要の場合は「コピーしない」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="c-Txt_Cap u-Adjust_Mt-24">※別の端末からアプリなどを移行する場合は、「次へ」をタップして画面に従ってデータを引き継ぎを実施してください。</p>
+          </li>
+          <li><h3 class="c-Heading_Lv3">5. 画面の指示に従って、Googleアカウント設定、Googleサービスの同意をしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">6. 「続行」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">7. Googleアシスタントを利用する場合は、画面に従って設定を実施してください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="c-Txt_Cap u-Adjust_Mt-24">※Googleアシスタントを設定しない場合は、「有効にしない」をタップしてください。</p>
+          </li>
+          <li><h3 class="c-Heading_Lv3">8.「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup08.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">9. 内容をお読みいただき、声を登録する場合は「同意する」をタップして画面に従って声を登録をしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup09.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="c-Txt_Cap u-Adjust_Mt-24">※声を登録しない場合は「スキップ」をタップしてください。</p>
+          </li>
+          <li><h3 class="c-Heading_Lv3">10. Google Payにカードを追加する場合は、「カードを追加」をタップして画面に従ってカードを追加してください。</h3>
+          </li>
+          <li><h3 class="c-Heading_Lv3">11. 「他のメールアカウント」「壁紙」「追加するアプリ」を変更する場合は画面に従ってください。設定しない場合は「いいえ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup11.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">12. 画面の指示に従って、端末のロック解除方法を設定してください。設定しない場合は「後で」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup12.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">13. 画面の指示に従って、HeyTapアカウントにサインインしてください。設定しない場合は「後で」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup13.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">14. ソフトウェアを最新に保持するには夜間自動アップデートをONにすることをおすすめします。選択して「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup14.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">15. データのインポートはご利用状況に応じて設定してください。例では新しく利用を想定して「次へ」を選択しています。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup15.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+
+          <li><h3 class="c-Heading_Lv3">16. パーソナルカスタマイズは必要に応じて設定してください。例では変更せずに「次へ」を選択しています。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup16.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">17. 設定がすべて完了し、ようこそ画面がでます。「さあ、はじめよう」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup17.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">18. 初期設定は完了です。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step1/setup18.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+
+        </ol>
+
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">STEP2.eSIM設定の変更</h2>
+        <ol class="c-Flow">
+          <li><h3 class="c-Heading_Lv3">1. 「設定」アイコンをタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2-2/setup01.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">2. 「SIMカードおよびモバイルデータ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2-2/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">3. 「eSIM」をオンにしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2-2/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">4. 「有効にする」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2-2/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">5. eSIM設定がオンになりました。楽天モバイル（楽天回線）の開通手続きを行うため、ホーム画面に戻り、次の手順にお進みください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2-2/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+        </ol>
+
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">STEP3.my楽天モバイル アプリの更新</h2>
+        <ol class="c-Flow">
+          <li><h3 class="c-Heading_Lv3">1. 「my楽天モバイル」アイコンをタップしてください。</h3>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2/setup01.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </li>
+          <li><h3 class="c-Heading_Lv3">2. 位置情報提供協力のお願いについて確認し、「次へ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">3. my 楽天モバイルの「位置情報へのアクセス」を「許可」してください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">4. my 楽天モバイルの「電話の発信と管理」を「許可」してください。</h3>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+          <li><h3 class="c-Heading_Lv3">5. 「更新する」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">6. 「更新」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">7. 「更新」が完了しましたら、「更新」が「開く」となります。その後、ホーム画面に戻ってください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step2/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+        </ol>
+
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">STEP4.本人確認手順</h2>
+
+  <div class="c-Theme-Light u-Adjust_Mt-32">
+    <p class="c-Txt_Emp-02">
+      ※スーパーホーダイ・組み合わせプランから移行の場合 および 「AIかんたん本人確認（eKYC）」か、「楽天グループに提出済みの書類で確認」の本人確認方法でお申し込みされている方は、この手順は不要です。
+    </p>
+  </div>
+
+        <ol class="c-Flow">
+            <li><h3 class="c-Heading_Lv3">1. 「カメラ」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup01.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">2. 「同意して続行する」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">3. 「カメラ」での撮影で位置情報を取得する場合は「アプリの使用時のみ」か「今回のみ」をタップしてください。位置情報を取得しない場合は「許可しない」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">4. カメラ画面左の「Google lens」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">5. 「カメラを起動」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">6. 「常に許可」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">7. 「許可」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">8. Googleレンズが起動したら、製品と一緒にお送りしている「START GUIDE」の裏面に記載のあるQRコードを読み取ってください。URLが表示されたらURLをタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup08.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">9. Chromeが起動します。初めて起動する場合は、規約に同意し、同期を有効にするかを選択してください。楽天会員ログイン画面が表示されます。ユーザーID/パスワードを入力して「ログイン」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup09.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+            <li><h3 class="c-Heading_Lv3">10. 本人確認が完了します。その後、ホーム画面に戻ってください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step3/setup10.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+        </ol>
+
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">STEP5.楽天モバイル（楽天回線）手続き手順</h2>
+        <ol class="c-Flow">
+          <li><h3 class="c-Heading_Lv3">1. 「my楽天モバイル」アイコンをタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step4/setup01.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">2. 「Rakuten IDでログイン」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step4/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">3. ユーザーID/パスワードを入力して「ログイン」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step4/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+          <li><h3 class="c-Heading_Lv3">4. 「申込番号」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/step4/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+        </ol>
+
+        <p class="u-Adjust_Mt-24">お申し込み方法によって、次の手順が異なります。</p>
+        <div class="u-Adjust_Mt-48">
+          <div class="c-Accordion">
+            <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>新規電話番号でお申し込みの方</button>
+            <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+              <div class="u-Adjust_Pl-16">
+                <ol class="c-Flow">
+                  <li><h3 class="c-Heading_Lv3">1. 申込番号の画面が表示されます。<br>「開通手続きをする」ボタンをタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup01.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                  <li><h3 class="c-Heading_Lv3">2. ポップアップが表示されます。「OK」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                  <li><h3 class="c-Heading_Lv3">3. 画面が切り替わるまでそのままでお待ちいただくと、「開通手続きが完了しました」と表示されます。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                  <li><h3 class="c-Heading_Lv3">4. しばらく待って、アンテナマークが表示されたら完了です。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                </ol>
+                <div class="c-Theme-Light u-Adjust_Mt-32">
+                  <h3 class="c-Heading_Lv3">インターネットに接続されているか、ご確認ください。</h3>
+                  <p class="u-Adjust_Mt-16">しばらくお待ちいただくと、インターネットがご利用いただけます。<br>Wi-FiをOFFにし、ブラウザアプリなどをご利用いただき、Webページが表示されるかご確認ください。<br>Webページが表示されない場合は、屋外など電波状況の良い場所まで移動をお願いします。また、スマートフォンの再起動、機内モードやモバイルデータ通信のON/OFFをお試しください。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイル（ドコモ回線・au回線）から移行の方／他社から乗り換え（MNP）の方</button>
+            <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display: none;">
+              <div class="u-Adjust_Pl-16">
+                <div class="c-Theme-Light">
+                  <p class="c-Txt_Emp-02">STEP3を行わずにMNP転入を行うと、転入完了後、楽天回線の開通手続きに進めない場合があります。必ず行ってから、以下のステップへお進みください。</p>
+                </div>
+
+                <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+                  <h3 class="c-Heading_Lv3">次のステップへ進む前に</h3>
+                  <p class="u-Adjust_Mt-16">「楽天回線への転入/移行手続き」のお手続きは、受付時間によって転入完了時間が異なります。<br>お手続きの前に以下をご確認ください。</p>
+
+                  <div class="c-Theme-Light u-Adjust_Mt-32">
+                    <p class="c-Txt_Emp-02">受付時間9:00～21:00の場合</p>
+                    <p class="u-Adjust_Mt-16">- 当日中にMNP転入完了</p>
+                    <ul class="c-Txt_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>受付受付10分～30分程度で完了</li>
+                    </ul>
+
+                    <p class="u-Adjust_Mt-40 c-Txt_Emp-02">受付時間21:01～翌日8:59の場合</p>
+                    <p class="u-Adjust_Mt-16">- 翌日9:00以降MNP転入完了</p>
+                  </div>
+                </div>
+
+                <ul class="c-Txt_Cap u-Adjust_Mt-32">
+                  <li><span>※</span>MNP予約番号の有効期限日近くになると自動的にMNP転入手続きを行います。</li>
+                  <li><span>※</span>転入が完了すると、現在の回線はご利用できなくなります。</li>
+                </ul>
+
+                <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">楽天回線への転入/移行手続き</h3>
+                <ol class="c-Flow">
+                  <li><h3 class="c-Heading_Lv3">1. 申込番号の画面が表示されます。<br>「転入を開始する」ボタンをタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup-1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                    <p class="u-Adjust_Mt-24">ご利用していたスマートフォン（携帯電話）が通話不可になれば、転入手続きは完了です。<br>ご契約時に登録したメールアドレスに「MNP開通手続き完了メール」が送られます。</p>
+                  </li>
+                  <li><h3 class="c-Heading_Lv3">2. MNP転入完了後、「my 楽天モバイル」のホーム画面の「申込番号」を再度タップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                    <p class="u-Adjust_Mt-24">MNP転入完了までに時間がかかる場合があります。</p>
+                    <div class="c-Theme-Light u-Adjust_Mt-32">
+                      <p class="c-Txt_Emp-02">受付時間9:00～21:00の場合</p>
+                      <p class="u-Adjust_Mt-16">- 当日中にMNP転入完了</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-16">
+                      <li><span>※</span>受付受付10分～30分程度で完了</li>
+                      </ul>
+
+                      <p class="u-Adjust_Mt-40 c-Txt_Emp-02">受付時間21:01～翌日8:59の場合</p>
+                      <p class="u-Adjust_Mt-16">- 翌日9:00以降MNP転入完了</p>
+                    </div>
+                  </li>
+                </ol>
+
+                <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">楽天回線の開通手続き</h3>
+                <ol class="c-Flow">
+                  <li><h3 class="c-Heading_Lv3">3. 申込番号の画面が表示されます。<br>「開通手続きをする」ボタンをタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                  <li><h3 class="c-Heading_Lv3">4. ポップアップが表示されます。「OK」をタップしてください。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                  <li><h3 class="c-Heading_Lv3">5. 画面が切り替わるまでそのままでお待ちいただくと、「開通手続きが完了しました」と表示されます。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                  <li><h3 class="c-Heading_Lv3">6. しばらく待って、アンテナマークが表示されたら完了です。</h3><figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/a55s-5g/esim/other/setup08.png" width="300" height="" alt="" class="c-Img_Capture"></figure></li>
+                </ol>
+
+                <div class="c-Theme-Light u-Adjust_Mt-32">
+                  <h3 class="c-Heading_Lv3">インターネットに接続されているか、ご確認ください。</h3>
+                  <p class="u-Adjust_Mt-16">しばらくお待ちいただくと、インターネットがご利用いただけます。<br>Wi-FiをOFFにし、ブラウザアプリなどをご利用いただき、Webページが表示されるかご確認ください。<br>Webページが表示されない場合は、屋外など電波状況の良い場所まで移動をお願いします。また、スマートフォンの再起動、機内モードやモバイルデータ通信のON/OFFをお試しください。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <p class="u-Adjust_Mt-32">以上で初期設定は完了です。</p>
+    <p class="u-Adjust_Mt-16">インターネット（データ）通信をご利用頂くための APN（アクセスポイント名）の設定は、自動接続で設定されますので、お客様の操作は不要です。</p>
+
+    <div class="u-Adjust_Pt-64">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

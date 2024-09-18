@@ -1,0 +1,35 @@
+<%_
+  let containerClass = ''
+  if (typeof noContainer === 'undefined') {
+    containerClass = 'l-System_Container'
+  }
+
+  const title = hikariCpn.title || '1年無料！おトクに今すぐ乗り換えよう'
+  const text = hikariCpn.text || 'ひかり回線とスマホ両方お申し込みで、1年無料で高速インターネット。'
+  const url = hikariCpn.url || '/hikari/campaign/one-year-free/'
+  const btn = hikariCpn.btn || 'キャンペーン詳細を見る'
+  const annotation = hikariCpn.annotation || '※ 楽天ひかり（マンションプランまたはファミリープラン）の月額基本料が開通月から最大12カ月無料。Rakuten UN-LIMIT VIIをすでに開通、または期限内にお申し込みの方が対象。 契約解除料ファミリープラン5,280円、マンションプラン4,180円が発生（2年ごとに更新）。※ 楽天ポイントは楽天モバイルより進呈。権利の譲渡不可。'
+
+  if (typeof hikariCpn !== 'undefined') {
+_%>
+  <div class="<%= containerClass %>">
+    <div class="m-hikari-Cpn">
+      <div class="m-hikari-Cpn_Inner">
+        <div class="m-hikari-Cpn_Txt">
+          <h2 class="c-Heading_Lv2"><%- title %></h2>
+          <p><%- text %></p>
+          <div class="m-hikari-Cpn_Btn u-Adjust_Mt-16">
+            <%_ if (typeof hikariCpn.lidno !== 'undefined') { _%>
+            <a href="<%= url %>" data-lid_no="<%= hikariCpn.lidno %>" class="c-Btn_Primary-large"><%- btn %></a>
+            <%_ } else { _%>
+            <a href="<%= url %>" class="c-Btn_Primary-large"><%- btn %></a>
+            <%_ } _%>
+          </div>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-16">
+        <p class="c-Txt_Cap"><%- annotation %></p>
+      </div>
+    </div>
+  </div>
+<%_ } _%>

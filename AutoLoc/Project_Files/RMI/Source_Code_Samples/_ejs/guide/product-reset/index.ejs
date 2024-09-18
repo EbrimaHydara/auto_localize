@@ -1,0 +1,586 @@
+<% const pagetitle = "iPhone、Android製品の初期化（リセット）方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/product/setting/", label:"設定・操作・故障"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'iPhone、Android 製品の初期化に関する注意事項と操作方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+
+    <h1 class="c-Heading_Lv1">iPhone、Android製品の初期化（リセット）方法</h1>
+    <div class="u-Adjust_Mt-32">
+      iPhone、Android 製品の初期化に関する注意事項と操作方法をご案内します。
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">初期化（リセット）が必要になる場合</h2>
+    <div class="u-Adjust_Mt-16">
+      <div>
+        以下のような場合、お使いのiPhone、Android製品を初期化いただく必要があります。
+      </div>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li>スマホ下取りサービスのご利用による、下取り製品を送付する場合</li>
+        <li>製品の初期不良による、製品を交換する場合</li>
+        <li>故障製品の修理や交換による、故障製品を送付する場合</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="c-Heading_Lv3 u-Adjust_Mt-24">初期化（リセット）前の注意事項</h3>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li>初期化を行う前に、製品のデータを必ずバックアップしてください。</li>
+        <li>製品のデータバックアップおよび初期化は、お客様ご自身の責任で行ってください。</li>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/iphone/itunes/" class="c-Link_Txt-inline">iPhone（iTunes）でのバックアップ方法<span class="c-Icon_Chevron-right"></span></a></p>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/iphone/icloud/" class="c-Link_Txt-inline">iPhone（iCloud）でのバックアップ方法<span class="c-Icon_Chevron-right"></span></a></p>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/data-migration/" class="c-Link_Txt-inline">Android製品のバックアップ方法<span class="c-Icon_Chevron-right"></span></a></p>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">初期化（リセット）方法</h2>
+      <div class="u-Adjust_Mt-16">
+        以下の手順に沿って、お使いの製品を初期化してください。
+      </div>
+      <p class="u-Adjust_Mt-16 c-Txt_Cap">※OSのバージョンやお使いの製品により表示される画面が異なる場合があります。</p>
+    </div>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-16">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">iPhoneの場合</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">Android製品の場合</li>
+      </ul>
+
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ul class="u-Adjust_Mt-16">
+          <li><a href="#setting01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>事前準備</a></li>
+          <li class="u-Adjust_Mt-16"><a href="#setting02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>1. パスコードをオフにする</a></li>
+          <li class="u-Adjust_Mt-16"><a href="#setting03" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>2. 「iPhone を探す」をオフにする</a></li>
+          <li class="u-Adjust_Mt-16"><a href="#setting04" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>3. iCloudからサインアウトする</a></li>
+          <li class="u-Adjust_Mt-16"><a href="#setting05" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>4. iPhone を初期化（リセット）する</a></li>
+        </ul>
+        <h3 id="setting01" class="u-Adjust_Mt-24 c-Heading_Lv3">事前準備</h3>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>iPhone の初期化には、Apple IDとパスワード、iPhone のパスコードが必要です。</li>
+          <li>事前に Apple Watch のペアリングを解除してください。</li>
+        </ul>
+        <div class="u-Adjust_Mt-16">
+          <a href="https://support.apple.com/ja-jp/HT204568" target="_blank" class="c-Link_Txt-inline ubereats-Text_small">Apple Watch のペアリング解除方法</a><span class="c-Icon_New-window-l c-Txt_Emp-02"></span>
+        </div>
+        <div class="c-Accordion u-Adjust_Mt-16">
+          <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルの電話番号シェアサービスをご利用中の方へ</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>ペアリング解除の際に、モバイルデータ通信プランを「残す」または「削除」を選択する画面が表示されます。「モバイル通信プランを残す」を必ず選択してください。</li>
+              <li>もし誤って「モバイル通信プランを削除」を選択した場合、<a href="<%= sitepath %>guide/number-share/cancellation/">電話番号シェアサービスを解約</a>し、 Apple Watch と iPhone を再びペアリングする際に<a href="<%= sitepath %>service/number-share/">電話番号シェアサービス</a>を再度ご契約する必要がありますのでご注意ください。</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 id="setting02" class="u-Adjust_Mt-24 c-Heading_Lv3">1. パスコードをオフにする</h3>
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. ホーム画面で「設定」をタップする
+            </h4>
+            <div class="u-Adjust_Mt-16">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2. 「Face ID とパスコード」をタップする
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ホームボタンが搭載されているiPhone の場合は、「Touch ID とパスコード」をタップしてください。
+            </p>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3. パスコードを入力する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4. 「パスコードをオフにする」をタップし、「オフにする」を選択する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_4-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              5. Apple ID パスワードを入力し、「オフにする」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              6. パスコードを入力する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_6.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              7. 「パスコードをオンにする」と表示されていることを確認する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/password-off/iPhone_1_7.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+        </ul>
+        <p class="u-Adjust_Mt-16">
+          以上でパスコードのオフは完了です。「設定」へ戻り、次の手順へ進んでください。
+        </p>
+
+        <h3 id="setting03" class="u-Adjust_Mt-24 c-Heading_Lv3">2. 「iPhone を探す」をオフにする</h3>
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. 「設定」内のユーザー名をタップする
+            </h4>
+            <div class="u-Adjust_Mt-16">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/search-off/iPhone_2_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2. 「探す」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/search-off/iPhone_2_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3. 「iPhone を探す」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/search-off/iPhone_2_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4. 「iPhone を探す」をオフにする
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※オフの場合はスライダーがグレーになります。</p>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/search-off/iPhone_2_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              5. Apple ID パスワードを入力し、「オフにする」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/search-off/iPhone_2_5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              6. 「iPhone を探す」がオフになっていることを確認する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/search-off/iPhone_2_6.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+        </ul>
+        <p class="u-Adjust_Mt-16">
+          以上で「iPhone を探す」のオフは完了です。「設定」へ戻り、次の手順へ進んでください。
+        </p>
+
+        <h3 id="setting04" class="u-Adjust_Mt-24 c-Heading_Lv3">3. iCloudからサインアウトする</h3>
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. 「設定」内のユーザー名をタップする
+            </h4>
+            <div class="u-Adjust_Mt-16">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/search-off/iPhone_2_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2. 「サインアウト」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/icloud-off/iPhone_3_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3. 「コピーを残す」はすべてオフにした状態で、「サインアウト」をタップする
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※オフの場合はスライダーがグレーになります。</p>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/icloud-off/iPhone_3_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/icloud-off/iPhone_3_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4. 「設定」内のユーザー名部分に「iPhone にサインイン」と表示されていることを確認する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/icloud-off/iPhone_3_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+        </ul>
+        <p class="u-Adjust_Mt-16">
+          以上でiCloudからのサインアウトは完了です。「設定」へ戻り、次の手順へ進んでください。
+        </p>
+
+        <h3 id="setting05" class="u-Adjust_Mt-24 c-Heading_Lv3">4. iPhone を初期化（リセット）する</h3>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">※初期化（リセット）すると、iPhone 上の設定やデータがすべて消去されます。必ず初期化を行う前にデータのバックアップを行ってください。</p>
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. 「設定」内の「一般」をタップする
+            </h4>
+            <div class="u-Adjust_Mt-16">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/iphone-initialize/iPhone_4-1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2. 「転送または iPhone をリセット」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/iphone-initialize/iPhone_4-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3. 「すべてのコンテンツと設定を消去」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/iphone-initialize/iPhone_4-3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4. 「続ける」をタップし、「iPhone を消去」を選択する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/iphone-initialize/iPhone_4-4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/iphone-initialize/iPhone_4-5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              5. iPhoneが再起動され「こんにちは」と表示されることを確認する
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/iphone/iphone-initialize/iPhone_4-6.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+        </ul>
+        <p class="u-Adjust_Mt-16">
+          以上で iPhone の初期化（リセット）は完了です。
+        </p>
+
+
+      </div>
+
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ul class="u-Adjust_Mt-16">
+          <li><a href="#setting06" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>1. 画面ロックを無効にする</a></li>
+          <li class="u-Adjust_Mt-16"><a href="#setting07" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>2. 「デバイスを探す」を無効にする</a></li>
+          <li class="u-Adjust_Mt-16"><a href="#setting08" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>3. アカウントを削除する</a></li>
+          <li class="u-Adjust_Mt-16"><a href="#setting09" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>4. すべてのデータを消去（出荷時リセット）する</a></li>
+        </ul>
+
+        <h3 id="setting06" class="u-Adjust_Mt-24 c-Heading_Lv3">1. 画面ロックを無効にする</h3>
+          <ul class="u-Adjust_Mt-16 c-Flow">
+            <li>
+              <h4 class="c-Heading_Lv4">
+                1. ホーム画面で「設定」をタップする
+              </h4>
+              <div class="u-Adjust_Mt-16">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/lock/Android_1_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                2. 「セキュリティ」をタップする
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/lock/Android_1_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                3. 「画面ロック」をタップする
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/lock/Android_1_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                4. 「なし」をタップし、「無効にする」を選択する
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/lock/Android_1_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/lock/Android_1_5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                5. 「画面ロック」部分に「なし」と表示されていることを確認する
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/lock/Android_1_6.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+          </ul>
+        <p class="u-Adjust_Mt-16">以上で画面ロックの無効は完了です。画面はそのままの状態で、次の手順【2. 「デバイスを探す」を無効にする】内の【2.「デバイスを探す」をタップする】へ進んでください。</p>
+
+        <h3 id="setting07" class="u-Adjust_Mt-24 c-Heading_Lv3">2. 「デバイスを探す」を無効にする</h3>
+          <ul class="u-Adjust_Mt-16 c-Flow">
+            <li>
+              <h4 class="c-Heading_Lv4">
+                1. 「設定」内の「セキュリティ」をタップする
+              </h4>
+              <div class="u-Adjust_Mt-16">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/search-off/Android_2_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                2. 「デバイスを探す」をタップする
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/search-off/Android_2_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                3. 「デバイスを探す」をOFFに切り替える
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/search-off/Android_2_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                4. 「デバイスを探す」部分に「OFF」と表示されていることを確認する
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/search-off/Android_2_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+          </ul>
+        <p class="u-Adjust_Mt-16">以上で「デバイスを探す」の無効は完了です。「設定」へ戻り、次の手順へ進んでください。</p>
+
+        <h3 id="setting08" class="u-Adjust_Mt-24 c-Heading_Lv3">3. アカウントを削除する</h3>
+          <ul class="u-Adjust_Mt-16 c-Flow">
+            <li>
+              <h4 class="c-Heading_Lv4">
+                1. 「設定」内の「アカウント」をタップする
+              </h4>
+              <div class="u-Adjust_Mt-16">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/delete-acount/Android_3_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                2. ログイン中のアカウントを選択する
+              </h4>
+              <p class="u-Adjust_Mt-16 c-Txt_Cap">複数のアカウントでログインしている場合は、同様の手順ですべてのアカウントを削除してください。</p>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/delete-acount/Android_3_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                3. 「アカウントを削除」をタップする
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/delete-acount/Android_3_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/delete-acount/Android_3_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                4. ログインしていたアカウントが削除されていることを確認する
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/delete-acount/Android_3_5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+          </ul>
+        <p class="u-Adjust_Mt-16">以上でアカウントの削除は完了です。「設定」へ戻り、次の手順へ進んでください。</p>
+
+        <h3 id="setting09" class="u-Adjust_Mt-24 c-Heading_Lv3">4. すべてのデータを消去（出荷時リセット）する</h3>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">※すべてのデータを消去（出荷時リセット）すると、製品の設定やデータがすべて消去されます。必ずデータを削除する前にデータのバックアップを行ってください。</p>
+
+          <ul class="u-Adjust_Mt-16 c-Flow">
+            <li>
+              <h4 class="c-Heading_Lv4">
+                1. 「設定」内の「システム」をタップする
+              </h4>
+              <div class="u-Adjust_Mt-16">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/android-initialize/Android_4_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                2. 「リセットオプション」をタップする
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/android-initialize/Android_4_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                3. 「すべてのデータを消去（出荷時リセット）」を選択し、「すべてのデータを消去」をタップする
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/android-initialize/Android_4_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/android-initialize/Android_4_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+            <li>
+              <h4 class="c-Heading_Lv4">
+                4. 製品が再起動され「ようこそ」と表示されることを確認する
+              </h4>
+              <div>
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/product-reset/android/android-initialize/Android_4_5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </li>
+          </ul>
+        <p class="u-Adjust_Mt-16">以上ですべてのデータを消去（出荷時リセット）は完了です。</p>
+      </div>
+    </div>
+
+
+    <div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">よく見られているご質問</h2>
+      <p class="u-Adjust_Mt-16">よく見られているご質問をご案内します。<br>
+        お困りごとが解決しない場合は、各ページからチャットやお電話でお問い合わせいただけます。</p>
+      <ul class="c-Link_List u-Adjust_Mt-24">
+        <li>
+          <a href="<%= sitepath %>guide/area-confirmation/">楽天回線とパートナー回線のどちらに接続しているかを確認したい<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001804/">データ通信のトラブル解決方法について<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00000885/">回線が繋がらないなど質問や要望がある場合、どうしたらいいですか<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/10000189/">楽天回線・パートナー回線の電波を拾えない、圏外になってしまう場合の対応<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001505/">パートナー回線エリアから楽天回線エリアへ移動した際、自動で切り替わらない<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="u-Adjust_Mt-48">
+      <div>
+        <a class="c-Btn_Regular" href="<%= sitepath %>support/">お客様サポートトップに戻る</a>
+      </div>
+      <div class="u-Adjust_Mt-16">
+        <a class="c-Btn_Regular" href="<%= rootpath %>">楽天モバイルトップへ</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<% const pagetitle = "初期契約解除について" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/contract-detail/cancellation/", label:"解約・MNP転出"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'お申し込み時の「ご契約内容の通知方法」によって弊社が定める起算日から8日間、書面によりご契約回線の解除ができる初期契約解除ついてご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-24">初期契約解除は、起算日（お申し込み時の「ご契約内容の通知方法」による）から8日間、書面により契約回線の解除を行うことができるものです。<br>
+      初期契約解除の対象は回線の契約を含むSIMのみです。詳細は、「ご契約内容のご案内」をご確認ください。</p>
+      <ul class="c-List_Note u-Adjust_Mt-8">
+        <li><span>※</span>製品およびアクセサリーは初期契約解除の対象外です。ご返却は不要です。SIMカードと一緒にご返却いただきましてもご購入代金は返還いたしません。</li>
+        <li><span>※</span>「<a href="<%= sitepath %>service/replacement-warranty-plus/">スマホ交換保証プラス</a>」に加入されている場合、初期契約解除と同時にサービス解約とはなりません。個別でサービスの解約手続きが必要となります。解約をご希望の場合は「<a href="<%= ecarepath %>my-rakuten-mobile">my 楽天モバイル</a>」よりお手続きください。（「スマホ交換保証プラス」のご契約は製品に紐づいており、電話番号の解約後も継続してご利用いただけます）</li>
+        <li class="c-Txt_Emp-02"><span>※</span>初期契約解除を行った場合でも、当社はプラン料金を解除日までにご利用いただいたデータ利用量に対応する金額で請求いたします。また、購入した製品等の代金、解除日までご利用になられたデータチャージを含む通信料、通話料、および契約解除日までのオプションサービスなどの月額料金の日割り料金、ユニバーサルサービス料および電話リレーサービス料を請求いたします。</li>
+      </ul>
+
+    <h3 class="c-Heading_Lv4 u-Adjust_Mt-64">書面交付の場合</h3>
+    <p class="u-Adjust_Mt-8">本サービスの提供を開始した日、もしくは後日お送りする「ご契約内容のご案内」の書面をお客様が受領した日のいずれか遅い日が、料金の起算日となります。</p>
+    <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">電子交付の場合</h3>
+    <p class="u-Adjust_Mt-8">本サービスの提供を開始した日が、料金の起算日となります。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">MNP転入時の初期契約解除について</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-32">
+      <li>MNP転入によりご契約されたお客さまのうち、初期契約解除申請と同時にMNP転出をご希望された方は、申請書を送付いただいても、初期契約解除による解約は完了しません。<br>
+        <span class="c-Txt_Cap">※MNPワンストップ未対応の携帯電話会社に乗り換えの方は、MNP予約番号の取得が必要です。MNPワンストップ対象の携帯電話会社は<a href="<%= sitepath %>guide/mnp/#carrier" class="c-Link_Txt">こちら</a>からご確認ください。</span>
+      </li>
+      <li>お客様にて転出が完了する日までにご利用いただいたデータ利用量に対応するプラン料金を請求いたします。また、購入した製品等の代金、解除日までご利用になられたデータチャージを含む通信料、通話料、および契約解除日までのオプションサービスなどの月額料金を日割りにて請求いたしますのでご了承ください。</li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-40">初期契約解除のお手続き</h2>
+    <ol class="c-Flow">
+      <li>
+        <span class="c-Txt_Alphanumeric-m">1</span>
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">初期契約解除申請書をダウンロード、印刷し、情報を記入する</h4>
+        <p class="u-Adjust_Mt-32">下記ボタンより、初期契約解除申請書をダウンロード、印刷し、必要情報を記入してください。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※申請書内にSIMカード返却の案内がありますが、返却は不要です。</p>
+        <p class="u-Adjust_Mt-32 u-Adjust_Align-center"><a target="_blank" href="<%= sitepath %>assets/pdf/download/contract-cancellation.pdf?20240105" class="c-Btn_Regular-auto"><span>初期契約解除申請書ダウンロードへ</span></a>
+        </p>
+      </li>
+      <li>
+        <span class="c-Txt_Alphanumeric-m">2</span>
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">初期契約解除申請書を郵送する</h4>
+        <p class="u-Adjust_Mt-32">ご記入いただいた初期契約解除申請書を下記住所へご郵送ください。</p>
+        <h5 class="c-Heading_Lv5 c-Txt_Normal-m u-Adjust_Mt-24">初期契約解除申請書の郵送先</h5>
+        <div class="c-Infobox_Standing-border u-Adjust_Mt-8">
+          〒213-0012<br>
+          神奈川県川崎市高津区坂戸3-2-1<br>
+          R&DビジネスパークビルA棟7階 東<br>
+          楽天モバイル オペレーションセンター
+        </div>
+      </li>
+      <li>
+        <span class="c-Txt_Alphanumeric-m">3</span>
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">SIMカードを破棄または返却する</h4>
+        <p class="u-Adjust_Mt-32">SIMカードをご契約している場合は、各地域に合わせた分別で破棄をお願いたします。</p>
+        <p class="u-Adjust_Mt-32">弊社にて破棄をご希望の場合は、SIMカードを普通郵便で以下住所へご返却ください。楽天モバイルショップへの返却は受け付けておりません。</p>
+        <p class="u-Adjust_Mt-32 c-Txt_Cap">
+          <span class="c-Txt_Emp-02">※送料はお客様の負担となります</span>
+          <br>
+          ※SIMカードの郵送先は以下の通りです<br>
+          〒143-0006<br>
+          東京都大田区平和島3-5-1 B棟2F<br>
+          楽天モバイル RSIM回収係
+        </p>
+      </li>
+    </ol>
+    <p class="u-Adjust_Mt-16">初期契約解除申請書の書類に不備がない場合は、解約後、解約完了のメールを送信いたします。<br>解約完了のメールをもって解約手続き完了とさせていただきます。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">注意事項</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-8">
+      <li class="c-Txt_Emp-02">初期契約解除を行った場合でも、契約履歴は残ります。再度ご契約いただいた場合、1回線目だけに適用されるキャンペーンや、1度だけ適用されるキャンペーンなどは適用されません。</li>
+      <li>書面の切手代金やSIMカードのご返却に伴う送料等は、お客様にご負担いただきます。</li>
+      <li>弊社が初期契約解除制度について不実のことを告げたことによりお客様が告げられた内容が事実であるとの誤認をし、これによって8日間を経過するまでに契約を解除しなかった場合、ご契約を解除することができる旨を記載して交付した書面を受領した日から起算して8日を経過するまでの間であれば、書面により、契約を解除することができます。</li>
+    </ul>
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

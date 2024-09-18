@@ -1,0 +1,81 @@
+<% const pagetitle = "Rakuten Casaお申し込み情報のご入力 - 入力完了" -%>
+<% const directories = [{path:"area/", label:"通信・エリア"}, {path:"area/rakuten-casa/", label:"Rakuten Casa"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container">
+  <h1 class="c-Heading_Lv1 u-Adjust_Mt-32"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-32">
+    Rakuten Casaお申し込み情報をご入力いただきありがとうございます。<br>
+    後日、ご入力いただいた「つながりやすい連絡先」に楽天モバイルよりお電話でご連絡いたしますので、お待ちください。
+  </p>
+  <p class="u-Adjust_Mt-24">
+    <a href="<%= sitepath %>area/rakuten-casa/" class="c-Link_Txt-inline-icon">Rakuten Casaの案内に戻る<span class="c-Icon_Chevron-right"></span></a>
+  </p>
+</div>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+</div>
+<%- include('/include/_common-js', { jquery: '3.6.0' }) %>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script src="<%= sitepath %>assets/js/input-corporation-information.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

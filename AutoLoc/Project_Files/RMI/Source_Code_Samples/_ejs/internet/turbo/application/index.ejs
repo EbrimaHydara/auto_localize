@@ -1,0 +1,228 @@
+<%
+  const pagetitle = "Rakuten Turbo お申し込み事前確認"
+  const namespace = "application"
+  const layout = `${namespace}-Layout`
+-%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイルのホームルーターRakuten Turboのお申し込み事前確認をしていただけます',
+    keywords: '',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/internet/turbo/application/application.css?20240424">
+<%- include('/include/_append-head') %>
+
+</head>
+<body id="turbo-application" style="display: none;">
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <%- include('/include/internet/turbo/_header', {
+    pagetitle,
+    headerType: 'simple',
+    breadcrumbs: true,
+    tax: false,
+  }) %>
+
+<div class="l-System_Container">
+  <section class="<%= layout %>_Main">
+    <h1 class="c-Heading_Lv1">Rakuten Turbo <br class="u-Show_Sp">お申し込み事前確認</h1>
+    <div class="u-Adjust_Mt-16">
+      <p>お申し込み前に、対応エリア、通信環境の確認をしてください。</p>
+      <p>確認後、<span class="c-Txt_Emp-02">チェックボックスにチェックを入れて</span>ください。</p>
+    </div>
+  </section>
+
+  <section id="confirm-area" class="u-Adjust_Mt-48">
+    <h2 class="c-Heading_Lv2">対応エリアの確認</h2>
+    <p class="u-Adjust_Mt-16 c-Txt_Emp-01">設置先住所が対応エリアであることを確認してください。</p>
+    <div id="target-by-fullmap" class="application-Map u-Adjust_Mt-16">
+      <div id="place-search-wrapper">
+        <div class="c-Search_Container form-group">
+          <span class="glyphicon glyphicon-search"></span>
+          <input type="text" class="form-control controls c-Search_Input" id="pac-input" aria-label="地図を検索" placeholder="設置予定場所の郵便番号もしくは住所を入力">
+          <div class="c-Search_Btn"><input type="submit" value="" class="c-Search_Submit"><span data-auto-rat="submit" class="c-Icon_Search c-Search_Icon"></span></div>
+        </div>
+      </div>
+
+      <div class="js-stickyarea">
+        <div class="map-wrap u-Adjust_Mt-16">
+          <div id="map" data-update="20230705-2"></div>
+          <button type="button" data-auto-rat="button" id="map-loc-button" class="c-Btn_Regular c-Btn_Icon" style="min-width: auto;"><span class="c-Icon_Location-f"></span><span>現在地</span></button>
+          <a href="<%= sitepath %>internet/turbo/<%= namespace %>/map.html" class="<%= layout %>_Btn-fullscreen" aria-label="全画面表示"><span class="c-Icon_Product-fullscreen"></span></a>
+        </div>
+      </div>
+    </div>
+    <div id="legend">
+      <div class="<%= layout %>_Map-flexrow u-Adjust_Mt-16">
+        <ul class="<%= layout %>_Map-legend" data-target="area-5g">
+          <li class="<%= layout %>_Map-legend-5gsub6">楽天回線 5G Sub6エリア
+            <button data-auto-rat="button" class="c-Tooltip js-Tooltip-inline" aria-label="エリアの説明を表示" data-tippy-theme="default" data-tippy-content="楽天モバイル自社回線に接続する5G Sub6エリアです">
+            </button>
+          </li>
+          <li class="<%= layout %>_Map-legend-service">楽天回線 4G LTEエリア
+            <button data-auto-rat="button" class="c-Tooltip js-Tooltip-inline" aria-label="エリアの説明を表示" data-tippy-theme="default" data-tippy-content="楽天モバイル自社回線に接続する4G LTEエリアです">
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="u-Adjust_Mt-16" style="font-size:13px"><a href="#caution" data-auto-rat="anchor" class="c-Link_Txt-inline-icon js-scroll"><span class="c-Icon_Arrow-down-l"></span>サービスエリアに関する注意事項</a></p>
+
+  <section id="confirm-env" class="u-Adjust_Mt-48">
+    <h2 class="c-Heading_Lv2">通信環境の確認</h2>
+    <p class="c-Txt_Emp-01 u-Adjust_Mt-16">設置先が推奨環境であることを確認してください。</p>
+
+    <div class="u-Adjust_Mt-16">
+      <div class="<%= layout %>_Step-checklist-wrap">
+        <ul class="<%= layout %>_Step-checklist">
+          <li><span class="c-Icon_Check"></span>窓際など、電波を受け取りやすい場所に設置できること</li>
+          <li><span class="c-Icon_Check"></span>Wi-Fiの電波と干渉する機器（電子レンジ、テレビなど）から離して設置できること</li>
+          <li><span class="c-Icon_Check"></span>高層階（およそ16階以上）ではない場所に設置できること</li>
+        </ul>
+      </div>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">設置先住所に関する確認</h2>
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">設置先住所に関して、以下規則が適用されることを確認してください。</p>
+
+      <div class="<%= layout %>_Step-checklist-wrap u-Adjust_Mt-16">
+        <ul class="<%= layout %>_Step-checklist">
+          <li><span class="c-Icon_Check"></span>設置先住所以外での利用を行わないこと</li>
+          <li><span class="c-Icon_Check"></span>設置先住所は前回の変更から30日以内は変更できないこと<br>
+          <span class="c-Txt_Cap u-Adjust_Pl-24">※変更日の次の日を1日目と数えます</span></li>
+        </ul>
+      </div>
+
+      <div class="<%= layout %>_Step-box u-Adjust_Mt-48">
+      <ul class="u-Adjust_Align-center <%= layout %>-confirm-env">
+        <li id="js-confirm-guide-new" class="c-Txt_Emp-02 <%= layout %>-confirm-guide u-Adjust_Mb-8">チェックボックスにチェックを<br class="u-Show_Sp">入れてください。</li>
+        <li>
+          <label class="c-Form_Checkbox <%= layout %>_Checkbox">
+            <input type="checkbox" data-auto-rat="cbox" name="confirm-checkbox" id="envCheck" value="" data-ratid="rmt_cbox_02" data-ratevent="click" data-ratparam="all">
+            <span class="c-Icon_Check"></span>
+            <span class="c-Form_Checkbox-label <%= layout %>_Checkbox-label">設置先が対応エリア、推奨環境であることを確認した</span>
+          </label>
+        </li>
+      </ul>
+      <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+        <a id="js-confirm-guide-check" href="https://onboarding.mobile.rakuten.co.jp/rakuten-turbo-5g?system=web&l-id=rmt_onb_01" data-ratid="rmt_onb_01" data-ratevent="click" data-ratparam="all" class="c-Btn_Primary-large" aria-disabled="true"><span>Rakuten Turboの<br class="u-Show_Sp">お申し込みを続ける</span></a>
+      </div>
+      <ul class="u-Adjust_Mt-32 <%= layout %>-confirm-other">
+        <li class="u-Adjust_Align-center"><a href="#hikari" data-auto-rat="anchor" class="c-Link_Txt-inline-icon js-scroll" data-ratid="rmt_anchor_03" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>設置先が対応エリア、推奨環境でなかった場合</a></li>
+      </ul>
+      </div>
+      </div>
+  </section>
+
+  <!-- <section id="confirm-env-detail" class="u-Adjust_Mt-16 <%= layout %>-member u-Adjust_Mt-32">
+    <h3 class="c-Heading_Lv4">楽天モバイル「Rakuten最強プラン」をご利用中の方は、設置予定場所で通信環境の確認をしておくと、より安心です
+      </h3>
+    <p class="u-Adjust_Mt-16">設置先で以下の確認をすることで、Rakuten Turboでの通信に問題がないか事前に確認していただくことが可能です。</p>
+    <ul class="c-Txt_Emp-01 c-List_Text-disc u-Adjust_Mt-8">
+      <li>動画が途切れずに再生できる</li>
+      <li class="u-Adjust_Mt-0">アプリダウンロードがスムーズにできる</li>
+    </ul>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">※「Rakuten最強プラン」で通信できた場合でも、パートナー回線におけるローミングエリア接続ではRakuten Turboをご利用になれません。</p>
+    <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/area-confirmation/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener">楽天モバイルで接続中の回線エリアを確認する方法を見る<span class="c-Icon_New-window-l"></span></a></p>
+  </section> -->
+  <section id="caution" class="<%= layout %>_Caution u-Adjust_Mt-64">
+    <h3 class="c-Heading_Lv4">サービスエリアに関する注意事項</h3>
+    <ol class="c-Txt_Cap">
+      <li>サービスエリアは計算上の数値判定に基づき作成しているため、実際の電波状況と異なる場合があります。またサービスエリアは予告なく変更となる場合があります。</li>
+      <li>本サービスはベストエフォート方式による提供となります。実際の通信速度は、場所、通信環境、ネットワークの混雑状況、対応端末に応じて変化します。</li>
+      <li>ご利用いただく機器や利用環境（建物の中・地下・トンネルなど電波の届かないところ）により利用可能なサービスエリアが制限される場合があります。</li>
+      <li>年末年始や災害時、および花火大会などのイベント開催時に利用する場合、回線の混雑によりつながりにくくなることがあります。</li>
+      <li>富士山頂付近の楽天回線エリアは、山開きの期間中の7月から8月下旬のみのサービス提供となります。</li>
+      <li>楽天モバイルが本サービスのために提供する製品、もしくは動作検証された製品以外での通信は保証されません。</li>
+      <li>データ通信によるトラフィックがネットワーク帯域の上限を超える場合またはご利用の製品やアプリの設定などにより、通信速度やデータ通信量が制限される場合があります。</li>
+      <li>画面の表示速度や動画の再生開始時間を早くするための通信の最適化（端末の画面に適したサイズに画面、動画などを圧縮・変換すること）を行う場合があります。</li>
+      <li>本サービス網全体の輻輳（ふくそう）状態が継続して発生することを避けるため、輻輳制御を行う場合があります。</li>
+    </ol>
+    <ul class="c-Txt_Cap u-Adjust_Mt-16">
+      <li>※楽天モバイル「Rakuten最強プラン」で利用できるサービスエリアとは異なります。</li>
+      <li>※5G製品を5Gサービス利用可能エリアで利用した際の理論上の通信速度は製品により異なります。</li>
+      <li>※記載の地域は実際に5Gサービスを利用できる一部のエリアを包含したものであり、当該地域の中でも一部5Gサービスが利用できない場合があります。</li>
+      <li>※5G通信は電波の性質上、4G LTEと比べて屋内への電波が届きにくいため、サービスエリア内であっても5G通信のご利用ではなく、4G LTE通信となる場合があります。</li>
+      <li>※4G LTE通信について、楽天回線エリアであっても、地下、屋内、高層階、電波の状況等によって通信ができない場合があります。</li>
+    </ul>
+  </section>
+
+  <div class="u-Adjust_Mt-16">
+    <a href="#confirm-area" data-auto-rat="anchor" class="c-Link_Txt-inline-icon js-scroll"><span class="c-Icon_Arrow-up-l"></span>対応エリアの確認に戻る</a>
+  </div>
+  <div class="c-Theme-Light u-Adjust_Mt-56 u-Adjust_Mb-56" id="hikari">
+    <h3 class="c-Heading_Lv4">光回線もご利用いただけます</h3>
+    <p class="u-Adjust_Mt-16">未対応エリアのためRakuten Turboをご利用いただけない場合は楽天ひかりのご利用をご検討ください。</p>
+    <p class="u-Adjust_Mt-8">楽天ひかりは、NTT東日本・NTT西日本フレッツ光回線の提供エリアでご利用いただけます。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※フレッツは、NTT東日本およびNTT西日本の商標または登録商標です。</p>
+    <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>hikari/" class="c-Link_Txt-inline">楽天ひかりを見る<span class="c-Icon_Chevron-right"></span></a></p>
+  </div>
+
+  </div>
+
+<footer>
+  <%- include('/include/_footer-simple') %>
+</footer>
+
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/library/map_cpe.js?231116-2"></script>
+<script>
+  const mediaQuery = window.matchMedia('(max-width: 768px)');
+  const setPlaceholder = () => {
+    const value = mediaQuery.matches ? '郵便番号もしくは住所を入力' : '設置予定場所の郵便番号もしくは住所を入力';
+    const elm = document.getElementById('pac-input');
+    elm.setAttribute('placeholder', value);
+  }
+
+  setPlaceholder();
+  mediaQuery.addEventListener('change', setPlaceholder);
+</script>
+<script src="<%= sitepath %>assets/js/internet.turbo.application.bundle.js?20240521"></script>
+
+<script>
+const param = location.search;
+let backurl = '';
+let backurl_domain = '';
+let lid = '';
+
+if (param.length > 0) {
+  if (param.indexOf('back_url=') > -1) {
+    backurl = decodeURIComponent(param.split('back_url=')[1].split('&')[0]);
+    if (backurl.indexOf('//') > -1) {
+      backurl_domain = backurl.split('//')[1].split('/')[0];
+    }
+  }
+  if (param.indexOf('l-id=') > -1) {
+    lid = '&l-id=' + param.split('l-id=')[1].split('&')[0];
+  }
+}
+
+if (/.+(\.rmb-ss\.jp)$/.test(backurl_domain)) {
+  const target = document.getElementById("js-confirm-guide-check");
+  target.href = backurl + '&l-id=rmt_onb_01';
+  document.body.style.display = "block";
+}
+else if (/.+(\.rmb-lab\.jp|\.rmn\.local|\.rakuten\.co\.jp)$/.test(backurl_domain)) {
+  location.href = backurl + lid;
+}
+else if (backurl === '') {
+  location.href = 'https://onboarding.mobile.rakuten.co.jp/rakuten-turbo-5g?system=web' + lid;
+}
+else {
+  location.href = 'https://onboarding.mobile.rakuten.co.jp/rakuten-turbo-5g?system=web';
+}
+</script>
+
+<%- include('/include/_append-body') %>
+</body>
+</html>

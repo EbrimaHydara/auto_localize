@@ -1,0 +1,224 @@
+<% const pagetitle = "料金プラン" -%>
+<% const namespace = "turbo-Fee" %>
+<% const imgDir = `${sitepath}assets/img/internet/turbo/fee/` %>
+<%-
+  include('/_header', {
+    pagetitle,
+    description: '楽天モバイルのホームルーターRakuten Turboのプラン料金（月額基本料）、製品代金、月々のお支払いのシミュレーションなどをご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true,
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/internet/turbo/fee/fee.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      tax: false,
+    }) %>
+
+    <div class="u-Adjust_Mt-8 u-Adjust_Align-right">
+      <div class="l-System_Container">
+        <span class="c-Txt_Cap">※表記の金額はすべて税込です</span>
+      </div>
+    </div>
+
+    <section class="<%= namespace %>-Kv u-Adjust_Mt-8">
+      <div class="<%= namespace %>-Kv_Inner">
+        <h1 class="u-Adjust_Align-center">
+          <picture>
+            <source media="(max-width:834px)" srcset="<%= imgDir %>img-kv-sp-240221.png" width="375" height="240">
+            <img src="<%= imgDir %>img-kv-pc-240221.png" alt="Rakuten Turboのプラン料金6カ月0円 7カ月目以降 | 4,840円 ※製品代金 別途41,580円" width="583" height="210">
+          </picture>
+        </h1>
+      </div>
+    </section>
+
+    <div class="l-System_Container u-Adjust_Mt-32">
+      <div class="<%= namespace %>-Cv_Btn">
+        <ul class="<%= namespace %>-Cv_Btn-items">
+          <li class="<%= namespace %>-Cv_Btn-item">
+            <a href="<%= sitepath %>internet/turbo/application/?l-id=rmt_application_01" class="<%= namespace %>-Cv_Btn-primary" data-ratid="rmt_application_01" data-ratevent="click" data-ratparam="all">
+              <span class="<%= namespace %>-Cv_Btn-icon c-Icon_Cart-l"></span>
+              <span>Webでお申し込み</span>
+            </a>
+          </li>
+          <li class="<%= namespace %>-Cv_Btn-item">
+            <a href="<%= sitepath %>shop/?l-id=rmt_shop_02" class="<%= namespace %>-Cv_Btn-secondly" data-ratid="rmt_shop_02" data-ratevent="click" data-ratparam="all">
+              <span class="<%= namespace %>-Cv_Btn-icon c-Icon_Shop-l"></span>
+              <span>ショップでご相談</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <section class="c-Theme-Borderbox u-Adjust_Mt-32">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">
+          <span class="c-Txt_Normal-m">プラン料金＋製品代金</span>
+          <span class="<%= namespace %>-Image_Content-payment">
+            <picture>
+              <source media="(max-width:834px)" srcset="<%= imgDir %>img-payment-sp-240221.png" width="239" height="99">
+              <img src="<%= imgDir %>img-payment-pc-240221.png" width="400" height="70" alt="最初の6カ月は月々 866円~">
+            </picture>
+          </span>
+        </h2>
+        <p class="c-Txt_Cap u-Adjust_Align-center">※製品代金 別途41,580円。7カ月目以降4,840円／月</p>
+      </section>
+
+      <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+        <img src="<%= imgDir %>img-polygon.png" width="60" height="30" alt="">
+      </div>
+
+      <section class="u-Adjust_Mt-32">
+        <h2 class="c-Heading_Lv2" data-ratid="scroll-01_fee" data-ratevent="appear">プラン料金</h2>
+        <div class="<%= namespace %>-Table_Content c-Table u-Adjust_Mt-24">
+          <table class="c-Table_Container">
+            <tr>
+              <th>1〜6カ月目</th>
+              <td>0円<span class="c-Txt_Cap">※</span></td>
+            </tr>
+            <tr>
+              <th>7カ月目以降</th>
+              <td>4,840円</td>
+            </tr>
+          </table>
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※キャンペーン価格適用時</p>
+      </section>
+      <section class="<%= namespace %>-Layout_Section-price">
+        <h2 class="c-Heading_Lv2">Rakuten Turbo 5G（製品）代金</h2>
+        <p class="u-Adjust_Mt-16">Rakuten Turboは<a href="<%= sitepath %>internet/turbo/product/">Rakuten Turbo 5G（製品）</a>との同時契約が必要です。</p>
+        <div class="<%= namespace %>-Table_Content c-Table u-Adjust_Mt-16">
+          <table class="c-Table_Container">
+            <tr>
+              <th>48回払い<span class="c-Txt_Cap">※1</span></th>
+              <td>866円/回</td>
+            </tr>
+            <tr>
+              <th>24回払い<span class="c-Txt_Cap">※2</span></th>
+              <td>1,732円/回</td>
+            </tr>
+            <tr>
+              <th>一括払い</th>
+              <td>41,580円</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      <section class="<%= namespace %>-Layout_Section-price">
+        <h2 class="c-Heading_Lv2">ユニバーサルサービス料／電話リレーサービス料</h2>
+        <div class="<%= namespace %>-Table_Content c-Table u-Adjust_Mt-24">
+          <table class="c-Table_Container">
+            <tr>
+              <th>ユニバーサル<br class="turbo-Fee-Utility_Display-sp">サービス料（月額）</th>
+              <td>2円</td>
+            </tr>
+            <tr>
+              <th>電話リレー<br class="turbo-Fee-Utility_Display-sp">サービス料（月額）</th>
+              <td>1.1円<span class="c-Txt_Cap">※</span></td>
+            </tr>
+          </table>
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※2024年4月ご利用分から2025年3月ご利用分</p>
+      </section>
+      <section class="<%= namespace %>-Layout_Section-price">
+        <h2 class="c-Heading_Lv2">契約事務手数料<span class="c-Txt_Cap">※3</span></h2>
+        <div class="<%= namespace %>-Table_Content c-Table u-Adjust_Mt-24">
+          <table class="c-Table_Container">
+            <tr>
+              <th>初回のみ</th>
+              <td>3,300円</td>
+            </tr>
+          </table>
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※1 初回請求は878円、48回払いは楽天カードのみ ※2 初回請求は1,744円 ※3 プラン料金の課金開始日より前にご解約した場合、ご解約から2カ月以内を目安に請求いたします</p>
+      </section>
+      <div id="js-fixed-btn-trigger"></div>
+      <section class="u-Adjust_Mt-40">
+        <h2 class="c-Heading_Lv2">その他手数料</h2>
+        <div class="<%= namespace %>-Table_Content c-Table u-Adjust_Mt-24">
+          <table class="c-Table_Container">
+            <tr>
+              <th>SIMカード<br class="turbo-Fee-Utility_Display-sp">再発行手数料</th>
+              <td>3,300円</td>
+            </tr>
+            <tr>
+              <th>送料</th>
+              <td>0円</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <section class="<%= namespace %>-Layout_Section-simulation">
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="scroll-02_simulation" data-ratevent="appear"><span class="<%= namespace %>-Heading_Sub-simulation">＼お申し込み前にかんたんチェック！／</span>月々のお支払いを確認する</h2>
+      </div>
+
+      <div class="u-Adjust_Mt-24">
+        <%- include('/include/internet/turbo/fee/_simulation') %>
+      </div>
+    </section>
+
+    <div class="l-System_Container">
+      <section class="<%= namespace %>-Layout_Section-price">
+        <h3 class="c-Heading_Lv4">注意事項</h3>
+        <div class="u-Adjust_Mt-8">
+          <ul>
+            <li class="c-Txt_Cap">※この料金表は、楽天モバイル株式会社が「Rakuten Turbo契約約款」に基づき提供するデータ通信サービス（Rakuten Turbo）をご利用になるお客様に適用するものです</li>
+            <li class="c-Txt_Cap">※表記の金額は特に記載のある場合をのぞきすべて税込です。この料金表において、支払いを要するものとされている額は、税別額に消費税を加算した額とします</li>
+            <li class="c-Txt_Cap">※課金開始日は、本サービスの提供を開始した日、もしくは製品の着荷日のいずれか早い日を1日目として、9日目に該当する日です</li>
+            <li class="c-Txt_Cap">※着荷日とは当社に配送完了データが通知された日のことです</li>
+            <li class="c-Txt_Cap">※サービスの変更・追加、キャンペーンの開始または終了等により本ページの記載を予告なく変更する場合があります</li>
+            <li class="c-Txt_Cap">※楽天ポイントの進呈対象はプラン料金のみです</li>
+            <li class="c-Txt_Cap u-Adjust_Mt-8">※Rakuten Turboでは、1契約ごとに電話番号を割り当てますので、ユニバーサルサービス料、電話リレーサービス料が別途かかります</li>
+          </ul>
+        </div>
+        <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>information/news/service/877/" target="_blank" class="c-Link_Txt-inline">ユニバーサルサービス料について<span class="c-Icon_New-window-l"></span></a></p>
+        <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>internet/turbo/information/news/2488/" class="c-Link_Txt-inline">電話リレーサービス料について<span class="c-Icon_Chevron-right"></span></a></p>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Mt-32 u-Adjust_Mt-64">
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">Turboもひかりも、どちらもおトク</h2>
+        <div class="u-Adjust_Mt-16">
+          <%- include('/include/internet/turbo/common/_bnr', {
+            orglid1: 'rmt_internet_turbo_fee_internet_turbo_campaign_six-month-free_01',
+            orglid2: 'rmt_internet_turbo_fee_hikari_campaign_six-month-free_01'
+          }) %>
+        </div>
+      </div>
+    </section>
+
+    <%- include('/include/internet/turbo/_fixed-button') %>
+
+    <div class="u-Adjust_Mt-64">
+      <%- include('/include/internet/turbo/_more-nav', {
+        hiddenBnr: true,
+      }) %>
+    </div>
+
+    <div class="u-Adjust_Mt-64">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', {
+        pagetitle,
+      }) %>
+    </div>
+
+    <div class="u-Rat_Appear-height" data-ratid="scroll-00" data-ratevent="appear"></div>
+  </div>
+
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey-fee') %>
+  <script src="<%= sitepath %>assets/js/internet.turbo.fee.bundle.js?20240521"></script>
+</body>
+</html>

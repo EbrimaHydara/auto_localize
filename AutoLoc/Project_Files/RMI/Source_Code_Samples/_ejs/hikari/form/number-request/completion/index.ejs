@@ -1,0 +1,44 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "事業者変更承諾番号 申請 | 送信完了" -%>
+<% const namespace = "hikari-number-request-completion" %>
+<% const directories = [] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    <!-- directories: directories, -->
+    description: '',
+    noindex: true,
+    pathname: filepath,
+    ishikari: true
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/form/number-request/completion/completion.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/form/completion.css?20240424">
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+
+  <%- include('/hikari/include/_header', { headerType: 'logo', pagetitle: pagetitle, directories: directories, tax: false }) %>
+
+  <%- include('/include/hikari/form/completion/_completion', {
+    pagetitle: '事業者変更承諾番号申請',
+    description:'事業者変更承諾番号を受信したいメールアドレスに事業者変更番号をお送りします。',
+    description2:'しばらくお待ちください。',
+    isbutton:true
+  }) %>
+
+
+
+  <footer class="g-Footer u-Adjust_Mt-64">
+    <%- include('/include/_footer-simple') %>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<% const pagetitle = "持ち込みスマホあんしん保証（誤った故障機の送付のお知らせ）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/replacement-warranty-sim/", label:"持ち込みスマホあんしん保証（ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '持ち込みスマホあんしん保証サービスをご利用で、送付いただいた故障機が本来送付いただくべき製品と異なっていたお客様へのご案内ページになります。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const namespace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<section class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-64">
+  <h1 class="c-Heading_Lv1">持ち込みスマホあんしん保証<br>【重要】誤った故障機の送付のお知らせ</h1>
+  <p class="u-Adjust_Mt-24">いつも楽天モバイルをご利用いただきありがとうございます。</p>
+  <p class="u-Adjust_Mt-16">「持ち込みスマホあんしん保証」サービスにおいて、故障機を送付いただく際に、誤った製品を送付されているお客様へのご案内になります。</p>
+
+  <section id="preparation" class="<%= namespace %>-Layout_Section-separate-sm">
+    <h2 class="c-Heading_Lv2">至急、サービス利用時に製品登録した製品のご送付をお願いいたします。</h2>
+    <p class="u-Adjust_Mt-24">サービスご利用時に製品登録でご登録いただいた製品と異なる製品を故障機として送付された場合、<a href="<%= sitepath %>terms/pdf/rakuten_mobile_replacement_warranty_sim.pdf?221122" class="c-Link_Txt-inline-icon">利用規約<span class="c-Icon_Pdf-l"></span></a><span class="c-Txt_Emp-02">に基づき違約金の請求が発生する可能性がございます。</span></p>
+    <p class="u-Adjust_Mt-16">つきましては、至急ご登録いただいた製品のご送付をお願いいたします。</p>
+    <p class="u-Adjust_Mt-16">送付いただいた場合でも、正しい製品であることが確認できない場合や「iPhoneを探す」が未解除（オンの状態）のままの場合は、違約金の対象となる可能性がございますので、あらかじめご了承ください。</p>
+    <div class="u-Adjust_Mt-16 u-Adjust_Pb-24">
+      なお、違約金の金額は故障された製品により異なります。
+      <dl class="c-Dl_Origin u-Adjust_Mt-24">
+      <div>
+        <dt>Android</dt>
+        <dd>44,000円（税込）</dd>
+      </div>
+      <div>
+        <dt>iOS</dt>
+        <dd>66,000円（税込）</dd>
+      </div>
+    </dl>
+      </div>
+
+    <div class="<%= namespace %>-Layout_Section-separate-sm">
+      <p>本ご案内と行き違いで正しい製品を送付いただいている場合は、何卒ご容赦ください。</p>
+      <p class="u-Adjust_Mt-32">また、誤って送付された製品に関して、ご不明な点がある場合は、下記までご連絡をお願いいたします。</p>
+      <h3 class="c-Heading_Lv4 u-Adjust_Mt-16">お問い合わせ先</h3>
+      <div class="c-Theme-Light u-Adjust_Mt-16">
+        <address class="<%= namespace %>-Txt_Address">
+          <p class="c-Txt_Emp-01">持ち込みスマホあんしん保証サポートセンター</p>
+          <p class="u-Adjust_Mt-16">電話番号　<a href="tel:05035190325">050-3519-0325</a></p>
+          <p>受付時間　9:00～20:00（年中無休）</p>
+        </address>
+      </div>
+      <p class="u-Adjust_Mt-32">その他ご不明点がございましたら、サービス案内ページとよくあるご質問をご参照ください。</p>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>service/replacement-warranty-sim/" class="c-Btn_Regular"><span>持ち込みスマホあんしん保証のサービス案内を見る</span></a>
+      </div>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>faq/detail/00001717/" class="c-Btn_Regular"><span>よくあるご質問を見る</span></a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

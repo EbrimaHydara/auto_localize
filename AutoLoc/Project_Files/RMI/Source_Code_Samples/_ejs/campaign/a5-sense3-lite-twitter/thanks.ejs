@@ -1,0 +1,106 @@
+<% const pagetitle = "夏のスマホ大特価キャンペーン開催記念！抽選で100名様に720円相当のポイントプレゼント受付完了" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "a5-sense3-lite-twitter" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイル公式Twitterアカウントをフォローし、対象ツイートのリツイートとエントリーを完了すると、抽選で100名様に720ポイントをプレゼントいたします。',
+    keywords: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/a5-sense3-lite-twitter/a5-sense3-lite-twitter.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <%- include('/include/_header') %>
+
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="<%= namespace %>-Hero_Bg">
+    <div class="<%= namespace %>-Hero_Bg-in"></div>
+  </div>
+
+  <div class="u-Adjust_Pb-40">
+    <div class="l-System_Container">
+
+      <div class="<%= namespace %>-Layout_Thanks">
+        <div class="<%= namespace %>-Layout_Thanks-text">
+          <h2 class="c-Heading_Lv3">エントリーが完了しました。</h2>
+          <p class="u-Adjust_Mt-40">キャンペーンに参加いただきまして、ありがとうございます。</p>
+        </div>
+
+        <p class="u-Adjust_Align-center c-Txt_Emp-02 u-Adjust_Mt-24">
+          ※夏のスマホ大特価キャンペーンページへリダイレクトします。
+        </p>
+      </div>
+    </div>
+  </div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-news.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+<script type="text/javascript">
+  setTimeout(function() {
+    window.location.href = 'https://network.mobile.rakuten.co.jp/campaign/a5-2020-sense3-lite/';
+  }, 5 * 1000);
+</script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<% const pagetitle = "Rakuten UN-LIMIT VII 紹介プログラム 紹介コード入力フォーム／Referral program entry form" -%>
+<% const namespace = 'rakuten-employee-2210' _%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: 'Rakuten UN-LIMIT VII 紹介プログラム 紹介コード入力フォームです。',
+    keywords: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/rakuten-employee-2210/rakuten-employee-2210.css?20240424">
+<%- include('/include/_append-head') %>
+
+<script type="text/javascript">
+  function doTrim(el) {
+    el.value = el.value.replace(/^\s+|\s+$/g, '');
+  }
+
+  function isInput(el) {
+    return el.value.length != 0;
+  }
+
+  function isLength(el, len) {
+    if ("え".length == 2) {
+      len *= 2;
+    }
+    return el.value.length == len;
+  }
+
+  function zen2han(el) {
+    el.value = el.value.replace(/[０]/g, "0");
+    el.value = el.value.replace(/[１]/g, "1");
+    el.value = el.value.replace(/[２]/g, "2");
+    el.value = el.value.replace(/[３]/g, "3");
+    el.value = el.value.replace(/[４]/g, "4");
+    el.value = el.value.replace(/[５]/g, "5");
+    el.value = el.value.replace(/[６]/g, "6");
+    el.value = el.value.replace(/[７]/g, "7");
+    el.value = el.value.replace(/[８]/g, "8");
+    el.value = el.value.replace(/[９]/g, "9");
+  }
+
+  function checkForm() {
+    var el;
+    var obj = document.enenForm;
+
+    el = obj.elements['answers[38692_264610]'];
+    doTrim(el);
+    zen2han(el);
+    if (!isInput(el)) {
+      alert("「英字2ケタ＋数字5ケタ」の紹介コードを入力してください。");
+      return false;
+    }
+
+    if (!isLength(el, 7)) {
+      alert("「英字2ケタ＋数字5ケタ」の紹介コードを入力してください。");
+      return false;
+    }
+
+  }
+  </script>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <%- include('/include/_header-simple') %>
+
+  <div class="u-Adjust_Pb-80">
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1 u-Adjust_Mt-32">Rakuten UN-LIMIT VII 紹介プログラム 紹介コード入力フォーム／Referral program entry form</h1>
+      <p class="c-Txt_Normal-l c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Mb-16 u-Adjust_Align-center">
+        Rakuten UN-LIMIT VII 紹介プログラムは終了いたしました。<br>
+        多大なるご協力を賜り、誠にありがとうございました。
+      </p>
+      <p class="c-Txt_Normal-l c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Mb-16 u-Adjust_Align-center">
+        The Rakuten UN-LIMIT VII Referral program has ended.<br>
+        Thank you very much for your support.
+      </p>
+    </div>
+  </div>
+
+</div>
+<%- include('/include/_common-js') %>
+
+<%- include('/include/_append-body') %>
+</body>
+</html>

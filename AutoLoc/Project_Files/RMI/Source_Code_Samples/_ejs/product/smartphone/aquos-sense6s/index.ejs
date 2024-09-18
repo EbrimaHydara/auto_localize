@@ -1,0 +1,644 @@
+<% const pagetitle = "AQUOS sense6s" -%>
+<% const directory = "aquos-sense6s" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/smartphone/", label:"Android"}] -%>
+<% const namespace = "product-aquos-sense6s" -%>
+<% const theme = "Light" -%>
+<% const point = 3000 -%>
+<%# const pointModel = 2000 -%>
+<%# const pointEntry = 3000 -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+*/
+const bundleFlag = 'bundle';
+const exid = 600391;
+-%>
+
+<% const priceDetailConfig = {
+  bundleFlag: bundleFlag,
+  theme: theme,
+  price: 32989,
+  // priceBefore: 33700,
+  PriceBeforeUnnumberedAnnotationText: '楽天モバイルでの販売価格（販売期間：2022年11月29日～2023年10月10日）',
+  addAnnotation: '*',
+  // pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  // pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  pointBackTextA: `<span>楽天モバイルお申し込みで<br class="product-detail-Utility_Show-sp"><span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当のポイント還元<sub>※1,3</sub></span>`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 1374,
+  // division24Before: ,
+  division48: 687,
+  division48last: 700,
+  // division48Before: ,
+  tradeinProductName: 'AQUOS sense4 lite',
+  optionPattern: 'one-option',
+  lid: directory,
+  capacity: 64,
+  maxTradeinPrice: 4900,
+  pointAppealBtnCapNo: 5,
+  carrier: '楽天モバイル',
+  //　notificationEmail: 'true',
+  //　notificationEmailLink: '/product/reservation/aquos-zero6/'
+  discountPrice: 6000,
+  applyPoint: 6000,
+  firstTimeApplyPoint: 6000,
+  mnp: false,
+  trakingId: 'aquos-sense6s',
+  exid: exid,
+  year: 2023,
+  month: 11,
+  day: 28,
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "AQUOS sense6s（アクオス）の特長・スペックなどをご確認いただけます。楽天モバイル対応Android製品。オンライン簡単手続きが便利！",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inc/i-product-head.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%
+const modalInfo = [
+  {
+    question: {
+      title: '色を選択',
+      warning: '購入する製品の色を選択してください。',
+      type: 'color',
+      value: 'color',
+      select: [
+        {
+          'id': 'black',
+          'name': 'ブラック',
+          'sub': '',
+          'color': '#101820',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'purple',
+          'name': 'パープル',
+          'sub': '',
+          'color': '#923B7F',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'white',
+          'name': 'ホワイト',
+          'sub': '',
+          'color': '#DBE2E9',
+          'checked': false,
+          'disabled': false,
+        }
+      ],
+      upperinfo: ``,
+      lowerinfo: ``
+    },
+  },
+  {
+    question: {
+      title: 'SIMタイプ・プラン（Rakuten UN-LIMIT VI）を選択',
+      warning: 'プランを選択してください。',
+      type: 'radio',
+      value: 'plan',
+      select: [
+        {
+          'id': 'sim',
+          'name': 'nanoSIM＋プランで申し込む',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nosim',
+          'name': 'プランを申し込まない（製品のみ購入）',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: ``,
+      lowerinfo: `
+        <p class="c-Txt_Cap">※製品のみ購入の場合、SIM購入（プラン選択）は不要です。</p>
+      `
+    }
+  },
+  {
+    question: {
+      title: 'スマホ交換保証プラスを選択',
+      warning: 'スマホ交換保証プラスを選択してください。',
+      type: 'radio',
+      value: 'warranty',
+      select: [
+        {
+          'id': 'warranty',
+          'name': '申し込む：715円／月（税込）',
+          'sub': '',
+          'checked': true,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nowarranty',
+          'name': '申し込まない',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: `
+        <p class="c-Txt_Emp-02">加入できるのは購入時のみ</p>
+        <p class="u-Adjust_Mt-8">楽天モバイルで購入したスマートフォンやモバイルルーターの故障・紛失時に、最短で当日<sub>※</sub>に新品同等の同一機種を交換品としてお届けします。</p>
+        <small>※対象地域：東京／神奈川／千葉／埼玉（12時までに受付の場合）</small>
+        <p>サービスの詳細は、こちらの<a href="/service/replacement-warranty-plus/">スマホ交換保証プラス</a>をご参照ください。</p>
+      `,
+      lowerinfo: ``
+    }
+  }
+]
+%>
+<%_ if (bundleFlag !== true) { _%>
+<script>
+const urlList = {
+   'black_sim_warranty': '/',
+   'black_sim_nowarranty': '/',
+   'black_nosim_warranty': '/',
+   'black_nosim_nowarranty': 'https://onboarding.mobile.rakuten.co.jp/equipment-details?exid=600391&selectAvailable=true',
+   'purple_sim_warranty': '/',
+   'purple_sim_nowarranty': '/',
+   'purple_nosim_warranty': '/',
+   'purple_nosim_nowarranty': '/',
+   'white_sim_warranty': '/',
+   'white_sim_nowarranty': '/',
+   'white_nosim_warranty': '/',
+   'white_nosim_nowarranty': '/',
+}
+</script>
+<%- include('/include/product/_purchase-modal', { modalInfo: modalInfo }) %>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="u-Adjust_Pt-16 u-Adjust_Pr-16 u-Adjust_Pl-16 u-Adjust_Pb-16 l-System_Container u-Adjust_Align-center">
+  <p class="c-Txt_Emp-01 c-Txt_Normal-l">AQUOS sense6sは販売を終了いたしました。</p>
+  <div class="u-Adjust_Pt-16 u-Adjust_Align-center">
+    <a class="c-Btn_Regular" href="<%= sitepath %>product/smartphone/?l-id=end_product_smartphone"><span>販売中のAndroid製品を見る</span></a>
+  </div>
+</div>
+
+<div class="product-detail-Theme_<%= theme %>">
+  <div class="product-detail-Layout_Hero-with-bnr <%= namespace %>_Hero">
+    <div class="l-System_Container u-Adjust_Pt-16">
+      <section class="product-detail-Hero">
+        <div class="product-detail-Hero_Data">
+          <div>
+            <h1 class="co-Heading_Lv1 product-detail-Hero_Name"><img src="<%= sitepath %>assets/img/product/<%= directory %>/logo.svg" alt="<%= pagetitle %>"></h1>
+            <p class="product-detail-Hero_Maker">SHARP</p>
+            <p class="product-detail-Hero_Copy">スタイリッシュでさらに使いやすい。電池長持ち定番モデル</p>
+          </div>
+        </div>
+        <div class="product-detail-Hero_Main u-Adjust_Mt-0">
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+            <li><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main3 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-10.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-11.png" alt=""></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-color product-detail-Theme_<%= theme %>-color">
+            <li class="js-color js-color1" aria-current="true"><span style="background:#deb99c" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-01"></span></li>
+            <li class="js-color js-color2" aria-current="false"><span style="background:#c5c9ca" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-02"></span></li>
+            <li class="js-color js-color3" aria-current="false"><span style="background:#3b3d3b" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-03"></span></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-01_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-01_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-01_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-01_thumbnail-04"></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-02_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-02_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-02_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-02_thumbnail-04"></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail3 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-03_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-03_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-10.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-03_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-11.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_color-03_thumbnail-04"></li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="product-detail-Layout_Main">
+    <div class="<%= namespace %>_Main u-Adjust_Pb-32">
+      <div class="l-System_Container">
+        <div class="product-detail-Spec">
+          <ul class="product-detail-Spec_<%= theme %>">
+            <li aria-current="true"><span class="c-Icon_Product-waterproof"></span>防水</li>
+            <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>FeliCa</li>
+            <li aria-current="true"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+            <li aria-current="true"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+            <li aria-current="true"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+            <li aria-current="false"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+            <li aria-current="true"><span class="c-Icon_Product-connection"></span>高速通信</li>
+          </ul>
+          <p class="u-Adjust_Mt-64"><a href="#spec" class="c-Link_Txt-icon-front js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_spec-anchor"><span class="c-Icon_Arrow-down-l"></span>基本スペックを見る</a></p>
+        </div>
+
+        <section id="feature" class="product-detail-Layout_Section">
+          <h2 class="c-Heading_Lv2-rich" data-ratid="aquos-sense6s_scroll-03_feature" data-ratevent="appear">特長</h2>
+
+          <ul class="product-detail-Catch <%= namespace %>_Catch">
+            <li><a href="#feature1" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_feature-anchor-01"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">スタイリッシュなデザインに<br>大容量バッテリー搭載</span></a></li>
+            <li><a href="#feature2" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_feature-anchor-02"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">IGZO OLEDディスプレイ</span></a></li>
+            <li><a href="#feature3" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="aquos-sense6s_feature-anchor-03"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">最大約4,800万画素のトリプルカメラ</span></a></li>
+          </ul>
+
+          <section class="product-detail-Feature" id="feature1">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-01.png" alt=""></figure>
+            <h3 class="c-Heading_Lv3">スタイリッシュなデザインに4,570mAhバッテリー搭載。省エネIGZOであんしん<sup class="<%= namespace %>_Txt-cap">※1</sup>の電池持ち。</h3>
+            <p class="product-detail-Feature_Txt">
+              1. 4,570mAhバッテリーを搭載しながらも、IGZO OLEDディスプレイの採用により従来モデルに比べ、厚み/横幅ともに約1mm薄型化<sup class="<%= namespace %>_Txt-cap">※2</sup>することでコンパクト化、約22g軽量化<sup class="<%= namespace %>_Txt-cap">※2</sup>を実現。<br>
+              手に取りやすい側面凹形状と、持ちやすいサイズ感を実現しながらスタイリッシュなデザインに。<br>
+              2. シャープ独自の圧倒的な省電力IGZOと、大容量4,570mAhバッテリーの搭載で、安心の電池持ち<sup class="<%= namespace %>_Txt-cap">※1</sup>を実現。
+            </p>
+            <div class="c-Txt_Cap u-Adjust_Mt-16">
+              <p>※1 通話やメッセージの送受信を中心に、1日あたり約1時間の利用と約23時間の待機時間を想定した独自基準に基づく試算値です（シャープ調べ）。ゲームや動画視聴など、実際の利用状況によって短縮される場合があります。インテリジェントチャージ設定の「最大充電量を変更」をONにした場合は、電池持ちが短くなります。</p>
+              <p>※2 従来機種AQUOS sense5G との比較。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature" id="feature2">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-02.png" alt=""></figure>
+            <h3 class="c-Heading_Lv3">約6.1インチのIGZO OLEDディスプレイを持ち、鮮やかな色表現となめらかな操作性を実現。</h3>
+            <p class="product-detail-Feature_Txt">
+              1. 約6.1インチのIGZO OLEDディスプレイを搭載。<br>
+              2. 10億色階調表現で、自然な発色の見やすい約6.1インチのディスプレイ。写真や動画を美しく鮮やかに映し出す。<br>
+              3. 120Hz<sup class="<%= namespace %>_Txt-cap">※3</sup>タッチレスポンスによる、なめらかなタッチ操作を実現。
+            </p>
+            <div class="c-Txt_Cap u-Adjust_Mt-16">
+              <p>※3 リフレッシュレートは最大60Hz。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature" id="feature3">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-03.png" alt=""></figure>
+            <h3 class="c-Heading_Lv3">最大約4,800万画素<sup class="<%= namespace %>_Txt-cap">※4</sup>のトリプルカメラ。ナイトモード対応で夜景も明るくキレイに。</h3>
+            <p class="product-detail-Feature_Txt">
+              1. 48Mカメラは、F値1.8、および、4つのピクセルセンサーを束ねて集光面積を大きくすることで取り込める光量が従来機種比約2倍<sup class="<%= namespace %>_Txt-cap">※5</sup>に向上。暗い場所でもノイズが少なく、キレイな写真を撮ることが可能に。<br>
+              2. ナイトモード対応で夜景も明るくキレイ。
+            </p>
+            <div class="c-Txt_Cap u-Adjust_Mt-16">
+              <p>※4 トリプルカメラ内で最も高い性能を持つ標準カメラの画素数。</p>
+              <p>※5 従来機種AQUOS sense5G との比較。写真サイズ12Mで撮影した場合。F値1.8、および、4つのピクセルセンサーを束ねて集光面積を大きくすることで実現。</p>
+            </div>
+          </section>
+        </section>
+
+        <div class="product-detail-Layout_Sub <%= namespace %>_Sub">
+          <div class="l-System_Container">
+            <section class="product-detail-Layout_Section">
+              <section class="product-detail-Feature_Sub">
+                <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-01.png" alt=""></figure>
+                <div class="product-detail-Feature_Txt">
+                  <h3 class="c-Heading_Lv4" data-ratid="aquos-sense6s_scroll-04_feature" data-ratevent="appear">かんたんにキレイな写真を撮ることができる標準・広角・望遠トリプルカメラ</h3>
+                  <p>
+                    1. 広角撮影やズームに対応し、見たままの臨場感からちょっと離れた子供の自然な表情まで、日常のさまざまなシーンをキレイに残すことができるトリプルカメラ。<br>
+                    2. 夜景や人物、料理などの撮影も「AIオート」にお任せ。被写体を自動で認識し、かんたんにキレイな写真を撮ることが可能。<br>
+                    3. 背景をぼかして雰囲気のある写真が撮れる「背景ぼかし」や、ブレてしまった写真を後から補正できる「ブレクリーナー」など、思い出をキレイに残すことができる機能を搭載。
+                  </p>
+                </div>
+              </section>
+              <section class="product-detail-Feature_Sub">
+                <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-02.png" alt=""></figure>
+                <div class="product-detail-Feature_Txt">
+                  <h3 class="c-Heading_Lv4">持ちやすさを兼ね備えた、洗練されたデザイン</h3>
+                  <p>
+                    1. スリム＆軽量化に加え、手に取りやすい側面凹形状で持ちやすく。さらに、指紋センサーの画面内への配置・フラットディスプレイの採用により洗練されたデザインを実現。<br>
+                    2. フラットディスプレイの採用により洗練されたデザインを実現。
+                  </p>
+                </div>
+              </section>
+              <section class="product-detail-Feature_Sub">
+                <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-03.png" alt=""></figure>
+                <div class="product-detail-Feature_Txt">
+                  <h3 class="c-Heading_Lv4">モバイル決済を、かんたん、便利に。</h3>
+                  <p>
+                    1. 指紋センサーを長押しすることで、ロック解除と同時にモバイル決済アプリを起動できる「Payトリガー」<sup class="<%= namespace %>_Txt-cap">※6</sup>を搭載。<br>
+                    2. ポイントカードなどの他アプリへの切り替えもワンタッチでできる<sup class="<%= namespace %>_Txt-cap">※7</sup>ので、お会計時も慌てない。
+                  </p>
+                  <div class="c-Txt_Cap u-Adjust_Mt-16">
+                    <p>※6 起動するアプリは変更可能です。</p>
+                    <p>※7 事前に設定が必要です。</p>
+                  </div>
+                </div>
+              </section>
+              <section class="product-detail-Feature_Sub">
+                <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-04.png" alt=""></figure>
+                <div class="product-detail-Feature_Txt">
+                  <h3 class="c-Heading_Lv4">機種変更もあんしん。大切なデータを手間なくコピー。</h3>
+                  <p>
+                    1. クイックスイッチアダプター（試供品）を同梱。今まで利用していた端末とケーブルで接続し、画面の指示に従うだけの操作でiPhoneやAndroid端末のデータをかんたんにコピー可能。<sup class="<%= namespace %>_Txt-cap">※8</sup><br>
+                    2. AQUOS同士の引継ぎなら、AQUOS独自機能の設定内容もそのままコピー可能。
+                  </p>
+                  <div class="c-Txt_Cap u-Adjust_Mt-16">
+                    <p>※8 OSがiOS 8.0以上、またはAndroid™ 5.0以上でない場合は、非対応です。一部のデータはコピーできません。</p>
+                  </div>
+                </div>
+              </section>
+              <section class="product-detail-Feature_Sub">
+                <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-05.png" alt=""></figure>
+                <div class="product-detail-Feature_Txt">
+                  <h3 class="c-Heading_Lv4">AQUOSならではのクセになる使いやすさ。<br>耐衝撃などあんしんの使い心地。</h3>
+                  <p>
+                    1. 電池の劣化を抑える「インテリジェントチャージ」やはじめてのスマートフォンでもわかりやすい「かんたんモード」など、利便性を追求したAQUOS独自の便利機能が満載の「AQUOSトリック」<sup class="<%= namespace %>_Txt-cap">※9</sup>を搭載。<br>
+                    2. 便利な使い方の紹介や、電池の状態確認、故障診断セルフチェックができる「My AQUOS」対応。<br>
+                    3. あんしんの防水・防塵・耐衝撃<sup class="<%= namespace %>_Txt-cap">※10</sup>などのMIL規格に対応。
+                  </p>
+                  <div class="c-Txt_Cap u-Adjust_Mt-16">
+                    <p>※9 一部の機能は、あらかじめ設定が必要です。</p>
+                    <p>※10 防水：IPX5・IPX8に対応。IPX5とは、内径6.3mmの注水ノズルを使用し、約3mの距離から1分あたり12.5リットルの水を最低3分間注水する条件であらゆる方向から噴流を当てても、通信機器としての機能を有することを意味します。IPX8とは、常温で水道水、かつ静水の水深1.5mのところに携帯電話を静かに沈め、約30分間放置後に取り出したときに通信機器としての機能を有することを意味します。<br>
+                    防塵（ぼうじん）：IP6Xとは、保護度合いを指し、直径75μm以下の塵埃（じんあい）が入った装置に携帯電話を8時間入れてかくはんさせ、取り出したときに内部に塵埃が侵入しない機能を有することを意味します。</p>
+                  </div>
+                </div>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="product-detail-Layout_Other">
+  <div class="l-System_Container">
+
+    <%- include('/include/product/_compensation') %>
+
+    <section class="product-detail-Layout_Section" id="spec">
+      <h2 class="c-Heading_Lv2" data-ratid="aquos-sense6s_scroll-06_spec" data-ratevent="appear">スペック</h2>
+      <dl class="c-Dl">
+        <div>
+          <dt>製品名</dt>
+          <dd>
+            AQUOS sense6s
+          </dd>
+        </div>
+        <div>
+          <dt>色</dt>
+          <dd>
+            ライトカッパー / シルバー / ブラック
+          </dd>
+        </div>
+        <div>
+          <dt>サイズ</dt>
+          <dd>
+            約152 x 約70 x 約7.9 (mm)
+          </dd>
+        </div>
+        <div>
+          <dt>質量</dt>
+          <dd>
+            約156g
+          </dd>
+        </div>
+        <div>
+          <dt>ディスプレイ</dt>
+          <dd>
+            <dl>
+              <div>
+                <dt>サイズ / 種類</dt>
+                <dd>約6.1インチ / IGZO OLED</dd>
+              </div>
+              <div class="u-Adjust_Mt-16">
+                <dt>解像度</dt>
+                <dd>FHD+ / 2,432 × 1,080</dd>
+              </div>
+            </dl>
+          </dd>
+        </div>
+        <div>
+          <dt>連続待受時間（LTE）</dt>
+          <dd>
+            約940時間
+          </dd>
+        </div>
+        <div>
+          <dt>連続通話（通信）時間（LTE）</dt>
+          <dd>
+            約62時間
+          </dd>
+        </div>
+        <div>
+          <dt>CPU</dt>
+          <dd>
+             Snapdragon® 695 5G Mobile Platform / オクタコア 2.2GHz × 2 + 1.8GHz × 6
+          </dd>
+        </div>
+        <div>
+          <dt>OS※1</dt>
+          <dd>
+            Android™ 11
+          </dd>
+        </div>
+        <div>
+          <dt>内部メモリ（RAM / ROM）</dt>
+          <dd>
+            4GB (RAM) / 64GB (ROM)
+          </dd>
+        </div>
+        <div>
+          <dt>メインカメラ（外側）</dt>
+          <dd>
+            約4,800万画素 (標準) + 約800万画素 (広角) + 約800万画素 (望遠)
+          </dd>
+        </div>
+        <div>
+          <dt>フロントカメラ（内側）</dt>
+          <dd>
+            約800万画素
+          </dd>
+        </div>
+        <div>
+          <dt>バッテリー容量</dt>
+          <dd>
+            4,570mAh
+          </dd>
+        </div>
+        <div>
+          <dt>ワイヤレス充電</dt>
+          <dd>
+            非対応
+          </dd>
+        </div>
+        <div>
+          <dt>おサイフケータイ / NFC</dt>
+          <dd>
+            対応 / 対応
+          </dd>
+        </div>
+        <div>
+          <dt>防水 / 防塵</dt>
+          <dd>
+            対応（IPX5 ・ IPX8 / IP6X）
+          </dd>
+        </div>
+        <div>
+          <dt>生体認証（指紋 / 顔）</dt>
+          <dd>
+            対応 / 対応
+          </dd>
+        </div>
+        <div>
+          <dt>VoLTE（Rakuten, docomo, au, SoftBank）</dt>
+          <dd>
+            対応 / 対応 / 対応 / 対応
+          </dd>
+        </div>
+        <div>
+          <dt>Wi-Fi規格</dt>
+          <dd>
+            IEEE 802.11 a/b/g/n/ac
+          </dd>
+        </div>
+        <div>
+          <dt>テザリング（Wi-Fi）</dt>
+          <dd>
+            10台
+          </dd>
+        </div>
+        <div>
+          <dt>SIMタイプ</dt>
+          <dd>
+            nanoSIM / eSIM
+          </dd>
+        </div>
+        <div>
+          <dt>付属品</dt>
+          <dd>
+            クイックスタートガイド×1 / クイックスイッチアダプター×1
+          </dd>
+        </div>
+      </dl>
+      <p class="c-Txt_Cap u-Adjust_Mt-24">※1 発売時点のOSのバージョンを記載しています。最新のOSバージョン情報は<a href="https://network.mobile.rakuten.co.jp/information/software/aquos-sense6s/" class="c-Link_Txt">こちら</a>をご確認ください。</p>
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html?l-id=product_aquos-sense6s_spec_aquos-sense6s" class="c-Link_Txt-inline-icon">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+    </section>
+
+    <section class="product-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">設定・サポート</h2>
+      <div>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/inquiry/?l-id=product_aquos-sense6s_guide_inquiry" class="c-Link_Txt-inline-icon">メーカーへのお問い合わせ<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </section>
+
+    <div id="previously-seen"></div>
+  </div>
+  <div class="u-Adjust_Mt-40">
+    <%- include('/include/product/_support') %>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<script src="<%= sitepath %>assets/js/product.android-tradein.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+<script src="<%= sitepath %>assets/js/product.aquos-sense6s.bundle.js?20240521"></script>
+</body>
+</html>

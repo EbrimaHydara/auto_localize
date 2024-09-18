@@ -1,0 +1,58 @@
+<div class="turbo-area-Fullmap">
+  <div id="place-search-wrapper">
+    <div class="c-Search_Container turbo-area-Fullmap_Search form-group">
+      <span class="glyphicon glyphicon-search"></span>
+      <input type="text" class="form-control controls c-Search_Input" id="pac-input" placeholder="設置予定場所の郵便番号もしくは住所を入力">
+      <div class="c-Search_Btn"><input type="submit" value="" class="c-Search_Submit"><span data-auto-rat="submit" class="c-Icon_Search c-Search_Icon"></span></div>
+    </div>
+  </div>
+  <div id="map" data-update="20230619-2"></div>
+  <div class="turbo-area-Fullmap_Frame">
+    <a href="<%= sitepath %><%= pagePath %>" class="turbo-area-Fullmap_Btn-exit" id="exit"><span class="c-Btn_Regular c-Icon_Product-fullscreen-exit"></span></a>
+  </div>
+  <div class="legend-plus-more-link-wrapper">
+    <div id="legend">
+      <ul class="turbo-area-Fullmap_Legend" id="mapLegend">
+        <li class="turbo-area-Fullmap_Map-legend-5gsub6">楽天回線 5G Sub6エリア
+          <button data-auto-rat="button" class="c-Tooltip js-Tooltip-inline" aria-label="エリアの説明を表示" data-tippy-theme="default" data-tippy-content="楽天モバイル自社回線に接続する5G Sub6エリアです">
+            <span class="c-Icon_Stack c-Tooltip_Icon">
+              <span class="c-Icon_Sign-help-f c-Icon_Stack-icon-f"></span>
+              <span class="c-Icon_Sign-help-l c-Icon_Stack-icon-l"></span>
+            </span>
+          </button>
+        </li>
+        <li class="turbo-area-Fullmap_Map-legend-service">楽天回線 4G LTEエリア
+          <button data-auto-rat="button" class="c-Tooltip js-Tooltip-inline" aria-label="エリアの説明を表示" data-tippy-theme="default" data-tippy-content="楽天モバイル自社回線に接続する4G LTEエリアです">
+            <span class="c-Icon_Stack c-Tooltip_Icon">
+              <span class="c-Icon_Sign-help-f c-Icon_Stack-icon-f"></span>
+              <span class="c-Icon_Sign-help-l c-Icon_Stack-icon-l"></span>
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button type="button" data-auto-rat="button" id="map-loc-button" class="c-Btn_Regular-auto c-Btn_Icon"><span class="c-Icon_Location-f"></span><span>現在地</span></button>
+</div>
+<script>
+  const mediaQuery = window.matchMedia('(max-width: 768px)');
+  const setPlaceholder = () => {
+    const value = mediaQuery.matches ? '郵便番号もしくは住所を入力' : '設置予定場所の郵便番号もしくは住所を入力';
+    const elm = document.getElementById('pac-input');
+    elm.setAttribute('placeholder', value);
+  }
+
+  setPlaceholder();
+  mediaQuery.addEventListener('change', setPlaceholder);
+
+  const exitButton = document.querySelector('.turbo-area-Fullmap_Btn-exit');
+  const adjustMapSize = () => {
+    const legendHeight = document.querySelector('.turbo-area-Fullmap_Legend').clientHeight;
+    document.getElementById('map').style.bottom = `${legendHeight}px`;
+    exitButton.style.bottom = `${legendHeight + 32}px`;
+  }
+  adjustMapSize();
+  window.addEventListener('resize', adjustMapSize);
+
+  if (location.pathname.includes('/application/')) exitButton.href += '#target-by-fullmap';
+</script>

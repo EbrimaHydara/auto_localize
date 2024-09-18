@@ -1,0 +1,395 @@
+<% const pagetitle = "未成年のお客様がご利用になる場合のお申し込みの流れ" -%>
+<% const directories = [{path:"flow/", label:"お申し込みの流れ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '未成年のお客様がご利用になる場合のお申し込みの流れをご案内します。お申し込み前の確認事項や、必要書類などをご覧いただけます。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "お申し込みの流れ" -%>
+<% const namespace = "flow" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<%- include('/include/_breadcrumbs', {
+  type: 'head',
+  pagetitle,
+  directories,
+}) %>
+
+<div class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-64">
+
+  <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+  <div class="flow-Hero flow-Hero_Verify">
+    <p>未成年（18歳未満）の方も、Webや楽天モバイルショップ（店舗）のいずれでもお申し込みいただけます。お申し込みの手順をご案内いたします。</p>
+  </div>
+
+  <ul class="c-Link_List u-Adjust_Mt-40">
+    <li><a href="#section01" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span> 1.  確認事項</a></li>
+    <li><a href="#section02" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span> 2.  新規かMNPか選択する</a></li>
+    <li><a href="#section03" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span> 3.  必要書類を用意する</a></li>
+    <li><a href="#section04" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span> 4.  お申し込み</a></li>
+    <li><a href="#section05" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span> 5.  製品のお受け取り</a></li>
+  </ul>
+
+  <div class="u-Adjust_Mt-64" id="section01">
+    <h2 class="c-Heading_Lv2">1.確認事項</h2>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>Webのお申し込み画面、「my 楽天モバイル」アプリ、または楽天モバイルショップ（店舗）のいずれでもお申し込みいただけます。</li>
+          <li>楽天モバイルショップでお申し込みの際は、お子さまと保護者（親権者）の2名様でご来店いただき、それぞれ本人確認が必要です。</li>
+          <li>「あんしんコントロール by i-フィルター」のご契約が必須となります（330円/月）。</li>
+        </ul>
+        <div class="u-Adjust_Mt-24">
+            <a href="<%= sitepath %>service/i-filter/" class="c-Btn_Regular"><span>あんしんコントロール by i-フィルターの詳細を見る</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="u-Adjust_Mt-64" id="section02">
+    <h2 class="c-Heading_Lv2">2.新規電話番号／MNP（他社からの電話番号乗り換え）を選択する</h2>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="true" aria-controls="tab-content3">新規</li>
+        <li class="c-Tab_Item" id="tab-menu4" role="tab" aria-selected="false" aria-controls="tab-content4">MNP</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu3">
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>楽天モバイルにて新しい電話番号を取得いただけます。</li>
+        </ul>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu4">
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>現在ご利用中の会社での名義と、今回楽天モバイルにお申し込みになる方の名義が同じであるかご確認ください。名義が異なる場合、現在ご契約の名義変更をお済ませください。</li>
+        </ul>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">
+          ※MNPワンストップ未対応の携帯電話会社から乗り換えの方は、MNP予約番号の取得が必要です。 MNPワンストップ対象の携帯電話会社は<a href="<%= sitepath %>guide/mnp/?l-id=flow_for-minors_guide_mnp#carrier">こちら</a>からご確認ください。<br>
+          また名義が異なる場合は、MNP予約番号の発行前に名義変更をお済ませください。<br>
+          ※ショップでのお申し込みは、ワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。
+        </p>
+        <div class="u-Adjust_Mt-24">
+            <a href="<%= sitepath %>guide/mnp/" class="c-Btn_Regular"><span>MNPの詳細を見る</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="u-Adjust_Mt-64" id="section03">
+    <h2 class="c-Heading_Lv2">3.必要書類を用意する</h2>
+
+<h3 class="c-Heading_Lv3 u-Adjust_Mt-40">お子さま</h3>
+<div class="c-Theme-Borderbox u-Adjust_Mt-24">
+  <div class="l-Media_Grid-large-reverse">
+    <div>
+      <h4 class="c-Heading_Lv4">本人確認書類</h4>
+      <p class="u-Adjust_Mt-24">お子さまのお申し込みには以下の書類をご用意いただけますとスムーズにお申し込みいただけます。</p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li>「マイナンバーカード」</li>
+        <li>「健康保険証」と「住民票」</li>
+        <li>「パスポート」と「住民票」</li>
+      </ul>
+
+      <p class="u-Adjust_Mt-16">健康保険証、もしくはパスポートには、それぞれ補助書類として住民票が必要となります。1つだけでは本人確認をお受けいたしかねますので、必ず補助書類もご準備ください。<span class="c-Txt_Emp-02">学生証は受け付けられませんのでご注意ください。</span></p>
+
+      <p class="u-Adjust_Mt-24">その他の有効となる本人確認書類については下記をご覧ください。</p>
+
+      <div class="u-Adjust_Mt-24">
+          <a href="<%= sitepath %>guide/verify/" class="c-Btn_Regular"><span>本人確認書類の詳細を見る</span></a>
+      </div>
+      <ul class="c-List_Cap u-Adjust_Mt-16">
+          <li><span>※</span>コピーではなく原本をお持ちください。</li>
+      </ul>
+    </div>
+    <div class="l-Media_Image">
+      <img src="<%= sitepath %>assets/img/flow/for-minors/img-02-230810.png" width="410" height="264" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="c-Theme-Borderbox u-Adjust_Mt-24">
+  <div class="l-Media_Grid-large-reverse">
+    <div>
+      <h4 class="c-Heading_Lv4">楽天会員ログイン用のユーザID/パスワード</h4>
+      <p class="u-Adjust_Mt-24">お申し込み時に、お子さまの楽天会員情報が必要となります。
+お持ちでない場合は、新規作成ください。</p>
+      <div class="u-Adjust_Mt-24">
+          <a href="https://member.id.rakuten.co.jp/rms/nid/registfwdi" class="c-Btn_Secondly"><span>楽天の会員登録（無料）をする</span></a>
+      </div>
+      <p class="u-Adjust_Mt-24"><a href="https://member.id.rakuten.co.jp/rms/nid/menufwd" class="c-Link_Txt-inline">楽天会員情報を確認・変更する<span class="c-Icon_Chevron-right"></span></a></p>
+    </div>
+    <div class="l-Media_Image">
+      <img src="<%= sitepath %>assets/img/flow/for-minors/img-03-230810.png" width="410" height="298" alt="">
+    </div>
+  </div>
+</div>
+
+<h3 class="c-Heading_Lv3 u-Adjust_Mt-40">お子さま、または保護者</h3>
+
+<div class="c-Theme-Borderbox u-Adjust_Mt-24">
+  <div class="l-Media_Grid-large-reverse">
+    <div>
+      <h4 class="c-Heading_Lv4">クレジットカード/銀行口座</h4>
+      <p class="u-Adjust_Mt-24">クレジットカードおよび銀行口座は、お子さま、または保護者、どちらの名義のものでもお申し込みいただけます。 </p>
+      <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/payment/" class="c-Link_Txt-inline">お支払い方法の詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+    </div>
+    <div class="l-Media_Image">
+      <img src="<%= sitepath %>assets/img/flow/for-minors/img-04-230810.png" width="410" height="250" alt="">
+    </div>
+  </div>
+</div>
+
+<h3 class="c-Heading_Lv3 u-Adjust_Mt-40">保護者</h3>
+
+<div class="c-Theme-Borderbox u-Adjust_Mt-24">
+  <div class="l-Media_Grid-large-reverse">
+    <div>
+      <h4 class="c-Heading_Lv4">保護者の本人確認書類</h4>
+      <p class="u-Adjust_Mt-24">18歳未満の方がご契約になる場合は、法定代理人となる保護者（親権者）の確認が必要です。</p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li><span class="c-Txt_Emp-01">楽天モバイルショップでお申し込みの場合</span><br>
+          <p class="u-Adjust_Mt-8"></p>
+          <span>保護者（親権者）の本人確認書類のご提示が必要ですので、必ずご持参のうえご来店ください。</span>
+        </li>
+        <li><span class="c-Txt_Emp-01">Webでお申し込みの場合</span><br>
+          <p class="u-Adjust_Mt-8"></p>
+          <span>保護者（親権者）の本人確認書類のご提示は不要です。</span>
+        </li>
+      </ul>
+      <ul class="c-List_Cap u-Adjust_Mt-8 u-Adjust_Ml-16">
+          <li><span>※</span>Webの場合、次に記載する「法定代理人同意書 兼 支払名義人同意書」に保護者（親権者）にてご記入いただき、アップロードいただくほか、親権者情報としてお名前、生年月日、ご連絡先をご入力いただきます。</li>
+      </ul>
+
+      <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-inline">本人確認書類の詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+    </div>
+    <div class="l-Media_Image">
+      <img src="<%= sitepath %>assets/img/flow/for-minors/img-05-230810.png" width="410" height="250" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="c-Theme-Borderbox u-Adjust_Mt-24">
+  <div class="l-Media_Grid-large-reverse">
+    <div>
+      <h4 class="c-Heading_Lv4">法定代理人同意書 兼 支払名義人同意書</h4>
+      <p class="u-Adjust_Mt-24">18歳未満の方がご契約になる場合、法定代理人となる保護者の同意書が必要です。以下からダウンロードしていただけます。</p>
+      <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>pdf/terms/legal_representative_consent_form_and_payer_consent_form.pdf?231020" class="c-Link_Txt-inline" target="_blank">代理人同意書 兼 支払名義人同意書を確認する<span class="c-Icon_Pdf-l"></span></a></p>
+      <ul class="c-List_Cap u-Adjust_Mt-16">
+          <li><span>※</span>法定代理人とは<br>
+親権者/未成年後見人/成年後見人を指します。法定代理人であることの証明書は不要です。</li>
+      </ul>
+    </div>
+    <div class="l-Media_Image">
+      <img src="<%= sitepath %>assets/img/flow/for-minors/img-06-230810.png" width="410" height="250" alt="">
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="u-Adjust_Mt-64" id="section04">
+    <h2 class="c-Heading_Lv2">4.お申し込み</h2>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+      <div class="c-Tab_Panel" id="tab-content5" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu5">
+
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>Webのお申し込み画面、「my 楽天モバイル」アプリ、または楽天モバイルショップ（店舗）のいずれでもお申し込みいただけます。</li>
+        </ul>
+        <div class="u-Adjust_Mt-24">
+            <a href="<%= onboardingpath %>" class="c-Btn_Secondly"><span>Webからお申し込み</span></a>
+        </div>
+
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>楽天モバイルショップでお申し込みの際は、お子さまと保護者（親権者）の2名様でご来店いただき、それぞれ本人確認が必要です。</li>
+        </ul>
+        <ul class="c-List_Cap u-Adjust_Mt-16 u-Adjust_Ml-16">
+            <li><span>※</span>楽天モバイルショップでのお申し込みの場合、18歳未満のお子さまのみ、または保護者（親権者）のみでのお申し込みはいたしておりません。かならず2名様にてご来店いただくようお願いいたします。</li>
+        </ul>
+
+        <div class="u-Adjust_Mt-24">
+            <a href="<%= sitepath %>shop/" class="c-Btn_Secondly"><span>お近くのショップを探す</span></a>
+        </div>
+
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>18歳未満の方に楽天モバイルをご利用いただく場合、「あんしんコントロール by i-フィルター」のご契約が必須となります（330円/月）。
+            <ul class="c-List_Cap u-Adjust_Mt-16">
+                <li><span>※</span>「あんしんコントロール by i-フィルター」について、法定代理人となる保護者が「不要」と判断された場合、「フィルタリング・サービス不要申出書」を郵送いただくことで契約を解除することができます。</li>
+                <li><span>※</span>回線契約月翌月の10日までに不要申出書を楽天モバイルが受領した場合、月額使用料（330円/月）は発生しません。</li>
+                <li><span>※</span>不要申出書受領の翌月末に解約となります。</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+          <div class="l-Media_Grid-large-reverse">
+            <div>
+              <h3 class="c-Heading_Lv3">お子さまのスマホ使いにあんしんを</h3>
+              <p class="u-Adjust_Mt-24">「あんしんコントロール by i-フィルター」サービスで、ご家庭でも外出先でもお子さまのスマホ使いをペアレンタルコントロールで見守ることができます。設定はカスタマイズ可能です。 </p>
+              <ul class="c-List_Text-disc-emp u-Adjust_Mt-24">
+                <li class="c-Txt_Emp-01">お子さまの居場所がいつでもわかる</li>
+                <li class="c-Txt_Emp-01">お子さまの利用状況をいつでも把握</li>
+                <li class="c-Txt_Emp-01">フィルタリング機能でお子さまの利用制限を自由に設定</li>
+                <li class="c-Txt_Emp-01">年齢にあわせたフィルタリング設定</li>
+              </ul>
+              <div class="u-Adjust_Mt-24">
+                  <a href="<%= sitepath %>service/i-filter/" class="c-Btn_Regular"><span>あんしんコントロール by i-フィルターの詳細を見る</span></a>
+              </div>
+            </div>
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/flow/for-minors/img-07.png" alt="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="u-Adjust_Mt-64" id="section05">
+    <h2 class="c-Heading_Lv2">5.製品のお受け取り</h2>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu7" role="tab" aria-selected="true" aria-controls="tab-content7">店舗</li>
+        <li class="c-Tab_Item" id="tab-menu8" role="tab" aria-selected="false" aria-controls="tab-content8">Web</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content7" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu7">
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>楽天モバイルの製品をお持ち帰りになり、「Rakuten最強プラン」をお楽しみください。</li>
+          <li>製品をお受け取り時に、「あんしんコントロール by i-フィルター」の初期設定を店舗で実施します。</li>
+          <li>「あんしんコントロール by i-フィルター」が不要なお客様は、店舗でご案内した「フィルタリング・サービス不要申出書」のご郵送をお願いいたします。</li>
+        </ul>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content8" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu8">
+        <p class="u-Adjust_Mt-24 u-Adjust_Pb-40">お申し込み後、ご契約者様の本人確認が完了しましたら、ご登録のメールアドレスに完了メールをお送りします。</p>
+        <ol>
+          <li>
+            <h3 class="c-Heading_Lv3">1. 製品の受け取り</h3>
+            <div class="l-Media_Grid u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Mb-16">
+                <img src="<%= sitepath %>assets/img/flow/img_flow_01.png" alt="製品の受け取り">
+              </div>
+              <div>
+                <p>本人確認完了後、お申し込み製品・SIMカードをご指定の住所にお届けいたします。</p>
+              </div>
+            </div>
+          </li>
+          <li class="u-Adjust_Mt-40">
+            <h3 class="c-Heading_Lv3">2. 初期設定</h3>
+            <div class="l-Media_Grid u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Mb-16">
+                <img src="<%= sitepath %>assets/img/flow/img_flow_02.png" alt="初期設定">
+              </div>
+              <div>
+                <p>製品がお手元に届きましたら、製品の初期設定を行ってください。<br>設定後、ご利用開始となります。</p>
+                <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/setting/" class="c-Link_Txt-inline">製品の初期設定方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>Webからお申し込みの場合、「あんしんコントロール by i-フィルター」のインストールが完了した状態でお届けします。</li>
+                  <li>お届け時には、「あんしんコントロール by i-フィルター」の初期管理パスワードがあらかじめ設定されています。製品をお受け取り後、保護者（親権者）にて初期管理パスワードを変更いただく必要があります。</li>
+                </ul>
+                <div class="u-Adjust_Mt-24">
+                    <a href="<%= sitepath %>guide/i-filter/password/" class="c-Btn_Regular">管理パスワード変更方法を見る</a>
+                </div>
+
+              </div>
+            </div>
+          </li>
+          <li class="u-Adjust_Mt-40">
+            <h3 class="c-Heading_Lv3">3. Rakuten Linkの利用</h3>
+            <div class="l-Media_Grid u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Mb-16">
+                <img src="<%= sitepath %>assets/img/flow/img_flow_03.png" alt="Rakuten Linkアプリ">
+              </div>
+              <div>
+                <p>利用登録とSMS認証を完了させてください。</p>
+                <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>service/rakuten-link/" class="c-Link_Txt-inline">Rakuten Linkアプリの詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-Theme-Borderbox u-Adjust_Mt-40">
+    <h4 class="c-Heading_Lv4 u-Adjust_Mb-8">ご契約情報の変更</h4>
+    <p>お申し込み完了後の登録内容の変更は「my 楽天モバイル」から可能です。</p>
+    <div class="c-Box_App u-Adjust_Mt-24">
+      <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+      <div class="c-Box_App-txt">
+        <p class="c-Box_App-ttl">my 楽天モバイル</p>
+        <ul class="c-Box_App-link u-Adjust_Mt-16">
+          <li class="<%= namespace %>-Flow_Btn-store">
+            <div class="<%= namespace %>-Flow_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+            <div class="<%= namespace %>-Flow_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+          </li>
+          <li><a href="/guide/my-rakuten-mobile/" class="c-Btn_Regular">my 楽天モバイルとは</a></li>
+          <li class="flow-Utility_Link-center"><a href="<%= ecarepath %>my-rakuten-mobile" class="c-Link_Txt-inline">Webからのご利用はこちら<span class="c-Icon_Chevron-right"></span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ul class="u-Adjust_Mt-64 <%= namespace %>-List_Bnr">
+    <li>
+      <a href="<%= sitepath %>guide/kidsjunior/?l-id=flow_for-minors_guide_kidsjunior" class="c-Banner_Hover-act">
+        <img src="<%= sitepath %>assets/img/bnr/guide-kidsjunior-504-158.png" alt="はじめてのスマホをあんしん・安全に使おう 子どもスマホ利用あんしんガイド" width="504" height="158">
+      </a>
+    </li>
+    <li>
+      <a href="<%= sitepath %>guide/security/kids-manner/?l-id=flow_for-minors_guide_security_kids-manner" class="c-Banner_Hover-act">
+        <img src="<%= sitepath %>assets/img/bnr/bnr-kids-manner-504-158.png" alt="スマホデビューを応援 子どもと学ぶスマホのマナー" width="504" height="158">
+      </a>
+    </li>
+  </ul>
+
+  <div class="u-Adjust_Mt-24">
+    <a href="<%= sitepath %>guide/security/?l-id=flow_for-minors_guide_security" class="c-Banner_Hover-act">
+      <img class="<%= namespace %>-Utility_Show-pc" src="<%= sitepath %>assets/img/bnr/guide-security-1032-160.png" alt="情報セキュリティ 楽天モバイルの情報セキュリティへの取り組みをご紹介">
+      <img class="<%= namespace %>-Utility_Show-sp" src="<%= sitepath %>assets/img/bnr/guide-security-343-108.png" alt="情報セキュリティ 楽天モバイルの情報セキュリティへの取り組みをご紹介">
+    </a>
+  </div>
+
+</div>
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-flow-v2.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <%- include('/include/_breadcrumbs', {
+      type: 'foot',
+      pagetitle,
+      directories,
+    }) %>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

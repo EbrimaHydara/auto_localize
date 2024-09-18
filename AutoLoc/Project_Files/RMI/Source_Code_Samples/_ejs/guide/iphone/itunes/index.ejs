@@ -1,0 +1,295 @@
+<% const pagetitle = "iPhoneのiTunesでのバックアップ作成と復元方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/iphone/initial-setting/", label:"初期設定（iPhone・Apple Watch）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'iTunesを使用した、パソコンでのデータのバックアップ方法と、そのデータからのiPhoneの復元方法（初期設定方法）をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "support" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/support/support.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1">iPhoneのiTunesでのバックアップ作成と復元方法</h1>
+
+    <p class="u-Adjust_Mt-32">iTunesを使用した、パソコンでのデータのバックアップ方法と、そのデータからの復元方法（初期設定方法）をご案内します。</p>
+    <p class="u-Adjust_Mt-16 c-Txt_Cap">※macOS 10.15以降は Finderを使用してください。</p>
+
+    <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+      <li><a href="#backup" class="c-Link_Txt-icon c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>iTunesでのバックアップ作成方法</a></li>
+      <li><a href="#initial_setting" class="c-Link_Txt-icon c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>iTunesを利用した初期設定方法</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-32" id="backup">iTunesでのバックアップ作成方法</h2>
+
+      <ol class="<%= nameSpace %>-Flow_List u-Adjust_Mt-32">
+        <li>
+          <h3 class="c-Heading_Lv4">1. iTunesを起動する</h3>
+          <p class="u-Adjust_Mt-16">パソコンに最新のiTunesをインストールし、起動してください。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-01.png?210430" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          <div class="<%= nameSpace %>-Flow_List-Btn">
+          <a href="https://www.apple.com/jp/itunes/" class="c-Btn_Regular u-Adjust_Mt-16" target="_blank">iTunesをインストールする<span class="c-Icon_New-window-l u-Adjust_Ml-8"></span></a>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">2. iPhoneをパソコンに接続する</h3>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-02.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">3. iPhoneの操作画面を開く</h3>
+          <p class="u-Adjust_Mt-16">メニューバーの下、左上にあるiPhoneのアイコンをクリックしてください。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-03.png" height="" alt="" ></figure>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">4. バックアップを実行する</h3>
+          <p class="u-Adjust_Mt-16">「今すぐバックアップ」をタップして、バックアップを実行してください。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-04.png" height="" alt="" ></figure>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">5. バックアップ完了</h3>
+          <p class="u-Adjust_Mt-16">バックアップが完了すると、画面上のステータスバーがアップルマークに変わります。「最新のバックアップ」に、現在の日時が表示されていることをご確認ください。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-05.png" height="" alt="" ></figure>
+        </li>
+      </ol>
+
+      <p class="u-Adjust_Mt-16">以上でiTunesでのバックアップ作成は完了です。</p>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-32" id="initial_setting">iTunesを利用した初期設定方法</h2>
+    <p class="u-Adjust_Mt-16 c-Txt_Cap">※設定時の選択によって、遷移する画面や表示内容が異なる場合があります。画面の案内に従って手続きを行ってください。</p>
+    <p class="u-Adjust_Mt-8 c-Txt_Cap">※iOSのバージョンにより画面が異なる場合がございます。</p>
+
+    <div class="u-Adjust_Mt-32">
+      <div class="c-Infobox_Standing-warning">
+        <p class="support-Txt_Attention">楽天回線をご利用いただくには、最新のOSへアップデートが必要です。</p>
+        <p class="u-Adjust_Mt-16">設定中に「ソフトウェア・アップデート」の案内が表示された場合は、案内に沿ってアップデートを行ってください。<br>
+          案内が表示されない場合は、アップデートを行ってください。Wi-Fi接続やテザリング接続で行ってください。</p>
+        <div class="c-Accordion u-Adjust_Mt-32">
+          <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>OSのバージョン確認とアップデート方法</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+          <ol class="<%= nameSpace %>-Flow_List u-Adjust_Mt-32">
+            <li>
+              <h3 class="c-Heading_Lv4">1. 一般画面を開く</h3>
+              <p class="u-Adjust_Mt-16">設定にある「一般」をタップしてください。</p>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-06.png?210430" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-07.png?210430" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv4">2. 「ソフトウェア・アップデート」をタップ</h3>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-08.png?210430" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv4">3. 「ダウンロードしてインストール」をタップ</h3>
+              <p class="u-Adjust_Mt-16">OSが最新版ではない場合、最新版のソフトウェアのダウンロード・インストールが案内されます。<br>
+                「ダウンロードしてインストール」をタップし、画面の案内に沿ってインストールを行ってください。</p>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-09.png?210430" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </li>
+          </ol>
+          <p class="u-Adjust_Mt-32">以上でOSのバージョン確認とアップデートは完了です。</p>
+        </div>
+      </div>
+    </div>
+    <div class="c-Infobox_Standing-warning u-Adjust_Mt-32">
+      <p class="support-Txt_Attention">【重要】「キャリア設定アップデート」について</p>
+      <p class="u-Adjust_Mt-16 c-Txt_Emp-02">楽天回線に接続後、下記のポップアップが表示された場合は、必ず「アップデート」をタップしてください。</p>
+      <p class="u-Adjust_Mt-8 c-Txt_Cap c-Txt_Emp-01">※「今はしない」をタップした場合、もしくは表示されなかった場合は、ホーム画面より「設定」→「一般」→「情報」の順に進むと、ポップアップが表示されるので「アップデート」をタップしてしばらくお待ちください。</p>
+      <div class="l-Media_Image u-Adjust_Align-center">
+        <img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-010.png?210430" class="c-Img_Capture" alt="">
+    </div>
+    </div>
+  </div>
+
+    <ol class="<%= nameSpace %>-Flow_List u-Adjust_Mt-64">
+      <li>
+        <h3 class="c-Heading_Lv4">1. iPhoneの電源を入れる</h3>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-011.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">2. 言語と地域を設定する</h3>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-012.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-013.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">3. クイックスタート画面で「手動で設定」をタップ</h3>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-014.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">4. 文字の入力および音声入力の言語を確認し、「続ける」をタップ</h3>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-015.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">5. iPhoneのアクティベーションをする</h3>
+        <p class="u-Adjust_Mt-16">Wi-Fiネットワークを選択する画面が表示されるので、お好きな通信環境からアクティベーションを行ってください。</p>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">※Wi-Fi環境がない場合は、テザリングをご利用ください。<br>
+          画面下部に「モバイルデータ通信回線を使用」が表示される場合は、そちらを利用してもかまいません。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-016.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        <p class="u-Adjust_Mt-16">アクティベーションがはじまりますので、そのままお待ちください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-017.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">6. データとプライバシーを設定する</h3>
+        <p class="u-Adjust_Mt-16">データとプライバシーに関する説明が表示されますので、内容を確認し「続ける」をタップしてください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-018.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">7. Face IDを設定する</h3>
+        <p class="u-Adjust_Mt-16">画面の案内にしたがって設定を行ってください。<br>
+          あとで設定することもできますので、その場合は「あとで”設定”でセットアップ」をタップして進んでください。</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※モデルによっては「Touch ID」となる場合があります。</p>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-019.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">8. パスコードを作成する</h3>
+        <p class="u-Adjust_Mt-16">iPhoneのロック解除に使用する、6桁の数字を2回入力してください。<br>
+桁数の変更、パスコードを設定しない場合は「パスコードオプション」タップしてください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-020.png?20210430" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">9. 「iTunesバックアップから復元」を選択する</h3>
+        <p class="u-Adjust_Mt-16">「iPhoneの設定方法」を選択すると、Appとデータ画面が表示されますので、「MacまたはPCから復元」をタップしてください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-021.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">10. パソコンでiTunesを起動し、iPhoneを接続する</h3>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-022.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">11. バックアップファイルを選択する</h3>
+        <p class="u-Adjust_Mt-16">「新しいiPhoneへようこそ」の画面が表示されますので、「このバックアップから復元」から、復元したいバックアップを選択し、「続ける」をクリックして完了するまでお待ちください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-023.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">12. 復元完了</h3>
+        <p class="u-Adjust_Mt-16">iPhoneが再起動し、アップデート完了の画面が表示されたら、完了です。「続ける」をタップしてください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-024.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-025.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">13. 位置情報サービスを設定する</h3>
+        <p class="u-Adjust_Mt-16">位置情報サービスの設定画面が表示されますので、どちらか選択してください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-026.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">14. Apple Payを設定する</h3>
+        <p class="u-Adjust_Mt-16">Apple Payを使用する場合は、「続ける」をタップして、画面の案内にしたがって設定を行ってください。<br>
+あとで設定することもできますので、その場合は「あとでWalletでセットアップ」をタップして進んでください。</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※表示された場合は設定してください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-027.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">15. iCloudキーチェーンを設定する</h3>
+        <p class="u-Adjust_Mt-16">iCloudキーチェーンを設定してください。使用しない場合は「iCloudキーチェーンを使用しない」をタップしてください。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-028.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">16. スクリーンタイムやその他のディスプレイオプションを設定する</h3>
+        <p class="u-Adjust_Mt-16">画面の案内にしたがって各種設定を行い、「続ける」をタップして進んでください。</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>スクリーンタイム</li>
+          <li>App解析</li>
+          <li>True Toneディスプレイ</li>
+          <li>外観モード</li>
+          <li>拡大モード</li>
+        </ul>
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※2021年4月30日時点での機能項目になります。OSのバージョンによって設定できる機能が異なります。</p>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4">17. 設定完了</h3>
+        <p class="u-Adjust_Mt-16">以下の画面が表示されたら設定が完了です。<br>
+画面を上にスワイプすると、ホーム画面が表示されます。</p>
+<p class="u-Adjust_Mt-8 c-Txt_Cap">※モデルによってはホームボタンを押す場合があります。</p>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/itunes/img-029.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </li>
+    </ol>
+
+    <p class="u-Adjust_Mt-16">以上でiTunesを利用した初期設定は完了です。</p>
+
+    <div class="u-Adjust_Pt-32">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+    </div>
+
+    <div class="u-Adjust_Pt-16">
+      <div><a href="<%= sitepath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

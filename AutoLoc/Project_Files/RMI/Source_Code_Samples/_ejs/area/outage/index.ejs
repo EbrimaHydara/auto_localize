@@ -1,0 +1,418 @@
+<% const pagetitle = "停電時に携帯電話がご利用いただけない場合がある施設・スポット" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '',
+    noindex: false,
+    pathname: filepath,
+    browseragent: false
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/outage/outage.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container">
+  <h1 class="u-Adjust_Mt-40"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-16">停電が発生した際、楽天モバイルの携帯電話が一部または全域においてご利用いただけない場合がある施設・スポットをご案内します。<br />停電が発生した際は、電波の届く場所に移動してご利用ください。</p>
+  <p class="u-Adjust_Mt-40 u-Adjust_Align-right"><span id="lastUpdate"></span>更新</p>
+  <div class="c-Theme-Light u-Adjust_Mt-16">
+    <h2 class="c-Heading_Lv3">地域と都道府県を選択する</h2>
+    <div class="outage-Layout_Search u-Adjust_Mt-16">
+      <p class="c-Txt_Emp-01 outage-Layout_Search-label outage-Layout_Search-label-left">地域</p>
+      <div class="c-Form_Select outage-Layout_Search-select">
+        <select name="" id="selectArea" class="">
+          <option value="hokkaido">北海道</option>
+          <option value="tohoku">東北</option>
+          <option value="kanto" selected>関東・甲信越</option>
+          <option value="hokuriku">北陸</option>
+          <option value="tokai">東海</option>
+          <option value="kansai">関西</option>
+          <option value="chugoku">中国</option>
+          <option value="shikoku">四国</option>
+          <option value="kyushu">九州</option>
+        </select>
+        <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+      </div>
+      <p class="c-Txt_Emp-01 outage-Layout_Search-label outage-Layout_Search-label-right">都道府県</p>
+      <div class="c-Form_Select outage-Layout_Search-select">
+        <select name="" id="selectPrefecture" class="">
+          <option value="選択してください">選択してください</option>
+          <option value="ibaraki">茨城県</option>
+          <option value="tochigi">栃木県</option>
+          <option value="gunma">群馬県</option>
+          <option value="saitama">埼玉県</option>
+          <option value="chiba">千葉県</option>
+          <option value="tokyo">東京都</option>
+          <option value="kanagawa">神奈川県</option>
+          <option value="nigata">新潟県</option>
+          <option value="yamanashi">山梨県</option>
+          <option value="nagano">長野県</option>
+        </select>
+        <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+      </div>
+    </div>
+  </div>
+  <div id="renderingArea">
+    <div style="display: none;">
+      <div id="renderingAreaList"></div>
+    </div>
+    <div id="hokkaido" class="js-area">
+      <h2 class="c-Heading_Lv3 outage-Layout_List-title">北海道</h2>
+      <div class="js-spot-railroad"></div>
+      <div class="js-spot-istitution"></div>
+      <div class="js-spot-tunnel"></div>
+    </div>
+    <div id="tohoku" class="js-area">
+      <div id="aomori">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">青森県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="iwate">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">岩手県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="miyagi">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">宮城県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="akita">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">秋田県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="yamagata">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">山形県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="fukushima">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">福島県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+    <div id="kanto" class="js-area">
+      <div id="ibaraki">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">茨城県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="tochigi">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">栃木県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="gunma">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">群馬県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="saitama">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">埼玉県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="chiba">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">千葉県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="tokyo">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">東京都</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="kanagawa">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">神奈川県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="nigata">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">新潟県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="yamanashi">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">山梨県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="nagano">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">長野県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+    <div id="hokuriku" class="js-area">
+      <div id="toyama">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">富山県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="ishikawa">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">石川県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="fukui">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">福井県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+    <div id="tokai" class="js-area">
+      <div id="gifu">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">岐阜県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="shizuoka">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">静岡県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="aichi">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">愛知県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+    <div id="kansai" class="js-area">
+      <div id="mie">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">三重県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="shiga">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">滋賀県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="kyoto">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">京都府</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="osaka">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">大阪府</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="hyogo">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">兵庫県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="nara">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">奈良県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="wakayama">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">和歌山県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+    <div id="shikoku" class="js-area">
+      <div id="tokushima">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">徳島県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="kagawa">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">香川県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="ehime">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">愛媛県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="kochi">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">高知県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+    <div id="chugoku" class="js-area">
+      <div id="tottori">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">鳥取県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="shimane">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">島根県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="okayama">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">岡山県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="hiroshima">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">広島県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="yamaguchi">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">山口県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+    <div id="kyushu" class="js-area">
+      <div id="fukuoka">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">福岡県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="saga">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">佐賀県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="nagasaki">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">長崎県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="kumamoto">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">熊本県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="oita">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">大分県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="miyazaki">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">宮崎県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="kagoshima">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">鹿児島県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+      <div id="okinawa">
+        <h2 class="c-Heading_Lv3 outage-Layout_List-title">沖縄県</h2>
+        <div class="js-spot-railroad"></div>
+        <div class="js-spot-istitution"></div>
+        <div class="js-spot-tunnel"></div>
+      </div>
+    </div>
+  </div>
+  <p id="alertSelect" class="c-Heading_Lv3 outage-Layout_List-title" style="display: none;">選択してください</p>
+</div>
+
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-shop-v2.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/area.outage.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

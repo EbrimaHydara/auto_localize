@@ -1,0 +1,812 @@
+<% const pagetitle = "eKYCとは" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, , {path:"support/application/verification/", label:"本人確認"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'eKYCとは本人確認手続きをオンライン上で完結させる仕組みのこと。楽天モバイルでは、完全オンラインで本人確認手続きを完了できるシステムを導入しています。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "ekyc" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/verify/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+<div class="<%= nameSpace %>-Hero">
+  <div class="l-System_Container">
+    <div class="<%= nameSpace %>-Hero_Title">
+      <p class="c-Heading_Lv1 <%= nameSpace %>-Hero_Title_Lv1">スマホで申し込んで<br class=" <%= nameSpace %>-Utility_Show-sp">待たずにすぐつながる</p>
+      <h1>eKYCとは</h1>
+    </div>
+  </div>
+</div>
+<div class="<%= nameSpace %>-Hero_Footer-primary">
+  <p>スマートフォン（Web／アプリ）からの<br class="<%= nameSpace %>-Utility_Br-sp">お申し込みの際、<br class="<%= nameSpace %>-Utility_Show-pc">「AIかんたん本人確認<br class="<%= nameSpace %>-Utility_Br-sp">（eKYC）」をご利用いただけます</p>
+</div>
+<div class="<%= nameSpace %>-Hero_Footer-secondary">
+  <p>eSIM対応製品なら、アプリが便利。<br class="<%= nameSpace %>-Utility_Show-pc">Webでお申し込み後、最短3分でつながる！※1</p>
+  <ul class="<%= nameSpace %>-Style_App-list">
+    <li>
+      <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/google-play.png" alt="Google Play" width="148"></a>
+    </li>
+    <li>
+      <a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/app-store.png" alt="App Store" width="148"></a>
+    </li>
+  </ul>
+</div>
+
+<div class="l-System_Container <%= nameSpace %>-Btn_Anker-box">
+  <ul class="<%= nameSpace %>-Btn_Anker-box_Link-list">
+    <li><a href="#anc01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>特長</a></li>
+    <li class="<%= nameSpace %>-Link_List_AnkerBtn-box"><a href="#anc02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>お申し込みの流れ</a></li>
+    <li><a href="#anc03" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>eSIM対応製品</a></li>
+    <li><a href="#anc04" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用条件</a></li>
+    <li><a href="#anc05" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>よくあるご質問</a></li>
+  </ul>
+</div>
+
+<section id="anc01" class="<%= nameSpace %>-Merit">
+  <div class="l-System_Container">
+
+    <h2 class="c-Heading_Lv2">AIかんたん本人確認（eKYC）の特長</h2>
+    <div class="l-Media_List-3 u-Adjust_Align-center u-Adjust_Pt-16">
+      <div>
+        <div class="c-Heading_Lv4 <%= nameSpace %>-Merit_ttl"><p>お店に行く必要なし！</p></div>
+        <div class="l-Media_Image u-Adjust_Mt-8">
+            <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_01.png?20210701" alt="">
+        </div>
+      </div>
+      <div>
+        <div class="c-Heading_Lv4 <%= nameSpace %>-Merit_ttl"><p>スマホで完結！<span class="c-Txt_Cap">※2</span></p></div>
+        <div class="l-Media_Image u-Adjust_Mt-8">
+            <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_02.png?20210701" alt="">
+        </div>
+      </div>
+      <div>
+        <div class="c-Heading_Lv4 <%= nameSpace %>-Merit_ttl"><p>Webでお申し込み後、<br>最短3分でつながる！<span class="c-Txt_Cap">※1</span></p></div>
+        <div class="l-Media_Image u-Adjust_Mt-8">
+            <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_03.png?20210701" alt="">
+        </div>
+      </div>
+    </div>
+    <p class="c-Txt_Cap">※1 楽天モバイル対応のeSIM対応製品でアプリからeKYCで申し込んだ場合。SIMフリーの製品でない場合、SIMロック解除が必要です。<br>※2 現在対応している本人確認書類は運転免許証とマイナンバーカードです。</p>
+  </div>
+</section>
+
+  <section class="<%= nameSpace %>-Style">
+
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2">eKYCが実現する、簡単・手軽な申し込みのスタイル</h2>
+    <div class="l-Media_List-2 u-Adjust_Pt-16 <%= nameSpace %>-Style_Head">
+      <div>
+        <div class="l-Media_Image">
+          <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_04.png?20200909" alt="">
+        </div>
+        <div class="<%= nameSpace %>-Style_Txt">
+          <p class="c-Txt_Emp-02">スマホで完結！</p>
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-8">手元で簡単に本人確認が完了！</h3>
+          <p class="u-Adjust_Mt-8">eKYCとは<span class="c-Txt_Emp-02">オンラインでの本人確認</span>のことです。スマホの簡単な操作で本人確認書類とご本人の顔写真を登録。これら2つをオンラインで照合することで本人確認が完了します。Webのお申し込み画面と「my 楽天モバイル」（アプリ／Web）、どちらでも<span class="c-Txt_Emp-02">スマホからeKYC</span>がご利用できます。</p>
+        </div>
+      </div>
+      <div>
+        <div class="l-Media_Image">
+          <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_05.png?20200909" alt="">
+        </div>
+        <div class="<%= nameSpace %>-Style_Txt">
+          <p class="c-Txt_Emp-02">eSIM対応製品なら！</p>
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-8">お申し込み後、すぐにスマホが使える！</h3>
+          <p class="u-Adjust_Mt-8">すでに楽天回線対応のeSIM対応製品をお持ちの方は、「my 楽天モバイル」アプリからのeKYCのご利用がオススメです。アプリからeKYCでお申し込み後、<span class="c-Txt_Emp-02">最短3分で開通</span>し、すぐに使えます。<span class="c-Txt_Cap">※1</span></p>
+        </div>
+      </div>
+    </div>
+    <ul class="c-List_Cap u-Adjust_Mt-16">
+      <li class="c-Txt_Cap"><span>※</span>現在対応している本人確認書類は運転免許証とマイナンバーカードです。</li>
+      <li class="c-Txt_Cap"><span>※</span>現在eKYCはスマートフォンからのみお手続きいただけます。パソコンやタブレットをご利用の場合は、eKYC以外の本人確認方法にてお申し込みいただけます。詳しくは、<a href="<%= sitepath %>guide/verify/">本人確認書類ページ</a>をご覧ください。</li>
+      <li class="c-Txt_Cap"><span>※</span>本人確認審査にお時間がかかる場合があります。また、本人確認書類に不備がある場合はお申し込みをお受けできません。再度、本人確認手続きが必要となります。</li>
+    </ul>
+
+      <p class="c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-32">動画でチェック</p>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-8 u-Adjust_Align-center">お使いのスマホでお申し込み後、最短3分で乗り換え！</h2>
+
+      <div class="<%= nameSpace %>-Utility_Show u-Adjust_Align-center">
+        <div style="position: relative; display: block;">
+          <div style="padding-top: 56.25%;">
+            <video
+              id="play-movie_guide_verify_ekyc"
+              data-account="5068808272001"
+              data-player="default"
+              data-embed="default"
+              data-video-id="6328254050112"
+              class="video-js"
+              controls
+              data-rat-media='{ "measure":true, "mediaId": "play-movie_guide_verify_ekyc" }'
+              style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%; border-width: 0;">
+          </video>
+          </div>
+        </div>
+      </div>
+
+      <p class="c-Txt_Cap u-Adjust_Mt-16">※ SIMフリーの製品でない場合、SIMロック解除が必要です。eKYC（AIかんたん本人確認）は、「my 楽天モバイル」アプリ/Webにてご利用いただけます。</p>
+
+      <div class="<%= nameSpace %>-Utility_Bg-white u-Adjust_Mt-24">
+        <div class="u-Adjust_Align-center">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/verify/ekyc/img-simple-03-sp.png">
+            <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img-simple-03.png" alt="さらに！楽天市場/楽天カード/楽天ペイのアプリをお持ちならプランのみ申し込みがもっとかんたん！">
+          </picture>
+        </div>
+        <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+          <a href="<%= sitepath %>guide/flow/application/group/?l-id=guide_verify-ekyc_guide_application-group" class="c-Btn_Regular"><span>グループアプリ経由での申し込み方法を見る</span></a>
+        </p>
+      </div>
+  </div>
+</section>
+
+<section id="anc02" class="<%= nameSpace %>-Flow">
+  <div class="l-System_Container">
+
+    <div class="u-Adjust_Mb-48 u-Adjust_Align-center">
+      <a class="c-Banner_Hover-act" href="<%= sitepath %>guide/mnp/fast-convert/?l-id=guide_verify-ekyc_guide_mnp_fast-convert">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-fast-convert-343-108-231201.png" width="686" height="216">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-fast-convert-1032-160-231201.png" width="1032" height="160" alt="電話番号そのまま！MNP予約番号なしで乗り換えできる！MNPワンストップ  Webでの申し込みがさらに簡単に。乗り換えるなら楽天モバイル" loading="lazy">
+        </picture>
+      </a>
+    </div>
+
+    <h2 id="js-trigger" class="c-Heading_Lv2 <%= nameSpace %>-Flow_ttl">eSIMスマホをお持ちなら、eKYCでお申し込み完了後、アプリから最短3分で開通<span class="c-Txt_Cap">※1</span></h2>
+    <p class="u-Adjust_Mt-16">iPhone XS／XR以降の製品や、Rakutenオリジナル製品などのeSIM対応製品にて、eSIMをeKYCでお申し込みになる場合の開通の流れをご案内いたします。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※</span>楽天モバイルの対応製品以外は動作保証外となりますので、ご利用はお客様自身のご判断でお願いいたします。</p>
+
+    <div class="<%= nameSpace %>-Flow_Link u-Adjust_Mt-16">
+      <p class="<%= nameSpace %>-Style_Btn-wrap"><a href="<%= sitepath %>product/sim/esim/" class="c-Btn_Regular">eSIMとは</a></p>
+    </div>
+
+    <ol class="c-Flow <%= nameSpace %>-Flow_List">
+      <li>
+        <h3 class="c-Heading_Lv3">1. 「AIかんたん本人確認（eKYC）」でRakuten最強プランをお申し込み</h3>
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Grid-reverse">
+            <div>
+              <p><span class="c-Txt_Emp-02">Web</span>のお申し込み画面、または「<span class="c-Txt_Emp-02">my 楽天モバイル</span>」（アプリ／Web）から、Rakuten最強プランをeSIMでお申し込みください。<br><br>お申し込みフローの本人確認のステップにて、「<span class="c-Txt_Emp-02">AIかんたん本人確認（eKYC）</span>」をお選びいただくと、eKYCによるお申し込みとなります。書類（運転免許証／マイナンバーカード）の撮影と、ご自身の顔の撮影のあと、必要事項を入力し、お申し込み完了となります。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※運転免許証またはマイナンバーカードをお持ちでない方は、eKYC以外の本人確認方法にてお申し込みいただけます。詳しくは、<a href="<%= sitepath %>guide/verify/">本人確認書類ページ</a>をご覧ください。</p>
+
+              <p class="<%= nameSpace %>-Style_Btn-wrap"><a href="<%= sitepath %>guide/verify/ekyc/flow/" class="c-Btn_Secondly u-Adjust_Mt-24">eKYCの流れを詳しく見る</a></p>
+            </div>
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_06.png?211019" alt="" class="c-Img_Capture">
+            </div>
+          </div>
+          <div class="<%= nameSpace %>-Flow_List-btn l-Media_Grid-half">
+            <div><a href="<%= sitepath %>guide/application/?lid-r=guide_verify_ekyc_guide_application" class="c-Btn_Primary-large <%= nameSpace %>-Flow_List-btn_1st"><span>新規／乗り換え（MNP）お申し込み</span></a></div>
+            <div><a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=guide_verify_ekyc_members&mno_migration=1" class="c-Btn_Primary-large"><span><span class="c-Txt_Normal-s c-Btn_Text-sub">スーパーホーダイ・組み合わせプランからの</span>プラン変更（移行）お申し込み</span></a></div>
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+          <a href="<%= sitepath %>guide/procedure/?l-id=guide_ekyc_guide_procedure" class="c-Link_Txt-inline">お申し込みガイドを確認する<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">2. 「my 楽天モバイル」アプリをインストールする</h3>
+        <p class="u-Adjust_Mt-16"><span class="c-Txt_Emp-02">eSIMをeKYCでお申し込みいただいた場合、アプリからより簡単に開通いただけます。</span><br>「my 楽天モバイル」アプリをダウンロードし、お使いのスマートフォンにインストールしてください。</p>
+        <div class="c-Box_App u-Adjust_Mt-24">
+          <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+          <div class="c-Box_App-txt">
+            <p class="c-Box_App-ttl">my 楽天モバイル</p>
+            <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+            <ul class="<%= nameSpace %>-Style_App-list u-Adjust_Mt-16">
+              <li class="u-Adjust_Ml-0">
+                <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/google-play.png" alt="Google Play" width="148"></a>
+              </li>
+              <li>
+                <a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/app-store.png" alt="App Store" width="148"></a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">my 楽天モバイルとは</a>
+              </li>
+              <li>
+                <a href="<%= onboardingpath %>my-rakuten-mobile" class="c-Link_Txt-inline">Webで「my 楽天モバイル」を使う<span class="c-Icon_Chevron-right"></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">3. アプリからeSIMを開通する</h3>
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Grid-reverse">
+            <div>
+              <p>eKYCにより、eSIM対応製品でeSIMをお申し込み後、最短3分※で本人確認審査が完了し、「my 楽天モバイル」アプリにて、そのまま開通手続きを行っていただけます。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※ 楽天モバイル対応のeSIM対応製品でアプリからeKYCで申し込んだ場合。SIMフリーの製品でない場合、SIMロック解除が必要です。</p>
+              <p class="<%= nameSpace %>-Style_Btn-wrap"><a href="<%= sitepath %>guide/verify/ekyc/esim-activation/" class="c-Btn_Secondly u-Adjust_Mt-16">eKYCからのeSIM開通方法を見る</a></p>
+            </div>
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_07.png?20210701" alt="">
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+    <div class="u-Adjust_Mt-24">
+      <h4 class="c-Heading_Lv4">事前にご確認ください</h4>
+      <p class="u-Adjust_Mt-8">お使いのスマホにSIMロックがかかっていないことをご確認ください。</p>
+      <p class="<%= nameSpace %>-Style_Btn-wrap"><a href="<%= sitepath %>product/sim/#anc01" class="c-Btn_Regular u-Adjust_Mt-16">SIMロック解除について詳しく見る</a></p>
+    </div>
+
+    <div class="c-Infobox_Standing-light u-Adjust_Mt-48">
+      <h3 class="c-Heading_Lv3">より詳しい手順のご案内</h3>
+      <div class="u-Adjust_Mt-16">
+        <div class="l-Media_Grid-small <%= nameSpace %>-Flow_Adjust-sp">
+          <div class="l-Media_Image">
+            <p class="<%= nameSpace %>-Style_Img-wrap"><img src="<%= sitepath %>assets/img/guide/verify/ekyc/img_08.png?20210701" alt=""></p>
+          </div>
+          <div>
+            <p>eKYCでeSIMをお申し込みの方へ、ご利用開始までの詳しい手順をご案内している冊子（PDFファイル）をご用意しています。以下よりダウンロードのうえ、お役立てください。</p>
+            <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>assets/pdf/product/START-GUIDE-eKYC-eSIM.pdf?230524" class="c-Link_Txt-inline-icon">スタートガイド（Android／iOS対応）<span class="c-Icon_Pdf-l"></span></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="anc03" class="<%= nameSpace %>-Esim">
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Align-center" id="support">eSIM対応製品</h2>
+
+    <h3 class="c-Heading_Lv4 u-Adjust_Mt-32" id="esim1">現在販売しているeSIM対応製品</h3>
+    <div class="u-Adjust_Mt-16">
+      <div class="c-Accordion">
+        <button type="button" id="accordion-11" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-11"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>iPhone一覧を見る</button>
+        <div id="accordion-content-11" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-11" aria-hidden="true">
+          <div class="u-Adjust_Mt-16">
+          <div class="l-Media_List-3">
+            <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphone15promax.png" alt="" style="height:230px;">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone 15 Pro Max</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/iphone/iphone-15-pro-max/" class="c-Btn_Regular">詳細を見る</a>
+                </div>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphone15pro.png" alt="" style="height:230px;">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone 15 Pro</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/iphone/iphone-15-pro/" class="c-Btn_Regular">詳細を見る</a>
+                </div>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphone15plus.png" alt="" style="height:230px;">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone 15 Plus</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/iphone/iphone-15-plus/" class="c-Btn_Regular">詳細を見る</a>
+                </div>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphone15.png" alt="" style="height:230px;">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone 15</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/iphone/iphone-15/" class="c-Btn_Regular">詳細を見る</a>
+                </div>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphone14plus.png?230308" alt="" style="height:230px;">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone 14 Plus</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/iphone/iphone-14-plus/" class="c-Btn_Regular">詳細を見る</a>
+                </div>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphone14.png?230308" alt="" style="height:230px;">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone 14</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/iphone/iphone-14/" class="c-Btn_Regular">詳細を見る</a>
+                </div>
+                <ul class="u-Adjust_Mt-16">
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                  <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+              </div>
+            </div>
+          <div>
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphone13.png?220309" alt="" style="height:230px;">
+            </div>
+            <div class=" u-Adjust_Align-center">
+              <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone 13</p>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>product/iphone/iphone-13/" class="c-Btn_Regular">詳細を見る</a>
+              </div>
+              <ul class="u-Adjust_Mt-16">
+                <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/product/iphone/top/thumb-product-iphone-top-iphonese3rd.png?220309" alt="" style="height:230px;">
+            </div>
+            <div class=" u-Adjust_Align-center">
+              <p class="c-Heading_Lv2 u-Adjust_Mt-8">iPhone SE（第3世代）</p>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>product/iphone/iphone-se-3rd/" class="c-Btn_Regular">詳細を見る</a>
+              </div>
+              <ul class="u-Adjust_Mt-16">
+                <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/ios/?tab-list=tab-menu2" class="c-Link_Txt-inline">初期設定方法（お手持ちのiPhone）<span class="c-Icon_Chevron-right"></span></a></li>
+                <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim/" class="c-Link_Txt-inline">初期設定方法（新規購入）<span class="c-Icon_Chevron-right"></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+      </div>
+      </div>
+
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button type="button" id="accordion-13" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-13"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Android／Rakutenオリジナル一覧を見る</button>
+        <div id="accordion-content-13" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-13" aria-hidden="true">
+          <div class="u-Adjust_Mt-16">
+            <div class="l-Media_List-3">
+              <div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/a79-5g/pht-device-thumb.png" alt="" style="height:230px;">
+                </div>
+                <div class=" u-Adjust_Align-center">
+                  <p class="c-Heading_Lv2 u-Adjust_Mt-8">OPPO A79 5G</p>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/smartphone/a79-5g/?l-id=guide_verify_ekyc_product_smartphone_a79-5g" class="c-Btn_Regular">詳細を見る</a>
+                  </div>
+                  <ul class="u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/a79-5g/?l-id=guide_verify_ekyc_guide_setting_a79-5g" class="c-Link_Txt-inline">初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/aquos-sense8/pht-device-thumb.png" alt="" style="height:230px;">
+                </div>
+                <div class=" u-Adjust_Align-center">
+                  <p class="c-Heading_Lv2 u-Adjust_Mt-8">AQUOS sense8</p>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/smartphone/aquos-sense8/?l-id=guide_verify_ekyc_product_smartphone_aquos-sense8" class="c-Btn_Regular">詳細を見る</a>
+                  </div>
+                  <ul class="u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/aquos-sense8/?l-id=guide_verify_ekyc_guide_setting_aquos-sense8" class="c-Link_Txt-inline">初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/xperia-5m5/pht-device-thumb.png" alt="" style="height:230px;">
+                </div>
+                <div class=" u-Adjust_Align-center">
+                  <p class="c-Heading_Lv2 u-Adjust_Mt-8">Xperia 5 V</p>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/smartphone/xperia-5m5/?l-id=guide_verify_ekyc_product_smartphone_xperia-5m5" class="c-Btn_Regular">詳細を見る</a>
+                  </div>
+                  <ul class="u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/xperia-5m5/?l-id=guide_verify_ekyc_guide_setting_xperia-5m5" class="c-Link_Txt-inline">初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/xperia-10m5/pht-device-thumb.png" alt="" style="height:230px;">
+                </div>
+                <div class=" u-Adjust_Align-center">
+                  <p class="c-Heading_Lv2 u-Adjust_Mt-8">Xperia 10 V</p>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/smartphone/xperia-10m5/?l-id=guide_verify_ekyc_product_smartphone_xperia-10m5" class="c-Btn_Regular">詳細を見る</a>
+                  </div>
+                  <ul class="u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/xperia-10m5/?l-id=guide_verify_ekyc_guide_setting_xperia-10m5" class="c-Link_Txt-inline">初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/aquos-wish3/pht-device-thumb.png" alt="" style="height:230px;">
+                </div>
+                <div class=" u-Adjust_Align-center">
+                  <p class="c-Heading_Lv2 u-Adjust_Mt-8">AQUOS wish3</p>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/smartphone/aquos-wish3/?l-id=guide_verify_ekyc_product_smartphone_aquos-wish3" class="c-Btn_Regular">詳細を見る</a>
+                  </div>
+                  <ul class="u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/aquos-wish3/?l-id=guide_verify_ekyc_guide_setting_aquos-wish3" class="c-Link_Txt-inline">初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/reno9-a/pht-device-thumb.png" alt="" style="height:230px;">
+                </div>
+                <div class=" u-Adjust_Align-center">
+                  <p class="c-Heading_Lv2 u-Adjust_Mt-8">OPPO Reno9 A</p>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/smartphone/reno9-a/" class="c-Btn_Regular">詳細を見る</a>
+                  </div>
+                  <ul class="u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/reno9-a/" class="c-Link_Txt-inline">初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/galaxy-s23/pht-device-thumb.png" alt="" style="height:230px;">
+                </div>
+                <div class=" u-Adjust_Align-center">
+                  <p class="c-Heading_Lv2 u-Adjust_Mt-8">Galaxy S23</p>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/smartphone/galaxy-s23/" class="c-Btn_Regular">詳細を見る</a>
+                  </div>
+                  <ul class="u-Adjust_Mt-16">
+                    <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/setting/galaxy-s23/" class="c-Link_Txt-inline">初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h3 class="c-Heading_Lv4 u-Adjust_Mt-32" id="esim2">過去販売していたeSIM対応製品</h3>
+    <div class="u-Adjust_Mt-16">
+      <div class="c-Accordion">
+        <button type="button" id="accordion-14" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-14"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>iPhone一覧を見る</button>
+        <div id="accordion-content-14" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-14" aria-hidden="true">
+          <div class="c-Infobox_Standing-border">
+            <p>（2024年3月時点）</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>iPhone 14 Pro MAX <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 14 Pro <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 13 Mini <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 13 Pro MAX <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 13 Pro <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 12 Mini <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 12 Pro MAX <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 12 <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 12 Pro <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone SE（第2世代） <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 11 <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 11 Pro <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone 11 Pro MAX <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone XS <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone XS Max <span class="c-Txt_Normal-s">※</span></li>
+              <li>iPhone XR <span class="c-Txt_Normal-s">※</span></li>
+            </ul>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※ iOS14.4以降を搭載し、キャリア設定のアップデートを実施していただければ、楽天回線のすべての機能をご利用いただけるようになります。iOSのアップデート手順、および、キャリア設定のバージョン確認方法は、<a href="<%= sitepath %>information/news/product/655/">iOS14.4以降を搭載するiPhoneの楽天回線対応についてのページ</a>をご覧ください。</p>
+          </div>
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button type="button" id="accordion-15" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-15"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Android／Rakutenオリジナル一覧を見る</button>
+        <div id="accordion-content-15" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-15" aria-hidden="true">
+          <div class="c-Infobox_Standing-border">
+            <p>（2024年5月時点）</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>Galaxy Z Flip4</li>
+              <li>Galaxy A23 5G</li>
+              <li>OPPO A73</li>
+              <li>OPPO Reno5 A</li>
+              <li>OPPO A55s 5G</li>
+              <li>OPPO Reno7 A</li>
+              <li>Rakuten BIG</li>
+              <li>Rakuten BIG s</li>
+              <li>Rakuten Hand</li>
+              <li>Rakuten Hand 5G</li>
+              <li>Rakuten Mini</li>
+              <li>AQUOS sense4 lite</li>
+              <li>AQUOS sense6</li>
+              <li>AQUOS wish</li>
+              <li>AQUOS zero6</li>
+              <li>AQUOS sense6s</li>
+              <li>AQUOS sense7</li>
+              <li>Xperia 5 IV</li>
+              <li>Xperia 10 III Lite</li>
+              <li>Xperia 10 IV</li>
+              <li>Redmi Note 11 Pro 5G</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= nameSpace %>-Style_Accordion-head u-Adjust_Mt-32">
+      <h3 class="c-Heading_Lv4 u-Adjust_Mr-16" id="esim2">楽天モバイル以外で販売のeSIM対応製品</h3>
+      <p class="c-Txt_Emp-02 c-Txt_Cap u-Adjust_Mt-8">※当社で動作確認済みのメーカー直販の製品のみ記載</p>
+    </div>
+    <div class="u-Adjust_Mt-16">
+      <div class="c-Accordion">
+        <button type="button" id="accordion-16" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-16"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>一覧を見る</button>
+        <div id="accordion-content-16" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-16" aria-hidden="true">
+          <div class="c-Infobox_Standing-border">
+            <p>（2024年3月時点）</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>Google Pixel 4 <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 4 XL <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 4a <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 4a (5G) <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 5 <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 5a (5G) <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 6 <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 6a <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 6 Pro <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 7 <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 7a <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 7 Pro <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 8 <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel 8 Pro <span class="c-Txt_Normal-s">※</span></li>
+              <li>Google Pixel Fold <span class="c-Txt_Normal-s">※</span></li>
+              <li>Find X3 Pro</li>
+              <li>OPPO Reno10 Pro 5G</li>
+              <li>Redmi Note 10T</li>
+              <li>Xperia 1 IV</li>
+              <li>Xperia 1 V</li>
+            </ul>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※ 楽天モバイルで購入された製品以外は動作保証の対象外となります。また、ご利用いただける機能であっても、OSやソフトウェアの更新等により、機能のご利用が制限される場合があります。ご利用はお客様ご自身の判断でお願いします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="u-Adjust_Mt-64">
+      <div class="<%= nameSpace %>-Btn_Bnr">
+        <p class="<%= nameSpace %>-Btn_Bnr-ttl">お持ちのスマホが、SIM差し替えで<br class="<%= nameSpace %>-Utility_Show-sp">使えるか<br class="<%= nameSpace %>-Utility_Show-pc">今すぐチェック！</p>
+        <a href="<%= sitepath %>product/byod/" class="c-Btn_Secondly <%= nameSpace %>-Btn_Bnr-btn">楽天モバイルで使えるか調べる</a>
+      </div>
+    </div>
+
+    <div id="terms">
+      <h3 id="anc04" class="c-Heading_Lv3 u-Adjust_Mt-32">eKYCのご利用条件<span class="c-Txt_Normal c-Txt_Weight-normal">（2021年10月19日時点）</span></h3>
+    </div>
+    <dl class="c-Dl_Origin u-Adjust_Mt-16 <%= nameSpace %>-Style_Dl">
+      <div>
+        <dt>利用対象</dt>
+        <dd>
+          新規およびMNP申し込み者のみ利用可能
+        </dd>
+      </div>
+      <div>
+        <dt>お申し込み方法</dt>
+        <dd>
+          Webのお申し込み画面、または「my 楽天モバイル」アプリから利用可能（スマートフォンのみ ※）
+        </dd>
+      </div>
+      <div>
+        <dt>本人確認書類</dt>
+        <dd>
+          運転免許証とマイナンバーカードに対応
+        </dd>
+      </div>
+      <div>
+        <dt>利用できるOS・ブラウザ</dt>
+        <dd>
+          Android OS 7.1 以上 ：Google Chrome 最新版<br>iOS 最新版：Safari 最新版
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※ アプリの場合は、Android OS 5 以上、iOS 10 以上よりご利用いただけます。</p>
+        </dd>
+      </div>
+    </dl>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">※ 現在eKYCはスマートフォンからのみお手続きいただけます。パソコンやタブレットをご利用の場合は、eKYC以外の本人確認方法にてお申し込みいただけます。詳しくは、<a href="<%= sitepath %>guide/verify/">本人確認書類ページ</a>をご覧ください。</p>
+
+    <h3 id="anc05" class="c-Heading_Lv3 u-Adjust_Mt-48">よくあるご質問</h3>
+
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>eKYCで本人確認書類や顔が、上手く撮影されません</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+        <p class="u-Adjust_Pt-8">本人確認が正常に行えない場合、以下をご確認ください。</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>
+            撮影時の環境が暗すぎるか、明るすぎる<br>
+            運転免許証およびご本人撮影時の明るさが、適切ではない暗過ぎる環境や、明る過ぎる環境で撮影された場合、上手く認識がされない可能性があります。撮影環境の明るさを調整のうえ、再度撮影をお願いいたします。
+          </li>
+          <li>
+            運転免許証を横に撮影している<br>
+            誠に恐れ入りますが、画面に表示される白い枠に合わせて、縦に撮影をお願いいたします。小さい枠には、運転免許証の顔写真を合わせて、撮影をお願いいたします。
+          </li>
+          <li>
+            書類の厚みがうまく撮れない<br>
+            書類を机などに置かず、手で持ち、傾きをご調整ください。画面の指示に従い、書類の全体が枠に当てはまるように傾けて持ち、手前の白い点線枠に、顔写真が収まっていることをご確認のうえ、撮影をお願いいたします。撮影の後、確認画面が表示されますので、写真に反射やぶれなどなく、厚みが写るように撮影されているかどうかご確認ください。
+          </li>
+          <li>
+            運転免許証のコピーを利用している<br>
+            誠に恐れ入りますが、本人確認のため、運転免許証はコピーではなく、原本をご用意のうえ、お手続きをお願いいたします。
+          </li>
+          <li>
+            顔に大きく髪がかかっている、マスクやカラーコンタクトをしている<br>
+            顔に髪がかかっていたり、サングラスやマスク、カラーコンタクトなどを着けたまま撮影されますと上手く認識がされない可能性がありますので、ご注意ください。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>申し込み完了後、eKYCに変更はできますか？</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+        <p class="u-Adjust_Pt-8">誠に恐れ入りますが、一度お申し込み手続きが完了した後で、eKYCに変更することはできかねます。<br>
+          <br>
+          本人確認後、再アップロードが必要な場合、「【重要】楽天モバイル 本人確認書類の不備による再アップロードのお願い」の件名でメールをお送りさせていただきますので、そちらをご確認ください。送信元：rm-mail@mobile.rakuten.co.jp</p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>カメラ機能がない製品でもeKYCを利用できますか？</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+        <p class="u-Adjust_Pt-8">eKYCのご利用には、カメラ機能およびご利用条件を満たしたスマートフォンが必要です。<br><br>お使いの製品にカメラ機能がないか、ご利用条件を満たさない場合は、eKYC以外の本人確認方法をご選択ください。詳しくは、<a href="<%= sitepath %>guide/verify/">本人確認書類ページ</a>をご覧ください。</p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お申し込みが完了しないようで、開通手続きに進めません</button>
+      <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+        <p class="u-Adjust_Pt-8">eKYCの場合、通常はお申し込み完了後、最短3分※で本人確認審査が完了し、開通手続きへ進んでいただけます。ただし、本人確認書類の記載内容が確認できず不備となった場合には、本人確認書類の再アップロードをお願いするメールをお届けします。メールをお受け取りになりましたら、メールの内容に沿ってお手続きください。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※ 楽天モバイル対応のeSIM対応製品でアプリからeKYCで申し込んだ場合。SIMフリーの製品でない場合、SIMロック解除が必要です。</p>
+      </div>
+    </div>
+
+    <div class="u-Adjust_Mt-48 u-Adjust_Mb-16">
+      <p class="<%= nameSpace %>-Style_Btn-wrap"><a class="c-Btn_Regular" href="<%= sitepath %>guide/verify/"><span>本人確認書類にもどる</span></a></p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+
+<div class="<%= nameSpace %>-Style_Bottom-fixed" id="js-fixed-btn" aria-expanded="false">
+  <div class="<%= nameSpace %>-Style_Bottom-fixed-inner">
+    <div class="<%= nameSpace %>-Style_Bottom-fixed-btn">
+      <div class="<%= nameSpace %>-Utility_Show-pc" style="width:100%">
+        <a href="<%= sitepath%>guide/application/?lid-r=guide_verify_ekyc_guide_application_0" class="c-Btn_Primary-large <%= nameSpace %>-Style_Bottom-fixed-btn">
+          <span>新規／乗り換え（MNP）お申し込み</span>
+        </a>
+      </div>
+      <div class="<%= nameSpace %>-Utility_Show-sp" style="width:100%">
+        <a href="<%= sitepath%>guide/application/?lid-r=guide_verify_ekyc_guide_application_0" class="c-Btn_Primary-large <%= nameSpace %>-Style_Bottom-fixed-btn">
+          <span>新規／乗り換え(MNP)</span>
+        </a>
+      </div>
+    </div>
+    <div class="<%= nameSpace %>-Style_Bottom-fixed-btn js-btn-ms" aria-hidden="false">
+      <div class="<%= nameSpace %>-Utility_Show-pc" style="width:100%">
+        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=guide_verify_ekyc_members&mno_migration=0" class="c-Btn_Secondly-large <%= nameSpace %>-Style_Bottom-fixed-btn" style="border: 1px solid #ff008c;">
+          <span><span>スーパーホーダイ、組み合わせプランからの</span> プラン変更（移行）お申し込み</span>
+        </a>
+      </div>
+      <div class="<%= nameSpace %>-Utility_Show-sp" style="width:100%">
+        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=guide_verify_ekyc_members&mno_migration=0" class="c-Btn_Secondly-large <%= nameSpace %>-Style_Bottom-fixed-btn" style="border: 1px solid #ff008c;">
+          <span><span>以前の楽天モバイルからの</span>プラン変更（移行）</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+<script src="https://players.brightcove.net/5068808272001/default_default/index.min.js"></script>
+<script src="https://r.r10s.jp/com/rat/plugin/media/main-0.2.0.js"></script>
+<script src="<%= sitepath %>assets/js/product.sim.bundle.js?20240521"></script>
+<script type="text/javascript">
+  window.RAT.MediaTracker({
+    params: {
+      acc: 1312,
+      aid: 1,
+      pgn: "/guide/verify/ekyc/",
+    },
+    configs: {
+      measure: true,
+    }
+  })
+</script>
+</body>
+</html>

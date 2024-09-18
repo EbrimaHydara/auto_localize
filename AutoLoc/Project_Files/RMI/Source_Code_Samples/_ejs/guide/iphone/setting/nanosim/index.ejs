@@ -1,0 +1,603 @@
+<% const pagetitle = "iPhone＋プランセット購入者向け初期設定方法（nanoSIM）" -%>
+<% const category = "製品（Android）" -%>
+<% const subCategory = "iPhone" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/iphone/initial-setting/", label:"初期設定（iPhone・Apple Watch） "}] -%>
+<% const namespace = "support-iphone-setting" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルでiPhone（nanoSIM）をプランとセットでご購入のお客様向けに、iPhoneの初期設定から楽天モバイルの開通確認方法までご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/support/support.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/support/iphone/setting/<%= namespace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+<div id="attention"></div>
+
+
+<div class="<%= namespace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Pt-24">楽天モバイルでiPhone（nanoSIM）をプランとセットでご購入のお客様向けに、iPhoneの初期設定から楽天モバイルの開通確認方法までご案内します。<br>
+      以下の順で設定をしてください。</p>
+
+
+    <ol class="c-List_Ordered u-Adjust_Mt-24">
+      <li><a href="#howto1" class="js-scroll">iPhoneの初期設定</a></li>
+      <li><a href="#howto2" class="js-scroll">MNP転入／プラン変更（移行）手続き</a></li>
+      <li><a href="#howto3" class="js-scroll">楽天モバイルの開通確認</a></li>
+    </ol>
+    <ul class="c-List_Cap u-Adjust_Pt-16">
+      <li><span>※</span>「MNP転入／プラン変更（移行）手続き」は新規契約の方は不要です。</li>
+      <li><span>※</span>設定時の選択によって、遷移する画面や表示内容が異なる場合があります。画面の案内に従って手続きを行ってください。</li>
+      <li><span>※</span>iOSのバージョンにより画面が異なる場合がございます。</li>
+    </ul>
+
+    <p class="u-Adjust_Pt-24">iPhone（eSIM）をご購入された場合は「<a href="<%= sitepath%>guide/iphone/setting/esim/">iPhone＋プランセット購入者向け初期設定方法（eSIM）</a>」を、お持ちのiPhoneを使用する場合は「<a href="<%= sitepath%>guide/setting/ios/">お手持ちのiPhone・iPadで楽天モバイルを使用するための初期設定方法</a>」をご確認ください。</p>
+
+    <div class="u-Adjust_Mt-32">
+      <div class="c-Infobox_Standing-warning">
+              <h2 class="<%= namespace %>-Layout-Warning_Title"><span class="c-Icon_Sign-warning-l <%= namespace %>-Layout-Warning_Icon"></span><span>楽天モバイルをご利用いただくには、最新のOSへアップデートが必要です。</span></h2>
+        <p class="u-Adjust_Mt-16">設定中に「ソフトウェア・アップデート」の案内が表示された場合は、案内に沿ってアップデートを行ってください。<br>
+          案内が表示されない場合は、アップデートを行ってください。Wi-Fi接続やテザリング接続で行ってください。</p>
+        <div class="c-Accordion u-Adjust_Mt-32">
+          <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>OSのバージョン確認とアップデート方法</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+          <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-32">
+            <li>
+              <h3 class="c-Heading_Lv4">1. 一般画面を開く</h3>
+              <p class="u-Adjust_Mt-16">設定にある「一般」をタップしてください。</p>
+              <div class="u-Adjust_Mt-24">
+                <div class="l-Media_Image u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture35.png" width="300" height="" alt="" class="c-Img_Capture">
+                </div>
+              </div>
+              <div class="u-Adjust_Mt-24">
+                <div class="l-Media_Image u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture36.png" width="300" height="" alt="" class="c-Img_Capture">
+                </div>
+              </div>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv4">2. 「ソフトウェア・アップデート」をタップ</h3>
+              <div class="u-Adjust_Mt-24">
+                <div class="l-Media_Image u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture37.png" width="300" height="" alt="" class="c-Img_Capture">
+                </div>
+              </div>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv4">3. 「ダウンロードしてインストール」をタップ</h3>
+              <p class="u-Adjust_Mt-16">OSが最新版ではない場合、最新版のソフトウェアのダウンロード・インストールが案内されます。<br>
+                「ダウンロードしてインストール」をタップし、画面の案内に沿ってインストールを行ってください。</p>
+                <div class="u-Adjust_Mt-24">
+                  <div class="l-Media_Image u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture38.png" width="300" height="" alt="" class="c-Img_Capture">
+                  </div>
+                </div>
+            </li>
+          </ol>
+          <p class="u-Adjust_Mt-32">以上でOSのバージョン確認とアップデートは完了です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">動画でかんたん初期設定</h2>
+
+  <div class="<%= namespace %>-Layout_Video-pc u-Adjust_Mt-40">
+    <!-- ::: PIP-Maker Start ::: -->
+    <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+    <div id="pipmakerfmbx"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+    <script type="text/javascript">
+      pipmaker.priority = ["WebGL", "HTML5"];
+      pipmaker.embed("//www.pip-maker.com/?view=fmbx", "pipmakerfmbx", 800, 450);
+    </script>
+    <!-- ::: PIP-Maker End ::: -->
+  </div>
+  <div class="<%= namespace %>-Layout_Video-sp u-Adjust_Mt-32">
+    <!-- ::: PIP-Maker Start ::: -->
+    <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+    <div id="pipmakerfmbxsp"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+    <script type="text/javascript">
+      pipmaker.priority = ["WebGL", "HTML5"];
+      pipmaker.embed("//www.pip-maker.com/?view=fmbx", "pipmakerfmbxsp", 320, 180);
+    </script>
+    <!-- ::: PIP-Maker End ::: -->
+  </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto1">iPhoneの初期設定</h2>
+    <ul class="u-Adjust_Mt-16 <%= namespace %>-Flow_List">
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">1. SIMをセットしiPhoneの電源を入れる</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture01.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">2. 言語と地域を設定する</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture02.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture03.png" width="300" height="" alt="" class="c-Img_Capture">
+                    </div>
+                  </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">3. クイックスタート画面で「手動で設定」をタップ</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture04.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">4. 文字の入力および音声入力の言語を確認し、「続ける」をタップ</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture05.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">5. iPhoneのアクティベーションをする</h4>
+        <p class="u-Adjust_Pt-16">Wi-Fiネットワークを選択する画面が表示されるので、お好きな通信環境からアクティベーションを行ってください。</p>
+<ul class="c-List_Cap u-Adjust_Pt-16">
+  <li><span>※</span>Wi-Fi環境がない場合は、テザリングをご利用ください。<br>
+画面下部に「モバイルデータ通信回線を使用」が表示される場合は、そちらを利用してもかまいません。</li>
+</ul>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture06.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+            <p class="u-Adjust_Pt-16">アクティベーションがはじまりますので、そのままお待ちください。</p>
+            <div class="u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture07.png" width="300" height="" alt="" class="c-Img_Capture">
+              </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">6. データとプライバシーを設定する</h4>
+    <p class="u-Adjust_Pt-16">データとプライバシーに関する説明が表示されますので、内容を確認し「続ける」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture08.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">7. Face IDを設定する</h4>
+        <p class="u-Adjust_Pt-16">画面の案内にしたがって設定を行ってください。<br>
+あとで設定することもできますので、その場合は「あとで”設定”でセットアップ」をタップして進んでください。</p>
+        <ul class="c-List_Cap u-Adjust_Pt-16">
+          <li><span>※</span>モデルによっては「Touch ID」となる場合があります。</li>
+        </ul>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture10.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">8. パスコードを作成する</h4>
+        <p class="u-Adjust_Pt-16">iPhoneのロック解除に使用する、6桁の数字を2回入力してください。<br>
+桁数の変更、パスコードを設定しない場合は「パスコードオプション」タップしてください。
+</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture12.png?20210430" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">9. データの転送方法を選択する</h4>
+        <p class="u-Adjust_Pt-16">Appとデータ画面が表示されますので、データを転送しない場合は「Appとデータを転送しない」をタップしてください。<br>
+データを転送する場合は、以下の転送方法別の初期設定方法をご確認ください。設定後「<a href="#howto2" class="js-scroll">MNP転入／プラン変更（移行）手続き方法</a>」に進んでください。</p>
+        <div class="u-Adjust_Mt-16"><a href="<%= sitepath%>guide/iphone/icloud/" class="c-Link_Txt-icon">iCloudでのバックアップ作成と復元方法<span class="c-Icon_Chevron-right"></span></a></div>
+        <div class="u-Adjust_Mt-16"><a href="<%= sitepath%>guide/iphone/itunes/" class="c-Link_Txt-icon">iTunesでのバックアップ作成と復元方法<span class="c-Icon_Chevron-right"></span></a></div>
+        <div class="u-Adjust_Mt-16"><a href="<%= sitepath%>guide/iphone/quick-start/" class="c-Link_Txt-icon">クイックスタートのご利用方法<span class="c-Icon_Chevron-right"></span></a></div>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture13.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">10. サインインする</h4>
+        <p class="u-Adjust_Pt-16">ご利用のApple IDを入力し、「次へ」をタップしてください。<br>
+Apple IDをお持ちでない場合は、アカウントを作成してください。</p>
+        <div class="u-Adjust_Mt-16"><a href="<%= sitepath%>guide/iphone/appleid/" class="c-Link_Txt-icon">Apple IDの作成方法<span class="c-Icon_Chevron-right"></span></a></div>
+        <ul class="c-List_Cap u-Adjust_Pt-16">
+          <li><span>※</span>複数台iPhoneを持っている場合、「次へ」をタップしたあとにパスコードの入力が必要になる場合があります。</li>
+        </ul>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture14.png?20210430" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">11. 利用規約に同意する</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture15.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">12. 位置情報サービスを設定する</h4>
+        <p class="u-Adjust_Pt-16">位置情報サービスの設定画面が表示されますので、どちらか選択してください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture16.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">13. エクスプレス設定をする</h4>
+        <p class="u-Adjust_Pt-16">エクスプレス設定を行ってください。変更しない場合は「続ける」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture18.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">14. アップデートのインストール方法を選択する</h4>
+        <p class="u-Adjust_Pt-16">iOSのアップデート方法を選んでください。<br>
+自動的にアップデートされるようにする場合は「続ける」をタップしてください。<br>
+手動でアップデートをインストールしたい場合は「手動でアップデートをインストール」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture19.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">15. Apple Payを設定する</h4>
+        <p class="u-Adjust_Pt-16">Apple Payを使用する場合は、「続ける」をタップして、画面の案内にしたがって設定を行ってください。<br>
+あとで設定することもできますので、その場合は「あとでWalletでセットアップ」をタップして進んでください。</p>
+<ul class="c-List_Cap u-Adjust_Pt-16">
+  <li><span>※</span>表示された場合は設定してください。</li>
+</ul>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture20.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">16. iCloudキーチェーンを設定する</h4>
+        <p class="u-Adjust_Pt-16">iCloudキーチェーンを設定してください。使用しない場合は「iCloudキーチェーンを使用しない」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture21.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">17. iMessageとFaceTimeを設定する</h4>
+        <p class="u-Adjust_Pt-16"> iMessageとFaceTimeを設定してください。利用しない場合は「今はしない」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture23.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">18. Siriを設定する</h4>
+        <p class="u-Adjust_Pt-16">画面の案内にしたがって設定を行ってください。<br>
+あとで設定することもできますので、その場合は「あとで”設定”でセットアップ」をタップして進んでください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture25.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">19. スクリーンタイムやその他のディスプレイオプションを設定する</h4>
+        <p class="u-Adjust_Pt-16">画面の案内にしたがって各種設定を行い、「続ける」をタップして進んでください。</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>スクリーンタイム</li>
+          <li>App解析</li>
+          <li>True Toneディスプレイ</li>
+          <li>外観モード</li>
+          <li>拡大モード</li>
+        </ul>
+        <ul class="c-List_Cap u-Adjust_Pt-16">
+          <li><span>※</span>2021年4月30日時点での機能項目になります。OSのバージョンによって設定できる機能が異なります。</li>
+        </ul>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">20. 設定完了</h4>
+        <p class="u-Adjust_Pt-16">以下の画面が表示されたら設定が完了です。<br>
+画面を上にスワイプすると、ホーム画面が表示されます。</p>
+<ul class="c-List_Cap u-Adjust_Pt-16">
+  <li><span>※</span>モデルによってはホームボタンを押す場合があります。</li>
+</ul>
+        <p class="u-Adjust_Pt-8 c-Txt_Emp-02">設定状況により、「キャリア設定アップデート」のポップアップが表示される場合があります。表示された際は「アップデート」をタップしてください。</p>
+
+                <div class="u-Adjust_Mt-16"><a href="#update" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>【重要】「キャリア設定アップデート」について</a></div>
+
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture26.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+    </ul>
+    <p class="u-Adjust_Mt-32">以上でiPhoneの初期設定は完了です。</p>
+
+
+        <div class="c-Infobox_Standing-light u-Adjust_Mt-24">
+          <p class="u-Adjust_Pt-8">以下の方は、別途MNP転入／プラン変更（移行）の手続きが必要となりますので、「<a href="#howto2" class="js-scroll">MNP転入／プラン変更（移行）手続き方法</a>」に進んでください。</p>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>他社から乗り換え（MNP）</li>
+            <li>楽天モバイル（ドコモ回線・au回線）の通話SIM料金プラン「スーパーホーダイ」「組み合わせプラン」「コミコミプラン」からの、「Rakuten最強プラン」へのプラン変更（移行）</li>
+          </ul>
+          <p class="u-Adjust_Pt-24">それ以外の新規契約の方は、「<a href="#howto3" class="js-scroll">楽天モバイルの開通確認方法</a>」に進んでください。</p>
+          </div>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto2">MNP転入／プラン変更（移行）手続き</h2>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">注意事項</h3>
+    <p class="u-Adjust_Pt-16">受付完了時間によりMNP転入／プラン変更（移行）完了時間が異なります。
+また、MNP転入／プラン変更（移行）が完了すると、現在の回線はご利用できなくなります。</p>
+
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li> 9:00～21:00受付完了の場合･･･当日中にMNP転入／プラン変更（移行）完了</li>
+          <li>21:01～翌日8:59受付完了の場合･･･翌日9:00以降にMNP転入／プラン変更（移行）完了</li>
+          <li>プラン変更（移行）後、メンバーズステーションにログインできるのは解約月の翌月から5カ月間です。
+            <ul class="c-List_Cap u-Adjust_Pb-8">
+              <li><span>※</span>ログインには「ra」から始まる13桁のユーザIDとパスワードをご利用ください。楽天IDでのログインはできません。</li>
+              <li><span>※</span>プラン変更（移行）後、パスワードの再発行、楽天メールの新規アドレス発行はできません。</li>
+              <li><span>※</span>楽天メールご利用中の方は、5カ月を過ぎてもメンバーズステーションにログインできます。</li>
+            </ul>
+          </li>
+          <li>楽天でんわは自動解約となります。
+            <ul class="c-List_Cap u-Adjust_Pb-8">
+              <li><span>※</span>国内通話がかけ放題になる<a href="<%= sitepath%>service/rakuten-link/">Rakuten Linkアプリ</a>をご利用ください。</li>
+            </ul>
+            </li>
+          <li>プラン変更（移行）前のデータ残量は、楽天モバイル移行後のプランには引き継げません。</li>
+          <li>プラン変更（移行）前に発生した料金の詳細はメンバーズステーションでご確認ください。</li>
+        </ul>
+
+    <ul class="u-Adjust_Mt-16 <%= namespace %>-Flow_List">
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">1. 「my 楽天モバイル」にログインする</h4>
+        <p class="u-Adjust_Pt-16">お持ちのスマートフォンや、タブレット、パソコンから「<a href="<%= ecarepath %>my-rakuten-mobile">my 楽天モバイル</a>」にアクセスし、利用した楽天IDと　パスワードでログインしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture27.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">2. 「申込番号」をタップ</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture28.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">3. 「申込番号」をタップ</h4>
+        <p class="u-Adjust_Pt-16">申し込み履歴の画面が表示されますので、「申し込み番号」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture29.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">4. 「転入を開始する」をタップ</h4>
+        <p class="u-Adjust_Pt-16">申し込み回線にある「転入を開始する」をタップしてください。
+プラン変更（移行）の場合も同じボタンをタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture30.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">5. 開通手続き開始</h4>
+        <p class="u-Adjust_Pt-16">申し込み履歴画面で「開通手続き中です」と表示されていることを確認してください。</p>
+        <ul class="c-List_Cap u-Adjust_Pt-16">
+          <li><span>※</span>設定状況により、「手続きが完了しました」と表示される場合があります。</li>
+        </ul>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture31.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">6. 利用していたスマホ（携帯電話）が通話不可になったことを確認</h4>
+      </li>
+    </ul>
+    <p class="u-Adjust_Mt-32">以上でMNP転入／プラン変更（移行）手続きは完了です。続いて、楽天モバイルの開通確認を行ってください。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto3">楽天モバイルの開通確認</h2>
+    <ul class="u-Adjust_Mt-16 <%= namespace %>-Flow_List">
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">1. Wi-FiをOFFにする</h4>
+        <p class="u-Adjust_Pt-16">画面上部からスワイプし、「Wi-Fi」アイコンをタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture32.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">2. 楽天モバイルへの接続をご確認する</h4>
+        <p class="u-Adjust_Pt-16">画面上のアンテナマークの隣に「4G」または「5G」と表示されているかご確認ください。<br>
+また、SafariやChromeなどのWebブラウザアプリが利用できるかご確認ください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+<img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture33.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="c-Infobox_Standing-warning u-Adjust_Mt-32" id="update">
+              <h2 class="<%= namespace %>-Layout-Warning_Title"><span class="c-Icon_Sign-warning-l <%= namespace %>-Layout-Warning_Icon"></span><span>【重要】「キャリア設定アップデート」について</span></h2>
+      <p class="u-Adjust_Mt-16 c-Txt_Emp-02">楽天モバイルに接続後、下記のポップアップが表示された場合は、必ず「アップデート」をタップしてください。</p>
+      <p class="u-Adjust_Mt-8 c-Txt_Cap c-Txt_Emp-01">※「今はしない」をタップした場合、もしくは表示されなかった場合は、ホーム画面より「設定」→「一般」→「情報」の順に進むと、ポップアップが表示されるので「アップデート」をタップしてしばらくお待ちください。</p>
+      <div class="u-Adjust_Mt-24">
+        <div class="l-Media_Image u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture34.png" width="300" height="" alt="" class="c-Img_Capture">
+        </div>
+      </div>
+    </div>
+
+
+    <p class="u-Adjust_Mt-32">以上で楽天モバイルの開通確認は完了です。</p>
+
+
+    <div class="u-Adjust_Mt-32">
+      <div class="c-Infobox_Standing-warning">
+              <h2 class="<%= namespace %>-Layout-Warning_Title"><span class="c-Icon_Sign-warning-l <%= namespace %>-Layout-Warning_Icon"></span><span>楽天モバイルをご利用いただくには、最新のOSへアップデートが必要です。</span></h2>
+        <p class="u-Adjust_Mt-16">設定中に「ソフトウェア・アップデート」の案内が表示された場合は、案内に沿ってアップデートを行ってください。<br>
+          案内が表示されない場合は、アップデートを行ってください。Wi-Fi接続やテザリング接続で行ってください。</p>
+        <div class="c-Accordion u-Adjust_Mt-32">
+          <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>OSのバージョン確認とアップデート方法</button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+          <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-32">
+            <li>
+              <h3 class="c-Heading_Lv4">1. 一般画面を開く</h3>
+              <p class="u-Adjust_Mt-16">設定にある「一般」をタップしてください。</p>
+              <div class="u-Adjust_Mt-24">
+                <div class="l-Media_Image u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture35.png" width="300" height="" alt="" class="c-Img_Capture">
+                </div>
+              </div>
+              <div class="u-Adjust_Mt-24">
+                <div class="l-Media_Image u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture36.png" width="300" height="" alt="" class="c-Img_Capture">
+                </div>
+              </div>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv4">2. 「ソフトウェア・アップデート」をタップ</h3>
+              <div class="u-Adjust_Mt-24">
+                <div class="l-Media_Image u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture37.png" width="300" height="" alt="" class="c-Img_Capture">
+                </div>
+              </div>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv4">3. 「ダウンロードしてインストール」をタップ</h3>
+              <p class="u-Adjust_Mt-16">OSが最新版ではない場合、最新版のソフトウェアのダウンロード・インストールが案内されます。<br>
+                「ダウンロードしてインストール」をタップし、画面の案内に沿ってインストールを行ってください。</p>
+                <div class="u-Adjust_Mt-24">
+                  <div class="l-Media_Image u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/iphone/setting/nanosim/capture38.png" width="300" height="" alt="" class="c-Img_Capture">
+                  </div>
+                </div>
+            </li>
+          </ol>
+          <p class="u-Adjust_Mt-32">以上でOSのバージョン確認とアップデートは完了です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/support/_smallcategory-js') %>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

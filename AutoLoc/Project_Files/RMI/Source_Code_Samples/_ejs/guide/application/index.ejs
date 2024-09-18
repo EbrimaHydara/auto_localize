@@ -1,0 +1,58 @@
+<% const pagetitle = "" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+
+<style>
+[aria-hidden="true"] {
+    display: none;
+}
+</style>
+<%- include('/include/_append-head') %>
+</head>
+<body data-phoenix-mnoprj_inhouse_scenario_a_responsive>
+<%- include('/include/_prepend-body') %>
+<input type="hidden" name="rat" id="ratCvEvent" value="{'complete5':1}">
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+(function($){
+    var search = location.search;
+    var is_ichiba = true;
+    var parameter_scid = '';
+    var parameter_lid = '';
+    var parameter = '';
+    var url_bss = "https://onboarding.mobile.rakuten.co.jp/";
+
+    if (search.indexOf('scid-r=') > -1) {
+      parameter_scid = search.split('scid-r=')[1].split('&')[0];
+      parameter += '?scid=' + parameter_scid;
+    }
+
+    if (search.indexOf('lid-r=') > -1) {
+      parameter_lid = search.split('lid-r=')[1].split('&')[0];
+        if (parameter_scid !== '') {
+          parameter += '&l-id=' + parameter_lid;
+        }
+        else {
+          parameter += '?l-id=' + parameter_lid;
+        }
+    }
+
+    url_bss += parameter;
+
+    if (search.indexOf('type=pitari') > -1) {
+        location.href = "/guide/application/campaign/";
+    }
+    else {
+            location.href = url_bss;
+    }
+})(jQuery);
+</script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

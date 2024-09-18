@@ -1,0 +1,99 @@
+<%
+  const carouselBenefit = [
+    {//紹介CPN_240201
+      href: `${sitepath}campaign/referral/?l-id=top_campaign-banner_campaign_referral`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-referral-328-185-240201.png`,
+      alt:  '楽天モバイル紹介キャンペーン',
+      title: '楽天モバイル紹介キャンペーン',
+    },
+    {// MNP6,000ポイントCPN
+      href: `${sitepath}campaign/mnp/?l-id=top_campaign-banner_campaign_mnp`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-mnp-328-185-240315.png`,
+      alt:  'スマホそのまま乗り換え！電話番号もそのまま他社から乗り換え＆初めてお申し込みで6,000ポイントプレゼント!データ3GB（税込1,078円）x5カ月分がポイント還元で実質5カ月無料！',
+      title: 'スマホそのまま乗り換え！電話番号もそのまま他社から乗り換え＆初めてお申し込みで6,000ポイントプレゼント!データ3GB（税込1,078円）x5カ月分がポイント還元で実質5カ月無料！',
+    },
+    {//iPhone CPN_240517
+      href: `${sitepath}campaign/iphone-point/?l-id=top_campaign-banner_campaign_iphone-point`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-iphone-point-328-185-240517.png`,
+      alt:  '対象iPhoneを一括または24回払いで購入＆楽天モバイルへ初めて申し込み＆他社から電話番号そのまま乗り換えで最大32,000円相当おトク！',
+      title: '対象iPhoneを一括または24回払いで購入＆楽天モバイルへ初めて申し込み＆他社から電話番号そのまま乗り換えで最大32,000円相当おトク！',
+    },
+    {//Android値引き_240522
+      href: `${sitepath}campaign/android-discount/?l-id=top_campaign-banner_campaign_android-discount`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-android-discount-328-185-240522.png`,
+      alt:  '楽天モバイルお申し込み＆対象製品ご購入で最大26,930円値引き！',
+      title: '楽天モバイルお申し込み＆対象製品ご購入で最大26,930円値引き！',
+    },
+    {//Android CPN_240522
+      href: `${sitepath}campaign/start-point/?l-id=top_campaign-banner_campaign_start-point`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-start-point-328-185-240522.png`,
+      alt:  '楽天モバイルへ初めてお申し込み＋他社から電話番号そのまま乗り換え＋対象のAndroid製品をご購入いただくと最大12,000ポイント還元！他社から乗り換え以外の方でも最大8,000ポイント還元中！',
+      title: '楽天モバイルへ初めてお申し込み＋他社から電話番号そのまま乗り換え＋対象のAndroid製品をご購入いただくと最大12,000ポイント還元！他社から乗り換え以外の方でも最大8,000ポイント還元中！',
+    },
+    {//市場_Android_240520
+      href: 'https://www.rakuten.ne.jp/gold/rakutenmobile-store/product/smartphone/android/?scid=wi_rmb_ich_top_campaign-banner_product_smartphone_android',
+      imgPath: `${sitepath}assets/img/bnr/bnr-ichiba-event-328-185-240520.png`,
+      alt:  '楽天モバイル公式 楽天市場店限定！対象Android製品購入＋楽天モバイルお申し込みで使える6,000円OFFクーポン！※対象プラン等条件あり',
+      title: '楽天モバイル公式 楽天市場店限定！対象Android製品購入＋楽天モバイルお申し込みで使える6,000円OFFクーポン！※対象プラン等条件あり',
+    },
+    {//New2,000CPN_231207
+      href: `${sitepath}campaign/new-application/?l-id=top_campaign-banner_campaign_new-application`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-new-application-328-185-231207.png`,
+      alt:  '楽天モバイルへ初めてのお申し込みで2,000ポイントプレゼントキャンペーン開催中！',
+      title: '【Rakuten最強プランはじめてお申し込み特典】新規発番で2,000ポイントプレゼントキャンペーン',
+    },
+    {//ショップLINEスタンプ_240312
+      href: `https://event.rakuten.co.jp/okaimonopanda/line/mobileshop/?scid=wi_grp_gmx_linemobileshop_mno_top_slider`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-okaimonopanda-328-185-240312.png`,
+      alt:  '楽天モバイルショップへの来店で、お買いものパンダのLINEスタンプを無料でプレゼント！最強にポジティブなメッセージスタンプで、新生活も毎日ハッピーに過ごそう！',
+      title: 'お買いものパンダ「最強ポジティブ」LINEスタンプGET！',
+    },
+    {//デジコン_240423
+      href: `${sitepath}campaign/digital-contents/?l-id=top_campaign-banner_campaign_digital-contents`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-digital-top-contents-328-185-240423.png`,
+      alt:  'NBA、パ・リーグ、ミュージックが楽天モバイルなら追加料金0円で楽しめる！※ミュージックは30日ごとに5時間無料',
+      title: 'エンタメコンテンツがおトクに楽しめる！',
+    },
+    {//キャリア決済_240201
+      href: `${sitepath}campaign/payment-google/?l-id=top_campaign-banner_campaign_payment-google`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-payment-google-328-185-240201.png`,
+      alt:  'Google Play ストア・楽天モバイルキャリア決済ご利用キャンペーン',
+      title: 'Google Play ストア・楽天モバイルキャリア決済ご利用キャンペーン',
+    },
+    {//SPU
+      href: `${sitepath}campaign/spu/?l-id=top_campaign-banner_campaign_spu`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-spu-mobile-328-185-231201-member.png`,
+      alt:  '契約後は楽天市場のお買い物でポイントが貯まりやすく！',
+      title: 'SPU（楽天モバイル）',
+    },
+    {//Youtube_230516
+      href: `${sitepath}campaign/youtubepremium/?l-id=top_campaign-banner_campaign_youtubepremium`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-youtube-premium-328-185-230516.png`,
+      alt:  'YouTube Premium 3カ月無料キャンペーン',
+      title: 'YouTube Premium 3カ月無料キャンペーン',
+    },
+    {//Rakuten Turbo CPN_240221
+      href: `${sitepath}internet/turbo/campaign/six-month-free/?l-id=top_campaign-banner_internet_turbo_campaign_six-month-free`,
+      imgPath: `${sitepath}assets/img/bnr/bnr-turbo_campaign_six-month-free-328-185-240221.png`,
+      alt: '工事不要！すぐに使える おうちのWi-Fi Rakuten Turboのプラン料金が6カ月0円！さらにスマホとセットで20,000ポイント還元。※製品代金 別途41,580円。7カ月目以降4,840円／月※Rakuten最強プランの利用が必要 ※その他条件あり',
+      title: '工事不要！すぐに使える おうちのWi-Fi Rakuten Turboのプラン料金が6カ月0円！さらにスマホとセットで20,000ポイント還元。※製品代金 別途41,580円。7カ月目以降4,840円／月※Rakuten最強プランの利用が必要 ※その他条件あり',
+    },
+  ];
+-%>
+<div class="top-Carousel_Benefit">
+  <div class="c-Carousel top-Carousel_Benefit_Wrap js-top-Carousel-benefit">
+    <%_ carouselBenefit.forEach((item, idx) => { -%>
+    <a href="<%- item.href %>"<% if( item.target ) { %> target="<%- item.target %>"<%_ } _%>>
+        <%_ if (idx < 4) { _%>
+        <img src="<%- item.imgPath %>" width="480" height="270" alt="<%- item.alt %>">
+        <%_ } else { _%>
+        <img data-lazy="<%- item.imgPath %>" width="480" height="270" alt="<%- item.alt %>">
+        <%_ } _%>
+    </a>
+    <%_ }) -%>
+  </div>
+  <div class="c-Carousel_Nav-v2-wrap">
+    <div class="c-Carousel_Nav-v2"></div>
+    <div class="c-Carousel_Nav-v2-bar"></div>
+  </div>
+</div>

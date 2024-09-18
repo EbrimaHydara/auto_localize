@@ -1,0 +1,654 @@
+<% const pagetitle = "Rakuten Mini" -%>
+<% const directory = "rakuten-mini" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/rakuten/", label:"Rakutenオリジナル"}] -%>
+<% const namespace = "product-Rakuten-mini" -%>
+<% const theme = "Dark" -%>
+<%# const theme = "Light" -%>
+<% const customtheme = "Rakuten-1" -%>
+<% const point = 5000 -%>
+<%# const pointModel = 1000 -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+<% const priceDetailConfig = {
+  theme: customtheme,
+  addAnnotation: '※2',
+  price: 1,
+  priceBefore: 'プランセット購入で',
+  // pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  // pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  pointBackTextA: `<span><span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当のポイント還元<sub>※1</sub></span>`,
+  pointBackTextB: `プラン申し込みで<span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>ポイント！※1`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 779,
+  // division24Before: ,
+  division48: 389,
+  // division48Before: ,
+  // tradeinProductName: pagetitle,
+  optionPattern: 'special-a',
+  lid: directory,
+  // capacity: ,
+  pointAppealBtnCapNo: 3,
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "Rakuten Mini（楽天モバイル）のスペック・特徴などをご確認いただけます。楽天モバイル対応Android製品。オンライン簡単手続きが便利！",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ（入荷予定なし） → 'soldout'
+  入荷待ち → 'backorder'
+*/
+const bundleFlag = 'soldout';
+const modalInfo = [
+  {
+    question: {
+      title: '色を選択',
+      warning: '購入する製品の色を選択してください。',
+      type: 'color',
+      value: 'color',
+      select: [
+        {
+          'id': 'black',
+          'name': 'ナイトブラック',
+          'sub': '',
+          'color': '#222',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'white',
+          'name': 'クールホワイト',
+          'sub': '',
+          'color': '#fff',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'red',
+          'name': 'クリムゾンレッド',
+          'sub': '',
+          'color': '#BF0000',
+          'checked': false,
+          'disabled': false,
+        }
+      ],
+      upperinfo: ``,
+      lowerinfo: ``
+    },
+  },
+  {
+    question: {
+      title: 'SIMタイプ・プラン（Rakuten UN-LIMIT VI）を選択',
+      warning: 'プランを選択してください。',
+      type: 'radio',
+      value: 'plan',
+      select: [
+        {
+          'id': 'sim',
+          'name': 'eSIM＋プランで申し込む',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nosim',
+          'name': 'プランを申し込まない（製品のみ購入）',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: ``,
+      lowerinfo: `
+        <p class="c-Txt_Cap">※製品のみ購入の場合、SIM購入（プラン選択）は不要です。</p>
+      `
+    }
+  },
+  {
+    question: {
+      title: 'スマホ交換保証プラスを選択',
+      warning: 'スマホ交換保証プラスを選択してください。',
+      type: 'radio',
+      value: 'warranty',
+      select: [
+        {
+          'id': 'warranty',
+          'name': '申し込む：715円／月（税込）',
+          'sub': '',
+          'checked': true,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nowarranty',
+          'name': '申し込まない',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: `
+        <p class="c-Txt_Emp-02">加入できるのは購入時のみ</p>
+        <p class="u-Adjust_Mt-8">楽天モバイルで購入したスマートフォンやモバイルルーターの故障・紛失時に、最短で当日<sub>※</sub>に新品同等の同一機種を交換品としてお届けします。</p>
+        <small>※対象地域：東京／神奈川／千葉／埼玉（12時までに受付の場合）</small>
+        <p>サービスの詳細は、こちらの<a href="/service/replacement-warranty-plus/">スマホ交換保証プラス</a>をご参照ください。</p>
+      `,
+      lowerinfo: ``
+    }
+  }
+]
+%>
+<%_ if (bundleFlag === 'stock') { _%>
+<script>
+const urlList = {
+  'black_sim_warranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id=9158206969665397225:1&id_d=9154887445665969069:1',
+  'black_sim_nowarranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id=9158206969665397225:1&id_d=9154887445665969069:0',
+  'black_nosim_warranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id_d=9154887445665969069:1',
+  'black_nosim_nowarranty': 'https://portal.mobile.rakuten.co.jp/equipment-details?id=50150002&selectAvailable=true',
+  'white_sim_warranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id=9158206969665397225:1&id_d=9154887445665969116:1',
+  'white_sim_nowarranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id=9158206969665397225:1&id_d=9154887445665969116:0',
+  'white_nosim_warranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id_d=9154887445665969116:1',
+  'white_nosim_nowarranty': 'https://portal.mobile.rakuten.co.jp/equipment-details?id=9154887445665969116',
+  'red_sim_warranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id=9158206969665397225:1&id_d=9156926962965845019:1',
+  'red_sim_nowarranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id=9158206969665397225:1&id_d=9156926962965845019:0',
+  'red_nosim_warranty': 'https://portal.mobile.rakuten.co.jp/referral_link?id_d=9156926962965845019:1',
+  'red_nosim_nowarranty': 'https://portal.mobile.rakuten.co.jp/equipment-details?id=9156926962965845019',
+}
+</script>
+<%- include('/include/product/_purchase-modal', { modalInfo: modalInfo }) %>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="c-Attention_Info">
+  <div class="c-Attention_Container">
+    <span class="c-Attention_Icon-Info c-Icon_Sign-info-l"></span>
+    <p class="c-Attention_Body">
+      <a href="<%= sitepath %>information/news/other/402/">「Rakuten Mini」の認証番号と対応周波数帯の変更における、交換対応の延長について</a>
+    </p>
+  </div>
+  <div class="c-Attention_Container u-Adjust_Mt-8">
+    <span class="c-Attention_Icon-Info c-Icon_Sign-info-l"></span>
+    <p class="c-Attention_Body">
+      <a href="<%= sitepath %>product/smartphone/rakuten-mini/support/certificate-number-auto-update/">Rakuten Miniの自動ソフトウェアアップデートのご案内</a>
+    </p>
+  </div>
+</div>
+
+
+<div class="<%= namespace %>">
+
+  <div class="<%= namespace %>_Loading"><div></div></div>
+
+  <div class="<%= namespace %>_Bg" id="bg"></div>
+  <nav id="nav" class="<%= namespace %>_Nav">
+    <div class="<%= namespace %>_Nav-wrap">
+      <svg width="328" height="74" viewbox="0 0 328 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M42.4032 55.4494L32.4876 41.8806C31.5743 42.0111 30.5305 42.1416 29.3563 42.1416H23.3547V55.4494H18.5273V18.5266H29.4868C33.6618 18.5266 37.054 19.5704 39.5329 21.6579C42.0118 23.7454 43.1861 26.6157 43.1861 30.2689C43.1861 32.6173 42.6642 34.7048 41.6204 36.4009C40.5767 38.097 39.011 39.5322 37.054 40.4455L48.2744 55.319H42.4032V55.4494ZM38.2282 30.2689C38.2282 25.311 35.097 22.8321 28.9649 22.8321H23.2242V37.7056H28.9649C35.2274 37.7056 38.2282 35.2267 38.2282 30.2689Z" fill="white"/>
+        <path d="M74.3675 25.9635V55.5801H70.323L69.8011 49.9699C68.8878 51.7964 67.5831 53.3621 65.7565 54.4058C63.93 55.4496 61.9729 56.1019 59.7549 56.1019C57.276 56.1019 55.0581 55.4496 53.101 54.1449C51.144 52.8402 49.5783 51.0136 48.4041 48.6652C47.2299 46.3167 46.708 43.7073 46.708 40.7065C46.708 37.7058 47.2299 35.0964 48.4041 32.7479C49.5783 30.3995 51.144 28.5729 53.101 27.2682C55.0581 25.9635 57.276 25.3112 59.7549 25.3112C61.9729 25.3112 64.0604 25.833 65.7565 27.0073C67.5831 28.051 68.8878 29.6166 69.8011 31.4432L70.323 25.833H74.3675V25.9635ZM65.2347 50.2308C66.6698 49.3175 67.7136 48.0128 68.4964 46.4472C69.2792 44.7511 69.6706 42.9245 69.6706 40.837C69.6706 38.7495 69.2792 36.7925 68.4964 35.2268C67.7136 33.5307 66.6698 32.3565 65.2347 31.4432C63.7995 30.5299 62.3643 30.1385 60.5378 30.1385C58.7112 30.1385 57.276 30.5299 55.8409 31.4432C54.4057 32.3565 53.3619 33.6612 52.5791 35.2268C51.7963 36.9229 51.4049 38.7495 51.4049 40.837C51.4049 42.9245 51.7963 44.8816 52.5791 46.4472C53.3619 48.1433 54.4057 49.3175 55.8409 50.2308C57.276 51.1441 58.7112 51.5355 60.5378 51.5355C62.3643 51.5355 63.93 51.1441 65.2347 50.2308Z" fill="white"/>
+        <path d="M98.1138 55.4497L84.0231 41.2285V55.4497H79.3262V14.3518H84.0231V38.6191L96.9395 25.9636H102.68L88.459 39.5324L104.115 55.4497H98.1138Z" fill="white"/>
+        <path d="M130.078 25.9635V55.58H126.033L125.512 50.2308C124.598 52.0574 123.163 53.4925 121.467 54.5363C119.901 55.4496 118.075 56.1019 116.118 56.1019C112.856 56.1019 110.247 54.9277 108.42 52.7097C106.594 50.4917 105.55 47.23 105.55 43.055V25.9635H110.247V42.6636C110.247 45.5339 110.899 47.7519 112.073 49.1871C113.247 50.7527 115.074 51.5355 117.162 51.5355C118.727 51.5355 120.032 51.1441 121.337 50.2308C122.641 49.3175 123.555 48.1433 124.337 46.5777C125.12 45.012 125.381 43.4464 125.381 41.6198V25.9635H130.078V25.9635Z" fill="white"/>
+        <path d="M153.954 54.0147C151.997 55.4499 149.779 56.1022 147.039 56.1022C144.168 56.1022 141.95 55.3194 140.515 53.6233C139.08 51.9272 138.428 49.4483 138.428 46.0561V30.1388H133.209V25.8333H138.428V18.2661H143.125V25.9638H153.432V30.2693H143.125V45.9256C143.125 49.7092 144.56 51.6663 147.43 51.6663C148.343 51.6663 149.126 51.5358 149.909 51.1444C150.692 50.753 151.605 50.2311 152.518 49.5788L153.954 54.0147Z" fill="white"/>
+        <path d="M181.614 41.8807H160.217C160.347 45.1425 161.391 47.4909 162.956 49.187C164.653 50.8831 166.74 51.7964 169.48 51.7964C171.307 51.7964 172.872 51.2745 174.307 50.3612C175.742 49.4479 177.047 48.1432 178.091 46.4471L181.092 49.8394C179.787 51.7964 178.091 53.2316 176.003 54.4058C173.916 55.58 171.698 56.1019 169.089 56.1019C166.349 56.1019 163.87 55.4495 161.782 54.1448C159.695 52.8401 158.129 51.0136 156.955 48.6651C155.781 46.3167 155.259 43.5768 155.259 40.576C155.259 37.5752 155.781 34.8354 156.955 32.4869C157.999 30.1385 159.564 28.3119 161.652 27.0072C163.609 25.7025 165.957 25.0502 168.436 25.0502C171.046 25.0502 173.264 25.7025 175.221 27.0072C177.178 28.3119 178.743 30.1385 179.787 32.4869C180.831 34.8354 181.483 37.5752 181.483 40.576V41.8807H181.614ZM163.217 31.8346C161.782 33.2697 160.869 35.3573 160.478 38.0971H176.917C176.525 35.4877 175.612 33.4002 174.177 31.8346C172.742 30.3994 170.915 29.6166 168.697 29.6166C166.479 29.6166 164.653 30.2689 163.217 31.8346Z" fill="white"/>
+        <path d="M207.185 28.7033C209.012 30.9213 210.056 34.183 210.056 38.3581V55.4495H205.359V38.619C205.359 35.7487 204.707 33.6612 203.532 32.0955C202.358 30.5299 200.532 29.7471 198.444 29.7471C196.878 29.7471 195.313 30.1385 194.008 31.0518C192.703 31.965 191.66 33.1393 191.007 34.7049C190.355 36.2705 189.964 37.8362 189.964 39.6627V55.3191H185.267V25.9635H189.311L189.833 31.4432C190.877 29.4861 192.181 28.051 193.878 27.0072C195.574 25.9635 197.4 25.4416 199.488 25.4416C202.749 25.3111 205.359 26.4853 207.185 28.7033Z" fill="white"/>
+        <path d="M259.374 18.5266V55.4494H254.677V25.4415L242.152 44.8814L229.497 25.4415V55.5799H224.8V18.5266H230.149L242.283 37.3142L254.416 18.5266H259.374V18.5266Z" fill="white"/>
+        <path d="M264.852 20.4838C264.2 19.8315 263.809 19.0487 263.809 18.1354C263.809 17.2221 264.2 16.4393 264.852 15.7869C265.505 15.1346 266.288 14.7432 267.201 14.7432C268.114 14.7432 268.897 15.1346 269.549 15.7869C270.202 16.4393 270.593 17.2221 270.593 18.1354C270.593 19.0487 270.202 19.8315 269.549 20.4838C268.897 21.1362 268.114 21.5276 267.201 21.5276C266.288 21.5276 265.505 21.1362 264.852 20.4838ZM264.983 25.9635H269.68V55.5801H264.983V25.9635Z" fill="white"/>
+        <path d="M296.949 28.7033C298.776 30.9213 299.819 34.183 299.819 38.3581V55.4495H295.123V38.619C295.123 35.7487 294.47 33.6612 293.296 32.0955C292.122 30.5299 290.295 29.7471 288.208 29.7471C286.642 29.7471 285.076 30.1385 283.772 31.0518C282.467 31.965 281.423 33.1393 280.771 34.7049C280.119 36.2705 279.727 37.8362 279.727 39.6627V55.3191H275.03V25.9635H279.075L279.597 31.4432C280.64 29.4861 281.945 28.051 283.641 27.0072C285.337 25.9635 287.164 25.4416 289.251 25.4416C292.513 25.3111 295.123 26.4853 296.949 28.7033Z" fill="white"/>
+        <path d="M304.909 20.4838C304.257 19.8315 303.865 19.0487 303.865 18.1354C303.865 17.2221 304.257 16.4393 304.909 15.7869C305.561 15.1346 306.344 14.7432 307.257 14.7432C308.171 14.7432 308.954 15.1346 309.606 15.7869C310.258 16.4393 310.65 17.2221 310.65 18.1354C310.65 19.0487 310.258 19.8315 309.606 20.4838C308.954 21.1362 308.171 21.5276 307.257 21.5276C306.344 21.5276 305.561 21.1362 304.909 20.4838ZM304.909 25.9635H309.606V55.5801H304.909V25.9635Z" fill="white"/>
+      </svg>
+      <div id="js-arrow" class="<%= namespace %>_Nav-arrow"><span class="c-Icon_Chevron-right"></span></div>
+      <div class="<%= namespace %>_Nav-bar js-sp-nav" aria-expanded="false">
+        <ul class="js-mini-nav">
+          <li><a href="#section3" id="nav_feature">特長</a></li>
+          <li><a href="#section2" id="nav_price">価格</a></li>
+          <li><a href="#spec" id="nav_spec">スペック</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="<%= namespace %>_Section-end">
+    <p class="c-Txt_Emp-01 c-Txt_Normal-l">Rakuten Miniは販売を終了いたしました。</p>
+    <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+      <a class="c-Btn_Regular" href="/product/rakuten/?l-id=end_product_smartphone"><span>販売中のRakutenオリジナル製品を見る</span></a>
+    </div>
+  </div>
+
+  <div id="section1" class="<%= namespace %>_Section <%= namespace %>_Section-1">
+    <h1><img src="<%= sitepath %>assets/img/product/<%= directory %>/logo.svg" alt="Rakuten Mini"></h1>
+  </div>
+
+  <div id="section2">
+
+  </div>
+
+  <div class="<%= namespace %>_Movie">
+    <div class="l-System_Container">
+      <div style="position: relative; display: block;"><div style="padding-top: 56.25%;"><iframe src="https://players.brightcove.net/5068808272001/default_default/index.html?videoId=6126128591001" allowfullscreen="" allow="encrypted-media" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div></div>
+    </div>
+  </div>
+
+  <div id="section3" class="<%= namespace %>_Section <%= namespace %>_Section-3">
+    <h2 id="txt1">
+      世界最小、最軽量<sub>※</sub>
+      <span class="c-Txt_Cap">※モバイルFeliCa搭載のスマートフォンにおいて。2019年7月当社調べ。「最小」は体積による比較。</span>
+    </h2>
+  </div>
+
+  <div id="section4" class="<%= namespace %>_Section <%= namespace %>_Section-4">
+    <p class="<%= namespace %>_Section-txt" id="txt2">
+      話す・撮る・コミュニケーションする。<br>
+      スマートフォンに必要かつ十分な機能を備えたRakuten Mini。<br>
+      どんなライフスタイルにもぴったりフィットします。
+    </p>
+  </div>
+
+  <div id="section5" class="<%= namespace %>_Section <%= namespace %>_Section-5">
+    <video playsinline muted id="video1">
+      <source src="<%= sitepath %>assets/img/product/<%= directory %>/bag.mp4" type="video/mp4">
+      <source src="<%= sitepath %>assets/img/product/<%= directory %>/bag.mp4" type="video/webm">
+    </video>
+  </div>
+
+  <div id="section5-2" class="<%= namespace %>_Section <%= namespace %>_Section-5-2">
+    <p class="<%= namespace %>_Section-txt" id="txt3">
+    高さ106.2mm×幅53.4mm、重量79gのボディは、華奢なバッ<br>グに、スーツのポケットに、すっと収まるコンパクトサイズ。<br>スタイルと利便性を両立するスマートフォンです。
+    </p>
+  </div>
+
+  <div id="section6" class="<%= namespace %>_Section <%= namespace %>_Section-6">
+    <div id="up1">
+      <h2 id="txt4">あらゆる操作を片手で。<br>シンプルなUI。</h2>
+      <p class="<%= namespace %>_Section-txt" id="txt5">
+        片手だけで操作できる、シンプルなオリジナルUIを搭載。画面の隅々まで指が届くサイズだから実現した、快適さへの答えです。
+      </p>
+    </div>
+  </div>
+
+  <div id="section7" class="<%= namespace %>_Section <%= namespace %>_Section-7">
+    <video playsinline muted id="video2">
+      <source src="<%= sitepath %>assets/img/product/<%= directory %>/ic.mp4" type="video/mp4">
+      <source src="<%= sitepath %>assets/img/product/<%= directory %>/ic.mp4" type="video/webm">
+    </video>
+  </div>
+
+  <div id="section7-2" class="<%= namespace %>_Section <%= namespace %>_Section-7-2">
+    <div>
+      <h2 id="txt6">おサイフケータイ対応。<br>駅でも買い物でもスマートに。</h2>
+      <p class="<%= namespace %>_Section-txt" id="txt7">
+        駅の改札でもお店のレジでも、サッとかざすだけ。モバイルSuicaはもちろん、楽天Edyなどの電子マネーやポイントカードもスマートフォンの中に収まります。
+      </p>
+    </div>
+  </div>
+
+  <div id="section8" class="<%= namespace %>_Section <%= namespace %>_Section-8">
+    <div id="up2">
+      <h2 id="txt8">日常スナップも旅先の風景も<br>キレイに撮影できる高画質カメラ</h2>
+      <p class="<%= namespace %>_Section-txt" id="txt9">
+        SNSへアップしても、プリントしても美しい、1,600万画素の高画質カメラを搭載。日常を思いのままに残すことができます。
+      </p>
+    </div>
+  </div>
+
+  <div id="section9" class="<%= namespace %>_Section <%= namespace %>_Section-9">
+    <div id="up3">
+      <h2 id="txt10">アクティブなシーンでも、<br>お気に入りの音楽を。</h2>
+      <p class="<%= namespace %>_Section-txt" id="txt11">
+        街歩きに、エクササイズ中に、身に付けても気にならないサイズと重量。音楽の楽しみ方が広がります。
+      </p>
+    </div>
+  </div>
+
+  <div id="section10" class="<%= namespace %>_Section <%= namespace %>_Section-10">
+    <div id="up4">
+      <h2 id="txt12">手に取れば、すぐ使える。<br>顔認証対応。</h2>
+      <p class="<%= namespace %>_Section-txt" id="txt13">
+        画面を顔に向けるだけでロックを解除。めんどう<br>な操作は必要ありません。
+      </p>
+    </div>
+  </div>
+
+  <div id="section11" class="<%= namespace %>_Section <%= namespace %>_Section-11">
+    <div>
+      <h2 id="txt14">楽天公式アプリで、<br>より便利に楽しく。</h2>
+      <p class="<%= namespace %>_Section-txt" id="txt15">
+        毎日の生活に役立つアプリが搭載されています。<br>これ一台であなたの生活をよりスマートに。
+      </p>
+    </div>
+  </div>
+
+  <div id="section12" class="<%= namespace %>_Section <%= namespace %>_Section-12">
+    <div>
+      <h2 id="txt17">かんたん、シンプル、便利<br>楽天モバイル初、eSIM搭載</h2>
+      <p class="<%= namespace %>_Section-txt" id="txt18">
+        SIMカードの挿し替え不要、乗り換えかんたん。<br>従来のSIMカードの煩わしさを解消します。
+      </p>
+      <p class="c-Txt_Cap <%= namespace %>_Cap">※eSIMについては<a href="<%= sitepath %>product/sim/esim/">こちら</a></p>
+      <ul>
+        <li id="txt19" class="<%= namespace %>_Section-txt"><a href="<%= sitepath %>product/smartphone/rakuten-mini/support/" class="c-Link_Txt-icon">Rakuten Mini サポート情報を見る<span class="c-Icon_Chevron-right"></span></a></li>
+        <li id="txt20" class="<%= namespace %>_Section-txt"><a href="<%= sitepath %>product/smartphone/rakuten-mini/support/setting/" class="c-Link_Txt-icon">Rakuten Miniの初期設定方法<span class="c-Icon_Chevron-right"></span></a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div id="sectionOther" class="product-detail-Layout_Other <%= namespace %>_Other">
+
+  <div class="product-Rakuten-mini_Movie">
+    <p class="u-Adjust_Mt-32">Rakuten Miniも登場！</p>
+    <p class="u-Adjust_Mb-16">MIYAVIニューアルバム『Holy Nights』収録曲</p>
+    <div class="product-Rakuten-mini_Movie_Catch">「Bang!」ミュージックビデオ公開中</div>
+    <div class="product-Rakuten-mini_Movie_Main">
+      <div class="product-Rakuten-mini_Movie_Main-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/FrQH2g-4qaE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="l-System_Container">
+
+    <%- include('/include/product/_compensation') %>
+
+    <section class="product-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">仕様</h2>
+
+      <div class="<%= namespace %>_Device">
+        <div><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-devicelist-00.png" alt=""></div>
+        <div><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-devicelist-01.png" alt=""></div>
+        <div>
+          <img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-devicelist-02.png" alt="">
+        </div>
+      </div>
+
+      <div class="product-detail-Spec">
+        <ul class="product-detail-Spec_<%= theme %>">
+          <li aria-current="true"><span class="c-Icon_Product-drip-proof"></span>防滴</li>
+          <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>FeliCa</li>
+          <li aria-current="false"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+          <li aria-current="true"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+          <li aria-current="false"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+          <li aria-current="false"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+          <li aria-current="false"><span class="c-Icon_Product-connection"></span>高速通信</li>
+        </ul>
+      </div>
+    </section>
+
+
+
+    <section class="product-detail-Layout_Section" id="spec">
+      <h2 class="c-Heading_Lv2">スペック</h2>
+      <dl class="c-Dl">
+        <div>
+          <dt>製品名</dt>
+          <dd>
+            Rakuten Mini
+          </dd>
+        </div>
+        <div>
+          <dt>色</dt>
+          <dd>
+            ナイトブラック / クールホワイト / クリムゾンレッド
+          </dd>
+        </div>
+        <div>
+          <dt>サイズ(高さ/幅/厚さ)</dt>
+          <dd>
+            約106.2 x 約53.4 x 約8.6 (mm)
+          </dd>
+        </div>
+        <div>
+          <dt>重量</dt>
+          <dd>
+            約79g
+          </dd>
+        </div>
+        <div>
+          <dt>ディスプレイ</dt>
+          <dd>
+            <p>サイズ / 種類</p>
+            約3.6インチ / TFT
+            <p class="u-Adjust_Mt-16">解像度</p>
+            HD / 1,280 × 720
+          </dd>
+        </div>
+        <div>
+          <dt>連続待受時間（LTE）</dt>
+          <dd>
+            約155時間<span class="c-Txt_Normal-ss">※1</span>
+          </dd>
+        </div>
+        <div>
+          <dt>連続通話（通信）時間（LTE）</dt>
+          <dd>
+            約5.2時間<span class="c-Txt_Normal-ss">※1</span>
+          </dd>
+        </div>
+        <div>
+          <dt>CPU</dt>
+          <dd>
+            Qualcomm&reg; Snapdragon&trade; 439 / オクタコア 2GHz + 1.45GHz
+          </dd>
+        </div>
+        <div>
+          <dt>OS</dt>
+          <dd>
+            Android™ 9 Pie
+          </dd>
+        </div>
+        <div>
+          <dt>内蔵メモリ（RAM / ROM）</dt>
+          <dd>
+            3GB (RAM) / 32GB (ROM)
+          </dd>
+        </div>
+        <div>
+          <dt>メインカメラ（外側）</dt>
+          <dd>
+            約1,600万画素
+          </dd>
+        </div>
+        <div>
+          <dt>フロントカメラ（内側）</dt>
+          <dd>
+            約500万画素
+          </dd>
+        </div>
+        <div>
+          <dt>バッテリー容量</dt>
+          <dd>
+            1,212mAh<span class="c-Txt_Normal-ss">※1</span>
+          </dd>
+        </div>
+        <div>
+          <dt>ワイヤレス充電</dt>
+          <dd>
+            非対応
+          </dd>
+        </div>
+        <div>
+          <dt>おサイフケータイ / NFC</dt>
+          <dd>
+            対応/対応
+          </dd>
+        </div>
+        <div>
+          <dt>防滴 / 防塵</dt>
+          <dd>
+            対応 (IPX2 / IP5X)
+          </dd>
+        </div>
+        <div>
+          <dt>生体認証（指紋 / 顔）</dt>
+          <dd>
+            非対応/対応
+          </dd>
+        </div>
+        <div>
+          <dt>VoLTE（Rakuten, docomo, au, SoftBank）</dt>
+          <dd>
+            対応 / 非対応 / 非対応 / 非対応
+          </dd>
+        </div>
+        <div>
+          <dt>Wi-Fi規格</dt>
+          <dd>
+            IEEE802.11 a/b/g/n/ac
+          </dd>
+        </div>
+        <div>
+          <dt>テザリング（Wi-Fi）</dt>
+          <dd>
+            8台
+          </dd>
+        </div>
+        <div>
+          <dt>付属品</dt>
+          <dd>
+            ACアダプター / USB Type-Cケーブル / 3.5mmイヤホン変換アダプター / ユーザーガイド（保証書）
+          </dd>
+        </div>
+      </dl>
+      <ul class="c-List_Cap-wide u-Adjust_Mt-24">
+        <li><span>※1</span> 2022年1月21日より提供を開始したソフトウェアバージョン（C330AE_9.0_RMN_JP_99_SS）へアップデート後の仕様です。アップデート情報の詳細は<a href="<%= sitepath %>information/software/rakuten-mini/">こちら</a>をご覧ください。</li>
+        <li><span>※</span>楽天回線のeSIMがサポートしているのはRakuten Miniのみです。（2019年12月現在）</li>
+        <li><span>※</span>Rakuten Miniの開通手続きにはWi-Fi環境が必要になります。</li>
+      </ul>
+      <!-- <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>発売時点のOSのバージョンを記載しています。最新のOSバージョン情報は<a href="<%= sitepath %>information/software/rakuten-mini/">こちら</a>をご確認ください。</p> -->
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html" class="c-Link_Txt-icon">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+    </section>
+
+
+
+    <!-- <p class="c-Txt_Emp-02 u-Adjust_Align-center product-detail-Price_Mt-16-24">
+      ご好評により現在入荷待ちとなっております（ご注文は可能です）。<br>
+      入荷および配送時期は2月下旬以降の予定ですが、状況等により遅れる可能性があります。<br>
+      また、お申し込み時に選択いただく希望日時にはお届けできません。あらかじめご了承ください。
+    </p> -->
+
+    <!-- <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/mnp/out-of-stock/" class="c-Link_Txt-icon product-detail-Layout_Link-center">MNPでご購入時の注意事項を見る<span class="c-Icon_Chevron-right"></span></a></p> -->
+
+    <section class="product-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">専用アクセサリー</h2>
+      <div class="c-Carousel js-Carousel-multi">
+        <div><a href="<%= sitepath %>product/accessory/rselect-rmtnraminif0082bk/?l-id=product_rakuten_mini_rselect-rmtnraminif0082bk"><img src="<%= sitepath %>assets/img/accessory/rselect-rmtnraminif0082bk/pht-accessory-00.png" alt=""></a></div>
+        <div><a href="<%= sitepath %>product/accessory/rselect-rmtnraminic0098gy/?l-id=product_rakuten_mini_rselect-rmtnraminic0098gy"><img src="<%= sitepath %>assets/img/accessory/rselect-rmtnraminic0098gy/pht-accessory-00.png" alt=""></a></div>
+        <div><a href="<%= sitepath %>product/accessory/rselect-rmtnraminic0096gy/?l-id=product_rakuten_mini_rselect-rmtnraminic0096gy"><img src="<%= sitepath %>assets/img/accessory/rselect-rmtnraminic0096gy/pht-accessory-00.png" alt=""></a></div>
+        <div><a href="<%= sitepath %>product/accessory/rselect-9fd6ad/?l-id=product_rakuten_mini_rselect-9fd6ad"><img src="<%= sitepath %>assets/img/accessory/rselect-9fd6ad/pht-accessory-00.png" alt=""></a></div>
+        <div><a href="<%= sitepath %>product/accessory/rselect-rmtnraminic0081cl/?l-id=product_rakuten_mini_rselect-rmtnraminic0081cl"><img src="<%= sitepath %>assets/img/accessory/rselect-rmtnraminic0081cl/pht-accessory-00.png?200821" alt=""></a></div>
+        <div><a href="<%= sitepath %>product/accessory/rselect-rmtnraminic0080cl/?l-id=product_rakuten_mini_rselect-rmtnraminic0080cl"><img src="<%= sitepath %>assets/img/accessory/rselect-rmtnraminic0080cl/pht-accessory-00.png" alt=""></a></div>
+      </div>
+      <div class="c-Carousel_Nav-v2-wrap">
+        <div class="c-Carousel_Nav-v2"></div>
+        <div class="c-Carousel_Nav-v2-bar"></div>
+      </div>
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/accessory/smartphone-related/" class="c-Link_Txt-icon">その他アクセサリーを見る<span class="c-Icon_Chevron-right"></span></a></p>
+    </section>
+
+    <section class="product-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">設定・サポート</h2>
+      <p class="u-Adjust_Mt-16">初期設定方法や、サポート情報をご確認いただけます。</p>
+      <div class="u-Adjust_Mt-24">
+        <a href="<%= sitepath %>product/smartphone/rakuten-mini/support/" class="c-Btn_Regular-auto">Rakuten Miniサポート情報を見る</a>
+      </div>
+      <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>product/smartphone/rakuten-mini/support/setting/" class="c-Link_Txt-icon">初期設定方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+      <p class="u-Adjust_Mt-24">
+        <a href="<%= sitepath %>assets/pdf/product/Rakuten-Mini-manual.pdf?20220121" class="c-Link_Txt-icon">
+          取扱説明書を見る<span class="c-Icon_Pdf-l"></span>
+        </a>
+      </p>
+    </section>
+
+    <div id="previously-seen"></div>
+  </div>
+  <footer class="g-Footer">
+
+    <div class="g-Footer_Aside">
+
+      <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+      <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+    </div>
+    <div class="c-Breadcrumbs_Foot">
+      <div class="l-System_Container">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    </div>
+
+    <%- include('/include/_footer') %>
+
+  </footer>
+<style>
+  .product-detail-Theme_Rakuten-1-b-stroke-txt .c-Txt_Normal {
+    text-decoration-line: inherit;
+  }
+</style>
+
+</div>
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<script src="<%= sitepath %>assets/js/product.rakuten-mini.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/product.purchase-modal.bundle.js?20240521"></script>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

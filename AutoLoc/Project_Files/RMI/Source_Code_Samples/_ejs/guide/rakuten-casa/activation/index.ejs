@@ -1,0 +1,224 @@
+<% const pagetitle = "Rakuten Casaの登録方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/rakuten-casa/", label:"Rakuten Casaアプリのご利用方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten Casa（楽天カーサ）の登録方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+  <div class="c-Tab js-Tab u-Adjust_Mt-32" id="ic-chip">
+    <ul class="c-Tab_Items" role="tablist">
+      <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="false" aria-controls="tab-content1">Android™ 9以前/iOSの方</li>
+      <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="true" aria-controls="tab-content2">Android™ 10以降の方</li>
+    </ul>
+
+    <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu1">
+
+      <ol class="c-Flow u-Adjust_Mt-32">
+        <li>
+          <h2 class="c-Heading_Lv3">1. Rakuten Casaを追加</h2>
+
+          <p class="u-Adjust_Mt-16"><span class="c-Txt_Emp-02">Rakuten Casa アプリにログイン後</span>、「QRコードをスキャンする」をタップします。</p>
+
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step1.png" class="c-Img_Capture" alt="" width="300" height="561" loading="lazy">
+            </div>
+
+          </div>
+        </li>
+
+        <li>
+          <h2 class="c-Heading_Lv3">2. QRコードをスキャン</h2>
+          <p class="u-Adjust_Mt-16">Rakuten Casa本体に貼付してあるQRコードを読み取ります。</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">
+            ※ あらかじめアプリのカメラ使用の許可をオンにしてください。<br>
+            ※ QRコードがうまく読み込めない場合、スマートフォンの設定を開いて「Wi-Fi」または「ネットワークとインターネット」をタップします。Wi-Fi画面のSSID一覧から「Rakuten-Casa-XXXXX」を選択し、Rakuten Casaの裏面に貼ってあるシールに記載のパスワード（Webログインパスワード）を入力してください。<br>
+            ※ メニュー名は、お使いのAndroidの機種によって異なります。
+          </p>
+          <div class="u-Adjust_Mt-24 <%= nameSpace %>-Img_List">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step2-1.png" class="c-Img_Capture" alt="" width="300" height="620" loading="lazy">
+            </div>
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step2-2.png" alt="" width="343" height="598" loading="lazy">
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <h2 class="c-Heading_Lv3">3. Rakuten Casaの登録完了</h2>
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-end.png" class="c-Img_Capture" alt="" width="300" height="616" loading="lazy">
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu2">
+
+      <ol class="c-Flow u-Adjust_Mt-32">
+        <li>
+          <h2 class="c-Heading_Lv3">1. Rakuten Casaを追加</h2>
+
+          <p class="u-Adjust_Mt-16"><span class="c-Txt_Emp-02">Rakuten Casa アプリにログイン後</span>、「QRコードをスキャンする」をタップします。</p>
+
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step1-240226.png" class="c-Img_Capture" alt="" width="300" height="506">
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <h2 class="c-Heading_Lv3">2. QRコードをスキャン</h2>
+
+          <p class="u-Adjust_Mt-16">Rakuten Casa本体に貼付してあるQRコードを読み取ります。</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ あらかじめアプリのカメラ使用の許可をオンにしてください。</p>
+
+          <div class="u-Adjust_Mt-24 <%= nameSpace %>-Img_List">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step2-1.png" class="c-Img_Capture" alt="" width="300" height="620" loading="lazy">
+            </div>
+            <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step2-2.png" alt="" width="343" height="598" loading="lazy">
+            </div>
+          </div>
+        </li>
+        <li>
+          <h2 class="c-Heading_Lv3">3. QRコード読取完了</h2>
+          <p class="u-Adjust_Mt-16">QRコードの読取が完了すると「ネットワークパスワードがクリップボードにコピーされました」と下記の画面のように表示されます。</p>
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step3-240226.png" class="c-Img_Capture" alt="" width="300" height="500" loading="lazy">
+            </div>
+          </div>
+        </li>
+        <li>
+          <h2 class="c-Heading_Lv3">4. 「Wi-Fiリストを開く」をタップ</h2>
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step4-240226.png" class="c-Img_Capture" alt="" width="300" height="490" loading="lazy">
+            </div>
+          </div>
+        </li>
+        <li>
+          <h2 class="c-Heading_Lv3">5. Rakuten Casaのネットワークを選択</h2>
+          <p class="u-Adjust_Mt-16">Wi-Fiリストの中から、「Rakuten-Casa-XXXXX」を選択してください。</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">
+            ※ 接続がうまくいかない場合、スマートフォンの設定を開いて「Wi-Fi」または「ネットワークとインターネット」をタップします。Wi-Fi画面のSSID一覧から「Rakuten-Casa-XXXXX」を選択し、Rakuten Casaの裏面に貼ってあるシールに記載のパスワード（Webログインパスワード）を入力してください。<br>
+            ※ メニュー名は、お使いのAndroidの機種によって異なります。
+          </p>
+
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step5-240226.png" class="c-Img_Capture" alt="" width="300" height="649" loading="lazy">
+            </div>
+          </div>
+        </li>
+        <li>
+          <h2 class="c-Heading_Lv3">6. パスワード入力</h2>
+          <p class="u-Adjust_Mt-16">パスワードの入力画面が表示されましたら先ほどコピーしたパスワードをペーストして、「接続する」をタップして接続を開始してください。</p>
+
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-step6-240226.png" class="c-Img_Capture" alt="" width="300" height="644" loading="lazy">
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <h2 class="c-Heading_Lv3">7. Rakuten Casaの登録完了</h2>
+          <div class="u-Adjust_Mt-24">
+            <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/activation/img-end.png" class="c-Img_Capture" alt="" width="300" height="616" loading="lazy">
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <p class="u-Adjust_Mt-16">以上で設定は完了です。</p>
+  </div>
+
+  </div>
+</div>
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

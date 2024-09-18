@@ -1,0 +1,28 @@
+<% const namespace = "area-city"; %>
+<% const imgPath = "/assets/img/area/city/"; %>
+<% const hokkaido = '北海道';
+const shikoku = ['香川県', '愛媛県', '高知県', '徳島県'];
+const kyushu = ['福岡県', '福岡県', '福岡県', '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県'];
+
+const regionUrlMap = {
+  [hokkaido]: 'hokkaido',
+  ...Object.fromEntries(shikoku.map(pref => [pref, 'shikoku'])),
+  ...Object.fromEntries(kyushu.map(pref => [pref, 'kyushu']))
+};
+
+const region = regionUrlMap[jData.pref];
+const url = region ? `/area/fnx-digital-tool/index_${region}.html?pref=${encodeURIComponent(jData.pref)}&city=${encodeURIComponent(jData.city)}` : '#';
+const imgSrcPrefix = `${imgPath}fnx/bnr-${region}-`;
+%>
+<% if (url !== '#') { %>
+<section class="<%= namespace %>-Layout_Bg-fnx">
+  <div class="l-System_Container">
+    <a class="c-Banner_Hover-act current-page c-Link_Txt-inline"  href="<%= url %>&l-id=area_<%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_fnx-digital-tool">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= `${imgSrcPrefix}328x185.png` %>" width="100%" height="185">
+        <img src="<%= `${imgSrcPrefix}1032x160.png` %>" width="1032" height="160" loading="lazy" alt="<%= region %>">
+      </picture>
+    </a>
+  </div>
+</section>
+<% } %>

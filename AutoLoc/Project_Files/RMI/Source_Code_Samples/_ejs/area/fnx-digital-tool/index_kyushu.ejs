@@ -1,0 +1,182 @@
+<% const pagetitle = 'ネットワーク体感測定結果 九州エリア版' -%>
+<% const directories = [{ path: "area/", label: "通信・エリア" }] -%>
+<% const namespace = "fnx-digital-tool" %>
+<% const detailPage = "index_kyushu" %>
+<% const imgPath = "/assets/img/area/city/fnx/" -%>
+<% 
+const txt1 = 'エリアを選択すると楽天モバイルの評価が表示されます。さらに比較したい通信キャリアを追加することもできます。'
+const subtxt1 = '※2023/6/1～2023/8/30の期間に記録されたモバイル測定値によるOpensignalデータを基に当社が作成。'
+const subtxt2 = '©2023 Opensignal Inc.'
+const subtxt3 = '※5つ星評価とは、Opensignal社の分析に基づき、主要4キャリアを比較した評価。高評価の順に5～1つ星となり、評価は同率になる可能性があります。'
+%>
+
+<%-
+include('/_header', {
+    pagetitle,
+    directories,
+    description: 'fnx-digital-tool',
+    keywords: '',
+    noindex: true,
+    pathname: filepath,
+    browseragent: false
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/fnx-digital-tool/fnx-digital-tool.css?20240424">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css?20240424" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+<%- include('/include/_header') %>
+<%- include('/include/_breadcrumbs', {
+  type: 'head',
+  pagetitle,
+  directories,
+}) %>
+
+<section class="<%= namespace %>_Section" id="fnx-kyushu">
+  <h1 class="<%= namespace %>_Kv">
+    <picture>
+      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>img-kv-kyushu-sp.png" width="100%" height="240">
+      <img src="<%= imgPath %>img-kv-kyushu-pc.png" alt="" width="1032" height="240">
+    </picture>
+  </h1>
+
+  <div class="<%= namespace %>_Section-Sp">
+    <p class="<%= namespace %>_Select-txt u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Mt-sp-16"><%= txt1 %></p>
+  
+    <div class="<%= namespace %>_Select-box" id="is-selectTop">
+      <div class="<%= namespace %>_Section-title">
+        <img src="<%= imgPath %>img-select.png" alt="">
+      </div>
+      <div class="<%= namespace %>_Select u-Adjust_Mt-24 u-Adjust_Mt-sp-16">
+        <div class="c-Form_Select">
+          <div data-json="/assets/json/fnxdigitaldata-kyushu.json" data-region="kyushu"></div>
+          <select id="combobox" data-ratid="area_fnx_kyushu_select" data-ratevent="click" data-ratparam="all"></select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+      </div>
+      <div class="<%= namespace %>_Career u-Adjust_Mt-24 u-Adjust_Mt-sp-16">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>img-compare-sp.png" width="195" height="20">
+          <img src="<%= imgPath %>img-compare-pc.png" alt="" width="216" height="23">
+        </picture>
+
+        <ul class="<%= namespace %>_Button u-Adjust_Mt-16 u-Adjust_Mb-16" id="raidoList">
+          <% const radioData = [{ label: 'ソフトバンク', filter: 'softbank' }, { label: 'au', filter: 'au' }, { label: 'NTTドコモ', filter: 'ntt' }]; %>
+          <% radioData.forEach(data => { %>
+            <li>
+              <label class="c-Form_Radio">
+                  <input type="radio" class="is_button" name="radioGroup" value="" disabled data-filter="<%= data.filter %>" data-ratid="area_fnx_kyushu_carrier_<%= data.filter %>" data-ratevent="click" data-ratparam="all">
+                  <span class="custom-radio"></span>
+                  <div class="<%= namespace %>_Radio c-Form_Radio-label"><%= data.label %></div>
+              </label>
+            </li>
+          <% }); %>
+        </ul>
+
+        <button class="<%= namespace %>_Reset is-gray" id="reset">通信キャリアの選択をリセットする</button>
+      </div>
+    </div>
+    <div class="<%= namespace %>_Annotation u-Adjust_Mt-24" id="js-hide">
+      <p class="c-Txt_Cap"><%= subtxt1 %></p>
+      <p class="c-Txt_Cap"><%= subtxt2 %></p>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>_HiddenBox is-hidden">
+    <div class="<%= namespace %>_Arrow u-Adjust_Mt-24 u-Adjust_Mb-24">
+      <img src="<%= imgPath %>img-arrow.png" width="81" height="22">
+    </div>
+
+    <div class="<%= namespace %>_Wrapper" id='js-down'>
+      <h3 class="<%= namespace %>_Wrapper-perf is-hidden">
+        <span id="js-perf"></span><span class="<%= namespace %>_Wrapper-perf-space">の</span>
+      </h3>
+      <h3 class="<%= namespace %>_Wrapper-title is-hidden"><span id="js-perf-txt"></span></h3>
+
+      <ul class="<%= namespace %>_Filter-list c-Txt_Normal" id="js-filter-list">
+      </ul>
+
+      <p class="<%= namespace %>_Annotation-under c-Txt_Cap is-hidden"><%= subtxt3 %></p>
+    </div>
+
+    <div class="<%= namespace %>_Return u-Adjust_Mt-24">
+      <button id="js-modoru">
+        <span class="<%= namespace %>_Return-arrow"><img src="<%= imgPath %>img-arrow-up.png" alt="arrow up" width="24" height="24"></span><span><img src="<%= imgPath %>img-modoru.png" alt="return" width="144" height="24"></span>
+      </button>
+    </div>
+
+    <div class="<%= namespace %>_Footer">
+      <div class="<%= namespace %>_Footer-title">
+        <p class="<%= namespace %>_Footer-title-slash">使ってみたいと思ったら</p>
+        <p>今すぐ楽天モバイルをはじめよう</p>
+      </div>
+      <div class="<%= namespace %>_Footer-button u-Adjust_Mt-16">
+          <a href="<%= sitepath %>guide/application/?l-id=area_fnx_kyushu_application" class="c-Btn_Primary-large">
+            <span>新規／乗り換え（MNP）お申し込み</span>
+          </a>
+          <a href="<%= sitepath %>shop/?l-id=area_fnx_kyushu_shopsearch" class="c-Btn_Secondly-large">
+            <span>お近くのショップを探す</span>
+          </a>
+      </div>
+    </div>
+    <div class="l-System_Container u-Adjust_Mt-24 is-hidden">
+      <p class="c-Txt_Cap"><%= subtxt1 %></p>
+      <p class="c-Txt_Cap"><%= subtxt2 %></p>
+    </div>
+  </div>
+
+  <div class="u-Adjust_Align-center u-Adjust_Mt-56 u-Adjust_Pl-16 u-Adjust_Pr-16">
+    <a class="c-Banner_Hover-act current-page"  href="<%= rootpath %>area/saikyo-plan-project/?l-id=area_fnx_kyushu_saikyo-plan-project" class="c-Link_Txt-inline">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>img-banner-sp.png" width="100%" height="270">
+        <img src="<%= imgPath %>img-banner-pc.png" alt="" width="460" height="270">
+      </picture>
+    </a>
+  </div>
+</section>
+
+  <!-- ReX UX Survey: Mounting point for embedded components -->
+  <div class="u-Adjust_Mt-40">
+    <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+  </div>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-service-v2.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/area.fnx-digital-tool.bundle.js?20240521"></script>
+<!-- ReX UX Survey: Config -->
+<script>
+window.rexSurveyConfig = {"language":"ja","surveyId":"40406","cId":{"name":"answers[40406_274811]","value":""},"embedded":true,"url":{"name":"answers[40406_274812]"},"triggerIdName":"trigger","reappearancePeriodWithRespond":30,"reappearancePeriodWithoutRespond":30,"enableDisplaySuppressionPerPage":true,"enableFormAction":false,"displayStartDate":"","displayEndDate":"","permission":{"inquiryTxt":"このページをより分かりやすくするためにアンケートにご協力ください (選択式1問)","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":true},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。","thanksDisplaySeconds":3},"nps":{"available":true,"question":{"label":"あなたはこのページを家族や友達に薦めたいと思いますか？"},"options":[{"name":"answers[40406_274813][]","value":"762294"},{"name":"answers[40406_274813][]","value":"762295"},{"name":"answers[40406_274813][]","value":"762296"},{"name":"answers[40406_274813][]","value":"762297"},{"name":"answers[40406_274813][]","value":"762298"}],"txt0":"薦めたくない","txt1":"薦めたい","checked":4},"inquiry":{"available":true,"checkList":{"questionType":"multipleAnswer","available":true,"question":"このネットワーク体感測定に関し、あなたの意見にあてはまるものを下記から選んでください。(複数選択可)","shuffleChoices":false,"options":[{"name":"answers[40406_274814][]","value":"762299","label":"トップ画像のデザインからページの趣旨を理解できた"},{"name":"answers[40406_274814][]","value":"762300","label":"知りたい情報を見つけやすかった"},{"name":"answers[40406_274814][]","value":"762301","label":"楽天モバイルのネットワーク体感の評価がわかった"},{"name":"answers[40406_274814][]","value":"762302","label":"他の通信キャリアのネットワーク体感の評価がわかった"},{"name":"answers[40406_274814][]","value":"762303","label":"ネットワーク体感の比較がわかりやすかった"},{"name":"answers[40406_274814][]","value":"762304","label":"楽天モバイルのネットワーク体感は他社と比べて魅力的だと思った"},{"name":"answers[40406_274814][]","value":"762305","label":"楽天モバイルを使ってみたいと思った"}]},"freeInput":{"available":true,"name":"answers[40406_274815]","title":"このページに関して上記以外にご意見ございましたらお知らせください(任意)【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のため使用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[40406_274814][]","value":"762299","label":""},{"name":"answers[40406_274814][]","value":"762300","label":""},{"name":"answers[40406_274814][]","value":"762301","label":""},{"name":"answers[40406_274814][]","value":"762302","label":""},{"name":"answers[40406_274814][]","value":"762303","label":""},{"name":"answers[40406_274814][]","value":"762304","label":""},{"name":"answers[40406_274814][]","value":"762305","label":""}]}},"ua":{"name":"answers[40406_274816]"},"href":{"name":"answers[40406_274817]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+</script>
+<!-- ReX UX Survey: Script -->
+<script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/2.1.0/js/main.js" defer></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

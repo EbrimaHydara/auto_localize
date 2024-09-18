@@ -1,0 +1,89 @@
+<!-- ReX UX Survey: Script -->
+<script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/1.5.0/js/main.js" defer></script>
+<!-- ReX UX Survey: Config -->
+<script>
+    window.rexSurveyConfig = {"surveyId":"39293","cId":{"name":"answers[39293_268515]","value":""},"embedded":true,"url":{"name":"answers[39293_268516]"},"triggerIdName":"trigger","expirationPeriod":30,"enableDisplaySuppressionPerPage":true,"enableFormAction":false,"permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問) ","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":false},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。"},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[39293_268517]","value":"744209"},{"name":"answers[39293_268517]","value":"744210"},{"name":"answers[39293_268517]","value":"744211"},{"name":"answers[39293_268517]","value":"744212"},{"name":"answers[39293_268517]","value":"744213"}],"txt0":"薦めたくない","txt1":"薦めたい","checked":4},"inquiry":{"checkList":{"available":true,"question":"今後の改善のため、本ページをご覧いただいた感想を教えてください (複数可)","options":[{"name":"answers[39293_268518][]","value":"744214","label":"知りたい情報が記載されていなかった(次の設問でご記入ください)"},{"name":"answers[39293_268518][]","value":"744215","label":"記載されている内容が理解できなかった"},{"name":"answers[39293_268518][]","value":"744216","label":"記載されているとおりにやってみたが解決しなかった"},{"name":"answers[39293_268518][]","value":"744217","label":"文字数や情報量が多すぎてわかりにくかった"},{"name":"answers[39293_268518][]","value":"744218","label":"色や文字サイズ等のデザインが見にくかった"},{"name":"answers[39293_268518][]","value":"744219","label":"その他(次の設問でご記入ください)"},{"name":"answers[39293_268518][]","value":"744220","label":" 特に無い"}]},"freeInput":{"available":true,"name":"answers[39293_268519]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望をお聞かせください【1000文字】 ※個人情報（氏名・電話番号など）のご記入・お問い合わせはご遠慮ください。返信は行っておりません。"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のためご利用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[39293_268518][]","value":"744214","label":""},{"name":"answers[39293_268518][]","value":"744215","label":""},{"name":"answers[39293_268518][]","value":"744216","label":""},{"name":"answers[39293_268518][]","value":"744217","label":""},{"name":"answers[39293_268518][]","value":"744218","label":""},{"name":"answers[39293_268518][]","value":"744219","label":""},{"name":"answers[39293_268518][]","value":"744220","label":""}]}},"ua":{"name":"answers[39293_268520]"},"href":{"name":"answers[39293_268521]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+</script>
+
+  <script>
+  (function($){
+
+      // Create or Load SessionID for DeepQA
+      var session_id = '';
+      var ua = window.navigator.userAgent;
+
+      if(document.cookie !== ''){
+          var tmp_cookie = document.cookie.split('; ');
+          for(var i = 0; i < tmp_cookie.length ; i++) {
+              var temp_data = tmp_cookie[i].split('=');
+              if (temp_data[0] === 'Rz') {
+                  session_id = temp_data[1];
+                  break;
+              }
+          }
+      }
+
+      if (session_id === '') {
+          session_id = localStorage.getItem('dqa_session');
+          if (session_id === null) {
+              session_id = Math.floor(Math.random() * 10 ** 10) + '_' + new Date().getTime();
+              localStorage.setItem('dqa_session', session_id);
+          }
+      }
+
+      var sendDeeepQA = function(name, val){
+          $.ajax({
+              type: 'POST',
+              url: 'https://gateway-api.global.rakuten.com/bot/deepqa-data-collection-api/mno/user_journey/send-data',
+              headers: {
+                  "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtbm9fand0X3Rva2VuX3Byb2QifQ.j6bBO3aFrt5HhjnnrZh1c2ZA1aQUDF6ka0ngwjwaPk4",
+                  "Content-Type": "application/json"
+              },
+              data: JSON.stringify({
+                  "session_id": session_id,
+                  "timestamp": new Date().toISOString(),
+                  "user_device": ua,
+                  "event": name,
+                  "payload": val
+              })
+          }).done(function(data) {
+              console.log(data);
+          });
+      };
+
+      var parameter = location.search.split('&')[0].split('?l-id=')[1];
+      var is_deepqa = false;
+
+      var loadedPopask = setInterval(function(){
+          if($('#npsRadio-0').length > 0){
+              clearInterval(loadedPopask);
+
+              for (var i = 0; i < 5; i++){
+                  let number = i + 1;
+                  if (parameter === 'support_top2_search') {
+                      $('#js-npsRadio-' + i).attr('data-ratid', 'npsRadio_top2_search_' + number);
+                      is_deepqa = true;
+                  }
+                  else if (parameter === 'support_top2_search_smart') {
+                      $('#js-npsRadio-' + i).attr('data-ratid', 'npsRadio_top2_search_smart_' + number);
+                      is_deepqa = true;
+                  }
+                  else if (parameter === 'support_top_search') {
+                      $('#js-npsRadio-' + i).attr('data-ratid', '	npsRadio_top_search_' + number);
+                  }
+
+                  $('#npsRadio-' + i).on('click',function(){
+                      var $this = $(this);
+                      var index = $this.attr('data-index');
+                      setTimeout(function(){
+                          $('#js-npsRadio-' + index).click();
+                      }, 1000);
+                      if (is_deepqa) {
+                          sendDeeepQA('feedback', {"type": index});
+                      }
+                  });
+              }
+          }
+      }, 500);
+  })(jQuery);
+  </script>

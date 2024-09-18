@@ -1,0 +1,215 @@
+<% const pagetitle = "AQUOS R compact SH-M06" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/setting/", label:"各種製品の初期設定"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'AQUOS R compact SH-M06の初期設定方法はこちら。SIMカードでご契約の楽天モバイル（楽天回線）の端末初期設定方法について、ソフトウエアアップデートやSIMカード差し替え方法などをご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+
+  <div class="l-System">
+
+    <%- include('/include/_header') %>
+
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+
+    <div class="<%= nameSpace %>-Layout_Container">
+      <div class="l-System_Container">
+        <h1 class="c-Heading_Lv1">初期設定方法（<%= pagetitle %>）</h1>
+
+        <p class="u-Adjust_Mt-24">以下の手順に沿って、設定を行ってください。</p>
+        <p><span class="c-Txt_Emp-02">Wi-Fi環境</span>での設定を推奨します。</p>
+        <p>他社からの電話番号乗り換え（MNP）の方は、初期設定の前にMNP開通手続きを行ってください。</p>
+        <ul class="u-Adjust_Mt-32">
+          <li><a href="<%= sitepath %>guide/mnp/flow/" class="c-Btn_Regular"><span>MNP開通手続きの詳細はこちら</span></a></li>
+        </ul>
+
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">動画でかんたん初期設定</h2>
+
+        <div class="guide-Layout_Video-pc u-Adjust_Mt-40">
+          <!-- ::: PIP-Maker Start ::: -->
+          <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+          <div id="pipmakernbvs"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+          <script type="text/javascript">
+            pipmaker.priority = ["WebGL", "Flash", "HTML5"];
+            pipmaker.embed("//www.pip-maker.com/?view=nbvs", "pipmakernbvs", 800, 450);
+          </script>
+          <!-- ::: PIP-Maker End ::: -->
+        </div>
+        <div class="guide-Layout_Video-sp u-Adjust_Mt-32">
+          <!-- ::: PIP-Maker Start ::: -->
+          <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+          <div id="pipmakernbvssp"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+          <script type="text/javascript">
+            pipmaker.priority = ["WebGL", "Flash", "HTML5"];
+            pipmaker.embed("//www.pip-maker.com/?view=nbvs", "pipmakernbvssp", 320, 180);
+          </script>
+          <!-- ::: PIP-Maker End ::: -->
+        </div>
+
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">初期設定手順</h2>
+
+        <ol class="c-Flow">
+          <li><h4 class="c-Heading_Lv4">1. 初期設定の前に</h4>
+            <p class="u-Adjust_Mt-24">本製品は、ソフトウェアアップデートが必須です。<span class="c-Txt_Emp-02">Wi-Fi環境</span>でのアップデートを推奨します。
+なお、ソフトウェアアップデートは<span class="c-Txt_Emp-01">複数回</span>必要な場合がございます。ビルド番号が02.00.02以降になるまでアップデートをしてください。</p>
+            <div class="c-Theme-Light u-Adjust_Mt-32">
+              <p>他社からの電話番号乗り換え（MNP）の方は、MNP開通手続きを行ってください。</p>
+              <ul class="u-Adjust_Mt-16">
+                <li><a href="<%= sitepath %>guide/mnp/flow/" class="c-Btn_Regular"><span>MNP開通手続きの詳細はこちら</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <li><h4 class="c-Heading_Lv4">2. ソフトウェアアップデートを行う</h4>
+            <p class="u-Adjust_Mt-24">以下の手順に沿って、ソフトウェアアップデートを実施してください。</p>
+            <ol class="c-List_Ordered u-Adjust_Mt-24">
+              <li>アプリ一覧から【設定】を選択してください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-1.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+              <li>【システム】を選択してください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-2.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+              <li>【詳細設定】をタップし、【システムアップデート】をタップしてください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-3.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-4.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+              <li>【ダウンロード】をタップして、ソフトウェアのダウンロードを開始してください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-5.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+              <li>【今すぐ再起動】をタップしてください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-6.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+            </ol>
+          </li>
+          <li><h4 class="c-Heading_Lv4">3. ビルド番号を確認する</h4>
+            <p class="u-Adjust_Mt-24">以下の手順に沿って、ビルド番号を確認してください。</p>
+            <ol class="c-List_Ordered u-Adjust_Mt-24">
+              <li>【設定】を選択してください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-7.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+              <li>【システム】を選択してください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-8.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+              <li>【端末情報】を選択してください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-9.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+              <li>【ビルド番号】を確認してください。
+                 <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting/aquos-shm06/setup-10.png" width="311" height="141" alt="" class="c-Img_Capture"></figure>
+                </li>
+            </ol>
+            <p class="u-Adjust_Mt-24 c-Txt_Emp-02">ビルド番号が02.00.02以降になるまでソフトウェアアップデートが必要です。</p>
+          </li>
+          <li><h4 class="c-Heading_Lv4">4. SIMカードを差し替える</h4>
+            <p class="u-Adjust_Mt-24">お持ちのスマートフォンに挿入されているSIMカードを、楽天モバイル（楽天回線）のSIMカードに差し替えてください。差し替え作業は、窓際など電波がつながりやすい場所で行ってください。</p>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/setting-image-1.png?211130" width="311" height="141" alt=""></figure>
+          </li>
+        </ol>
+
+        <p class="u-Adjust_Mt-32">以上で初期設定は完了です。</p>
+        <p class="u-Adjust_Mt-32">インターネット（データ）通信をご利用いただくための APN（アクセスポイント名）の設定は、自動接続で設定されますので、お客様の操作は不要です。<span class="c-Txt_Emp-02">つながらない場合は<a href="<%= sitepath %>guide/sim-setting-ng/" class="c-Link_Txt">「SIMカードをスマートフォンにセットしても開通しない場合」</a>をご確認ください。</span></p>
+
+        <div class="c-Theme-Light u-Adjust_Mt-40">
+          <h3 class="c-Heading_Lv4">アプリのインストール</h3>
+          <p class="u-Adjust_Mt-24">初期設定完了後、楽天モバイルを便利にご利用いただくためのアプリをインストールしてください。</p>
+          <div class="c-Box_App guide-App_Box-white u-Adjust_Mt-24">
+            <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+            <div class="c-Box_App-txt">
+              <p class="c-Box_App-ttl">my 楽天モバイル</p>
+              <p class="u-Adjust_Mt-8">アプリからのチャット相談なら、プッシュ通知で返信を見逃さない。履歴が残るのでメモも不要。</p>
+              <ul class="c-Box_App-link u-Adjust_Mt-16">
+                <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" class="c-Banner_Hover-act"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a></li>
+                <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="c-Box_App guide-App_Box-white u-Adjust_Mt-24">
+            <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rakuten-link.png" width="96px" alt="Rakuten_link"></div>
+            <div class="c-Box_App-txt">
+              <p class="c-Box_App-ttl">Rakuten Link</p>
+              <p class="u-Adjust_Mt-8">通話、メッセージ、SMSが無料でつかえる。</p>
+              <ul class="c-Box_App-link u-Adjust_Mt-16">
+                <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.rcs" target="_blank" class="c-Banner_Hover-act"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a></li>
+                <li><a href="<%= sitepath %>service/rakuten-link/" class="c-Btn_Regular">詳細を見る</a></li>
+              </ul>
+              <p class="u-Adjust_Mt-16 c-Txt_Cap"><span>※</span>国内への通話および国内と海外の対象国と地域へのSMSが無料</p>
+              <p class="u-Adjust_Mt-8 c-Txt_Cap"><span>※</span>他社接続サービス、一部特番は対象外</p>
+            </div>
+          </div>
+          </div>
+
+        <div class="u-Adjust_Pt-64">
+          <div class="u-Adjust_Mt-16"><a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップにもどる</span></a></div>
+          <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+        </div>
+
+      </div>
+    </div>
+
+    <%- include('/include/guide/_review') %>
+    <%- include('/include/guide/_inquiry') %>
+
+    <footer class="g-Footer">
+
+      <div class="g-Footer_Aside">
+
+        <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+
+      <%- include('/include/_footer') %>
+
+    </footer>
+
+  </div>
+  <%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+    <%- include('/include/_append-body') %>
+</body>
+</html>

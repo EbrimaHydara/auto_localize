@@ -1,0 +1,914 @@
+<% const pagetitle = "Apple Watch & 「楽天ヘルスケア」アプリキャンペーン" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "watch-exercise" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: 'Apple Watch購入と、「楽天ヘルスケア」アプリを利用した7日間連続5,000歩チャレンジ参加キャンペーン！',
+  keywords: '',
+  noindex: false,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/watch-exercise/watch-exercise.css?20240424">
+<!-- include部分一時追加 -->
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inc/i-unlimit.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div id="js-trigger"></div>
+    <div class="l-System_Container">
+      <div class="<%= namespace %>-Layout_Label">
+        <span class="c-Label_Normal">対象製品限定</span>
+        <br class="<%= namespace %>-Utility_Show-sp">
+        <span class="c-Txt_Emp-01 <%= namespace %>-Utility_Fs-14-12">ポイント：付与日を含めて6カ月の期間限定ポイント</span>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Kv">
+      <h1 class="<%= namespace %>-Kv_Inner">
+        <picture>
+          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/kv-sp-221207.png" width="100%">
+          <img src="<%= sitepath %>assets/img/campaign/watch-exercise/kv-pc-221207.png" alt="Apple Watch & 「楽天ヘルスケア」アプリキャンペーン">
+        </picture>
+      </h1>
+    </div>
+    <div class="l-System_Container">
+      <p class="<%= namespace %>-Utility_Mt-12-8 c-Txt_Cap">
+        ※Rakuten UN-LIMIT VIIご契約中、または新規ご契約の方に限ります。<br>
+        ※2023年1月1日（日）0:00以降に本キャンペーンご参加の場合、500ポイントが上限となります。<br>
+        ※購入期間外にご購入いただいたApple Watchは本キャンペーン適用の対象外となります。<br>
+        ※Apple Watchは楽天モバイル（Web、または楽天モバイルショップ）で購入してください。楽天モバイル楽天市場店での購入は対象外です。<br>
+        ※ポイントは2023年3月末頃に期間限定ポイントで付与いたします。
+      </p>
+    </div>
+    <div class="<%= namespace %>-Layout_Achievement <%= namespace %>-Utility_Pb-32-24">
+      <div class="l-System_Container">
+        <div class="<%= namespace %>-Layout_Achievement-inner u-Adjust_Mt-32">
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Align-center">本キャンペーンは終了しました</p>
+          <h2 class="c-Txt_Normal-ll u-Adjust_Mt-32 u-Adjust_Align-center">キャンペーンの達成条件</h2>
+          <p class="<%= namespace %>-Utility_Align-center-left u-Adjust_Mt-8">
+            期間など、詳しくは<a href="#join" class="c-Link_Txt js-scroll">キャンペーンの参加方法</a>をご確認ください
+          </p>
+          <div class="<%= namespace %>-Layout_Achievement-content u-Adjust_Mt-24">
+            <div class="<%= namespace %>-Layout_Achievement-content-item u-Adjust_Align-center">
+              <p class="<%= namespace %>-Utility_Fs-20-24 <%= namespace %>-Utility_Mt-8-0 <%= namespace %>-Layout_Achievement-content-item-title <%= namespace %>-Layout_Achievement-content-item-title-mod-2 c-Txt_Emp-01">
+                <span>
+                  楽天モバイル<span class="<%= namespace %>-Utility_Fs-12 <%= namespace %>-Utility_Fw-normal">※</span>を<br>
+                  ご契約中または新規ご契約
+                </span>
+              </p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">
+                ※Rakuten UN-LIMIT VIIに限る
+              </p>
+              <div class="u-Adjust_Mt-16 <%= namespace %>-Utility_Display-inline-block">
+                <a href="#apply" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>お申し込み方法</a>
+              </div>
+            </div>
+            <img class="<%= namespace %>-Layout_Achievement-content-item-plus" src="<%= sitepath %>assets/img/campaign/watch-exercise/plus-221207.png" alt="">
+            <div class="<%= namespace %>-Layout_Achievement-content-item u-Adjust_Align-center">
+              <p class="<%= namespace %>-Utility_Fs-20-24 c-Txt_Emp-01 <%= namespace %>-Utility_Mt-8-0 <%= namespace %>-Layout_Achievement-content-item-title <%= namespace %>-Layout_Achievement-content-item-title-mod-3">
+                Apple Watchを購入
+              </p>
+              <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+                <a href="#product" class="c-Link_Txt-icon-front js-scroll <%= namespace %>-Utility_Ma"><span class="c-Icon_Arrow-down-l"></span>キャンペーンの対象製品</a>
+              </div>
+              <p class="<%= namespace %>-Utility_Mt-8-16 u-Adjust_Align-center">
+                2022年12月7日（水）9:00 ～<br>
+                2023年1月31日（火）23:59まで
+              </p>
+            </div>
+            <img class="<%= namespace %>-Layout_Achievement-content-item-plus" src="<%= sitepath %>assets/img/campaign/watch-exercise/plus-221207.png" alt="">
+            <div class="<%= namespace %>-Layout_Achievement-content-item u-Adjust_Align-center">
+              <p class="<%= namespace %>-Utility_Fs-20-24 <%= namespace %>-Layout_Achievement-content-item-title <%= namespace %>-Layout_Achievement-content-item-title-mod-1 c-Txt_Emp-01">
+                「楽天ヘルスケア」アプリを<br class="<%= namespace %>-Utility_Show-pc">利用して1日5,000歩×7日連続<br class="<%= namespace %>-Utility_Show-pc">歩数目標を達成
+              </p>
+              <p class="u-Adjust_Mt-8">
+                各チャレンジ期間内に<br>
+                達成してください。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="<%= namespace %>-Layout_Band u-Adjust_Mt-24 u-Adjust_Align-center">
+          <div class="<%= namespace %>-Layout_Band-h">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/band-sp-221207.png" width="330px">
+              <img src="<%= sitepath %>assets/img/campaign/watch-exercise/band-pc-221207.png" width="630px" alt="1日5,000歩×7日間連続チャレンジキャンペーン!">
+            </picture>
+          </div>
+          <div class="<%= namespace %>-Layout_Band-item">
+            <h4 class="c-Txt_Normal-m c-Txt_Emp-02">各期間中にチャレンジ達成で、<br class="<%= namespace %>-Utility_Show-sp">それぞれ500ポイントをプレゼント</h4>
+            <div class="u-Adjust_Mt-8 <%= namespace %>-Utility_Display-block">
+              <span class="c-Txt_Emp-01">12月チャレンジ期間</span>：<br class="<%= namespace %>-Utility_Show-sp"> 2022年12月7日（水）9:00 ～ <br class="<%= namespace %>-Utility_Show-sp">2023年1月6日（金）23:59<br>
+              <span class="c-Txt_Emp-01">1月チャレンジ期間</span>：<br class="<%= namespace %>-Utility_Show-sp"> 2023年1月1日（日）0:00 ～ <br class="<%= namespace %>-Utility_Show-sp">2023年2月6日（月）23:59
+            </div>
+          </div>
+        </div>
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">
+          ※12月分のチャレンジを2023年1月6日に達成した場合、1月チャレンジは2023年1月7日以降から計測スタートとなります。<br>
+          ※お客様の審査状況や天候、配送状況によっては、製品のお届けまでに数日もしくは1週間ほどお時間をいただく場合がございます。
+        </p>
+      </div>
+    </div>
+    <div class="l-System_Container u-Adjust_Mt-24 <%= namespace %>-Layout_Link">
+      <a href="#overview" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーン概要</a>
+      <a href="#product" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーン対象製品</a>
+      <a href="#join" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーンの参加方法</a>
+      <a href="#campaign-rule" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a>
+    </div>
+    <div class="u-Rat_Appear-height" data-ratid="campaign_watch-exercise_scroll-01_overview" data-ratevent="appear">&nbsp;</div>
+    <div class="l-System_Container">
+      <h2 id="overview" class="c-Txt_Normal-ll u-Adjust_Mt-64 u-Adjust_Align-center">キャンペーン概要</h2>
+      <div class="<%= namespace %>-Utility_Mt-24-16 <%= namespace %>-Utility_Align-center-left">
+        Apple Watch購入＆「楽天ヘルスケア」アプリを利用してチャレンジ期間内に1日5,000歩×7日連続で歩くだけ！<br>
+        期間など、詳しくは<a href="#join" class="c-Link_Txt js-scroll">キャンペーンの参加方法</a>をご確認ください。
+        <p class="c-Txt_Cap u-Adjust_Mt-8 <%= namespace %>-Utility_Align-center-left js-scroll">※本キャンペーンには達成条件が設定されています。詳細は<a href="#campaign-rule" class="c-Link_Txt js-scroll">キャンペーンルール</a>をご確認ください。</p>
+      </div>
+      <div class="u-Adjust_Mt-32">
+        <picture>
+          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/chance-sp-221207.png">
+          <img src="<%= sitepath %>assets/img/campaign/watch-exercise/chance-pc-221207.png" width="1032px" alt="ポイント獲得のチャンスは2回! 12月 チャレンジ達成で500ポイント 1月チャレンジ達成で500ポイント">
+        </picture>
+      </div>
+      <div class="<%= namespace %>-Utility_Divider u-Adjust_Mt-32"></div>
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-32 u-Adjust_Align-center">「楽天ヘルスケア」アプリとは？</h2>
+      <div class="l-Media_Grid u-Adjust_Mt-24">
+        <div class="l-Media_Image">
+          <img src="<%= sitepath %>assets/img/campaign/watch-exercise/health-pc-221207.png" alt="ヘルスケア">
+        </div>
+        <div class="">
+          <h4 class="c-Txt_Normal-m <%= namespace %>-Utility_Align-left-center">歩いて楽天ポイントが貯まる健康管理アプリ</h4>
+          <p class="u-Adjust_Mt-8">
+            Apple Watchを活用して、歩数記録や運動量などを管理。<br>
+            さらに、<span class="c-Txt_Emp-01">日々の目標達成で楽天ポイントが獲得</span>できます！
+          </p>
+          <div class="c-Theme-Light <%= namespace %>-Utility_Mt-16-24">
+            <div class="u-Adjust_Align-center">
+              <h4 class="c-Txt_Normal-m">楽天ヘルスケアアプリの<br class="<%= namespace %>-Utility_Show-sp">ダウンロードはこちら</h4>
+              <div class="<%= namespace %>-Layout_App u-Adjust_Mt-16">
+                <img class="u-Adjust_Mr-24 <%= namespace %>-Utility_Show-pc" src="<%= sitepath %>assets/img/campaign/watch-exercise/qr-221207.png" alt="QR">
+                <a class="<%= namespace %>-Utility_Show-pc" href="https://apps.apple.com/jp/app/id1585068047" target="_blank">
+                  <img src="<%= sitepath %>assets/img/campaign/watch-exercise/btn-appstore-221207.png" alt="App Storeからダウンロード">
+                </a>
+                <a class="<%= namespace %>-Utility_Show-sp" href="https://app.adjust.com/w1sbvg9" target="_blank">
+                  <img src="<%= sitepath %>assets/img/campaign/watch-exercise/btn-appstore-221207.png" alt="App Storeからダウンロード">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Utility_Divider u-Adjust_Mt-32"></div>
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-32 u-Adjust_Align-center">チャレンジ達成状況の<br class="<%= namespace %>-Utility_Show-sp">確認方法</h2>
+      <div class="l-Media_Grid u-Adjust_Mt-24">
+        <div class="l-Media_Image">
+          <img src="<%= sitepath %>assets/img/campaign/watch-exercise/cap-pc-221207.png" width="212" alt="">
+        </div>
+        <div class="">
+          <p class="u-Adjust_Mt-24">「楽天ヘルスケア」アプリを開き、下記2箇所で達成状況の確認ができます。</p>
+          <div class="u-Adjust_Mt-24">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/day-sp-221207.png">
+              <img src="<%= sitepath %>assets/img/campaign/watch-exercise/day-pc-221207.png" width="1032px" alt="目標達成7日目に「明日引けるくじ」の獲得を確認 1日5,000歩×7日連続のチャレンジを達成するとアプリホーム画面に「明日引けるくじ」が4つ表示されます。">
+            </picture>
+          </div>
+          <div class="u-Adjust_Mt-24">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/walk-sp-221207.png">
+              <img src="<%= sitepath %>assets/img/campaign/watch-exercise/walk-pc-221207.png" width="1032px" alt="歩数グラフで確認 歩数グラフでは直近7日間の歩数データをチェックできます。アプリをダウンロードした日以降に7日連続で1日5,000歩達成していることを確認してください。">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-Theme-Light <%= namespace %>-Utility_Mt-52-64 u-Adjust_Pb-56">
+      <div class="l-System_Container <%= namespace %>-Utility_Container">
+        <div class="u-Rat_Appear-height" data-ratid="campaign_watch-exercise_scroll-02_product" data-ratevent="appear">&nbsp;</div>
+        <h2 id="product" class="c-Txt_Normal-ll u-Adjust_Align-center <%= namespace %>-Utility_Mt-32-16">キャンペーン対象製品</h2>
+        <p class="u-Adjust_Mt-8 c-Txt_Emp-01 <%= namespace %>-Utility_Align-center-left c-Txt_Normal-m">
+          楽天モバイルで取り扱っているすべてのApple Watchが、キャンペーンの対象です。
+        </p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8 <%= namespace %>-Utility_Align-center-left">
+          ※お客様の審査状況や天候、配送状況によっては、製品のお届けまでに数日もしくは1週間ほどお時間をいただく場合がございます。
+        </p>
+        <div class="<%= namespace %>-Layout_Product <%= namespace %>-Utility_Mt-40-16">
+          <a href="<%= sitepath %>product/apple-watch/apple-watch-series8/?l-id=campaign_watch-exercise_product_apple-watch_apple-watch-series8" class="c-Card_Normal u-Adjust_Align-center">
+            <img class="<%= namespace %>-Utility_Mt-12-4" src="<%= sitepath %>assets/img/campaign/watch-exercise/aw-8-221207.png" width="140px" alt="Apple Watch Series8">
+            <p class="c-Txt_Normal-m <%= namespace %>-Layout_Product-title <%= namespace %>-Utility_Mt-12-4 c-Txt_Emp-01">Apple Watch Series8</p>
+            <ul class="<%= namespace %>-Layout_Product-color <%= namespace %>-Utility_Mt-24-20">
+              <li><span style="background: #1A2530;"></span></li>
+              <li><span style="background: #DDD7D2;"></span></li>
+              <li><span style="background: #E0E0E0;"></span></li>
+              <li><span style="background: #B82A34;"></span></li>
+              <li><span style="background: #E6E6E7;"></span></li>
+              <li><span style="background: #3D3A36;"></span></li>
+              <li><span style="background: #D0BDA4;"></span></li>
+            </ul>
+            <div class="<%= namespace %>-Layout_Product-price <%= namespace %>-Utility_Mt-24-20">
+              <p>製品価格</p>
+              <p><span class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Product-price-nemp">74,800</span>円〜</p>
+            </div>
+          </a>
+          <a href="<%= sitepath %>product/apple-watch/apple-watch-ultra/?l-id=campaign_watch-exercise_product_apple-watch_apple-watch-ultra" class="c-Card_Normal u-Adjust_Align-center">
+            <img class="<%= namespace %>-Utility_Mt-12-4" src="<%= sitepath %>assets/img/campaign/watch-exercise/aw-ultra-221207.png" width="140px" alt="Apple Watch Ultra">
+            <p class="c-Txt_Normal-m <%= namespace %>-Layout_Product-title <%= namespace %>-Utility_Mt-12-4 c-Txt_Emp-01">Apple Watch Ultra</p>
+            <ul class="<%= namespace %>-Layout_Product-color <%= namespace %>-Utility_Mt-24-20">
+              <li><span style="background: #CBC4BD;"></span></li>
+            </ul>
+            <div class="<%= namespace %>-Layout_Product-price <%= namespace %>-Utility_Mt-24-20">
+              <p>製品価格</p>
+              <p><span class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Product-price-nemp">124,800</span>円〜</p>
+            </div>
+          </a>
+          <a href="<%= sitepath %>product/apple-watch/apple-watch-se-2nd/?l-id=campaign_watch-exercise_product_apple-watch_apple-watch-se-2nd" class="c-Card_Normal u-Adjust_Align-center">
+            <img class="<%= namespace %>-Utility_Mt-12-4" src="<%= sitepath %>assets/img/campaign/watch-exercise/aw-se2-221207.png" width="140px" alt="Apple Watch SE（第2世代）">
+            <p class="c-Txt_Normal-m <%= namespace %>-Layout_Product-title <%= namespace %>-Utility_Mt-12-4 c-Txt_Emp-01">Apple Watch SE（第2世代）</p>
+            <ul class="<%= namespace %>-Layout_Product-color <%= namespace %>-Utility_Mt-24-20">
+              <li><span style="background: #1C252F;"></span></li>
+              <li><span style="background: #DDD6D2;"></span></li>
+              <li><span style="background: #E0E0E0;"></span></li>
+            </ul>
+            <div class="<%= namespace %>-Layout_Product-price <%= namespace %>-Utility_Mt-24-20">
+              <p>製品価格</p>
+              <p><span class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Product-price-nemp">45,800</span>円〜</p>
+            </div>
+          </a>
+        </div>
+        <div class="<%= namespace %>-Layout_Product u-Adjust_Mt-40">
+          <a href="<%= sitepath %>product/apple-watch/apple-watch-series7/?l-id=campaign_watch-exercise_product_apple-watch_apple-watch-series7" class="c-Card_Normal u-Adjust_Align-center">
+            <img class="<%= namespace %>-Utility_Mt-12-4" src="<%= sitepath %>assets/img/campaign/watch-exercise/aw-7-221207.png" width="140px" alt="Apple Watch Series7">
+            <p class="c-Txt_Normal-m <%= namespace %>-Layout_Product-title <%= namespace %>-Utility_Mt-12-4 c-Txt_Emp-01">Apple Watch Series7</p>
+            <ul class="<%= namespace %>-Layout_Product-color <%= namespace %>-Utility_Mt-24-20">
+              <li><span style="background: #1A2530;"></span></li>
+              <li><span style="background: #DED8D1;"></span></li>
+              <li><span style="background: #C4C436;"></span></li>
+              <li><span style="background: #6181BA;"></span></li>
+              <li><span style="background: #A91E3B;"></span></li>
+              <li><span style="background: #3E3A36;"></span></li>
+              <li><span style="background: #3E3A36;"></span></li>
+              <li><span style="background: #D4BDA1;"></span></li>
+            </ul>
+            <div class="<%= namespace %>-Layout_Product-price <%= namespace %>-Utility_Mt-24-20">
+              <p>製品価格</p>
+              <p><span class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Product-price-nemp">70,400</span>円〜</p>
+            </div>
+          </a>
+          <a href="<%= sitepath %>product/apple-watch/apple-watch-nike-series7/?l-id=campaign_watch-exercise_product_apple-watch_apple-watch-nike-series7" class="c-Card_Normal u-Adjust_Align-center">
+            <img class="<%= namespace %>-Utility_Mt-12-4" src="<%= sitepath %>assets/img/campaign/watch-exercise/aw-nike-7-221207.png" width="140px" alt="Apple Watch Nike Series 7">
+            <p class="c-Txt_Normal-m <%= namespace %>-Layout_Product-title <%= namespace %>-Utility_Mt-12-4 c-Txt_Emp-01">Apple Watch Nike Series 7</p>
+            <ul class="<%= namespace %>-Layout_Product-color <%= namespace %>-Utility_Mt-24-20">
+              <li><span style="background: #1A2530;"></span></li>
+              <li><span style="background: #DED8D1;"></span></li>
+            </ul>
+            <div class="<%= namespace %>-Layout_Product-price <%= namespace %>-Utility_Mt-24-20">
+              <p>製品価格</p>
+              <p><span class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Product-price-nemp">70,400</span>円〜</p>
+            </div>
+          </a>
+          <a href="<%= sitepath %>product/apple-watch/apple-watch-se/?l-id=campaign_watch-exercise_product_apple-watch_apple-watch-se" class="c-Card_Normal u-Adjust_Align-center">
+            <img class="<%= namespace %>-Utility_Mt-12-4" src="<%= sitepath %>assets/img/campaign/watch-exercise/aw-se-221207.png" width="140px" alt="Apple Watch SE（第1世代）">
+            <p class="c-Txt_Normal-m <%= namespace %>-Layout_Product-title <%= namespace %>-Utility_Mt-12-4 c-Txt_Emp-01">Apple Watch SE（第1世代）</p>
+            <ul class="<%= namespace %>-Layout_Product-color <%= namespace %>-Utility_Mt-24-20">
+              <li><span style="background: #727272;"></span></li>
+              <li><span style="background: #E0E0E0;"></span></li>
+              <li><span style="background: #F4D4C6;"></span></li>
+            </ul>
+            <div class="<%= namespace %>-Layout_Product-price <%= namespace %>-Utility_Mt-24-20">
+              <p>製品価格</p>
+              <p><span class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Product-price-nemp">46,000</span>円〜</p>
+            </div>
+          </a>
+          <a href="<%= sitepath %>product/apple-watch/apple-watch-nike-se/?l-id=campaign_watch-exercise_product_apple-watch_apple-watch-nike-se" class="c-Card_Normal u-Adjust_Align-center">
+            <img class="<%= namespace %>-Utility_Mt-12-4" src="<%= sitepath %>assets/img/campaign/watch-exercise/aw-nike-se-221207.png" width="140px" alt="Apple Watch Nike SE">
+            <p class="c-Txt_Normal-m <%= namespace %>-Layout_Product-title <%= namespace %>-Utility_Mt-12-4 c-Txt_Emp-01">Apple Watch Nike SE</p>
+            <ul class="<%= namespace %>-Layout_Product-color <%= namespace %>-Utility_Mt-24-20">
+              <li><span style="background: #727272;"></span></li>
+              <li><span style="background: #E0E0E0;"></span></li>
+            </ul>
+            <div class="<%= namespace %>-Layout_Product-price <%= namespace %>-Utility_Mt-24-20">
+              <p>製品価格</p>
+              <p><span class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Product-price-nemp">46,000</span>円〜</p>
+            </div>
+          </a>
+        </div>
+        <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+          <a href="<%= sitepath %>product/apple-watch/comparison/?l-id=campaign_watch-exercise_product_apple-watch_comparison" class="c-Btn_Regular"><span>Apple Watchの機能を比較する</span></a>
+          <div class="u-Adjust_Mt-16">
+            <a href="<%= sitepath %>product/apple-watch/?l-id=campaign_watch-exercise_product_apple-watch" class="c-Link_Txt-inline">Apple Watch一覧<span class="c-Icon_Chevron-right"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-Rat_Appear-height" data-ratid="campaign_watch-exercise_scroll-03_flow" data-ratevent="appear">&nbsp;</div>
+    <div class="l-System_Container">
+      <h2 id="join" class="c-Txt_Normal-ll u-Adjust_Align-center u-Adjust_Mt-64">キャンペーンの参加方法</h2>
+      <p class="<%= namespace %>-Utility_Align-center-left <%= namespace %>-Utility_Mt-16-24">
+        <span class="c-Txt_Emp-02">楽天モバイル<span class="c-Txt_Cap c-Txt_Emp-02">※</span>をご契約中または新規ご契約の方が本キャンペーンにご参加いただけます。</span>
+        <br class="<%= namespace %>-Utility_Show-sp">
+        <span class="c-Txt_Cap">※Rakuten UN-LIMIT VIIに限る</span><br>
+        本キャンペーンには達成条件が設定されています。詳細は<a href="#campaign-rule" class="c-Link_Txt js-scroll">キャンペーンルール</a>をご確認ください。
+      </p>
+      <ol class="c-Flow u-Adjust_Mt-32">
+        <li>
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Layout_Flow-title"><span class="c-Txt_Emp-02">STEP1</span>　<br class="<%= namespace %>-Utility_Show-sp">Apple Watchを購入</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-16">
+            <div class="l-Media_Image c-Flow_Image">
+              <img src="<%= sitepath %>assets/img/campaign/watch-exercise/human-pc-221207.png" alt="">
+            </div>
+            <div>
+              <p>楽天モバイル（Web、または楽天モバイルショップ）で購入してください。</p>
+              <div class="u-Adjust_Mt-8">
+                <a href="<%= sitepath %>product/apple-watch/?l-id=campaign_watch-exercise_product_apple-watch" class="c-Link_Txt-inline">キャンペーン対象製品を見る<span class="c-Icon_Chevron-right"></span></a>
+              </div>
+              <p class="c-Txt_Emp-01 u-Adjust_Mt-8 <%= namespace %>-Utility_Align-left-center">【購入期間】</p>
+              <p class="<%= namespace %>-Utility_Align-left-center">2022年12月7日（水）9:00 ～<br class="<%= namespace %>-Utility_Show-sp">2023年1月31日（火）23:59まで<span class="c-Txt_Cap">※</span></p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">
+                ※最大1,000ポイントの獲得には、2022年12月31日（土）23:59までの購入が必要です。<br>
+                ※楽天モバイル楽天市場店での購入は対象外です。<br>
+                ※Apple Watchを回線と同時購入をされた場合には、回線の利用が確認されるまで購入が完了とみなされないためご注意ください。
+              </p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Layout_Flow-title"><span class="c-Txt_Emp-02">STEP2</span>　<br class="<%= namespace %>-Utility_Show-sp">「楽天ヘルスケア」アプリ<br class="<%= namespace %>-Utility_Show-sp">をダウンロード</h3>
+          <div class="u-Adjust_Mt-16">
+            <p class="u-Adjust_Mt-16">
+              ダウンロード後にアプリを開き、楽天会員IDでログインしてください。<br>
+              簡単なプロフィール登録を行うだけでご利用いただけます。
+            </p>
+            <img class="<%= namespace %>-Utility_Show-sp u-Adjust_Mb-16" src="<%= sitepath %>assets/img/campaign/watch-exercise/health-pc-221207.png" alt="ヘルスケア">
+            <div class="c-Theme-Light u-Adjust_Mt-16">
+              <div class="l-Media_Icon">
+                <div class="<%= namespace %>-Utility_Show-pc">
+                    <img src="<%= sitepath %>assets/img/campaign/watch-exercise/icon-rakuten-link.png" width="111" alt="ヘルスケア">
+                </div>
+                <div class="<%= namespace %>-Layout_App-mod-2">
+                  <h4 class="c-Txt_Normal-m">楽天ヘルスケアアプリの<br class="<%= namespace %>-Utility_Show-sp">ダウンロードはこちら</h4>
+                  <div class="<%= namespace %>-Layout_App <%= namespace %>-Layout_App-mod-1 u-Adjust_Mt-16">
+                    <img class="u-Adjust_Mr-24 <%= namespace %>-Utility_Show-pc" src="<%= sitepath %>assets/img/campaign/watch-exercise/qr-221207.png" alt="QR">
+                    <a class="<%= namespace %>-Utility_Show-pc" href="https://apps.apple.com/jp/app/id1585068047" target="_blank">
+                      <img src="<%= sitepath %>assets/img/campaign/watch-exercise/btn-appstore-221207.png" alt="App Storeからダウンロード">
+                    </a>
+                    <a class="<%= namespace %>-Utility_Show-sp" href="https://app.adjust.com/w1sbvg9" target="_blank">
+                      <img src="<%= sitepath %>assets/img/campaign/watch-exercise/btn-appstore-221207.png" alt="App Storeからダウンロード">
+                    </a>
+                    <div class="<%= namespace %>-Layout_App-mod-1-item">
+                      <a href="#accordion-1" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>アプリの初期設定確認方法 </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※すでにダウンロード済みの方も対象です。</p>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Layout_Flow-title"><span class="c-Txt_Emp-02">STEP3</span>　<br class="<%= namespace %>-Utility_Show-sp">各期間内にチャレンジを<br class="<%= namespace %>-Utility_Show-sp">達成</h3>
+          <p class="u-Adjust_Mt-16">Apple Watchと「楽天ヘルスケア」アプリを連動させてチャレンジ内容を達成してください。</p>
+          <h4 class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-16 u-Adjust_Pb-16 c-Txt_Normal-m">
+            【チャレンジ内容】<br>
+            1日5,000歩×7日連続で<br class="<%= namespace %>-Utility_Show-sp">歩数目標を達成
+          </h4>
+          <div class="u-Adjust_Mt-16 <%= namespace %>-Layout_Flow-period">
+            <div class="<%= namespace %>-Layout_Flow-period-item-wrapper">
+              <div class="<%= namespace %>-Layout_Flow-period-balloon">
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/baloon1-pc-221207.png">
+                  <img src="<%= sitepath %>assets/img/campaign/watch-exercise/baloon1-pc-221207.png" alt="12月チャレンジ">
+                </picture>
+              </div>
+              <div class="c-Theme-Borderbox <%= namespace %>-Layout_Flow-period-item">
+                <span class="c-Txt_Emp-01">【チャレンジ期間】</span><br>
+                2022年12月7日（水）～ <br class="<%= namespace %>-Utility_Show-sp">
+                2023年1月6日（金）
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Flow-period-item-wrapper">
+              <div class="<%= namespace %>-Layout_Flow-period-balloon">
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/baloon2-pc-221207.png">
+                  <img src="<%= sitepath %>assets/img/campaign/watch-exercise/baloon2-pc-221207.png" alt="1月チャレンジ">
+                </picture>
+              </div>
+              <div class="c-Theme-Borderbox <%= namespace %>-Layout_Flow-period-item">
+                <span class="c-Txt_Emp-01">【チャレンジ期間】</span><br>
+                2023年1月1日（日）～ <br class="<%= namespace %>-Utility_Show-sp">2023年2月6日（月）
+              </div>
+            </div>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※12月分のチャレンジを2023年1月6日に達成した場合、1月チャレンジは2023年1月7日以降から計測スタートとなります。</p>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Layout_Flow-title">
+            最大<span class="c-Txt_Emp-02">1,000ポイント</span>
+            <br class="<%= namespace %>-Utility_Show-sp">
+            プレゼント！
+          </h3>
+          <div class="l-Media_Grid u-Adjust_Mt-16">
+            <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/campaign/watch-exercise/r-point-pc-221207.png" alt="R POINT">
+            </div>
+            <div>
+                <p>2023年3月末日頃に、チャレンジ達成回数に応じたポイントを期間限定ポイントとして付与いたします。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※12月チャレンジ分、および1月チャレンジ分どちらもポイント付与時期は2023年3月末頃になります。</p>
+            </div>
+          </div>
+        </li>
+      </ol>
+      <div class="u-Adjust_Mt-48">
+        <div class="c-Accordion">
+          <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>アプリの初期設定確認方法</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+            <p class="c-Txt_Emp-01">フィットネストラッキングの許可（歩数データをアプリへ連携）</p>
+            <p class="u-Adjust_Mt-16">
+              iPhoneの「設定」＞「プライバシー」＞「モーションとフィットネス」の順に選択。<br>
+              「フィットネストラッキング」がONになっているかを確認してください。歩数データがアプリに連携されます。
+            </p>
+            <div class="u-Adjust_Mt-16">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/cap-flow-sp-221207.png">
+                <img src="<%= sitepath %>assets/img/campaign/watch-exercise/cap-flow-pc-221207.png" width="1032px" alt="">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-Rat_Appear-height" data-ratid="campaign_watch-exercise_scroll-04_Initial-setting" data-ratevent="appear">&nbsp;</div>
+    <div class="l-System_Container">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Align-center u-Adjust_Mt-64">よくあるご質問</h2>
+      <div class="c-Accordion u-Adjust_Mt-24">
+        <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>チャレンジが途中で未達になった場合のカウントはいつから開始になりますか？</button>
+        <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display: none;">
+          達成歩数のチャレンジ途中に未達になってしまった場合、直近の達成日から7日間カウントとなります。<br>
+          例えば、以下の場合12月10日から1日目としてカウントされます。<br>
+          12月7日：達成<br>
+          12月8日：達成<br>
+          12月9日：未達<br>
+          12月10日：達成<br>
+          12月11日：達成
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button type="button" id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>「楽天ヘルスケア」アプリに関する問い合わせ先はどこですか？</button>
+        <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true" style="display: none;">
+         「楽天ヘルスケア」アプリについての質問は以下のメールアドレス宛にお問い合わせください。<br>
+         healthcare-cs@faq.rakuten.co.jp
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button type="button" id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Android端末で本キャンペーンに参加することはできますか？</button>
+        <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true" style="display: none;">
+          「楽天ヘルスケア」アプリは現在iPhoneにしか対応しておらず、Android端末をお持ちのお客様はアプリをご利用することができないため、キャンペーンに参加することができません。
+        </div>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <div class="u-Rat_Appear-height" data-ratid="campaign_watch-exercise_scroll-05_mobile-entry" data-ratevent="appear">&nbsp;</div>
+      <!-- 申込方法 -->
+      <div id="application" class="u-Adjust_Mt-64">
+        <div class="<%= namespace %>-Layout_Title-decolation">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/watch-exercise/baloon3-pc-221207.png">
+            <img src="<%= sitepath %>assets/img/campaign/watch-exercise/baloon3-pc-221207.png" alt="これからお申し込みの方も対象！">
+          </picture>
+        </div>
+        <h2 id="apply" class="c-Heading_Lv2 u-Adjust_Mt-8 u-Adjust_Align-center">楽天モバイルのお申し込み方法</h2>
+        <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false">
+          <div class="c-Tab js-Tab">
+            <ul class="c-Tab_Items" role="tablist">
+              <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Web</li>
+              <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">ショップ</li>
+            </ul>
+            <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+              <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image c-Flow_Image">
+                    <img src="/assets/img/campaign/newspicks/icon-flow-01.png" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                      <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                      <li class="u-Adjust_Mt-8">楽天会員ID、パスワード</li>
+                      <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></li>
+                      <li class="u-Adjust_Mt-8">ご契約者名義の<a href="<%= sitepath %>guide/mnp/">MNP予約番号</a>（他社から乗り換えの場合）</li>
+                    </ul>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap">※未成年の方のお申し込み方法は<a href="<%= sitepath %>flow/for-minors/">こちら</a>をご確認ください</p>
+                  </div>
+                </div>
+              </div>
+              <div class="l-Media_Grid-half u-Adjust_Mt-24">
+                <div class="c-Theme-Borderbox">
+                  <div class="u-Adjust_Align-center">
+                    <p class="<%= namespace %>-Mobile_Icon-title"><span class="c-Icon_New-user-f u-Adjust_Pr-8"></span><span class="c-Txt_Emp-01">新規電話番号／他社から乗り換え（MNP）</span></p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/application/?lid-r=campaign_watch-exercise_guide_application" class="c-Btn_Primary-large">Rakuten UN-LIMIT VIIに申し込む</a></p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>fee/un-limit/" class="c-Link_Txt-inline">プラン詳細<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/flow/application/" class="c-Link_Txt-inline">お申し込み方法<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+                <div class="c-Theme-Borderbox">
+                  <div class="u-Adjust_Align-center">
+                    <p class="<%= namespace %>-Mobile_Icon-title"><span class="c-Icon_Paper-plane-l u-Adjust_Pr-8"></span><span class="c-Txt_Emp-01">楽天モバイル（ドコモ・au回線）から<br>プラン変更（移行）</span></p>
+                    <p class="u-Adjust_Mt-24">
+                      <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&mno_migration=1" class="c-Btn_Secondly-large top-Description_Btn-text" target="_blank">
+                        <span>メンバーズステーションから<br class="digital-contents-Utility_Br-pc">プラン変更（移行）する</span>
+                      </a>
+                    </p>
+                    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/migration/" class="c-Link_Txt-inline">スーパーホーダイ・組み合わせプラン（※）との比較<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-0 c-Txt_Cap">※2020年4月8日に受付終了のドコモ回線・au回線使用プラン</p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/mnp/migration/" class="c-Link_Txt-inline">楽天モバイル（楽天回線）への移行方法<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>flow/mvno-user-registration/" class="c-Link_Txt-inline">利用者登録をされている方の移行方法 <span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+              <div class="l-Media_Grid u-Adjust_Mt-24 c-Theme-Borderbox">
+                <div class="l-Media_Image c-Flow_Image">
+                  <img src="/assets/img/campaign/newspicks/icon-flow-02.png" alt="">
+                </div>
+                <div>
+                  <p class="c-Txt_Emp-01">ショップでお申し込み</p>
+                  <p><a href="<%= sitepath %>shop/?l-id=campaign_watch-exercise_shop" class="c-Btn_Regular u-Adjust_Mt-16">お近くのショップを探す</a></p>
+                </div>
+              </div>
+              <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image c-Flow_Image">
+                    <img src="/assets/img/campaign/digital-contents/icon-flow-01.png" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                      <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                      <li class="u-Adjust_Mt-8">楽天会員ID、パスワード</li>
+                      <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></li>
+                      <li class="u-Adjust_Mt-8">ご契約者名義の<a href="<%= sitepath %>guide/mnp/">MNP予約番号</a>（他社から乗り換えの場合）</li>
+                    </ul>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※未成年の方のお申し込み方法は<a href="<%= sitepath %>flow/for-minors/">こちら</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Utility_Show-pc">
+      <div class="c-Theme-Light u-Adjust_Mt-64">
+        <div class="l-System_Container">
+          <h1 class="c-Heading_Lv1 u-Adjust_Align-center">楽天モバイルについて</h1>
+          <p class="u-Adjust_Align-center c-Txt_Emp-01 u-Adjust_Mt-8">詳細は以下の各リンク先にてご確認ください</p>
+          <div class="u-Adjust_Mt-24">
+            <ul class="<%= namespace %>-Card_About">
+              <li>
+                <a href="<%= sitepath %>fee/un-limit/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-01.png" alt="">
+                  <p class="c-Txt_Emp-01">料金プラン</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>fee/zero/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-02.png" alt="">
+                  <p class="c-Txt_Emp-01">お申し込み<br class="<%= namespace %>-Utility_Br-sp">手数料</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>area/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-03.png" alt="">
+                  <p class="c-Txt_Emp-01">サービス<br class="<%= namespace %>-Utility_Br-sp">エリア</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>product/byod/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-04.png" alt="">
+                  <p class="c-Txt_Emp-01">楽天回線<br class="<%= namespace %>-Utility_Br-sp">対応製品</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>service/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-05.png" alt="">
+                  <p class="c-Txt_Emp-01">オプション<br>サービス</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>guide/point/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-06.png?220309" alt="">
+                  <p class="c-Txt_Emp-01">おトクな<br>楽天ポイント</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>service/rakuten-link/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-07.png" alt="">
+                  <p class="c-Txt_Emp-01">Rakuten Link<br>アプリ</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>campaign/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-08.png" alt="">
+                  <p class="c-Txt_Emp-01">キャンペーン<br class="<%= namespace %>-Utility_Br-sp">一覧</p>
+                </a>
+              </li>
+              <li>
+                <a href="<%= sitepath %>product/sim/" class="c-Card_Normal">
+                  <img src="<%= sitepath %>assets/img/campaign/newspicks/icon-about-09.png" alt="">
+                  <p class="c-Txt_Emp-01">SIMの使い方</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <div class="u-Adjust_Mt-64">
+        <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+        <div class="u-Rat_Appear-height" data-ratid="campaign_watch-exercise_scroll-06_rule" data-ratevent="appear">&nbsp;</div>
+        <div id="campaign-rule">
+          <div class="<%= namespace %>-Layout_Rule">
+            <h2 class="c-Heading_Lv2">歩くだけで最大1,000ptゲット！！Apple Watch×楽天ヘルスケアキャンペーン</h2>
+            <div class="c-Table_Wrap u-Adjust_Mt-24">
+              <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-24 u-Adjust_Align-center">本キャンペーンは終了しました。</p>
+              <div class="u-Adjust_Mt-24">
+                <dl class="c-Dl_Origin <%= namespace %>-Dl_Rule">
+                  <div>
+                    <dt>キャンペーンコード</dt>
+                    <dd>
+                      <p>1700</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                      </ul>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p>
+                        <span class="c-Txt_Emp-01">■ 製品のご購入期間</span><br>
+                        - Web　2022年12月7日（水）9:00～2023年1月31日（火）23:59<br>
+                        - 店舗（楽天モバイルショップ）　2022年12月7日（水）開店～2023年1月31日（火）閉店
+                      </p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>楽天モバイル公式 楽天市場店でのご購入は対象外となります</li>
+                        <li><span>※</span>1月以降に対象製品をご購入された場合、12月の歩数チャレンジは対象外となります</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">
+                        <span class="c-Txt_Emp-01">■ 歩数チャレンジ開始期間</span><br>
+                        12月分チャレンジ：2022年12月7日（水）0:00～2022年12月31日（土）23:59<br>
+                        1月分チャレンジ：2023年1月1日（日）0:00～2023年1月31日（火）23:59
+                      </p>
+                      <p class="u-Adjust_Mt-8">
+                        <span class="c-Txt_Emp-01">■ 歩数チャレンジ達成期間</span><br>
+                        12月分チャレンジ：2022年12月13日（火）0:00～2023年1月6日（金）23:59<br>
+                        1月分チャレンジ：2023年1月7日（土）0:00～2023年2月6日（月）23:59
+                      </p>
+                      <p class="u-Adjust_Mt-8">
+                        <span class="c-Txt_Emp-01">■ プラン利用開始期限</span><br>
+                        2023年1月31日（火）23:59まで
+                      </p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>「Rakuten UN-LIMIT  VII」のプラン利用がキャンペーン期間中に一度も確認できなかった場合は特典適用対象外となります</li>
+                      </ul>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>キャンペーン条件</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】の条件をすべて満たした楽天会員の方</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-8">【1】「Apple Watch」を楽天モバイルオンライン、もしくは楽天モバイルショップで新規購入</p>
+                      <p class="u-Adjust_Mt-8">製品のご購入期間中に楽天モバイルオンライン、もしくは楽天モバイルショップで以下のApple Watchのいずれかを購入</p>
+                      <p class="c-Txt_Emp-01">対象製品</p>
+                      <p class="u-Adjust_Mt-8">
+                      - Apple Watch Series 7<br>
+                      - Apple Watch Nike Series 7<br>
+                      - Apple Watch SE（第1世代）<br>
+                      - Apple Watch Nike SE<br>
+                      - Apple Watch Series 8<br>
+                      - Apple Watch SE（第2世代）<br>
+                      - Apple Watch Ultra
+                      </p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>キャンペーン期間外のご購入は特典適用の対象外となります</li>
+                        <li><span>※</span>Apple Watchを回線と同時購入をされた場合には、回線の利用が確認されるまで購入が完了とみなされないためご注意ください</li>
+                      </ul>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」のプランをご利用中である</p>
+                      <p class="u-Adjust_Mt-8">
+                        本キャンペーン開始時点で「Rakuten UN-LIMIT VII」の未契約者の方は、以下(ⅰ)(ⅱ)にて対象となります<br>
+                        「Rakuten UN-LIMIT  VII」のプラン利用がキャンペーン期間中に一度も確認できなかった場合は特典適用対象外となりますのでご注意ください<br>
+                        (ⅰ)「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み<br>
+                        （1）新規お申し込み<br>
+                        （2）他社からの乗り換え（MNP）でお申し込み<br>
+                        （3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み<br>
+                        (ⅱ)「Rakuten UN-LIMIT VII」プラン利用開始<br>
+                        <p class="u-Adjust_Mt-8">【プラン利用開始日とは】</p>
+                        - 新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります<br>
+                        （1）当社に配送完了データが通知された日<br>
+                        （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br>
+                        - 他社から乗り換え（MNP）の場合プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br>
+                        - 楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日
+                      </p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-8">【3】「楽天ヘルスケア」アプリをダウンロードし、登録する</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>すでにダウンロード済みの方も対象です。</li>
+                      </ul>
+                      <p class="u-Adjust_Mt-8">
+                        （1）お持ちのスマホで「楽天ヘルスケア」アプリをダウンロードし、プロフィール登録を完了します<br>
+                        （2）「楽天ヘルスケア」アプリの初期設定で、iPhoneの「ヘルスケア」アプリからのデータ連携を許可する必要があります
+                      </p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-8">【4】「楽天ヘルスケア」アプリを使い、アプリのチャレンジ欄にある「7日連続1日5,000歩以上歩く」を達成</p>
+                      <p>
+                        （1）1日5,000歩以上達成し、アプリのホーム画面上で5,000歩以上の歩数を確認<br>
+                        （2）（1）を7日間連続で行い、7日目にアプリ画面上でチャレンジ報酬（「明日引けるくじ」が計4つ*）の表示を確認
+                      </p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">*1日5,000歩の達成報酬くじ1回 + 7日連続チャレンジの達成報酬くじ3回で計4つ</p>
+                      <ul class="c-Txt_Cap">
+                        <li><span>※</span>チャレンジは、1カ月のうち一度達成するまで何度でも挑戦することができます</li>
+                        <li><span>※</span>12月中に開始したチャレンジは達成日が1月となった場合も12月分チャレンジ達成となります。1月31日に開始したチャレンジは、達成日が2月6日達成となった場合も1月分チャレンジ達成となります。</li>
+                      </ul>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>キャンペーン特典 （楽天ポイント）</dt>
+                    <dt class="<%= namespace %>-Dl_Title-sub">特典内容</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">
+                        各月の歩数チャレンジ条件達成につき500ポイントプレゼント<br>
+                        2カ月とも達成の場合1,000ポイントプレゼント
+                      </p>
+                    </dd>
+                    <dt class="<%= namespace %>-Dl_Title-sub">ポイント付与日</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">3月末日ごろに付与</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>歩数チャレンジ達成月に関わらず、3月末日ごろにまとめてポイント付与となります</li>
+                        <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います</li>
+                        <li><span>※</span>権利の譲渡はできません</li>
+                      </ul>
+                    </dd>
+                    <dt class="<%= namespace %>-Dl_Title-sub">ポイント有効期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">ポイント付与日を含めて6カ月</p>
+                      <p class="u-Adjust_Mt-8 c-Txt_Cap">
+                        <span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt">期間限定ポイントについて</a><br>
+                        <span>※</span>有効期限までにポイントを利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません
+                      </p>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>特典適用対象外</dt>
+                    <dd>
+                      <p>以下の条件に当てはまる場合は、<span class="c-Txt_Emp-02">特典適用対象外</span>となります</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                        <li><span>※</span>歩数チャレンジの開始月に、一度もApple Watchを使用して歩いた実績がない場合（iPhoneの「ヘルスケア」アプリにて記録されたデータを参照）</li>
+                        <li><span>※</span>12月分チャレンジ、1月分チャレンジの適用回数が、おひとり様につき、それぞれ1回を超える場合</li>
+                        <li><span>※</span>楽天モバイルショップ、楽天モバイルオンライン以外でApple Watchを購入した場合（楽天モバイル公式 楽天市場店でのご購入は対象外）</li>
+                        <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により<span class="c-Txt_Emp-01">申し込みキャンセル</span>となった場合</li>
+                        <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>プラン利用開始の手続き方法につきましては、<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/" class="c-Link_Txt">こちらのSIMカード版スタートガイドまたはeSIM版スタートガイド</a>を参照ください</li>
+                        <li><span>※</span>「楽天ヘルスケア」アプリにて達成された歩数のデータが確認できなかった場合</li>
+                        <li><span>※</span>ポイント付与までに楽天会員から<span class="c-Txt_Emp-01">退会</span>している場合</li>
+                        <li><span>※</span>当社または楽天グループ株式会社が定める<span class="c-Txt_Emp-01">規約などに違反</span>した場合</li>
+                        <li><span>※</span>そのほか、<span class="c-Txt_Emp-01">当社が会員として不適格である</span>と判断した場合</li>
+                      </ul>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>併用可能キャンペーン</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-02">以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                      <p class="c-Txt_Cap">
+                        ※以下のキャンペーン同士の併用可否については、各キャンペーンページをご参照ください<br>
+                        - Apple Watchスタートキャンペーン（キャンペーンコード：1515）<br>
+                        - 【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）<br>
+                        - 初めて楽天回線複数回線お申し込み＆2回線目以降譲渡で3,000ptプレゼントキャンペーン（キャンペーンコード：1644）<br>
+                        - 【ショップ限定】対象製品と楽天回線同時申込でさらに1,000ポイントキャンペーン（キャンペーンコード：1553）
+                      </p>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>注意事項</dt>
+                    <dd>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                        <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                        <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                        <li><span>※</span>製品の台数には限りがございます。なくなり次第終了とさせていただく場合があります</li>
+                        <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                        <li><span>※</span>記載の内容は2022年12月7日（水）時点の情報となります</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Cta_Apply-bottom <%= namespace %>-Cta_Apply-fee-un-limit" id="js-fixed-btn" aria-expanded="false">
+      <div class="l-System_Container">
+        <ul class="<%= namespace %>-Cta_Apply">
+          <li>
+            <a href="<%= sitepath %>product/apple-watch/?l-id=campaign_watch-exercise_product_apple-watch" class="c-Btn_Primary">
+              <span class="u-Adjust_Align-center">WebでApple Watchを<br class="<%= namespace %>-Utility_Show-sp">購入する</span>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>shop/?l-id=campaign_watch-exercise_shop" class="c-Btn_Secondly">
+              <span class="u-Adjust_Align-center">お近くのショップを探す</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ReX UX Survey: Mounting point for embedded components -->
+    <div id="rexSurveyEmbedded" class="rexSurveyNamespace u-Adjust_Mt-32"></div>
+
+    <footer class="g-Footer u-Adjust_Mt-64 <%= namespace %>-Layout_Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+  <script>
+    let beforePageYOffset;
+    function fixedBtn(trigger, elm) {
+      let scrollY = window.pageYOffset;
+
+      if( !elm || !trigger ) return;
+
+      const triggerRect = trigger.getBoundingClientRect();
+      const triggerY = scrollY + triggerRect.top;
+
+      if ( scrollY > triggerY ) {
+        elm.setAttribute('aria-expanded', 'true');
+      } else {
+        elm.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function fixedBtnInit() {
+      const bottomTrigger = document.getElementById('js-trigger');
+      const bottomBtn = document.getElementById('js-fixed-btn');
+      fixedBtn(bottomTrigger, bottomBtn);
+      beforePageYOffset = window.pageYOffset;
+    }
+    window.addEventListener('scroll', fixedBtnInit);
+  </script>
+
+  <!-- ReX UX Survey: Config -->
+  <script>
+    window.rexSurveyConfig = {"language":"ja","surveyId":"39499","cId":{"name":"answers[39499_269617]","value":""},"embedded":true,"url":{"name":"answers[39499_269618]"},"triggerIdName":"trigger","reappearancePeriodWithRespond":"10","reappearancePeriodWithoutRespond":"10","enableDisplaySuppressionPerPage":true,"enableFormAction":true,"displayStartDate":"","displayEndDate":"","permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":false},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。","thanksDisplaySeconds":3},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[39499_269619]","value":"746867"},{"name":"answers[39499_269619]","value":"746868"},{"name":"answers[39499_269619]","value":"746869"},{"name":"answers[39499_269619]","value":"746870"},{"name":"answers[39499_269619]","value":"746871"}],"txt0":"わかりづらかった","txt1":"わかりやすかった","checked":4},"inquiry":{"available":true,"checkList":{"questionType":"multipleAnswer","available":true,"question":"あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ","shuffleChoices":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":"ポイント獲得の条件や流れがわかりにくい"},{"name":"answers[39499_269620][]","value":"746873","label":"文字数や情報量が多すぎてわかりにくい"},{"name":"answers[39499_269620][]","value":"746874","label":"色や文字サイズ等のデザインが見にくい"},{"name":"answers[39499_269620][]","value":"746875","label":"楽天モバイルの申し込み方法がわかりにくい"},{"name":"answers[39499_269620][]","value":"746876","label":"キャンペーンに申し込むメリットを感じない"},{"name":"answers[39499_269620][]","value":"746877","label":"その他(次の設問でご記入ください)"},{"name":"answers[39499_269620][]","value":"746878","label":" 特に無い"}]},"freeInput":{"available":true,"name":"answers[39499_269621]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のため使用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":""},{"name":"answers[39499_269620][]","value":"746873","label":""},{"name":"answers[39499_269620][]","value":"746874","label":""},{"name":"answers[39499_269620][]","value":"746875","label":""},{"name":"answers[39499_269620][]","value":"746876","label":""},{"name":"answers[39499_269620][]","value":"746877","label":""},{"name":"answers[39499_269620][]","value":"746878","label":""}]}},"ua":{"name":"answers[39499_269622]"},"href":{"name":"answers[39499_269623]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+  </script>
+  <!-- ReX UX Survey: Script -->
+  <script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/2.1.0/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<% const pagetitle = "Rakuten Casa お申し込み方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/rakuten-casa/flow/", label:"Rakuten Casa（ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Webページから「Rakuten Casa」をお申し込みいただく際の手順をご案内いたします。',
+    noindex: true,
+    pathname: filepath,
+    canonical_custom: 'https://network.mobile.rakuten.co.jp/guide/flow/rakuten-casa/',
+  });
+%>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/rakuten-casa/rakuten-casa.css?20240424">
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container u-Adjust_Pt-32 rakuten-casa-Layout_Btn-fullwide">
+  <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-24">Webページから「Rakuten Casa」をお申し込みいただく際の手順をご案内いたします。</p>
+
+  <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>area/rakuten-casa/checklist-private/" class="c-Btn_Primary"><span>Rakuten Casaを申し込む</span></a></p>
+  <p class="u-Adjust_Mt-32 c-Txt_Emp-02">お申し込み前に必ず「お申し込み条件」と「Rakuten Casaを利用するための動作環境」をご確認のうえ、お申し込みください。</p>
+  <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>area/rakuten-casa/#application" class="c-Btn_Regular" target="_blank"><span>申し込み条件と動作環境を確認する<span class="c-Icon_New-window-l u-Adjust_Ml-8"></span></span></a></p>
+
+  <ol class="c-Flow u-Adjust_Mt-64">
+    <li>
+      <h3 class="c-Heading_Lv3">1. お申し込みに必要な情報を用意する</h3>
+      <div class="l-Media_Grid-capture u-Adjust_Mt-24 rakuten-casa-Layout_Flow">
+        <div class="l-Media_Image c-Flow_Image">
+          <img src="<%= sitepath %>assets/img/guide/flow/application/apply-flow1.png" alt="">
+        </div>
+        <div>
+          申し込みに必要な以下の情報をお手元にご用意ください。
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>楽天ID</li>
+            <li>インターネット回線ご契約名義</li>
+            <li>ひかり電話番号（ひかり電話をご契約の場合）もしくは連絡先電話番号</li>
+            <li>サービス名（ファミリータイプ／マンションタイプ／戸建タイプ）</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+    <li>
+      <h3 class="c-Heading_Lv3">2. お申し込みボタンをタップし、チェックリストを確認する</h3>
+      <div class="u-Adjust_Mt-24">
+        <p>「Rakuten Casaを申し込む」をタップすると、お申し込み前のチェックリストが表示されます。<br>
+          各項目をご確認いただき、条件を満たしている場合、チェックボックスにチェックを入れて、「Rakuten Casaを申し込む」をタップしてください。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※「my 楽天モバイル」にログインしていない場合は、楽天IDでログインしてお進みください。</p>
+        <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/flow/application/apply-flow7-240408.png" alt="" class="c-Img_Capture"></p>
+      </div>
+    </li>
+    <li>
+      <h3 class="c-Heading_Lv3">3. 必要情報を入力する</h3>
+      <div class="u-Adjust_Mt-24">
+        <p>ご利用のインターネット回線情報を入力してください。</p>
+        <p class="c-Txt_Emp-02">お申し込み後、インターネット回線のご契約者様情報と照合いたします。必ずすべての情報を正しく入力してください。</p>
+        <div class="l-Media_Grid-capture u-Adjust_Mt-24 rakuten-casa-Layout_Flow">
+          <div class="l-Media_Image c-Flow_Image">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/apply-flow4.png" class="c-Img_Capture" alt="">
+          </div>
+          <div>
+            <h4 class="c-Heading_Lv4">入力情報説明</h4>
+            <div>
+              <dl class="c-Dl_Origin u-Adjust_Mt-16 casa-top-Utility-Newdl">
+                <div>
+                  <dt>ご利用のインターネット回線（必須）</dt>
+                  <dd>
+                    Rakuten Casaをご利用いただくには、対応しているインターネット回線にご契約している必要があります。<br>
+                    <a class="c-Link_Txt" href="<%= sitepath%>area/rakuten-casa/broadband/">対応インターネット回線の一覧</a>がリスト表示されるので、ご利用のインターネット回線を選択してください。
+                  </dd>
+                </div>
+                <div>
+                  <dt>インターネット回線 契約名義 （必須）</dt>
+                  <dd>
+                    ご利用のインターネット回線の契約者の氏名を入力してください。<br>
+                    実際の契約者情報と照会しますので、正確にご入力ください。
+                  </dd>
+                </div>
+                <div>
+                  <dt>ひかり電話番号 （必須）</dt>
+                  <dd>
+                    ひかり電話がない場合は、インターネット回線のご契約時に指定している連絡先電話番号を入力してください。
+                  </dd>
+                </div>
+                <div>
+                  <dt>お客様ID（任意）</dt>
+                  <dd>
+                    NTT回線またはBBIQ回線をご利用の場合はお客様IDを入力してください。<br>
+                    NTT：CAF+10桁、またはCOP+8桁のID<br>
+                    BBIQ：5aa+9桁のID<br>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <h3 class="c-Heading_Lv3">4. 住所が一致しているか確認する</h3>
+      <p class="u-Adjust_Mt-16">住所が「現住所」と「Rakuten Casa設置予定住所」と一致していることを確認し、「この内容で申し込む」をタップしてください。</p>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/flow/application/apply-flow5.png" alt="" class="c-Img_Capture"></p>
+    </li>
+    <li>
+      <h3 class="c-Heading_Lv3">5. 重要事項説明と利用規約に同意する</h3>
+      <p class="u-Adjust_Mt-16">重要事項説明と利用規約を確認し、チェックボックスにチェックを入れてください。</p>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/flow/application/apply3.png" alt="" class="c-Img_Capture"></p>
+    </li>
+    <li>
+      <h3 class="c-Heading_Lv3">6. 確認事項に同意する</h3>
+      <p class="u-Adjust_Mt-16">その他の確認事項が表示されますので、ご確認いただき、チェックボックスにチェックを入れて、「同意して申し込む」をタップしてください。</p>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/flow/application/apply4.png" alt="" class="c-Img_Capture"></p>
+    </li>
+    <li>
+      <h3 class="c-Heading_Lv3">7. お申し込み受付のお知らせメールを確認する</h3>
+      <p class="u-Adjust_Mt-16">お申し込み完了画面が表示されます。<br>
+      その後「Rakuten Casaお申し込み受付のお知らせ」メールが届きますので、ご確認ください。</p>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/flow/application/apply5.png" alt="" class="c-Img_Capture"></p>
+    </li>
+    <li>
+      <h3 class="c-Heading_Lv3">8. お申し込み完了のお知らせメールを確認する</h3>
+      <div class="l-Media_Grid-capture u-Adjust_Mt-24 rakuten-casa-Layout_Flow">
+        <div class="l-Media_Image c-Flow_Image">
+          <img src="<%= sitepath %>assets/img/guide/flow/application/apply-flow6.png" alt="">
+        </div>
+        <div>
+          <p>
+            当社側でインターネット回線のご契約者様情報を確認します。<br>
+            確認完了後「お申し込み完了のお知らせ」メールをお送りしますので、ご確認ください。
+          </p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※お申し込み確認後、インターネット回線のご契約者様情報の確認のため、お電話をさせていただく場合がございます。</p>
+          <p class="u-Adjust_Mt-24">ご契約者様情報の確認後、通常10営業日程度でRakuten Casaを発送いたします。ご到着までお待ちください。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※発送にかかる日数は、お客様がご利用のインターネット回線によって異なります。詳細は「<a class="c-Link_Txt" href="<%= sitepath %>area/rakuten-casa/broadband/">指定インターネット回線一覧</a>」をご確認ください。</p>
+        </div>
+      </div>
+    </li>
+  </ol>
+
+  <p class="u-Adjust_Mt-40">以上でRakuten Casaのお申し込みは完了です。</p>
+
+  <div class="u-Adjust_Pt-48">
+    <p><a href="<%= sitepath %>guide/rakuten-casa/flow/" class="c-Link_Txt-icon-front"><span class="c-Icon_Chevron-left"></span>Rakuten Casaのご利用方法に戻る</a></p>
+    <div class="u-Adjust_Mt-32"><a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップに戻る</span></a></div>
+    <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+  </div>
+</div>
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

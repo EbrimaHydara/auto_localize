@@ -1,0 +1,52 @@
+<% const pagetitle = "楽天モバイル1カ月無料お試しキャンペーン" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "campaign-entry" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイル1カ月無料お試しキャンペーンに関するデータ7GBプレゼント エントリー完了ページです。',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/data-trial/entry/entry.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+<div class="l-System">
+<%- include('/include/_header-simple') %>
+<div class="<%= namespace %>-Layout">
+  <h1 class="c-Heading_Lv1">エントリー完了</h1>
+  <p class="u-Adjust_Mt-16">
+    以上で手続きは完了です。<br>
+    エントリーいただき、ありがとうございました。
+  </p>
+  <p class="u-Adjust_Mt-24">続いて、開通作業となります。スタッフに次の手順をご確認ください。</p>
+  <div class="u-Adjust_My-32 u-Align_Ccl">
+    <img src="<%= sitepath %>assets/img/campaign/data-trial/entry/thanks-img.png" width="150" height="134" alt="">
+  </div>
+  <div>
+    <input class="c-Btn_Regular" id="js-closeBtn" type="button" value="閉じる">
+  </div>
+
+</div>
+
+<footer class="g-Footer">
+  <%- include('/include/_footer-simple') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const closebutton = document.getElementById('js-closeBtn');
+    closebutton.addEventListener('click', () => {
+        window.close();
+    });
+  }, false);
+</script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

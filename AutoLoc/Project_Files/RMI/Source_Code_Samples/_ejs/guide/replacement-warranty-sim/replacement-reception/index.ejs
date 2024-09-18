@@ -1,0 +1,197 @@
+<% const pagetitle = "持ち込みスマホあんしん保証（故障受付方法）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/replacement-warranty-sim/", label:"持ち込みスマホあんしん保証（ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルの「持ち込みスマホあんしん保証」サービスの故障受付方法の案内になります。故障受付サイトでの交換品の選択方法や故障受付状況の確認方法を詳しくご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const namespace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<section class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-32 <%= namespace %>-Img_Border">
+  <h1 class="c-Heading_Lv1">持ち込みスマホあんしん保証（故障受付方法）</h1>
+  <p class="u-Adjust_Mt-32">ご利用の製品が故障・破損し、本サービスの保証を受ける場合、故障・破損発生日から30日以内に故障受付を行ってください。</p>
+  <p class="u-Adjust_Mt-8 c-Txt_Cap">※製品情報の登録・変更日を起算日として、30日経過以降に発生した事故より故障受付が可能となります。それ以前に発生した故障は保証対象外となりますので、ご注意ください。</p>
+
+  <ul class="c-Link_List-horizontal-simple <%= namespace %>-Link_List u-Adjust_Mt-40">
+    <li><p><a href="#howto" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>故障受付方法</a></p></li>
+    <li><p><a href="#check" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>故障受付状況確認</a></p></li>
+  </ul>
+
+  <section id="howto" class="u-Adjust_Mt-40 <%= namespace %>-Layout_Section">
+    <h2 class="c-Heading_Lv2">故障受付方法</h2>
+    <ol class="c-Flow u-Adjust_Mt-24">
+      <li>
+        <h3 class="c-Heading_Lv3">1. 故障受付サイトにアクセスしてログインしてください。</h3>
+        <p class="u-Adjust_Mt-16">「<a href="https://www.protection.device-service.mobile.rakuten.net/rsim/" target="_blank" rel="noopener" class="c-Link_Txt-inline-icon">故障受付サイト<span class="c-Icon_New-window-l"></span></a>」にアクセスしてください。</p>
+        <p class="u-Adjust_Mt-16">楽天モバイルID、携帯電話番号、生年月日を入力し、ロボット確認にチェックを入れて「次の画面へ」をタップしてください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-01.png" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">2. 交換したい製品を選択してください。</h3>
+        <p class="u-Adjust_Mt-16">登録している製品情報が表示されますので、交換を希望する製品の「選択する」をタップしてください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-02.png?211008" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">3. ご連絡先の情報を入力してください。</h3>
+        <p class="u-Adjust_Mt-16">ご連絡先のお名前とメールアドレスが表示されますので、ご確認いただき「次の画面へ」をタップしてください。</p>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">※ご連絡先が異なる場合は、「<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/">my 楽天モバイル</a>」の契約者情報よりご変更をお願いいたします。なお、変更された情報は翌日以降に反映されますので、お時間をおいて故障受付を行ってください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-03.png" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">4. 製品の故障に関する情報を入力してください。</h3>
+        <p class="u-Adjust_Mt-16">製品の故障に関する情報を入力する画面が表示されますので、故障・破損発生日、現在の製品の状態、故障・破損内容の詳細、ご連絡先電話番号を入力してください。</p>
+        <p class="u-Adjust_Mt-16">すべて入力いただき、利用規約の同意にチェックし「次の画面へ」をタップしてください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-04.png?211008" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">5. 交換品の在庫状況を確認いたします。</h3>
+        <p class="u-Adjust_Mt-16">交換ご希望の製品の在庫状況を確認させていただきます。<br>
+          同じ製品の在庫がない場合、代替製品が表示されますので、ご希望の製品をご選択いただき「次の画面へ」をタップしてください。</p>
+        <p class="u-Adjust_Mt-16">在庫がある場合は、こちらの画面は表示されません。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-05.png" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">6. 交換品のお届け先の情報を入力してください。</h3>
+        <p class="u-Adjust_Mt-16">お届け先の情報を入力する画面になりますので、お届け先の指定とお届け希望日時を入力し、「次の画面へ」をタップしてください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-06.png" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">7. 自己負担金（免責金額）を確認し、故障受付を完了してください。</h3>
+        <p class="u-Adjust_Mt-16">交換品の自己負担金（免責金額）が表示されますので、ご確認のうえ「故障受付（製品の交換を申し込む）」をタップしてください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-07.png" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">8. 故障受付が完了しました。</h3>
+        <p class="u-Adjust_Mt-16">故障受付の完了画面が表示されたら、故障受付は完了となります。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-08.png?211008" alt="" width="298"></div>
+      </li>
+    </ol>
+    <p class="u-Adjust_Mt-32">以上で故障受付は完了です。</p>
+    <p class="u-Adjust_Mt-16">ご指定いただいた住所に交換品をお届けしますので、故障機の送付準備をしてお待ちください。</p>
+    <div class="u-Adjust_Mt-16">
+      <a href="<%= sitepath %>guide/replacement-warranty-sim/send/" class="c-Btn_Regular"><span>故障機の送付方法の詳細を見る</span></a>
+    </div>
+  </section>
+
+  <section id="check" class="<%= namespace %>-Layout_Section-separate">
+    <h2 class="c-Heading_Lv2">故障受付状況確認</h2>
+    <ol class="c-Flow u-Adjust_Mt-24">
+      <li>
+        <h3 class="c-Heading_Lv3">1. 故障受付サイトにアクセスしてログインしてください。</h3>
+        <p class="u-Adjust_Mt-16">「<a href="https://www.protection.device-service.mobile.rakuten.net/rsim/" target="_blank" rel="noopener" class="c-Link_Txt-inline-icon">故障受付サイト<span class="c-Icon_New-window-l"></span></a>」にアクセスしてください。</p>
+        <p class="u-Adjust_Mt-16">楽天モバイルID、携帯電話番号、生年月日を入力し、ロボット確認にチェックを入れて「次の画面へ」をタップしてください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-reception-01.png" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">2. 故障受付の状況を確認したい製品を選択してください。</h3>
+        <p class="u-Adjust_Mt-16">登録している製品情報が表示されますので、故障受付の状況を確認したい製品の「故障受付状況・履歴確認」をタップしてください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-status-02.png?211008" alt="" width="298"></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">3. 故障受付の状況を確認してください。</h3>
+        <p class="u-Adjust_Mt-16">故障受付状況・履歴確認の画面になりますので、現在のステータスをご確認ください。</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/replacement-reception/img-status-03.png" alt="" width="298"></div>
+        <div class="c-Theme-Light u-Adjust_Mt-24">
+          <p>状況のステータス一覧は以下になります。</p>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>審査中</li>
+            <li>故障受付済み</li>
+            <li>交換品発送済み</li>
+            <li>交換品配達完了<br>
+              <span class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>-Txt_Cap">※交換品を受領いただいたので、故障機の送付をお待ちしているステータスになります。</span>
+            </li>
+            <li>位置情報検索機能が有効化された製品を返送<br>
+              <span class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>-Txt_Cap">※故障機の「iPhoneを探す」が未解除（オンの状態）のまま送付された場合のステータスになります。</span>
+            </li>
+            <li>登録と異なる製品の受領<br>
+              <span class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>-Txt_Cap">※ご登録いただいている製品とは異なる製品が送付された場合のステータスになります。</span>
+            </li>
+            <li>故障・破損製品受領</li>
+            <li>処理完了</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+    <p class="u-Adjust_Mt-32">以上が故障受付の状況確認方法になります。</p>
+  </section>
+
+  <div class="<%= namespace %>-Utility_Adjust-mt-64-80">
+    <a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップにもどる</span></a>
+  </div>
+  <div class="u-Adjust_Mt-16">
+    <a href="<%= sitepath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a>
+  </div>
+
+</section>
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

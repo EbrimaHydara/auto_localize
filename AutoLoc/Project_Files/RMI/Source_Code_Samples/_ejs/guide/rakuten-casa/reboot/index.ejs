@@ -1,0 +1,183 @@
+<% const pagetitle = "Rakuten Casaの初期化方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/rakuten-casa/", label:"Rakuten Casaアプリのご利用方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten Casa（楽天カーサ）を初期化する方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-32">Rakuten Casaアプリをダウンロード後、アプリを起動し以下の手順に沿って操作を行ってください。</p>
+    <p class="u-Adjust_Mt-8 c-Txt_Cap">※この操作を行うと、すべてのデータおよび設定が削除され、工場出荷時に状態が戻ります。</p>
+
+    <ol class="c-Flow u-Adjust_Mt-32">
+      <li>
+        <h2 class="c-Heading_Lv3">1. ホーム画面から「Casa設定」をタップする</h2>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-step01.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+
+        <div class="l-Media_Image u-Adjust_Mt-24">
+          <div class="<%= nameSpace %>-Img_Capture">
+            <p class="c-Txt_Cap u-Adjust_Align-left">※ Rakuten Casa（初代）をご利用の場合は、以下の画像が表示されます。</p>
+            <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-casa.png" alt="" class="u-Adjust_Mt-16">
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h2 class="c-Heading_Lv3">2. 「Casa設定」画面から「リセット」をタップする</h2>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-step02.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h2 class="c-Heading_Lv3">3. 注意事項を確認し、「管理者パスワードの入力へ」をタップする</h2>
+        <p class="u-Adjust_Mt-16">「進む前にご確認ください」をご一読いただき、確認した上で「リセット（工場出荷時の状態へ初期化）について確認し理解できました」にチェックを入れ、「管理者パスワードの入力へ」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-step03.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h2 class="c-Heading_Lv3">4. パスワードを入力し、「リセットする」をタップ</h2>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-step04.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h2 class="c-Heading_Lv3">5. 注意事項再確認</h2>
+        <p class="u-Adjust_Mt-16">表示された注意事項を再度ご確認いただき、「リセットする」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-step05.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h2 class="c-Heading_Lv3">6. 初期化完了まで待機</h2>
+        <p class="u-Adjust_Mt-16">ページ下部に「リセットを行っています。少々お待ちください」と表示されていることを確認し、そのままお待ちください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-step06.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+
+        <div class="l-Media_Image u-Adjust_Mt-24">
+          <div class="<%= nameSpace %>-Img_Capture">
+            <p class="c-Txt_Cap u-Adjust_Align-left">※ Rakuten Casa（初代）をご利用の場合は、以下の画像が表示されます。</p>
+            <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-casa.png" alt="" class="u-Adjust_Mt-16">
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h2 class="c-Heading_Lv3">7. 初期化完了</h2>
+        <p class="u-Adjust_Mt-16">
+          ページ下部に「Casaに接続されていないためログインできませんでした」と表示されたら初期化完了です。<br>
+          リセット完了後、再度リセット前のパスワードでログインし、ログインに失敗することを確認してください。
+        </p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-step07.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+
+        <div class="l-Media_Image u-Adjust_Mt-24">
+          <div class="<%= nameSpace %>-Img_Capture">
+            <p class="c-Txt_Cap u-Adjust_Align-left">※ Rakuten Casa（初代）をご利用の場合は、以下の画像が表示されます。</p>
+            <img src="<%= sitepath %>assets/img/guide/rakuten-casa/reboot/img-casa.png" alt="" class="u-Adjust_Mt-16">
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <p class="u-Adjust_Mt-48">以上で設定は完了です。</p>
+  </div>
+</div>
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

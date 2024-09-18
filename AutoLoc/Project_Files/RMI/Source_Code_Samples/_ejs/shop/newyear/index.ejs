@@ -1,0 +1,88 @@
+<% const pagetitle = "楽天モバイルショップ 年末年始営業について" -%>
+<% const directories = [{path:"shop/", label:"ショップ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '各楽天モバイルショップの年末年始の営業時間です。こちらでご確認いただき、ご来店ください。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/shop/newyear/shop-newyear.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System" id="js-result-top">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="shop-newyear-Search_Layout">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-16">楽天モバイルショップの2023-2024年末年始営業は、下記の通りとさせていただきます。<br>お客様にはご不便をおかけいたしますが、何卒ご了承くださいますようお願い申し上げます。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※通常営業時間は、各ショップページよりご確認ください。</p>
+
+    <div id="shop-newyear"></div>
+
+    <a href="<%= sitepath %>shop/" class="c-Btn_Regular u-Adjust_Mt-48"><span>ショップトップへ</span></a>
+
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-shop-v2.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/shop.newyear.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

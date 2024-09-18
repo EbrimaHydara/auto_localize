@@ -1,0 +1,367 @@
+<% const pagetitle = "【#なぜ今楽天モバイル】楽天モバイル公式X（旧Twitter）キャンペーン" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "x-quiz" -%>
+<% const information = {
+  campaignState:'finish'
+}; %>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '【#なぜ今楽天モバイル】楽天モバイル公式X（旧Twitter）キャンペーン',
+  keywords: '',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<% const finishSchedule = "2024年4月11日" -%>
+<% const hiddenItem = "false" -%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<link rel="dns-prefetch" href="https://cdn.rex.contents.rakuten.co.jp">
+<script type="text/javascript">
+function doTrim(el) {
+  el.value = el.value.replace(/^\s+|\s+$/g, '');
+}
+
+function isInput(el) {
+  return el.value.length != 0;
+}
+
+function isLength(el, len) {
+  if ("え".length == 2) {
+    len *= 2;
+  }
+  return el.value.length <= len;
+}
+
+function zen2han(el) {
+  el.value = el.value.replace(/[０]/g, "0");
+  el.value = el.value.replace(/[１]/g, "1");
+  el.value = el.value.replace(/[２]/g, "2");
+  el.value = el.value.replace(/[３]/g, "3");
+  el.value = el.value.replace(/[４]/g, "4");
+  el.value = el.value.replace(/[５]/g, "5");
+  el.value = el.value.replace(/[６]/g, "6");
+  el.value = el.value.replace(/[７]/g, "7");
+  el.value = el.value.replace(/[８]/g, "8");
+  el.value = el.value.replace(/[９]/g, "9");
+}
+
+function checkForm() {
+  var el;
+  var obj = document.enenForm;
+
+  el = obj.elements['answers[40403_274789]'];
+  doTrim(el);
+  zen2han(el);
+  if (!isInput(el)) {
+    alert("「@以降のX（旧Twiiter）のユーザー名を入力してください」を入力してください。");
+    return false;
+  }
+
+  if (!isLength(el, 15)) {
+    alert("「@以降のX（旧Twiiter）のユーザー名を入力してください」は15文字以内で入力してください。");
+    return false;
+  }
+
+}
+</script>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header',{applyHide:true}) %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List <%= namespace %>-Layout_Label-list">
+        <li class="c-Label_Normal">全会員様対象</li>
+        <li class="c-Label_Normal">エントリー必要</li>
+        <li><span class="<%= namespace %>-Layout_Label-point">ポイント：付与日を含めて6カ月の期間限定ポイント</span></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Hero_Return">
+      <div class="l-System_Container <%= namespace %>-Hero_Container">
+        <div class="<%= namespace %>-Hero_Main">
+          <h1><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-heading-pc.png?240321" alt="クイズに答えてポイントGET！ 要エントリー 楽天モバイル公式X（旧Twitter）フォロー＆引用ポストで正解者の中から各週抽選で10名様1,000ポイントプレゼント！ 3週連続 合計30名様" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-heading-sp.png?240321" alt="クイズに答えてポイントGET！ 要エントリー 楽天モバイル公式X（旧Twitter）フォロー＆引用ポストで正解者の中から各週抽選で10名様1,000ポイントプレゼント！ 3週連続 合計30名様" class="<%= namespace %>-Utility_Img-sp"></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Body">
+      <div class="l-System_Container">
+        <% if (information.campaignState == 'finish') { %>
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-16 u-Adjust_Align-center">本キャンペーンは<%= finishSchedule %>をもちまして終了いたしました。<br>
+            このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+            <div class="u-Adjust_Align-center u-Adjust_Mb-48">
+              <a href="<%= sitepath %>campaign/?l-id=end_campaign" class="c-Link_Txt-inline">開催中のキャンペーンを見る<span class="c-Icon_Chevron-right"></span></a>
+            </div>
+        <% } else { %>
+          <!-- else -->
+        <% } %>
+        <div class="c-Txt_Cap u-Adjust_Align-center">
+          <p>※キャンペーンの参加には楽天会員への登録が必要です。</p>
+          <p>※進呈するポイントには条件があります。詳しくは<a href="#campaign-rule" class="js-scroll c-Link_Txt-inline">キャンペーンルール<span class="c-Icon_Arrow-down-l"></span></a>をご確認ください。</p>
+        </div>
+        <p class="<%= namespace %>-schedule_Txt u-Adjust_Align-center"><span class="c-Txt_Emp-01">【キャンペーン期間】</span><br>
+          2024年3月21日（木）09:00～2024年4月11日（木）08:59</p>
+        <p class="<%= namespace %>-schedule_Txt u-Adjust_Align-center"><span class="c-Txt_Emp-01">【クイズの答えポスト期間】</span></p>
+
+        <div class="<%= namespace %>-Layout_Table-period u-Adjust_Mt-8">
+          <dl>
+            <dt>第1週</dt>
+            <dd>3月21日（木）09:00～3月28日（木）08:59</dd>
+          </dl>
+          <dl>
+            <dt>第2週</dt>
+            <dd>3月28日（木）09:00～4月4日（木）08:59</dd>
+          </dl>
+          <dl>
+            <dt>第3週</dt>
+            <dd>4月4日（木）09:00～4月11日（木）08:59</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="<%= namespace %>-Anchor_Inner u-Adjust_Mt-24 u-Adjust_Pb-32">
+        <div class="l-System_Container">
+          <ul class="<%= namespace %>-Anchor_List u-Adjust_Pt-32 ">
+            <li class="<%= namespace %>-Anchor_Item">
+              <a href="#campaign-flow" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span><span>キャンペーンの流れ</span></a>
+            </li>
+            <li class="<%= namespace %>-Anchor_Item">
+              <a href="#campaign-rule" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span><span>キャンペーンルール</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-40 u-Adjust_Align-center" id="campaign-flow">キャンペーンの流れ</h2>
+        <ul class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Layout-inner">
+              <span class="<%= namespace %>-Flow_Title">
+                <span class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP1</span>
+                <span>キャンペーンに<br class="u-Show_Sp">エントリー</span>
+              </span>
+            </h3>
+            <form action="https://form.rakuten.co.jp/ans/apply/40403" name="enenForm" method="POST" onSubmit="return checkForm()">
+              <p class="<%= namespace %>-Txt_Left-sp u-Adjust_Mt-16 <%= namespace %>-Layout-inner">
+                ＠から始まるX（旧Twitter）のユーザー名を入力してエントリーしてください
+              </p>
+              <dl class="c-Dl_Origin u-Adjust_Mt-16">
+                <div>
+                  <dt>
+                    X（旧Twitter）のユーザー名 <span class="c-Txt_Emp-02 c-Txt_Normal-s">必須</span>
+                  </dt>
+                  <dd>
+                    <p class="c-Txt_Cap u-Adjust_Mb-8">4文字以上15文字以内</p>
+                    <table style="border: none;">
+                      <tbody>
+                        <tr>
+                          <td style="padding-right: 13px;">@</td>
+                          <td style="width: 100%;">
+                            <textarea name="answers[40403_274789]" rows="1" cols="40" class="c-Form_Input js-cancelEnter" placeholder="@以降のX（旧Twitter）のユーザー名を入力してください" autocomplete="off"></textarea>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </dd>
+                </div>
+              </dl>
+              <% if (information.campaignState == 'finish') { %>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <p class="cp-Fin c-Btn_Primary-large">エントリーする</p>
+                </div>
+              <% } else { %>
+                <!-- else -->
+                <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+                  <input type="hidden" name="c" value="楽天">
+                  <input type="hidden" name="l" value="ja">
+                  <button class="c-Btn_Primary-large" type="submit"><span>エントリーする</span></button>
+                </div>
+              <% } %>
+              <p class="<%= namespace %>-Flow_Box-container c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Align-center">
+                ※エントリー後は、「入力を受け付けました」と表示され、エントリーが完了します。<br>
+                ※本キャンペーンは楽天PointClubのエントリー履歴には反映されませんのでご了承ください。
+              </p>
+            </form>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Br-sp u-Adjust_Pb-16">
+              <span class="<%= namespace %>-Flow_Title">
+                <span class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP2</span>
+                <span>楽天モバイル公式<br class="u-Show_Sp">アカウントをフォロー</span>
+              </span>
+            </h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-01.png?240222" width="107" alt="">
+              </div>
+              <div class="u-Adjust_Align-left <%= namespace %>-Layout-inner">
+                <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Br-pc">
+                  <span class="<%= namespace %>-Flow_Title">
+                    <span class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP2</span>
+                    <span>楽天モバイル公式アカウントをフォロー</span>
+                  </span>
+                </h3>
+                <p class="u-Adjust_Mt-16">
+                  公式X（旧Twitter）アカウント「<span class="c-Txt_Emp-02">@Rakuten_Mobile</span>」をフォロー
+                </p>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= namespace %>-Utility_Br-sp">
+                  <a href="https://twitter.com/Rakuten_Mobile/" class="c-Btn_Primary-large"
+                    target="_blank"><span>楽天モバイル公式アカウント</span></a>
+                </div>
+                <div class="u-Adjust_Mt-16 <%= namespace %>-Utility_Br-pc">
+                  <a href="https://twitter.com/Rakuten_Mobile/" class="c-Btn_Primary-large" target="_blank"><span>楽天モバイル公式アカウント</span></a>
+                </div>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※対象期間中にフォローを外された場合、本キャンペーンの対象外となります。<br>
+                  ※ご自身のアカウントが非公開の場合は応募とみなされません。
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="u-Adjust_Align-left <%= namespace %>-Layout-inner">
+              <h3 class="c-Heading_Lv3">
+                <span class="<%= namespace %>-Flow_Title">
+                  <span class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP3</span>
+                  <span>クイズの答えを引用ポスト</span>
+                </span>
+              </h3>
+              <ul class="<%= namespace %>-Flow_Retweet-list u-Adjust_Mt-16">
+                <li><span><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-icon-01.png?240222" alt="①"></span>楽天モバイルからのクイズを引用</li>
+                <li><span><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-icon-02.png?240222" alt="②"></span>コメント欄にクイズの答えを記載</li>
+                <li><span><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-icon-03.png?240222" alt="③"></span>記載内容を確認して引用ポスト</li>
+              </ul>
+              <div class="<%= namespace %>-Flow_Retweet u-Adjust_Mt-16">
+                <div class="u-Adjust_Align-center">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-02-sp.png?240222">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-02.png?240222" alt="">
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="u-Adjust_Align-left <%= namespace %>-Layout-inner">
+              <h3 class="c-Heading_Lv3">
+                各週抽選で10名様（合計30名様）に<span class="c-Txt_Emp-02">1,000ポイント</span>をプレゼント！
+              </h3>
+              <p class="u-Adjust_Mt-16">
+                期間限定ポイントで付与いたします
+              </p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">
+                ※条件に当てはまった方には、6月末日ごろにポイント付与となります。<br>
+                ※当選者には楽天モバイル公式X（旧Twitter）アカウントよりダイレクトメッセージ（DM）にてご連絡します。<br>
+                ※「すべてのアカウントからのメッセージリクエストを許可する」の設定をオンにしてください。<br>
+                ※1度当選された方は以降のクイズにお答えいただいても当選の対象外となります。
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="l-Media_Grid-half u-Adjust_Mt-40">
+          <div class="l-Media_Image">
+            <a href="<%= sitepath %>tips/zerotoku/">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-01-sp.png?240222">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-01.png?240222" alt="ザクザク貯まってスマホ代に使える！ポイント全額払いでお支払いずーッと0円">
+              </picture>
+            </a>
+          </div>
+          <div class="l-Media_Image">
+            <a href="<%= sitepath %>feature/why-rakuten-mobile/">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-02-sp.png?240222">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-bnr-02.png?240222" alt="なぜ今楽天モバイルなのか">
+              </picture>
+            </a>
+          </div>
+        </div>
+
+      <%_  if (information.campaignState !== 'finish') { _%>
+        <div class="u-Adjust_Mt-40">
+          <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+        </div>
+      <%_ } _%>
+
+        <div id="campaign-rule" class="u-Adjust_Mt-40">
+        <% if (information.campaignState == 'finish') { %>
+          <h3 class="c-Heading_Lv3"></h3>
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-16 u-Adjust_Align-center">本キャンペーンは<%= finishSchedule %>をもちまして終了いたしました。<br>
+            このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+            <div class="u-Adjust_Align-center u-Adjust_Mb-48">
+              <a href="<%= sitepath %>campaign/?l-id=end_campaign" class="c-Link_Txt-inline">開催中のキャンペーンを見る<span class="c-Icon_Chevron-right"></span></a>
+            </div>
+          <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2179', level: '', year: '2024', class: '' }}) %>
+        <% } else { %>
+          <!-- else -->
+          <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2179', level: 'h3', year: '2024', class: '' }}) %>
+        <% } %>
+        </div>
+
+      <% if (hiddenItem == 'true') { %>
+        <div class="c-Accordion">
+          <button id="accordion-past-rule" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-past-rule"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>過去のキャンペーン</button>
+          <div id="accordion-content-past-rule" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-past-rule" aria-hidden="true">
+            <div>
+              <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2179', level: '', year: '2024', class: '', comments: '<p class="c-Txt_Emp-01">【毎月開催】楽天銀行会員様へ Rakuten UN-LIMIT VI オンラインお申し込みでもれなく2,000ポイントプレゼントキャンペーン　ルール</p>' }}) %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+      </div>
+    </div>
+
+    <footer class="g-Footer <%= namespace %>-Layout_Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+</body>
+</html>

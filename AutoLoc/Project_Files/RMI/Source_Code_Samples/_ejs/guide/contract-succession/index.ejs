@@ -1,0 +1,407 @@
+<% const pagetitle = "ご契約者の逝去による契約者変更手続き（承継）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'ご契約者様が逝去され、通信サービス契約を引き継いでご利用いただく場合のお手続きについてご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <%- include('/include/_header') %>
+
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="<%= nameSpace %>-Layout_Container u-Adjust_Pt-0">
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1 u-Adjust_Mt-8"><%= pagetitle %></h1>
+
+      <p class="u-Adjust_Mt-32">ご契約者様がお亡くなりになった場合に、通信サービス契約を引き継いで利用いただくお手続きについてご案内します。</p>
+      <p class="u-Adjust_Mt-16">ご契約者様がお亡くなりになった場合の解約は、「<a href="<%= sitepath %>faq/detail/00001246/" class="c-Link_Txt-inline">ご契約者様が逝去した場合の解約について</a>」をご確認ください。</p>
+      <p class="u-Adjust_Mt-16">通信サービスの契約者をご家族、第三者へと変更する場合は「<a href="<%= sitepath %>guide/contract-transfer/" class="c-Link_Txt-inline">契約者の変更手続き（譲渡）</a>」をご覧ください。</p>
+      <ul class="c-List_Cap u-Adjust_Mt-16">
+        <li class="c-Txt_Emp-02"><span>※</span>楽天モバイル（ドコモ回線・au回線）、旧FREETEL、YAMADA SIM PLUS、DMM mobileなどサービス事業者が変更されたサービスをご利用中のお客様については、<a href="#rakutenmobile" class="c-Link_Txt js-scroll">こちら</a>をご確認ください。</li>
+      </ul>
+
+      <p class="u-Adjust_Mt-48"><a href="#about" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>お手続きについて</a></p>
+      <p class="u-Adjust_Mt-16"><a href="#step" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>お手続きに必要なもの</a></p>
+      <p class="u-Adjust_Mt-16"><a href="#time" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>お手続き完了までの目安期間</a></p>
+      <p class="u-Adjust_Mt-16"><a href="#flowlist" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>お手続きの流れ</a></p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="about">お手続きについて</h2>
+      <p class="u-Adjust_Mt-16">お手続き方法やお手続きに必要な手数料については以下をご確認ください。</p>
+      <dl class="c-Dl_Origin u-Adjust_Mt-16">
+            <div>
+              <dt>お申し込み方法</dt>
+              <dd>契約者変更の審査通過後、お手続きを開始できます。
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-16">審査のお申し込み</p>
+                <p class="u-Adjust_Mt-8">
+                  郵送
+                </p>
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-16">契約者変更のお手続き</p>
+                <p class="u-Adjust_Mt-8">
+                  my 楽天モバイル（アプリ／Web）
+                </p>
+              </dd>
+            </div>
+            <div>
+              <dt>手数料</dt>
+              <dd>3,300円（税込）<br>
+                新しいご契約者様への初回請求時に金額合算</dd>
+            </div>
+          </dl>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="step">お手続きに必要なもの</h2>
+      <p class="u-Adjust_Mt-16">審査と契約者変更手続きに必要なものがあります。以下をご確認ください。</p>
+
+      <dl class="c-Dl_Origin u-Adjust_Mt-16">
+        <div>
+          <dt>審査に必要な書類</dt>
+          <dd>
+            <p><span class="c-Txt_Emp-02">各書類一式コピーしたものを揃えてご郵送ください。</span>ご提出された書類は、返却できません。</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>
+                <a href="<%= sitepath %>assets/pdf/download/jyouto-20240501.pdf" class="c-Link_Txt-inline" target="_blank">契約者情報登録・変更申請書<span class="c-Icon_Pdf-l u-Adjust_Pl-16"></span></a>
+              </li>
+              <li>新しいご契約者様（代理人）の<a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-inline">本人確認書類</a><span class="c-Txt_Cap">※1</span></li>
+              <li>ご契約者様が逝去されたことが確認できる書類<br>
+                -戸籍全部事項証明書、戸籍個人事項証明書、除籍謄本<span class="c-Txt_Cap">※2</span>、除籍抄本、住民票（除票）、死亡診断書など​</li>
+              <li>ご契約者様と新しいご契約者様（代理人）の関係が分かる書類<span class="c-Txt_Cap">※3</span><br>
+                -戸籍全部事項証明書、除籍謄本など​</li>
+              <li>
+                （新しく契約者となる方が18歳未満の場合のみ）<a href="<%= sitepath %>pdf/terms/legal_representative_consent_form_and_payer_consent_form.pdf" target="_blank" class="c-Link_Txt-inline-icon">法定代理人同意書<span class="c-Icon_Pdf-l u-Adjust_Pl-16"></span></a><span class="c-Txt_Cap">※4</span>
+              </li>
+            </ul>
+            <ul class="c-Txt_Cap u-Adjust_Mt-16">
+              <li>※「新しいご契約者様（代理人）の本人確認書類」以外の書類は、３か月以内に発行された書類を一式コピーしご提出ください。</li>
+              <li class="u-Adjust_Mt-8"><span>※1</span> リンク先のページに記載されている「本人確認一覧」のいずれかをご郵送ください。両面のご提出が必要な書類がございますのでご注意ください。</li>
+              <li class="u-Adjust_Mt-8"><span>※2</span> 除籍謄本は、「ご契約者様が逝去されたことが確認できる書類」と「ご契約者様と新しいご契約者様（代理人）の関係が分かる書類」を兼ねることができます。​</li>
+              <li class="u-Adjust_Mt-8"><span>※3</span> ご契約者様と新しいご契約者様の関係が書類に記載されていることをご確認のうえ、ご提出ください。​</li>
+              <li class="u-Adjust_Mt-8"><span>※4</span> 18歳未満の方が新しくご契約者様となる場合、「あんしんコントロール by i-フィルター」もあわせてご契約となります（330円／月）。フィルタリングサービスを利用しない場合は、<a href="<%= sitepath %>pdf/terms/application_for_non-use_of_filtering_service.pdf" target="_blank" class="c-Link_Txt-inline-icon">不要申出書<span class="c-Icon_Pdf-l"></span></a>をあわせてご提出ください。</li>
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>契約者変更のお手続きに必要なもの</dt>
+          <dd>
+            <p>新しいご契約者様は以下をご準備ください。</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>楽天ID</li>
+              <li>本人確認書類<br>
+                必要な書類は「<a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-inline">本人確認書類</a>」をご覧ください。</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="time">お手続き完了までの目安期間</h2>
+      <p class="u-Adjust_Mt-16">2週間程度</p>
+      <ul class="c-Txt_Cap u-Adjust_Mt-16">
+        <li>※提出書類のご郵送から契約者変更のお手続き完了までの目安期間となります。​</li>
+      </ul>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="flowlist">お手続きの流れ</h2>
+      <p class="u-Adjust_Mt-16">契約者変更の審査通過後、お手続きを開始できます。</p>
+
+      <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">契約者変更の審査の流れ</h3>
+      <ol class="c-Flow">
+        <li>
+          <h3 class="c-Heading_Lv3">1. 必要書類の郵送</h3>
+          <p class="u-Adjust_Mt-16">「契約者情報登録・変更申請書」へ必要事項を記入し、「本人確認書類」、「ご契約者様が逝去されたことが確認できる書類」、「ご契約者様と新しいご契約者様（代理人）の関係が分かる書類」と併せて、以下の宛先までご郵送ください。</p>
+          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+            <li>※詳しくは「<a href="#step" class="js-scroll">審査に必要な書類</a>」をご確認ください。​</li>
+          </ul>
+
+          <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">ご提出書類の郵送先</h4>
+          <div class="c-Infobox_Standing-border u-Adjust_Mt-16">
+            <div>〒158-0094<br>
+              東京都世田谷区玉川1-14-1<br>
+              楽天クリムゾンハウス<br>
+              楽天コミュニケーションズ(株)内 <br>
+              「楽天モバイル 契約者変更受付係」行
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">2. 申請受付・審査</h3>
+          <p class="u-Adjust_Mt-16">ご郵送いただいた書類をもとに、契約者変更の審査をさせていただきます。</p>
+          <h4 class="c-Heading_Lv4 u-Adjust_Mt-16">審査通過の場合</h4>
+          <p class="u-Adjust_Mt-16">
+            審査通過後、新しいご契約者様の本人確認書類に記載の住所宛に、転送不要の書面「本人確認手続きのお知らせ」を郵送いたします。
+          </p>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-02">お受け取りが確認できない場合、本人確認手続きが未完了となり名義変更手続きが完了しませんのでご注意ください。</p>
+          <h4 class="c-Heading_Lv4 u-Adjust_Mt-16">審査未通過の場合</h4>
+          <p class="u-Adjust_Mt-16">
+            新しいご契約者様宛に書類再提出のご案内をSMS、メールにてお送りします。
+          </p>
+          <p class="u-Adjust_Mt-16">
+            ご連絡から2週間経過しても状況確認が取れない際は、やむを得ず受付をキャンセルとさせていただく場合がございます。
+          </p>
+        </li>
+      </ol>
+      <p class="u-Adjust_Mt-16">以上で審査は完了です。契約者変更手続きへ進んでください。</p>
+
+      <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">契約者変更手続きの流れ</h3>
+      <p class="u-Adjust_Mt-16">審査通過後、新しいご契約者様は以下の手順に沿ってお手続きを行ってください。</p>
+      <p class="u-Adjust_Mt-8 c-Txt_Emp-02">※契約者変更手続きとあわせて、支払い方法の登録・変更が必要となります。</p>
+      <ol class="c-Flow">
+        <li>
+          <h3 class="c-Heading_Lv3">1. 楽天モバイルから送信されるメールに記載のURLをタップし、楽天IDでログインする</h3>
+          <p class="u-Adjust_Mt-16">
+            本人確認郵便の受け取りが確認できましたら、新しいご契約者様に「【重要】【楽天モバイル】ご契約者変更について」というメールをお送りします。
+          </p>
+          <p class="u-Adjust_Mt-16">
+            メールの手順に沿って契約者変更のお手続きを行ってください。
+          </p>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">
+            ※新しいご契約者様がすでに契約者情報・お支払い方法をご登録済みの場合は、メールは送信されず、ご登録済みのお支払い方法にて、名義変更手続きを進めさせていただきます。<br>
+            「<a href="<%= ecarepath %>my-rakuten-mobile" class="c-Link_Txt-inline">my 楽天モバイル</a>」にてご登録のお支払い方法をご確認いただき、未登録の場合はご登録をお願いいたします。
+          </p>
+          <div class="c-Infobox_Standing-warning u-Adjust_Mt-32">
+            <p class="">
+              楽天会員へのご登録が必須です。<br>
+              会員登録がお済みでないお客様は、事前にご登録をお願いします。
+            </p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※第三者の楽天IDを使うことはできません。必ずご自身の楽天IDを作成してください。<br>
+              すでに楽天会員登録済みの方は、「<a href="https://member.id.rakuten.co.jp/profile/" class="c-Link_Txt-inline">my Rakuten</a>」にログインのうえ、ご登録されている会員情報が新しいご契約者様の氏名、性別、生年月日、住所、メールアドレスであることを確認してください。
+            </p>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">2. 画面右上から「my 楽天モバイル」を選択</h3>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">
+            ※スマートフォンでアクセスされる方は、画面右上のメニュー（三本線）をタップすると、「my 楽天モバイル」が選択できます。もしくは以下の「my 楽天モバイルへ進む」をタップしてください。
+          </p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※「my 楽天モバイルへ進む」をタップ後、手順3へお進みください。
+          </p>
+          <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a href="<%= ecarepath %>my-rakuten-mobile" class="c-Btn_Regular">my 楽天モバイルへ進む</a>
+          </p>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">3. 「ログイン」をタップする</h3>
+          <p class="u-Adjust_Mt-16">
+            「こちらの楽天IDは、お客様アカウントに使用できません。」の画面が一度表示された後に、再度「ログイン」をタップして下さい。
+          </p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※ログインが行えない場合は「[my 楽天モバイル]ログインできません」をご確認ください。
+          </p>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">4. メニュー（三本線）から「契約者情報」をタップする</h3>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">5. 新しいご契約者様の情報を入力／確認し、「変更する」をタップする</h3>
+          <p class="u-Adjust_Mt-16">
+            必ず以下2点と完全に一致している内容を入力してください。一致していない場合は、一致するよう適切に修正のうえご登録ください。
+          </p>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>楽天会員情報（氏名、性別、生年月日、住所、メールアドレスなど）</li>
+            <li>郵送いただいた本人確認書類の個人情報</li>
+          </ul>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">6. 内容を確認し、「次に進む」をタップする</h3>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">7. メニュー（三本線）をタップし、「利用料金」をタップする</h3>
+          <p class="u-Adjust_Mt-16">
+            契約者情報の変更後、お支払い方法の登録が必須となります。
+          </p>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">8. お支払い方法（クレジットカード／口座振替）を選択し、登録する</h3>
+          <p class="u-Adjust_Mt-16">
+            弊社にてご登録内容を確認後、名義変更のお手続きをいたします。
+          </p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※新しいご契約者様の名義とご登録されるクレジットカードの名義が異なる場合は、「自分名義以外のカードを使う」を「ON」に設定し、「この内容で次に進む」をタップしてください。
+            名義人情報の画面に切り替わる為、クレジットカード名義人の情報入力をお願いいたします。
+          </p>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">9. お手続き完了</h3>
+          <p class="u-Adjust_Mt-16">
+            契約者変更手続きが完了次第、新しいご契約者様のメールアドレスに「名義変更完了のお知らせ」というメールをお送りします。
+          </p>
+          <p class="u-Adjust_Mt-8">
+            新しいご契約者様の楽天IDにて「<a href="<%= ecarepath %>my-rakuten-mobile" class="c-Link_Txt-inline">my 楽天モバイル</a>」へログインし、「ご契約者情報」をご確認ください。
+          </p>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">10. ご利用開始</h3>
+          <p class="u-Adjust_Mt-16">手順に沿って、製品の初期設定を行ってください。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※旧ご契約者様の製品を継続してご利用いただく場合は、初期設定のご対応は不要です。<br>
+            ※18歳未満の方が新しくご契約者様となる場合、「<a href="<%= sitepath %>service/i-filter/" class="c-Link_Txt-inline">あんしんコントロール by i-フィルター</a>」も合わせてご契約となります（330円／月）。
+          </p>
+          <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/setting/" class="c-Link_Txt-inline">各製品の初期設定方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+        </li>
+      </ol>
+      <p class="u-Adjust_Mt-16">
+        以上でお手続きは完了です。
+      </p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48">分割払いでお支払い中の製品代金</h2>
+      <p class="u-Adjust_Mt-16">クレジットカードでの分割払いを選択されている場合は、旧ご契約者様のご請求が継続されます。</p>
+      <p class="u-Adjust_Mt-16">製品代金のお支払いに関する変更は受け付けておりません。各種クレジット会社へご連絡ください。</p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48">オプションサービスのお取り扱いについて</h2>
+      <p class="u-Adjust_Mt-16">
+        下記のオプションサービスは製品に紐づくオプションサービスであり、契約者変更お手続き時に解約となります。新しいご契約者様が本サービスを引き継ぐことはできません。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        下記以外のオプションサービスは継続してご利用いただくことができ、新しいご契約者様へのご請求が発生します。
+      </p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li><a href="<%= sitepath %>service/replacement-warranty-plus/" class="c-Link_Txt-inline">スマホ交換保証プラス</a></li>
+        <li><a href="<%= sitepath %>service/iphone/applecare/" class="c-Link_Txt-inline">故障紛失保証 with AppleCare Services</a></li>
+        <li><a href="<%= sitepath %>service/iphone/applecare-icloud/" class="c-Link_Txt-inline">故障紛失保証 with AppleCare Services & iCloud+</a></li>
+        <li><a href="<%= sitepath %>service/replacement-program/?l-id=guide_contract-succession_service_replacement-program" class="c-Link_Txt-inline">楽天モバイル買い替え超トクプログラム</a></li>
+        <li><a href="<%= sitepath %>service/applewatch-care/" class="c-Link_Txt-inline">あんしん保証with AppleCare Services for Apple Watch</a></li>
+      </ul>
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>service/rakumail/" class="c-Link_Txt">楽メール</a>は旧ご契約者様の楽天IDに紐づいているため、メールデータやメールアカウントを引き継ぐことはできません。新しいご契約者様が楽メールの設定を行うと、回線契約時に利用した楽天IDに紐づく新しい楽メールアカウントが付与されます。</p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48">Rakuten Casaのお取り扱いについて</h2>
+      <p class="u-Adjust_Mt-16">Rakuten Casaのご利用には、楽天回線のご契約が必要となります。旧ご契約者様が逝去されると、Rakuten Casaは解約となります。新しいご契約者様がRakuten Casaをご利用になりたい場合は別途お手続きをお願いいたします。</p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="about">逝去による解約のお手続きについて</h2>
+      <p class="u-Adjust_Mt-16">
+        ご契約者逝去により解約される場合は、二親等以内の方のお申し出に限り手続きを受け付けております。
+      </p>
+      <p class="u-Adjust_Mt-24 u-Adjust_Mb-16"><a href="<%= sitepath %>faq/detail/00001246/" class="c-Link_Txt-inline">契約者が逝去した場合の解約について<span class="c-Icon_Chevron-right"></span></a></p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="rakutenmobile">楽天モバイル(ドコモ回線・au回線)、旧FREETEL／YAMADA SIM PLUS、DMM mobileをご利用の場合</h2>
+      <p class="u-Adjust_Mt-16">ご契約者逝去により、楽天モバイル（ドコモ回線・au回線）、旧FREETEL、DMM mobile、YAMADA SIM PLUSを解約・承継される場合は、以下をご確認ください。</p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-48">楽天モバイル（ドコモ回線・au回線）の逝去解約（承継）の方法</h2>
+      <p class="u-Adjust_Mt-16">二親等以内の方からのお申し出に限り、お手続きを受け付けております。対象プランや逝去解約（承継）の方法は以下をご確認ください。</p>
+
+      <dl class="c-Dl_Origin u-Adjust_Mt-16">
+        <div>
+          <dt>対象プラン</dt>
+          <dd>
+            <ul class="c-List_Text-disc">
+              <li>スーパーホーダイ</li>
+              <li>組み合わせプラン</li>
+              <li>コミコミプラン</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+
+      <p class="u-Adjust_Mt-16 u-Adjust_Mb-16"><a href="https://mobile.faq.rakuten.net/s/detail/000004594" class="c-Link_Txt-inline" target="_blank" rel="noopener">契約者が逝去した場合の名義変更・解約方法について教えてください。<span class="c-Icon_New-window-l"></span></a></p>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">旧FREETELの逝去解約（承継）の方法</h2>
+      <p class="u-Adjust_Mt-16">逝去解約方法（承継）は以下よりお問い合せください。</p>
+      <div class="u-Adjust_Mt-16 u-Adjust_Mb-16"><a href="https://mobile.faq.rakuten.net/s/detail/000005114" class="c-Link_Txt-inline" target="_blank" rel="noopener">【旧FREETEL】契約者が逝去した場合の解約方法について教えてください<span class="c-Icon_New-window-l"></span></a></div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">DMM mobileの名義変更・解約方法</h2>
+      <p class="u-Adjust_Mt-16">逝去解約方法（承継）は以下よりお問い合せください。</p>
+      <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+        <a href="https://support.dmm.com/mvno/contact/96/forms" target="_blank" class="c-Btn_Regular">DMM mobileお問い合わせフォームにアクセスする<span class="c-Icon_New-window-l"></span></a>
+      </div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">YAMADA SIM PLUSの名義変更・解約方法</h2>
+      <p class="u-Adjust_Mt-16">逝去解約方法（承継）は以下よりお問い合せください</p>
+      <div class="u-Adjust_Mt-16 u-Adjust_Align-center u-Adjust_Mb-40">
+        <a href="https://yam-mypage.freetel.jp/login" target="_blank" class="c-Btn_Regular">YAMADA SIM PLUSマイページにアクセスする<span class="c-Icon_New-window-l"></span></a>
+      </div>
+
+
+      <div class="c-Accordion">
+        <button type="button" id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="true" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>注意事項</button>
+        <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="false">
+          <ul class="c-List_Text-disc">
+            <li>必要書類の注意事項を必ずお読みいただき、お申し込みください。</li>
+            <li>必要書類の受領をもって旧ご契約者様の変更手続きを行います。</li>
+            <li>書面に不備がある場合のみご申告者様にご連絡いたします。</li>
+            <li>「<a href="<%= ecarepath %>my-rakuten-mobile" class="c-Link_Txt-inline">my 楽天モバイル</a>」にて変更のお手続きが完了していることをご確認ください。</li>
+            <li>ご連絡先電話番号や住所、お支払い方法の変更（クレジットカードや口座情報など）は、「<a href="<%= ecarepath %>my-rakuten-mobile" class="c-Link_Txt-inline">my 楽天モバイル</a>」よりお手続きください。</li>
+            <li>お手続きの際は、以下もご確認ください。</li>
+          </ul>
+          <p class="u-Adjust_Mt-24 u-Adjust_Mb-16"><a href="<%= sitepath %>terms/" class="c-Link_Txt-inline">利用規約<span class="c-Icon_Chevron-right"></span></a></p>
+          <p class="u-Adjust_Mt-24 u-Adjust_Mb-16"><a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" class="c-Link_Txt-inline" target="_blank" rel="noopener">個人情報の取り扱いについて<span class="c-Icon_New-window-l"></span></a></p>
+        </div>
+      </div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-40">よく見られているご質問</h2>
+      <p class="u-Adjust_Mt-16">よく見られているご質問をご案内します。
+          お困りごとが解決しない場合は、各ページからチャットやお電話でお問い合わせいただけます。</p>
+      <ul class="c-Link_List guide-Faq_List u-Adjust_Mt-24">
+        <li><a href="<%= sitepath %>faq/detail/10000454/">[契約者変更手続き] 承継のお手続きについてよくある質問 <span class="c-Icon_Chevron-right"></span></a></li>
+        <li><a href="<%= sitepath %>faq/detail/10000450/">[契約者変更手続き] 譲渡・承継した月のプラン料金・オプション料金がどうなるか知りたい<span class="c-Icon_Chevron-right"></span></a></li>
+        <li><a href="<%= sitepath %>faq/detail/10000453/">[契約者変更手続き] 譲渡・承継した月の高速データ容量はどうなりますか？<span class="c-Icon_Chevron-right"></span></a></li>
+      </ul>
+
+      <div class="u-Adjust_Pt-64">
+        <div><a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップにもどる</span></a></div>
+        <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

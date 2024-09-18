@@ -1,0 +1,226 @@
+<% const pagetitle = "あんしんコントロール by i-フィルター（管理パスワード変更方法）" -%>
+<% const directories = [{path:"service/", label:"オプションサービス"}, {path:"guide/i-filter/", label:"あんしんコントロール by i-フィルター"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '安心・便利なフィルタリングサービス「あんしんコントロール by i-フィルター(楽天モバイル)」の管理パスワード変更方法をご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true">管理パスワード変更方法</li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-24">
+      Webからお申し込みの場合、初期管理パスワードがあらかじめ設定されています。製品をお受け取り後、保護者（親権者）にて初期管理パスワードを変更いただく必要があります。その流れをご案内いたします。
+    </p>
+
+    <ul class="c-List_Cap u-Adjust_Mt-16">
+      <li class="c-Txt_Emp-02"><span>※</span>お子さまによる設定変更を防止するため、お子さまへのログイン情報の開示はおやめください。</li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">ご用意いただくもの</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>楽天モバイルのお申し込みステップでご登録いただいた保護者（親権者）のメールアドレス</li>
+      <li>管理パスワード</li>
+    </ul>
+    <ul class="c-List_Cap u-Adjust_Mt-8">
+      <li><span>※</span>Webからお申し込みの場合、初期管理パスワードはメールにてお送りしています。（件名：楽天モバイル[あんしんコントロール by i-フィルター]ご利用開始のお知らせ）</li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">管理パスワード変更手順</h2>
+    <p class="u-Adjust_Mt-24">
+      お手持ちのパソコンやスマートフォンのWebブラウザにて管理画面にアクセスすることで変更できます。
+    </p>
+
+    <ul class="u-Adjust_Mt-16 <%= nameSpace %>-Flow_List">
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        1. 管理画面を開く
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      あんしんコントロール by i-フィルターの管理画面にアクセスしてください。
+    </p>
+    <p class="u-Adjust_Mt-24"><a href="https://i-filter.jp/login/" class="c-Link_Txt-icon" target="_blank">管理画面に進む<span class="c-Icon_New-window-l"></span></a></p>
+    <p class="u-Adjust_Mt-48">
+      スマートフォンでお手続きされる場合は、こちらのQRコードを読み取り、管理画面に進んでいただくこともできます。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup01.png" width="166" height="" alt=""></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        2. ログイン
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      保護者（親権者）のメールアドレスと管理パスワードを入力し、ログインボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        3. サービスの選択
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      利用するサービスの一覧から、「フィルタリングを設定する」ボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        4. システム設定に進む
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      設定画面のトップページから、「システム設定」ボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        5. 管理パスワードの設定に進む
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      システム設定画面から、「管理パスワード」ボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        6. 管理パスワードの設定
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      これから使用したい任意の文字列を新しい管理パスワードとして設定します。
+    </p>
+    <ul class="c-List_Cap u-Adjust_Mt-8">
+      <li><span>※</span>管理パスワードは6文字〜15文字以内の半角英数字で設定してください。</li>
+    </ul>
+    <p class="u-Adjust_Mt-24">
+      新しい管理パスワードをご入力のうえ、「設定保存」ボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        7. 管理パスワードの確定
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      確認のメッセージが表示されたらい、「OK」を押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        8.管理パスワード変更の確認
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      「パスワードの更新を行いました」のメッセージが出ることを確認してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/password/setup08.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+  </ul>
+
+<p class="u-Adjust_Mt-32">以上で管理パスワード変更は完了です。</p>
+
+
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+  </div>
+</div>
+
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true">管理パスワード変更方法</li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

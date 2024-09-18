@@ -1,0 +1,157 @@
+<% const pagetitle = "AIかんたん本人確認（eKYC）の流れ" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/flow/", label:"申し込みからお受け取りまでの流れ"}, {path:"internet/turbo/support/flow/verify/", label:"本人確認書類"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    isUserCategory: false
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboの申し込みに必要な本人確認を、スマートフォンでできるAIかんたん本人確認（eKYC）についてご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-32">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">Webのお申し込み画面、「my 楽天モバイル」（Web）から「AIかんたん本人確認（eKYC）」を完了する流れをご案内いたします。</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li>eKYCでご使用いただける本人確認書類は運転免許証とマイナンバーカードです。</li>
+          <li>運転免許証またはマイナンバーカードをお持ちでない方は、eKYC以外の本人確認方法にてお申し込みいただけます。</li>
+        </ul>
+        <div class="u-Adjust_Mt-16">
+          <a href="<%= sitepath %>internet/turbo/support/flow/verify/" class="c-Link_Txt-inline">本人確認書類を見る<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </section>
+
+      <section class="u-Adjust_Mt-24">
+        <ol class="c-Flow">
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. Rakuten Turboへ申し込む</h3>
+            <p class="u-Adjust_Mt-16">Webのお申し込み画面、「<a href="<%= ecarepath %>my-rakuten-mobile/" data-lid_no="02" target="_blank" rel="noopener noreferrer" class="c-Link_Txt-inline">my 楽天モバイル<span class="c-Icon_New-window-l"></span></a>」（Web）からRakuten Turboを申し込み、契約者情報の画面にお進みください。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 楽天会員に登録されていない方は新規登録を行ってください。</p>
+            <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-01-01.png" alt="1. Rakuten Turboへ申し込む" width="300" height="486" class="c-Img_Capture">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-01-02.png" alt="1. Rakuten Turboへ申し込む（楽天会員ログイン）" width="298" height="498" class="c-Img_Capture">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 本人確認書類の提示方法を「AIかんたん本人確認（eKYC）」にする</h3>
+            <p class="u-Adjust_Mt-16">eKYCによるお申し込みの場合は、必ず「AIかんたん本人確認（eKYC）」をご選択のうえ、「次へ進む」をタップしてください。</p>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-02-01.png" alt="2. 本人確認書類の提示方法を「AIかんたん本人確認（eKYC）」にする" width="300" height="558" class="c-Img_Capture">
+            </div>
+            <p class="u-Adjust_Mt-24">未成年の方が「AIかんたん本人確認（eKYC）」をタップすると、「法定代理人同意書 兼 支払名義人同意書」の項目が表示されます。「フォームのダウンロード」または以下より同意書をダウンロードいただき、保護者様にてご記入のうえ、「書類を読み取る」をタップしてアップロードしてください。</p>
+            <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>pdf/terms/legal_representative_consent_form_and_payer_consent_form.pdf?230908" target="_blank" rel="noopener noreferrer" class="c-Link_Txt-inline">法定代理人同意書 兼 支払名義人同意書<span class="c-Icon_New-window-l"></span></a></p>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-02-02.png" alt="法定代理人同意書 兼 支払名義人同意書のダウンロード" width="300" height="306" class="c-Img_Capture">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. 本人確認に使用する書類を選ぶ</h3>
+            <p class="u-Adjust_Mt-16">「書類の撮影」をご選択後、運転免許証またはマイナンバーカードのいずれかをご選択のうえ、「次へ進む」をタップしてください。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ マイナンバー通知カードはご利用いただけません。</p>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-03.png" alt="3. 本人確認に使用する書類を選ぶ" width="300" height="260" class="c-Img_Capture">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">4. 書類の表面をスマホ画面に写す</h3>
+            <p class="u-Adjust_Mt-16">オレンジの枠に書類を合わせて、ご自身で「撮影する」をタップしてください。次に表示される確認画面にて、写真に反射やぶれなどなく、画面内に収まっているかご確認のうえ、「次へ進む」をタップしてください。</p>
+            <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-04-01.png" width="300" height="624" class="c-Img_Capture" alt="4. 書類の表面をスマホ画面に写す">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-04-02.png" width="300" height="624" class="c-Img_Capture" alt="4. 書類の表面をスマホ画面に写す">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">5. 厚みを撮影するため、書類を傾けて持つ</h3>
+            <p class="u-Adjust_Mt-16"><span class="c-Txt_Emp-02">手で書類を持ち、</span>オレンジの枠に合わせて、傾きをご調整のうえ、ご自身で「撮影する」をタップしてください。次に表示される確認画面にて、写真に反射やぶれなどなく、厚みが写るように撮影されているかご確認のうえ、「次へ進む」をタップしてください。</p>
+
+            <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-05-01.png" width="300" height="624" class="c-Img_Capture" alt="5. 厚みを撮影するため、書類を傾けて持つ">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-05-02.png" width="300" height="624" class="c-Img_Capture" alt="5. 厚みを撮影するため、書類を傾けて持つ">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">6. 運転免許証の場合は裏返して、裏面をスマホ画面に写す</h3>
+            <p class="u-Adjust_Mt-16">オレンジの枠に書類を合わせて、ご自身で「撮影する」をタップしてください。次に表示される確認画面にて、写真に反射やぶれなどなく、画面内に収まっているかご確認のうえ、「ご本人の撮影へ進む」をタップしてください。</p>
+            <p class="u-Adjust_Mt-16">マイナンバーカードを本人確認に使用する場合は、裏面の撮影はありません。次の手順へお進みください。</p>
+            <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-06-01.png" width="300" height="624" class="c-Img_Capture" alt="6. 運転免許証の場合は裏返して、裏面をスマホ画面に写す">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-06-02.png" width="300" height="624" class="c-Img_Capture" alt="6. 運転免許証の場合は裏返して、裏面をスマホ画面に写す">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">7. 明るい場所でスマホ画面に顔を写し、まばたきをする</h3>
+            <p class="u-Adjust_Mt-16">ご自身で「撮影する」をタップし、画面の指示に従ってまばたきをしてください。次に表示される確認画面にて、目を閉じていないか、顔が枠に収まっているかご確認のうえ、「次へ進む」をタップしてください。</p>
+            <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-07-01.png" width="300" height="532" class="c-Img_Capture" alt="7. 明るい場所でスマホ画面に顔を写し、まばたきをする">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-07-02.png" width="300" height="532" class="c-Img_Capture" alt="7. 明るい場所でスマホ画面に顔を写し、まばたきをする">
+            </div>
+            <p class="u-Adjust_Mt-24">お使いのスマートフォンによっては、顔写真の撮影の後、別途、まばたきの撮影に進む画面が表示される場合があります。画面の指示に沿ってお進みください。</p>
+            <div class="<%= namespace %>-Layout_Flow-img-column u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-08-01.png" width="300" height="532" class="c-Img_Capture" alt="7. 明るい場所でスマホ画面に顔を写し、まばたきをする">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-08-02.png" width="300" height="532" class="c-Img_Capture" alt="7. 明るい場所でスマホ画面に顔を写し、まばたきをする">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">8. お申し込みを完了する</h3>
+            <p class="u-Adjust_Mt-16">本人確認審査の完了後、製品の発送を行います。ご利用開始までの流れは以下でご案内しております。あわせてご確認ください。</p>
+            <div class="u-Adjust_Mt-16">
+              <a class="c-Link_Txt-inline" href="<%= sitepath %>internet/turbo/support/setting/usage/">製品の設置から接続までの手順を見る<span class="c-Icon_Chevron-right"></span></a>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/flow/verify/ekyc/cap-09.png" width="300" height="472" class="c-Img_Capture" alt="8. お申し込みを完了する">
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-64">以上で完了です。</p>
+        <div class="u-Adjust_Mt-48">
+          <a class="c-Btn_Regular" href="<%= sitepath %>internet/turbo/support/flow/verify/" data-lid_no="02"><span>本人確認書類にもどる</span></a>
+        </div>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

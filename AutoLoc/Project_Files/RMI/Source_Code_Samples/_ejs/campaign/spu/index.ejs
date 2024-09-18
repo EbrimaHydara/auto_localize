@@ -1,0 +1,960 @@
+<% const pagetitle = "SPU（スーパーポイントアップ）" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "spu" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルの対象プランご契約で楽天市場のお買い物がポイント+4倍に！SPU（スーパーポイントアッププログラム）は楽天グループサービスを使えば使うほどポイントアップするお得なプログラムです。',
+    keywords: '',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/inc/_saikyo-plan-css') %>
+<!-- ReX Campaign Button: stylesheet -->
+<link rel="stylesheet" href="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/css/main.css?20240424" />
+<%- include('/include/_append-head') %>
+<%- include('/include/poikaku-gadget/_css') %>
+<link rel="dns-prefetch" href="https://cdn.rex.contents.rakuten.co.jp">
+
+<!--/.spuCommonHeader-->
+<link rel="stylesheet" type="text/css" href="https://r.r10s.jp/evt/event/campaign/point-up/everyday/point/_cmn/css/spu_common_header_sp_20231201_2.css?20240424" media="all and (min-width: 0px) and (max-width: 700px)">
+<link rel="stylesheet" type="text/css" href="https://r.r10s.jp/evt/event/campaign/point-up/everyday/point/_cmn/css/spu_common_header_pc_20231201_2.css?20240424" media="all and (min-width: 701px)">
+<script type="text/javascript" src="https://r.r10s.jp/evt/event/campaign/point-up/everyday/point/_cmn/js/spu_common_header-1.1.0.min.js?v=01" defer></script>
+
+<script src="https://www.rakuten.co.jp/com/advance/mobile/point_gadget_test/responsive/condition.js?240404"></script>
+<script src="https://r.r10s.jp/com/ap/target/phoenix-3.2.2.min.js"></script>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+<%- include('/inc/_poikaku',{ pagename: namespace, type: 'gadjet', withFloat: true }) %>
+
+
+<div class="spuCommonHeader">
+  <h1 class="spuCommonHeader__kanban">
+		<a class="spuCommonHeader__kanbanLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fevent.rakuten.co.jp%2Fcampaign%2Fpoint-up%2Feveryday%2Fpoint%2F&D2=1.53089.255283.910529.32323402&C3=55158ec1ebb3455e2756c67775435377ba7b4d9c">
+      <%# 提供コードを貼り付けるのではなく、pictureタグを使用して実装お願いします。コンフル：https://confluence.rakuten-it.com/confluence/pages/viewpage.action?pageId=4504757900#id-%E8%AA%BF%E6%95%B4%E6%B8%88%E3%81%BF%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E4%BB%95%E6%A7%98-spu %>
+      <picture>
+        <source media="(max-width: 700px)" srcset="https://r.r10s.jp/evt/event/campaign/point-up/everyday/point/_cmn/img/20240401under_spu/sp_kasou_kanban_20240401.png" width="700" height="366">
+        <img src="https://r.r10s.jp/evt/event/campaign/point-up/everyday/point/_cmn/img/20240401under_spu/pc_kasou_kanban_20240401.png" class="spuCommonHeader__kanbanImage" width="984" height="300" alt="">
+      </picture>
+    </a>
+	</h1>
+	<div class="js-non-poikaku u-Rat_Appear-height" data-ratid="pointgadget-ab_spu_scroll-00" data-ratevent="appear">&nbsp;</div>
+	<!--/.spuCommonHeader__kanban-->
+		<!--/.spuCommonHeader__kanban-->
+	<div class="spuCommonHeader__serviceContainer">
+		<div class="spuCommonHeader__serviceScroller">
+			<ul class="spuCommonHeader__services">
+				<li class="spuCommonHeader__service spuCommonHeader__service--rakutenmobile spuCommonHeader__service--active">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fmobile.rakuten.co.jp%2Fcampaign%2Fspu%2F%3Fscid%3Dwi_ich_spu_subpage_pc&D2=1.53089.255283.910529.32366346&C3=552ce00abe82f2a50ed9ade392a31f87b4dbba56">楽天モバイル</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutencareer">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fnetwork.mobile.rakuten.co.jp%2Fcampaign%2Fspu%2Fpayment%2F%3Fscid%3Dwi_ich_spu_subpage_payment&D2=1.53089.255283.910529.32388468&C3=c5ef26d0b5775fcdfe5c78eb6cef9b5230a714f9">楽天モバイル<br>キャリア決済</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutenhikari">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fnetwork.mobile.rakuten.co.jp%2Finternet%2Fturbo%2Fcampaign%2Fspu%2F%3Fscid%3Dwi_ich_subpage_spu_turbo-hikari_sp&D2=1.53089.255283.910478.32392028&C3=1ac4114f9d3c4cb223277a8bc9cb54a4866e50ba">Rakuten Turbo<br>／楽天ひかり</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutencard">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fwww.rakuten-card.co.jp%2Fcampaign%2Frakuten-card%2Fpoint-up%2F&D2=1.53089.255283.910529.32297795&C3=789ae2144b46021470370ea0fae2573602f61238">楽天カード<br>通常分</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutencard">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fwww.rakuten-card.co.jp%2Fcampaign%2Frakuten-card%2Fpoint-up%2F&D2=1.53089.255283.910529.32297795&C3=789ae2144b46021470370ea0fae2573602f61238">楽天カード<br>特典分</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutenbank">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fwww.rakuten-bank.co.jp%2Fcampaign%2Fspu%2F%3Fscid%3Dwi_ich_spu_spusubtab&D2=1.53089.255283.910529.32307748&C3=f80cb13037f111e38586c2833ce92eaae8ef8392">楽天銀行<br>＋楽天カード</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutensecurities">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fr10.to%2Fhv65fA&D2=1.53089.255283.910529.32313410&C3=67fbec01f06a4192a25f0b52deb89fb4048bf757">楽天証券<br>投資信託</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutensecurities_us">
+					<a class="spuCommonHeader__serviceLink" href="https://www.rakuten-sec.co.jp/web/campaign/spu_us/?scid=wi_ich_spu_sputop_sp">楽天証券<br>米国株式</a>
+				</li><li class="spuCommonHeader__service  spuCommonHeader__service--rakutenwallet">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/c/?R2=https%3A%2F%2Fwww.rakuten-wallet.co.jp%2Flp%2Fspu%2F%3Fscid%3Dwi_ich_spu_sp&D2=1.0.255283.910530.32390078&C3=a55b58a237e8914fe16ef6ce879f641db2de4bdb">楽天ウォレット</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--energy">
+					<a class="spuCommonHeader__serviceLink spuCommonHeader__service--new" href="https://energy.rakuten.co.jp/campaign/lp/spu/?scid=wi_ich_energy_spulink_gbanner_sp">楽天でんき</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutentravel">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Ftravel.rakuten.co.jp%2Fcamp%2Fspu%2F%3Fscid%3Dwi_trv_spu_tlb_pc&D2=1.53089.255283.910529.32297793&C3=ecbd7eae35d072f1d7148ddb24e5e41fb0b2bb9e">楽天トラベル</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--books">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fbooks.rakuten.co.jp%2Fevent%2Fcampaign%2Fpointup-program%2F%3Fscid%3Dwi_ich_special_all_spu_link01a&D2=1.53089.255283.910529.32297801&C3=a5d39c594f8bb0e6c2a474b1174faf27ba142ca3">楽天ブックス</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--kobo">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fbooks.rakuten.co.jp%2Fevent%2Fe-book%2Fspu%2F%3Fscid%3Dwi_ich_special_kobo_spu_02&D2=1.53089.255283.910529.32333857&C3=dc2c224daa6b7f17f458f21f194a2ace3b82fcd8">楽天Kobo</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--pasha">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/c/?R2=https%3A%2F%2Fpasha.rakuten.co.jp%2Fspecial%2Fcampaign%2Fspu%2F%3Fref%3Dspugadget_pasha_sp&D2=1.0.255283.910530.32390079&C3=d176e3b5e721aa7796ab71d95b53511f9329c88e">Rakuten<br>Pasha</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutenrba">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fbrandavenue.rakuten.co.jp%2Fguide%2Fspu%2F%3Fscid%3Dbrn_spu_main&D2=1.53089.255283.910529.32333864&C3=f2cc92a8d543f9ba89c36ef41839708ef7af76e2">Rakuten<br>Fashionアプリ</a>
+				</li><li class="spuCommonHeader__service spuCommonHeader__service--rakutenbeauty">
+					<a class="spuCommonHeader__serviceLink" href="https://rd.rakuten.co.jp/s/?R2=https%3A%2F%2Fbeauty.rakuten.co.jp%2Fcnt%2Ftopics%2Fcampaign%2Fspu%2F%3Fscid%3Dwi_ich_spu_tab_pc&D2=1.53089.255283.910529.32333863&C3=66bfe6fb42a7e346ac03e45a0098ed2bf46553c2">楽天ビューティ</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--/.spuCommonHeader__serviceContainer-->
+	<div class="spuCommonHeader__slideshowContainer">
+		<div class="spuCommonHeader__slideshowFrame">
+			<div class="spuCommonHeader__slideshowPrev"></div>
+			<div class="spuCommonHeader__slideshowBody"></div>
+			<div class="spuCommonHeader__slideshowNext"></div>
+		</div>
+	</div>
+	<!--/.spuCommonHeader__slideshowContainer-->
+</div>
+<!--/.spuCommonHeader-->
+
+  <div id="1con" class="l-System_Container <%= namespace %>-Layout_Spu spu-Util_Mt-52-16">
+
+    <div class="u-Adjust_Align-center u-Adjust_Px-16">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/spu/heading-top-sp-240410.png" width="686" height="406">
+        <img src="<%= sitepath %>assets/img/campaign/spu/heading-top-pc-240410.png" width="958" height="206" alt="ポイント毎日全員5倍">
+      </picture>
+    </div>
+
+    <div class="<%= namespace %>-Main" id="js-trigger">
+      <div class="<%= namespace %>-Main_Head" id="point-title">
+        <h1 class="c-Heading_Lv1">楽天モバイル（Rakuten最強プラン）ご契約中ポイント+4倍</h1>
+        <ul>
+          <li>上限ポイントあり</li>
+          <li>期間限定ポイント</li>
+        </ul>
+      </div>
+      <div class="<%= namespace %>-Contents">
+        <h2 class="<%= namespace %>-Contents_Ttl u-Adjust_Align-center">楽天モバイル（Rakuten最強プラン）ご契約中</h2>
+        <div class="u-Adjust_Align-center">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/spu/img-heading-sp-231201.png" width="100%" height="105">
+            <img src="<%= sitepath %>assets/img/campaign/spu/img-heading-pc-231201.png" width="550" height="170" alt="楽天市場のお買い物がポイント最大＋4倍">
+          </picture>
+        </div>
+        <!--
+        <p class="<%= namespace %>-Contents_P u-Adjust_Mt-16">
+          楽天モバイルご契約中は楽天市場のお買い物（初日～末日まで）がポイントアップ対象になります。<br>
+          楽天モバイルの対象プランご契約＋会員ランクに応じた特典分<span class="spu-Util_Rcolor" style="font-weight: bold;">ポイント＋1倍～＋3倍</span><br>
+          （月間獲得上限　会員ランクに応じて5,000～7,000ポイント）
+        </p>
+        -->
+        <p class="<%= namespace %>-Contents_P u-Adjust_Mt-16">
+          楽天モバイル（Rakuten最強プラン）利用開始月からの楽天市場のお買い物がポイントアップ対象になります。<br class="u-Show_Pc">（月間獲得上限 2,000ポイント）<a class="c-Link_Txt-inline js-scroll" href="#campaign-rule">詳細はこちら</a>
+        </p>
+
+        <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-32">クーポンコード：SPUNXT00000006</p>
+        <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+          <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=SPUNXT00000006&l-id=campaign_spu_coupon_link01" class="c-Btn_Primary-large"><span>楽天モバイルのお申し込みはこちら</span></a>
+        </div>
+        <p class="c-Txt_Normal-s u-Adjust_Align-center u-Adjust_Mt-8">
+        <span class="c-Txt_Emp-02">このボタンからのお申し込みで本ページ限定特典を進呈。</span><a class="c-Link_Txt-inline js-scroll" href="#SPU_start-point">詳細はこちら</a>
+        </p>
+
+        <div class="u-Bg_Pink5 u-Adjust_Mt-24 u-Adjust_Px-16 u-Adjust_Py-16">
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Align-center">楽天モバイル契約後</p>
+
+          <div class="<%= namespace %>-Contents_Zerotoku u-Adjust_Mt-16">
+
+            <div class="<%= namespace %>-Contents_Zerotoku-img-box ">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/card-01-sp-240401.png">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/card-01-pc-240401.png" alt="日常のいろんなシーンでザクザク貯まる" loading="lazy">
+              </picture>
+              <span class="<%= namespace %>-Contents_Zerotoku-triangle"></span>
+            </div>
+
+            <div class="<%= namespace %>-Contents_Zerotoku-img-box ">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/card-02-sp-240401.png">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/card-02-pc-240401.png" alt="貯めたポイントを月々のスマホ代に使える" loading="lazy">
+              </picture>
+              <span class="<%= namespace %>-Contents_Zerotoku-triangle"></span>
+            </div>
+
+            <div class="<%= namespace %>-Contents_Zerotoku-img-box ">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/card-03-sp-240401.png">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/card-03-pc-240401.png" alt="ポイント全額払いでお支払いずーッと0円" loading="lazy">
+              </picture>
+            </div>
+
+          </div>
+
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a href="<%= sitepath %>tips/zerotoku/?l-id=campaign_spu_tips_zerotoku" class="c-Btn_Secondly-large"><span>詳細を見る</span></a>
+          </div>
+        </div>
+
+        <p class="c-Txt_Cap u-Adjust_Mt-16">
+          ※楽天市場の商品ページ等での倍率やポイント数の表示は、プラン利用開始から2～3日。<a class="c-Link_Txt-inline" href="https://ichiba.faq.rakuten.net/detail/000007073?_ebx=6lhjwhipr.1666576405.7nmf795" target="_blank">詳細はこちら</a><br>
+          ※SPUの内容は予告なく変更の可能性あり
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+<div id="beginners" class="<%= namespace %>-Layout_Spu <%= namespace %>-Beginners_Wrap">
+  <div class="u-Rat_Appear-height" data-ratid="spu_scroll-01_spu-Beginners" data-ratevent="appear"></div>
+  <div id="SPU_start-point0" class="<%= namespace %>-Section-pink">
+    <div id="SPU_start-point" class="<%= namespace %>-Beginners">
+      <div class="<%= namespace %>-Beginners_Contents">
+        <div class="<%= namespace %>-Beginners_Contents-center">
+          <div class="<%= namespace %>-Beginners_Title">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/spu/img-beginners-01-sp-231101.png?231101" width="627" height="135">
+              <img src="<%= sitepath %>assets/img/campaign/spu/img-beginners-01-pc-240401.png?240401" width="766" height="135" alt="楽天モバイル初めてのお申し込み＆本ページ経由の方限定" loading="lazy">
+            </picture>
+          </div>
+          <div class="<%= namespace %>-Beginners_Title u-Adjust_Align-center u-Adjust_Mt-24">
+            <img src="<%= sitepath %>assets/img/campaign/spu/img-beginners-02-pc-231201.png?240501" class="<%= namespace %>-Util_Img-pc" alt="電話番号そのまま、他社からお乗り換えで※1 9,000ポイントプレゼント！ 他社からじゃなくても5,000ポイント！※1「お申し込みはこちら」のボタンのみ対象　※Rakuten Link利用等条件あり" width="627" height="261" loading="lazy">
+            <img src="<%= sitepath %>assets/img/campaign/spu/img-beginners-02-sp-231201.png?240501" class="<%= namespace %>-Util_Img-sp" alt="電話番号そのまま、他社からお乗り換えで※1 9,000ポイントプレゼント！ 他社からじゃなくても5,000ポイント！※1「お申し込みはこちら」のボタンのみ対象　※Rakuten Link利用等条件あり" width="622" height="320" style="margin-bottom: -8px;width: 94%;" loading="lazy">
+          </div>
+          <div class="c-Tab js-Tab <%= namespace %>-Layout_Display-sp u-Adjust_Mt-40">
+            <ul class="c-Tab_Items" role="tablist">
+              <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="true" aria-controls="tab-content3">初めて＆他社から<br>お乗り換え</li>
+              <li class="c-Tab_Item" id="tab-menu4" role="tab" aria-selected="false" aria-controls="tab-content4">楽天モバイル初めて<br>お申し込み</li>
+            </ul>
+            <ul class="<%= namespace %>-Pointdetails u-Adjust_Mt-16">
+              <li>
+                <div class="ttl_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-present-01-sp-ttl_231201.png?231201" alt="毎月開催 本ページから楽天モバイル初めてのお申し込みで" width="596" height="84" loading="lazy">
+                </div>
+                <div class="point_Box">
+                  <div class="point_Img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-present-01-230701.png?240501" alt="もれなく3,000ポイント" width="552" height="128" loading="lazy">
+                  </div>
+                </div>
+              </li>
+              <li class="pointdetails-Icon">
+                <div>
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/icon-present-plus-230215.png?230215" alt="＋" width="32" height="44" loading="lazy">
+                </div>
+              </li>
+              <li class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu3">
+                <div class="ttl_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-present-02-sp-ttl_231201.png?231201" alt="楽天モバイル初めて＆他社からのお乗り換えで" width="548" height="92" loading="lazy">
+                </div>
+                <div class="point_Box">
+                  <div class="point_Img">
+                    <picture>
+                      <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-05-sp_240315.png?240315" alt="もれなく6,000ポイント" width="550" height="128" loading="lazy">
+                    </picture>
+                  </div>
+                </div>
+                <div class="pointdetails-Icon">
+                  <div>
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-12-sp.png?231201" alt="" width="39" height="25" loading="lazy">
+                  </div>
+                </div>
+                <div class="pointdetails-All">
+                  <div class="ttl_Img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09-sp.png?231201" alt="合計" width="140" height="30" loading="lazy">
+                  </div>
+                  <div class="point_Box">
+                    <div class="point_Img">
+                      <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-10-sp_240501.png?240501" alt="9,000ポイント" width="586" height="122" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="c-Tab_Panel" id="tab-content4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu4">
+                <div class="ttl_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-06-sp.png?231201" alt="楽天モバイル初めて＆他社からじゃなくても※3" width="564" height="84" loading="lazy">
+                </div>
+                <div class="point_Box">
+                  <div class="point_Img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-07-sp.png?231201" alt="もれなく2,000ポイント" width="564" height="124" loading="lazy">
+                  </div>
+                </div>
+                <div class="pointdetails-Icon">
+                  <div>
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-12-sp.png?231201" alt="" width="39" height="25" loading="lazy">
+                  </div>
+                </div>
+                <div class="pointdetails-All">
+                  <div class="ttl_Img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09-sp.png?231201" alt="合計" width="140" height="30" loading="lazy">
+                  </div>
+                  <div class="point_Box">
+                    <div class="point_Img">
+                      <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-11-sp_240501.png?240501" alt="5,000ポイント" width="586" height="122" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+        </div>
+          <ul class="<%= namespace %>-Pointdetails <%= namespace %>-Layout_Display-pc u-Adjust_Mt-16">
+            <li>
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-present-01-pc-ttl_231201.png?231201" alt="毎月開催 本ページから楽天モバイル初めてのお申し込みで" width="207" height="64" loading="lazy">
+              </div>
+              <div class="point_Box">
+                <div class="point_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-present-01-231201.png?240501" alt="もれなく3,000ポイント" width="207" height="190" loading="lazy">
+                </div>
+              </div>
+            </li>
+            <li class="pointdetails-Icon">
+              <div>
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/icon-present-plus-230215.png?230215" alt="＋" width="60" height="60" loading="lazy">
+              </div>
+            </li>
+            <li>
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-04.png?231201" alt="楽天モバイル初めて＆他社からのお乗り換えで" width="184" height="31" loading="lazy">
+              </div>
+              <div class="point_Box">
+                <div class="point_Img">
+                  <picture>
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-05.png?240315" alt="もれなく6,000ポイント" width="184" height="64" loading="lazy">
+                  </picture>
+                </div>
+              </div>
+
+              <p class="pointdetails-Or u-Adjust_Align-center <%= namespace %>-Layout_Display-pc"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-08.png?231201" alt="もしくは" width="67" height="18" loading="lazy"></p>
+
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-06.png?231201" alt="楽天モバイル初めて＆他社からじゃなくても※3" width="180" height="31" loading="lazy">
+              </div>
+              <div class="point_Box">
+                <div class="point_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-07.png?231201" alt="もれなく2,000ポイント" width="180" height="62" loading="lazy">
+                </div>
+              </div>
+            </li>
+            <li class="pointdetails-Icon">
+              <div>
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-12.png?231201" alt="" width="32" height="50" loading="lazy">
+              </div>
+            </li>
+            <li class="pointdetails-All">
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09.png?231201" alt="合計" width="199" height="31" loading="lazy">
+              </div>
+              <div class="point_Box pointdetails-All_Point-9000">
+                <div class="point_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-10.png?240501" alt="9,000ポイント" width="199" height="62" loading="lazy">
+                </div>
+              </div>
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09.png?231201" alt="合計" width="199" height="31" loading="lazy">
+              </div>
+              <div class="point_Box">
+                <div class="point_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-11.png?240501" alt="5,000ポイント" width="199" height="62" loading="lazy">
+                </div>
+              </div>
+            </li>
+          </ul>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">
+            ※2 キャンペーンの特典は時期により増減します。ポイント増量期間が終了したため、特典内容が4,000ポイントから3,000ポイントへ変更となりました。
+          </p>
+          <p class="c-Txt_Cap">
+            ※3 ほかのキャンペーンが優先的に適用されている場合、上記キャンペーンが適用できない場合があります。
+          </p>
+          <p class="c-Txt_Cap">
+            ※ キャンペーンによってポイントの付与時期・有効期間が異なり、分割して付与される場合もあります。必ず<a href="#campaign-rule-start" class="c-Link_Txt-inline js-scroll">キャンペーン詳細</a>をご覧ください。
+          </p>
+          <p class="c-Txt_Cap">
+            ※ 予告なく特典内容の変更、キャンペーンの中止を行う可能性があります。特典は今後の開催時に増減する場合もあります。
+          </p>
+
+          <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-9months-01-sp_240501.png?240501"  width="622" height="622">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-9months-01_240501.png?240501" alt="家族で使えば「Rakuten最強プラン」がもっと安くなる！家族割引適用時3GBまで880円/月（税込968円）※通話料等別 本ページで電話番号そのまま他社からお乗り換え&初めてのお申し込みなら 実質9ヵ月分無料" width="766" height="253" loading="lazy">
+            </picture>
+          </div>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+            <p><a href="<%= sitepath %>fee/family/?l-id=campaign_<%= namespace %>_fee_family" class="c-Link_Txt-inline">最強家族プログラム（家族割引）の詳細はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+          </div>
+          <ul class="c-Txt_Cap u-Adjust_Mt-24">
+            <li>※詳しくは<a href="#campaign-rule1173" class="js-scroll">キャンペーンルール</a>をご確認ください。</li>
+            <li>※予告なく内容の変更、中止する場合があります。</li>
+            <li class="c-Txt_Emp-02">※「Rakuten最強プラン（データタイプ）」は対象外です。</li>
+            <li>※付与されるポイントのうち、<a href="#campaign-rule2091" class="js-scroll">キャンペーンコード:2091</a>による6,000ポイントは、「Rakuten最強プラン」のプラン利用開始および「Rakuten Link」アプリの利用が確認された月の翌々末日ごろから3カ月間にわたり付与</li>
+            <li>※付与されるポイントのうち、<a href="#campaign-rule1173" class="js-scroll">キャンペーンコード:1173</a>による3,000ポイントは「Rakuten最強プラン」のお申し込み月の翌月末日までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに付与予定</li>
+            <li class="c-Txt_Emp-02">※「実質価格」とは、キャンペーンの条件達成（Rakuten最強プラン初めて契約、対象製品購入、Rakuten Link利用など）により後日付与されるポイントを加味した価格であり、実際のお支払い金額とは異なります。</li>
+          </ul>
+
+          <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-32">クーポンコード：SPUNXT00000006</p>
+          <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+            <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=SPUNXT00000006&l-id=campaign_spu_coupon_link02" class="c-Btn_Primary-large"><span>楽天モバイルのお申し込みはこちら</span></a>
+          </div>
+          <p class="c-Txt_Normal-s u-Adjust_Align-center u-Adjust_Mt-8">
+          <span class="c-Txt_Emp-02">このボタンからのお申し込みのみ特典適用対象となります。</span>
+          </p>
+
+          <div class="u-Rat_Appear-height" data-ratid="spu_scroll-02_accomplishment-condition" data-ratevent="appear"></div>
+          <h1 class="<%= namespace %>-Util_Fs-34-28 u-Adjust_Mt-56 u-Adjust_Align-center">キャンペーンの達成条件</h1>
+
+          <div class="<%= namespace %>-Layout_Conditions u-Adjust_Mt-24">
+            <div class="<%= namespace %>-Layout_Conditions-item">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-Layout_Conditions-title">
+                はじめての<br class="<%= namespace %>-Util_Show-pc">お申し込み
+              </h4>
+              <div class="<%= namespace %>-Layout_Conditions-item-sub">
+                <img src="<%= sitepath %>assets/img/campaign/spu/ilust-1-230901.png?230901" alt="" width="738" height="463" loading="lazy">
+              </div>
+              <p class="u-Adjust_Mt-16"><a href="#spu-confirmation" class="c-Link_Txt-inline js-scroll u-Adjust_Mt-16"><span class="c-Icon_Arrow-down-l"></span>お申し込み前確認事項</a></p>
+            </div>
+            <img src="<%= sitepath %>assets/img/campaign/spu/plus-221101.png" alt="" width="32" height="32" loading="lazy">
+            <div class="<%= namespace %>-Layout_Conditions-item">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-Layout_Conditions-title">
+                プランのご利用
+              </h4>
+              <div class="<%= namespace %>-Layout_Conditions-item-sub">
+                <img src="<%= sitepath %>assets/img/campaign/spu/ilust-2-230901.png?230901" alt="" width="738" height="380" loading="lazy">
+              </div>
+              <p class="u-Adjust_Mt-16 u-Adjust_Align-left">期限までに、開通手続きをしてプランのご利用を開始してください。</p>
+            </div>
+            <img src="<%= sitepath %>assets/img/campaign/spu/plus-221101.png" alt="" width="32" height="32" loading="lazy">
+            <div class="<%= namespace %>-Layout_Conditions-item">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-Layout_Conditions-title">
+                Rakuten Linkアプリから発信で10秒以上通話
+              </h4>
+              <div class="<%= namespace %>-Layout_Conditions-item-sub">
+                <img src="<%= sitepath %>assets/img/campaign/spu/ilust-3-221101.png" alt="" width="738" height="384" loading="lazy">
+              </div>
+              <p class="u-Adjust_Mt-16 u-Adjust_Align-left">期限までに、Rakuten Linkアプリで発信し10秒以上通話してください。</p>
+            </div>
+          </div>
+          <p class="u-Adjust_Mt-24">
+            本キャンペーンには達成条件が設定されています。また、キャンペーン詳細に記載の併用可能キャンペーンを除き、楽天モバイルキャンペーンより付与ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合、楽天モバイルキャンペーンは適用されません。<br>
+            期間限定ポイントでの付与となり、上限があります。詳しくは<a href="#campaign-rule-start" class="c-Link_Txt-inline js-scroll">キャンペーン詳細</a>をご確認ください。
+          </p>
+          <div class="c-Accordion u-Adjust_Mt-32">
+            <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーン期間</button>
+            <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+              <dl class="c-Dl_Origin">
+                <div>
+                  <dt>お申し込み期間</dt>
+                  <dd>
+                    2024年5月1日（水）00:00～2024年5月31日（金）23:59（毎月開催）
+                  </dd>
+                </div>
+                <div>
+                  <dt>プランご利用開始期間</dt>
+                  <dd>
+                    プランのお申し込みの翌月末日23:59まで
+                  </dd>
+                </div>
+                <div>
+                  <dt>「Rakuten Linkアプリ」のご利用期限</dt>
+                  <dd>
+                    プランのお申し込みの翌月末日23:59まで
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div id="spu-confirmation" class="<%= namespace %>-Layout_Confirmation u-Adjust_Mt-56">
+          <div class="u-Rat_Appear-height" data-ratid="spu_scroll-03_confirmation" data-ratevent="appear"></div>
+          <h3 class="c-Txt_Normal-l <%= namespace %>-Layout_Confirmation-title">お申し込み前に必ずご確認ください</h3>
+          <div class="<%= namespace %>-Layout_Confirmation-inner">
+            <ul class="c-List_Text-disc">
+              <li>
+                本ページの<a class="c-Link_Txt-inline" href="#apply">「お申し込みはこちら」ボタン</a>よりお手続きをお願いします。
+                <span class="c-Txt_Emp-02">このボタンからのお申し込みのみ特典適用対象となります。</span>
+              </li>
+              <li>
+                「お申し込み内容」であらかじめ<span class="c-Txt_Emp-02">14桁の英数字のクーポンコードが表示されていること</span>をご確認の上、お申し込みを完了してください。<a class="c-Link_Txt-inline" href="#accordion-2">表示されていない場合</a>は<span class="c-Txt_Emp-02">特典適用対象外</span>となるため、再度本ページの<a class="c-Link_Txt-inline" href="#apply">「お申し込みはこちら」ボタン</a>よりお申し込みをやり直ししてください。
+              </li>
+            </ul>
+            <h3 class="c-Txt_Normal-l u-Adjust_Align-center u-Adjust_Mt-32">クーポンコード表示確認</h3>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <ul class="<%= namespace %>-Caution_Img u-Adjust_Mt-32">
+                <li class="u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-01.png?240401" alt="お申し込みはこちらボタン イメージ" width="582" height="286" loading="lazy">
+                </li>
+                <li class="<%= namespace %>-Caution_Img-arrow u-Adjust_Align-center">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01-sp.png?240401" width="92" height="32">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01.png?240401" alt="" width="18" height="35" loading="lazy">
+                  </picture>
+                </li>
+                <li class="u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-02_240501.png?240501" alt="クーポンコードSPUNXT00000006が適用されました" width="582" height="286" loading="lazy">
+                </li>
+                <li class="<%= namespace %>-Caution_Img-arrow u-Adjust_Align-center">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01-sp.png?240401" width="92" height="32">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-arrow-01.png?240401" alt="" width="18" height="35" loading="lazy">
+                  </picture>
+                </li>
+                <li class="u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-coupon-03_240501.png?240501" alt="SPUNXT00000006 クーポンが適用されています" width="582" height="286" loading="lazy">
+                </li>
+              </ul>
+            </div>
+            <p id="apply" class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-16">クーポンコード：SPUNXT00000006</p>
+            <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+              <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=SPUNXT00000006&l-id=campaign_spu_coupon_link" class="c-Btn_Primary-large"><span>楽天モバイルのお申し込みはこちら</span></a>
+            </div>
+            <p class="c-Txt_Emp-02 c-Txt_Normal-s u-Adjust_Align-center u-Adjust_Mt-8">このボタンからのお申し込みのみ特典適用対象となります。</p>
+
+            <div class="c-Accordion spu-Util_Mt-24-40">
+              <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お申し込み画面で以下の状況が発生した場合、再度「お申し込みはこちら」ボタンからお申し込みをやり直してください。</button>
+              <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display: none;">
+                <div class="spu-Util_Flex-3">
+                  <div class="spu-Util_Flex-3-item">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/spu/acc-1-sp-240501.png?240501" width="560" height="286">
+                      <img src="<%= sitepath %>assets/img/campaign/spu/acc-1-pc-240501.png?240501" alt="" width="226" height="142" loading="lazy">
+                    </picture>
+                    <p class="u-Adjust_Mt-16 c-Txt_Emp-01">
+                      お申し込み内容にクーポン<br>コードが表示されていない場合
+                    </p>
+                  </div>
+                  <div class="spu-Util_Flex-3-item">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/spu/acc-2-sp-221201.png?221201" width="558" height="286">
+                      <img src="<%= sitepath %>assets/img/campaign/spu/acc-2-pc-221201.png?221201" alt="" width="226" height="142" loading="lazy">
+                    </picture>
+                    <p class="u-Adjust_Mt-16 c-Txt_Emp-01">
+                      システムメンテナンスの<br>お知らせが表示された場合
+                    </p>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap u-Adjust_Align-center">
+                      ※メンテナンス終了後に<br class="<%= namespace %>-Util_Show-pc">お申し込みください
+                    </p>
+                  </div>
+                  <div class="spu-Util_Flex-3-item">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/spu/acc-3-sp-221201.png?221201" width="558" height="286">
+                      <img src="<%= sitepath %>assets/img/campaign/spu/acc-3-pc-221201.png?221201" alt="" width="226" height="142" loading="lazy">
+                    </picture>
+                    <p class="u-Adjust_Mt-16 c-Txt_Emp-01">
+                      タイムアウトが<br>表示された場合
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button type="button" id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイル（ドコモ回線・au回線）をご利用中の方もキャンペーンにご参加いただけますが、こちらもご確認ください。</button>
+              <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true" style="display: none;">
+                <p class="c-Txt_Emp-01">（1）メンバーズステーション経由のプラン変更（移行）は本キャンペーンの適用対象となりません。</p>
+                <p><a class="c-Link_Txt-inline" href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_spu_ms1&mno_migration=1">メンバーズステーション</a>にてMNP予約番号を発行のうえ、本ページからお申し込みください。</p>
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-16">（2）下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</p>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>
+                    オプションサービスを引き継ぎたい場合<div class="u-Adjust_Mt-8"></div>本ページからお申し込みした場合、オプションサービスはすべて解約となります。
+                  </li>
+                </ul>
+                <p class="u-Adjust_Mt-24">上記（1）（2）は通話SIMご利用の方の注意点となります。データSIMご利用中の方は、メンバーズステーション経由のプラン移行（変更）はできないため、本キャンペーンより新規でお申し込みください。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-Rat_Appear-height" data-ratid="spu_scroll-04_qanda" data-ratevent="appear"></div>
+        <h2 class="<%= namespace %>-Util_Fs-28-24 <%= namespace %>-Util_Mt-64-56 u-Adjust_Align-center">よくあるご質問</h2>
+        <div class="c-Accordion u-Adjust_Mt-24">
+          <button type="button" id="accordion-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-9"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンのポイント獲得の対象になっているか確認したいです。</button>
+          <div id="accordion-content-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-9" aria-hidden="true" style="display: none;">
+            <p>「<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile">my 楽天モバイル</a>」の申し込み履歴から、クーポンの利用状況をご確認いただけます。<br>
+              詳しい手順は<a href="https://network.mobile.rakuten.co.jp/faq/detail/10000792/">こちら</a>からご確認ください。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※ ログインができない場合は、「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001207/">my 楽天モバイルにログインできない場合どうすればよいですか？</a>」をご確認ください。</p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーン期間内に楽天モバイルに申し込みができているか、確認方法はありますか？</button>
+          <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true" style="display: none;">
+            <p>以下2種類の方法があります。</p>
+            <p class="u-Adjust_Mt-8">
+              1.  お申し込み完了メールを確認する<br>
+              2.「<a class="c-Link_Txt-inline" href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/" target="_blank">my 楽天モバイル</a>」の申し込み履歴から確認する
+            </p>
+            <p class="u-Adjust_Mt-8">
+              詳しい手順は<a class="c-Link_Txt-inline" href="<%= sitepath %>faq/detail/00001827/?l-id=campaign_spu_faq_detail_00001827">こちら</a>からもご確認いただけます。
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-faq-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>メンバーズステーションで、MNP予約番号を発行する方法を教えてください。</button>
+          <div id="accordion-content-faq-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-2" aria-hidden="true" style="display: none;">
+            <p>
+              MNP（携帯電話ナンバーポータビリティ）をご利用いただくことで、現在お使いの電話番号がそのままお使いいただけます。
+            </p>
+            <p>
+              <a class="c-Link_Txt-inline" href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_spu_ms3&mno_migration=1">メンバーズステーショントップページ</a>の「MNP予約番号発行・確認について」をタップし、MNP予約番号を発行してください。MNP予約番号発行手数料は発生しません。
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-faq-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>申し込み後に、本人確認書類の不備などで再提出になった場合でもキャンペーンは適用されますか？</button>
+          <div id="accordion-content-faq-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-3" aria-hidden="true" style="display: none;">
+            お申し込み後に、書類の再提出などいただきお申し込みが完了できた場合は、キャンペーンが適用されます。ただし、お申し込み画面内で入力された情報と本人確認書類の内容が一致しないなどの理由で楽天モバイルが定める審査に基づき、お申し込みをキャンセルさせていただく場合、キャンペーンは適用できません。
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-faq-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ポイントの付与はいつになりますか？</button>
+          <div id="accordion-content-faq-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-4" aria-hidden="true" style="display: none;">
+            2024年9月末日ごろ楽天モバイルにご登録の楽天IDにポイントを付与いたします。<br>
+            付与されたポイントは楽天PointClubの「<a class="c-Link_Txt-inline" href="https://point.rakuten.co.jp/history/?scid=wi_rmb_spu_history" target="_blank">ポイント実績</a>」から確認することができます。
+          </div>
+        </div>
+
+        <div class="u-Adjust_Mt-40">
+          <p>
+            <a class="c-Link_Txt-inline" href="#spu-confirmation">お申し込み前に必ずご確認ください</a>を必ずご確認の上、以下のお申し込みボタンよりお手続きください。
+          </p>
+        </div>
+
+        <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-32">クーポンコード：SPUNXT00000006</p>
+        <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+          <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=SPUNXT00000006&l-id=campaign_spu_coupon_link_bottom" class="c-Btn_Primary-large"><span>楽天モバイルのお申し込みはこちら</span></a>
+        </div>
+        <p class="c-Txt_Emp-02 c-Txt_Normal-s u-Adjust_Align-center u-Adjust_Mt-8">このボタンからのお申し込みのみ特典適用対象となります。</p>
+        <p class="u-Adjust_Mt-8 u-Adjust_Align-center">2024年5月1日（水）00:00～<br class="<%= namespace %>-Util_Show-sp">2024年5月31日（金）23:59（毎月開催）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div id="unlimit-vi-plan" class="u-Adjust_Mt-32">
+    <%- include('/inc/_saikyo-plan') %>
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mt-48">
+    <a href="<%= sitepath %>fee/simulation/?l-id=campaign_spu_fee_simulation">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-simulation-343-108-240410.png" width="656" height="370">
+        <img src="<%= sitepath %>assets/img/bnr/bnr-simulation-1032-160-240410.png" alt="料金シミュレーション" width="1032" height="160" loading="lazy">
+      </picture>
+    </a>
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mb-40">
+
+    <div id="payment" class="c-Theme-Borderbox spu-Payment">
+              <h2 class="c-Heading_Lv2 u-Adjust_Mt-24">楽天モバイルキャリア決済をご利用でポイント＋2倍</h2>
+              <div class="l-Media_Grid u-Adjust_Mt-24">
+                <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/guide/payment/google/img-feature-02.png" alt="" width="686" height="376" loading="lazy">
+                </div>
+                <div>
+                    <p>楽天モバイルキャリア決済（Androidのみ）を月に合計2,000円（税込）以上ご利用でその月の楽天市場でのお買い物（1日～末日まで）のポイントが＋2倍</p>
+                    <ul class="c-Txt_Cap u-Adjust_Mt-16">
+                      <li><span>※</span>Google Playストアの設定以外に、「my 楽天モバイル」でご利用設定を「有効」にする必要があります。</li>
+                      <li><span>※</span>毎月の獲得上限ポイント数は1,000ポイント、期間限定ポイントでの付与になります。</li>
+                    </ul>
+                    <p class="u-Adjust_Mt-24 spu-Btn_Align-left"><a href="<%= sitepath %>campaign/spu/payment/?l-id=campaign_spu_cam_spu_payment" class="c-Btn_Regular"><span>楽天モバイルキャリア決済詳細を見る</span></a></p>
+                </div>
+              </div>
+
+              <div class="u-Adjust_Mt-24">
+                <h2 class="c-Heading_Lv2">お支払い方法</h2>
+                <p class="u-Adjust_Mt-16">キャリア決済を利用するには「my 楽天モバイル」のお支払い方法をクレジットカードまたはデビットカードに設定しておく必要があります。</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-16">
+                        <li class="c-Txt_Emp-02"><span>※</span>楽天モバイルキャリア決済設定時に、SMS送信料3円（税込3.3円）のご請求が発生します。あらかじめご了承ください。</li>
+                      </ul>
+
+                <div class="l-Media_Grid u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                      <img src="<%= sitepath %>assets/img/guide/payment/google/img-card.png" alt="" width="686" height="376" loading="lazy">
+                  </div>
+                  <div>
+                      <p class="c-Txt_Emp-02">クレジットカード払いまたはデビットカード払い以外を選択されているお客様は、本サービスをご利用いただくことはできません。ご利用の前にお支払い方法の変更を行ってください。</p>
+                      <ul class="c-Txt_Cap u-Adjust_Mt-16">
+                        <li><span>※</span>ご購入ごとにクレジットカードまたはデビットカード決済処理を実施いたします。ご利用日に対する引き落とし時期は、ご利用のカード会社またはデビットカード発行会社の規定に準じます。</li>
+                        <li><span>※</span>楽天モバイルキャリア決済でのお支払いは、ポイント付与対象外です。</li>
+                      </ul>
+
+                      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/change/?l-id=campaign_spu_payment_change" class="c-Link_Txt-inline u-Adjust_Mt-24 c-Link_Txt">お支払い方法の確認・変更方法<span class="c-Icon_Chevron-right"></span></a></p>
+                      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/card/" class="c-Link_Txt-inline u-Adjust_Mt-24 c-Link_Txt">クレジットカード・デビットカードでのお支払い方法<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>campaign/payment-google/?l-id=campaign_spu_payment_cam">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-payment-google-343-108-240201.png" width="656" height="370">
+                    <img src="<%= sitepath %>assets/img/bnr/bnr-payment-google-1032-160-240201.png" width="1032" height="160" alt="Android™でのアプリ購入やアプリ内課金が楽天モバイルキャリア決済利用で最大2%ポイント還元" loading="lazy">
+                  </picture>
+                </a>
+              </div>
+
+  </div>
+
+</div>
+
+
+  <div class="l-System_Container u-Adjust_Mt-32 spu-Util_Bnr">
+    <div class="l-Media_Grid-half">
+      <div class="l-Media_Image">
+        <a href="<%= sitepath %>campaign/data3g/?l-id=campaign_spu_campaign_data3g">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-data-3g-328-185-240501.png" width="1008" height="316">
+            <img src="<%= sitepath %>assets/img/bnr/bnr-data-3g-504-158-240501.png" width="504" height="158" alt="毎月開催　初めて3GBを超えたら1,000ポイントGET！※要エントリー">
+          </picture>
+        </a>
+      </div>
+      <div class="l-Media_Image">
+        <a href="<%= sitepath %>campaign/data/?l-id=campaign_spu_campaign_data">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-data-20g-328-185-240501.png" width="1008" height="316">
+            <img src="<%= sitepath %>assets/img/bnr/bnr-data-20g-504-158-240501.png" width="504" height="158" alt="毎月開催　初めて20GBを超えたら1,500ポイントGET！※要エントリー">
+          </picture>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<div class="l-System_Container">
+
+  <div class="<%= namespace %>-Layout_Rule" id="campaign-rule">
+    <h3 class="c-Heading_Lv3">楽天モバイルの対象サービスご契約者はポイント＋4倍</h3>
+    <div class="u-Adjust_Mt-24">
+      <dl class="c-Dl_Origin">
+        <div>
+          <dt>対象者</dt>
+          <dd>
+            <p>楽天モバイルの対象サービスをご契約中の楽天会員様</p>
+          </dd>
+        </div>
+        <div>
+          <dt>キャンペーン特典</dt>
+          <dd>
+            <p class="spu-Util_Rcolor">ポイント＋4倍</p>
+            <p class="u-Adjust_Mt-8">
+              Rakuten最強プラン・Rakuten最強プラン（データタイプ）ご契約中：ポイント+4倍
+            </p>
+
+            <p class="c-Txt_Cap u-Adjust_Mt-8">
+              ※スーパーホーダイ・組み合わせプラン・コミコミプランご契約は特典対象外
+            </p>
+
+
+            <p class="u-Adjust_Mt-16"><b>＜ポイント付与対象＞</b><br>
+              当月の楽天市場でのお買い物
+            </p>
+            <p class="u-Adjust_Mt-16"><b>＜ポイント付与予定日＞</b><br>
+              <span class="<%= namespace %>-Util_Rcolor">楽天市場でのお買い物月の翌月15日</span>
+            </p>
+            <p class="u-Adjust_Mt-16">
+              <b>＜ポイント期限＞</b><br>
+              付与の翌月末日 23:59
+            </p>
+            <p><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_Chevron-right"></span></a></p>
+            <div class="u-Adjust_Mt-16">
+              <b>＜月間獲得上限ポイント数＞</b>
+              <!--
+              <p class="u-Adjust_Mt-8">
+                Rakuten最強プラン・Rakuten最強プラン（データタイプ）ご契約中でダイヤモンド会員：7,000ポイント<br>
+                Rakuten最強プラン・Rakuten最強プラン（データタイプ）ご契約中でダイヤモンド会員以外：6,000ポイント<br>
+                スーパーホーダイ・組み合わせプラン・コミコミプランご契約：5,000ポイント
+              </p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">
+                ※ご契約中のプラン、会員ランクに応じて月間獲得上限ポイント数が異なります。<br>
+                ※ダイヤモンド会員以外とは、プラチナ・ゴールド・シルバー・レギュラー会員を指します。
+              </p>
+            -->
+            <p class="u-Adjust_Mt-8">
+              Rakuten最強プラン・Rakuten最強プラン（データタイプ）ご契約中：2,000ポイント
+            </p>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>対象サービス</dt>
+          <dd>
+            <p>
+              楽天モバイルの下記の対象プランをご利用<br>
+              対象プラン：Rakuten最強プラン、Rakuten最強プラン（データタイプ）
+            </p>
+            <p class="u-Adjust_Mt-16"><b>＜注意事項＞</b></p>
+            <ul class="c-Txt_Cap u-Adjust_Mt-8">
+              <li><span>※</span>既にRakuten最強プランをご利用の方も対象になります。</li>
+              <li><span>※</span>スーパーホーダイ・組み合わせプラン・コミコミプラン・旧FREETEL SIM・DMM mobile SIMは特典対象外となります。</li>
+              <li><span>※</span>楽天モバイルデータSIM（SMSあり）/データSIM（SMSなし）は特典対象外となります。（本プランの新規受付は2020年3月末で終了しました）</li>
+              <li><span>※</span>「Rakuten UN-LIMIT VII」をご契約された方は、2023年6月1日（木）に「Rakuten最強プラン」に自動移行いたしました。</li>
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>その他注意事項</dt>
+          <dd>
+            <ul class="c-List_Text-disc">
+              <li>
+                楽天モバイル(Rakuten最強プラン)のプラン利用が開始された月からの楽天市場での商品購入が対象となります。
+                <div class="u-Adjust_Mt-16">
+                  <strong>【プラン利用開始日とは】</strong>
+                  <div class="u-Adjust_Mt-8">
+                    - 新規お申し込みの場合<br>
+                    <span class="c-Txt_Cap u-Adjust_Mt-8">※➀➁のどちらか早い方がサービス利用開始日となります</span><br>
+                    ➀プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br>
+                    ➁楽天モバイル株式会社に配送完了データが通知された日<br>
+                  </div>
+                </div>
+                <div class="u-Adjust_Mt-16">
+                  - 【他社から乗り換え（MNP）の場合】もしくは【楽天モバイル（ドコモ回線・au回線）の料金プランから移行した場合】<br>
+                  <span class="c-Txt_Cap u-Adjust_Mt-8">※➀➁のどちらか早い方がサービス利用開始日となります</span>
+                  <br>
+                  ➀プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br>
+                  ➁楽天モバイル（ドコモ回線・au回線）の料金プランから移行した場合：プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日
+                </div>
+              </li>
+
+              <li>商品ページなどでの倍率やポイント数の表示は、プラン利用が開始されてから2-3日かかります。倍率の反映タイミングについて、詳しくは<a class="c-Link_Txt" href="https://ichiba.faq.rakuten.net/detail/000007073" target="_blank">こちら</a></li>
+              <li>楽天モバイルをご解約された場合、解約した月から特典の対象外となります。</li>
+
+              <li>店舗（楽天モバイルショップ）、楽天モバイル　楽天市場店、価格.comからのお申し込みも特典対象となります。</li>
+              <li>以下の条件に当てはまる場合は、ポイント付与対象外となります。</li>
+            </ul>
+            <ul class="c-Txt_Cap u-Adjust_Mt-8">
+              <li><span>※</span>楽天モバイルのサービス利用が開始していない場合</li>
+              <li><span>※</span>ポイント付与時に登録された楽天ポイント口座を削除された場合</li>
+              <li><span>※</span>楽天モバイルに楽天ポイント口座が登録されていない場合</li>
+              <li><span>※</span>楽天モバイルにご登録の楽天IDを削除された場合</li>
+              <li><span>※</span>当社の提供するサービスなどの料金のお支払いを、お支払期限までに行わなかった場合</li>
+              <li><span>※</span>当社が定める規約などに違反した場合</li>
+              <li><span>※</span>そのほか、楽天モバイル株式会社が会員として不適格であると合理的な根拠に基づき判断した場合</li>
+              <li><span>※</span>本特典は予告なく内容の変更、中止させていただく場合があります。</li>
+              <li><span>※</span>記載の内容は2023年12月1日（金）時点の情報となります。</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <div id="campaign-rule-start" class="u-Adjust_Mt-64">
+    <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1173', level: 'h3', year: '2024', class: '' }}) %>
+  </div>
+
+  <!-- 1173 -->
+
+  <div class="u-Adjust_Mt-64">
+    <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2091', level: 'h2', year: '2023', class: '' }}) %>
+  </div>
+
+  <div class="u-Adjust_Mt-64">
+    <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2142', level: 'h2', year: '2023', class: '' }}) %>
+  </div>
+
+ <div class="c-Accordion u-Adjust_Mt-32">
+  <button type="button" id="accordion-10" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-10"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>過去のキャンペーン</button>
+  <div id="accordion-content-10" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-10" aria-hidden="true" style="display: none;">
+
+    <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-0">
+      <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1173_240401', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">【毎月開催】楽天モバイル「Rakuten最強プラン」を初めてお申し込みで4,000ポイントプレゼントキャンペーン</span>'}}) %>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Rule">
+      <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1173_240301', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">【毎月開催】楽天モバイル「Rakuten最強プラン」を初めてお申し込みで3,000ポイントプレゼントキャンペーン</span>'}}) %>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Rule">
+      <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1173_240201', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">【毎月開催】楽天モバイル「Rakuten最強プラン」を初めてお申し込みで3,000ポイントプレゼントキャンペーン</span>'}}) %>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Rule">
+      <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1173_240101', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">【毎月開催】楽天モバイル「Rakuten最強プラン」を初めてお申し込みで3,000ポイントプレゼントキャンペーン</span>'}}) %>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Rule">
+      <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1173_231201', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">【毎月開催】楽天モバイル「Rakuten最強プラン」を初めてお申し込みで3,000ポイントプレゼントキャンペーン</span>'}}) %>
+    </div>
+  </div>
+</div>
+
+
+<%#
+  <div class="<ネームスペース後で復活>-Layout_Section-btn u-Adjust_Mt-24">
+    <p class="<ネームスペース後で復活>-Btn_Primary"><a href="<サイトパス後で復活>support/notes/?l-id=campaign_point_return_notes" class="c-Btn_Primary"><span>申し込む</span></a></p>
+  </div>
+%>
+
+  <div class="u-Adjust_Mt-64">
+    <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+  </div>
+
+</div>
+
+
+<div class="spu-Btn_Floating spu-Btn_Floating-start" id="openSPU_start-point-close-btn">
+  <a class="js-floating" data-ratid="campaign_spu_floating-btn" data-ratevent="click" data-ratparam="all"><img src="<%= sitepath %>assets/img/campaign/spu/img-floating-btn-3000.png?240501" alt="SPU Start Point Floating Button" width="124" height="135"></a>
+  <div class="spu-Btn_Floating-close">
+  <div role="button" tabindex="0" id="SPU_start-point-close-btn" class="spu-Btn_Floating-close-btn" aria-label="フローティングボタンを閉じる"><img src="<%= sitepath %>assets/img/campaign/spu/img-floating-btn-close.png" alt="" width="38" height="38"></div>
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-news.ejs') %>
+    <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+</div>
+
+<%- include('/include/_common-js') %>
+<script src="https://r.r10s.jp/com/js/d/rjs/rjs_helpers-1.1.0.min.js"></script>
+<script type="text/javascript" charset="EUC-JP" src="https://r.r10s.jp/com/js/d/check_entry/check_entry-1.1.1.min.js"></script>
+<%- include('/include/_append-body') %>
+<%- include('/include/poikaku-gadget/_js') %>
+
+<script>
+  (function ($) {
+    $('#SPU_start-point-close-btn').on('click', function () {
+      $("#openSPU_start-point-close-btn").fadeOut();
+    });
+    let target = $("#SPU_start-point").offset().top;
+    $(".js-floating").on('click', function () {
+      $("html,body").animate({ scrollTop: target }, 600);
+    });
+  })(jQuery);
+</script>
+
+<!-- ReX Campaign Entry Button: Configuration -->
+<script>
+  var rexButtons = [{"code":"/rmobile/spun/220916","theme":"red","wide":false,"showCelebration":false,"redirection":{"enabled":true,"url":"https://network.mobile.rakuten.co.jp/fee/un-limit/","pageTitle":"プラン詳細ページ","linkText":""},"ids":["rex-ceb-01"]}]
+</script>
+
+<!-- ReX Campaign Entry Button: Script -->
+<script src="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/js/main.js" defer></script>
+
+</body>
+</html>

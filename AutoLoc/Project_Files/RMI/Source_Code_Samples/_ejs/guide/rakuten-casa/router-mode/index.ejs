@@ -1,0 +1,165 @@
+<% const pagetitle = "Rakuten Casa 6のルーターモード設定方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/rakuten-casa/", label:"Rakuten Casaアプリのご利用方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten Casa 6（楽天カーサ6）のルーターモードを設定する方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-32">
+      Rakuten Casa 6をルーターモードで使用する場合は、Rakuten Casaアプリを使った設定変更が必要です。<br>
+      Rakuten Casaアプリをダウンロード後、アプリを起動し以下の手順に沿って操作を行ってください。
+    </p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">登録方法</h2>
+    <ol class="c-Flow u-Adjust_Mt-16">
+      <li>
+        <h3 class="c-Heading_Lv3">1. ホーム画面から「Casa設定」をタップ</h3>
+
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/router-mode/img-step01.png" class="c-Img_Capture" alt="">
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">2. 「ネットワーク設定」をタップ</h3>
+
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/router-mode/img-step02.png" class="c-Img_Capture" alt="">
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">3. 画面の指示に従い、Rakuten Casa本体のモード切替スイッチを変更する</h3>
+        <p class="u-Adjust_Mt-16">モード切替スイッチを変更後、電源ケーブルの抜き差しを行い、Casa本体の再起動を行ってください。</p>
+
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/router-mode/img-step03.png" class="c-Img_Capture" alt="">
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">4. 本体再起動後、「WAN設定」をタップ</h3>
+        <p class="u-Adjust_Mt-16">本体の再起動が完了したら再度アプリ画面に戻り、「Casa設定＞ネットワーク設定」から「WAN設定」をタップしてください。</p>
+
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/router-mode/img-step04.png" class="c-Img_Capture" alt="">
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">5. 「DS Lite」を選択し、「保存する」をタップ</h3>
+
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/router-mode/img-step05.png" class="c-Img_Capture" alt="">
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">6. 設定完了</h3>
+        <p class="u-Adjust_Mt-16">「変更を保存しました」と表示されたら設定完了です。</p>
+
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/router-mode/img-step06.png" class="c-Img_Capture" alt="">
+          </div>
+
+        </div>
+      </li>
+
+    </ol>
+
+    <p class="u-Adjust_Mt-48">以上で設定は完了です。</p>
+  </div>
+</div>
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

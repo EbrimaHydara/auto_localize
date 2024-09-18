@@ -1,0 +1,639 @@
+<% const pagetitle = "Xperia 5 IV" -%>
+<% const directory = "xperia-5m4" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/smartphone/", label:"Android"}] -%>
+<% const namespace = "product-xperia-5m4" -%>
+<% const theme = "Light" -%>
+<% const point = 3000 -%>
+<%# const pointModel = 2000 -%>
+<%# const pointEntry = 5000 -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+*/
+const bundleFlag = 'bundle';
+const exid = 600579;
+-%>
+
+<% const priceDetailConfig = {
+  bundleFlag: bundleFlag,
+  theme: theme,
+  price: 106900,
+  priceBefore: 119900,
+  PriceBeforeUnnumberedAnnotationText: '楽天モバイルでの販売価格（販売期間：2022年10月21日～2023年4月19日）',
+  // pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  // pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  pointBackTextA: `<span>楽天モバイルお申し込みで<br class="product-detail-Utility_Show-sp"><span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当のポイント還元<sub>※1,4</sub></span>`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 4454,
+  // division24Before: ,
+  division48: 2227,
+  // division48Before: ,
+  tradeinProductName: 'Xperia 5 III',
+  optionPattern: 'one-option',
+  maxTradeinPrice: 16830,
+  tradeinPoint: 5000,
+  lid: directory,
+  capacity: 128,
+  pointAppealBtnCapNo: 6,
+  carrier: 'docomo',
+  //　notificationEmail: 'true',
+  //　notificationEmailLink: '/product/reservation/xperia-5m4/'
+  discountPrice: 6000,
+  applyPoint: 6000,
+  firstTimeApplyPoint: 6000,
+  applicationFromWebPoint: 20000,
+  // mnp: false,
+  anchorId: 'campaign-rule1526',
+  trakingId: 'xperia-5m4',
+  exid: exid,
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "Xperia 5 IV（エクスペリア）の特長・スペックなどをご確認いただけます。楽天モバイル対応Android製品。オンライン簡単手続きが便利！",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inc/i-product-head.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%
+const modalInfo = [
+  {
+    question: {
+      title: '色を選択',
+      warning: '購入する製品の色を選択してください。',
+      type: 'color',
+      value: 'color',
+      select: [
+        {
+          'id': 'ecruWhite',
+          'name': 'エクリュホワイト',
+          'sub': '',
+          'color': '#E7E5D8',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'black',
+          'name': 'ブラック',
+          'sub': '',
+          'color': '#2d2926',
+          'checked': false,
+          'disabled': false,
+        }
+      ],
+      upperinfo: ``,
+      lowerinfo: ``
+    },
+  },
+  {
+    question: {
+      title: 'SIMタイプ・プラン（Rakuten UN-LIMIT VI）を選択',
+      warning: 'プランを選択してください。',
+      type: 'radio',
+      value: 'plan',
+      select: [
+        {
+          'id': 'sim',
+          'name': 'nanoSIM＋プランで申し込む',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nosim',
+          'name': 'プランを申し込まない（製品のみ購入）',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: ``,
+      lowerinfo: `
+        <p class="c-Txt_Cap">※製品のみ購入の場合、SIM購入（プラン選択）は不要です。</p>
+      `
+    }
+  },
+  {
+    question: {
+      title: 'スマホ交換保証プラスを選択',
+      warning: 'スマホ交換保証プラスを選択してください。',
+      type: 'radio',
+      value: 'warranty',
+      select: [
+        {
+          'id': 'warranty',
+          'name': '申し込む：715円／月（税込）',
+          'sub': '',
+          'checked': true,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nowarranty',
+          'name': '申し込まない',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: `
+        <p class="c-Txt_Emp-02">加入できるのは購入時のみ</p>
+        <p class="u-Adjust_Mt-8">楽天モバイルで購入したスマートフォンやモバイルルーターの故障・紛失時に、最短で当日<sub>※</sub>に新品同等の同一機種を交換品としてお届けします。</p>
+        <small>※対象地域：東京／神奈川／千葉／埼玉（12時までに受付の場合）</small>
+        <p>サービスの詳細は、こちらの<a href="/service/replacement-warranty-plus/?l-id=product_xperia-5m4_cpn_01">スマホ交換保証プラス</a>をご参照ください。</p>
+      `,
+      lowerinfo: ``
+    }
+  }
+]
+%>
+<%_ if (bundleFlag !== true) { _%>
+<script>
+const urlList = {
+  'ecruWhite_sim_warranty': '/',
+  'ecruWhite_sim_nowarranty': '/',
+  'ecruWhite_nosim_warranty': '/',
+  'ecruWhite_nosim_nowarranty': '/',
+  'black_sim_warranty': '/',
+  'black_sim_nowarranty': '/',
+  'black_nosim_warranty': '/',
+  'black_nosim_nowarranty': '',
+}
+</script>
+<%- include('/include/product/_purchase-modal', { modalInfo: modalInfo }) %>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div>
+  <div class="l-System_Container u-Adjust_My-24 u-Adjust_Align-center">
+    <p class="c-Txt_Emp-01 c-Txt_Normal-xl">Xperia 5 IVは販売を終了いたしました。</p>
+    <div class="u-Adjust_Mt-24">
+      <a href="/product/smartphone/?l-id=end_product_smartphone" class="c-Btn_Regular-large"><span>販売中のAndroid製品を見る</span></a>
+    </div>
+  </div>
+  <div class="product-detail-Layout_Hero-with-bnr <%= namespace %>_Hero">
+    <div class="l-System_Container u-Adjust_Pt-16">
+      <section class="product-detail-Hero">
+        <div class="product-detail-Hero_Data">
+          <div>
+            <h1 class="co-Heading_Lv1 product-detail-Hero_Name"><img src="<%= sitepath %>assets/img/product/<%= directory %>/logo.svg" alt="<%= pagetitle %>"></h1>
+            <p class="product-detail-Hero_Maker">Sony</p>
+            <p class="product-detail-Hero_Copy">手の中に感動を。</p>
+          </div>
+        </div>
+        <div class="product-detail-Hero_Main u-Adjust_Mt-0">
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+            <li><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt=""></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-color product-detail-Theme_<%= theme %>-color">
+            <li class="js-color js-color1" aria-current="true" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-01"><span style="background:#E7E5D8"></span></li>
+            <li class="js-color js-color2" aria-current="false" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-02"><span style="background:#2d2926"></span></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-01_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-01_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-01_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-01_thumbnail-04"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-01_thumbnail-05"></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-02_thumbnail-01" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-02_thumbnail-02" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-02_thumbnail-03" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-02_thumbnail-04" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_color-02_thumbnail-05" alt=""></li>
+          </ul>
+        </div>
+      </section>
+
+      </div>
+    </div>
+
+
+  <div class="<%= namespace %>_Main">
+    <div class="product-detail-Price product-detail-Theme_<%= theme %>-price">
+
+    <div class="l-System_Container">
+
+      <div class="product-detail-Spec">
+        <ul class="product-detail-Spec_<%= theme %>">
+          <li aria-current="true"><span class="c-Icon_Product-waterproof"></span>防水</li>
+          <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>おサイフ<br>ケータイ</li>
+          <li aria-current="true"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+          <li aria-current="false"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+          <li aria-current="true"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+          <li aria-current="true"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+          <li aria-current="true"><span class="c-Icon_Product-connection"></span>高速通信</li>
+        </ul>
+        <p class="u-Adjust_Mt-64"><a href="#spec" class="c-Link_Txt-icon-front js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_spec-anchor"><span class="c-Icon_Arrow-down-l"></span>基本スペックを見る</a></p>
+      </div>
+
+      <section id="feature" class="product-detail-Layout_Section">
+        <h2 class="c-Heading_Lv2-rich" data-ratid="xperia-5m4_scroll-03_feature" data-ratevent="appear">特長</h2>
+
+        <div style="position: relative; display: block;max-width: 768px;margin-left: auto;margin-right: auto;"><div style="padding-top: 56.25%;border: solid 1px #ecf6f1;"><iframe src="https://players.brightcove.net/5068808272001/default_default/index.html?videoId=6312413780112" allowfullscreen="" allow="encrypted-media" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;border: solid 1px #ecf6f1;"></iframe></div></div>
+
+        <ul class="product-detail-Catch <%= namespace %>_Catch <%= namespace %>_Catch">
+          <li><a href="#feature1" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_feature-anchor-01">瞳に、ズバピタ。</a></li>
+          <li><a href="#feature2" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_feature-anchor-02">心揺さぶる、神サウンド。</a></li>
+          <li><a href="#feature3" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-5m4_feature-anchor-03">バテない、バッテリー。</a></li>
+        </ul>
+
+        <section class="product-detail-Feature" id="feature1">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-01.png" alt=""></figure>
+          <h2 class="c-Heading_Lv2 u-Adjust_Mt-24">瞳に、ズバピタ。動画でも写真でも、息を呑むポートレートを。</h2>
+          <p class="product-detail-Feature_Txt">
+            自動で瞳にピントが合うので、感情まで写しとったような表情のポートレートが撮れます。“追いかける瞳AF（オートフォーカス）”で動き回る子どもやペット<span class="c-Txt_Cap">※1</span> の瞳にもピントが合い、自然な表情の写真を撮影できます。
+          </p>
+          <ul class="c-Txt_Cap u-Adjust_Mt-16">
+            <li><span class="c-Txt_Cap">※1 すべての動物が対象ではありません。</span></li>
+            <li><span class="c-Txt_Cap">※撮影環境などによっては、被写体を検出できない場合があります。</span></li>
+          </ul>
+        </section>
+        <section class="product-detail-Feature" id="feature2">
+        <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-02.png?221125" alt=""></figure>
+          <h2 class="c-Heading_Lv2 u-Adjust_Mt-24">心揺さぶる、神サウンド。エンタメが生まれ変わる。</h2>
+          <p class="product-detail-Feature_Txt">
+            進化した内蔵スピーカーで、BGMも、映画も、スマホとは思えないほどのいい音に。<br>
+            高精細な有機EL・21:9ワイドディスプレイで、まるで映画館の真ん中にいるような没入感を。<br>
+            ソニーだからできる、臨場感あふれるエンタメ体験をお楽しみいただけます。
+          </p>
+        </section>
+        <section class="product-detail-Feature" id="feature3">
+        <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-03.png" alt=""></figure>
+          <h2 class="c-Heading_Lv2 u-Adjust_Mt-24">バテない、バッテリー。1日ずっと長持ち<span class="c-Txt_Cap">※2</span>。この使い心地を3年<span class="c-Txt_Cap">※3</span>後も。</h2>
+          <p class="product-detail-Feature_Txt">
+            大容量の5,000mAhバッテリーを搭載。3年後も劣化しにくい高性能バッテリーで、快適なスマホライフを。<br>
+            最短約30分で50％の急速充電<span class="c-Txt_Cap">※4</span>や、ワイヤレス充電にも対応しています。
+          </p>
+          <ul class="c-Txt_Cap u-Adjust_Mt-16">
+            <li><span class="c-Txt_Cap">※2 お客様のご使用環境やご利用状況により使用可能時間は異なります。</span></li>
+            <li><span class="c-Txt_Cap">※3 同タイプバッテリーで充放電を繰り返すシミュレーションに基づく（USB充電の場合）。バッテリーの寿命は利用状況によって変化します。</span></li>
+            <li><span class="c-Txt_Cap">※4 別売の30W急速充電対応ACアダプター（XQZ-UC1）で充電する場合。</span></li>
+          </ul>
+        </section>
+      </section>
+
+      <div class="product-detail-Layout_Sub <%= namespace %>_Sub">
+        <section class="product-detail-Layout_Section">
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-01.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4" data-ratid="xperia-5m4_scroll-04_feature" data-ratevent="appear">手にすることが嬉しくなる上質感。</h3>
+              <p>
+                心地よい手ざわりのコンパクトデザイン。<br>
+                側面をフラットにすることで、よりスタイリッシュに。背面は、シルキーに輝くフロストガラスでマットに仕上げました。
+              </p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-02.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">静止画も動画も、本格撮影体験。</h3>
+              <p>ソニーのデジタル一眼カメラα™の技術やノウハウ、UIを反映した独自機能「Photography Pro」「Videography Pro」を搭載。自分好みのこだわり撮影が可能です。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-03.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">超広角・広角・望遠の3つのレンズを搭載。</h3>
+              <p>
+                シーンに合わせて様々な構図の撮影を楽しめるだけでなく、すべてのレンズで高精度・高速に被写体の瞳を追いかけるので、フォーカスに気を配ることなく素敵なポートレートを撮影できます。<br>
+                また、クリアな描写を可能にするZEISSレンズを採用しています。
+              </p>
+              <p class="u-Adjust_Mt-16 c-Txt_Cap">※撮影環境などによっては、被写体を検出できない場合があります。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-04.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">大切な思い出を感動的に描写できるスローモーション撮影。</h3>
+              <p>実際の様子を見ても気づけなかった何気ない日常やちょっとしたしぐさも、情感たっぷりに描き出します。4K画質で5倍スローモーション撮影をすれば、さらに感動的な仕上がりに。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-05.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">カメラのノウハウが詰まった人肌表現。</h3>
+              <p>ソニーのデジタル一眼カメラα™の技術とノウハウが、動画や写真における色味の再現に生かされています。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-06.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">薄いボディから、アツいサウンド。</h3>
+              <p>左右均等にフロント配置されたステレオスピーカーにより、立体感のあるサウンドをよりクリアに再生。スマホの内蔵スピーカーとは思えないほどのいい音で、映画や音楽を楽しめます。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-07.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">映画館の真ん中にいるような感動体験を。</h3>
+              <p>ソニーのテレビブラビアの技術利用した高画質化エンジンを搭載した有機EL・21:9ワイドディスプレイで、まるでシアターにいるような臨場感をお楽しみいただけます。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-08.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">ハイスコアへ近づく、充実のゲーム環境。</h3>
+              <p>プレーヤーの能力を引き出す設定、ベストプレイの録画とシェア、攻略情報の検索など、ゲームを楽しむためのさまざまな機能「ゲームエンハンサー」を搭載。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-09.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">高速CPUでサクサク使える。</h3>
+              <p>高性能CPUが快適な操作性をサポート。音楽も、映画も、ゲームも、カメラも、抜群のパフォーマンスで。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-10.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">基本性能もばっちり。</h3>
+              <p>
+                水濡れや埃を気にせず使える防水<span class="c-Txt_Cap">※5</span>・防塵<span class="c-Txt_Cap">※6</span>性能。<br>
+                Corning® Gorilla® Glass Victus®を採用しており、落としても割れにくく、傷にも強いタフボディです。
+              </p>
+              <ul class="c-Txt_Cap u-Adjust_Mt-16">
+                <li><span class="c-Txt_Cap">※5 防水：IPX5・IPX8に対応。IPX5とは、内径6.3mmの注水ノズルを使用し、約3mの距離から1分あたり12.5リットルの水を最低3分間注水する条件であらゆる方向から噴流を当てても、通信機器としての機能を有することを意味します。IPX8とは、常温で水道水、かつ静水の水深1.5mのところに携帯電話を静かに沈め、約30分間放置後に取り出したときに通信機器としての機能を有することを意味します。</span></li>
+                <li><span class="c-Txt_Cap">※6 防塵（ぼうじん）：IP6Xに対応。IP6Xとは、保護度合いを指し、直径75μm以下の塵埃（じんあい）が入った装置に携帯電話を8時間入れてかくはんさせ、取り出したときに内部に塵埃が侵入しない機能を有することを意味します。</span></li>
+              </ul>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-11.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">ソニー・ピクチャーズの対象作品が1年間見放題<span class="c-Txt_Cap">※7</span></h3>
+              <p>ソニー・ピクチャーズの作品が1年間見放題に加え、最新作などを5作品まで引き換えできるクレジット特典<span class="c-Txt_Cap">※8</span>も付いてきます。</p>
+              <ul class="c-Txt_Cap u-Adjust_Mt-16">
+                <li><span class="c-Txt_Cap">※7 見放題コンテンツは時期により変更する場合があります。</span></li>
+                <li><span class="c-Txt_Cap">※8 引き換えおよび視聴には期限があります。詳しくは<a href="https://xperia.sony.jp/special/bravia-core/" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">専用サイト<span class="c-Icon_New-window-l"></span></a>をご覧ください。</span></li>
+              </ul>
+            </div>
+          </section>
+        </section>
+      </div>
+      <p class="u-Adjust_Mt-16 c-Txt_Cap">※「ソニー」および「Xperia」、ならびにこのページ上で使用される商品名、サービス名およびロゴマークは、ソニーグループ株式会社またはその関連会社の登録商標または商標です。</p>
+    </div>
+  </div>
+</div>
+
+<div class="product-detail-Layout_Other">
+  <div class="l-System_Container">
+
+    <%- include('/include/product/_compensation') %>
+
+    <section class="product-detail-Layout_Section" id="spec">
+      <h2 class="c-Heading_Lv2" data-ratid="xperia-5m4_scroll-06_spec" data-ratevent="appear">スペック</h2>
+      <dl class="c-Dl">
+        <div>
+          <dt>製品名</dt>
+          <dd>
+            Xperia 5 IV
+          </dd>
+        </div>
+        <div>
+          <dt>色</dt>
+          <dd>
+            エクリュホワイト / ブラック
+          </dd>
+        </div>
+        <div>
+          <dt>サイズ</dt>
+          <dd>
+            約156 x 約67 x 約8.2 (mm)
+          </dd>
+        </div>
+        <div>
+          <dt>質量</dt>
+          <dd>
+            約172g
+          </dd>
+        </div>
+        <div>
+          <dt>ディスプレイ</dt>
+          <dd>
+            <p>サイズ / 種類</p>
+            約6.1インチ / OLED
+            <p class="u-Adjust_Mt-16">解像度</p>
+            FHD+ / 1,080 × 2,520
+          </dd>
+        </div>
+        <div>
+          <dt>連続待受時間（LTE）</dt>
+          <dd>
+            約540時間
+          </dd>
+        </div>
+        <div>
+          <dt>連続通話（通信）時間（LTE）</dt>
+          <dd>
+            約31時間
+          </dd>
+        </div>
+        <div>
+          <dt>CPU</dt>
+          <dd>
+            Snapdragon® 8 Gen 1 Mobile Platform / オクタコア 3GHz x 1 + 2.5GHz x 3 + 1.8GHz x 4
+          </dd>
+        </div>
+        <div>
+          <dt>OS※1</dt>
+          <dd>
+            Android™ 12
+          </dd>
+        </div>
+        <div>
+          <dt>内部メモリ（RAM / ROM）</dt>
+          <dd>
+            8GB (RAM) / 128GB (ROM)
+          </dd>
+        </div>
+        <div>
+          <dt>メインカメラ（外側）</dt>
+          <dd>
+            約1,220万画素 (広角) + 約1,220万画素 (望遠) + 約1,220万画素 (超広角)
+          </dd>
+        </div>
+        <div>
+          <dt>フロントカメラ（内側）</dt>
+          <dd>
+            約1,220万画素 (広角)
+          </dd>
+        </div>
+        <div>
+          <dt>バッテリー容量</dt>
+          <dd>
+            5,000mAh<br>
+            <span class="c-Txt_Cap">※実際に使用できるバッテリー容量は多少異なる可能性があります。</span>
+          </dd>
+        </div>
+        <div>
+          <dt>ワイヤレス充電</dt>
+          <dd>
+            対応
+          </dd>
+        </div>
+        <div>
+          <dt>おサイフケータイ / NFC</dt>
+          <dd>
+            対応 / 対応
+          </dd>
+        </div>
+        <div>
+          <dt>防水 / 防塵</dt>
+          <dd>
+            対応 (IPX5 / IPX8 / IP6X)
+          </dd>
+        </div>
+        <div>
+          <dt>生体認証（指紋 / 顔）</dt>
+          <dd>
+            対応 / 非対応
+          </dd>
+        </div>
+        <div>
+          <dt>Wi-Fi規格</dt>
+          <dd>
+            IEEE802.11 a/b/g/n/ac/ax
+          </dd>
+        </div>
+        <div>
+          <dt>テザリング（Wi-Fi）</dt>
+          <dd>
+            10台
+          </dd>
+        </div>
+        <div>
+          <dt>SIMタイプ</dt>
+          <dd>
+            nanoSIM / eSIM
+          </dd>
+        </div>
+        <div>
+          <dt>付属品</dt>
+          <dd>
+            保証書 x1 / 取扱説明書 ～ 重要なお知らせ x1 / 取扱説明書 ～ スタートアップガイド x1
+          </dd>
+        </div>
+      </dl>
+      <ul class="c-Txt_Cap u-Adjust_Mt-16">
+        <li><span>※1</span>発売時点のOSのバージョンを記載しています。最新のOSバージョン情報は<a href="<%= sitepath %>information/software/xperia-5m4/" class="c-Link_Txt">こちら</a>をご確認ください。</li>
+      </ul>
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html?l-id=product_xperia-5m4_spec_xperia-5m4" class="c-Link_Txt-inline-icon">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+    </section>
+
+    <section class="product-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">設定・サポート</h2>
+      <div>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/inquiry/?l-id=product_xperia-5m4_guide_inquiry" class="c-Link_Txt-inline-icon">メーカーへのお問い合わせ<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </section>
+
+    <div id="previously-seen"></div>
+  </div>
+  <div class="u-Adjust_Mt-40">
+    <%- include('/include/product/_support') %>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/_append-body') %>
+</div>
+</body>
+</html>

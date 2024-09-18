@@ -1,0 +1,660 @@
+<% const pagetitle = "Rakuten最強プラン（データタイプ）SIMカードの開通手続き方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/setting/android/", label:"Android製品の設定手順"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten最強プラン（データタイプ）のSIMカードを開通・設定する手順をご案内いたします。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">Rakuten最強プラン（データタイプ）SIMカードの開通・設定手順をご案内いたします。</p>
+    <ul class="u-Adjust_Mt-24">
+      <li class="u-Adjust_Mt-8"><a href="#sec1" class="c-Link_Txt-icon-front js-scroll" data-ratid="guide_data-type-sim_anc_01" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>Rakuten最強プラン（データタイプ）ご利用の注意事項</a></li>
+      <li class="u-Adjust_Mt-8"><a href="#sec2" class="c-Link_Txt-icon-front js-scroll" data-ratid="guide_data-type-sim_anc_02" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>開通手続き前の事前準備について</a></li>
+      <li class="u-Adjust_Mt-8"><a href="#sec3" class="c-Link_Txt-icon-front js-scroll" data-ratid="guide_data-type-sim_anc_03" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>開通手続き方法</a></li>
+    </ul>
+  </div>
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="sec1">Rakuten最強プラン（データタイプ）ご利用の注意事項</h2>
+    <p class="u-Adjust_Mt-32">Rakuten最強プラン（データタイプ）では以下の一部サービスがご利用いただけません。</p>
+    <ul class="c-List_Text-disc u-Adjust_Mt-24 u-Adjust_Ml-16">
+      <li>Rakuten Link</li>
+      <li>楽メール</li>
+      <li>通話サービス全般（緊急通報含む）</li>
+    </ul>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="sec2">開通手続き前の事前準備について</h2>
+    <p class="u-Adjust_Mt-32">ご利用製品について、開通手続き前に以下2点をご確認ください。</p>
+    <ul class="c-List_Text-disc u-Adjust_Mt-8 u-Adjust_Ml-16">
+      <li>
+        楽天回線対応製品であること
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※楽天回線対応製品以外をご利用の場合、当社の動作保証対象外となります。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※海外で購入された製品は、楽天回線対応製品であっても動作保証対象外となります。</p>
+      </li>
+      <li>
+        製品のOSやソフトウェア（SW）が「確認済OS/SWバージョン」以降のバージョンであること
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※「確認済OS/SWバージョン」よりも前のバージョンの場合、製品のOSやSWのアップデートを行ってください。</p>
+      </li>
+    </ul>
+    <div class="u-Adjust_Mt-32">
+      <a href="<%= sitepath %>product/byod/" class="c-Btn_Regular"><span>ご利用製品の対応状況を確認する</span></a>
+    </div>
+    <p class="u-Adjust_Mt-32">
+      他の携帯電話会社でご契約されていた製品を使用する場合、製品のSIMロック解除が必要な場合があります。<br>
+      詳しくは、ご購入元の携帯電話会社のWebサイトをご確認ください。
+    </p>
+    <div class="c-Accordion u-Adjust_Mt-32">
+      <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>主な携帯電話会社のSIMロック解除手続き方法</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+        <div>
+          <a href="https://www.docomo.ne.jp/support/unlock_simcard/" class="c-Link_Txt-inline" target="_blank">NTTドコモ<span class="c-Icon_Pdf-l"></span></a>
+        </div>
+        <div class="u-Adjust_Mt-16">
+          <a href="https://www.au.com/support/service/mobile/procedure/simcard/unlock/" class="c-Link_Txt-inline" target="_blank">au／沖縄セルラー<span class="c-Icon_Pdf-l"></span></a>
+        </div>
+        <div class="u-Adjust_Mt-16">
+          <a href="https://www.softbank.jp/mobile/support/usim/unlock_procedure/" class="c-Link_Txt-inline" target="_blank">SoftBank<span class="c-Icon_Pdf-l"></span></a>
+        </div>
+        <div class="u-Adjust_Mt-16">
+          <a href="https://www.ymobile.jp/support/process/unlock_procedure/" class="c-Link_Txt-inline" target="_blank">ワイモバイル<span class="c-Icon_Pdf-l"></span></a>
+        </div>
+        <div class="u-Adjust_Mt-16">
+          <a href="https://www.uqwimax.jp/mobile/support/contract/guide/sim_unlock/" class="c-Link_Txt-inline" target="_blank">UQモバイル<span class="c-Icon_Pdf-l"></span></a>
+        </div>
+      </div>
+    </div>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="sec3">開通手続き方法</h2>
+    <ul class="u-Adjust_Mt-24">
+      <li class="u-Adjust_Mt-8"><a href="#sec4" class="c-Link_Txt-icon-front js-scroll" data-ratid="guide_data-type-sim_anc_dual-sim" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>他社のSIMと楽天モバイルのSIMカードを利用する（デュアルSIM）設定方法</a></li>
+      <li class="u-Adjust_Mt-8"><a href="#sec5" class="c-Link_Txt-icon-front js-scroll" data-ratid="guide_data-type-sim_anc_single-sim" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>SIMカードのみ利用する（シングルSIM）設定方法</a></li>
+    </ul>
+    <div class="c-Accordion u-Adjust_Mt-32">
+      <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>デュアルSIMとは？</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display: none;">
+        <p>1台のスマホに2つのSIMを挿入することで、2つの回線を使い分けて利用できる機能です。</p>
+        <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/data-type-sim-01.png" alt="デュアルSIMとは？" width="343">
+        </div>
+      </div>
+    </div>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="sec4">他社のSIMと楽天モバイルのSIMカードを利用する（デュアルSIM）設定方法</h2>
+    <p class="u-Adjust_Mt-8 c-Txt_Cap">※モバイルルーターでご利用の場合、Android製品の手順をご確認ください。</p>
+    <div class="c-Tab js-Tab u-Adjust_Mt-32">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">iPhoneの場合</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">Android製品の場合</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ol class="c-Flow u-Adjust_Mt-32">
+          <li>
+            <h3 class="c-Heading_Lv3">1. iPhoneの電源を落とす</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. SIMカードをnanoSIMサイズに切り離す</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. SIMカードをiPhoneにセットし、電源を入れる</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※手順5の画面が自動で表示されます。場合によって手順4のポップアップが先に表示されることがあります。表示されない場合は、<a href="#sec6" class="c-Link_Txt">こちら</a>を参考に設定を行ってください。
+            </p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. 「キャリア設定アップデート」のポップアップが表示された場合、必ず「アップデート」をタップする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※この手順以降で、キャリア設定アップデートのポップアップが表示された場合は「アップデート」とタップしてください。
+            </p>
+            <p class="c-Txt_Cap">
+              ※誤って「今はしない」を選択した場合、「設定」→「一般」→「情報」に進み、ポップアップを表示させてください。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img04.png" class="c-Img_Capture" alt="「キャリア設定アップデート」のポップアップが表示された場合、必ず「アップデート」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. モバイル通信プランを追加の表示を確認し、「続ける」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img01.png" class="c-Img_Capture" alt="「モバイル通信プランを追加」の表示を確認し、「続ける」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. モバイル通信プランの名称が表示されたら、「続ける」をタップする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※名称部分をタップすることで、お好みの名称に変更可能です。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img02.png" class="c-Img_Capture" alt="「モバイル通信プランを追加」の表示を確認し、「続ける」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">7. デフォルト回線は変更せず、「続ける」をタップする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap c-Txt_Emp-02">
+              ※楽天モバイルのSIMの番号をデフォルト回線に設定すると音声発信ができなくなります。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img24.png" class="c-Img_Capture" alt="デフォルト回線は変更せず、「続ける」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">8. iMessage と FaceTime で使用するモバイル通信プランを選択し、「続ける」をタップする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※選択した番号でiMessage／FaceTimeがご利用いただけます。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img03.png" class="c-Img_Capture" alt="iMessage と FaceTime で使用するモバイル通信プランを選択し、「続ける」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">9. モバイルデータ通信で楽天モバイルのSIMを選択し、「続ける」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img25.png" class="c-Img_Capture" alt="iMessage と FaceTime で使用するモバイル通信プランを選択し、「続ける」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">10. アンテナマークが表示されていることを確認し、楽天回線の開通を確認する</h3>
+            <p class="u-Adjust_Mt-16">
+              Wi-FiがONになっている場合はOFFにし、SafariやGoogle ChromeなどのWebブラウザアプリが利用できるかご確認ください。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img36.png" class="c-Img_Capture" alt="iMessage と FaceTime で使用するモバイル通信プランを選択し、「続ける」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">11. ご利用の製品でmy 楽天モバイルアプリをインストールしログインする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ログインが行えない場合は<a class="c-Link_Txt" href="<%= sitepath %>faq/detail/00001207/">「[my 楽天モバイル]ログインできません」</a>をご確認ください。
+            </p>
+            <div class="c-Box_App u-Adjust_Mt-24">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <p class="u-Adjust_Mt-48">
+          以上で開通手続きは完了です。
+        </p>
+        <div class="u-Rat_Appear-height" data-ratid="guide_data-type-sim_scroll_dual-sim_iphone" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="sec6">デュアルSIM設定の変更方法</h2>
+        <p class="u-Adjust_Mt-32">楽天モバイルのSIMを追加後、誤ってキャンセルを押してしまった場合や設定を誤った場合、「設定」から設定内容の変更ができます。</p>
+        <div class="c-Accordion u-Adjust_Mt-32">
+          <button type="button" id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>モバイル通信プランの名称の変更方法</button>
+          <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true" style="display: none;">
+            <ol class="c-Flow u-Adjust_Mt-32">
+              <li>
+                <h3 class="c-Heading_Lv3">1. 「設定」から「モバイル通信」を選択する</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img06.png" class="c-Img_Capture" alt="「設定」から「モバイル通信」を選択する" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. 名称を変更したいSIMを選択する</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img07.png" class="c-Img_Capture" alt="名称を変更したいSIMを選択する" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3. 「モバイル通信プランの名称」をタップする</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img08.png" class="c-Img_Capture" alt="「モバイル通信プランの名称」をタップする" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">4. 名称を設定し、左上をタップして前の画面に戻る</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img09.png" class="c-Img_Capture" alt="名称を設定し、左上をタップして前の画面に戻る" width="300">
+                </div>
+              </li>
+            </ol>
+            <p class="u-Adjust_Mt-16">
+              以上で完了です。
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>デフォルト回線の変更方法</button>
+          <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true" style="display: none;">
+            <p class="c-Txt_Emp-01 c-Txt_Cap">※楽天モバイルのSIMの番号をデフォルト回線に設定すると音声発信ができなくなります。すでにご利用中のSIMを選択してください。</p>
+            <ol class="c-Flow u-Adjust_Mt-16">
+              <li>
+                <h3 class="c-Heading_Lv3">1. 「設定」から「一般」を選択する</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img10.png" class="c-Img_Capture" alt="「設定」から「一般」を選択する" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. 「デフォルトの音声回線」をタップする</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img11.png" class="c-Img_Capture" alt="「デフォルトの音声回線」をタップする" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3. デフォルトの音声回線にしたい回線をタップし、「戻る」をタップする</h3>
+                <p class="u-Adjust_Mt-16 c-Txt_Emp-01 c-Txt_Cap">※楽天モバイルのSIMの番号をデフォルト回線に設定すると音声発信ができなくなります。すでにご利用中のSIMを選択してください。</p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img12.png" class="c-Img_Capture" alt="デフォルトの音声回線にしたい回線をタップし、「戻る」をタップする" width="300">
+                </div>
+              </li>
+            </ol>
+            <p class="u-Adjust_Mt-16">
+              以上で完了です。
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>iMessage と FaceTime で使用するモバイル通信プランの変更方法</button>
+          <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true" style="display: none;">
+            <ol class="c-Flow u-Adjust_Mt-32">
+              <li>
+                <h3 class="c-Heading_Lv3">1. 「設定」から「メッセージ」を選択する</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img13.png" class="c-Img_Capture" alt="「設定」から「メッセージ」を選択する" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. 「送受信」をタップする</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img14.png" class="c-Img_Capture" alt="「送受信」をタップする" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3. iMessageで使用する電話番号とメールアドレスを選択し、「メッセージ」をタップし「設定」に戻る</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img15.png" class="c-Img_Capture" alt="iMessageで使用する電話番号とメールアドレスを選択し、「メッセージ」をタップし「設定」に戻る" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">4. 「設定」から「FaceTime」を選択する</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img16.png" class="c-Img_Capture" alt="「設定」から「FaceTime」を選択する" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">5. FaceTimeの着信用・発信用の連絡先情報を選択し、「設定」をタップする</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img17.png" class="c-Img_Capture" alt="FaceTimeの着信用・発信用の連絡先情報を選択し、「設定」をタップする" width="300">
+                </div>
+              </li>
+            </ol>
+            <p class="u-Adjust_Mt-16">
+              以上で完了です。
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-6"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>モバイルデータ通信設定の変更方法</button>
+          <div id="accordion-content-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-6" aria-hidden="true" style="display: none;">
+            <ol class="c-Flow u-Adjust_Mt-32">
+              <li>
+                <h3 class="c-Heading_Lv3">1. 「設定」から「モバイル通信」を選択する</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img06.png" class="c-Img_Capture" alt="「設定」から「モバイル通信」を選択する" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. 「モバイルデータ通信」をタップする</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img18.png" class="c-Img_Capture" alt="「モバイルデータ通信」をタップする" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3. モバイル通信でデフォルトで使用する回線を選択し、「戻る」をタップする</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img19.png" class="c-Img_Capture" alt="モバイル通信でデフォルトで使用する回線を選択し、「戻る」をタップする" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">4. アンテナマークの表示を確認する</h3>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img36.png" class="c-Img_Capture" alt="アンテナマークの表示を確認する" width="300">
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">5. 選択した回線の接続を確認する</h3>
+                <p class="u-Adjust_Mt-16">
+                  Wi-FiがONになっている場合はOFFにし、SafariやGoogle ChromeなどのWebブラウザアプリが利用できるかご確認ください。
+                </p>
+              </li>
+            </ol>
+            <p class="u-Adjust_Mt-16">
+              以上で完了です。
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ul class="c-List_Text-disc u-Adjust_Mt-32">
+          <li>
+            掲載画面は「AQUOS wish3」のものです。製品やソフトウェアにより、表示内容が異なる場合があります。
+          </li>
+          <li>
+            モバイルルーター「Aterm MR05LN RW」のデュアルSIM設定方法は<a href="https://www.aterm.jp/function/mr05ln/guide/dualsim.html" class="c-Link_Txt" target="_blank">こちら</a>をご確認ください。
+          </li>
+        </ul>
+        <ol class="c-Flow u-Adjust_Mt-32">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 製品の電源を落とす</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. SIMカードを製品に応じたSIMサイズに切り離す</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. SIMカードを製品にセットし、電源を入れる</h3>
+            <div class="c-Accordion u-Adjust_Mt-16">
+              <button type="button" id="accordion-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-7"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>SIMカードのサイズについて</button>
+              <div id="accordion-content-7" class="c-Accordion_Panel js-Accordion_Panel u-Adjust_Mt-16" role="region" aria-labelledby="accordion-7" aria-hidden="true" style="display: none;">
+                <p>SIMのサイズは3種類あります。</p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap c-Txt_Emp-02">※楽天モバイルで販売しているSIMカード対応製品（スマートフォン）は全てnanoSIM（ナノシム）対応です。</p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/data-type-sim-02.png" alt="SIMのサイズは3種類あります。" width="300">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. アプリ一覧画面から「 設定」を開く</h3>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※画面は「AQUOS wish3」のものです。製品やソフトウェアのバージョンにより表示が異なる場合があります。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img28.png" class="c-Img_Capture" alt="アプリ一覧画面から「 設定」を開く" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. 「ネットワークとインターネット」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img29.png" class="c-Img_Capture" alt="「ネットワークとインターネット」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. 「SIM」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img30.png" class="c-Img_Capture" alt="「SIM」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">7. 楽天モバイルのSIMを選択する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img31.png" class="c-Img_Capture" alt="楽天モバイルのSIMを選択する" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">8. 「データ通信の設定」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img32.png" class="c-Img_Capture" alt="「SIMを使用」をオンにし、「データ通信の設定」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">9. 楽天モバイルのSIMを選択する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img33.png" class="c-Img_Capture" alt="楽天モバイルのSIMを選択する" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">10. 「SMSの設定」をタップする</h3>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※SMSの設定は必須でありません。現在利用中の番号を利用する場合、設定は不要ですので、<a href="#step-12" class="c-Link_Txt">手順12</a>へお進みください。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img34.png" class="c-Img_Capture" alt="「SMSの設定」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">11. 楽天モバイルのSIMを選択する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img35.png" class="c-Img_Capture" alt="楽天モバイルのSIMを選択する" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3" id="step-12">12. アンテナマークの表示を確認する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img05.png" class="c-Img_Capture" alt="アンテナマークの表示を確認する" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">13. 楽天回線の開通を確認する</h3>
+            <p class="u-Adjust_Mt-16">
+              Wi-FiがONになっている場合はOFFにし、Google ChromeなどのWebブラウザアプリが利用できるかご確認ください。
+            </p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">14. ご利用の製品でmy 楽天モバイルアプリをインストールしログインする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ログインが行えない場合は<a class="c-Link_Txt" href="<%= sitepath %>faq/detail/00001207/">「[my 楽天モバイル]ログインできません」</a>をご確認ください。
+            </p>
+            <div class="c-Box_App u-Adjust_Mt-24">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <p class="u-Adjust_Mt-48">
+          以上で開通手続きは完了です。
+        </p>
+        <div class="u-Rat_Appear-height" data-ratid="guide_data-type-sim_scroll_dual-sim_android" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+      </div>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="sec5">SIMカードのみ利用する設定方法</h2>
+    <p class="u-Adjust_Mt-16 c-Txt_Cap">※モバイルルーターでご利用の場合、Android製品の手順をご確認ください。</p>
+    <div class="c-Tab js-Tab u-Adjust_Mt-32">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="true" aria-controls="tab-content3">iPhoneの場合</li>
+        <li class="c-Tab_Item" id="tab-menu4" role="tab" aria-selected="false" aria-controls="tab-content4">Android製品の場合</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu3">
+        <ul class="c-List_Text-disc u-Adjust_Mt-32">
+          <li>
+            事前に<a href="<%= sitepath %>guide/setting/profile_delete/" class="c-Link_Txt">APN構成プロファイルを削除</a>してください。
+          </li>
+        </ul>
+        <ol class="c-Flow u-Adjust_Mt-32">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 製品の電源を切る</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. SIMカードをnanoSIMサイズに切り離す</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. SIMカードを製品にセットし、電源を入れる</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. 「キャリア設定アップデート」のポップアップが表示された場合、必ず「アップデート」をタップする</h3>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※誤って「今はしない」を選択した場合、「設定」→「一般」→「情報」に進み、ポップアップを表示させてください。
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/img04.png" class="c-Img_Capture" alt="「キャリア設定アップデート」のポップアップが表示された場合、必ず「アップデート」をタップする" width="300">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. アンテナマークが表示されていることを確認し、楽天回線の開通を確認する</h3>
+            <p class="u-Adjust_Mt-16">
+              Wi-FiがONになっている場合はOFFにし、SafariやGoogle ChromeなどのWebブラウザアプリが利用できるかご確認ください。
+            </p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. ご利用の製品でmy 楽天モバイルアプリをインストールしログインする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ログインが行えない場合は<a class="c-Link_Txt" href="<%= sitepath %>faq/detail/00001207/">「[my 楽天モバイル]ログインできません」</a>をご確認ください。
+            </p>
+            <div class="c-Box_App u-Adjust_Mt-24">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16">
+          以上で開通手続きは完了です。
+        </p>
+        <div class="u-Rat_Appear-height" data-ratid="guide_data-type-sim_scroll_single-sim_iphone" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu4">
+        <ol class="c-Flow u-Adjust_Mt-32">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 製品の電源を落とす</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. SIMカードを製品に応じたSIMサイズに切り離す</h3>
+            <div class="c-Accordion u-Adjust_Mt-16">
+              <button type="button" id="accordion-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-8"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>SIMカードのサイズについて</button>
+              <div id="accordion-content-8" class="c-Accordion_Panel js-Accordion_Panel u-Adjust_Mt-16" role="region" aria-labelledby="accordion-8" aria-hidden="true" style="display: none;">
+                <p>SIMのサイズは3種類あります。</p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap c-Txt_Emp-02">※楽天モバイルで販売しているSIMカード対応製品（スマートフォン）は全てnanoSIM（ナノシム）対応です。</p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/setting/data-type-sim/data-type-sim-02.png" alt="SIMのサイズは3種類あります。" width="300">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. SIMカードを製品にセットし、電源を入れる</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. アンテナマークの表示を確認する</h3>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. 楽天回線の開通を確認する</h3>
+            <p class="u-Adjust_Mt-16">
+              Wi-FiがONになっている場合はOFFにし、Google ChromeなどのWebブラウザアプリが利用できるかご確認ください。
+            </p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※モバイルルーターをご利用の場合、接続製品でご確認ください。
+            </p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. ご利用の製品でmy 楽天モバイルアプリをインストールしログインする</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ログインが行えない場合は<a class="c-Link_Txt" href="<%= sitepath %>faq/detail/00001207/">「[my 楽天モバイル]ログインできません」</a>をご確認ください。
+            </p>
+            <div class="c-Box_App u-Adjust_Mt-24">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16">
+          以上で開通手続きは完了です。
+        </p>
+        <div class="u-Rat_Appear-height" data-ratid="guide_data-type-sim_scroll_single-sim_android" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+      </div>
+    </div>
+    <%- include('/include/guide/_faq') %>
+    <div class="u-Adjust_Pt-64">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップに戻る</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= sitepath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+  </div>
+</div>
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+<footer class="g-Footer">
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

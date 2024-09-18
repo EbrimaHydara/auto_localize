@@ -1,0 +1,126 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "メールプラス" -%>
+<% const directories = [{path: hikariroot.path + "fee/", label:"料金"}, {path: hikariroot.path + "fee/pricelist/", label:"料金表・お支払い方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '無料で利用できる標準メールボックスの容量（200MB）を、有料で増やすことができます。',
+    noindex: false,
+    pathname: filepath,
+    ishikari: true,
+    canonical_custom: 'https://network.mobile.rakuten.co.jp/hikari/fee/option/free-mail-plus/'
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/fee/option/option.css?20240424">
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+
+  <%- include('/hikari/include/_header', {
+    headerType: 'normal',
+    pagetitle: pagetitle,
+    pathname: filepath,
+    directories: directories
+  }) %>
+
+
+  <div class="l-hikari-Section_Main">
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+      <div class="l-hikari-Section_Main-lead">
+        <p>メールボックスの容量を標準の200MBから最大3,072MBまで増やすことができます。</p>
+        <dl class="c-Dl_Origin u-Adjust_Mt-32">
+          <div>
+            <dt>月額料金</dt>
+            <dd>
+              1,024MBあたり <span class="c-Txt_Emp"><span class="c-Txt_Normal-ll">506</span>円／月</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="l-hikari-Section_Sub-short">
+        <h2 class="c-Heading_Lv2">追加容量</h2>
+        <div class="c-Table_Wrap-scroll l-hikari-Section_Sub-content-middle">
+          <table class="c-Table_Container u-Adjust_W-440">
+            <colgroup>
+              <col class="u-Adjust_W-160">
+              <col class="u-Adjust_W-280">
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">追加容量</th>
+                <th scope="col">月額料金</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1,024MB</td>
+                <td>506円</td>
+              </tr>
+              <tr>
+                <td>2,048MB</td>
+                <td>1,012円</td>
+              </tr>
+              <tr>
+                <td>3,072MB</td>
+                <td>1,518円</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="l-hikari-Section_Sub-tall">
+        <div class="c-Accordion">
+          <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>注意事項</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+            <ul class="c-List_Text-disc">
+              <li>ドメインに「sannet.ne.jp」または「inet-osaka.or.jp」が含まれるメールアドレスは「メールプラス」お申し込み対象外です。<br>
+                <span class="c-Txt_Cap">※上記メールアドレスの容量は2,048MBです。</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hikari-option-Layout_Ms">
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv3">オプションのお申し込みはメンバーズステーションへ</h2>
+        <div class="hikari-option-Layout_Ms-body">
+          <p>メンバーズステーションログインページ＞メールアカウントの確認・手続きへ、よりログインの上、会員メニュー＞登録情報・設定変更＞メールプラス、よりお手続きください。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※ 無料メールアドレスサービスにお申し込みのないお客様には本オプションメニューは表示されませんので、ご注意ください。</p>
+          <div class="u-Adjust_Mt-24">
+            <a href="https://ms.fusioncom.co.jp/rbb/members/login?campaign=web-rakuten" target="_blank" class="c-Btn_Primary-large">
+              <span><span>メンバーズステーションへログイン</span><span class="c-Icon_Login-l c-Btn_Icon-end"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="g-Footer">
+    <%- include('/hikari/include/_footer', {
+      pagetitle: pagetitle,
+      directories: directories,
+      // hiddenFooterCtaText: '',
+      // hiddenFooterCtaLink: '',
+      hiddenFooterCta: true,
+      // hiddenMenu: true,
+      // hiddenPopask: true,
+      // hiddenBacktop: true,
+      // hiddenBreadcrumbs: true,
+    }) %>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

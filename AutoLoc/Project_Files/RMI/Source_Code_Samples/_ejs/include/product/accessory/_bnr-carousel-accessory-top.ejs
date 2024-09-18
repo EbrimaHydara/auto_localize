@@ -1,0 +1,76 @@
+
+<% const slidePc = [
+  {
+    path: `${sitepath}product/accessory/apple/?l-id=product_carousel_accessory_apple_apple-audio#audio`,
+    img: `${sitepath}assets/img/bnr/bnr-air-pods-pro-1032-300-230922.png`,
+    alt: 'AirPods Pro 魔法を再設計しました。'
+  },
+  {
+    path: `https://www.rakuten.ne.jp/gold/rakutenmobile-store/product/accessory/apple/case/?scid=wi_rm_ichibafree`,
+    img: `${sitepath}assets/img/bnr/campaign-ichiba-accessory-1032-300-221222.png`,
+    alt: '楽天モバイル公式 楽天市場店ならいつでもアクセサリ全品送料無料！',
+    target: true
+  },
+  {
+    path: `${sitepath}product/accessory/owltech-owl-lpb10012-rwh/?l-id=accessory_carousel_owltech-owl-lpb10012-rwh`,
+    img: `${sitepath}assets/img/bnr/bnr-battery-1032-300-230228.png`,
+    alt: '小型・軽量 モバイルバッテリー 10,000mAh'
+  },
+]
+const slideSp = [
+  {
+    path: `${sitepath}product/accessory/apple/?l-id=product_carousel_accessory_apple_apple-audio#audio`,
+    img: `${sitepath}assets/img/bnr/bnr-air-pods-pro-375-192-230922.png`,
+    alt: 'AirPods Pro 魔法を再設計しました。'
+  },
+  {
+    path: `https://www.rakuten.ne.jp/gold/rakutenmobile-store/product/accessory/apple/case/?scid=wi_rm_ichibafree`,
+    img: `${sitepath}assets/img/bnr/campaign-ichiba-accessory-375-192-221222.png`,
+    alt: '楽天モバイル公式 楽天市場店ならいつでもアクセサリ全品送料無料！',
+    target: true
+  },
+  {
+    path: `${sitepath}product/accessory/owltech-owl-lpb10012-rwh/?l-id=accessory_carousel_owltech-owl-lpb10012-rwh`,
+    img: `${sitepath}assets/img/bnr/bnr-battery-375-192-230228.png`,
+    alt: '小型・軽量 モバイルバッテリー 10,000mAh'
+  },
+]
+-%>
+<div class="c-Carousel_Main product-top-Utility_Show-pc">
+  <div class="c-Carousel c-Carousel_Main-wrap-v2 js-c-Carousel-v2_Main">
+  <%_ slidePc.forEach((value, index, array) => { _%>
+    <%_ if( index === 0 || index === 1 || index === array.length - 1 ) { _%>
+    <a href="<%- value.path %>"<% if( value.target ) { %> target="_blank" rel="noopener noreferrer"<%_ } _%>>
+      <img src="<%- value.img %>" alt="<%- value.alt %>">
+    </a>
+    <%_ } else { _%>
+    <a href="<%- value.path %>"<% if( value.target ) { %> target="_blank" rel="noopener noreferrer"<%_ } _%>>
+      <img data-lazy="<%- value.img %>" alt="<%- value.alt %>">
+    </a>
+    <%_ } _%>
+  <%_ }); _%>
+  </div>
+  <div class="c-Carousel_Nav-v2-wrap">
+    <div class="c-Carousel_Nav-v2"></div>
+  </div>
+</div>
+
+
+<div class="c-Carousel_Main product-top-Utility_Show-sp">
+  <div class="c-Carousel c-Carousel_Main-wrap-v2 js-c-Carousel-v2_Main-sp">
+  <%_ slideSp.forEach((value, index, array) => { _%>
+    <%_ if( index === 0 ) { _%>
+    <a href="<%- value.path %>"<% if( value.target ) { %> target="_blank" rel="noopener noreferrer"<%_ } _%>>
+      <img src="<%- value.img %>" alt="<%- value.alt %>">
+    </a>
+    <%_ } else { _%>
+    <a href="<%- value.path %>"<% if( value.target ) { %> target="_blank" rel="noopener noreferrer"<%_ } _%>>
+      <img data-lazy="<%- value.img %>" alt="<%- value.alt %>">
+    </a>
+    <%_ } _%>
+  <%_ }); _%>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Carousel_Nav-v2"></div>
+  </div>
+</div>

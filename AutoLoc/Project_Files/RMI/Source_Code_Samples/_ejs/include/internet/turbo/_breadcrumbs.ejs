@@ -1,0 +1,65 @@
+<%_
+ /*
+  * @param {'heaer' | 'footer'} type
+  * @param {string} pagetitle
+  * @param {string} [customtitle]
+  * @param {Array<object>} [directories]
+  * @param {string} directories[].path
+  * @param {string} directories[].label
+  * @param {Object} [customroot]
+  * @param {string} customroot.path
+  * @param {string} customroot.label
+ */
+
+  let className = '';
+  let lid_parts = '';
+  const isstart1000Breadcrumbs = (typeof start1000Breadcrumbs === 'undefined') ? false : start1000Breadcrumbs;
+  const types = (typeof headerType === 'undefined') ? 'default' : headerType;
+  if (type === 'header') {
+    className = 'turbo-Breadcrumbs_Head';
+    lid_parts = 'bct';
+    if(isstart1000Breadcrumbs){
+      className = 'turbo-campaign-start-1000-breadcrumbs';
+      lid_parts = 'bct';
+    } 
+  } else if (type === 'footer') {
+    className = 'turbo-Breadcrumbs_Foot'
+    lid_parts = 'bcb';
+  }
+_%>
+
+<%_ if (!isstart1000Breadcrumbs) { _%>
+<div class="<%= className %>">
+  <ul class="<%= className %>-list">
+    <%_ if (typeof customroot === 'undefined') { _%>
+      <li class="<%= className %>-item"><a class="c-Link_Txt" href="<%= rootpath %>" data-lid_parts="<%= lid_parts %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right <%= className %>-chevron"></span></li>
+    <%_ } else { _%>
+      <li class="<%= className %>-item"><a class="c-Link_Txt" href="<%= customroot.path %>" data-lid_parts="<%= lid_parts %>"><%= customroot.label %></a><span class="c-Icon_Chevron-right <%= className %>-chevron"></span></li>
+    <%_ } _%>
+    <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li class="<%= className %>-item"><a class="c-Link_Txt" href="<%= sitepath %><%= dir.path %>" data-lid_parts="<%= lid_parts %>"><%= dir.label %></a><span class="c-Icon_Chevron-right <%= className %>-chevron"></span></li>
+        <%_ } else { _%>
+          <li class="<%= className %>-item"><%= dir.label %><span class="c-Icon_Chevron-right <%= className %>-chevron"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+    <%_ } _%>
+    <%_ if (typeof customtitle === 'undefined' ) { _%>
+      <li class="<%= className %>-item" aria-current="true"><%= pagetitle %></li>
+    <%_ } else { _%>
+      <li class="<%= className %>-item" aria-current="true"><%= customtitle %></li>
+    <%_ } _%>
+  </ul>
+</div>
+<%_ }else { _%>
+  <%_ if (isstart1000Breadcrumbs && types === 'default') { _%>
+    <div class="<%= className %>">
+      <ul class="<%= className %>-list">
+        <li class="<%= className %>-item"><a class="c-Link_Txt" id="item" href="https://event.rakuten.co.jp/group/sbc/" data-lid_parts="<%= lid_parts %>"><%= pagetitle %></a><span class="c-Icon_Chevron-right <%= className %>-chevron"></span></li>
+        <li class="<%= className %>-item"><%= customroot.label %></li>
+      </ul>
+    </div>
+<%_ } _%>
+<%_ } _%>

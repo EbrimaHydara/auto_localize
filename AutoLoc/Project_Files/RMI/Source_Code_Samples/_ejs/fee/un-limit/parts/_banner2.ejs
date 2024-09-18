@@ -1,0 +1,26 @@
+<!-- バナー2 -->
+<div class="fee-Utility_Bg-mono97">
+  <div class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-32">
+    <div class="u-Rat_Appear-height" data-ratid="fee-un-limit_scroll-03_campaign-banner" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+    <h4 class="u-Adjust_Align-center">キャンペーン開催中！</h4>
+    <div class="fee-Newplan_Bnr">
+      <% const campaignHold = [
+        { id: 1, link: 'referral/?l-id=fee_un-limit_campaign_referral', imgpc:'bnr-referral-328-185-230220.png', imgsp:'bnr-referral-343-108-230220.png', title:'楽天モバイル紹介キャンペーン'},
+        { id: 2, link: 'hand-5g-wifi-pocket-1yen/?l-id=fee_un-limit_campaign_hand-5g-wifi-pocket-1yen', imgpc:'bnr-hand-5g-wifi-pocket-1yen-328-185-230420.png', imgsp:'bnr-hand-5g-wifi-pocket-1yen-343-108-230420.png', title:'2回線目以降でも対象！楽天モバイルへお申し込みでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cが1円で購入できるお得なキャンペーン'},
+        { id: 3, link: 'iphone-point/?l-id=fee_un-limit_campaign_iphone-point', imgpc:'bnr-iphone-point-328-185-230501.png', imgsp:'bnr-iphone-point-343-108-230501.png', title:'楽天モバイル初めてお申し込み＆対象のiPhoneご購入＆対象機種下取りで最大14,000ポイント還元！'},
+      ]
+      -%>
+      <% campaignHold.forEach((item) => { %>
+        <div class="fee-Newplan_Bnr-item">
+          <a href="<%= sitepath %>campaign/<%= item.link %>" class="c-Banner_Hover-act">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/bnr/<%= item.imgsp %>">
+              <img src="<%= sitepath %>assets/img/bnr/<%= item.imgpc %>" width="328" height="185" alt="<%= item.title %>" loading="lazy">
+            </picture>
+          </a>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</div>
+<!-- //バナー2 -->

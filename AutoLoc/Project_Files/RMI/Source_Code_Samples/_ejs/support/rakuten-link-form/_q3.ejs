@@ -1,0 +1,201 @@
+<% const namespace = "support-link-form" -%>
+
+<% const ios_q3 = [
+  [
+    '楽天IDとパスワードを入力する画面でログインができない。楽天アカウントのログイン画面で失敗する',
+    '電話番号認証にエラーが発生した',
+    'その他'
+  ],
+  [
+    'インストールできない',
+    '前バージョンからアップデートできない',
+    'その他'
+  ],
+  [
+    '起動できない',
+    '動作が遅い',
+    '画面が真っ白、または真っ黒になる',
+    '強制終了する',
+    '画面が固まる',
+    '画面表示が崩れている',
+    'その他'
+  ],
+  [
+    '発信時',
+    '着信時',
+    '通話中',
+    '通話履歴',
+    '通話料'
+  ],
+  [
+    '送信時',
+    '受信時',
+    '料金',
+    'メッセージ履歴'
+  ],
+  [
+    '同期',
+    '登録・編集',
+  ],
+  [
+    '留守番電話',
+    '着信転送',
+    '割込機能'
+  ],
+  [
+    'ニュース',
+    'ウォレット',
+    '探す',
+    'ミッション、Super Point Screen',
+    'その他'
+  ],
+  [null],
+  [
+    '設定(初期設定を含む)',
+    '起動時',
+    '送信時',
+    '受信時',
+    'その他'
+  ]
+] -%>
+
+
+<% const android_q3 = [
+  [
+    '楽天IDとパスワードを入力する画面でログインができない。楽天アカウントのログイン画面で失敗する',
+    '電話番号認証にエラーが発生した',
+    '標準電話アプリに6桁の認証コードが届かない',
+    '6桁の認証コードを入力しても認証されない',
+    'その他'
+  ],
+  [
+    'インストールできない',
+    '前バージョンからアップデートできない',
+    'その他'
+  ],
+  [
+    '起動できない',
+    '動作が遅い',
+    '画面が真っ白、または真っ黒になる',
+    '通話中に画面が暗くなる',
+    '強制終了する',
+    '画面が固まる',
+    '画面表示が崩れている',
+    'その他'
+  ],
+  [
+    '発信時',
+    '着信時',
+    '通話中',
+    '通話履歴',
+    '通話料'
+  ],
+  [
+    '発信時の不具合',
+    '着信時の不具合',
+    '通話中の不具合',
+    'その他'
+  ],
+  [
+    '送信時',
+    '受信時',
+    '料金',
+    'メッセージ履歴',
+  ],
+  [
+    '同期',
+    '登録・編集'
+  ],
+  [
+    '留守番電話',
+    '着信転送',
+    '割込機能'
+  ],
+  [
+    'ニュース',
+    'ウォレット',
+    '探す',
+    'ミッション、Super Point Screen',
+    'その他'
+  ],
+  [null],
+  [
+    '設定(初期設定を含む)',
+    '起動時',
+    '送信時',
+    '受信時',
+    'その他'
+  ]
+] -%>
+
+<%_ const desktop_q3 = [
+  // ios
+  [
+    '初期設定時の認証・ログイン',
+    'アプリのインストール・アップデート',
+    'アプリの起動、動作',
+    '音声通話、通話履歴',
+    'ビデオ通話',
+    'メッセージ・SMS(他アプリの認証SMS等を含む)',
+    '連絡先',
+    '留守番電話・着信転送・割込通話',
+    'その他',
+  ],
+  // Android
+  [
+    'ログイン',
+    'アプリのインストール・アップデート',
+    'アプリの起動、動作',
+    '音声通話、通話履歴',
+    'ビデオ通話',
+    'メッセージ・SMS(他アプリの認証SMS等を含む)',
+    '連絡先',
+    '留守番電話・着信転送・割込通話',
+    'その他',
+  ],
+] _%>
+
+  <% let ios_q3Cnt = 1 %>
+  <% for (let i = 0; i < ios_q3.length; i++) { %>
+  <% ios_q3[i].forEach(function (value, key) { %>
+    <li class="u-Adjust_Pt-16 js-ios" data-show="q2<%= i +1 %>" aria-hidden="true">
+      <label class="c-Form_Radioblock">
+        <input type="radio" name="00N2r0000021LNz" class="js-radio" data-q="q3<%= ios_q3Cnt++ %>" value="<%= value %>">
+        <span class="c-Form_Radioblock-wrap <%= namespace %>-Form_Select-radio">
+          <span class="c-Form_Radio-icon"></span>
+          <span class="c-Form_Radioblock-label"><%= value %></span>
+        </span>
+      </label>
+    </li>
+  <% }); %>
+  <% } %>
+
+  <% let android_q3Cnt = 1 %>
+  <% for (let i = 0; i < android_q3.length; i++) { %>
+  <% android_q3[i].forEach(function (value, key) { %>
+    <li class="u-Adjust_Pt-16 js-android" data-show="q2<%= i +1 %>" aria-hidden="true">
+      <label class="c-Form_Radioblock">
+        <input type="radio" name="00N2r0000021LNz" class="js-radio" data-q="q3<%= android_q3Cnt++ %>" value="<%= value %>">
+        <span class="c-Form_Radioblock-wrap <%= namespace %>-Form_Select-radio">
+          <span class="c-Form_Radio-icon"></span>
+          <span class="c-Form_Radioblock-label"><%= value %></span>
+        </span>
+      </label>
+    </li>
+  <% }); %>
+  <% } %>
+
+  <% let desktop_q3Cnt = 1 %>
+  <% for (let i = 0; i < desktop_q3.length; i++) { %>
+  <% desktop_q3[i].forEach(function (value, key) { %>
+    <li class="u-Adjust_Pt-16 js-desktop" data-show="q2<%= i +1 %>" aria-hidden="true">
+      <label class="c-Form_Radioblock">
+        <input type="radio" name="00N2r0000021LNz" class="js-radio" data-q="q3<%= desktop_q3Cnt++ %>" value="<%= value %>">
+        <span class="c-Form_Radioblock-wrap <%= namespace %>-Form_Select-radio">
+          <span class="c-Form_Radio-icon"></span>
+          <span class="c-Form_Radioblock-label"><%= value %></span>
+        </span>
+      </label>
+    </li>
+  <% }); %>
+  <% } %>

@@ -1,0 +1,52 @@
+<% const pagetitle = "楽天モバイルショップ お申し込み" -%>
+<% const directories = [{path:"shop/", label:"ショップ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '',
+    keywords: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ショップ" -%>
+<% const nameSpace = "shop" -%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header-simple') %>
+
+<div class="l-System_Container u-Adjust_Mt-24 u-Adjust_Mt-sp-16 u-Adjust_Mt-pc-40 u-Adjust_Mb-72">
+  <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+  <h2 class="c-Heading_Lv2  u-Adjust_Mt-32 u-Adjust_Mt-pc-40" id="js-shopName"></h2>
+  <div class="c-Theme-Borderbox u-Adjust_Mt-16 u-Adjust_Mt-pc-24 u-Adjust_Align-center">
+    <picture>
+      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/shop/saikyo-plan-reception/logo-saikyo-plan-sp.png" width="100%">
+      <img src="<%= sitepath %>assets/img/shop/saikyo-plan-reception/logo-saikyo-plan-sp.png" width="400" height="79" alt="Rakuetn最強プラン">
+    </picture>
+    <p class="c-Txt_Emp-02">データタイプ</p>
+    <div class="u-Adjust_Mt-16">
+      <a href="#" class="c-Btn_Primary" style="width: 100%; max-width: 372px;" id="js-entryBtn">エントリーする</a>
+    </div>
+    <p class="u-Adjust_Mt-16">
+      <a href="<%= sitepath %>fee/saikyo-plan/" class="c-Link_Txt-inline">料金プランを確認する<span class="c-Icon_Chevron-right"></span></a>
+    </p>
+  </div>
+</div>
+
+<footer class="g-Footer">
+  <%- include('/include/_footer-simple') %>
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/shop.saikyo-plan-reception.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

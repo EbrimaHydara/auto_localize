@@ -1,0 +1,831 @@
+<% const pagetitle = "楽天モバイル紹介キャンペーン！紹介1人につき7,000ポイント、紹介される方も最大13,000ポイントプレゼント！" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "referral" -%>
+
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: 'ご家族やご友人に楽天モバイルを紹介すると、1人につき7,000ポイントプレゼント！紹介された方にもポイントが進呈されますので、この機会にぜひ楽天モバイルをご紹介ください。',
+  keywords: '',
+  noindex: false,
+  pathname: filepath,
+});
+%><%- include('/include/_common-css-v2') %>
+<%- include('/inc/_about-rakuten-mobile-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/referral/referral.css?240520">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/_entry-button/rex-overwrite_v2.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+  <%- include('/include/_header',{applyHide:false}) %>
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-01_header" data-ratevent="appear" data-ratparam="all"></div>
+  </div>
+
+  <%
+  const NavItems = [
+    {
+      label: '紹介方法',
+      href: 'referral',
+      ratid:'campaign_referral_floating-index-flow',
+      type: 'with-icon',
+      iconClass: 'c-Icon_List-l'
+    },
+    {
+      label: '紹介者の体験談',
+      href: 'interview',
+      ratid:'campaign_referral_floating-index-interview',
+      type: 'with-icon',
+      iconClass: 'c-Icon_Movie-l'
+    },
+    {
+      label: '紹介する',
+      href: 'referral-here',
+      ratid:'campaign_referral_floating-index-referral',
+      type: 'button',
+      iconClass: ''
+    }
+  ]
+  %>
+
+  <div id="referral-js-header-nav-wrapper" class="<%= namespace %>-Layout_Nav-wrapper" data-fixed-header>
+    <nav class="<%= namespace %>-Layout_Nav">
+      <ul class="<%= namespace %>-Layout_Nav-items">
+        <% NavItems.forEach(function(item) { %>
+          <li class="<%= namespace %>-Layout_Nav-item">
+          <% if (item.type === 'with-icon') { %>
+            <a href="#<%= item.href %>" class="<%= namespace %>-Layout_Nav-link js-scroll" data-ratid="<%= item.ratid %>" data-ratevent="click" data-ratparam="all">
+              <span class="<%= namespace %>-Layout_Nav-link-icon <%= item.iconClass %>"></span>
+              <span class="<%= namespace %>-Layout_Nav-link-text"><%= item.label %></span>
+            </a>
+          <% } else { %>
+            <a href="#<%= item.href %>" class="c-Btn_Primary <%= namespace %>-Layout_Nav-button js-scroll" data-ratid="<%= item.ratid %>" data-ratevent="click" data-ratparam="all"><%= item.label %></a>
+          <% } %>
+          </li>
+        <% }) %>
+        </ul>
+    </nav>
+  </div>
+
+  <div class="<%= namespace %>-Hero">
+    <h1>
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/kv-sp-240201.png" width="750" height="822">
+        <img src="<%= sitepath %>assets/img/campaign/referral/kv-pc-240201.png" alt="楽天モバイル紹介キャンペーン第3弾！ご契約者様にもチャンス！ご家族・ご友人に楽天モバイルを紹介すると1人につき7,000ポイントプレゼント！" width="1440" height="400">
+      </picture>
+    </h1>
+  </div>
+
+  <div class="<%= namespace %>-Layout_Period">
+    <div class="<%= namespace %>-Layout_Period-inner">
+      <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※ 「Rakuten最強プラン（データタイプ）」は対象外です。</p>
+      <p class="c-Txt_Cap c-Txt_Emp-02">※ ポイントは期間限定ポイントとして3カ月間にわたり進呈します。</p>
+      <p class="c-Txt_Cap c-Txt_Emp-02">※ 特典内容は増減する場合がございます。</p>
+
+      <p class="c-Txt_Cap">※ 紹介された方（被紹介者様）のRakuten Linkアプリの利用が必要です。</p>
+      <p class="c-Txt_Cap">※1 紹介された方（被紹介者様）が楽天モバイル公式 楽天市場店にて6,000円OFFクーポンを利用された場合は、7,000ポイントとなります。</p>
+    </div>
+  </div>
+
+  <div class="l-System_Container">
+    <p class="u-Adjust_Align-right u-Adjust_Mt-16">
+      <a href="<%= sitepath %>campaign/referral/en/?l-id=campaign_referral_referral-en"
+        class="c-Link_Txt-inline">English<span class="c-Icon_Chevron-right"></span></a>
+    </p>
+  </div>
+
+  <p class="u-Adjust_Align-center u-Adjust_Mt-16"><span class="c-Txt_Emp-01">【キャンペーン期間】</span><br class="u-Show_Oxx"> 2023年2月15日（水）07:00 ～ 終了日未定</p>
+
+    <div id="referral-here" class="l-System_Container">
+      <div class="<%= namespace %>-Layout_Here-wrapper">
+        <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-02_referral" data-ratevent="appear" data-ratparam="all"></div>
+        <div class="<%= namespace %>-Layout_Here">
+          <img class="<%= namespace %>-Layout_Here-title" src="<%= sitepath %>assets/img/campaign/referral/here-230315.png" alt="ご紹介はこちらから">
+          <div class="<%= namespace %>-Utility_Show-pc">
+            <div class="<%= namespace %>-Layout_Here-content">
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/referral/icon-mail-pc-240520.png" alt="メールで紹介する" width="122">
+                <div class="u-Adjust_Align-center" style="width: 100%;">
+                  <a href="https://refer.rakuten.co.jp/invitation/mail?campaign=mobile" target="_blank" class="c-Btn_Secondly"><span>紹介する<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/referral/icon-line-pc-240520.png" alt="LINEで紹介する" width="114">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/qr-line-230222.png" alt="LINEで紹介する" width="96">
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/referral/icon-twitter-pc-240520.png" alt="Xで紹介する" width="89">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/qr-twitter-230315.png" alt="Xで紹介する" width="96">
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/referral/icon-viber-pc-240520.png" alt="Viberで紹介する" width="122">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/qr-viber-230222.png" alt="Viberで紹介する" width="96">
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/referral/icon-referral-pc.png" alt="Rakuten Linkで紹介する" width="115">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/qr-referral.png" alt="Rakuten Linkで紹介する" width="96">
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/referral/icon-chat-pc-240520.png" alt="SMS・その他" width="89">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/qr-other-230222.png" alt="SMS・その他" width="96">
+              </div>
+            </div>
+          </div>
+          <div class="<%= namespace %>-Utility_Show-sp <%= namespace %>-Layout_Here-content">
+            <div class="<%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/line?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span><img src="<%= sitepath %>assets/img/campaign/referral/icon-line-sp-240520.png" alt="LINEで紹介する" width="32"></span><span>LINEで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/twitter?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span><img src="<%= sitepath %>assets/img/campaign/referral/icon-twitter-sp-240520.png" alt="Xで紹介する" width="32"></span><span>Xで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/mail?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="c-Icon_Mail-f <%= namespace %>-Layout_Here-content-icon-mail u-Adjust_Mr-8"></span><span>メールで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/viber?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span><img src="<%= sitepath %>assets/img/campaign/referral/icon-viber-sp-240520.png" alt="Viberで紹介する" width="32"></span><span>Viberで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/rakuten_link?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span><img src="<%= sitepath %>assets/img/campaign/referral/icon-referral-sp.png" alt="Rakuten Linkで紹介する" width="32"></span><span>Rakuten Linkで<br>紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/web_share?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span><img src="<%= sitepath %>assets/img/campaign/referral/icon-chat-sp-240520.png" alt="SMS・その他" width="32"></span><span>SMS・その他</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <a href="<%= sitepath %>area/?l-id=campaign_referral_area" class="c-Link_Txt-inline" target="_blank">紹介前に！つながるエリア・通信品質のご確認はこちら！<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+
+      </div>
+
+      <div class="u-Adjust_Mt-pc-64 u-Adjust_Mb-pc-16 u-Adjust_Mt-sp-32 u-Adjust_Mb-sp-0">
+        <p class="u-Adjust_Align-center c-Heading_Lv4 u-Adjust_Pb-16"><span class="u-Show_Pc">＼ </span>今なら！さらにお得になる<br class="u-Show_Sp"><span class="u-Show_Sp">＼ </span>キャンペーン開催中！／</p>
+        <a href="https://event.rakuten.co.jp/group/invitation/?scid=wi_rmb_memd_friendsportal_202405_mno01" class="c-Banner_Hover-act">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/bnr-division-point-508-158-240522.png" width="508" height="158">
+            <img src="<%= sitepath %>assets/img/campaign/referral/bnr-division-point-1032-160-240522.png" alt="楽天グループのポイント山分けキャンペーン" width="1032" height="160">
+          </picture>
+        </a>
+      </div>
+
+      <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-03_how-to" data-ratevent="appear" data-ratparam="all"></div>
+      <div id="referral" class="<%= namespace %>-Layout_Easy u-Adjust_Mt-48 u-Adjust_Pt-16 u-Adjust_Align-center">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/easy-title-sp.png" width="180">
+          <img src="<%= sitepath %>assets/img/campaign/referral/easy-title-pc.png" alt="紹介方法はカンタン！" width="383">
+        </picture>
+      </div>
+    </div>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+      <div class="l-System_Container">
+        <ul class="c-Tab_Items" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">LINE・X・<br class="<%= namespace %>-Utility_Show-sp">Viber・<br class="<%= namespace %>-Utility_Show-sp">Rakuten Link</li>
+          <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="false" aria-controls="tab-content2">メール</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content3">SMS・その他</li>
+        </ul>
+      </div>
+      <div class="l-System_Container u-Adjust_Mt-24  <%= namespace %>-Utility_Sp-padding-none">
+        <div class="<%= namespace %>-Layout_Easy-tab">
+          <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Pt-40">
+              <img src="<%= sitepath %>assets/img/campaign/referral/easy-1-pc.png" alt="紹介する方" width="328">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-01 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-1-p.png" alt="STEP 1" width="72">
+                <div class="<%= namespace %>-Utility_Show-pc">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">QRコードを読み取る</p>
+                  <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                    <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/line-1-pc-230222.png" alt="QRコードを読み取る" width="144">
+                  </div>
+                  <p class="c-Txt_Cap u-Adjust_Align-center <%= namespace %>-Layout_Easy-tab-content-note <%= namespace %>-Layout_Easy-tab-content-note-03">
+                    ※Rakuten Linkで紹介する場合は、Rakuten Linkアプリ内のQRコードリーダーをご利用ください。
+                  </p>
+                </div>
+                <div class="<%= namespace %>-Utility_Show-sp">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">ボタンをタップ</p>
+                  <div class="u-Adjust_Mt-32">
+                    <a href="https://refer.rakuten.co.jp/invitation/line?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/referral/icon-line-sp-240520.png" alt="LINEで紹介" width="24"></span><span>LINEで紹介</span><span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                  </div>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="https://refer.rakuten.co.jp/invitation/twitter?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/referral/icon-twitter-sp-240520.png" alt="Xで紹介" width="26"></span><span>Xで紹介</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+                  </div>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="https://refer.rakuten.co.jp/invitation/viber?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/referral/icon-viber-sp-240520.png" alt="Viberで紹介" width="24"></span><span>Viberで紹介</span><span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                  </div>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="https://refer.rakuten.co.jp/invitation/rakuten_link?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span><img src="<%= sitepath %>assets/img/campaign/referral/icon-referral-sp.png" alt="Rakuten Linkで紹介する" width="32"></span><span>Rakuten Linkで<br>紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-2-p.png" alt="STEP 2" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/line-2.png" alt="楽天会員にログイン" width="144">
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-3-p.png" alt="STEP 3" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">アプリへ遷移</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/line-3-230222.png" alt="LINEアプリへ遷移" width="144">
+                </div>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap u-Adjust_Align-center <%= namespace %>-Layout_Easy-tab-content-note <%= namespace %>-Layout_Easy-tab-content-note-01">
+                  ※LINEの場合
+                </p>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-4-p.png" alt="STEP 4" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">送信先を選択して</span><br>メッセージ送信！</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-8 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/line-4-230222.png" alt="送信先を選択してメッセージ送信！" width="144">
+                </div>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap u-Adjust_Align-center <%= namespace %>-Layout_Easy-tab-content-note <%= namespace %>-Layout_Easy-tab-content-note-02">
+                  ※LINEの場合
+                </p>
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/referral/polygon.png" alt="" width="45">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-24 u-Adjust_Align-center">メッセージが届いたら...</p>
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/campaign/referral/easy-2-pc-230801.png" alt="紹介される方" width="342">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-01 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-1-p.png" alt="STEP 1" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">メッセージに記載の</span><br>URLをタップ</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-8 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/line-5-230222.png" alt="メッセージに記載のURLをタップ" width="144">
+                </div>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap u-Adjust_Align-center <%= namespace %>-Layout_Easy-tab-content-note <%= namespace %>-Layout_Easy-tab-content-note-03">
+                  ※LINEの場合
+                </p>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-2-p.png" alt="STEP 2" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/mail-2.png" alt="楽天会員にログイン" width="144">
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-3-p.png" alt="STEP 3" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>プラン申し込み＆開通</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※お申し込み後のログインは特典対象外<br>※データタイプは特典対象外</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/line-7.png" alt="ログインの翌々月末日までにプラン申し込み＆開通" width="208">
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-4-p.png" alt="STEP 4" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>Rakuten Linkで通話</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※アプリでの10秒以上の通話が必要</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/referral/line-8.png" alt="ログインの翌々月末日までにRakuten Linkで通話" width="208">
+                </div>
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/referral/polygon.png" alt="" width="45">
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Pt-40">
+              <img src="<%= sitepath %>assets/img/campaign/referral/easy-1-pc.png" alt="紹介する方" width="328">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-02 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-1-p.png" alt="STEP 1" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">「メールで紹介する」<br>をタップ</p>
+                <div class="u-Adjust_Mt-32">
+                  <a href="https://refer.rakuten.co.jp/invitation/mail?campaign=mobile" target="_blank" class="c-Btn_Secondly"><span class="c-Icon_Mail-f <%= namespace %>-Layout_Here-content-icon-mail u-Adjust_Mr-8"></span><span>メールで紹介する<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+                </div>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/mail-1.png" alt="「メールで紹介する」" width="158">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-2-p.png" alt="STEP 2" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/referral/mail-2.png" alt="楽天会員にログイン" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-3-p.png" alt="STEP 3" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">必要事項を入力して</span><br>メール送信！</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/mail-3.png" alt="必要事項を入力してメール送信！" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-4-p.png" alt="STEP 4" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">お相手にメール到着</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/mail-4-240201.png" alt="必要事項を入力してメール送信！" width="144">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/referral/polygon.png" alt="" width="45">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-24 u-Adjust_Align-center">メッセージが届いたら...</p>
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/campaign/referral/easy-2-pc-230801.png" alt="紹介される方" width="342">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-01 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-1-p.png" alt="STEP 1" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">メールに記載の</span><br>ボタンをタップ</p>
+                <img class="u-Adjust_Mt-8" src="<%= sitepath %>assets/img/campaign/referral/mail-4-240201.png" alt="メールに記載のボタンをタップ" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-2-p.png" alt="STEP 2" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/referral/mail-5.png" alt="楽天会員にログイン" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-3-p.png" alt="STEP 3" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>プラン申し込み＆開通</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※お申し込み後のログインは特典対象外<br>※データタイプは特典対象外</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/referral/mail-7.png" alt="ログインの翌々月末日までにプラン申し込み＆開通" width="208">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-4-p.png" alt="STEP 4" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>Rakuten Linkで通話</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※アプリでの10秒以上の通話が必要</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/referral/mail-8.png" alt="ログインの翌々月末日までにRakuten Linkで通話" width="208">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/referral/polygon.png" alt="" width="45">
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu3">
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Pt-40">
+              <img src="<%= sitepath %>assets/img/campaign/referral/easy-1-pc.png" alt="紹介する方" width="328">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-01 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-1-p.png" alt="STEP 1" width="72">
+                <div class="<%= namespace %>-Utility_Show-pc">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">QRコードを読み取る</p>
+                  <img class="u-Adjust_Mt-64" src="<%= sitepath %>assets/img/campaign/referral/other-1-pc-230222.png" alt="QRコードを読み取る" width="144">
+                </div>
+                <div class="<%= namespace %>-Utility_Show-sp">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">「SMS・その他」<br>をタップ</p>
+                  <div class="u-Adjust_Mt-32">
+                    <a href="https://refer.rakuten.co.jp/invitation/web_share?campaign=mobile" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Easy-tab-content-01-btn"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/referral/icon-chat-sp-240520.png" alt="SMS・その他" width="18"></span><span>SMS・その他<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+                  </div>
+                  <img class="u-Adjust_Mt-16 <%= namespace %>-Layout_Easy-tab-content-01-img" src="<%= sitepath %>assets/img/campaign/referral/other-1.png" alt="「その他で紹介する」をタップ" width="158">
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-2-p.png" alt="STEP 2" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-40" src="<%= sitepath %>assets/img/campaign/referral/viber-2.png" alt="楽天会員にログイン" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-3-p.png" alt="STEP 3" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">アイコンをタップして<br>アプリを選択</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/other-3-230222.png" alt="アイコンをタップしてアプリを選択" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-4-p.png" alt="STEP 4" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">送信先を選択して</span><br>メッセージ送信！</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/referral/other-4-230222.png" alt="送信先を選択してメッセージ送信！" width="144">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/referral/polygon.png" alt="" width="45">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-24 u-Adjust_Align-center">メッセージが届いたら...</p>
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/campaign/referral/easy-2-pc-230801.png" alt="紹介される方" width="342">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-01 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-1-p.png" alt="STEP 1" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">メッセージに記載の</span><br>URLをタップ</p>
+                <img class="u-Adjust_Mt-8" src="<%= sitepath %>assets/img/campaign/referral/other-5-230222.png" alt="メッセージに記載のURLをタップ" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-2-p.png" alt="STEP 2" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/referral/viber-6.png" alt="楽天会員にログイン" width="144">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-3-p.png" alt="STEP 3" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>プラン申し込み＆開通</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※お申し込み後のログインは特典対象外<br>※データタイプは特典対象外</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/referral/viber-7.png" alt="ログインの翌々月末日までにプラン申し込み＆開通" width="208">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/step-4-p.png" alt="STEP 4" width="72">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>Rakuten Linkで通話</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※アプリでの10秒以上の通話が必要</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/referral/viber-8.png" alt="ログインの翌々月末日までにRakuten Linkで通話" width="208">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/referral/polygon.png" alt="" width="45">
+            </div>
+          </div>
+          <div class="<%= namespace %>-Layout_Point-wrapper">
+            <div class="<%= namespace %>-Layout_Point u-Adjust_Mt-24">
+              <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/referral/r-point.png" alt="R POINT" width="304">
+              <div>
+                <p class="<%= namespace %>-Layout_Point-txt">
+                  <span class="c-Txt_Emp-01">紹介する方には</span>
+                  <br class="<%= namespace %>-Utility_Show-sp">
+                  <span class="c-Txt_Emp-02 <%= namespace %>-Layout_Point-txt-emp">7,000</span>
+                  <br class="u-Show_Oxx">
+                  <span class="c-Txt_Emp-02">ポイントプレゼント！</span>
+                </p>
+                <p class="c-Txt_Emp-01 c-Txt_Normal <%= namespace %>-Layout_Point-sub">紹介された方には<br class="<%= namespace %>-Utility_Show-sp">
+                  <span class="c-Txt_Emp-02 c-Txt_Normal-xl">13,000</span>
+                  <br class="u-Show_Oxx">
+                  <span class="c-Txt_Emp-02">ポイントプレゼント！</span>
+                  <span class="c-Txt_Cap">※</span>
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">
+                  ※電話番号そのまま乗り換え（MNP）で楽天モバイルを初めてお申し込みの場合。乗り換え（MNP）以外で初めてお申し込みの方は6,000ポイントとなります。本キャンペーンの適用はおひとり様1回限り。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-04_point-example" data-ratevent="appear" data-ratparam="all"></div>
+    <div>
+      <div class="l-System_Container u-Adjust_Mt-64">
+        <h2 id="schedule" class="c-Heading_Lv2  u-Adjust_Align-center">ポイント進呈時期の具体例</h2>
+        <p class="u-Align_Lcc u-Adjust_Mt-16">2月に条件を達成した場合、以下の予定でポイントを進呈します。</p>
+        <div class="c-Tab js-Tab u-Adjust_Mt-16">
+          <ul class="c-Tab_Items" role="tablist">
+              <li class="c-Tab_Item" id="tab-menu4" role="tab" aria-selected="true" aria-controls="tab-content4">紹介する方</li>
+              <li class="c-Tab_Item" id="tab-menu5" role="tab" aria-selected="false" aria-controls="tab-content5">紹介される方</li>
+          </ul>
+          <div class="c-Tab_Panel u-Adjust_Align-center" id="tab-content4" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu4">
+            <div class="<%= namespace %>-Layout_Ex-tab-content">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/schedule-1-sp-240201.png" width="626" height="1110">
+                <img src="<%= sitepath %>assets/img/campaign/referral/schedule-1-pc-240201.png" alt="" width="1000" height="331">
+              </picture>
+            </div>
+          </div>
+          <div class="c-Tab_Panel u-Adjust_Align-center" id="tab-content5" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu5">
+            <div class="<%= namespace %>-Layout_Ex-tab-content">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/schedule-2-sp-240201.png" width="626" height="1110">
+                <img src="<%= sitepath %>assets/img/campaign/referral/schedule-2-pc-240201.png" alt="" width="1032" height="356" loading="lazy">
+              </picture>
+              <p class="c-Txt_Normal-s u-Adjust_Mt-8 u-Adjust_Align-left">※電話番号そのまま乗り換え（MNP）で楽天モバイルを初めてお申し込みの場合。乗り換え（MNP）以外で初めてお申し込みの方は6,000ポイントとなり、3カ月にわたり2,000ポイントずつ進呈します。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="<%= namespace %>-Layout_Bnr">
+        <div class="u-Adjust_Align-center">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/voice-1-sp-240221.png" width="750" height="1830">
+            <img src="<%= sitepath %>assets/img/campaign/referral/voice-1-pc-240221.png" alt="" width="1032" height="720">
+          </picture>
+        </div>
+
+        <div class="l-System_Container u-Adjust_Mt-64">
+          <div class="<%= namespace %>-Layout_Bnr-simulation">
+            <div class="<%= namespace %>-Layout_Bnr-head-family u-Adjust_Align-center u-Adjust_Pt-48">
+              <div class="<%= namespace %>-Layout_Bnr-heading">
+                <div class="<%= namespace %>-Layout_Bnr-comment">
+                  <picture>
+                    <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/campaign/referral/bnr-family-comment-sp-240430.png" width="386" height="131">
+                    <img src="<%= sitepath %>assets/img/campaign/referral/bnr-family-comment-pc-240430.png" width="384" height="55" alt="">
+                  </picture>
+                </div>
+
+                <div>
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/bnr-family-title-sp-240430.png" width="672" height="540">
+                    <img src="<%= sitepath %>assets/img/campaign/referral/bnr-family-title-pc-240430.png" width="918" height="218" alt="">
+                  </picture>
+                </div>
+
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Bnr-body-family u-Adjust_Align-center">
+              <div class="<%= namespace %>-Layout_Bnr-body-family-inner">
+                <a href="<%= sitepath %>fee/family/?l-id=campaign_referral_fee_family" class="c-Btn_Secondly-large <%= namespace %>-Layout_Bnr-btn"><span>家族割引について詳しく見る</span></a>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">
+                  ※1 家族割引のみを適用し、その他の割引は含めない場合。2024年2月時点。自社調べ
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-05_simulation" data-ratevent="appear" data-ratparam="all"></div>
+        <div class="l-System_Container u-Adjust_Mt-64">
+          <div class="<%= namespace %>-Layout_Bnr-simulation">
+            <div class="<%= namespace %>-Layout_Bnr-head u-Adjust_Align-center u-Adjust_Pb-16 u-Adjust_Pt-48">
+              <div class="<%= namespace %>-Layout_Bnr-heading">
+                <div class="<%= namespace %>-Layout_Bnr-comment">
+                  <picture>
+                    <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/campaign/referral/bnr-simulation-comment-sp.png" width="480" height="128">
+                    <img src="<%= sitepath %>assets/img/campaign/referral/bnr-simulation-comment-pc.png" width="468" height="54" alt="楽天モバイルを使うとこんなにおトク！を伝えよう">
+                  </picture>
+                </div>
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/bnr-simulation-title-sp-240221.png" width="569" height="192">
+                  <img src="<%= sitepath %>assets/img/campaign/referral/bnr-simulation-title-pc.png" width="780" height="43" alt="家族やお友達がいくらおトクになるのかシミュレーション！">
+                </picture>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Bnr-body u-Adjust_Align-center">
+              <div class="<%= namespace %>-Layout_Bnr-body-inner">
+                <p>現在お使いのキャリアとプラン料金を比較できます。<br class="u-Show_Pc">料金シミュレーションでどれくらい節約できるのか今すぐチェック！</p>
+                <div class="u-Show_Sp u-Adjust_Mt-16">
+                  <picture >
+                    <img src="<%= sitepath %>assets/img/campaign/referral/bnr-simulation-img-sp.png" width="620" height="248" alt="プラン料金をシミュレーション">
+                  </picture>
+                </div>
+                <a href="<%= sitepath %>fee/simulation/?l-id=campaign_referral_fee_un-limit_simulation" class="c-Btn_Secondly-large <%= namespace %>-Layout_Bnr-btn"><span>プラン料金をシミュレーションする</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-06_faq" data-ratevent="appear" data-ratparam="all"></div>
+      <section>
+        <div class="l-System_Container">
+          <h3 id="faq" class="c-Heading_Lv2 u-Adjust_Align-center u-Adjust_Mt-48">よくあるご質問</h3>
+          <div class="c-Accordion u-Adjust_Mt-24">
+            <button id="accordion-faq-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-1" data-ratid="campaign_referral_faq-1" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>1カ月に何人紹介できますか</button>
+            <div id="accordion-content-faq-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-1" aria-hidden="false">
+              <p>1カ月間に紹介できる数に上限はありません。</p>
+              <p class="c-Txt_Cap">※2023年5月まで（ポイント進呈の初月が2023年9月以前）は進呈される特典の上限は毎月10名様分です。</p>
+              <p class="c-Txt_Cap">※2023年6月から（ポイント進呈の初月が2023年10月以降）は紹介する方（ご紹介者様）の特典の上限がなくなりました。</p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-faq-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-2" data-ratid="campaign_referral_faq-2" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>SNSなどで家族以外に紹介してもいいですか</button>
+            <div id="accordion-content-faq-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-2" aria-hidden="false">
+              <p>ご家族・ご友人など関係性は問いません。またSNS等にキャンペーン紹介URLを公開することは禁止しておりません。</p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-faq-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-3" data-ratid="campaign_referral_faq-3" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ポイントはいつもらえますか</button>
+            <div id="accordion-content-faq-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-3" aria-hidden="false">
+              <p>■紹介する方（ご紹介者様）</p>
+              <p class="u-Adjust_Mt-8">紹介された方（被紹介者様）が、紹介ログインした月の、4カ月後から6カ月後の3カ月間にわたり、紹介する方（ご紹介者様）が楽天モバイル にご登録の楽天 IDにポイントが進呈されます。進呈されたポイントは楽天PointClubの「<a href="https://point.rakuten.co.jp/" class="c-Link_Txt" target="_blank">ポイント実績</a>」から確認できます。
+              </p>
+              <p class="u-Adjust_Mt-16">■紹介された方（被紹介者様）</p>
+              <dl class="u-Adjust_Mt-8">
+                <dt>＜2023年9月22日　8時00分以降のお申し込み＞</dt>
+                <dd>紹介された方（被紹介者様）が、紹介ログインした月の、4カ月後から6カ月後の3カ月間にわたり、紹介された方（被紹介者様）が楽天モバイル にご登録の楽天 IDにポイントが進呈されます。進呈されたポイントは楽天PointClubの「<a href="https://point.rakuten.co.jp/" class="c-Link_Txt" target="_blank">ポイント実績</a>」から確認できます。</dd>
+                <dt class="u-Adjust_Mt-8">＜2023年9月22日　7時59分までのお申し込み＞</dt>
+                <dd>紹介された方（被紹介者様）が紹介ログインした月の4カ月後に、楽天モバイルにご登録の楽天IDにポイントが進呈されます。進呈されたポイントは楽天PointClubの「<a href="https://point.rakuten.co.jp/" class="c-Link_Txt" target="_blank">ポイント実績</a>」から確認できます。</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-faq-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-4" data-ratid="campaign_referral_faq-4" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>＜紹介された方（被紹介者様）＞初めてのお申し込みのみ対象になりますか</button>
+            <div id="accordion-content-faq-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-4" aria-hidden="false">
+              <dl>
+                <dt>＜2023年9月22日　8時00分以降のお申し込み＞</dt>
+                <dd>初めてのお申し込みのみ対象となります。</dd>
+                <dt class="u-Adjust_Mt-8">＜2023年9月22日　7時59分までのお申し込み＞</dt>
+                <dd>本キャンペーンの被紹介者様特典の適用が初めての場合は対象となります。</dd>
+                <dd>対象となる例1）1回線目に本キャンペーン適用がなく、新たに2回線目をお申し込みする方</dd>
+                <dd>対象となる例2）過去に回線契約を解約し、本キャンペーン適用がなく今回新たに回線をお申し込みする方</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-faq-10" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-10" data-ratid="campaign_referral_faq-10" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>＜紹介された方（被紹介者様）＞他のキャンペーンとの併用は可能ですか</button>
+            <div id="accordion-content-faq-10" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-10" aria-hidden="false">
+              <p> キャンペーンルールの「<a href="#campaign-rule-table2" class="c-Link_Txt">併用可能キャンペーン</a>」欄をご確認ください。</p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-faq-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-7" data-ratid="campaign_referral_faq-7" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>＜紹介された方（被紹介者様）＞申し込みがキャンペーンのポイント獲得対象になっているか確認したい場合はどうすればいいですか</button>
+            <div id="accordion-content-faq-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-7" aria-hidden="false">
+              <p>紹介される方（被紹介者様）が<a href="#campaign-rule-table" class="c-Link_Txt">キャンペーン条件</a>を達成しているかどうかの情報は、個人情報保護の観点から当社より開示することはできません。</p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-faq-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-8" data-ratid="campaign_referral_faq-8" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>＜紹介する方（ご紹介者様）＞ ポイントが付与されていません</button>
+            <div id="accordion-content-faq-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-8" aria-hidden="false">
+              <p>当事者間でキャンペーン条件を達成しているかご確認ください。なお、被紹介者様が<a href="#campaign-rule-table" class="c-Link_Txt">キャンペーン条件</a>を達成しているかどうかの情報は、個人情報保護の観点から当社より開示することはできません。</p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-faq-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-9" data-ratid="campaign_referral_faq-9" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>＜紹介された方（被紹介者様）＞ ポイントが付与されていません</button>
+            <div id="accordion-content-faq-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-9" aria-hidden="false">
+              <p><a href="#campaign-rule-table" class="c-Link_Txt">キャンペーン条件</a>を達成しているかご確認ください。</p>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
+
+      <section id="interview" class="u-Adjust_Mt-64 u-Adjust_Mb-32 l-System_Container">
+        <div class="u-Adjust_Align-center">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/referral/img-interview-title-sp.png" width="233" height="80">
+            <img src="/assets/img/campaign/referral/img-interview-title-pc.png" width="434" height="53" alt="ご家族・ご友人の評判、紹介時のポイントなど！">
+          </picture>
+        </div>
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center u-Adjust_Mt-8">紹介者の体験談</h2>
+        <ul class="<%= namespace %>-Interview_List u-Adjust_Mt-24">
+          <li>
+            <p>
+              「<span class="c-Txt_Emp-02 <%= namespace %>-Utility_Txt-size-emp-costom">子どもに動画</span>
+              を見せる時に、データ制限がないので月末に遅くなることもなく、安心して使える」※
+            </p>
+            <a href="#modal01" class="js-Modal <%= namespace %>-Interview_Modal-switcher">
+              <img src="<%= sitepath %>assets/img/campaign/referral/img-interview01.png" alt="" loading="lazy">
+            </a>
+            <div id="modal01" style="display:none;">
+              <div style="position: relative; display: block;">
+                <div style="padding-top: 56.25%;">
+                  <video
+                    data-account="5068808272001"
+                    data-player="default"
+                    data-embed="default"
+                    data-video-id="6343628792112"
+                    class="video-js"
+                    controls
+                    data-rat-media='{ "measure":true, "mediaId": "campaign_referral_movie-01" }'
+                    style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <p>
+              「<span class="c-Txt_Emp-02 <%= namespace %>-Utility_Txt-size-emp-costom">海外から来る人</span>
+              はインターネット使い放題に慣れているので、データ無制限は本当にありがたい」※
+            </p>
+            <a href="#modal02" class="js-Modal <%= namespace %>-Interview_Modal-switcher ">
+              <img src="<%= sitepath %>assets/img/campaign/referral/img-interview02.png" alt="" loading="lazy">
+            </a>
+            <div id="modal02" style="display:none;">
+              <div style="position: relative; display: block;">
+                <div style="padding-top: 56.25%;">
+                  <video
+                    data-account="5068808272001"
+                    data-player="default"
+                    data-embed="default"
+                    data-video-id="6343630725112"
+                    class="video-js"
+                    controls
+                    data-rat-media='{ "measure":true, "mediaId": "campaign_referral_movie-02" }'
+                    style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <p>
+              「楽天市場でふるさと納税を利用して、毎月<span class="c-Txt_Emp-02 <%= namespace %>-Utility_Txt-size-emp-costom">楽天市場で買い物</span>するなら、楽天モバイルがおすすめです」
+            </p>
+            <a href="#modal03" class="js-Modal <%= namespace %>-Interview_Modal-switcher">
+              <img src="<%= sitepath %>assets/img/campaign/referral/img-interview03.png" alt="" loading="lazy">
+            </a>
+            <div id="modal03" style="display:none;">
+              <div style="position: relative; display: block;">
+                <div style="padding-top: 56.25%;">
+                  <video
+                    data-account="5068808272001"
+                    data-player="default"
+                    data-embed="default"
+                    data-video-id="6343628077112"
+                    class="video-js"
+                    controls
+                    data-rat-media='{ "measure":true, "mediaId": "campaign_referral_movie-03" }'
+                    style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※公平なサービスのため、または環境により速度低下する場合あり</p>
+
+        <div class="l-Media_Grid u-Adjust_Mt-16 u-Adjust_Align-center">
+          <a href="<%= sitepath %>campaign/referral/event/?l-id=campaign_referral_campaign_referral_event" class="c-Banner_Hover-act" target="_blank">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-referral-event-343-108-231208.png" width="686" height="216">
+              <img src="<%= sitepath %>assets/img/bnr/bnr-referral-event-1032-160-240115.png"
+                alt="【楽天モバイル紹介感謝イベント事後レポート】10万楽天キャッシュをもらったご契約者も?!" width="1032" height="160" loading="lazy">
+            </picture>
+          </a>
+        </div>
+
+      </section>
+
+      <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-07_saikyo-plan" data-ratevent="appear" data-ratparam="all"></div>
+      <section id="unlimit-vi-plan" class="u-Adjust_Mt-64 <%= namespace %>-Layout_Unlimit">
+        <%- include('/inc/_saikyo') %>
+      </section>
+
+      <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-08_about-mobile" data-ratevent="appear" data-ratparam="all"></div>
+      <section id="about-mobile" class="u-Bg_Monotone97 u-Adjust_Mt-64 u-Adjust_Py-48">
+        <%- include('/inc/_about-rakuten-mobile', { baseLId: 'campaign_referral' }) %>
+      </section>
+
+      <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-09_campaign" data-ratevent="appear" data-ratparam="all"></div>
+      <section class="l-System_Container u-Adjust_Mt-64 u-Adjust_Align-center">
+        <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+      </section>
+
+
+      <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-10_campaign-rule" data-ratevent="appear" data-ratparam="all"></div>
+      <section id="campaign-rule" class="u-Adjust_Pt-48 u-Adjust_Pb-48 <%= namespace %>-Utility_Bg-gray">
+        <div class="l-System_Container <%= namespace %>-Rule">
+
+          <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1784', level: 'h2', year: '2023', class: '' }}) %>
+
+        </div>
+      </section>
+    </div>
+
+    <div class="u-Rat_Appear-height" data-ratid="campaign_referral_scroll-11_footer" data-ratevent="appear" data-ratparam="all"></div>
+    <footer class="g-Footer u-Adjust_Mt-64 <%= namespace %>-Layout_Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <input id="ratMediaTrack" type="hidden" value='{"measure":true}'>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+  <script src="https://players.brightcove.net/5068808272001/default_default/index.min.js"></script>
+  <script src="https://r.r10s.jp/com/rat/plugin/media/main-0.2.0.js"></script>
+  <!-- 追従ナビゲーション -->
+  <script>
+    window.onscroll = function() {fixedHeader()};
+
+    var header = document.getElementById("referral-js-header-nav-wrapper");
+    var sticky = header.offsetTop;
+
+    function fixedHeader() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("referral-Layout_Nav-wrapper-sticky");
+      } else {
+        header.classList.remove("referral-Layout_Nav-wrapper-sticky");
+      }
+    }
+  </script>
+</body>
+</html>

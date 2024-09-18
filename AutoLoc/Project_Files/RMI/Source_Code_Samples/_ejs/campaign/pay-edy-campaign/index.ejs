@@ -1,0 +1,508 @@
+<% const pagetitle = "条件達成で楽天ペイアプリ, 楽天Edyの支払金額20％ポイント還元" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "pay-edy-campaign" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天ペイ、楽天Edyの対象期間中のエントリー決済金額分の20％をポイント還元いたします。',
+    keywords: '',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/pay-edy-campaign/pay-edy-campaign.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= namespace %>-Hero">
+  <div class="<%= namespace %>-Hero_Container">
+    <div class="<%= namespace %>-Hero_Header">
+      <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-hero-pc-header.png" alt="" width="680" height="56" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-hero-sp-header.png" alt="" width="375" height="63" class="<%= namespace %>-Utility_Img-sp">
+    </div>
+    <div class="l-System_Container <%= namespace %>-Hero_Main">
+      <h1><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-hero-pc.png?200731" alt="コンビニで楽天ペイ、楽天Edyを使ってお買い物するとポイント20％還元キャンペーン" width="680" height="404" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-hero-sp.png?200731" alt="コンビニで楽天ペイ、楽天Edyを使ってお買い物するとポイント20％還元キャンペーン" width="375" height="339" class="<%= namespace %>-Utility_Img-sp"></h1>
+    </div>
+  </div>
+</div>
+
+<div class="<%= namespace %>-Layout_Body">
+  <div class="<%= namespace %>-Information">
+    <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-24 u-Adjust_Mb-40 u-Adjust_Align-center">本キャンペーンは終了しました。</p>
+    <div class="<%= namespace %>-Information_Convenience">
+      <p class="c-Txt_Normal c-Txt_Emp-01">キャンペーン対象コンビニ</p>
+      <div class="u-Adjust_Mt-16">
+        <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img_storeLogo_pc.png" alt="" width="502" class="<%= namespace %>-Utility_Img-pc">
+        <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img_storeLogo_sp.png" alt="" width="311" class="<%= namespace %>-Utility_Img-sp">
+      </div>
+      <p class="c-Txt_Cap u-Adjust_Mt-32">※電波状況により、一部店舗で繋がりにくくなる可能性があります。<br>
+        ご迷惑をお掛けしますが、ご了承いただきますようお願いいたします。<br>
+        より良いサービスを提供できるよう改善に努めてまいります。</p>
+      <p class="c-Txt_Cap">※一部の店舗では楽天Edyがご利用いただけない場合があります。</p>
+    </div>
+    <div class="<%= namespace %>-Information_Period u-Adjust_Align-center u-Adjust_Mt-24">
+      <p class="c-Txt_Emp-01 <%= namespace %>-Information_Period-txt">【キャンペーンエントリー期間】<br class="<%= namespace %>-Utility_Br-sp"> 2020年8月1日（土）10:00～<br class="<%= namespace %>-Utility_Br-sp">2020年8月31日（月）9:59</p>
+      <p class="c-Txt_Emp-01 <%= namespace %>-Information_Period-txt">【楽天モバイルお申し込み完了期限】<br class="<%= namespace %>-Utility_Br-sp"> 2020年8月31日（月）9:59まで</p>
+      <p class="c-Txt_Emp-01 <%= namespace %>-Information_Period-txt">【楽天モバイル開通期限】<br class="<%= namespace %>-Utility_Br-sp"> 2020年9月30日（水）23:59まで</p>
+      <p class="c-Txt_Emp-01 <%= namespace %>-Information_Period-txt">【対象コンビニでのお買い物対象期間】<br class="<%= namespace %>-Utility_Br-sp"> 2020年8月1日（土）10:00〜2020年8月31日（月）9:59</p>
+    </div>
+  </div>
+
+  <div class="l-System_Container">
+      <p class="<%= namespace %>-Layout_Link-in-page">
+        <a href="#campaign-rule" class="c-Link_Txt-icon-front js-scroll">
+          <span class="c-Icon_Arrow-down-l"></span>参加条件、ポイント上限額などはキャンペーンルールを必ずご確認ください
+        </a>
+      </p>
+
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="campaign-flow">キャンペーンご利用方法</h2>
+      <div class="<%= namespace %>-Layout_Section">
+        <ul class="<%= namespace %>-Flow_List">
+          <li>
+            <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+              <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-entry.png" width="242" alt="">
+              </div>
+              <div>
+                <h3 class="c-Heading_Lv4">エントリーする</h3>
+                <p class="c-Txt_Normal u-Adjust_Mt-16">このページの「エントリーする」ボタンからエントリーしてください。</p>
+                <p class="c-Txt_Normal u-Adjust_Mt-16">2020年8月31日（月）9:59まで</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※エントリー完了後、こちらのキャンペーンのページに戻ります。</p>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+              <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-preparation.png" width="242" alt="">
+              </div>
+              <div>
+                <h3 class="c-Heading_Lv4">ご契約・お支払いに必要なものを準備する</h3>
+                <p class="c-Txt_Normal u-Adjust_Mt-16">ご契約・お支払いに必要なものをご用意ください。</p>
+                <ul class="c-List_Text-disc <%= namespace %>-Flow_List-link">
+                  <li>
+                    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-icon">本人確認書類<span class="c-Icon_Chevron-right"></span></a></p>
+                  </li>
+                  <li>
+                    <p class="c-Txt_Normal">楽天ID（楽天会員ログイン用のユーザーID）、パスワード</p>
+                    <p class="c-Txt_Emp-02 c-Txt_Cap u-Adjust_Mt-8"><span>※</span>本人確認書類の情報と、楽天会員情報が一致している必要があります。</p>
+                    <p class="u-Adjust_Mt-8"><a href="https://member.id.rakuten.co.jp/rms/nid/menufwd" class="c-Link_Txt-icon">楽天会員情報を確認・変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/payment/" class="c-Link_Txt-icon">ご契約者本人名義のクレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></li>
+                  <li><a href="<%= sitepath %>guide/mnp/" class="c-Link_Txt-icon">ご契約者本人名義のMNP予約番号（他社から乗り換えの場合）<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+                <ul class="c-List_Cap u-Adjust_Mt-16">
+                  <li><span>※</span> 未成年者の方のお申し込みに必要な情報、お申し込み方法は<a href="<%= sitepath %>flow/for-minors/">こちらのご案内ページ</a>をご確認ください。</li>
+                  <li><span>※</span> Webページにて、楽天モバイル（ドコモ回線・au回線）から移行お手続き後に、楽天モバイル（楽天回線）にお申し込みいただく場合、MNP予約番号と本人確認書類はご準備不要です。</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+              <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-apply.png" width="242" alt="">
+              </div>
+              <div>
+                <h3 class="c-Heading_Lv4">楽天モバイルを申し込む</h3>
+                <p class="c-Txt_Normal u-Adjust_Mt-16">2020年8月31日（月）9:59まで</p>
+                <p class="c-Txt_Emp-02 u-Adjust_Mt-16">「新規電話番号／他社から乗り換え（MNP）申し込み」と「楽天モバイル（ドコモ回線・au回線）からの移行申し込み」でお申し込み手順が異なりますのでご注意ください。</p>
+              </div>
+            </div>
+
+            <h4 class="c-Heading_Lv4 u-Adjust_Mt-32 <%= namespace %>-Flow_List-heading-bg">お申し込み方法</h4>
+            <ul class="<%= namespace %>-Flow_Inner-list">
+              <li>
+                <h5 class="<%= namespace %>-Flow_Inner-list-heading">新規電話番号／他社から乗り換え（MNP）でお申し込みの場合</h5>
+                <div class="u-Adjust_Mt-24">
+                  <div class="<%= namespace %>-Flow_List-img">
+                    <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-capture01.png" width="242" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Normal u-Adjust_Mt-24">「楽天モバイルお申し込み画面に進む」ボタンよりお申し込み画面に進み、プラン、製品などを選択し、手順に従ってお申し込みを完了させてください。</p>
+                    <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                      <a href="<%= sitepath %>guide/application/?lid-r=campaign_pay-edy-campaign_guide_application" class="c-Btn_Secondly-half <%= namespace %>-Btn_Large"><span>楽天モバイル<br class="<%= namespace %>-Utility_Br-sp">お申し込み画面に進む</span></a>
+                    </div>
+                    <p><a href="<%= sitepath %>guide/flow/application/ " class="c-Link_Txt-icon u-Adjust_Mt-24">楽天モバイルお申し込み方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <h5 class="<%= namespace %>-Flow_Inner-list-heading">楽天モバイル（ドコモ回線・au回線）から移行申し込みの場合</h5>
+                <div class="u-Adjust_Mt-24">
+                  <div class="<%= namespace %>-Flow_List-img">
+                    <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-capture02.png" width="242" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Normal u-Adjust_Mt-24">メンバーズステーションより、移行のお申し込みを行ってください。楽天回線へのお申し込み完了後、引き続き楽天モバイルのお申し込みにお進みいただきます。</p>
+                    <p class="c-Txt_Normal u-Adjust_Mt-16">画面の案内に従って、楽天モバイルのお申し込み手続きを行ってください。</p>
+                    <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                      <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&mno_migration=1" class="c-Btn_Secondly-half <%= namespace %>-Btn_Large"><span>メンバーズステーションに進む</span></a>
+                    </div>
+                    <p><a href="<%= sitepath %>guide/mnp/migration/ " class="c-Link_Txt-icon u-Adjust_Mt-24">楽天モバイル（楽天回線）への移行方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p><a href="<%= sitepath %>flow/mvno-user-registration/" class="c-Link_Txt-icon u-Adjust_Mt-24">利用者登録でご利用中の方の移行方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <h3 class="c-Heading_Lv4">楽天モバイルの開通手続き（アクティベーション）を行う</h3>
+            <div class="l-Media_Grid-half u-Adjust_Mt-24">
+                <div class="c-Infobox_Standing-light">
+                  <h4 class="c-Heading_Lv4 <%= namespace %>-Heading_Disc-emp">SIMカードでお申し込みの場合</h4>
+                  <div class="u-Adjust_Mt-24">
+                    <a href="<%= sitepath %>assets/pdf/product/START-GUIDE-SIM-CARD.pdf?20201016">SIMカード版スタートガイド</a>に従って開通（アクティベート）を行っていただきますようお願いいたします。 nanoSIMは、カード台から切り出した状態のmicroSIMからさらに切り出しが必要です。
+                  </div>
+                  <div class="l-Media_Image u-Adjust_Mt-32">
+                      <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-nanosim.png" alt="" width="226">
+                  </div>
+                </div>
+                <div class="c-Infobox_Standing-light">
+                  <h4 class="c-Heading_Lv4 <%= namespace %>-Heading_Disc-emp">eSIMでお申し込みの場合</h4>
+                  <div class="u-Adjust_Mt-24">
+                    eSIMはデジタルSIMなので物理的なカードはありません。 開通（アクティベート）のためのQRコードがございますので<a href="<%= sitepath %>assets/pdf/product/START-GUIDE-eSIM.pdf?20201102">eSIM版 START GUIDE</a>に従って開通を行っていただきますようお願いいたします。
+                  </div>
+                  <div class="l-Media_Image u-Adjust_Mt-32">
+                      <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-esim.png" alt="" width="226">
+                  </div>
+                </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <a href="<%= sitepath %>guide/setting/" class="c-Btn_Regular-half"><span>各種製品の初期設定方法を見る</span></a>
+            </div>
+          </li>
+
+          <li>
+            <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+              <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-opening.png" width="242" alt="">
+              </div>
+              <div>
+                <h3 class="c-Heading_Lv4">期限までに楽天モバイル開通完了</h3>
+                <p class="c-Txt_Normal u-Adjust_Mt-16">2020年9月30日（水）23:59まで</p>
+                <ul class="c-List_Cap u-Adjust_Mt-16">
+                  <li><span>※</span>お客様に開通手続きをしていただいた後、開通完了まで数日を要する場合がございます。</li>
+                  <li><span>※</span>2020年9月16日（水）23:59までの開通手続き実施を推奨いたします。</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+              <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img_storeLogo_pc02.png" width="242" alt="" class="<%= namespace %>-Utility_Img-pc">
+                <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img_storeLogo_pc02.png" width="311" alt="" class="<%= namespace %>-Utility_Img-sp">
+              </div>
+              <div>
+                <h3 class="c-Heading_Lv4">キャンペーン対象コンビニで、 楽天ペイまたは楽天Edyで5円（税込）以上のお買い物をする</h3>
+                <p class="u-Adjust_Mt-16">2020年8月1日（土）10:00～2020年8月31日（月）9:59</p>
+                <ul class="c-List_Cap u-Adjust_Mt-16">
+                  <li class="c-Txt_Emp-02"><span>※</span>本キャンペーン期間中であれば、楽天モバイルお申し込みおよび楽天Edyの楽天ポイントを貯める設定以前のお買い物（決済）分も、ポイント還元対象です。</li>
+                  <li class="c-Txt_Emp-02"><span>※</span>一部の店舗では楽天Edyがご利用いただけない場合があります。</li>
+                  <li><span>※</span>楽天Edyをご利用の場合、楽天モバイルのご契約をされた楽天IDのポイント口座に、楽天ポイントを貯める設定がされているEdy番号が本キャンペーンの対象です。</li>
+                </ul>
+                <p><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=wi_grp_202008_mnolp_osaifu" target="_blank" class="c-Link_Txt-icon u-Adjust_Mt-16">おサイフケータイで楽天ポイントを貯める設定方法<span class="c-Icon_New-window-l"></span></a></p>
+                <p><a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=wi_grp_202008_mnolp_goods" target="_blank" class="c-Link_Txt-icon u-Adjust_Mt-16">Edyカード、Edyグッズで楽天ポイントを貯める設定方法<span class="c-Icon_New-window-l"></span></a></p>
+              </div>
+            </div>
+            <h4 class="u-Adjust_Mt-32 <%= namespace %>-Utility_Center-sp">アプリをまだお持ちでない方は<br class="<%= namespace %>-Utility_Br-sp">こちらからダウンロード</h4>
+            <div class="l-Media_Grid-half u-Adjust_Mt-16 <%= namespace %>-Utility_Center-sp">
+              <div class="c-Infobox_Standing-light">
+                <div class="l-Media_Grid-small">
+                  <div>
+                      <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/appIcon_edy.png" width="96" alt="">
+                  </div>
+                  <div class="">
+                    <h4 class="c-Heading_Lv4">楽天Edy</h4>
+                    <p class="c-Txt_Normal <%= namespace %>-Layout_Download">おサイフケータイの方</p>
+
+                    <div class="l-Media_Grid u-Adjust_Mt-8">
+                      <div>
+                          <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/edy-qr01.png" width="96" alt="">
+                      </div>
+                      <div>
+                          <a href="http://play.google.com/store/apps/details?id=jp.edy.edyapp&referrer=adjust_reftag%3DcWA0q53ouLCyC%26utm_source%3DRakutenMobile_cvs" target="_blank"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/google-play.png" width="148" alt="" class="<%= namespace %>-Btn_Img"></a>
+                      </div>
+                    </div>
+
+                    <p class="c-Txt_Normal u-Adjust_Mt-32">おサイフケータイ以外の方</p>
+                    <div class="l-Media_Grid u-Adjust_Mt-8">
+                      <div>
+                          <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/edy-qr02.png" width="96" alt="">
+                      </div>
+                      <div>
+                        <a href="https://edy.rakuten.co.jp/howto/" target="_blank" class="c-Btn_Regular-auto"><span>楽天Edyの使い方を見る<span class="c-Icon_New-window-l u-Adjust_Ml-8"></span></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="c-Infobox_Standing-light">
+                <div class="l-Media_Grid-small">
+                  <div>
+                      <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/appIcon_rpay.png" width="96" alt="">
+                  </div>
+                  <div class="">
+                    <h4 class="c-Heading_Lv4">楽天ペイ</h4>
+
+                    <div class="l-Media_Grid <%= namespace %>-Layout_Download">
+                      <div>
+                          <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/pay-qr01.png" width="96" alt="">
+                      </div>
+                      <div>
+                        <div>
+                          <a href="https://r10.to/hIW0EQ" target="_blank"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/google-play.png" width="148" alt="" class="<%= namespace %>-Btn_Img"></a>
+                        </div>
+                        <div class="u-Adjust_Mt-16">
+                          <a href="https://r10.to/hIW0kC" target="_blank"><img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/app-store.png" width="148" alt="" class="<%= namespace %>-Btn_Img"></a>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </li>
+
+          <li>
+            <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+              <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                <img src="<%= sitepath %>assets/img/campaign/pay-edy-campaign/img-point-reduction.png" width="242" alt="">
+              </div>
+              <div>
+                <h3 class="c-Heading_Lv4">対象コンビニで楽天ペイまたは楽天Edyでお買い物した金額の20％をポイント還元！</h3>
+                <ul class="c-List_Cap u-Adjust_Mt-16">
+                  <li><span>※</span>2020年12月31日までに付与予定です。</li>
+                  <li><span>※</span>ポイント付与日から6カ月間有効の期間限定ポイントです。</li>
+                  <li><span>※</span>特典付与までに、楽天Edyの楽天ポイントを貯める設定を解除または楽天会員を退会した場合、特典付与の対象外となります。</li>
+                  <li><span>※</span>上限ポイントは1,000ポイントです。</li>
+                  <li><span>※</span>楽天モバイルお申し込み以前のキャンペーン期間中の決済も対象です。</li>
+                  <li><span>※</span>ポイント還元の対象となるには、当キャンペーンのエントリーが必要です。</li>
+                  <li><span>※</span>エントリー、楽天モバイルお申し込み、対象コンビニで楽天ペイまたは楽天Edyでお買い物、の順序は問いませんが、期間内のエントリー、期限までの楽天モバイルお申し込み、期限までの楽天モバイル開通が必要となります。詳しくは<a href="#campaign-rule" class="js-scroll">キャンペーンルール</a>をご確認ください。</li>
+                  <li><span>※</span>参加条件、ポイント上限額などは<a href="#campaign-rule" class="js-scroll">キャンペーンルール</a>を必ずご確認ください。</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="<%= namespace %>-Layout_Rule" id="campaign-rule">
+        <h2>【楽天モバイル×楽天ペイアプリ、楽天Edy】条件達成で楽天ペイアプリ, 楽天Edyの支払金額20％ポイント還元 ルール</h2>
+        <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-24 u-Adjust_Mb-40 u-Adjust_Align-center">本キャンペーンは終了しました。</p>
+        <div class="c-Table_Wrap u-Adjust_Mt-24">
+          <table class="c-Table_Container <%= namespace %>-Table_Rule">
+            <colgroup>
+              <col>
+              <col>
+            </colgroup>
+            <tbody>
+              <tr>
+                <th>キャンペーン期間</th>
+                <td>
+                  <p>2020年8月1日（土）10:00～2020年8月31日（月）9:59</p>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>店舗（楽天モバイルショップ）でのお申し込みは2020年8月30日（日）閉店まで対象</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>特典</th>
+                <td>
+                  <p>本キャンペーンページでエントリーした後、楽天モバイルをお申し込みされ、対象コンビニで楽天ペイアプリ・楽天Edyで決済された方に以下の特典を適用します。</p>
+                  <p class="u-Adjust_Mt-16">楽天ペイアプリ・楽天Edyの対象コンビニでの決済金額の20%分楽天ポイント還元</p>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>おひとり様1,000ポイントが上限</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>ポイント付与</th>
+                <td>
+                  <ul class="c-List_Text-disc">
+                    <li class="c-Txt_Emp-02">楽天ポイントの付与は、2020年12月31日までに行います。</li>
+                    <li>付与される楽天ポイントは、期間限定ポイントになります。</li>
+                    <li>付与されるポイント数は小数点以下の切り下げとなります。</li>
+                    <li>ポイント付与は楽天ペイアプリ、楽天Edyの決済金額の合計が基準となります。</li>
+                  </ul>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                    <li><span>※</span>権利の譲渡はできません。</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>ポイント有効期間</th>
+                <td>
+                  <p>ポイントの付与日より約6カ月となっております</p>
+                </td>
+              </tr>
+              <tr>
+                <th>特典対象</th>
+                <td>
+                  <p>以下の条件を全て満たしたお客様</p>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                    <li>本キャンペーンページで2020年8月31日（月）9:59までにエントリーしたうえで、楽天モバイルを以下いずれかの方法でお申し込み
+                      <ul class="c-List_Text-disc">
+                        <li>楽天モバイルに新規お申し込みし、2020年9月30日（水）23:59までに開通</li>
+                        <li>楽天モバイルに他社からの乗り換え（MNP）でお申し込みし、2020年9月30日（水）23:59までに開通</li>
+                        <li>楽天モバイル（楽天回線）に楽天モバイル（ドコモ回線・au回線）の料金プランから移行手続き後、お申し込みし、2020年9月30日（水）23:59までに開通</li>
+                      </ul>
+                    </li>
+                    <li>期間中に対象コンビニで楽天ペイアプリまたは楽天Edyで5円（税込）以上のお支払い</li>
+                  </ul>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>特典は回線数にかかわらず、おひとり様1回のみとさせていただきます。</li>
+                    <li><span>※</span>エントリーと楽天モバイルのお申し込みおよび楽天ペイアプリ、楽天Edyのお支払いの順序は問いません。</li>
+                    <li><span>※</span>店舗（楽天モバイルショップ）でお申し込みの場合も対象となります。店舗（楽天モバイルショップ）でのお申し込みは2020年8月30日（日）閉店まで対象となります。</li>
+                    <li><span>※</span>楽天モバイルについて、「一括購入」と「分割払い」のどちらでお申し込みいただいても対象となります。</li>
+                    <li><span>※</span>開通日は以下を指します
+                      <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                        <li>新規お申し込みの場合：プラン（SIMカード、eSIM）が開通した日、または楽天モバイル株式会社に配送完了データが通知された日のいずれか早い方</li>
+                        <li>他社から乗り換え（MNP）の場合：プラン（SIMカード、eSIM）が開通した日</li>
+                        <li>楽天モバイル（ドコモ回線・au回線）の料金プランから移行した場合：プラン（SIMカード、eSIM）が開通した日</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>楽天Edyをご利用の場合、楽天モバイルのご契約をされた楽天IDのポイント口座に、楽天ポイントを貯める設定がされているEdy番号が本キャンペーンの対象です</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-16 c-Txt_Cap">おサイフケータイの楽天ポイントを貯める設定方法は<a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=wi_grp_202008_mnolp_osaifu">こちら</a></p>
+                  <p class="u-Adjust_Mt-8 c-Txt_Cap">Edyカード、Edyグッズの楽天ポイントを貯める設定方法は<a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=wi_grp_202008_mnolp_goods">こちら</a></p>
+                </td>
+              </tr>
+              <tr>
+                <th>特典対象外</th>
+                <td>
+                  <ul class="c-List_Text-disc">
+                    <li>以下の条件に当てはまる場合は、特典適用対象外となります。</li>
+                  </ul>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>開通されなかった場合</li>
+                  </ul>
+                  <p class="u-Adjust_Mt-8 c-Txt_Cap">開通の手続き方法につきましては、<a href="<%= sitepath %>faq/detail/00001648/">こちら</a>のマルチSIM版スタートガイドまたはeSIM版スタートガイドを参照ください</p>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li><span>※</span>本人確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                    <li><span>※</span>エントリー時のIDと楽天ペイアプリ、楽天Edy、楽天モバイルに紐づく楽天IDが同一でない場合</li>
+                    <li><span>※</span>ポイント付与時に登録された楽天ポイント口座を削除された場合</li>
+                    <li><span>※</span>楽天会員から退会している場合</li>
+                    <li><span>※</span>ポイント付与前に楽天モバイル株式会社の提供するサービスなどの料金のお支払いを、お支払期限までに行わなかった場合</li>
+                    <li><span>※</span>ポイント付与前に楽天Edyの楽天ポイントを貯める設定を解除した場合</li>
+                    <li><span>※</span>楽天Edyのご利用のキャンセル等された場合</li>
+                    <li><span>※</span>以下の方法でお支払いされた場合
+                      <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                        <li>楽天ペイアプリ内の楽天ポイントカードによるお支払い</li>
+                        <li>楽天ペイアプリ内のSuicaへのチャージ分、Suicaによるお支払い</li>
+                        <li>ネットでの楽天ペイのお支払い</li>
+                      </ul>
+                    </li>
+                    <li><span>※</span>楽天ペイアプリでのお支払いをキャンセルされた場合</li>
+                    <li><span>※</span>楽天モバイル株式会社または楽天株式会社が定める規約などに違反した場合</li>
+                    <li><span>※</span>そのほか、楽天モバイル株式会社が会員として不適格であると判断した場合</li>
+                    <li><span>※</span>特典付与の時点で携帯電話の機種変更や楽天Edyアプリの再発行等の理由により本キャンペーン参加に利用された楽天EdyのEdy番号が変更になっていた場合</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th>注意事項</th>
+                <td>
+                  <ul class="c-List_Text-disc">
+                    <li>本キャンペーンは、予告なく変更・中止させていただく場合があります。</li>
+                    <li>本キャンペーンの特典付与対象者は、同時期に行われている他のキャンペーンの対象から除外、または特典総額が景品表示法上の範囲内に制限される場合があります。</li>
+                    <li>一部の店舗では楽天Edyがご利用いただけない場合があります。</li>
+                    <li>一部の商品・サービスは対象外となる場合があります。</li>
+                    <li>楽天Edyのお支払いにはEdyの受け取り（Edyギフト）は含みません。</li>
+                    <li>楽天ペイアプリに楽天カード以外のJCB、American Expressのカードをお支払い元に設定した場合、一部の店舗でお支払いいただけません。</li>
+                    <li>楽天ペイアプリに設定可能なカードは、すべての楽天カード、およびその他のVisa、Mastercard、JCB、American Expressになります。<br>
+                      それ以外のカードは、楽天会員情報に登録されていても、楽天ペイアプリのお支払い元の選択画面には表示されません。</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-news.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script>
+    (function ($) {
+        $(function (e) {
+          $('#rule-top').on('click', function(){
+            if ($('#accordion-001').attr('aria-expanded') === 'false') {
+              $('#accordion-001').click();
+            }
+          });
+        });
+    })(jQuery);
+</script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

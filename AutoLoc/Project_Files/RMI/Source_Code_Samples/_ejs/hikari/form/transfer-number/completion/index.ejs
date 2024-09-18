@@ -1,0 +1,39 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "事業者・転用変更承諾番号 | 送信完了" -%>
+<% const directories = [] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    <!-- directories: directories, -->
+    description: '',
+    noindex: true,
+    pathname: filepath,
+    ishikari: true
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+
+  <%- include('/hikari/include/_header', { headerType: 'logo', pagetitle: pagetitle, directories: directories, tax: false }) %>
+
+  <%- include('/include/hikari/form/completion/_completion', {
+    pagetitle: '事業者・転用変更承諾番号',
+    description:'開通までしばらくお待ちください。',
+    islogo:true
+  }) %>
+
+
+  <footer class="g-Footer u-Adjust_Mt-64">
+    <%- include('/include/_footer-simple') %>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

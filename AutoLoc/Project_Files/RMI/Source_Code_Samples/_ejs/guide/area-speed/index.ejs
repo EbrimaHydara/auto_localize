@@ -1,0 +1,341 @@
+<% const pagetitle = "サービスエリアの通信速度とデータ高速モードについて" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/area/connection/", label:"データ通信速度"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'サービスエリアの通信速度とデータ高速モードについてご案内します。my 楽天モバイル（アプリ・Web）からかんたんに確認することが可能です。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/payment/change/change.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-32">楽天モバイルで提供しているデータ高速無制限エリア、海外ローミングエリアの各通信速度や、データ高速モード、高速データ容量の残量通知設定方法についてご案内いたします。</p>
+    <ul class="u-Adjust_Mt-24">
+      <li class="u-Adjust_Mt-8"><a href="#area-speed" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>各エリアの高速データ容量と通信速度</a></li>
+      <li class="u-Adjust_Mt-8"><a href="#high-speed-data-change" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>データ高速モードの切り替えについて</a></li>
+      <li class="u-Adjust_Mt-8"><a href="#high-speed-data-mode" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>データ高速モードの切り替え方法</a></li>
+      <li class="u-Adjust_Mt-8"><a href="#high-speed-data-remaining" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>高速データ容量の残量通知の設定方法</a></li>
+    </ul>
+  </div>
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="area-speed">各エリアの高速データ容量と通信速度</h2>
+    <p class="u-Adjust_Mt-32">ご利用のエリアによって、付与される高速データ容量や高速データ容量をすべて消費した後の通信速度が異なります。</p>
+
+    <p class="u-Adjust_Mt-32 u-Adjust_Align-center">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/area-speed/area-data-sp-0601.png">
+        <img src="<%= sitepath %>assets/img/guide/area-speed/area-data-0601.png" width="800" alt="データ高速無制限エリア：当月1日0:00～翌月1日0:00まで、データ無制限で高速通信を利用可能（※1）。　海外ローミングエリア（※2）：当月1日0:00から高速データ容量2GBまで高速通信を利用可能。高速データ容量を使い切った場合は最大128kbpsで使い放題。高速データ容量は翌月1日0:00にリセットされます。">
+      </picture>
+    </p>
+
+    <p class="c-Txt_Cap u-Adjust_Mt-32"><span>※1</span>公平なサービス提供のため速度制御をする場合があります。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※2</span>海外ローミングエリアの高速データ容量は、毎月1日0:00に前月分の残容量がリセットされ、当月分として2GBが付与されます。2GB超過後は1GBあたり500円（不課税）のデータチャージにて、高速通信の利用が可能です。海外の対象国と地域以外は、Wi-Fi接続時のみ利用可能です。対象エリアおよび条件は変更する場合があるため、<a class="c-Link_Txt" href="<%= sitepath %>service/global/overseas/#accordion-1">対象エリア</a>をご確認ください。</p>
+  </div>
+
+
+  <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="high-speed-data-change">データ高速モードの切り替えについて</h2>
+      <p class="u-Adjust_Mt-32">「データ高速モード」のON／OFFを切り替えることで、海外ローミングエリアでの通信速度を選択できます。</p>
+
+      <!--  -->
+      <div class="u-Adjust_Mt-40">
+        <div class="c-Table_Wrap-scroll">
+          <table class="c-Table_Container">
+            <colgroup>
+              <col style="width:30%;">
+              <col style="width:35%;">
+              <col style="width:35%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th scope="col" class="u-Adjust_Align-center">海外ローミングエリア</th>
+                <th scope="col" class="u-Adjust_Align-center">データ高速無制限エリア</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="u-Adjust_Align-center">データ高速モードON</th>
+                <td>高速データ容量を消費し、高速通信が可能</td>
+                <td rowspan="2" style="vertical-align: middle;">高速データ容量を消費せず、高速通信が可能<span class="c-Txt_Cap">※2</span></td>
+              </tr>
+              <tr>
+                <th scope="row" class="u-Adjust_Align-center">データ高速モードOFF</th>
+                <td>高速データ容量を消費せず、利用可能<span class="c-Txt_Cap">※1</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--  -->
+      <p class="c-Txt_Cap u-Adjust_Mt-32"><span>※1</span> 最大128kbpsで利用可能</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※2</span>「データ高速モード」の設定内容は、データ高速無制限エリア内の通信速度には影響しません。</p>
+  </div>
+
+  <div class="l-System_Container">
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="high-speed-data-mode">データ高速モードの切り替え方法（海外ローミングエリア）</h2>
+
+    <div class="c-Tab js-Tab">
+      <ul class="c-Tab_Items-bg u-Adjust_Mt-16" role="tablist">
+        <li class="c-Tab_Item u-Adjust_Align-center" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webで確認する</li>
+        <li class="c-Tab_Item u-Adjust_Align-center" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリで確認する</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ol class="c-Flow u-Adjust_Mt-40">
+          <li>
+            <h3 class="c-Heading_Lv3">1. my 楽天モバイル「ホーム」の「高速データ容量」画面を開く</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※「高速データ容量へ進む」をタップしてログインすると、手順２の画面が表示されます。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my
+                楽天モバイル]ログインできません</a>」をご確認ください。</p>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a href="https://portal.mobile.rakuten.co.jp/dashboard?scrollTo=partnerArea#home" target="_blank" class="c-Btn_Secondly-large"
+                data-ratId="guide_ecare_home_partnerArea" data-ratEvent="click" data-ratParam="all">高速データ容量へ進む</a>
+            </p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2．「高速データ容量」下部にある「データ高速モード」をタップし、ON／OFFを切り替える</h3>
+
+            <div class="c-Accordion u-Adjust_Mt-16">
+              <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>
+                楽天モバイルを2回線以上ご契約中の場合
+              </button>
+              <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+                <p class="u-Adjust_Mt-16">画面上部へスクロールし、手続きを行う電話番号が表示されているか、事前にご確認ください。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">
+                ※一番最後にご契約された電話番号が自動で表示されています。<br>※表示されている電話番号を切替えた場合、my 楽天モバイルからログアウト（自動ログアウト含む）するまでは切替えた状態が維持されます。
+                </p>
+                <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">電話番号の切替え方法</h4>
+
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-32">1 表示されている電話番号をタップする</h5>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/tel-01-230601.png" alt="" class="c-Img_Capture"></p>
+
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-32">2 手続きを行う電話番号をタップする</h5>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/tel-02-230601.png" alt="" class="c-Img_Capture"></p>
+
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-32">3 選択した電話番号が表示されていることを確認する</h5>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/tel-03-230601.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-16">以上で完了です。手順2の操作へお進みください。</p>
+              </div>
+            </div>
+            <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>画面は「ON」の状態です。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>「OFF」にした場合でもデータ高速無制限エリアでは高速でご利用いただけます。</p>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/img-01-230601.png" alt="" class="c-Img_Capture"></p>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-32">以上でデータ高速モードの切り替えは完了です。</p>
+      </div>
+
+
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ol class="c-Flow u-Adjust_Mt-40">
+          <li>
+            <h3 class="c-Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+            <div class="c-Box_App u-Adjust_Mt-24">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. ホーム画面上に表示される「高速データ容量」下部にある「データ高速モード」をタップし、ON／OFFを切り替える</h3>
+
+            <div class="c-Accordion u-Adjust_Mt-16">
+              <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>
+                楽天モバイルを2回線以上ご契約中の場合
+              </button>
+              <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+                <p class="u-Adjust_Mt-16">手続きを行う電話番号が表示されているか、事前にご確認ください。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">
+                  ※一番最後にご契約された電話番号が自動で表示されています。<br>※表示されている電話番号を切替えた場合、my 楽天モバイルアプリからのログアウト、またアプリを強制的に終了するまでは切替えた状態が維持されます。
+                </p>
+                <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">電話番号の切替え方法</h4>
+
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-32">1 表示されている電話番号をタップする</h5>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/tel-01-230601.png" alt="" class="c-Img_Capture"></p>
+
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-32">2 手続きを行う電話番号をタップする</h5>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/tel-02-230601.png" alt="" class="c-Img_Capture"></p>
+
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-32">3 選択した電話番号が表示されていることを確認する</h5>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/tel-03-230601.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-16">以上で完了です。手順3の操作へお進みください。</p>
+              </div>
+            </div>
+            <p class="c-Txt_Cap"><span>※</span>画面は「ON」の状態です。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>「OFF」にした場合でもデータ高速無制限エリアでは高速でご利用いただけます。</p>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/img-01-230601.png" alt="" class="c-Img_Capture"></p>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-32">以上でデータ高速モードの切り替えは完了です。</p>
+      </div>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="high-speed-data-remaining">高速データ容量の残量通知の設定方法</h2>
+    <p class="u-Adjust_Mt-16">海外ローミングエリアでご利用中、以下の場合にメール、およびSMSで通知を行います。</p>
+    <ul class="c-List_Text-disc u-Adjust_Mt-8">
+      <li>高速データ容量の残容量が400MBを下回った場合</li>
+      <li>高速データ容量を使い切った場合</li>
+    </ul>
+    <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>通知設定を「OFF」から「ON」に切り替えた翌月より反映されます。</p>
+
+    <div class="c-Tab js-Tab">
+      <ul class="c-Tab_Items-bg u-Adjust_Mt-16" role="tablist">
+        <li class="c-Tab_Item u-Adjust_Align-center" id="tab-menu3" role="tab" aria-selected="true" aria-controls="tab-content3">Webで確認する</li>
+        <li class="c-Tab_Item u-Adjust_Align-center" id="tab-menu4" role="tab" aria-selected="false" aria-controls="tab-content4">アプリで確認する</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu3">
+        <ol class="c-Flow u-Adjust_Mt-40">
+          <li>
+            <h3 class="c-Heading_Lv3">1. my 楽天モバイルにログインする</h3>
+            <div class="u-Adjust_Mt-24">
+              <a href="<%= sitepath %>my-rakuten-mobile/" class="c-Btn_Regular">my 楽天モバイル（Webサイト）はこちら</a>
+            </div>
+            <ul class="c-Txt_Cap u-Adjust_Mt-24">
+              <li>※ログインが行えない場合は「[<a href="<%= sitepath %>faq/detail/00001207/">my 楽天モバイル]ログインできません</a>」をご確認ください。</li>
+              <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/area-speed/img-05.png" class="c-Img_Capture" alt=""></p>
+            </ul>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 画面右上のメニュー（三本線）をタップし、「お知らせ設定」をタップする</h3>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/area-speed/img06.png" alt="" class="c-Img_Capture"></p>
+            <p class="u-Adjust_Mt-32 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/area-speed/img04.png" alt="" class="c-Img_Capture"></p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「通信容量の残容量通知メール」をONにし、「変更する」をタップする</h3>
+            <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>画面は「ON」の状態です。</p>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/area-speed/img_03_20221220.png" class="c-Img_Capture" alt=""></p>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-32">以上で高速データ容量の残量通知の設定は完了です。</p>
+      </div>
+
+      <div class="c-Tab_Panel" id="tab-content4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu4">
+        <ol class="c-Flow u-Adjust_Mt-40">
+          <li>
+            <h3 class="c-Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+            <div class="c-Box_App u-Adjust_Mt-24">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 画面右上のメニュー（三本線）をタップし、「お知らせ設定」をタップする</h3>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/area-speed/app_step2.png" alt="" class="c-Img_Capture"></p>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/area-speed/img02.png" alt="" class="c-Img_Capture"></p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「通信容量の残容量通知メール」をONにし、「保存する」をタップする</h3>
+            <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>画面は「ON」の状態です。</p>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/area-speed/img_04_20221220.png" alt="" class="c-Img_Capture"></p>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-32">以上で高速データ容量の残量通知の設定は完了です。</p>
+      </div>
+    </div>
+
+    <%- include('/include/guide/_faq') %>
+
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

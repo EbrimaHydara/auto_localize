@@ -1,0 +1,469 @@
+<% const pagetitle = "楽天カードで製品購入" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天カードで製品購入',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "guide" -%>
+<% const information = {
+  campaignState:'finish',
+  campaignScheduleStarl:'12月6日（水）10:00',
+  campaignScheduleFinish:'12月18日（月）10:00',
+  campaignScheduleCarduse:'2023年12月6日（水）～2024年1月31日（水）',
+  campaignScheduleCardInformation:'2024年2月29日（木）'
+}; %>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/application/campaign/guide-application-campaign.css?20240424">
+<script src="https://r.r10s.jp/com/ap/target/phoenix-tracker-2.7.2.min.js"></script>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System" aria-hidden="false">
+
+<%- include('/include/_header-simple') %>
+
+<div class="<%= nameSpace %>-Layout_Container">
+
+  <div class="<%= nameSpace %>-application-campaign-Layout-Label">
+    <ul class="c-Label_List <%= nameSpace %>-application-campaign-Layout-Label_List">
+      <li class="c-Label_Normal">楽天カード新規入会＆利用</li>
+      <li class="c-Label_Normal">楽天モバイルと楽天カード同時申し込み</li>
+    </ul>
+    <p class="u-Adjust_Align-right u-Adjust_Pt-8 guide-application-campaign-Utility_Show-pc">
+      <a href="#campaign_rule01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>詳細を確認する</a>
+    </p>
+  </div>
+
+
+
+    <div class="guide-application-campaign-Hero card-bg upgrade-bg">
+      <h1 class="u-Adjust_Align-center l-System_Container">
+        <img src="<%= sitepath %>assets/img/guide/application/card-campaign/upgrade/img-main-card-upgrade-pc.png?230901" alt="楽天モバイルと楽天カード同時申し込みで※1 お申し込みの楽天カードを当日から楽天モバイルの製品購入などに利用できる！さらに、製品購入代金の 分割払い手数料0円！※2" class="guide-application-campaign-Utility_Show-pc" style="max-width: 1059px;width: auto;">
+        <img src="<%= sitepath %>assets/img/guide/application/card-campaign/upgrade/img-main-card-upgrade-sp.png?230901" alt="楽天モバイルと楽天カード同時申し込みで※1 お申し込みの楽天カードを当日から楽天モバイルの製品購入などに利用できる！さらに、製品購入代金の 分割払い手数料0円！※2" class="guide-application-campaign-Utility_Show-sp u-Adjust_Pt-16">
+      </h1>
+    </div>
+
+    <div class="l-System_Container">
+      <div class="u-Adjust_Mt-16">
+        <p class="guide-application-campaign-Utility_Show-sp">
+          <a href="#campaign_rule01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>詳細を確認する</a>
+        </p>
+        <p class="c-Txt_Cap u-Adjust_Pt-8 u-Adjust_Mt-8">
+          ※1 楽天カードについては、新規入会＆利用が必要です。<a href="#accordion-1" class="c-Link_Txt js-scroll js-openAccordion" data-target-accordion="#accordion-1">詳細はこちら</a>から確認してください。<br>
+          ※2 所定の審査がございます。<a href="https://r10.to/hbaQQW" target="_blank" class="c-Link_Txt-inline">詳しくはこちら<span class="c-Icon_New-window-l"></span></a>をご確認ください。楽天モバイルのスマートフォン購入分に限らず、その他アクセサリー購入分も対象となります。
+        </p>
+      </div>
+      <ul class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <li><a href="https://r10.to/mobile_CB_W4" class="c-Btn_Primary-large">楽天モバイルと楽天カードを<br class="guide-application-campaign-Utility_Br-pc">一緒に申し込む</a></li>
+      </ul>
+
+      <p class="c-Txt_Cap <%= nameSpace %>-application-campaign-Note_Cap u-Adjust_Mt-16">
+        ※楽天モバイルと楽天カードをお申し込みの場合、楽天カードのお申し込み完了後、楽天モバイルのお申し込み画面へ進みます。<br>
+        ※楽天モバイル、または楽天カードからお手続きについてのご案内メールをさせて頂く場合がございます。<br>
+        ※楽天モバイルよりお手続きに関するご案内を行うため、楽天カードが楽天モバイルに対し、お客様のお申し込み情報を提供することに同意して、楽天モバイルと楽天カードを一緒に申し込みします。
+      </p>
+
+      <ul class="u-Adjust_Align-center u-Adjust_Mt-32">
+        <li><a href="https://onboarding.mobile.rakuten.co.jp/?l-id=application_card-campaign_upgrade_button_onboarding" class="c-Btn_Secondly-large">楽天モバイルのみ申し込む</a></li>
+      </ul>
+    </div>
+
+    <div id="js-trigger-nav"></div>
+
+    <div class="l-System_Container" id="campaign_rule01">
+      <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">楽天カード新規入会＆利用特典</h3>
+      <div class="<%= nameSpace %>-application-campaign-Utility-Infobox_Standing-border u-Adjust_Mt-16">
+      <% if (information.campaignState == 'finish') { %>
+      <% } else { %>
+        <!-- else -->
+        <div class="c-Theme-Emphasis1 u-Adjust_Mt-8 u-Adjust_Align-center u-Adjust_Pt-8 u-Adjust_Pb-8">
+          <span class="c-Txt_Emp-02">【期間限定】12月18日（月）AM10時まで！</span>
+        </div>
+      <% } %>
+      <% if (information.campaignState == 'finish') { %>
+        <div class="u-Adjust_Pt-8 u-Adjust_Pb-16">
+          <img src="<%= sitepath %>assets/img/guide/application/card-bank/img-card5000-pc_221101.png?221101" width="892" alt="楽天カード　年会費永年無料　新規入会＆利用でもれなく5,000ポイント" class="guide-application-campaign-Utility_Show-pc" style="margin: 0 auto;">
+          <img src="<%= sitepath %>assets/img/guide/application/card-bank/img-card5000-sp_221101.png?221101" alt="楽天カード　年会費永年無料　新規入会＆利用でもれなく5,000ポイント" class="guide-application-campaign-Utility_Show-sp">
+        </div>
+      <% } else { %>
+        <!-- else -->
+        <div class="u-Adjust_Pt-8 u-Adjust_Pb-16 u-Adjust_Mt-24">
+          <img src="<%= sitepath %>assets/img/guide/application/card-bank/img-card8000-pc.png?231206" width="892" alt="楽天カード　年会費永年無料　新規入会＆利用でもれなく8,000ポイント" class="guide-application-campaign-Utility_Show-pc" style="margin: 0 auto;">
+          <img src="<%= sitepath %>assets/img/guide/application/card-bank/img-card8000-sp.png?231206" alt="楽天カード　年会費永年無料　新規入会＆利用でもれなく8,000ポイント" class="guide-application-campaign-Utility_Show-sp">
+        </div>
+      <% } %>
+        <p class="guide-application-campaign-Benefit_Note u-Adjust_Align-center">審査は最短2分～<span class="c-Txt_Cap">※1</span>。<br class="guide-application-campaign-Utility_Br-sp">本日から楽天カードがご利用できます<br>
+          審査の状況によっては審査完了までお時間をいただく場合があります。
+          </p>
+        <% if (information.campaignState == 'finish') { %>
+        <% } else { %>
+          <!-- else -->
+            <h4 class="c-Heading_Lv4 u-Adjust_Align-center">【ポイントアップ期間】<br class="guide-application-campaign-Utility_Br-sp"><%= information.campaignScheduleStarl %>～<%= information.campaignScheduleFinish %></h4>
+        <% } %>
+          <div class="u-Adjust_Align-center u-Adjust_Pt-8 c-Txt_Emp-02">
+          2022年4月1日から成人年齢が引き下げられました。正しいクレジットカード利用について<a href="https://www.rakuten-card.co.jp/support/guide/start-cardlife/?l-id=corp_sp_acqired_to_start-cardlife" target="_blank" class="c-Link_Txt-inline">詳細はこちら<span class="c-Icon_New-window-l"></span></a>
+          </div>
+
+          <div class="c-Accordion u-Adjust_Mt-32">
+          <% if (information.campaignState == 'finish') { %>
+            <button type="button" id="accordion-11" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-11"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>5,000ポイント獲得の３ステップ　<br class="guide-application-campaign-Utility_Br-sp"><span class="c-Txt_Cap">※ポイント（期間限定ポイント）の進呈には条件がございます。こちらをクリックして必ずご確認ください。</span></button>
+          <% } else { %>
+            <!-- else -->
+            <button type="button" id="accordion-11" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-11"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>8,000ポイント獲得の３ステップ　<br class="guide-application-campaign-Utility_Br-sp"><span class="c-Txt_Cap">※ポイント（期間限定ポイント）の進呈には条件がございます。こちらをクリックして必ずご確認ください。</span></button>
+          <% } %>
+            <div id="accordion-content-11" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-11" aria-hidden="true">
+
+              <ol class="c-Flow u-Adjust_Mt-32">
+                <li>
+                  <div class="<%= nameSpace %>-application-campaign-Layout-Grid">
+                    <div class="u-Adjust_Pr-24">
+                      <p class="c-Txt_Emp-02 c-Txt_Normal-l">STEP1</p>
+                    </div>
+                    <div>
+                      <div class="<%= nameSpace %>-application-campaign-Layout-Grid_Title">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/guide/application/campaign/icon-card.png" width="66" alt="">
+                        </div>
+                        <div class="c-Txt_Normal-l">
+                          <span class="c-Txt_Emp-01">楽天カードをお申し込み</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="<%= nameSpace %>-application-campaign-Layout-Grid">
+                    <div class="u-Adjust_Pr-24">
+                      <p class="c-Txt_Emp-02 c-Txt_Normal-l">STEP2</p>
+                    </div>
+                    <div>
+                      <div class="<%= nameSpace %>-application-campaign-Layout-Grid_Title">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/guide/application/campaign/icon-mail.png" width="66" alt="">
+                        </div>
+                        <div class="c-Txt_Normal-l">
+                          <span class="c-Txt_Emp-01">審査結果をメールでご連絡（最短2分～）</span><span class="c-Txt_Cap">※1</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c-Theme-Light">
+                    <p class="c-Txt_Emp-01">楽天カード新規入会特典</p>
+                    <p class="c-Txt_Emp-01">本ページからお申し込みの方は最短2分～<span class="c-Txt_Cap">※1</span>で<span class="c-Txt_Normal-ll c-Txt_Emp-02">2,000</span>ポイントGET<span class="c-Txt_Cap">※2</span></p>
+                    <p class="c-Txt_Emp-01">本日の楽天モバイル製品購入にも<span class="c-Txt_Normal-ll c-Txt_Emp-02">利用可能</span></p>
+                  </div>
+                  <p class="c-Txt_Cap u-Adjust_Mt-16">※1 審査の状況によっては審査完了までお時間をいただく場合があります。21:15～翌8:40にカードをお申し込みの場合は、翌8:40以降に入会審査を行います。</p>
+                  <p class="c-Txt_Cap">※2 進呈ポイントは期間限定ポイントになります。 詳しくは進呈条件をご確認ください。</p>
+                </li>
+
+                <li>
+                  <div class="<%= nameSpace %>-application-campaign-Layout-Grid">
+                    <div class="u-Adjust_Pr-24">
+                      <p class="c-Txt_Emp-02 c-Txt_Normal-l">STEP3</p>
+                    </div>
+                    <div>
+                      <div class="<%= nameSpace %>-application-campaign-Layout-Grid_Title">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/guide/application/campaign/icon-mail2.png" width="66" alt="">
+                        </div>
+                        <div class="c-Txt_Normal-l">
+                          <span class="c-Txt_Emp-01">楽天カード初回利用</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c-Theme-Light u-Adjust_Mt-16">
+                    <p class="c-Txt_Emp-01">楽天カード利用特典</p>
+                    <p class="c-Txt_Emp-01">楽天カード1回以上利用で
+                    <% if (information.campaignState == 'finish') { %>
+                      <span class="c-Txt_Normal-ll c-Txt_Emp-02">3,000</span> ポイントGET<span class="c-Txt_Cap">※</span>
+                    <% } else { %>
+                      <!-- else -->
+                      <span class="c-Txt_Normal-ll c-Txt_Emp-02">6,000</span> ポイントGET<span class="c-Txt_Cap">※</span>
+                    <% } %>
+                    </p>
+                  </div>
+                <% if (information.campaignState == 'finish') { %>
+                  <p class="c-Txt_Cap u-Adjust_Mt-16">※進呈ポイントは期間限定ポイントとなります。</p>
+                <% } else { %>
+                  <!-- else -->
+                  <p class="c-Txt_Cap u-Adjust_Mt-16">※進呈ポイントは期間限定ポイントとなります。</p>
+                <% } %>
+                </li>
+              </ol>
+
+              <div class="<%= nameSpace %>-application-campaign-Utility-Infobox_Standing-light u-Adjust_Mt-16">
+                <dl class="guide-application-campaign-Benefit_Box guide-Box_Upgrade">
+                  <dt class="guide-application-campaign-Benefit_Box-ttl">さらに</dt>
+                    <dd>
+                      <span class="c-Txt_Emp-01">
+                        審査完了後（最短2分～）で、本日お申し込みの<span class="c-Txt_Emp-02 guide-application-campaign-Benefit_Box-emph">『楽天カード』</span>が楽天モバイルのお支払いや製品購入に利用可能！</span>
+
+                        <ul class="u-Adjust_Mt-24 c-Txt_Normal">
+                            <li>1.プランのお支払い方法画面にて<span class="c-Txt_Emp-02">更新ボタン</span>※1を押してアップデート</li>
+                            <li>2.新規でお申し込みの<span class="c-Txt_Emp-02">『楽天カード』</span>が選択可能に！</li>
+                            <li>3.楽天カードの審査完了画面に表示されたカード番号と有効期限を確認し、選択</li>
+                            <li>4.<span class="c-Txt_Emp-02">『楽天カード』</span>でお支払い設定完了！</li>
+                          </ul>
+
+                        <div class="u-Adjust_Mt-24  u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/guide/application/card-campaign/upgrade/img_upgrade_guide_step01.png" width="557" class="" style="margin: 0 auto;" alt="プランのお支払い方法">
+                        </div>
+
+                      <ul class="<%= nameSpace %>-application-campaign-Utility-List_Cap u-Adjust_Mt-16">
+                        <li class="c-Txt_Emp-02"><span>※</span>ご利用代金お支払い口座について『インターネットで口座設定手続き』された方のみ対象となります。お手元にキャッシュカードなどをご用意ください。</li>
+                        <li class="c-Txt_Emp-02"><span>※</span>審査完了のお客様は、クレジットカードが手元に届く前でも楽天カードのご利用が可能です。詳しくは完了後の画面にてご確認ください。</li>
+                        <li><span>※</span>カードお受け取り前のご利用には所定の審査がございます。楽天モバイルのスマートフォン購入分に限らず、その他アクセサリー購入分も対象となります。</li>
+                        <li><span>※</span>審査完了後、<span class="c-Txt_Emp-01">審査可決の場合は申し込み完了画面にカード番号下4桁（アメリカン・エキスプレス®は5桁）とセキュリティコード3桁（アメリカン・エキスプレス®は4桁）</span>が表示されご確認いただけます。</li>
+                      </ul>
+                  </dd>
+                </dl>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="c-Accordion" id="conditions">
+            <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天カード新規入会＆利用進呈条件</button>
+            <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+              <dl class="<%= nameSpace %>-application-campaign-Utility-List_Dl-origin u-Adjust_Pt-8" style="border:none;">
+                <dt>期間</dt>
+              <% if (information.campaignState == 'finish') { %>
+                <dd>常時開催</dd>
+              <% } else { %>
+                <!-- else -->
+                <dd>2023年<%= information.campaignScheduleStarl %>～2023年<%= information.campaignScheduleFinish %></dd>
+              <% } %>
+                <dt>カード利用期限</dt>
+              <% if (information.campaignState == 'finish') { %>
+                <dd>
+                  カードお申し込み日の翌月末まで
+                  <ul class="<%= nameSpace %>-application-campaign-Utility-List_Cap u-Adjust_Mt-8">
+                    <li><span>※</span>カードお申し込み日の翌々月末までにカードご利用店舗から楽天カード（株）へのカード利用情報の到着が必須となります。</li>
+                  </ul>
+                </dd>
+              <% } else { %>
+                <!-- else -->
+                <dd>
+                  <%= information.campaignScheduleCarduse %>
+                  <ul class="<%= nameSpace %>-application-campaign-Utility-List_Cap u-Adjust_Mt-8">
+                    <li><span>※</span><%= information.campaignScheduleCardInformation %>までにカードご利用店舗から楽天カード（株）へのカード利用情報の到着が必須となります。</li>
+                  </ul>
+                </dd>
+              <% } %>
+                <dt>口座振替設定期限</dt>
+                <dd>カードお申し込み日の翌々月25日まで</dd>
+                <dt>特典</dt>
+                <dd>【楽天カード新規入会特典】2,000ポイント （期間限定ポイント）<br>
+                <% if (information.campaignState == 'finish') { %>
+                  【楽天カード利用特典】3,000ポイント （期間限定ポイント）
+                <% } else { %>
+                  <!-- else -->
+                  【楽天カード利用特典】6,000ポイント （期間限定ポイント）<br>
+                  <p class="text-style01 u-Adjust_Mt-8">・<a href="https://point.rakuten.co.jp/guidance/terms/" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて詳細を見る<span class="c-Icon_New-window-l"></span></a></p>
+                <% } %>
+                </dd>
+              <% if (information.campaignState == 'finish') { %>
+                <dt>ポイント進呈日</dt>
+              <% } else { %>
+                <!-- else -->
+                <dt>ポイント進呈予定日</dt>
+              <% } %>
+                <dd>【楽天カード新規入会特典】審査可決後<br>
+                  審査の状況によってはポイント進呈までお時間をいただきます。その場合は、お申し込みから約2分後にメールにてご連絡申し上げます。<br>
+                  21:15～翌8:40のお申し込みは、翌8:40以降の審査受け付けとなります。<br>
+                  お申し込み時にログインした楽天会員登録の口座に楽天ポイントを進呈いたします。<br>
+                  有効期限は入会月の5カ月後の月末までとなります。<br>
+                  <br>
+                  【楽天カード利用特典】カード初回利用と口座振替設定の両方が完了した月の翌月末頃<br>
+                  ※諸事情によりポイント進呈が遅れる場合もございますのでご了承ください。<br>
+                <% if (information.campaignState == 'finish') { %>
+                  有効期限は進呈日の翌月末までとなります。
+                <% } else { %>
+                  <!-- else -->
+                  <span class="text-style01">・<a href="https://r10.to/hrJfAM" target="_blank" class="c-Link_Txt-inline">カード利用特典の進呈タイミングについて詳細を見る<span class="c-Icon_New-window-l"></span></a></span>
+                <% } %>
+                </dd>
+                <dt>進呈対象</dt>
+                <dd>
+                  <div>【楽天カード新規入会特典】【楽天カード利用特典】</div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                    <li>新規のお申し込みで楽天カードが発行された方</li>
+                    <li>本ページよりお申し込みの方</li>
+                  </ul>
+                  <div class="u-Adjust_Mt-16">【楽天カード利用特典】</div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                    <li>カード利用期限までに1円以上、1回以上対象カード（楽天カード）を利用された方※1</li>
+                    <li>口座振替設定期限の時点で口座振替設定が完了されている方※2</li>
+                  </ul>
+                  <ul class="<%= nameSpace %>-application-campaign-Utility-List_Cap-wide u-Adjust_Mt-8">
+                    <li><span>※1</span>ご利用加盟店によってはカード利用情報の到着に時間がかかり、実際のご利用日と異なる場合がございます。<br>
+                    また楽天カード株式会社へのカード利用情報到着のタイミングによって、ポイント進呈がカード初回利用日の翌々月以降になる場合や、ポイント進呈対象外となる場合がございます。</li>
+                    <li><span>※2</span>お申し込み時に郵送での口座振替設定を選択された方は、口座振替設定完了までに時間がかかる場合がございます。</li>
+                  </ul>
+                </dd>
+                <dt>進呈対象外</dt>
+                <dd>
+                  <div>【楽天カード新規入会特典】【楽天カード利用特典】</div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                    <li>すでにカードをお持ちの方（お申し込み中・カードの到着をお待ちの方も含む）</li>
+                    <li>カードお申し込み時の審査において、カードが発行されなかった方</li>
+                  <% if (information.campaignState == 'finish') { %>
+                    <li>本カード会員様が弊社会員規約(第19条)に基づく楽天カード会員資格の失効、もしくは楽天カード会員および楽天会員を退会されている場合</li>
+                  <% } else { %>
+                    <!-- else -->
+                    <li>ポイント進呈月の前月末時点で、本カード会員様が楽天会員もしくは楽天カード会員を退会されている場合、いずれかの会員規約に違反もしくは会員資格を取り消されている場合</li>
+                  <% } %>
+                    <li>重複お申し込みの場合</li>
+                    <li>ポイント進呈予定日の前月末時点でカードを受け取っていない場合</li>
+                    <li>ポイント進呈月の前月末時点で、ご利用可能なカードをお持ちでない場合</li>
+                  </ul>
+                  <div class="u-Adjust_Mt-16">【楽天カード新規入会特典】</div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                    <li>過去にカードを受け取ったことのある方</li>
+                    <li>過去に入会特典ポイントを受け取ったことのある方</li>
+                  </ul>
+                  <div class="u-Adjust_Mt-16">【楽天カード利用特典】</div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                    <li>過去お申し込み履歴があり、カードが発行されたことのある方（すでに退会された方・カード切り替えのお申し込みをされた方含む）</li>
+                    <li>過去にカード発行履歴のある楽天IDを利用してお申し込みをされた方</li>
+                    <li>1つの楽天IDを使って複数の方がカードお申し込みいただいた場合</li>
+                    <li>ポイント進呈月の前月末時点で、楽天IDが弊社で特定できない場合</li>
+                  </ul>
+                  <div class="u-Adjust_Mt-16">＜以下のご利用分は、対象外となります。＞</div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                    <li>2枚目に作成いただいた楽天カードのご利用分</li>
+                    <li>楽天市場や楽天ペイなどでのポイントご利用分</li>
+                    <li>キャッシングのご利用分およびATM手数料</li>
+                    <li>明細書発行費用</li>
+                    <li>カード年会費（ETCカード年会費など）および、楽天PINKカードの月額サービス料</li>
+                    <li>キャンセルされたご利用分</li>
+                  </ul>
+                </dd>
+                <dt>備考</dt>
+                <dd>
+                  <ul class="c-List_Text-disc">
+                    <li>18歳未満、海外在住の方はカードをお申し込みいただけません。</li>
+                    <li>カード発行には所定の審査がございます。</li>
+                    <li>ポイント進呈までに楽天カード会員および楽天会員登録の情報変更があった場合、ポイント進呈ができない場合がございます。</li>
+                    <li>本企画は、やむを得ず変更・中止する場合がございます。</li>
+                    <li>弊社に登録されている楽天IDが複数ある場合、進呈されない場合がございます。</li>
+                    <li>お申し込みの際には、ご本人様の楽天IDをご利用ください。</li>
+                    <li>年末年始、ゴールデンウィーク、連休のお申し込みについては、通常よりもお届けが遅れる場合がございます。あらかじめご了承ください。</li>
+                    <li>ポイント進呈時点で、上記以外のその他の事由により特典の進呈ができない場合がございます。</li>
+                  </ul>
+                  <div class="u-Adjust_Mt-16">＜楽天カードのお申し込みに関するお問い合わせ先＞</div>
+                  <div class="u-Adjust_Mt-8">楽天カード株式会社コンタクトセンター</div>
+                  <div class="u-Adjust_Mt-8">0570-66-6910（営業時間9:30～17:30）</div>
+                  <ul class="<%= nameSpace %>-application-campaign-Utility-List_Cap u-Adjust_Mt-8">
+                    <li><span>※</span>上記電話番号がご利用いただけない場合は092-474-6287をご利用ください。</li>
+                  </ul>
+                </dd>
+              </dl>
+            </div>
+          </div>
+      </div>
+      <div id="js-trigger"></div>
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-48">「楽天カード」をお持ちの方限定</h4>
+      <p class="u-Adjust_Mt-24">最新のスマホ本体代が最大半額分支払い不要！おトクに最新の製品に乗り換えできるサービスです。</p>
+      <p class="u-Adjust_Pt-8 c-Txt_Emp-02"><a href="<%= sitepath %>service/replacement-program/" target="_blank" class="c-Link_Txt-inline">楽天モバイル買い替え超トクプログラム<span class="c-Icon_New-window-l"></span></a>
+      </p>
+
+    </div>
+  </div>
+<div class="u-Adjust_Mt-64"></div>
+<!-- ReX UX Survey: Mounting point for embedded components -->
+<div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+
+<div class="guide-application-campaign-Btn_Cta_Apply" id="js-fixed-btn" aria-expanded="false">
+  <div class="guide-application-campaign-Btn_Cta_Apply-inner">
+    <a href="https://r10.to/mobile_CB_W4" class="c-Btn_Primary guide-application-campaign-Btn_Cta_Apply-btn">
+      <span><span class="guide-application-campaign-Btn_Cta_Apply-txt">楽天モバイルと楽天カードを一緒に</span>申し込む</span>
+    </a>
+    <a href="https://onboarding.mobile.rakuten.co.jp/?l-id=application_card-campaign_upgrade_f_button_onboarding" class="c-Btn_Secondly guide-application-campaign-Btn_Cta_Apply-btn">
+      <span><span class="guide-application-campaign-Btn_Cta_Apply-txt">楽天モバイルのみ</span>申し込む</span>
+    </a>
+  </div>
+</div>
+
+<footer class="g-Footer u-Adjust_Mt-64">
+
+  <%- include('/include/_footer-simple') %>
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+<!-- ReX UX Survey: Config -->
+<script>
+window.rexSurveyConfig = {"language":"ja","surveyId":"39499","cId":{"name":"answers[39499_269617]","value":""},"embedded":true,"url":{"name":"answers[39499_269618]"},"triggerIdName":"trigger","reappearancePeriodWithRespond":"10","reappearancePeriodWithoutRespond":"10","enableDisplaySuppressionPerPage":true,"enableFormAction":true,"displayStartDate":"","displayEndDate":"","permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":false},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。","thanksDisplaySeconds":3},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[39499_269619]","value":"746867"},{"name":"answers[39499_269619]","value":"746868"},{"name":"answers[39499_269619]","value":"746869"},{"name":"answers[39499_269619]","value":"746870"},{"name":"answers[39499_269619]","value":"746871"}],"txt0":"わかりづらかった","txt1":"わかりやすかった","checked":4},"inquiry":{"available":true,"checkList":{"questionType":"multipleAnswer","available":true,"question":"あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ","shuffleChoices":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":"ポイント獲得の条件や流れがわかりにくい"},{"name":"answers[39499_269620][]","value":"746873","label":"文字数や情報量が多すぎてわかりにくい"},{"name":"answers[39499_269620][]","value":"746874","label":"色や文字サイズ等のデザインが見にくい"},{"name":"answers[39499_269620][]","value":"746875","label":"楽天モバイルの申し込み方法がわかりにくい"},{"name":"answers[39499_269620][]","value":"746876","label":"キャンペーンに申し込むメリットを感じない"},{"name":"answers[39499_269620][]","value":"746877","label":"その他(次の設問でご記入ください)"},{"name":"answers[39499_269620][]","value":"746878","label":" 特に無い"}]},"freeInput":{"available":true,"name":"answers[39499_269621]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のため使用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":""},{"name":"answers[39499_269620][]","value":"746873","label":""},{"name":"answers[39499_269620][]","value":"746874","label":""},{"name":"answers[39499_269620][]","value":"746875","label":""},{"name":"answers[39499_269620][]","value":"746876","label":""},{"name":"answers[39499_269620][]","value":"746877","label":""},{"name":"answers[39499_269620][]","value":"746878","label":""}]}},"ua":{"name":"answers[39499_269622]"},"href":{"name":"answers[39499_269623]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+</script>
+<!-- ReX UX Survey: Script -->
+<script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/2.1.0/js/main.js" defer></script>
+
+<script>
+  (function($){
+      const trigger = document.getElementById('js-trigger');
+      const fixedBtn = document.getElementById('js-fixed-btn');
+      function fixedBottomBtn() {
+          let scrollY = window.pageYOffset;
+          const triggerRect = trigger.getBoundingClientRect();
+          const triggerY = scrollY + triggerRect.top;
+
+          if ( scrollY + window.innerHeight > triggerY ) {
+              fixedBtn.setAttribute('aria-expanded', 'true');
+          } else {
+              fixedBtn.setAttribute('aria-expanded', 'false');
+          }
+      }
+      if( fixedBtn && trigger ) {
+          window.addEventListener('scroll', fixedBottomBtn);
+      }
+  })();
+</script>
+<script>
+function fixedBtn(trigger2, elm) {
+  let scrollY2 = window.pageYOffset;
+
+  if( !elm || !trigger2 ) return;
+
+  const triggerRect2 = trigger2.getBoundingClientRect();
+  const triggerY2 = scrollY2 + triggerRect2.top;
+
+  if ( scrollY2 > triggerY2 ) {
+    elm.setAttribute('aria-expanded', 'true');
+  } else {
+    elm.setAttribute('aria-expanded', 'false');
+  }
+}
+
+function fixedBtnInit() {
+  const navTrigger = document.getElementById('js-trigger-nav');
+  const navBtn = document.getElementById('js-fixed-nav');
+
+  fixedBtn(navTrigger, navBtn)
+}
+
+window.addEventListener('scroll', fixedBtnInit);
+
+$('.js-openAccordion').on('click', function(){
+    let $this = $(this);
+    let $target = $($this.data('target-accordion'));
+    if ($target) {
+        if ($target.attr('aria-expanded') === "false") {
+            $target.click();
+            setTimeout(function(){
+                $('html, body').animate({scrollTop: $($this.attr('href')).offset().top}, 300);
+            }, 300);
+        }
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<% const pagetitle = "情報セキュリティ" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/other/other/", label:"その他"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイルでは、お客様に安全にサービスをご利用いただけるよう、情報セキュリティに関する取り組みを行っております。当社が推奨するセキュリティ対策などをまとめております。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const namespace = "security" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/security/security.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+<div class="<%= namespace %>-Hero c-Hero">
+  <div class="c-Hero_Content <%= namespace %>-Hero_Contents">
+    <h1 class="c-Hero_Title-reverse">
+      <span>情報セキュリティ</span>
+    </h1>
+  </div>
+</div>
+
+<main>
+  <div class="l-System_Container">
+    <p class="u-Adjust_Mt-16">お客様に安全にサービスをご利用いただくために、楽天モバイルが推奨するセキュリティ対策などをまとめております。</p>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">大切なお知らせ</h2>
+    <dl class="c-Dl u-Adjust_Mt-16">
+      <div>
+        <dt>2024年4月23日</dt>
+        <dd>
+          <a href="<%= sitepath %>information/news/other/2675/?l-id=guide_security_information_other_2675" class="c-Link_Txt">【重要】身に覚えのないeSIMの再発行にご注意ください</a>
+        </dd>
+      </div>
+      <div>
+        <dt>2021年7月21日</dt>
+        <dd>
+          <a href="<%= sitepath %>information/news/other/736/" class="c-Link_Txt">【お客さまへの注意喚起】通信事業者などを装うフィッシング詐欺にご注意ください</a>
+        </dd>
+      </div>
+      <div>
+        <dt>2021年7月21日</dt>
+        <dd>
+          <a href="<%= sitepath %>information/news/other/462/" class="c-Link_Txt">【再掲】宅配便の不在通知を装った迷惑ショートメッセージ（SMS）にご注意ください</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+  <div class="<%= namespace %>-Service u-Adjust_Mt-64">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2">安心・安全のためのサービス</h2>
+      <p class="u-Adjust_Mt-16">楽天モバイルでは安心・安全にスマホをお使いいただけるよう、セキュリティオプションサービスをご用意しております。</p>
+      <div class="<%= namespace %>-Service_Box u-Adjust_Mt-24">
+        <p class="c-Txt_Emp-02">危険なサイトからスマホを保護</p>
+        <h3 class="c-Heading_Lv3">ノートン™ モバイル セキュリティ</h3>
+        <div class="l-Media_Grid u-Adjust_Mt-32">
+          <div class="l-Media_Image">
+            <img class="<%= namespace %>-Utility_Show-pc" src="<%= sitepath %>assets/img/guide/security/img-service-01_pc.png?211215" alt="">
+          </div>
+          <div>
+            <p>危険なWi-FiやWebサイトなど、さまざまなリスクから保護する機能を備えています。</p>
+
+            <img class="<%= namespace %>-Utility_Show-sp u-Adjust_Mt-32" src="<%= sitepath %>assets/img/guide/security/img-service-01_sp.png?211215" alt="">
+
+            <p class="u-Adjust_Mt-24">
+              <a href="<%= sitepath %>service/norton-mobile-security/?l-id=guide_security_service_norton-mobile-security" class="c-Btn_Secondly-large"><span>ノートン™ モバイル セキュリティの詳細を見る</span></a>
+            </p>
+            <p class="u-Adjust_Mt-24">
+              <a href="<%= sitepath %>guide/norton-mobile-security/?l-id=guide_security_guide_norton-mobile-security" class="c-Link_Txt-inline">お申し込み・ご利用方法を確認する<span class="c-Icon_Chevron-right"></span></a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Service_Box u-Adjust_Mt-24">
+        <p class="c-Txt_Emp-02">見守りフィルタリングサービス</p>
+        <h3 class="c-Heading_Lv3">あんしんコントロール by i-フィルター</h3>
+        <div class="l-Media_Grid u-Adjust_Mt-32">
+          <div class="l-Media_Image">
+            <img class="<%= namespace %>-Utility_Show-pc" src="<%= sitepath %>assets/img/guide/security/img-service-02_pc.png?211215" alt="">
+          </div>
+          <div>
+            <p>ご家庭でも外出先でも、お子さまのスマホ・タブレット利用を見守ります。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※18歳未満の方に楽天モバイルをご利用いただく場合、ご契約が必須となります。</p>
+            <img class="<%= namespace %>-Utility_Show-sp u-Adjust_Mt-32" src="<%= sitepath %>assets/img/guide/security/img-service-02_sp.png?211215" alt="">
+            <p class="u-Adjust_Mt-24">
+              <a href="<%= sitepath %>service/i-filter/?l-id=guide_security_service_i-filter" class="c-Btn_Secondly-large"><span>あんしんコントロール by i-フィルターの詳細を見る</span></a>
+            </p>
+            <p class="u-Adjust_Mt-24">
+              <a href="<%= sitepath %>guide/i-filter/?l-id=guide_security_guide_i-filter" class="c-Link_Txt-inline">お申し込み・ご利用方法を確認する<span class="c-Icon_Chevron-right"></span></a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="l-Media_Grid-half u-Adjust_Mt-24">
+        <div class="<%= namespace %>-Service_Box">
+          <p class="c-Txt_Emp-02">メール・SMS対策</p>
+          <h3 class="c-Heading_Lv3">迷惑メール対処法</h3>
+          <div class="l-Media_Icon u-Adjust_Mt-24">
+            <div>
+              <img src="<%= sitepath %>assets/img/guide/security/img-service-03.png" alt="">
+            </div>
+            <div>
+              <p>迷惑メールに対する一般的な対策方法をご案内いたします。</p>
+              <p class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>faq/detail/00001652/?l-id=guide_security_faq_detail" class="c-Link_Txt-inline">方法を確認する<span class="c-Icon_Chevron-right"></span></a>
+              </p>
+              <p class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/anti-spam/?l-id=guide_security_guide_anti-spam" class="c-Link_Txt-inline">迷惑メールを申告する方法<span class="c-Icon_Chevron-right"></span></a>
+              </p>
+              <p class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/spoofing-email/?l-id=guide_security_guide_spoofing-email" class="c-Link_Txt-inline">なりすましメールの対処方法<span class="c-Icon_Chevron-right"></span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="<%= namespace %>-Service_Box">
+          <p class="c-Txt_Emp-02">かんたん設定変更</p>
+          <h3 class="c-Heading_Lv3">メールアドレスの変更方法</h3>
+          <div class="l-Media_Icon u-Adjust_Mt-24">
+            <div>
+              <img src="<%= sitepath %>assets/img/guide/security/img-service-04.png" alt="">
+            </div>
+            <div>
+              <p>ご契約時に登録したメールアドレスは、「my 楽天モバイル」で変更のお手続きができます。</p>
+              <p class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>faq/detail/00001914/?l-id=guide_security_faq_detail" class="c-Link_Txt-inline">方法を確認する<span class="c-Icon_Chevron-right"></span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="l-Media_Grid-half u-Adjust_Mt-24">
+        <div class="<%= namespace %>-Service_Box">
+          <p class="c-Txt_Emp-02">ウイルス・マルウェア対策</p>
+          <h3 class="c-Heading_Lv3">ウイルス・マルウェアに感染した端末の対処方法</h3>
+          <div class="l-Media_Icon u-Adjust_Mt-24">
+            <div>
+              <img src="<%= sitepath %>assets/img/guide/security/img-service-05.png" alt="">
+            </div>
+            <div>
+              <p>ウイルス・マルウェアに感染した場合の一般的な対処方法をご案内いたします。</p>
+              <p class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/malware-recovery/?l-id=guide_security_guide_malware-recovery" class="c-Link_Txt-inline">方法を確認する<span class="c-Icon_Chevron-right"></span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="<%= namespace %>-Service_Box" id="password">
+          <p class="c-Txt_Emp-02">ID・パスワード対策</p>
+          <h3 class="c-Heading_Lv3">パスワードの安全な管理方法</h3>
+          <div class="l-Media_Icon u-Adjust_Mt-24">
+            <div>
+              <img src="<%= sitepath %>assets/img/guide/security/img-service-06.png" alt="">
+            </div>
+            <div>
+              <p>パスワードを安全に利用するコツなどをご案内いたします。</p>
+              <p class="u-Adjust_Mt-16">
+                <a href="https://www.ipa.go.jp/security/chocotto/" class="c-Link_Txt-inline" target="_blank">安全なパスワードの作り方を見る<span class="c-Icon_New-window-l"></span></a>
+              </p>
+              <p class="u-Adjust_Mt-16">
+                <a href="https://ichiba.faq.rakuten.net/detail/000006880" class="c-Link_Txt-inline" target="_blank">注意点を確認する<span class="c-Icon_New-window-l"></span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="<%= namespace %>-Link">
+        <div class="<%= namespace %>-Link_Flex">
+          <a href="<%= sitepath %>guide/kidsjunior/?l-id=guide_security_guide_kidsjunior" class="c-Banner_Hover-act">
+            <img class="" src="<%= sitepath %>assets/img/guide/security/bnr-01-504-158-230316.png"
+              alt="はじめてのスマホを安心・安全に使おう 子どもスマホ利用あんしんガイド">
+          </a>
+          <a href="<%= sitepath %>guide/security/kids-manner/?l-id=guide_security_guide_security_kids-manner"
+            class="c-Banner_Hover-act">
+            <img class="" src="<%= sitepath %>assets/img/guide/security/bnr-02-504-158-230316.png"
+              alt="子どもと学ぶスマホのマナー スマホのマナーをしっかりと身につけて安全につかおう">
+          </a>
+        </div>
+      </div>
+
+      <div class="u-Adjust_Mt-24">
+        <a href="<%= sitepath %>guide/security/cyber-bousai2022/?l-id=guide_security_guide_security_cyber-bousai2022"
+          class="c-Banner_Hover-act">
+          <img class="<%= namespace %>-Utility_Show-pc" src="<%= sitepath %>assets/img/bnr/bnr-cyber-bousai2022-1032-160.png"
+            alt="お買いものパンダと学ぼうスミッシング対策入門 SMS+フィッシング">
+          <img class="<%= namespace %>-Utility_Show-sp" src="<%= sitepath %>assets/img/bnr/bnr-cyber-bousai2022-328-185.png"
+            alt="お買いものパンダと学ぼうスミッシング対策入門 SMS+フィッシング">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Attempt">
+    <div class="l-System_Container">
+      <div class="u-Adjust_Align-center">
+        <a href="<%= sitepath %>support/?l-id=guide_security_support" class="c-Btn_Regular-large"><span>お客様サポート</span></a>
+      </div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="attempt">楽天モバイルの取り組み</h2>
+      <p class="u-Adjust_Mt-16">
+        楽天モバイルでは、お客様に安全にサービスをご利用いただけるよう、セキュリティに関する取り組みを行っております。
+      </p>
+      <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+        <h3 class="c-Heading_Lv4">楽天モバイルの情報セキュリティポリシー</h3>
+        <p class="u-Adjust_Mt-24">楽天モバイルは生活に不可欠の電気通信サービスを提供していることから、情報セキュリティに関する取り組みを定期的に見直し、継続的な改善を進めております。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※ 詳細は以下をご覧ください。</p>
+        <p class="u-Adjust_Mt-16">
+          <a href="https://corp.mobile.rakuten.co.jp/guide/security/" class="c-Link_Txt-inline">楽天モバイル情報セキュリティポリシー<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+      </div>
+      <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+        <h3 class="c-Heading_Lv4">Rakuten Mobile CSIRT(RM-CSIRT)</h3>
+        <p class="u-Adjust_Mt-24">Rakuten Mobile CSIRTは「ICT業界全体をセキュアにする」ことを理念として掲げ、サイバー犯罪者からの防御能力を強化しています。<br>
+          RM-CSIRTは以下の日本及び海外のセキュリティ団体に加盟しており、継続的な情報交換を行っております。</p>
+        <p class="u-Adjust_Mt-16">
+          <a href="https://www.nca.gr.jp/member/rm-csirt.html" class="c-Link_Txt-inline" target="_blank">NCA（日本コンピュータセキュリティインシデント対応チーム協議会）<span class="c-Icon_New-window-l"></span></a>
+        </p>
+        <p class="u-Adjust_Mt-16">
+          <a href="https://www.first.org/members/teams/rm-csirt" class="c-Link_Txt-inline" target="_blank">RM-CSIRT Team Information<span class="c-Icon_New-window-l"></span></a>
+        </p>
+      </div>
+      <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+        <h3 class="c-Heading_Lv4">社外団体を通じたセキュリティ啓発活動</h3>
+        <p class="u-Adjust_Mt-24">楽天モバイルは、業界団体を通じて、他の通信事業者とともにセキュリティに関する啓発活動を行っています。</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>モバイルコンピューティング推進コンソーシアム（MCPC）<br>
+          <a href="https://www.mcpc-jp.org/" class="c-Link_Txt-inline" target="_blank">スマートフォンのセキュリティ対策（MCPCのサイトに移動します）<span class="c-Icon_New-window-l"></span></a>
+          </li>
+        </ul>
+      </div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">楽天グループの取り組み</h2>
+      <p class="u-Adjust_Mt-16">
+        楽天グループでは不正ログインや詐欺、他情報セキュリティに関してお客様の大切な情報を保護すべく各種取り組みを行っています。
+      </p>
+      <div class="l-Media_List-3 u-Adjust_Mt-0">
+          <div class="u-Adjust_Mt-24">
+            <a href="https://event.rakuten.co.jp/anshin/anshinshopping/?scid=wi_ich_anshin_anshinshopping" class="c-Card_Normal">
+              <h3 class="c-Heading_Lv4">楽天市場の取り組み</h3>
+              <p class="u-Adjust_Mt-16">
+                楽天あんしんショッピングサービス
+              </p>
+            </a>
+          </div>
+          <div class="u-Adjust_Mt-24">
+            <a href="https://www.rakuten-bank.co.jp/security/?scid=wi_rbn_security" class="c-Card_Normal">
+              <h3 class="c-Heading_Lv4">楽天銀行の取り組み</h3>
+              <p class="u-Adjust_Mt-16">
+                楽天銀行のセキュリティ
+              </p>
+            </a>
+          </div>
+          <div class="u-Adjust_Mt-24">
+            <a href="https://www.rakuten-sec.co.jp/web/security/?scid=wi_rkc_web_security" class="c-Card_Normal">
+              <h3 class="c-Heading_Lv4">楽天証券の取り組み</h3>
+              <p class="u-Adjust_Mt-16">
+                楽天証券のセキュリティ
+              </p>
+            </a>
+          </div>
+      </div>
+      <p class="c-Txt_Cap u-Adjust_Mt-24">※ 詳細は以下をご覧ください。</p>
+      <p class="u-Adjust_Mt-16">
+        <a href="https://corp.rakuten.co.jp/security/" class="c-Link_Txt-inline">楽天グループ情報セキュリティについて <span class="c-Icon_Chevron-right"></span></a>
+      </p>
+    </div>
+  </div>
+</main>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+    <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<!-- <script src="<%= sitepath %>assets/js/guide.application-support.bundle.js?20240521"></script> -->
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

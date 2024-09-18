@@ -1,0 +1,179 @@
+<% const pagetitle = "アンケートフォーム" -%>
+<% const directories = [{ label:"通信・エリア", path:"area/", subpath:"area/questionare/japanpost/" ,sublabel:"" }] -%>
+<% const description = ""
+const namespace = "areaQuestionare"
+-%>
+
+<%- include('/_header', {
+  pagetitle: pagetitle,
+  description,
+  pathname: filepath,
+  noindex: true,
+  }); %>
+
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/questionare/questionare.css?240513">
+<%- include('/include/_append-head') %>
+</head>
+<script type="text/javascript">
+  <!--
+  function doTrim(el) {
+    el.value = el.value.trim();
+  }
+
+  function zen2han(el) {
+    const numMap = {
+      '０': '0', '１': '1', '２': '2', '３': '3', '４': '4',
+      '５': '5', '６': '6', '７': '7', '８': '8', '９': '9'
+    };
+    el.value = el.value.replace(/[０-９]/g, function(match) {
+      return numMap[match] || match;
+    });
+  }
+
+  function isInput(el) {
+    return el.value.trim() !== '';
+  }
+
+  function validateInput(el, label, maxLength) {
+    doTrim(el);
+    zen2han(el);
+    const value = el.value.trim();
+    if (!isInput(el)) {
+      alert(`「${label}」を入力してください。`);
+      return false;
+    }
+
+    if (value.length > maxLength) {
+      alert(`「${label}」は${maxLength}文字以内で入力してください。`);
+      return false;
+    }
+    return true;
+  }
+
+  function checkForm() {
+    const fields = [
+      { el: document.getElementById("employeeName"), label: "本キャンペーンの従業員様", maxLength: 256 },
+      { el: document.getElementById("company"), label: "所属する会社名", maxLength: 256 },
+      { el: document.getElementById("companyAdress"), label: "ご勤務先の勤務地と部署名", maxLength: 256 },
+      { el: document.getElementById("AffiliatedCompany"), label: "ご家族の所属する会社名", maxLength: 256 },
+      { el: document.getElementById("AffiliatedCompanyAdress"), label: "ご家族の勤務先の勤務地と部署名", maxLength: 256 }
+    ];
+
+    for (const field of fields) {
+      if (!validateInput(field.el, field.label, field.maxLength)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // -->
+  </script>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header-simple') %>
+
+<div class="l-System_Container">
+  <h3 class="<%= namespace %>-Layout_title c-Txt_Emp-01 u-Adjust_Mt-32">【お得意様向けプラン（福利厚生・スポンサー特典）】<br>
+    <span id="campaignText"></span>
+  </h3>
+  <h1 class="c-Heading_Lv1 u-Adjust_Mt-8">
+    <%= pagetitle %>
+  </h1>
+
+  <p class="u-Adjust_Mt-16" id="js-questionare-lead"></p>
+  <p class=" u-Adjust_Mt-16 c-Txt_Normal-m c-Txt_Emp-02 js-questionare-error <%= namespace %>-Util_Hidden">
+    URLが間違っています。ご確認の上、再度アクセスしてください。
+  </p>
+
+  <form class="u-Adjust_Mt-32" id="js-questionare-form" action="" name="enenForm" method="POST" onsubmit="return checkForm()">
+    <dl class="c-Form_List <%= namespace %>-Layout_Form">
+      <div>
+        <dt>
+          1. 本キャンペーンの従業員様<span class="c-Form_List-required">必須</span>
+        </dt>
+        <dd>
+          <input name="" class="<%= namespace %>-Layout_Input" placeholder="例：楽天太郎" id="employeeName">
+
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          2. 所属する会社名<span class="c-Form_List-required">必須</span>
+        </dt>
+        <dd>
+          <input name="" class="<%= namespace %>-Layout_Input" placeholder="例：楽天モバイル株式会社" id="company">
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          3. ご勤務先の勤務地と部署名<span class="c-Form_List-required">必須</span>
+        </dt>
+        <dd>
+          <input name="" class="<%= namespace %>-Layout_Input" placeholder="例：東京都世田谷区/総務部" id="companyAdress">
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          4. 所属する会社名<span class="c-Form_List-required">必須</span><br>
+          <span class="<%= namespace %>-Layout_Txt-ss">※従業員様の場合は、なしとご回答ください</span>
+        </dt>
+        <dd>
+          <input name="" class="<%= namespace %>-Layout_Input" placeholder="例：楽天グループ株式会社" id="AffiliatedCompany">
+        </dd>
+      </div>
+
+      <div>
+        <dt>
+          5. ご家族の勤務先の勤務地と部署名<br><span class="c-Form_List-required">必須</span><br>
+          <span class="<%= namespace %>-Layout_Txt-ss">※従業員様の場合は、なしとご回答ください</span>
+        </dt>
+        <dd>
+          <input name="" class="<%= namespace %>-Layout_Input" placeholder="例：東京都世田谷区/営業部" id="AffiliatedCompanyAdress">
+        </dd>
+      </div>
+    </dl>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-pc-40 u-Adjust_Mt-sp-8">
+      <input type="hidden" name="c" value="楽天">
+      <input type="hidden" name="l" value="ja">
+      <button class="c-Btn_Primary-large" type="submit" aria-disabled="true" id="submitButton">
+        <span>アンケートを送信する<br class="u-Show_Sp">
+        <span class="<%= namespace %>-Layout_Txt-sm">※キャンペーンページに戻り申し込む</span></span>
+    </button>
+    </div>
+  </form>
+</div>
+
+<div class="<%= namespace %>-Layout_Foot">
+  <div class="l-System_Container">
+    <div id="campaign-rule">
+      <div class=" u-Adjust_Mt-48">
+        <h2 class="c-Heading_Lv2">注意事項</h2>
+      </div>
+      <ul class="c-List_Text-disc u-Adjust_Mt-8 <%= namespace %>-Layout_List">
+        <li>ご自身とご家族がそれぞれご契約する場合は、楽天IDが異なれば、同じ社員番号で複数アンケート回答いただいた場合でもキャンペーン適用対象になります。</li>
+        <li>アンケートフォーム回答とお申し込みが確認できなかった場合、キャンペーンの適用対象外となります。      </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<footer class="g-Footer <%= namespace %>_Foot u-Adjust_Mt-64">
+  <%- include('/include/_footer-simple') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/area.questionare.japanpost.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

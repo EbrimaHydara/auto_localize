@@ -1,0 +1,32 @@
+<%_
+  let _bgColor = '#F7F7F7';
+  if (typeof bgColor !== 'undefined') {
+    _bgColor = bgColor;
+  }
+_%>
+<!-- inc un-limit parts -->
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inc/i-unlimit.css?20240424">
+<div class="i-Unlimit" style="background-color: <%= _bgColor %>;">
+  <picture>
+    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/inc/un-limit/img-unlimit-7-sp_230224.png">
+    <source srcset="<%= sitepath %>assets/img/inc/un-limit/img-unlimit-7-pc_230224.png">
+      <img src="<%= sitepath %>assets/img/inc/un-limit/img-unlimit-7-pc_230224.png" width="1032" alt="Rakuten UN-LIMIT VII">
+  </picture>
+
+  <%_ if (typeof cta === 'undefined' && typeof cta !== false) { _%>
+    <ul class="i-Unlimit_Cta-list">
+      <li>
+        <a href="<%= sitepath %>fee/un-limit/?l-id=plan_include_fee_un-limit" class="c-Btn_Primary-large"><span>料金プランの詳細を見る</span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>fee/un-limit/simulation/?l-id=plan_include_fee_un-limit-simulation" class="c-Btn_Secondly-large"><span>料金シミュレーションをする</span></a>
+      </li>
+    </ul>
+  <%_ } _%>
+
+
+  <p class="c-Txt_Cap i-Unlimit_Cap">
+    *1 無制限は通信量のこと。ゲーム内課金、コンテンツ利用料等別 *3 ダイヤモンド会員がSPU全達成の場合。獲得ポイント上限あり *4 利用上限等条件あり
+  </p>
+</div>
+<!-- / inc un-limit parts -->

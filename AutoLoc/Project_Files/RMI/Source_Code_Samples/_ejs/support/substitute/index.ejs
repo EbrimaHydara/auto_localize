@@ -1,0 +1,427 @@
+<% const pagetitle = "楽天モバイル 楽天回線の電波がつながりにくいお客様へ" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}] -%>
+<% const namespace = "support-substitute" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/support/substitute/substitute.css?20240424">
+<%- include('/include/_append-head', {messaging: true}) %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= namespace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <div id="js-not-parameter-match" class="<%= namespace %>-Form_Next u-Adjust_Pt-48" aria-hidden="false">
+      現在こちらのフォームでの受付はいたしておりません。<br>
+      電波に関するご意見・ご要望は「<a href="<%= sitepath %>inquiry/input.html?l-id=support_substitute_error_inquiry_input">電波改善・調査依頼フォーム</a>」よりお問い合わせください。
+    </div>
+    <div id="js-parameter-match" class="<%= namespace %>-Form_Next u-Adjust_Pt-32" aria-hidden="true">
+      <p class="c-Txt_Emp-02">
+        本フォームは弊社オペレーターよりご案内した方専用のフォームです。本フォーム入力のみでは代用機貸出お申し込みは完了いたしません。<br>
+        電波改善に関するご意見ついては、まず「<a href="<%= sitepath %>inquiry/input.html?l-id=support_substitute_inquiry_input">楽天モバイルご利用者様用電波改善・調査依頼</a>」よりお問い合わせください。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        楽天回線の電波状況により、お客様にご不便をおかけしておりますことを、深くお詫び申し上げます。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        応急対策として楽天モバイル（ドコモ回線）をご利用いただける代用機の貸出を行っております。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        貸出ご希望のお客様は、大変お手数ではございますが、代用機貸出の希望確認の「希望する」をチェックのうえ、以下の項目のご入力をお願いいたします。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        ご入力いただいた内容とお客様のご契約情報に相違がある場合は、大変申し訳ありませんが代用機の貸出はできかねますのであらかじめご了承ください。<br>
+        現在のご登録情報は「<a href="https://portal.mobile.rakuten.co.jp/dashboard#plans" target="_blank" rel="noopener" class="c-Link_Txt-inline-icon">my 楽天モバイル<span class="c-Icon_New-window-l"></span></a>」でご確認ください。<br>
+        転居等でご住所に変更がある場合は、「<a href="https://portal.mobile.rakuten.co.jp/dashboard?scrollTo=contactInfo#personal-info" target="_blank" rel="noopener" class="c-Link_Txt-inline-icon">my 楽天モバイル<span class="c-Icon_New-window-l"></span></a>」の住所情報を最新に変更後に本フォームへご入力ください。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        代用機の貸出を希望されない場合は、電波状況が改善されるまで、今しばらくお待ちいただきますよう、お願い申し上げます。
+      </p>
+      <form id="js-substitute_Form" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+      <!-- <form id="js-substitute_Form" action="https://dp0000000dthaeas--denpa.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST"> -->
+      <input type="hidden" name="recordType" value="0120I000001Dmn0">
+      <input type="hidden" name="00N2800000C8tB3" value="楽天回線お問い合せご要望">
+      <input type="hidden" name="subject" value="MNO代用機貸し出しフォーム">
+      <!-- <input type="hidden" name="orgid" value="00D28000000cT0x"> -->
+      <input type="hidden" name="orgid" value="00D28000000cT0x">
+      <input type="hidden" id="00N2u000000P1gm" name="00N2u000000P1gm" value="0">
+      <input type="hidden" name="retURL" value="https://network.mobile.rakuten.co.jp/support/substitute/thanks.html">
+      <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">代用機貸出の希望確認</h3>
+      <p class="u-Adjust_Mt-16">
+        お貸出の代用機の電話番号と、現在楽天回線でご契約いただいている電話番号は<span class="c-Txt_Emp-02">異なります。</span>あらかじめご了承ください。
+      </p>
+      <label class="c-Form_Checkbox u-Adjust_Mt-16">
+        <input type="checkbox" name="agree" id="" value="" autocomplete="off">
+        <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">希望する</span>
+      </label>
+
+      <div class="c-Accordion u-Adjust_Mt-32">
+        <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お手続きの流れ</button>
+        <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false">
+          <ol class="c-List_Ordered">
+            <li>本フォームの送信（お客様）</li>
+            <li>
+              送信内容の確認（弊社）<br>
+              <span class="c-Txt_Cap">※本人確認の内容とご契約者情報の確認を実施</span>
+            </li>
+            <li>
+              代用機貸出処理完了のご連絡<br>
+              <span class="c-Txt_Cap">※5営業日以上ご連絡のない場合は「<a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Link_Txt-inline-icon" target="_blank">my 楽天モバイル<span class="c-Icon_New-window-l"></span></a>」アプリよりチャットでお問い合わせください</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <p class="u-Adjust_Mt-32"><a href="#modal1" class="js-Modal c-Link_Txt-icon-front"><span class="c-Icon_Zoom-in-l"></span>ご契約情報の確認方法はこちら</a></p>
+      <div id="modal1" style="display:none;">
+        <div>
+          <h2 class="c-Txt_Normal-ll">ご契約情報の確認</h2>
+          <p class="u-Adjust_Mt-24">ご準備いただくものはそれぞれ下記より確認いただけます。</p>
+          <ol class="c-List_Ordered u-Adjust_Mt-24">
+            <li>ご契約電話番号</li>
+            <li>楽天モバイルID</li>
+            <li>ご契約住所</li>
+            <li>ご契約者氏名</li>
+            <li>ご契約者生年月日</li>
+          </ol>
+          <div class="u-Adjust_Mt-24">
+            <div>
+              <a href="<%= sitepath %>my-rakuten-mobile/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">my 楽天モバイルにログインする<span class="c-Icon_New-window-l"></span></a>
+            </div>
+            <div class="u-Adjust_Mt-16">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/inquiry/img-info-login.png" width="600" height="436">
+                <img src="<%= sitepath %>assets/img/support/substitute/img-info-login.png" width="300" height="218" alt="my 楽天モバイルにログインする" style="border: 1px solid #e0e0e0;">
+              </picture>
+            </div>
+          </div>
+          <div class="u-Adjust_Mt-48">
+            <div>
+              <a href="https://portal.mobile.rakuten.co.jp/dashboard#contracts" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">ご契約内容の案内をダウンロードする<span class="c-Icon_New-window-l"></span></a>
+            </div>
+            <p class="u-Adjust_Mt-16">「ご契約内容のダウンロード」より下図のようなご契約内容を参照できます。</p>
+            <div class="u-Adjust_Mt-16">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/support/substitute/img-info-download.png" width="600" height="231">
+                <img src="<%= sitepath %>assets/img/support/substitute/img-info-download.png" width="300" height="216" alt="ご契約内容のダウンロード" style="border: 1px solid #e0e0e0;">
+              </picture>
+            </div>
+          </div>
+          <div class="u-Adjust_Mt-48">
+            <div>
+              <a href="https://portal.mobile.rakuten.co.jp/dashboard?scrollTo=contactInfo#personal-info" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">契約者情報を確認する<span class="c-Icon_New-window-l"></span></a>
+            </div>
+            <div class="u-Adjust_Mt-16">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/support/substitute/img-info-personal.png" width="600" height="802">
+                <img src="<%= sitepath %>assets/img/support/substitute/img-info-personal.png" width="300" height="401" alt="契約者情報を確認する" style="border: 1px solid #e0e0e0;">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <dl class="c-Form_List u-Adjust_Mt-32">
+        <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+          <dt>お貸出し方法<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p id="err-required_00N2u000000jNq0" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div>
+              <label class="c-Form_Radio">
+                <input type="radio" name="00N2u000000jNq0" id="" value="SIMのみ" aria-required="true" data-validate="required" autocomplete="off">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">SIMのみ</span>
+              </label>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">
+                ※ご自身の端末にSIMを挿入し、ご利用ください。お持ちの端末が楽天モバイル（ドコモ回線）のSIMに対応しているか<a href="https://mobile.rakuten.co.jp/device/?l-id=support_substitute_device" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener">こちら<span class="c-Icon_New-window-l"></span></a>よりご確認ください。
+              </p>
+            </div>
+            <div class="u-Adjust_Mt-16">
+              <label class="c-Form_Radio">
+                <input type="radio" name="00N2u000000jNq0" id="" value="代用機（SIM挿入済み）" aria-required="true" data-validate="required" autocomplete="off">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">代用機（SIM挿入済み）</span>
+              </label>
+            </div>
+          </dd>
+        </div>
+        <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+          <dt>ご契約電話番号<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p class="c-Txt_Cap u-Adjust_Mb-16">
+              ※半角数字10文字または半角数字11文字でご入力ください<br>
+              ※ー（ハイフン）を入れずに入力してください
+            </p>
+            <p id="err-required_00N0I00000Jxe3E" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <p id="err-numeric_00N0I00000Jxe3E" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+            <p id="err-length_00N0I00000Jxe3E" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">正しい電話番号を入力してください</p>
+            <input class="c-Form_Input" minlength="10" maxlength="11" name="00N0I00000Jxe3E" size="20" type="text" placeholder="例）090XXXXXXXX" aria-required="true" data-validate="required length numeric" autocomplete="off">
+          </dd>
+        </div>
+        <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+          <dt>楽天モバイルID<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p class="c-Txt_Cap u-Adjust_Mb-16">
+              ※20から始まる13桁の数字を入力してください
+            </p>
+            <p id="err-required_00N2u000000P1oC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <p id="err-numeric_00N2u000000P1oC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+            <p id="err-length_00N2u000000P1oC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">正しい番号を入力してください</p>
+            <input class="c-Form_Input" minlength="13" maxlength="13" name="00N2u000000P1oC" size="20" type="text" placeholder="例）20XXXXXXXXXXX" aria-required="true" data-validate="required length numeric" autocomplete="off">
+          </dd>
+        </div>
+        <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+          <dt>ご契約住所<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※半角数字7文字でご入力ください</p>
+                <p id="err-required_00N2u000000PkFW" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">必須項目です</p>
+                <p id="err-numeric_00N2u000000PkFW" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">半角数字で入力してください</p>
+                <p id="err-length_00N2u000000PkFW" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">半角数字7文字でご入力ください</p>
+            <dl class="c-Form_List-sub">
+              <div>
+                <dt class="u-Adjust_Mt-16">郵便番号</dt>
+                <input class="c-Form_Input u-Adjust_Mt-16 u-Adjust_W-160" minlength="7" maxlength="7" name="00N2u000000PkFW" size="7" type="text" placeholder="例）1580094" aria-required="true" data-validate="required length numeric" autocomplete="off">
+              </div>
+            </dl>
+
+            <p class="u-Adjust_Mb-16 c-Txt_Emp-01 u-Adjust_Mt-16">住所</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※「ご契約住所」は、my 楽天モバイルの「契約者情報」からご確認ください。引っ越しなどによる住所変更は、my 楽天モバイルで変更のお手続きができますので、変更完了したうえでお申し込みください<br>
+              ※「ご契約住所」にお住まいでない場合、代用機をお届けする事ができません。また、発送後の住所変更はお受けできかねます<br>
+              ※255文字以内でご入力ください
+            </p>
+            <p id="err-required_00N2u000000P1fy" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">必須項目です</p>
+            <input class="c-Form_Input u-Adjust_Mt-16" maxlength="255" name="00N2u000000P1fy" size="20" type="text" placeholder="例）東京都世田谷区玉川1丁目14-1" aria-required="true" data-validate="required" autocomplete="off">
+          </dd>
+        </div>
+        <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+          <dt>ご契約者 氏名<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p id="err-required_name" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">「姓」は必須項目です</p>
+            <p id="err-required_00N0I00000Jxe34" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">「名」は必須項目です</p>
+            <dl class="c-Form_List-sub">
+              <div>
+                <dt>姓</dt>
+                <dd>
+                  <input class="c-Form_Input u-Adjust_W-160" maxlength="80" name="name" size="20" type="text" placeholder="例）楽天" aria-required="true" data-validate="required" autocomplete="off">
+                </dd>
+              </div>
+              <div>
+                <dt>名</dt>
+                <dd><input class="c-Form_Input u-Adjust_W-160" maxlength="80" name="00N0I00000Jxe34" size="20" type="text" placeholder="例）太郎" aria-required="true" data-validate="required" autocomplete="off"></dd>
+              </div>
+            </dl>
+          </dd>
+        </div>
+        <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+          <dt>ご契約者 生年月日<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p id="err-required_00N0I00000JyFjg" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div class="<%= namespace %>-Form_Datepicker-container">
+              <input id="00N0I00000JyFjg" name="00N0I00000JyFjg" class="c-Form_Input u-Adjust_Mb-16 js-Datepicker2" maxlength="" size="" type="text" placeholder="" aria-required="true" data-validate="required" readonly>
+              <span class="c-Icon_Calendar-l js-Datepicker_Btn2"></span>
+            </div>
+          </dd>
+        </div>
+        <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+          <dt>返信用メールアドレス<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p class="c-Txt_Cap u-Adjust_Mb-16">
+              ※80文字以内でご入力ください
+            </p>
+            <p class="u-Adjust_Mb-16">メールアドレス</p>
+            <p id="err-required_email" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <p id="err-email_email" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">正しいメールアドレスを入力してください</p>
+            <input class="c-Form_Input" maxlength="80" name="email" size="20" type="text" placeholder="例）example@example.com" aria-required="true" data-validate="required email" autocomplete="off">
+
+            <p class="u-Adjust_Mb-16 u-Adjust_Mt-32">確認用</p>
+            <p id="err-required_confirm-email" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <p id="err-match_confirm-email" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">メールアドレスが一致していません</p>
+            <input class="c-Form_Input" maxlength="80" name="confirm-email" size="20" type="text" placeholder="例）example@example.com" aria-required="true" data-validate="required confirmEmail" autocomplete="off">
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="c-Heading_Lv3 u-Adjust_Mt-48">免責事項</h2>
+      <p class="u-Adjust_Mt-16 u-Adjust_Mb-32">代用機貸出は、以下事項をご確認のうえ同意いただいた方のみお申し込みいただけます。</p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li>代用機のご利用は、ご申告されたご本人のみとなります。</li>
+        <li>ご申告情報を元に、ご契約状況の確認をさせていただきます。</li>
+        <li>ご利用途中で代用機やSIMの破損および紛失が発生した場合、交換は致しかねます。</li>
+        <li>代用機の返却タイミングは、弊社にて判断させていただきます。</li>
+        <li>弊社より代用機返却をお客様へ求めた場合は速やかに返却いただく必要があります。</li>
+        <li>代用機ではデータチャージを含むオプションサービスはご利用できません。</li>
+        <li>お客様の携帯電話から代用機へ着信転送を行った際に発生する料金はお客様へ請求を行わせていただきます。</li>
+        <li>その他、利用条件等は下記の「楽天モバイル端末貸与プログラム説明書」をよくお読みになり、理解いただいたうえでご利用ください。</li>
+        <br>
+        <p class="u-Adjust_Mt-16">以下の場合にはお貸し出しできかねますので、あらかじめご了承ください。</p>
+        <li>ご契約確認が取れない場合</li>
+        <li>既に代用機のお貸し出しをし、現時点でご利用中であることが確認された場合</li>
+        <li>弊社にてお貸し出し困難と判断した場合</li>
+        <br>
+        <p class="u-Adjust_Mt-16">以下の場合、違約金が発生する可能性がございます。</p>
+        <li>代用機を破損、紛失した場合</li>
+        <li>代用機を売却または第三者へ貸与および譲渡した場合</li>
+        <li>弊社より返却を求め、それに一定期間応じていただけなかった場合</li>
+        <p class="u-Adjust_Mt-16">※弊社にて代用機のご返却が確認できない場合も上記に含みます。</p>
+      </ul>
+      <label class="c-Form_Checkbox u-Adjust_Mt-40">
+        <input type="checkbox" name="agree" id="" value="" autocomplete="off">
+        <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">免責事項を確認しました</span>
+      </label>
+
+      <h2 class="c-Heading_Lv3 u-Adjust_Mt-48">重要事項説明書</h2>
+      <div class="u-Adjust_Mt-16">
+        <%- include('/include/support/substitute/_important-text') %>
+      </div>
+
+
+      <label class="c-Form_Checkbox u-Adjust_Mt-16">
+        <input type="checkbox" name="agree" id="" value="" autocomplete="off">
+        <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">重要事項説明書を確認しました</span>
+      </label>
+
+      <h2 class="c-Heading_Lv3 u-Adjust_Mt-48">個人情報の取扱いについて</h2>
+      <p class="u-Adjust_Mt-16">「<a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" target="_blank" rel="noopener" class="c-Link_Txt-inline-icon">個人情報の取扱いについて<span class="c-Icon_New-window-l"></span></a>」をご確認いただき、同意される場合は下記のチェックボタンをチェックしてください。</p>
+      <label class="c-Form_Checkbox u-Adjust_Mt-16">
+        <input type="checkbox" name="agree" id="" value="" autocomplete="off">
+        <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">個人情報の取扱いに同意します</span>
+      </label>
+      <p class="c-Txt_Cap u-Adjust_Mt-40">
+        お申し込みは1回のみ受付いたします。複数回お申し込みいただきましてもお貸出し方法の変更はお受けしかねますので、ご了承ください。
+      </p>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+        <button type="button" id="js-substitute_Confirm" disabled class="c-Btn_Secondly-large" aria-disabled="true"><span>入力内容を確認する</span></button>
+      </div>
+
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <button type="button" class="js-substitute_Back c-Btn_Regular-large" aria-disabled="false"><span>戻る</span></button>
+      </div>
+
+      <p class="c-Txt_Cap u-Adjust_Mt-16">
+        ※「代用機貸出の希望の確認」「免責事項」「重要事項説明書」「個人情報の取扱いについて」のチェックボックスにチェックする必要があります。
+      </p>
+
+      <div id="modal-confirm" style="display:none;">
+        <h2 class="c-Heading_Lv3 u-Adjust_Mb-32">入力内容の確認</h2>
+        <dl class="c-Form_List-confirm">
+          <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+            <dt>お貸出し方法</dt>
+            <dd><p id="disp-00N2u000000jNq0" class="u-Adjust_Txt-break"></p></dd>
+          </div>
+          <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+            <dt>ご契約電話番号</dt>
+            <dd><p id="disp-00N0I00000Jxe3E" class="u-Adjust_Txt-break"></p></dd>
+          </div>
+          <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+            <dt>楽天モバイルID</dt>
+            <dd><p id="disp-00N2u000000P1oC" class="u-Adjust_Txt-break"></p></dd>
+          </div>
+          <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+            <dt>ご契約住所</dt>
+            <dd>
+              <p class="c-Txt_Emp-01">郵便番号</p>
+              <p id="disp-00N2u000000PkFW" class="u-Adjust_Txt-break u-Adjust_Mt-8"></p>
+              <p class="c-Txt_Emp-01 u-Adjust_Mt-8">住所</p>
+              <p id="disp-00N2u000000P1fy" class="u-Adjust_Txt-break u-Adjust_Mt-8"></p>
+            </dd>
+          </div>
+          <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+            <dt>ご契約者 氏名</dt>
+            <dd>
+              <p>
+                <span id="disp-name" class="u-Adjust_Txt-break"></span>
+                <span id="disp-00N0I00000Jxe34" class="u-Adjust_Txt-break"></span>
+              </p>
+            </dd>
+          </div>
+          <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+            <dt>ご契約者 生年月日</dt>
+            <dd><p id="disp-00N0I00000JyFjg" class="u-Adjust_Txt-break"></p></dd>
+          </div>
+          <div class="<%= namespace %>-Form_Item-area js-substitute_Item-area">
+            <dt>返信用メールアドレス</dt>
+            <dd><p id="disp-email" class="u-Adjust_Txt-break"></p></dd>
+          </div>
+        </dl>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+          <button type="button" id="js-substitute_Submit" class="c-Btn_Primary-large"><span>この内容で送信する</span></button>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <button type="button" id="js-substitute_Confirm-close" class="c-Btn_Regular-lerge"><span>修正する</span></button>
+        </div>
+      </div>
+    </form>
+    </div>
+
+ </div>
+</div>
+
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<script src="<%= sitepath %>assets/js/library/jquery-3.5.0.min.js"></script>
+<script src="<%= sitepath %>assets/js/common.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/vendor.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/search.common.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/support.substitute.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

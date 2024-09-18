@@ -1,0 +1,442 @@
+<% const pagetitle = "楽天モバイル紹介キャンペーン！今お使いの方も、これからの方も全員にチャンス！" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "japanpost-referral" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: 'ご家族やご友人に楽天モバイルを紹介すると、ひとりにつき10,000ポイントを進呈するキャンペーンです。紹介された方にも10,000ポイントが進呈されますので、この機会にぜひ楽天モバイルをご紹介ください。',
+  noindex: true,
+  pathname: filepath
+});
+%><%- include('/include/_common-css-v2') %>
+<%- include('/inc/_about-rakuten-mobile-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/japanpost/referral/japanpost-referral.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/_entry-button/rex-overwrite_v2.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <%- include('/include/_breadcrumbs', {
+      type: 'head',
+      pagetitle,
+      directories,
+    }) %>
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List">
+        <li class="c-Label_Normal">エントリー必要</li>
+      </ul>
+      <p class="<%= namespace %>-Layout_Label-point">ポイント：進呈日を含めて6カ月の期間限定ポイント</p>
+    </div>
+    <div class="<%= namespace %>-Hero">
+      <h1>
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral/kv-sp.png" width="750" height="920">
+          <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/kv-pc.png" alt="日本郵政グループ従業員様・ご家族様限定 楽天モバイル紹介キャンペーン" width="1440" height="420">
+        </picture>
+      </h1>
+    </div>
+    <div class="<%= namespace %>-Layout_Period">
+      <div class="<%= namespace %>-Layout_Period-inner">
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+          <p class="c-Txt_Emp-02 c-Heading_Lv4">
+            本キャンペーンは2023年12月28日23時59分をもちまして終了いたしました。<br>
+            このページに掲載されている情報は、キャンペーン終了時点のものです。<br>
+            ※キャンペーン終了後のご紹介は無効となりますのでご留意ください。
+          </p>
+        </div>
+        <p class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <span class="c-Txt_Emp-01">【キャンペーン期間】</span><br>
+           2023年8月10日（水）9:00～2023年12月28日（木）23:59
+        </p>
+
+        <ul class="c-Txt_Cap u-Adjust_Mt-16">
+          <li class="c-Txt_Emp-02">※日本郵政グループ従業員様・ご家族様がお申し込みをされる場合は「<a href="<%= sitepath %>campaign/japanpost/byod/?l-id=campaign_japanpost_referral_campaign_japanpost_byod" class="c-Link_Txt">【日本郵政グループ従業員様・ご家族様限定】Rakuten最強プランのお申し込みで、20,000ポイントプレゼントキャンペーン（1992）</a>」をご利用ください</li>
+          <li class="c-Txt_Emp-02">※紹介する方（ご紹介者様）が「Rakuten最強プラン」もしくは「Rakuten最強プラン（データタイプ）」のご契約者様であることが条件です</li>
+          <li class="c-Txt_Emp-02">※紹介された方（被紹介者様）が「Rakuten最強プラン（データタイプ）」をお申し込みいただいた場合は特典適用対象外となります</li>
+          <li>※特典の進呈には、紹介された方のお申し込みとプラン利用開始が必要です</li>
+          <li>※ポイントは期間限定ポイントとして進呈いたします</li>
+          <li>※1カ月に利用できるポイント上限は会員ランクによって異なります</li>
+        </ul>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <div class="c-Theme-Borderbox u-Adjust_Align-center u-Adjust_Mt-56 u-Adjust_Mt-pc-48">
+        <h2 class="c-Heading_Lv2">まずはアンケートに回答してエントリー！</h2>
+        <p class="u-Adjust_Mt-8">アンケート画面に進んで設問に回答してください</p>
+        <div class="u-Adjust_Mt-24">
+          <a class="c-Btn_Primary-large" aria-disabled="true" disabled><span>アンケート画面に進む</span></a>
+        </div>
+        <ul class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-16">
+          <li>※ご家族が紹介される場合でも、アンケート画面では従業員様ご本人の情報を入力してください</li>
+          <li>※ご自身とご家族がそれぞれエントリーする場合には、楽天IDが異なれば、同じ従業員様氏名で複数アンケート回答してもキャンペーン対象となります</li>
+        </ul>
+      </div>
+      <div class="<%= namespace %>-Layout_Here-wrapper">
+        <div class="<%= namespace %>-Layout_Here">
+          <img class="<%= namespace %>-Layout_Here-title" src="<%= sitepath %>assets/img/campaign/japanpost/referral/here.png" alt="ご紹介はこちらから">
+          <div class="u-Show_Xxo">
+            <div class="<%= namespace %>-Layout_Here-content">
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-mail-pc.png" alt="メールで紹介する" width="122" height="96">
+                <div class="u-Adjust_Align-center" style="width: 100%;">
+                  <a href="https://refer.rakuten.co.jp/invitation/mail?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly"><span>紹介する<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-line-pc.png" alt="LINEで紹介する" width="114" height="96">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/qr-line.png" alt="LINEで紹介する" width="96" height="96">
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-x-pc.png" alt="Xで紹介する" width="89" height="96">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/qr-twitter.png" alt="Xで紹介する" width="96" height="96">
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-viber-pc.png" alt="Viberで紹介する" width="122" height="96">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/qr-viber.png" alt="Viberで紹介する" width="96" height="96">
+              </div>
+              <div class="<%= namespace %>-Layout_Here-content-item">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-chat-pc.png" alt="SMS・その他" width="115" height="96">
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/qr-other.png" alt="SMS・その他" width="96" height="96">
+              </div>
+            </div>
+          </div>
+          <div class="u-Show_Oox <%= namespace %>-Layout_Here-content">
+            <div class="<%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/line?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-sp.png" alt="LINEで紹介する" width="24" height="24"></span><span>LINEで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/twitter?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/x-sp.png" alt="Xで紹介する" width="24" height="24"></span><span>Xで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/mail?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="c-Icon_Mail-f <%= namespace %>-Layout_Here-content-mail-icon u-Adjust_Mr-8"></span><span>メールで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/viber?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/viber-sp.png" alt="Viberで紹介する" width="24" height="27"></span><span>Viberで紹介する</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-0-12 <%= namespace %>-Layout_Here-content-item">
+              <a href="https://refer.rakuten.co.jp/invitation/web_share?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-chat-sp.png" alt="SMS・その他" width="24" height="24"></span><span>SMS・その他</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Layout_Easy u-Adjust_Mt-64 u-Adjust_Align-center">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-title-sp.png" width="180" height="74">
+          <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-title-pc.png" alt="紹介方法はカンタン！" width="383" height="40" loading="lazy">
+        </picture>
+      </div>
+    </div>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+      <div class="l-System_Container">
+        <ul class="c-Tab_Items" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">LINE・X<br class="u-Show_Oox">・Viber</li>
+          <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="false" aria-controls="tab-content2">メール</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content3">SMS・その他</li>
+        </ul>
+      </div>
+      <div class="l-System_Container u-Adjust_Mt-24  <%= namespace %>-Utility_Sp-padding-none">
+        <div class="<%= namespace %>-Layout_Easy-tab">
+          <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Pt-40">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-1-pc.png" alt="紹介する方" width="328" height="56" loading="lazy">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-1-p.png" alt="STEP 1" width="72" height="17" loading="lazy">
+                <div class="u-Show_Xxo">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">QRコードを読み取る</p>
+                  <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                    <img class="u-Adjust_Mt-64 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-1-pc.png" alt="QRコードを読み取る" width="144" height="158" loading="lazy">
+                  </div>
+                </div>
+                <div class="u-Show_Oox">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">ボタンをタップ</p>
+                  <div class="u-Adjust_Mt-32">
+                    <a href="https://refer.rakuten.co.jp/invitation/line?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-sp.png" alt="LINEで紹介" width="24" height="24" loading="lazy"></span><span>LINEで紹介</span><span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                  </div>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="https://refer.rakuten.co.jp/invitation/twitter?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/x-sp.png" alt="Xで紹介" width="24" height="24" loading="lazy"></span><span>Xで紹介</span><span class="c-Icon_New-window-l c-Btn_Icon-end u-Adjust_Valign-middle"></span></a>
+                  </div>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="https://refer.rakuten.co.jp/invitation/viber?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-item-inner"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-viber-sp.png" alt="Viberで紹介" width="24" height="26" loading="lazy"></span><span>Viberで紹介</span><span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-2-p.png" alt="STEP 2" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-2.png" alt="楽天会員にログイン" width="144" height="158" loading="lazy">
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-3-p.png" alt="STEP 3" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">アプリへ遷移</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-3.png" alt="アプリへ遷移" width="144" height="199" loading="lazy">
+                </div>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap u-Adjust_Align-center <%= namespace %>-Layout_Easy-tab-content-note <%= namespace %>-Layout_Easy-tab-content-note-01">
+                  ※LINEの場合
+                </p>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-4-p.png" alt="STEP 4" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">送信先を選択して</span><br>メッセージ送信！</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-8 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-4.png" alt="送信先を選択してメッセージ送信！" width="144" height="115" loading="lazy">
+                </div>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap u-Adjust_Align-center <%= namespace %>-Layout_Easy-tab-content-note <%= namespace %>-Layout_Easy-tab-content-note-02">
+                  ※LINEの場合
+                </p>
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/polygon.png" alt="" width="45" height="26" loading="lazy">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-24 u-Adjust_Align-center">メッセージが届いたら...</p>
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-2-pc.png" alt="紹介された方" width="328" height="54" loading="lazy">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-1-p.png" alt="STEP 1" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">メッセージに記載の</span><br>URLをタップ</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-8 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-5.png" alt="メッセージに記載のURLをタップ" width="144" height="113" loading="lazy">
+                </div>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap u-Adjust_Align-center <%= namespace %>-Layout_Easy-tab-content-note <%= namespace %>-Layout_Easy-tab-content-note-03">
+                  ※LINEの場合
+                </p>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-2-p.png" alt="STEP 2" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-2.png" alt="楽天会員にログイン" width="144" height="226" loading="lazy">
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-3-p.png" alt="STEP 3" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>プラン申し込み＆開通</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※お申し込み後のログインは特典対象外<br>※データタイプは特典対象外</p>
+                <div class="<%= namespace %>-Layout_Easy-tab-content-item-cap-wrapper">
+                  <img class="u-Adjust_Mt-32 <%= namespace %>-Layout_Easy-tab-content-item-cap" src="<%= sitepath %>assets/img/campaign/japanpost/referral/line-7.png" alt="ログインの翌々月末日までにプラン申し込み＆開通" width="208" height="144" loading="lazy">
+                </div>
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/polygon.png" alt="" width="45" height="26" loading="lazy">
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Pt-40">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-1-pc.png" alt="紹介する方" width="328" height="56" loading="lazy">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-02 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-1-p.png" alt="STEP 1" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">「メールで紹介する」<br>をタップ</p>
+                <div class="u-Adjust_Mt-32">
+                  <a href="https://refer.rakuten.co.jp/invitation/mail?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Here-content-mail"><span class="c-Icon_Mail-f <%= namespace %>-Layout_Here-content-mail-icon u-Adjust_Mr-8"></span><span>メールで紹介する<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+                </div>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-1.png" alt="「メールで紹介する」" width="158" height="122" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-2-p.png" alt="STEP 2" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-2.png" alt="楽天会員にログイン" width="144" height="226" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-3-p.png" alt="STEP 3" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">必要事項を入力して</span><br>メール送信！</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-3.png" alt="必要事項を入力してメール送信！" width="144" height="226" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item <%= namespace %>-Layout_Easy-tab-content-item-mod-01 u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-4-p.png" alt="STEP 4" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">お相手にメール到着</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-4.png" alt="お相手にメール到着" width="144" height="225" loading="lazy">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/polygon.png" alt="" width="45" height="26" loading="lazy">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-24 u-Adjust_Align-center">メッセージが届いたら...</p>
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-2-pc.png" alt="紹介された方" width="328" height="54" loading="lazy">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-1-p.png" alt="STEP 1" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">メールに記載の</span><br>ボタンをタップ</p>
+                <img class="u-Adjust_Mt-8" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-4.png" alt="メールに記載のボタンをタップ" width="144" height="225" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-2-p.png" alt="STEP 2" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-5.png" alt="楽天会員にログイン" width="144" height="227" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-3-p.png" alt="STEP 3" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>プラン申し込み＆開通</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※お申し込み後のログインは特典対象外<br>※データタイプは特典対象外</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/japanpost/referral/mail-6.png" alt="ログインの翌々月末日までにプラン申し込み＆開通" width="208" height="144" loading="lazy">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/polygon.png" alt="" width="45" height="26" loading="lazy">
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu3">
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Pt-40">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-1-pc.png" alt="紹介する方" width="328" height="56" loading="lazy">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content <%= namespace %>-Layout_Easy-tab-content-01 u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-1-p.png" alt="STEP 1" width="72" height="17" loading="lazy">
+                <div class="u-Show_Xxo">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">QRコードを読み取る</p>
+                  <img class="u-Adjust_Mt-64" src="<%= sitepath %>assets/img/campaign/japanpost/referral/other-1-pc.png" alt="QRコードを読み取る" width="144" height="158" loading="lazy">
+                </div>
+                <div class="u-Show_Oox">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mt-8">「SMS・その他」<br>をタップ</p>
+                  <div class="u-Adjust_Mt-32">
+                    <a href="https://refer.rakuten.co.jp/invitation/web_share?campaign=mobile_jp" target="_blank" class="c-Btn_Secondly <%= namespace %>-Layout_Easy-tab-content-01-btn"><span class="u-Adjust_Mr-8"><img src="<%= sitepath %>assets/img/campaign/japanpost/referral/icon-chat-sp.png" alt="SMS・その他" width="18"></span><span>SMS・その他<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+                  </div>
+                  <img class="u-Adjust_Mt-16 <%= namespace %>-Layout_Easy-tab-content-01-img" src="<%= sitepath %>assets/img/campaign/japanpost/referral/other-1.png" alt="「その他で紹介する」をタップ" width="158" height="122" loading="lazy">
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-2-p.png" alt="STEP 2" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-40" src="<%= sitepath %>assets/img/campaign/japanpost/referral/viber-2.png" alt="楽天会員にログイン" width="144" height="226" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-3-p.png" alt="STEP 3" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">アイコンをタップして<br>アプリを選択</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/other-3.png" alt="アイコンをタップしてアプリを選択" width="144" height="226" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-4-p.png" alt="STEP 4" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">送信先を選択して</span><br>メッセージ送信！</p>
+                <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/campaign/japanpost/referral/other-4.png" alt="送信先を選択してメッセージ送信！" width="144" height="111" loading="lazy">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/polygon.png" alt="" width="45" height="24" loading="lazy">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-24 u-Adjust_Align-center">メッセージが届いたら...</p>
+            <div class="<%= namespace %>-Layout_Easy-tab-content-title u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/easy-2-pc.png" alt="紹介された方" width="328" height="54" loading="lazy">
+            </div>
+            <div class="<%= namespace %>-Layout_Easy-tab-content u-Adjust_Mt-16">
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-1-p.png" alt="STEP 1" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">メッセージに記載の</span><br>URLをタップ</p>
+                <img class="u-Adjust_Mt-8" src="<%= sitepath %>assets/img/campaign/japanpost/referral/other-5.png" alt="メッセージに記載のURLをタップ" width="144" height="111" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-2-p.png" alt="STEP 2" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8">楽天会員にログイン</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/japanpost/referral/viber-6.png" alt="楽天会員にログイン" width="144" height="227" loading="lazy">
+              </div>
+              <div class="<%= namespace %>-Layout_Easy-tab-content-item u-Adjust_Align-center">
+                <img class="u-Adjust_Mt-24" src="<%= sitepath %>assets/img/campaign/japanpost/referral/step-3-p.png" alt="STEP 3" width="72" height="17" loading="lazy">
+                <p class="c-Txt_Emp-01 u-Adjust_Mt-8"><span class="c-Txt_Normal-s">ログインの翌々月末日までに</span><br>プラン申し込み＆開通</p>
+                <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">※お申し込み後のログインは特典対象外<br>※データタイプは特典対象外</p>
+                <img class="u-Adjust_Mt-32" src="<%= sitepath %>assets/img/campaign/japanpost/referral/viber-7.png" alt="ログインの翌々月末日までにプラン申し込み＆開通" width="208" height="144" loading="lazy">
+              </div>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/polygon.png" alt="" width="45" height="24" loading="lazy">
+            </div>
+          </div>
+          <div class="<%= namespace %>-Layout_Point-wrapper">
+            <div class="<%= namespace %>-Layout_Point u-Adjust_Mt-24">
+              <img class="u-Adjust_Mt-16 u-Adjust_Mt-pc-0" src="<%= sitepath %>assets/img/campaign/japanpost/referral/r-point.png" alt="R POINT" width="304" height="111" loading="lazy">
+              <div>
+                <p class="c-Txt_Emp-01 <%= namespace %>-Layout_Point-txt">紹介する方に<br class="u-Show_Oox"><span class="c-Txt_Emp-02 <%= namespace %>-Layout_Point-txt-emp">10,000</span><span class="c-Txt_Emp-02">ポイントプレゼント！</span></p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">
+                  ※紹介された方（被紹介者様）がプラン利用開始した月の翌々月末日頃に6か月間の期間限定ポイントとして進呈
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="l-System_Container">
+        <div class="<%= namespace %>-Layout_Bnr u-Adjust_Mt-72 u-Adjust_Mt-pc-56">
+          <div class="<%= namespace %>-Layout_Bnr-head u-Adjust_Align-center u-Adjust_Pb-16 u-Adjust_Pt-48">
+            <div class="<%= namespace %>-Layout_Bnr-heading">
+              <div class="<%= namespace %>-Layout_Bnr-comment">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral/bnr-simulation-comment-sp.png" width="480" height="128">
+                  <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/bnr-simulation-comment-pc.png" width="468" height="54" loading="lazy" alt="楽天モバイルを使うとこんなにおトク！を伝えよう">
+                </picture>
+              </div>
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral/bnr-simulation-title-sp.png" width="620" height="216">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/bnr-simulation-title-pc.png" width="780" height="43" loading="lazy" alt="家族やお友達がいくらおトクになるのかシミュレーション！">
+              </picture>
+            </div>
+          </div>
+          <div class="<%= namespace %>-Layout_Bnr-body u-Adjust_Align-center">
+            <div class="<%= namespace %>-Layout_Bnr-body-inner">
+              <p>現在お使いのキャリアとプラン料金を比較できます。<br class="u-Show_Pc">料金シミュレーションでどれくらい節約できるのか今すぐチェック！</p>
+              <div class="u-Show_Sp u-Adjust_Mt-16">
+                <picture>
+                  <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/bnr-simulation-img-sp.png" width="620" height="248" loading="lazy" alt="プラン料金をシミュレーション">
+                </picture>
+              </div>
+              <a href="<%= sitepath %>fee/simulation/?l-id=campaign_japanpost_referral_fee_un-limit_simulation" class="c-Btn_Secondly-large <%= namespace %>-Layout_Bnr-btn"><span>プラン料金をシミュレーションする</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="<%= namespace %>-Layout_Call-merit u-Adjust_Mt-56">
+          <div class="u-Adjust_Align-center">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral/call-merits-sp.png" width="622" height="630">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral/call-merits-pc.png" width="925" height="264" loading="lazy" alt="Rakuten Linkアプリ利用で国内通話かけ放題！">
+            </picture>
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+            <a href="<%= sitepath %>service/rakuten-link/?l-id=campaign_japanpost_referral_service_rakuten-link" class="c-Btn_Regular <%= namespace %>-Layout_Call-merit-btn"><span>詳細を見る</span></a>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">※（0570）などから始まる他社接続サービス、一部特番（188）への通話については、無料通話の対象外となります。OS標準の電話アプリを利用した場合、30秒22円</p>
+        </div>
+      </div>
+
+      <section class="u-Bg_Monotone97 u-Adjust_Mt-64 u-Adjust_Py-488">
+        <%- include('/inc/_about-rakuten-mobile', { baseLId: 'campaign_japanpost_referral' }) %>
+      </section>
+
+      <section id="campaign-rule" class="u-Adjust_Pt-48 u-Adjust_Pb-48 <%= namespace %>-Utility_Bg-gray">
+        <div class="l-System_Container">
+          <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1993', level: 'h2', year: '2023', class: '', comments: `<p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Align-center">本キャンペーンは2023年12月28日23時59分をもちまして終了いたしました。<br>このページに掲載されている情報は、キャンペーン終了時点のものです。</p>` }}) %>
+        </div>
+      </section>
+    </div>
+    <footer class="g-Footer u-Adjust_Mt-64 <%= namespace %>-Layout_Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <%- include('/include/_breadcrumbs', {
+          type: 'foot',
+          pagetitle,
+          directories,
+        }) %>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<section class="accessory-detail-Hero">
+  <div class="accessory-detail-Hero_Data">
+    <div>
+      <%_ if( accessoryInfo.rselect && accessoryInfo.rselect === 'TRUE' ) { _%>
+        <span><img src="<%= sitepath %>assets/img/common/logo-rselect.png?220408" width="89" alt="R SELECT"></span>
+      <%_ } _%>
+      <h1 class="c-Heading_Lv1 accessory-detail-Hero_Name"><%- accessoryInfo.name %></h1>
+
+      <div class="accessory-detail-Layout_PC">
+        <%_ if( accessoryInfo.color.length > 0 ) { _%>
+          <ul class="accessory-detail-Hero_Color">
+            <%_ accessoryInfo.color.forEach((value, index) => { _%>
+              <%_ if( index === 0 ) { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="true">
+              <%_ } else { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="false">
+              <%_ } _%>
+                  <div style="background: <%- value.code %>"></div>
+                  <p><%- value.name %></p>
+                </li>
+            <%_ }); _%>
+          </ul>
+        <%_ } _%>
+
+        <%_ if( accessoryInfo.topbuttontext ) { _%>
+            <p class="c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Align-center"><%= accessoryInfo.topbuttontext %></p>
+        <%_ } -%>
+        <%_ if( accessoryInfo.topbuttonnote ) { _%>
+            <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-center"><%= accessoryInfo.topbuttonnote %></p>
+        <%_ } _%>
+        <%_ const applyBtnTopMargin = accessoryInfo.topbuttontext || accessoryInfo.topbuttonnote ? 16 : 48; _%>
+
+        <ul class="u-Adjust_Mt-<%= applyBtnTopMargin %> accessory-detail-Hero_Cta js-accessory-detail-Hero_Cta">
+          <%_ if( accessoryInfo.btn.isShowFlag !== 'none' ) { _%>
+            <li class="js-apply-btn">
+              <%_ if( accessoryInfo.btn.isShowFlag === 'disable' ) { _%>
+                <a href="#" class="c-Btn_Primary" aria-disabled="true"><%- accessoryInfo.btn.label %></a>
+              <%_ } else { _%>
+                <a href="<%- accessoryInfo.btn.url %>&l-id=accessory_detail-page_order-button_bss" class="c-Btn_Primary"><%- accessoryInfo.btn.label %></a>
+              <%_ } _%>
+              <%_ if( accessoryInfo.btn.noteText.trim().length > 0 ) { _%>
+                <p class="<%= accessoryInfo.btn.noteMode %>c-Txt_Weight-normal u-Adjust_Align-center"><%- accessoryInfo.btn.noteText.trim() %></p>
+              <%_ } _%>
+            </li>
+          <%_ } _%>
+          <%_ if( accessoryInfo.ichiba.isShowFlag !== 'none' ) { _%>
+            <li>
+              <%_ if( accessoryInfo.ichiba.isShowFlag === 'disable' ) { _%>
+                  <a href="#" class="c-Btn_Primary" aria-disabled="true"><%- accessoryInfo.ichiba.label %></a>
+              <%_ } else { _%>
+                  <a href="<%- accessoryInfo.ichiba.url %>" class="c-Btn_Primary" data-ratid="accessory_detail-page_order-button_ichiba" data-ratevent="click"><%- accessoryInfo.ichiba.label %></a>
+              <%_ } _%>
+              <p><%- accessoryInfo.ichiba.noteText.trim() %></p>
+            </li>
+          <%_ } _%>
+        </ul>
+        <%_ if( accessoryInfo.legalLine !== '' || accessoryInfo.additionalText !== '' ) { _%>
+          <div class="u-Adjust_Mt-24">
+            <%_ if( accessoryInfo.legalLine) { _%>
+              <p><%- accessoryInfo.legalLine %></p>
+            <%_ } _%>
+            <%_ if( accessoryInfo.additionalText !== '' ) { _%>
+              <%- accessoryInfo.additionalText %>
+            <%_ } _%>
+          </div>
+        <%_ } _%>
+      </div>
+    </div>
+  </div>
+
+  <div class="accessory-detail-Hero_Main">
+    <%_ accessoryInfo.slider.forEach((value, index) => { _%>
+      <%_ if( accessoryInfo.color.length <= 0 ) { _%>
+        <ul class="accessory-detail-Hero_Main-accessory c-Carousel js-accessories-main js-device">
+      <%_ } else if( index === 0 ) { _%>
+        <ul class="accessory-detail-Hero_Main-accessory c-Carousel js-main<%- index + 1 %> js-device" aria-hidden="false">
+      <%_ } else { _%>
+        <ul class="accessory-detail-Hero_Main-accessory c-Carousel js-main<%- index + 1 %> js-device" aria-hidden="true">
+      <%_ } _%>
+        <%_ value.forEach((ele, index) => { _%>
+          <li><span><img data-lazy="<%- ele %>" alt=""></span></li>
+        <%_ }); _%>
+        </ul>
+
+      <%_ if( index === 0 ) { _%>
+        <ul class="accessory-detail-Hero_Main-thumbnail-iphone thumbnail<%- index + 1 %> is-open">
+      <%_ } else { _%>
+        <ul class="accessory-detail-Hero_Main-thumbnail-iphone thumbnail<%- index + 1 %>">
+      <%_ } _%>
+
+        <%_ value.forEach((ele, index) => { _%>
+          <%_ if( accessoryInfo.thumbnailfull ) { _%>
+            <li class="thumbnail-item full"><span><img src="<%- ele %>" alt=""></span></li>
+          <%_ } else { _%>
+            <li class="thumbnail-item"><span><img src="<%- ele %>" alt=""></span></li>
+          <%_ } _%>
+        <%_ }); _%>
+
+        <%_ if( accessoryInfo.movie.flag ) { _%>
+          <%_ if( accessoryInfo.thumbnailfull ) { _%>
+          <li  class="full">
+          <%_ } else { _%>
+          <li>
+          <%_ } _%>
+            <a class="js-video" href="<%- accessoryInfo.movie.url %>">
+              <span><img src="<%- accessoryInfo.movie.thumbnail %>" alt=""></span>
+              <button class="accessory-detail-Hero_Main-thumbnail-iphone-button" type="button" title="Play Video">
+                <span>Play Video</span>
+              </button>
+            </a>
+          </li>
+        <%_ } _%>
+        </ul>
+    <%_ }); _%>
+
+    <div class="c-Carousel_Nav"></div>
+  </div>
+
+  <div class="accessory-detail-Layout_SP">
+    <div class="accessory-detail-Hero_Data">
+      <div>
+        <%_ if( accessoryInfo.color.length > 0 ) { _%>
+          <ul class="accessory-detail-Hero_Color">
+            <%_ accessoryInfo.color.forEach((value, index) => { _%>
+              <%_ if( index === 0 ) { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="true">
+              <%_ } else { _%>
+                <li class="js-color js-color<%- index + 1 %>" aria-current="false">
+              <%_ } _%>
+                  <div style="background: <%- value.code %>"></div>
+                  <p><%- value.name %></p>
+                </li>
+            <%_ }); _%>
+          </ul>
+        <%_ } _%>
+      </div>
+
+      <%_ if( accessoryInfo.topbuttontext ) { _%>
+          <p class="c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Align-center"><%= accessoryInfo.topbuttontext %></p>
+      <%_ } -%>
+      <%_ if( accessoryInfo.topbuttonnote ) { _%>
+          <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-center"><%= accessoryInfo.topbuttonnote %></p>
+      <%_ } _%>
+
+      <ul class="u-Adjust_Mt-<%= applyBtnTopMargin %> accessory-detail-Hero_Cta js-accessory-detail-Hero_Cta">
+        <%_ if( accessoryInfo.btn.isShowFlag !== 'none' ) { _%>
+          <li class="js-apply-btn">
+            <%_ if( accessoryInfo.btn.isShowFlag === 'disable' ) { _%>
+              <a href="#" class="c-Btn_Primary" aria-disabled="true"><%- accessoryInfo.btn.label %></a>
+            <%_ } else { _%>
+              <a href="<%- accessoryInfo.btn.url %>&l-id=accessory_detail-page_order-button_bss" class="c-Btn_Primary"><%- accessoryInfo.btn.label %></a>
+            <%_ } _%>
+            <%_ if( accessoryInfo.btn.noteText.trim().length > 0 ) { _%>
+              <p class="<%= accessoryInfo.btn.noteMode %>c-Txt_Weight-normal u-Adjust_Align-center"><%- accessoryInfo.btn.noteText.trim() %></p>
+            <%_ } _%>
+          </li>
+        <%_ } _%>
+        <%_ if( accessoryInfo.ichiba.isShowFlag !== 'none' ) { _%>
+          <li>
+            <%_ if( accessoryInfo.ichiba.isShowFlag === 'disable' ) { _%>
+                <a href="#" class="c-Btn_Primary" aria-disabled="true"><%- accessoryInfo.ichiba.label %></a>
+            <%_ } else { _%>
+                <a href="<%- accessoryInfo.ichiba.url %>" class="c-Btn_Primary" data-ratid="accessory_detail-page_order-button_ichiba" data-ratevent="click"><%- accessoryInfo.ichiba.label %></a>
+            <%_ } _%>
+            <p><%- accessoryInfo.ichiba.noteText.trim() %></p>
+          </li>
+        <%_ } _%>
+      </ul>
+      <%_ if( accessoryInfo.legalLine !== '' || accessoryInfo.additionalText !== '' ) { _%>
+        <div class="u-Adjust_Mt-24">
+          <%_ if( accessoryInfo.legalLine) { _%>
+            <p><%- accessoryInfo.legalLine %></p>
+          <%_ } _%>
+          <%_ if( accessoryInfo.additionalText !== '' ) { _%>
+            <%- accessoryInfo.additionalText %>
+          <%_ } _%>
+        </div>
+      <%_ } _%>
+    </div>
+  </div>
+</section>

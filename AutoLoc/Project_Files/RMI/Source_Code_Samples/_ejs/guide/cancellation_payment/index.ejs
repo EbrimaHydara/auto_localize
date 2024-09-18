@@ -1,0 +1,225 @@
+<% const pagetitle = "解約後のご請求について" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/contract-detail/cancellation/", label:"解約・MNP転出"}] -%>
+<%-
+  include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '解約月の利用料金の請求スケジュールや、解約後に請求が発生する事例をご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const namespace = "guide-cancellation-payment" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/cancellation_payment/cancellation-payment.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+<%- include('/include/_breadcrumbs', {
+  type: 'head',
+  pagetitle,
+  directories,
+}) %>
+
+<div class="<%= namespace %>-Layout_Container">
+  <section class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-16">解約月の利用料金の請求スケジュールや、解約後に請求が発生する事例をご案内します。</p>
+  </section>
+  <div class="<%= namespace %>-Layout_Nav u-Adjust_Mt-32">
+    <div class="l-System_Container">
+      <nav>
+        <ul>
+          <li><a href="#case1" class="js-scroll">
+            <span class="c-Icon_Arrow-down-l"></span><span>解約月の請求金額の確定と請求スケジュールについて</span></a>
+          </li>
+          <li><a href="#case2" class="js-scroll">
+            <span class="c-Icon_Arrow-down-l"></span><span>解約後に請求が発生するケース</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="l-System_Container u-Adjust_Mt-32">
+    <section>
+      <h2 id="case1" class="c-Heading_Lv2">解約月の請求金額の確定と請求スケジュールについて</h2>
+      <p class="u-Adjust_Mt-16">
+        <span class="c-Txt_Emp-02">解約月の1日から解約日までのご利用料金を翌月にご請求いたします。</span><br>
+        お支払い方法によってご請求のタイミングは異なります。お客様のお支払い方法に合わせて請求スケジュールをご確認ください。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        オプションサービスは月途中で解約した場合、解約月の料金は日割り計算となります。
+      </p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※「15分（標準）通話かけ放題」、「国際通話かけ放題」、「楽天モバイル買い替え超トクプログラム」は日割り計算対象外です。解約日に関わらず、解約月の月額ご請求いたします
+      </p>
+      <div class="c-Tab js-Tab u-Adjust_Mt-24">
+        <ul class="c-Tab_Items" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">クレジットカード</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">デビットカード</li>
+          <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="false" aria-controls="tab-content3">口座振替</li>
+        </ul>
+        <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+          <h3 class="c-Heading_Lv4 u-Adjust_Mt-16">解約月のご利用料金の請求と引き落としについて</h3>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>
+              <span class="c-Txt_Emp-01">ご利用料金の請求日</span><br>
+              翌月11日ごろにカード会社へ請求となります。
+            </li>
+            <li>
+              <span class="c-Txt_Emp-01">ご利用料金の引き落とし日</span><br>
+              請求金額の引き落とし日は、ご契約されているカード会社によって異なります。詳しくは各カード会社の請求スケジュールをご確認ください。
+            </li>
+          </ul>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-24">例：8月25日に解約した場合の請求スケジュール<br>（楽天カードの場合：月末締め、翌月27日払い）</p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/guide/cancellation_payment/img-01-sp.png" width="686" height="1144">
+              <img src="<%= sitepath %>assets/img/guide/cancellation_payment/img-01-pc.png" alt="" width="1032" height="584" loading="lazy">
+            </picture>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※1 楽天ポイント利用分は未反映となります。<br>
+            ※2 楽天ポイント利用の設定額を超えた請求金額は、クレジットカードでのお支払いとなり、11日ごろにカード会社に請求いたします。<br>
+            ※3 支払い証明書が発行されていない場合、未払いになっている可能性があります。<a href="<%= sitepath %>guide/payment/invoice/flow/?l-id=guide_cancellation_payment_guide_payment_invoice_flow" class="c-Link_Txt">未払い料金のお支払い方法</a>をご確認のうえ、お支払いをお願いいたします。
+          </p>
+        </div>
+        <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+          <h3 class="c-Heading_Lv4 u-Adjust_Mt-16">解約月のご利用料金の請求と引き落としについて</h3>
+          <p class="u-Adjust_Mt-16">
+            翌月11日・12日のいずれかに請求、引き落としとなります。
+          </p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-24">例：8月25日に解約した場合の請求スケジュール</p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/guide/cancellation_payment/img-02-sp.png" width="686" height="846">
+              <img src="<%= sitepath %>assets/img/guide/cancellation_payment/img-02-pc.png" alt="" width="1032" height="428" loading="lazy">
+            </picture>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※1 楽天ポイント利用分は未反映となります。<br>
+            ※2 楽天ポイント利用の設定額を超えた請求金額は、デビットカードでのお支払いとなり、11日ごろにカード会社に請求いたします。<br>
+            ※3 11日・12日のいずれかに請求、引き落としとなります。<br>
+            ※4 支払い証明書が発行されていない場合、未払いになっている可能性があります。<a href="<%= sitepath %>guide/payment/invoice/flow/?l-id=guide_cancellation_payment_guide_payment_invoice_flow" class="c-Link_Txt">未払い料金のお支払い方法</a>をご確認のうえ、お支払いをお願いいたします。
+          </p>
+        </div>
+        <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu3">
+          <h3 class="c-Heading_Lv4 u-Adjust_Mt-16">解約月のご利用料金の請求と引き落としについて</h3>
+          <p class="u-Adjust_Mt-16">
+            翌月27日に請求、引き落としとなります。
+          </p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-24">例：8月25日に解約した場合の請求スケジュール</p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/guide/cancellation_payment/img-03-sp.png" width="686" height="952">
+              <img src="<%= sitepath %>assets/img/guide/cancellation_payment/img-03-pc.png" alt="" width="1032" height="495" loading="lazy">
+            </picture>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※1 支払い証明書が発行されていない場合、未払いになっている可能性があります。<a href="<%= sitepath %>guide/payment/invoice/flow/?l-id=guide_cancellation_payment_guide_payment_invoice_flow" class="c-Link_Txt">未払い料金のお支払い方法</a>をご確認のうえ、お支払いをお願いいたします。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="u-Adjust_Mt-48">
+      <h2 id="case2" class="c-Heading_Lv2">解約後に請求が発生するケース</h2>
+      <p class="u-Adjust_Mt-16">
+        契約内容や解約状況によっては、解約後も引き続きご請求が続く場合があります。それぞれ当てはまるケースをご確認ください。
+      </p>
+      <ul>
+        <li class="u-Adjust_Mt-16">
+          <a href="#case2-1" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用回線の最終請求</a>
+        </li>
+        <li class="u-Adjust_Mt-16">
+          <a href="#case2-2" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>楽天モバイルをご利用中のご家族分のご請求</a>
+        </li>
+        <li class="u-Adjust_Mt-16">
+          <a href="#case2-3" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>製品に紐づくオプションサービスのご請求</a>
+        </li>
+        <li class="u-Adjust_Mt-16">
+          <a href="#case2-4" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>製品代金（分割払い）のご請求</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="u-Adjust_Mt-40">
+      <h3 id="case2-1" class="c-Heading_Lv3">ご利用回線の最終請求</h3>
+      <p class="u-Adjust_Mt-16">
+        解約月のご利用分は翌月に請求させていただきます。請求のタイミングはお支払い方法によって異なります。請求スケジュールをご確認ください。
+      </p>
+      <div class="u-Adjust_Mt-16">
+        <a href="#case1" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-up-l"></span>請求スケジュールを確認する</a>
+      </div>
+    </section>
+
+    <section class="u-Adjust_Mt-40">
+      <h3 id="case2-2" class="c-Heading_Lv3">楽天モバイルをご利用中のご家族分のご請求</h3>
+      <p class="u-Adjust_Mt-16">
+        ご家族分など、複数のご契約者様のお支払い方法を1つにまとめている場合は、それぞれのご契約者様の利用料金・利用明細をmy 楽天モバイルからご確認ください。
+      </p>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>guide/payment/usage-details/?l-id=support_category_guide#anc02" class="c-Btn_Regular">利用明細と各種明細を確認する</a>
+      </div>
+    </section>
+
+    <section class="u-Adjust_Mt-40">
+      <h3 id="case2-3" class="c-Heading_Lv3">製品に紐づくオプションサービスのご請求</h3>
+      <p class="u-Adjust_Mt-16">
+        楽天モバイルで購入した製品に紐づく以下オプションサービスは、自動解約されません。個別で解約手続きが必要となります。
+      </p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li><a href="<%= sitepath %>service/replacement-warranty-plus/?l-id=guide_cancellation_payment_service_replacement-warranty-plus" class="c-Link_Txt">スマホ交換保証プラス</a></li>
+        <li><a href="<%= sitepath %>service/iphone/applecare/?l-id=guide_cancellation_payment_service_applecare" class="c-Link_Txt">故障紛失保証 with AppleCare Services</a></li>
+        <li><a href="<%= sitepath %>service/iphone/applecare-icloud/?l-id=guide_cancellation_payment_service_applecare-icloud" class="c-Link_Txt">故障紛失保証 with AppleCare Services & iCloud+</a></li>
+        <li><a href="<%= sitepath %>service/applewatch-care/?l-id=guide_cancellation_payment_service_applewatch-care" class="c-Link_Txt">あんしん保証with AppleCare Services for Apple Watch</a></li>
+        <li><a href="<%= sitepath %>service/replacement-program/?l-id=guide_cancellation_payment_service_replacement-program" class="c-Link_Txt">楽天モバイル買い替え超トクプログラム</a></li>
+      </ul>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>guide/cancellation/?l-id=guide_cancellation_payment_guide_cancellation" class="c-Btn_Regular">解約について詳細を確認する</a>
+      </div>
+    </section>
+
+    <section class="u-Adjust_Mt-40">
+      <h3 id="case2-4" class="c-Heading_Lv3">製品代金（分割払い）のご請求</h3>
+      <p class="u-Adjust_Mt-16">
+        スマートフォンなど製品の分割請求が残っている場合、ご請求は継続いたします。残っている金額等のご確認は、ご利用中のクレジットカード会社へご確認ください。
+      </p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※楽天モバイルで製品を分割払いで購入した場合、クレジットカード会社の分割払いをご利用いただくため、お支払い数の変更はクレジットカード会社へご確認ください。
+      </p>
+    </section>
+  </div>
+</div>
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <%- include('/include/_breadcrumbs', {
+      type: 'foot',
+      pagetitle,
+      directories,
+    }) %>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

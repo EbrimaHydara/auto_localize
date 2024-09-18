@@ -1,0 +1,796 @@
+<% const pagetitle = "OPPO Reno9 A" -%>
+<% const directory = "reno9-a" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/smartphone/", label:"Android"}] -%>
+<% const namespace = "product-Reno9-a" -%>
+<% const theme = "Light" -%>
+<% const point = 6000 -%>
+<% const pointModel = 5500 -%>
+<%# const pointEntry = 5000 -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+  予約 → 'reserve'
+*/
+const bundleFlag = 'bundle';
+const exid = 600654;
+-%>
+
+<% const priceDetailConfig = {
+  bundleFlag: bundleFlag,
+  theme: theme,
+  price: 40700,
+  // priceBefore: 53900,
+  pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>円相当の<br class="product-detail-Utility_Show-sp">ポイント還元<sub>※3</sub></span>`,
+  pointBackTextA: `<span>楽天モバイルお申し込みで<br class="product-detail-Utility_Show-sp"><span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当のポイント還元<sub>※1,4</sub></span>`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 1695,
+  // division24Before: ,
+  division48: 847,
+  // division48Before: ,
+  division48last: 891,
+  tradeinProductName: 'OPPO Reno7 A',
+  optionPattern: 'one-option',
+  lid: directory,
+  capacity: 128,
+  maxTradeinPrice: 6930,
+  pointAppealBtnCapNo: 4,
+  carrier: '楽天モバイル',
+  // notificationEmail: 'true',
+  // notificationEmailLink: '/product/reservation/reno9-a/'
+  discountPrice: 6000,
+  applyPoint: 0,
+  firstTimeApplyPoint: 20000,
+  mnp: false,
+  anchorId: 'campaign-rule1526',
+  trakingId: 'reno9-a',
+  exid: exid,
+  year: 2023,
+  month: 9,
+  day: 22,
+  btnLabel: 'OPPO Reno9 Aを予約注文する',
+  // PriceBeforeUnnumberedAnnotationText: '楽天モバイルでの販売価格（販売期間：2023年6月22日～2024年1月16日）',
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "OPPO Reno9 A（オッポ）の価格・特徴・スペックの確認と購入はこちら。楽天モバイルお申し込み＆OPPO Reno9 Aご購入で20,000円値引き！※対象プラン等条件あり",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inc/i-product-head.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%_ if (bundleFlag !== true) { _%>
+<script>
+const urlList = {
+  'black_sim_warranty': '/',
+  'black_sim_nowarranty': '/',
+  'black_nosim_warranty': '/',
+  'black_nosim_nowarranty': 'https://onboarding.mobile.rakuten.co.jp/equipment-details?exid=600378&selectAvailable=true',
+  'green_sim_warranty': '/',
+  'green_sim_nowarranty': '/',
+  'green_nosim_warranty': '/',
+  'green_nosim_nowarranty': '/',
+}
+</script>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<%
+  const NavItems = [
+    {label: '価格', href: 'price'},
+    {label: '関連アクセサリ', href: 'accessory'},
+    {label: '特長', href: 'feature'},
+    {label: 'スペック', href: 'spec'}
+  ]
+%>
+
+<div id="js-header-nav-dummy"></div>
+<%- include('/include/product/smartphone/_nav-follow-btn', {pagetitle, NavItems, directory, exid, }) %>
+
+  <div class="product-detail-Layout_Hero-with-bnr <%= namespace %>_Hero">
+    <div class="l-System_Container u-Adjust_Pt-16">
+      <div class="<%= namespace %>_Bnr">
+        <a href="<%= sitepath %>campaign/android-discount/?l-id=product_smartphone_reno9-a_campaign_android-discount" class="c-Banner_Hover-act">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/inc/product/bnr-discount-slim-reno9-a-20000-343-90-240301.png" width="686" height="180">
+            <img src="<%= sitepath %>assets/img/inc/product/bnr-discount-slim-reno9-a-20000-1032-75-240301.png" width="1032" height="75" alt="楽天モバイルお申し込み＆OPPO Reno9 Aご購入で20,000円値引き">
+          </picture>
+        </a>
+      </div>
+
+      <section class="product-detail-Hero">
+        <div class="product-detail-Hero_Data">
+          <div>
+            <h1 class="co-Heading_Lv1 product-detail-Hero_Name"><img src="<%= sitepath %>assets/img/product/<%= directory %>/logo.svg" alt="<%= pagetitle %>"></h1>
+            <p class="product-detail-Hero_Maker">OPPO</p>
+            <p class="product-detail-Hero_Copy">もっと、サクサク。<br>
+              もっと、ワクワク。</p>
+            <div class="product-detail-Utility_Show-pc">
+              <div class="u-Adjust_Mt-16">
+                <%_ if (bundleFlag === 'bundle') { _%>
+                  <div class="u-Adjust_Align-center <%= bundleFlag %>">
+                    <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+                  </div>
+                <%_ } else if(bundleFlag === 'stock') { _%>
+                  <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large">購入する</a></div>
+                <%_ } else if(bundleFlag === 'soldout') { _%>
+                  <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+                <%_ } else if(bundleFlag === 'backorder') { _%>
+                  <div class="u-Adjust_Align-center"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+                <%_ } else if(bundleFlag === 'reserve') { _%>
+                  <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                    <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">OPPO Reno9 Aを予約注文する</a>
+                  </div>
+                <%_ } _%>
+                <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>_Txt-icon-front">
+                  <span class="<%= namespace %>_Txt-icon-front-icon"></span>
+                  <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+                </p>
+
+                <p class="u-Adjust_Mt-32 c-Txt_Cap">
+                  ※5G通信は対応エリアでご利用可能です。
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="product-detail-Hero_Main u-Adjust_Mt-0">
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+            <li><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt=""></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-color product-detail-Theme_<%= theme %>-color">
+            <li class="js-color js-color1"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-01" aria-current="true"><span style="background:#F5F5F5"></span></li>
+            <li class="js-color js-color2"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-02" aria-current="false"><span style="background:#000000"></span></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-01_thumbnail-01" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-01_thumbnail-02" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-01_thumbnail-03" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-01_thumbnail-04" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-01_thumbnail-05" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-02_thumbnail-01" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-02_thumbnail-02" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-02_thumbnail-03" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-02_thumbnail-04" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_color-02_thumbnail-05" alt=""></li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="product-detail-Hero_Show-sp product-detail-Utility_Show-sp u-Adjust_Mt-24">
+        <div>
+          <%_ if (bundleFlag === 'bundle') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= bundleFlag %>">
+            <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+          </div>
+          <%_ } else if(bundleFlag === 'stock') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large">購入する</a>
+        </div>
+        <%_ } else if(bundleFlag === 'soldout') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+        <%_ } else if(bundleFlag === 'backorder') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+        <%_ } else if(bundleFlag === 'reserve') { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">OPPO Reno9 Aを予約注文する</a>
+          </div>
+        <%_ } _%>
+        <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>_Txt-icon-front">
+          <span class="<%= namespace %>_Txt-icon-front-icon"></span>
+          <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+
+      </div>
+        <p class="u-Adjust_Mt-24" style="font-size: 12px;">
+          ※5G通信は対応エリアでご利用可能です。
+        </p>
+      </div>
+
+      </div>
+    </div>
+  <div class="product-detail-Layout_Main">
+    <div class="product-detail-Price product-detail-Theme_<%= theme %>-price">
+      <div id="js-price-detail">
+        <%- include('/include/product/smartphone/_price-detail-basic', {priceDetailConfig, bundleFlag}) %>
+      </div>
+      <div class="l-System_Container">
+        <div class="u-Adjust_Mt-32">
+          <p class="u-Adjust_Align-center c-Txt_Emp-01" style="font-size: 18px;">【ご購入前にご確認ください】</p>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>購入手続き後、当社で審査を実施し、完了をもって購入契約成立となります。ただし、当社所定の条件に該当する場合、注文キャンセルとなる可能性がございます。キャンセルの際は、登録メールアドレス宛にご連絡します。</li>
+            <li><span class="c-Txt_Emp-02">充電器・ケーブルは別売りとなっております。</span>「購入する」ボタンを押下後、製品をカートに追加する際に、必要なアクセサリも同時にご購入ください。アクセサリの詳細は「関連アクセサリ」からご確認ください。</li>
+          </ul>
+        </div>
+
+        <%
+        const relatedAccessoryConf = {
+          namespace,
+          directory,
+          relatedAccessory: [
+            {
+              title: 'OwltechAC充電器（20W）',
+              url: 'product/accessory/owltech-apd20c1a1bk/?l-id=product_reno9-a_owltech-apd20c1a1bk',
+              image: 'assets/img/accessory/owltech-apd20c1a1bk/pht-accessory-00.png',
+              price: '2,618'
+            },
+            {
+              title: 'USB Type-A to Type-C シリコンケーブル 1m（ブラック/ホワイト）​',
+              url: 'product/accessory/owltech-owlcbsac10bk/?l-id=product_reno9-a_owltech-owlcbsac10bk',
+              image: 'assets/img/accessory/owltech-owlcbsac10bk/pht-accessory-00.png',
+              price: '1,080'
+            },
+            {
+              title: 'USB Type-C to Type-C シリコンケーブル 2m（ブラック）',
+              url: 'product/accessory/mot-scbccg200-bk/?l-id=product_reno9-a_mot-scbccg200-bk',
+              image: 'assets/img/accessory/mot-scbccg200-bk/pht-accessory-00.png',
+              price: '1,480'
+            },
+            {
+              title: 'USB Type-A to Type-C シリコンケーブル 2m（ブラック/ホワイト）',
+              url: 'product/accessory/mot-scbacg200-bk/?l-id=product_reno9-a_mot-scbacg200-bk',
+              image: 'assets/img/accessory/mot-scbacg200-bk/pht-accessory-00.png',
+              price: '1,280'
+            },
+            {
+              title: 'OPPO Reno9 A 平面ガラスフィルム 高光沢',
+              url: 'product/accessory/rselect-rmopreno9af0227cl/?l-id=product_reno9-a_rselect-rmopreno9af0227cl',
+              image: 'assets/img/accessory/rselect-rmopreno9af0227cl/pht-accessory-00.png',
+              price: '2,280'
+            },
+          ]
+        }
+        -%>
+        <div id="accessory">
+          <%- include('/include/product/_related-carousel', { relatedAccessoryConf }) _%>
+        </div>
+
+        <%- include('/include/product/smartphone/_price-detail-notes-discount') _%>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>_Bg <%= namespace %>_Sub-other">
+      <div class="l-System_Container">
+        <div class="product-detail-Spec">
+          <ul class="product-detail-Spec_<%= theme %>">
+            <li aria-current="true"><span class="c-Icon_Product-waterproof"></span>防水</li>
+            <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>FeliCa</li>
+            <li aria-current="true"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+            <li aria-current="true"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+            <li aria-current="true"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+            <li aria-current="false"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+            <li aria-current="true"><span class="c-Icon_Product-connection"></span>高速通信</li>
+          </ul>
+          <p class="u-Adjust_Mt-64"><a href="#spec" class="c-Link_Txt-icon-front js-scroll"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_spec-anchor"><span class="c-Icon_Arrow-down-l"></span>基本スペックを見る</a></p>
+        </div>
+
+        <section id="feature" class="product-detail-Layout_Section">
+          <h2 class="c-Heading_Lv2-rich" data-ratid="reno9-a_scroll-03_feature" data-ratevent="appear">特長</h2>
+
+          <div class="<%= namespace %>_Layout-video" style="position: relative; display: block; margin-left: auto;margin-right: auto;"><div style="padding-top: 56.25%;border: solid 1px #ecf6f1;"><iframe src="https://players.brightcove.net/5068808272001/default_default/index.html?videoId=6328171999112" allowfullscreen="" allow="encrypted-media" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;border: solid 1px #ecf6f1;"></iframe></div></div>
+
+          <ul class="product-detail-Catch <%= namespace %>_Catch">
+            <li><a href="#feature1" class="js-scroll"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_feature-anchor-01"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">ガラスの質感が美しいデザイン</span></a></li>
+            <li><a href="#feature2" class="js-scroll"  data-ratevent="click" data-ratparam="all" data-ratid="reno9-a_feature-anchor-02"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">サクサクがすごい8GB RAM</span></a></li>
+            <li><a href="#feature3" class="js-scroll" data-ratid="reno9-a_feature-anchor-03"><span class="c-Icon_Arrow-down-l product-detail-Catch_Icon"></span><span class="product-detail-Catch_Txt">スリムなのに頼もしいバッテリー</span></a></li>
+          </ul>
+          <p class="u-Adjust_Mt-32 <%= namespace %>_Layout-ancher">
+            <a data-ratid="<%= directory %>_spec-anchor" data-ratevent="click" data-ratparam="all" href="#other" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>その他の特長を見る</a>
+            <a data-ratid="<%= directory %>_spec-anchor" data-ratevent="click" data-ratparam="all" href="#about" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>OPPOとは</a>
+          </p>
+
+          <section class="product-detail-Feature" id="feature1">
+            <h3 class="c-Heading_Lv3">見た目で好きになる。触れたらもっと好きになる。</h3>
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/ksp01.png" alt=""></figure>
+            <p class="product-detail-Feature_Txt">
+              OPPO 独自の背面加工、OPPO Glow の繊細な輝きと指紋がつきにくいマットな質感。ガラスの輝きをまとったボディはワンランク上のデザインを楽しめます。
+            </p>
+          </section>
+          <section class="product-detail-Feature" id="feature2">
+            <h3 class="c-Heading_Lv3">RAMがなんと8GBに。これぞ、サクサクの傑作。</h3>
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/ksp02.png" alt=""></figure>
+            <p class="product-detail-Feature_Txt">
+              動画にゲームにSNS。あれもこれもかなえる5G高速通信対応のプロセッサーに、ハイエンドスマホ同等の8GB大容量メモリ（RAM）で操作感もサクサク快適です。
+            </p>
+          </section>
+          <section class="product-detail-Feature" id="feature3">
+            <h3 class="c-Heading_Lv3">見た目はスリムでも、とても頼もしいバッテリー。</h3>
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/ksp03.png" alt=""></figure>
+            <p class="product-detail-Feature_Txt">
+              1日中たっぷり使える4,500mAhのバッテリーをスリムボディに内蔵。18W急速充電対応<span class="c-Txt_Cap">※1</span> で、少しの時間でもバッテリー残量が復活します。
+            </p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※1 18W PD/QC急速充電に対応。充電器は同梱されていません。急速充電対応充電器が必要になります。
+            </p>
+          </section>
+        </section>
+
+        <div class="product-detail-Layout_Sub <%= namespace %>_Sub <%= namespace %>_Sub-bg">
+          <section class="product-detail-Layout_Section u-Adjust_Mt-24 u-Adjust_Pt-24">
+            <h2 id="other" class="c-Heading_Lv3">その他の特長</h2>
+            <section class="product-detail-Feature_Sub u-Adjust_Mt-24">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other01.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4" data-ratid="reno9-a_scroll-04_feature" data-ratevent="appear">ガラスの質感が美しいデザイン</h3>
+                <p>背面にもガラスパネルを採用。洗練された美しい輝きをまとったボディは強さも備えた実力派です。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other02.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">持ちやすさは、使いやすさ</h3>
+                <p>片手でも操作しやすい薄さ約7.8mm。毎日使うからこそ、持ちやすさにこだわりました。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other03.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">大画面でなめらか操作感</h3>
+                <p>約6.4インチ有機ELディスプレイになめらかな90Hzリフレッシュレート<span class="c-Txt_Cap">※2</span>。動画やゲームにもおすすめです。</p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">※2 一部のアプリやコンテンツにはご利用いただけません。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other04.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">サクサク操作感が、長持ち</h3>
+                <p>36ヶ月使ってもシステム劣化は5%以内<span class="c-Txt_Cap">※3</span>。消費電力を抑制してバックグラウンドのアプリ動作を安定させます。</p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                  ※3 OPPO実験室で収集されたデータに基づいています。お客様の使用状況や使用環境によって異なります。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other05.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">スマホで毎日をもっと便利に</h3>
+                <p>安心の防水・防塵性能（IPX8/IP6X<span class="c-Txt_Cap">※4</span>）に、電子決済や行政手続き<span class="c-Txt_Cap">※5</span>がスマホひとつで完結する利便性を備えました。</p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                  ※4 IPX8とは、常温で水道水の水深1.5mのところに携帯電話を沈め、約30分間放置後に取り出したときに本体に浸水せず、通信機器としての機能を有すことを意味します。 IP6Xとは、直径75μm以下の塵埃（じんあい）が入った装置に商品を8時間入れてかくはんさせ、取り出したときに内部に塵埃が侵入しない機能を有することを意味します。カード挿入口カバーまたはキャップがある機種はしっかりと閉じ、電池フタが着脱可能な機種は確実に取り付けてください。海水・プール・温泉の中に浸けないでください。砂浜などの上に置かないでください。<br>
+                  ※5 マイナンバーカード機能（スマホ用電子証明書機能）対応。詳しくは<a href="https://www.digital.go.jp/policies/mynumber/smartphone-certification/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">デジタル庁のウェブサイト<span class="c-Icon_New-window-l"></span></a>をご覧ください。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other06.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">多彩な撮影モードは、あなたを多才にする。</h3>
+                <p>日常の撮影から旅行先の感動的な風景まで、高精細に記録できる最大4,800万画素のメインカメラ。多彩な撮影モードが記憶に残る1枚を演出します。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other07.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">アウト/イン同時動画撮影</h3>
+                <p>アウトカメラとインカメラで同時に動画撮影。自分と相手を同時に撮れるので、楽しさも思い出も倍増です。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other08.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">ネオンポートレート</h3>
+                <p>夜の街にきらめく光をまるで一眼レフで撮影したかのようなボケ感にして、被写体を際立たせます。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other09.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">AIビューティー</h3>
+                <p>OPPOのビューティーアルゴリズムは、100段階で調節できる8種類のビューティーツールを提供。細かくカスタマイズできます。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other10.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">AIカラーポートレート</h3>
+                <p>背景はモノクロ、自分はカラフル。まるで映画のポスターみたいな写真に仕上がります。<span class="c-Txt_Cap">※6</span></p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                  ※6 インカメラのみ対応。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other11.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">ColorOS 13</h3>
+                <p>Android™13をベースに、ユーザー目線で便利機能を追加したのがOPPOのColorOS 13。初めてOPPOのスマートフォンを使う方でも様々な機能を簡単にお使いいただけます。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other12.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">データ移行</h3>
+                <p>アプリを使って引き継ぎたい項目を選ぶだけ。
+                  簡単にデータを移行できます。<span class="c-Txt_Cap">※7</span></p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                  ※7 Android端末からは、写真、連絡先、アプリ、音楽、動画などのデータを移行できます。アプリ内のデータは移行されません。Android端末にデータ移行アプリ（Android 6.0以降に対応）をインストールして移行作業を行います。iPhoneからは、連絡先と写真、動画データが移行できます。iPhoneにデータ移行アプリ（iOS10.0以降に対応）をインストールして移行作業を行います。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other13.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">シンプルモード</h3>
+                <p>起動方法：「設定」→「特殊機能」→「シンプルモード」</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other14.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">アイコンプルダウンジェスチャー</h3>
+                <p>画面の端を下から上になぞると、ホーム画面にある全アプリが一箇所に集まりラクラク操作。片手操作に優しい機能です。<span class="c-Txt_Cap">※8</span></p>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                  ※8 設定＞ホーム画面とロック画面＞アイコンプルダウンジェスチャーをONにしてご使用ください。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/other15.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">スクリーンショット</h3>
+                <p>3本指で画面を上からなぞるだけ。縦長のWEBページも1枚の画像に。さらに画面の一部を切り取って保存も可能です。</p>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="product-detail-Layout_Sub <%= namespace %>_Sub <%= namespace %>_Sub-about">
+      <div class="l-System_Container">
+        <section>
+          <h3 id="about" class="c-Txt_Normal-l u-Adjust_Mb-24" data-ratid="reno9-a_scroll-05_feature" data-ratevent="appear">OPPOとは</h3>
+          <section class="product-detail-Feature_Sub u-Adjust_Mt-0">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/about01.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">グローバルなスマホブランド</h3>
+              <p>OPPOは60以上の国と地域の人々に愛されるブランドです。2022年スマートフォン出荷台数シェアで世界4位にランクインしました。</p>
+              <p class="u-Adjust_Mt-16 c-Txt_Cap">※ 出典：Canalys Smartphone Analysis (sell-in shipments), January 2023, OPPO estimate includes sub-brand OnePlus.</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/about02.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">ユーザー数が証明する信頼性</h3>
+              <p>技術に裏打ちされた高い品質が支持され、世界中に５億人を超えるユーザーがいます。<span class="c-Txt_Cap">※9</span></p>
+              <p class="u-Adjust_Mt-16 c-Txt_Cap">※9 OPPOリサーチセンター調べ（2022年1月時点）</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/about03.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">徹底した品質管理</h3>
+              <p>最高のユーザー体験を提供するため、OPPOが培ってきた知識と経験に基づいた様々な検査項目を設定し、徹底した品質検査を行っています。</p>
+            </div>
+          </section>
+          <section class="product-detail-Feature_Sub">
+            <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/about04.png" alt=""></figure>
+            <div class="product-detail-Feature_Txt">
+              <h3 class="c-Heading_Lv4">総出願件数83,000件以上<span class="c-Txt_Cap">※10</span></h3>
+              <p>2021年、国際特許出願件数（PCT制度）で企業別6位<span class="c-Txt_Cap">※11</span>にランクインしました。</p>
+              <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                ※10 OPPOリサーチセンター調べ 2022年9月30日時点。<br>
+                ※11 世界知的所有権機関(WIPO)の2021年特許協力条約に基づく国際特許出願レポートによる。
+              </p>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </div>
+
+<div class="product-detail-Layout_Other">
+  <div class="l-System_Container">
+
+    <%- include('/include/product/_compensation') %>
+
+    <section class="product-detail-Layout_Section" id="spec">
+      <h2 class="c-Heading_Lv2"  data-ratid="reno9-a_scroll-06_spec" aria-relevant="appear">スペック</h2>
+      <dl class="c-Dl">
+        <div>
+          <dt>製品名</dt>
+          <dd>
+            OPPO Reno9 A
+          </dd>
+        </div>
+        <div>
+          <dt>色</dt>
+          <dd>
+            ムーンホワイト / ナイトブラック
+          </dd>
+        </div>
+        <div>
+          <dt>サイズ</dt>
+          <dd>
+            約160 x 約74 x 約7.8 (mm)
+          </dd>
+        </div>
+        <div>
+          <dt>質量</dt>
+          <dd>
+            約183g
+          </dd>
+        </div>
+        <div>
+          <dt>ディスプレイ</dt>
+          <dd>
+            <p>サイズ / 種類</p>
+            約6.4インチ / 有機EL
+            <p class="u-Adjust_Mt-16">解像度</p>
+            FHD+ / 2,400 × 1,080
+          </dd>
+        </div>
+        <div>
+          <dt>CPU</dt>
+          <dd>
+            Snapdragon<sup>🄬</sup>695 5G Mobile Platform / オクタコア 2.2GHz x 2 + 1.8GHz x 6
+          </dd>
+        </div>
+        <div>
+          <dt>OS</dt>
+          <dd>
+            Android™ 13
+          </dd>
+        </div>
+        <div>
+          <dt>内部メモリ（RAM / ROM）</dt>
+          <dd>
+            8GB (RAM) / 128GB (ROM)
+          </dd>
+        </div>
+        <div>
+          <dt>外部メモリ</dt>
+          <dd>
+            micro SDXC™ (最大 1024GB)
+          </dd>
+        </div>
+        <div>
+          <dt>バッテリー容量</dt>
+          <dd>
+            4,500mAh
+          </dd>
+        </div>
+        <div>
+          <dt>ワイヤレス充電</dt>
+          <dd>
+            非対応
+          </dd>
+        </div>
+        <div>
+          <dt>連続待受時間</dt>
+          <dd>
+            LTE<br>
+            約440時間
+          </dd>
+        </div>
+        <div>
+          <dt>連続通話時間</dt>
+          <dd>
+            LTE<br>
+            約32.5時間
+          </dd>
+        </div>
+        <div>
+          <dt>通信速度</dt>
+          <dd>
+            <p>
+              LTE 受信時<br>
+              400Mbps
+            </p>
+            <p class="u-Adjust_Mt-16">
+              LTE 送信時<br>
+              75Mbps
+            </p>
+            <p class="u-Adjust_Mt-16">
+              sub6 受信時<br>
+              2.14Gbps
+            </p>
+            <p class="u-Adjust_Mt-16">
+              sub6 送信時<br>
+              217Mbps
+            </p>
+          </dd>
+        </div>
+        <div>
+          <dt>SIM</dt>
+          <dd>
+            nanoSIM x 2 / eSIM<span class="c-Txt_Cap">※1</span><br>
+            （デュアルSIMでのご利用は、nanoSIM x 2 または nanoSIM/eSIM でご利用可能です）
+          </dd>
+        </div>
+        <div>
+          <dt>ワンセグ / フルセグ</dt>
+          <dd>
+            非対応 / 非対応
+          </dd>
+        </div>
+        <div>
+          <dt>おサイフケータイ</dt>
+          <dd>
+            対応
+          </dd>
+        </div>
+        <div>
+          <dt>NFC</dt>
+          <dd>
+            対応
+          </dd>
+        </div>
+        <div>
+          <dt>防水 / 防塵</dt>
+          <dd>
+            対応 (IPX8 / IP6X)
+          </dd>
+        </div>
+        <div>
+          <dt>耐衝撃</dt>
+          <dd>
+            非対応
+          </dd>
+        </div>
+        <div>
+          <dt>生体認証（指紋 / 顔）</dt>
+          <dd>
+            対応 / 対応
+          </dd>
+        </div>
+        <div>
+          <dt>急速充電</dt>
+          <dd>
+            対応
+          </dd>
+        </div>
+        <div>
+          <dt>付属品</dt>
+          <dd>
+            保護ケース x 1 / 保護フィルム（貼付済み） x 1 / 安全ガイド x 1 / クイックガイド x 1 / SIM取出し用ピン x 1
+          </dd>
+        </div>
+      </dl>
+      <p class="u-Adjust_Mt-16 c-Txt_Cap">※1 nanoSIM×2の場合 microSDカードの利用はできません。</p>
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html?l-id=product_reno9-a_spec_reno9-a" class="c-Link_Txt-inline-icon">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+      <div class="u-Adjust_Mt-32">
+        <%_ if (bundleFlag === 'bundle') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= bundleFlag %>">
+          <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+        </div>
+        <%_ } else if(bundleFlag === 'stock') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large">購入する</a>
+      </div>
+      <%_ } else if(bundleFlag === 'soldout') { _%>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+      <%_ } else if(bundleFlag === 'backorder') { _%>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+      <%_ } else if(bundleFlag === 'reserve') { _%>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-1_bss" data-ratevent="click" data-ratparam="all">OPPO Reno9 Aを予約注文する</a>
+        </div>
+      <%_ } _%>
+      <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>_Txt-icon-front">
+        <span class="<%= namespace %>_Txt-icon-front-icon"></span>
+        <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= directory %>_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+      </p>
+
+    </div>
+    </section>
+
+    <div id="previously-seen"></div>
+    <div id="js-same-brand"></div>
+
+    <section class="product-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">設定・サポート</h2>
+      <div>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/inquiry/?l-id=product_reno9-a_guide_inquiry" class="c-Link_Txt-inline-icon">製品の初期不良による交換・設定・修理等サポートについて<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-64">
+      <%- include('/inc/_saikyo') %>
+    </div>
+
+  </div>
+  <div class="u-Adjust_Mt-40">
+    <%- include('/include/product/_support') %>
+    <%- include('/include/product/smartphone/_footer-notes-discount') _%>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/product/_same-brand-js') %>
+<script src="<%= sitepath %>assets/js/product.android-tradein.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

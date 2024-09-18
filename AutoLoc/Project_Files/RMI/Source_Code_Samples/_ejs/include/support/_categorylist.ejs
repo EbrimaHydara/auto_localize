@@ -1,0 +1,24 @@
+<%_
+  function isActive(directory) {
+    if (typeof pathname !== 'undefined') {
+      const path = pathname.split('/')[1];
+      return directory === path ? true : false;
+    }
+  }
+  function createlid() {
+    if (typeof pathname !== 'undefined') {
+      const path = pathname.split('/')[1];
+      return path;
+    } else {
+      return 'top';
+    }
+  }
+_%>
+<ul class="support-Category_List">
+  <li><a href="<%= sitepath %>support/application/?l-id=support_<%-createlid()%>_support_application" aria-current="<%-isActive('application')%>" class="c-Btn_Regular"><span class="c-Icon_List-l"></span><span>新規お申し込み</span></a></li>
+  <li><a href="<%= sitepath %>support/revise/?l-id=support_<%-createlid()%>_support_revise" aria-current="<%-isActive('revise')%>" class="c-Btn_Regular"><span class="c-Icon_Rakuten-account-l"></span><span>請求・契約変更</span></a></li>
+  <li><a href="<%= sitepath %>support/plan/?l-id=support_<%-createlid()%>_support_plan" aria-current="<%-isActive('plan')%>" class="c-Btn_Regular"><span class="c-Icon_Currency-l"></span><span>プラン・サービス</span></a></li>
+  <li><a href="<%= sitepath %>support/product/?l-id=support_<%-createlid()%>_support_product" aria-current="<%-isActive('product')%>" class="c-Btn_Regular"><span class="c-Icon_Smartphone-l"></span><span>操作・設定・故障</span></a></li>
+  <li><a href="<%= sitepath %>support/lost/?l-id=support_<%-createlid()%>_support_lost" aria-current="<%-isActive('lost')%>" class="c-Btn_Regular"><span class="c-Icon_Product-lost"></span><span>盗難・紛失</span></a></li>
+</ul>
+

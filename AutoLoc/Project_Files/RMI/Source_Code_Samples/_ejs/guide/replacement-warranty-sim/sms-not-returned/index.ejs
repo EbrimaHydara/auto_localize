@@ -1,0 +1,129 @@
+<% const pagetitle = "持ち込みスマホあんしん保証（故障機の未受領のお知らせ）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/replacement-warranty-sim/", label:"持ち込みスマホあんしん保証（ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '持ち込みスマホあんしん保証サービスにおいて、故障機が未返送のお客様へのご案内ページになります。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const namespace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<section class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-64">
+  <h1 class="c-Heading_Lv1">持ち込みスマホあんしん保証<br>【重要】故障機の未受領のお知らせ</h1>
+  <p class="u-Adjust_Mt-24">いつも楽天モバイルをご利用いただきありがとうございます。</p>
+  <p class="u-Adjust_Mt-16">「持ち込みスマホあんしん保証」サービスにおいて、交換品受領後14日時点で故障機が送付されていないお客様へのご案内になります。</p>
+
+  <section id="preparation" class="<%= namespace %>-Layout_Section-separate-sm">
+    <h2 class="c-Heading_Lv2">故障機を至急お送りください。</h2>
+    <p class="u-Adjust_Mt-24">交換品受領後、<span class="c-Txt_Emp-02">14日以内</span>に故障機を送付されない場合、<a href="<%= sitepath %>terms/pdf/rakuten_mobile_replacement_warranty_sim.pdf?221122" class="c-Link_Txt-inline-icon">利用規約<span class="c-Icon_Pdf-l"></span></a><span class="c-Txt_Emp-02">に基づき違約金の請求が発生する可能性がございます。</span></p>
+    <p class="u-Adjust_Mt-16">つきましては、至急故障機の送付をお願いいたします。</p>
+    <p class="u-Adjust_Mt-16">送付いただいた場合でも、正しい製品であることが確認できない場合や「iPhoneを探す」が未解除（オンの状態）のままの場合は、違約金の対象となる可能性がございますので、あらかじめご了承ください。</p>
+    <div class="u-Adjust_Mt-16">
+      なお、違約金の金額は故障された製品により異なります。
+      <dl class="c-Dl_Origin u-Adjust_Mt-24">
+      <div>
+        <dt>Android</dt>
+        <dd>44,000円（税込）</dd>
+      </div>
+      <div>
+        <dt>iOS</dt>
+        <dd>66,000円（税込）</dd>
+      </div>
+    </dl>
+      </div>
+
+
+    <div class="<%= namespace %>-Info_Pink5 u-Adjust_Mt-32">
+      <h3 class="c-Heading_Lv3 c-Txt_Emp-02">故障機の送付前に、必ず以下の対応を行ってください。</h3>
+      <ul class="c-List_Text-disc-emp u-Adjust_Mt-16">
+        <li>製品のバックアップ、すべてのコンテンツおよび個人情報の消去。</li>
+        <li>Android製品の場合は、Googleアカウントからのログアウト、画面ロック、「デバイスを探す」の解除等のセキュリティ設定の無効化。</li>
+        <li>iOS製品の場合は、パスワード  、画面ロック、「iPhoneを探す」の解除等のセキュリティ設定の無効化。
+         <div class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/iphone/find-my-iphone-off/" class="c-Link_Txt-inline">「iPhoneを探す」をオフにする方法<span class="c-Icon_Chevron-right"></span></a></div>
+        </li>
+        <li>製品の初期化。<br>
+        <span class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>-Txt_Cap">※初期化だけでは、製品のロック解除はされません。<br>
+          また、データが消去できない場合がありますので、必ず消去作業を実施してください。</span></li>
+        <li>アクセサリーやカバー、メモリカードをご利用の方は、取り外してご自身で保管してください。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="<%= namespace %>-Layout_Section-separate-sm">
+    <p>本ご案内と行き違いで故障機を送付いただいている場合は、何卒ご容赦ください。</p>
+    <p class="u-Adjust_Mt-16">その他ご不明点がございましたら、サービス案内ページとよくあるご質問をご参照ください。</p>
+  </div>
+  <div class="u-Adjust_Mt-16">
+    <a href="<%= sitepath %>service/replacement-warranty-sim/" class="c-Btn_Regular"><span>持ち込みスマホあんしん保証のサービス案内を見る</span></a>
+  </div>
+  <div class="u-Adjust_Mt-16">
+    <a href="<%= sitepath %>faq/detail/00001717/" class="c-Btn_Regular"><span>よくあるご質問を見る</span></a>
+  </div>
+</section>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

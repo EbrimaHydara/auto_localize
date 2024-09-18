@@ -1,0 +1,206 @@
+<style>
+.riCheckEntryMulti {
+position: relative;
+}
+
+.riCheckEntryMulti__noLoginForm {
+text-align: center;
+}
+
+.riCheckEntryMulti__noLoginButton {
+cursor: pointer;
+outline: none;
+display: block;
+margin: 0 auto;
+padding: 0;
+background: none;
+border: none;
+font-family: inherit;
+}
+.riCheckEntryMulti.checkEntryMulti-active .riCheckEntryMulti__noLoginButton,
+.riCheckEntryMulti.checkEntryMulti-entered .riCheckEntryMulti__noLoginButton,
+.riCheckEntryMulti.checkEntryMulti-registered .riCheckEntryMulti__noLoginButton {
+display: none;
+}
+.riCheckEntryMulti__noLoginButton:hover {
+opacity: 0.8;
+}
+.riCheckEntryMulti__entryButtonText {
+position: relative;
+height: 80px;
+line-height: 80px;
+margin: 0 0 6px;
+background: #bf0000;
+border-radius: 40px;
+color: #ffffff;
+text-align: center;
+font-size: 30px;
+box-shadow: 0 6px 0 0 rgba(128,128,128,0.2);
+}
+.riCheckEntryMulti__entryButtonText::after {
+content: "";
+position: absolute;
+top: 50%;
+right: 30px;
+display: inline-block;
+width: 12px;
+height: 12px;
+margin: -8px 0 0;
+border-top: 4px solid #ffffff;
+border-right: 4px solid #ffffff;
+transform: rotate(45deg);
+}
+
+.riCheckEntryMulti__enteredButtonText,
+.riCheckEntryMulti__registeredButtonText {
+cursor: default;
+position: relative;
+width: 560px;
+height: 80px;
+line-height: 84px;
+margin: 0 0 6px;
+background: #cccccc;
+border-radius: 40px;
+color: #ffffff;
+text-align: center;
+font-size: 30px;
+}
+
+.riCheckEntryMulti__noLoginButton .riCheckEntryMulti__entryButtonText {
+display: block;
+}
+
+.riCheckEntryMulti__entryButton {
+display: none;
+margin: 0 auto;
+text-align: center;
+}
+
+.riCheckEntryMulti.checkEntryMulti-active .riCheckEntryMulti__entryButton,
+.riCheckEntryMulti.checkEntryMulti-entering .riCheckEntryMulti__entryButton {
+display: block;
+}
+
+.riCheckEntryMulti.checkEntryMulti-entered .riCheckEntryMulti__entryButton,
+.riCheckEntryMulti.checkEntryMulti-registered .riCheckEntryMulti__entryButton,
+.riCheckEntryMulti.checkEntryMulti-invalid .riCheckEntryMulti__entryButton {
+display: none;
+}
+
+a.riCheckEntryMulti__entryLink {
+display: block;
+text-decoration: none;
+}
+a.riCheckEntryMulti__entryLink:hover {
+opacity: 0.8;
+text-decoration: none;
+}
+.riCheckEntryMulti.checkEntryMulti-locked a.riCheckEntryMulti__entryLink,
+.riCheckEntryMulti.checkEntryMulti-entering a.riCheckEntryMulti__entryLink {
+cursor: default;
+opacity: 0.5;
+line-height: 80px;
+filter: alpha(opacity=50);
+-ms-filter: "alpha(opacity=50)" !important;
+}
+
+a.riCheckEntryMulti__entryLink .riCheckEntryMulti__entryButtonText {
+display: block;
+}
+
+.riCheckEntryMulti.checkEntryMulti-locked a.riCheckEntryMulti__entryLink:hover > img,
+.riCheckEntryMulti.checkEntryMulti-entering a.riCheckEntryMulti__entryLink:hover > img {
+opacity: 1 !important;
+filter: alpha(opacity=100) !important;
+-ms-filter: "alpha(opacity=100)" !important;
+}
+.riCheckEntryMulti__entryMessage {
+display: block;
+min-width: 560px;
+max-width: 680px;
+margin: 15px auto 0;
+text-align: left;
+font-size: 14px;
+}
+
+.riCheckEntryMulti.checkEntryMulti-entered .riCheckEntryMulti__entryMessage,
+.riCheckEntryMulti.checkEntryMulti-registered .riCheckEntryMulti__entryMessage {
+display: none;
+}
+
+.riCheckEntryMulti__entryMessage a {
+text-decoration: none;
+}
+
+.riCheckEntryMulti__entryMessage a:hover {
+text-decoration: underline;
+}
+
+.riCheckEntryMulti__entryMessage strong {
+font-weight: bold;
+font-style: normal;
+}
+
+.riCheckEntryMulti__checkBoxLabel {
+cursor: pointer;
+display: block;
+height: 30px;
+margin: 15px 0 -5px 0;
+font-size: 18px;
+font-weight: bold;
+}
+.riCheckEntryMulti.checkEntryMulti-entered .riCheckEntryMulti__checkBoxLabel,
+.riCheckEntryMulti.checkEntryMulti-registered .riCheckEntryMulti__checkBoxLabel {
+display: none;
+}
+.riCheckEntryMulti__checkBox {
+display: none;
+}
+
+.riCheckEntryMulti__checkBox + .riCheckEntryMulti__imageCheckBox {
+display: inline-block;
+width: 36px;
+height: 38px;
+margin: -7px 0 0 0;
+background: url(https://r.r10s.jp/evt/event/campaign/img/check_entry_multi_pc_image_check_box.gif) no-repeat top left;
+vertical-align: top;
+}
+
+.riCheckEntryMulti__checkBox:checked + .riCheckEntryMulti__imageCheckBox {
+background-position: bottom left;
+}
+
+.riCheckEntryMulti__entryText {
+display: inline-block;
+margin: 4px 0 0;
+}
+
+.riCheckEntryMulti__enteredButton {
+display: none;
+margin: 0 auto;
+}
+
+.riCheckEntryMulti.checkEntryMulti-entered .riCheckEntryMulti__enteredButton {
+display: block;
+}
+
+.riCheckEntryMulti__registeredButton {
+display: none;
+margin: 0 auto;
+}
+
+.riCheckEntryMulti.checkEntryMulti-registered .riCheckEntryMulti__registeredButton {
+display: block;
+}
+
+.riCheckEntryMulti__enteredMessage {
+display: none;
+margin: 0 auto;
+}
+
+.riCheckEntryMulti.checkEntryMulti-entered .riCheckEntryMulti__enteredMessage,
+.riCheckEntryMulti.checkEntryMulti-registered .riCheckEntryMulti__enteredMessage {
+display: block;
+}
+
+</style>

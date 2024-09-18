@@ -1,0 +1,131 @@
+<% const pagetitle = "スマホ交換保証プラス・スマホ交換保証（故障機返却のお願い）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/replacement-warranty-plus/", label:"スマホ交換保証プラス（お申し込み方法・ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'スマホ交換保証プラス・スマホ交換保証サービスの故障受付を行い、交換品を受領したお客様への、故障機の返却のご案内ページになります。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const namespace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+<section class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-64">
+  <h1 class="c-Heading_Lv1">スマホ交換保証プラス・スマホ交換保証<br>【重要】故障機の返却のお願い</h1>
+  <p class="u-Adjust_Mt-24">いつも楽天モバイルをご利用いただきありがとうございます。</p>
+  <p class="u-Adjust_Mt-16">「スマホ交換保証プラス・スマホ交換保証」サービスの故障受付を行い、交換品を受領いただいたお客様へのご案内になります。</p>
+
+  <section id="preparation" class="<%= namespace %>-Layout_Section-separate-sm">
+    <h2 class="c-Heading_Lv2">受領いただいた交換品の状態を確認いただき、故障機の返却をお願いします。</h2>
+    <p class="u-Adjust_Mt-24">交換品受領後<span class="c-Txt_Emp-02">14日以内</span>に、故障機の返却をお願いいたします。</p>
+
+    <div class="c-Infobox_Standing-warning u-Adjust_Mt-16">
+      <p class="<%= namespace %>-Txt_Attention">以下の場合、<span class="c-Txt_Emp-02">利用規約に基づき違約金（44,000円）の請求が発生する可能性がございます。</span>必ずご確認のうえご対応をお願いいたします。</p>
+      <div class="u-Adjust_Mt-16">
+        <p><a href="<%= sitepath %>terms/pdf/rakuten_mobile_replacement_warranty.pdf" class="<%= namespace %>-Txt_Icon c-Link_Txt-inline-icon">スマホ交換保証プラス利用規約<span class="c-Icon_Pdf-l"></span></a></p>
+        <p class="u-Adjust_Mt-8"><a href="https://mobile.rakuten.co.jp/pdf/terms/replacement_warranty.pdf" class="<%= namespace %>-Txt_Icon c-Link_Txt-inline-icon" target="_blank">スマホ交換保証利用規約<span class="c-Icon_Pdf-l"></span></a></p>
+      </div>
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li>交換品受領後14日以内に、故障機が返却されなかった場合</li>
+        <li>ご登録と異なる製品を返却された場合</li>
+        <li>その他、利用規約（第16条）に定める内容に違反する場合</li>
+      </ul>
+
+    </div>
+
+    <p class="u-Adjust_Mt-24">また、ご返却の際は交換品と同梱した説明書をご確認いただき、<span class="c-Txt_Emp-02">以下の対応</span>をお願いいたします。</p>
+
+    <div class="<%= namespace %>-Info_Pink5 u-Adjust_Mt-16">
+      <h3 class="c-Heading_Lv3 c-Txt_Emp-02">故障機の返却前に、必ず以下の対応を行ってください。</h3>
+      <ul class="c-List_Text-disc-emp u-Adjust_Mt-16">
+        <li>製品のバックアップ、すべてのコンテンツおよび個人情報の消去。</li>
+        <li>Googleアカウントからのログアウト、画面ロック、「デバイスを探す」の解除等のセキュリティ設定の無効化。</li>
+        <li>製品の初期化。<br>
+        <span class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>-Txt_Cap">※初期化だけでは、製品のロック解除はされません。<br>
+          また、データが消去できない場合がありますので、必ず消去作業を実施してください。</span></li>
+        <li>アクセサリーやカバー、メモリカードをご利用の方は、取り外してご自身で保管してください。</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <div class="<%= namespace %>-Layout_Section-separate-sm">
+    <p>その他ご不明点がございましたら、サービス案内ページをご参照ください。</p>
+  </div>
+  <div class="u-Adjust_Mt-16">
+    <a href="<%= sitepath %>service/replacement-warranty-plus/" class="c-Btn_Regular"><span>スマホ交換保証プラスのサービス案内を見る</span></a>
+  </div>
+  <div class="u-Adjust_Mt-16">
+    <a href="https://mobile.rakuten.co.jp/fee/option/replacement_warranty/" class="c-Btn_Regular"><span>スマホ交換保証のサービス案内を見る</span></a>
+  </div>
+
+</section>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

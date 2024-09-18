@@ -1,0 +1,308 @@
+<% const pagetitle = "スマホ料金比較結果" -%>
+<% const namespace = "fee-mnp-simulation-Result" -%>
+<% const imgpath = `${sitepath}assets/img/fee/mnp-simulation/result/` %>
+
+<%-
+  include('/_header', {
+    pagetitle,
+    description: 'スマホ料金の比較結果画面です。現在のお支払い額で楽天モバイルに乗り換えると、毎月いくらになるのかご確認いただけます。',
+    noindex: true,
+    pathname: filepath,
+    browseragent: true,
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/fee/mnp-simulation/result/result.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <%- include('/include/_breadcrumbs', {
+      type: 'head',
+      pagetitle,
+    }) %>
+    <div class="<%= namespace %> <%= namespace %>_Bg-pink10 u-Adjust_Pb-24 u-Adjust_Pb-pc-32">
+      <div class="l-System_Container">
+        <div class="u-Adjust_Pt-8 u-Adjust_Align-center"><img src="<%= imgpath %>fv-panda.png" alt="" width="188" height="46"></div>
+        <section class="<%= namespace %>_Fv u-Adjust_Align-center">
+          <h1>
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>fv-ttl-sp.png" width="350" height="47">
+              <img src="<%= imgpath %>fv-ttl-pc.png" alt="スマホ料金比較結果" width="830" height="42">
+            </picture>
+          </h1>
+          <div class="<%= namespace%>_Data u-Adjust_Mt-8">
+            <div class="<%= namespace%>_Data-flex">
+              <div class="<%= namespace%>_Data-name" data-rank="" id="userRank" aria-hidden="true">
+                <span id="userName"></span>さん
+              </div>
+              <div class="<%= namespace%>_Data-label">
+                <div class="<%= namespace%>_Data-carrier" data-carrier="docomo" id="carrierDocomo" aria-hidden="true">NTTドコモ をご利用中</div>
+                <div class="<%= namespace%>_Data-carrier" data-carrier="au" id="carrierAu" aria-hidden="true">au をご利用中</div>
+                <div class="<%= namespace%>_Data-carrier" data-carrier="softbank" id="carrierSoftBank" aria-hidden="true">SoftBank をご利用中</div>
+              </div>
+            </div>
+            <div class="<%= namespace%>_Data-price u-Adjust_Mt-16">
+              <span class="<%= namespace%>_Data-price-label">現在の月額料金</span>
+              <span class="c-Txt_Normal-s">約</span>
+              <span class="<%= namespace%>_Data-price-num" id="priceSelected"></span>
+              <span class="c-Txt_Normal-m c-Txt_Emp-01">円</span>
+              <span class="c-Txt_Normal-s" id="priceExtra" aria-hidden="true">以上</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="<%= namespace%>_Show-container u-Adjust_Mt-8 u-Adjust_Align-center <%= namespace%>_Block-secondary">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>down-arrow-sp-230802.png" alt="" width="41" height="26">
+            <img src="<%= imgpath %>down-arrow-230802.png" alt="" width="68" height="47">
+          </picture>
+        </div>
+
+        <section class="<%= namespace %>_Main u-Adjust_Mt-8 <%= namespace%>_Show-container <%= namespace%>_Block-tertiary">
+          <div class="<%= namespace %>_Main-head">
+            <h2>楽天モバイルに乗り換えると</h2>
+          </div>
+          <div class="<%= namespace %>_Main-summary <%= namespace %>_Main-summary-a js-a-pattern" aria-hidden="true">
+            <div class="<%= namespace%>_Main-price">
+              <img src="<%= imgpath %>Main-price-txt-01.png" alt="ざっくり" width="69" height="29">
+              <span class="<%= namespace%>_Main-price-num c-Txt_Emp-02" id="priceDiscount"></span>
+              <img src="<%= imgpath %>Main-price-txt-yen.png" alt="円/月" width="40" height="27" id="priceDiscount-yen" aria-hidden="false">
+              <img src="<%= imgpath %>Main-price-txt-yen-extra.png" alt="円/月以上" width="80" height="27" id="priceDiscount-yen-extra" aria-hidden="true">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>Main-price-txt-02-sp.png" width="192" height="38">
+                <img src="<%= imgpath %>Main-price-txt-02-pc.png" alt="おトクになります!" width="208" height="39">
+              </picture>
+            </div>
+            <div class="<%= namespace %>_Main-summary-items <%= namespace %>_Main-summary-a-items">
+              <div class="<%= namespace %>_Main-summary-item">
+                <picture id="price2980" aria-hidden="true">
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-price-a-sp-2980.png" width="366" height="109">
+                  <img src="<%= imgpath %>main-price-a-pc-2980-230802.png" alt="" width="342" height="119">
+                </picture>
+                <picture id="price1980" aria-hidden="true">
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-price-a-sp-1980.png" width="366" height="109">
+                  <img src="<%= imgpath %>main-price-a-pc-1980-230802.png" alt="" width="342" height="119">
+                </picture>
+                <picture id="price980" aria-hidden="true">
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-price-a-sp-980.png" width="366" height="109">
+                  <img src="<%= imgpath %>main-price-a-pc-980-230802.png" alt="" width="342" height="119">
+                </picture>
+              </div>
+              <div class="<%= namespace %>_Main-summary-item">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-call-a-sp.png" width="366" height="109">
+                  <img src="<%= imgpath %>main-call-a-pc-230802.png" alt="通話料金Rakuten Linkアプリ利用で国内通話0円※1" width="342" height="119">
+                </picture>
+              </div>
+            </div>
+            <ul class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>_Main-summary-attention">
+              <li class="c-Txt_Emp-02">※実際のご請求額とは異なる場合があります。その他、各種キャンペーンによって、割引が適用される場合あり。</li>
+              <li>※通話料等別 ※1 一部対象外番号あり。アプリ未使用時30秒22円</li>
+            </ul>
+          </div>
+          <div class="<%= namespace %>_Main-summary js-b-pattern" aria-hidden="true">
+            <h3 class="u-Adjust_Align-center <%= namespace %>_Main-summary-ttl">月額料金は<span class="c-Txt_Emp-01">ほぼ同じ</span></h3>
+            <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+              <img src="<%= imgpath %>main-b-panda.png" alt="" width="87" height="64">
+            </div>
+            <div class="<%= namespace %>_Main-summary-items u-Adjust_Mt-8">
+              <div class="<%= namespace %>_Main-summary-item">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-price-b-sp.png" width="366" height="109">
+                  <img src="<%= imgpath %>main-price-b-pc.png" alt="3GBまでならプラン料金980円/月（税込1,078円）" width="342" height="119">
+                </picture>
+              </div>
+              <div class="<%= namespace %>_Main-summary-item">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-call-b-sp.png" width="366" height="109">
+                  <img src="<%= imgpath %>main-call-b-pc.png" alt="通話料金Rakuten Linkアプリ利用で国内通話0円※1" width="342" height="119">
+                </picture>
+              </div>
+            </div>
+            <ul class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>_Main-summary-attention">
+              <li class="c-Txt_Emp-02">※実際のご請求額とは異なる場合があります。その他、各種キャンペーンによって、割引が適用される場合あり。</li>
+              <li>※通話料等別 ※1 一部対象外番号あり。アプリ未使用時30秒22円</li>
+            </ul>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-8">
+              <div>
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>plan-spu-sp.png" width="622" height="600">
+                  <img src="<%= imgpath %>main-spu-pc.png" alt="楽天モバイルならこんなメリット 楽天市場のお買いもので、楽天ポイントがザクザク貯まる♪" width="700" height="138">
+                </picture>
+              </div>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">※対象プランご契約+会員ランクに応じた特典分でポイント+1～+3倍。期間限定ポイント</p>
+            </div>
+            <div class="c-Accordion <%= namespace %>_Main-accordion u-Adjust_Mt-8">
+              <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1" data-ratid="gadget-simulation_result_open" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ポイントが貯まりやすいってホント？</button>
+              <div id="accordion-content-1" class="js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+                <div class="u-Adjust_Align-center">
+                  <img src="<%= imgpath %>main-accordion-illust.png" alt="" width="145" height="57">
+                </div>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-accordion-txt-01-sp.png" width="640" height="97">
+                    <img src="<%= imgpath %>main-accordion-txt-01-pc.png" alt="例えば...日用品を 30,000円（税抜）のお買い物をすると" width="342" height="49">
+                  </picture>
+                </div>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-accordion-txt-02-sp.png" width="686" height="223">
+                    <img src="<%= imgpath %>main-accordion-txt-02-pc.png" alt="通常のお買い物300ポイント 最大＋3倍※2 最大900ポイント" width="700" height="140">
+                  </picture>
+                </div>
+                <div class="u-Adjust_Align-right u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-accordion-txt-03-sp.png" width="686" height="133">
+                    <img src="<%= imgpath %>main-accordion-txt-03-pc.png" alt="合計獲得最大1,200ポイント※1 ポイント＝1円相当" width="400" height="66">
+                  </picture>
+                </div>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-accordion-txt-04-sp.png" width="686" height="165">
+                    <img src="<%= imgpath %>main-accordion-txt-04-pc.png" alt="プラン料金（データ3GBまで）1,078円/月（税込）全額ポイントで支払いすると1カ月タダに！" width="700" height="84">
+                  </picture>
+                </div>
+                <p class="c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Pb-16">※プラン料金データ3GB(1,078円/月)を全額楽天ポイントで支払時。端末割賦料金を除く</p>
+              </div>
+            </div>
+            <ul class="u-Adjust_Mt-8 c-Txt_Cap <%= namespace %>_Main-summary-attention">
+              <li>※2 ご契約中のプラン・会員ランク特典に応じてポイント倍率が異なります。毎月の獲得上限ポイント数は会員ランクに応じて5,000～7,000ポイント、期間限定ポイントでの付与。</li>
+              <li><a href="<%= sitepath %>campaign/spu/?l-id=fee_mnp-simulation-result_campaign_spu" class="c-Link_Txt">詳細はこちら</a>をご確認ください。</li>
+            </ul>
+          </div>
+          <div class="u-Rat_Appear-height" data-ratid="gadget-simulation_result_scroll-01" data-ratevent="appear" data-ratparam="all"></div>
+          <div class="<%= namespace %>_Main-simulation u-Adjust_Align-center">
+            <h3>
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-simulation-ttl-sp.png" width="622" height="160">
+                <img src="<%= imgpath %>main-simulation-ttl-pc.png" alt="もっと詳しく知りたいあなたは料金シミュレーションを試してみよう！" width="416" height="59">
+              </picture>
+            </h3>
+            <p class="u-Adjust_Mt-8">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>main-simulation-txt-sp.png" width="622" height="190">
+                <img src="<%= imgpath %>main-simulation-txt-pc.png" alt="毎月のデータ／通話の使い方を選択するだけ 他社の料金プランとも比較できる" width="478" height="95">
+              </picture>
+            </p>
+            <div class="u-Adjust_Mt-8">
+              <a href="<%= sitepath %>fee/simulation/?l-id=fee_mnp-simulation-result_fee_simulation" class="c-Btn_Secondly-large c-Txt_Normal">かんたん料金シミュレーションへ</a>
+            </div>
+            <div class="u-Adjust_Mt-16">
+              <a href="<%= sitepath %>fee/saikyo-plan/?l-id=fee_mnp-simulation-result_fee_compareother#compareother" class="c-Link_Txt <%= namespace %>_Main-simulation-link">他社プラン比較を一覧でチェック</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="<%= namespace%>_Show-container <%= namespace %> <%= namespace %>_Plan u-Adjust_Pt-32 u-Adjust_Pb-24">
+      <div class="l-System_Container">
+        <h3 class="c-Heading_Lv3 <%= namespace %>_Plan-ttl js-fixed-btn-trigger">楽天モバイルの料金プラン</h3>
+        <div class="u-Rat_Appear-height" data-ratid="gadget-simulation_result_scroll-02" data-ratevent="appear" data-ratparam="all"></div>
+        <div class="<%= namespace %>_Plan-body">
+          <div class="<%= namespace %>_Plan-summary u-Adjust_Align-center u-Adjust_Mt-24">
+            <p>
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>plan-sub-ttl-sp.png" width="622" height="160">
+                <img src="<%= imgpath %>plan-sub-ttl-pc.png" alt="Rakuten最強プラン データ高速無制限エリアが超拡大!" width="424" height="114">
+              </picture>
+            </p>
+            <div class="u-Adjust_Mt-16 js-a-pattern" aria-hidden="true">
+              <div>
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>plan-ladder-sp.png" width="622" height="160">
+                  <img src="<%= imgpath %>plan-ladder-pc.png" alt="毎月のデータ利用料でお支払い金額が決まる 20GB超過後どれだけ使っても無制限※3で2,980円/月(税込3,278円) 3GB超過後20GBまでは1,980 円/月(税込2,178円)  3GBまでは980円/月(税込1,078円)  使わなければ勝手に安くなる!" width="877" height="330">
+                </picture>
+              </div>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※2 公平なサービス提供のため速度制限する場合あり。環境により速度低下する場合あり ※通話料等別費用</p>
+            </div>
+            <div class="u-Adjust_Mt-16 js-b-pattern" aria-hidden="true">
+              <div>
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>plan-ladder-b-sp.png" width="622" height="160">
+                  <img src="<%= imgpath %>plan-ladder-b-pc.png" alt="毎月のデータ利用料でお支払い金額が決まる 20GB超過後どれだけ使っても無制限※3で2,980円/月(税込3,278円) 3GB超過後20GBまでは1,980 円/月(税込2,178円)  3GBまでは980円/月(税込1,078円)  使わなければ勝手に安くなる!" width="877" height="330">
+                </picture>
+              </div>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※3 公平なサービス提供のため、速度制限の場合あり。環境により速度低下する場合あり ※通話料等別費用</p>
+            </div>
+          </div>
+          <div class="<%= namespace %>_Plan-spu u-Adjust_Align-center u-Adjust_Mt-24 js-a-pattern" aria-hidden="true">
+            <div>
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= imgpath %>plan-spu-sp.png" width="622" height="600">
+                <img src="<%= imgpath %>plan-spu-pc.png" alt="楽天モバイルならこんなメリット 楽天市場のお買いもので、楽天ポイントがザクザク貯まる♪" width="878" height="139">
+              </picture>
+            </div>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※対象プランご契約+会員ランクに応じた特典分でポイント+1～+3倍。期間限定ポイント</p>
+          </div>
+          <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+            <a class="c-Btn_Regular-large" href="<%= sitepath %>fee/saikyo-plan/?l-id=fee_mnp-simulation-result_fee_saikyo-plan">料金プランの詳細を確認する</a>
+          </div>
+          <div class="js-a-pattern <%= namespace %>_Plan-spu-attention u-Adjust_Mt-24 js-a-pattern" aria-hidden="true">
+            <ul class="c-Txt_Cap">
+              <li>※3 ご契約中のプラン・会員ランク特典に応じてポイント倍率が異なります。毎月の獲得上限ポイント数は会員ランクに応じて5,000～7,000ポイント、期間限定ポイントでの付与。</li>
+              <li><a href="<%= sitepath %>campaign/spu/?l-id=fee_mnp-simulation-result_campaign_spu" class="c-Link_Txt">詳細はこちら</a>をご確認ください。</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <div class="u-Rat_Appear-height" data-ratid="gadget-simulation_result_scroll-03" data-ratevent="appear" data-ratparam="all"></div>
+    </section>
+
+    <section class="<%= namespace%>_Bg-monotone97">
+      <div class="<%= namespace%>_More">
+        <h3 class="c-Heading_Lv3 u-Align_Lcc">ご検討中の方へ<br class="u-Show_Oxx">もっと知りたい楽天モバイル</h3>
+        <div class="<%= namespace%>_More-content u-Adjust_Mt-16">
+          <a href="<%= sitepath %>campaign/?l-id=fee_mnp-simulatio-result_campaign" class="c-Card_Normal u-Adjust_Align-center">
+              <p class="c-Txt_Emp-02">あなたにピッタリなおトク情報</p>
+              <p class="c-Txt_Emp-01 c-Txt_Normal-m">開催中のキャンペーン・特典</p>
+              <div class="u-Adjust_Mt-16">
+                <img src="<%= imgpath %>more-card-01.png" alt="" width="560" height="185">
+              </div>
+          </a>
+          <a href="<%= sitepath %>area/?l-id=fee_mnp-simulatio-result_area" class="c-Card_Normal u-Adjust_Align-center">
+          <p class="c-Txt_Emp-02">つながるエリア、ぞくぞく</p>
+          <p class="c-Txt_Emp-01 c-Txt_Normal-m">一目で分かる「エリアマップ」</p>
+          <div class="u-Adjust_Mt-16">
+            <img src="<%= imgpath %>more-card-02.png" alt="" width="560" height="185">
+          </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="<%= namespace %>_Bottom js-fixed-btn" aria-hidden="true" role="region">
+      <div class="<%= namespace %>_Bottom-btn">
+        <a href="<%= sitepath %>guide/application/?lid-r=fee_mnp-simulation-result_guide_application" class="<%= namespace %>_Bottom-btn-link c-Btn_Primary-large">新規／乗り換え(MNP)</a>
+      </div>
+      <div class="<%= namespace %>_Bottom-btn">
+        <a href="<%= sitepath %>shop/?l-id=fee_mnp-simulation-result_shop" class="<%= namespace %>_Bottom-btn-link c-Btn_Secondly-large">お近くのショップを探す</a>
+      </div>
+    </div>
+
+    <footer class="<%= namespace %>_Footer g-Footer u-Adjust_Mt-56">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-un-limit-v2.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <%- include('/include/_breadcrumbs', { type: 'foot' , pagetitle, }) %>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/poikaku-lp-bnr/_js') %>
+  <script src="<%= sitepath %>assets/js/fee.mnp-simulation.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+  <script>
+  </script>
+</body>
+
+</html>

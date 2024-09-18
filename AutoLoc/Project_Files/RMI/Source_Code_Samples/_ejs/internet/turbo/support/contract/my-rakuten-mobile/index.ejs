@@ -1,0 +1,135 @@
+<% const pagetitle = "my 楽天モバイル" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/contract/", label:"契約内容・お手続き"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    anc01ListContent: [
+      {
+        path: 'internet/turbo/support/payment/certificate/',
+        name: '利用明細と各種明細の確認方法を見る'
+      },
+      {
+        path: 'internet/turbo/support/payment/change/',
+        name: 'お支払い方法の確認・変更方法を見る',
+      },
+      {
+        path: 'internet/turbo/support/payment/point/',
+        name: '楽天ポイントの利用（お支払い方法）を見る',
+      }
+    ],
+    anc02ListContent: [
+      {
+        path: 'internet/turbo/support/contract/details/',
+        name: '契約内容・登録内容の確認・変更方法を見る'
+      },
+      {
+        path: 'internet/turbo/support/contract/sim/',
+        name: 'SIMカードの再発行・紛失・盗難について見る',
+      },
+      {
+        path: 'internet/turbo/support/flow/delivery/',
+        name: '製品の配送・契約書の送付についてを見る',
+      }
+    ],
+    isUserCategory: true
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboの契約情報などを「my 楽天モバイル（マイラクテンモバイル）」でご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-32">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">「my 楽天モバイル」では、ご登録内容の確認・変更から購入した製品の配送状況の確認まで、さまざまな機能を利用できます。</p>
+      </section>
+
+      <section id="anc01" class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">ご利用料金の確認</h2>
+        <ul>
+          <% pageInfo.anc01ListContent.forEach(function(item) { -%>
+          <li class="u-Adjust_Mt-16">
+            <a href="<%= sitepath %><%= item.path %>" class="c-Link_Txt-inline"><%= item.name %><span class="c-Icon_Chevron-right"></span></a>
+          </li>
+          <% }); -%>
+        </ul>
+      </section>
+
+      <section id="anc02" class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">登録内容・契約内容の確認・変更</h2>
+        <p class="u-Adjust_Mt-16">ご契約時に登録された情報の確認や変更、オプションサービスの追加・解約をすることができます。</p>
+        <ul>
+          <% pageInfo.anc02ListContent.forEach(function(item) { -%>
+          <li class="u-Adjust_Mt-16">
+            <a href="<%= sitepath %><%= item.path %>" class="c-Link_Txt-inline"><%= item.name %><span class="c-Icon_Chevron-right"></span></a>
+          </li>
+          <% }); -%>
+        </ul>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <div class="c-Box_App">
+          <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル" width="96" height="96"></div>
+          <div class="c-Box_App-txt">
+            <p class="c-Box_App-ttl">my 楽天モバイル</p>
+            <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+            <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Layout_Contract_App-link">
+              <li class="<%= namespace %>-Layout_Contract_App-link-item">
+                <div><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" rel="noopener noreferrer"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-googleplay.png" width="162" height="48" alt="Google Play"></a></div>
+                <div><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank" rel="noopener noreferrer"><img src="<%= sitepath %>assets/img/internet/turbo/common/btn-appstore.png" width="131" height="48" alt="Apple Store"></a></div>
+              </li>
+              <li>
+                <a href="<%= ecarepath %>my-rakuten-mobile/" data-lid_no="02" target="_blank" rel="noopener noreferrer" class="c-Btn_Secondly"><span>Webで「my 楽天モバイル」を使う<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/internet/turbo/support/_smallcategory-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

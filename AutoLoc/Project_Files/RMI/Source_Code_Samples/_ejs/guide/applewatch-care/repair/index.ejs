@@ -1,0 +1,296 @@
+<% const pagetitle = "あんしん保証with AppleCare Services for Apple Watch（修理のご利用方法）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/iphone/etc/", label:"あんしん保証with AppleCare Services for Apple Watch"}, {path:"guide/applewatch-care/", label:"あんしん保証with AppleCare Services for Apple Watch（ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルで購入したApple Watchの保証サービス「あんしん保証with AppleCare Services for Apple Watch」を利用した修理方法に関して、各サービス内容とご利用方法をご案内いたします。受付方法は「持ち込み修理」と「配送修理」がありますので、お客様のご都合にあわせて、ご利用ください。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "お客様サポート" -%>
+<% const nameSpace = "guide-applewatch-care" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/applewatch-care/guide-applewatch-care.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+<div class="l-System">
+<%- include('/include/_header') %>
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+<div class="l-System_Container u-Adjust_Pb-32">
+  <p class="c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Mb-16 u-Adjust_Align-right">※表記の金額はすべて税込です。</p>
+  <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-16">あんしん保証with AppleCare Services for Apple Watchを利用した修理サービスに関して、各サービス内容とご利用方法をご案内いたします。受付方法は2種類ありますので、お客様のご都合にあわせて、ご利用ください。</p>
+  <div class="u-Adjust_Mt-8">
+    <a href="https://support.apple.com/ja-jp/repair" class="c-Link_Txt-inline-icon" target="_blank">Apple社の修理サービスの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+  </div>
+  <div class="c-Tab js-Tab u-Adjust_Mt-32">
+    <ul class="c-Tab_Items" role="tablist">
+      <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">持ち込み修理</li>
+      <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">配送修理</li>
+    </ul>
+    <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-24">持ち込み修理</h2>
+      <p class="u-Adjust_Mt-16">
+        お近くのApple StoreまたはApple 正規サービスプロバイダーに、故障したApple Watchをお持ちいただく方法になります。
+      </p>
+      <div class="<%= nameSpace %>-Layout_Adjust-mt-24-16">
+        <a href="https://locate.apple.com/?a8=UnOGgnV4Raqlj4dS00LraOYyS0jaoI1AZ4Y_vOjP2BWqEymPEaW4EyOUiS2ydbO-2nM1RajrGItTxs00000015198001" class="c-Link_Txt-inline-icon" target="_blank">お近くのApple StoreまたはApple 正規サービスプロバイダーを確認する<span class="c-Icon_New-window-l"></span></a>
+      </div>
+      <div class="c-Table u-Adjust_Mt-24 <%= nameSpace %>-Layout_Table">
+        <div class="c-Table_Wrap">
+          <table class="c-Table_Container">
+            <tbody>
+              <tr>
+                <th scope="row">負担額</th>
+                <td>
+                  9,200円
+                  <p class="c-Txt_Cap">※自然故障の場合は無償</p>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">予約</th>
+                <td>必須</td>
+              </tr>
+              <tr>
+                <th scope="row">修理日数</th>
+                <td>
+                  即日～
+                  <p class="c-Txt_Cap">※故障状況によりお預かり修理になります。</p>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">代替機</th>
+                <td>貸出なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="u-Adjust_Mt-16 c-Txt_Cap">
+        ※2022年3月25日現在のご利用料金です。<br>
+        ※故障機の診断の結果、全損（壊滅的な損傷）や改造品であった場合、故意・過失の別なく、別途修理価格に定める保証外交換機価格をお支払いいただきます。
+      </p>
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-48">持ち込み修理</h2>
+      <ol class="c-Flow u-Adjust_Mt-32">
+        <li>
+          <h3 class="c-Heading_Lv3">1. Apple サポートから申請する</h3>
+          <div class="u-Adjust_Mt-16">
+            Apple サポートのサイトで該当するトピックを選択してから、ご希望の項目をお選びください。<br>
+            ご予約の際には、あらかじめご自分の Apple IDとパスワードをご確認ください。
+            <div class="u-Adjust_Mt-24">
+              <a href="https://locate.apple.com/" class="c-Btn_Regular" target="_blank"><span>Apple サポートにアクセスする<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+            </div>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-16">
+              電話でAppleCare アドバイザーにご相談いただく場合は、以下まで直接お問い合わせください。
+            </p>
+            <a href="tel:0120277535" class="c-Link_Txt c-Txt_Normal-m" style="font-weight: bold;">0120-277-535</a>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">2. 修理の事前準備をする</h3>
+          <div class="u-Adjust_Mt-16">
+            <span class="c-Txt_Emp-02">修理の前に、必ず以下の対応を行ってください。</span><br>
+            修理の過程で製品のデータは消去されますので、ご注意ください。
+            <ul class="c-List_Text-disc u-Adjust_Mt-24">
+              <li>
+                Apple Watch のペアリングを解除する。
+              </li>
+            </ul>
+            <p class="c-Txt_Cap u-Adjust_Pl-16">※ペアリングを解除すると、iPhone 側で Apple Watch のバックアップが作成されます。Apple Watch が修理から戻ってきたら、このバックアップを使って復元できます。</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-24">
+              <li>
+                Apple Watch のバンドを取り外す。
+              </li>
+            </ul>
+            <div class="u-Adjust_Mt-16">
+              <a href="https://support.apple.com/ja-jp/HT207826" class="c-Link_Txt-inline-icon" target="_blank">お近くのApple StoreまたはApple 正規サービスプロバイダーを確認する<span class="c-Icon_New-window-l"></span></a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">３. 来店して故障したApple Watchを渡す</h3>
+          <div class="u-Adjust_Mt-16">
+            事前に予約した日時で、指定したApple StoreまたはApple 正規サービスプロバイダーに、故障したApple Watchを持ってご来店ください。<br>
+            Apple の認定技術者が対応いたします。
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">4. 修理されたApple Watchを受け取る</h3>
+          <div class="u-Adjust_Mt-16">
+            <p class="c-Txt_Cap">※受け取り方法に関しては、窓口でご確認ください。</p>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">5. Apple Watchのセットアップを行う</h3>
+          <div class="u-Adjust_Mt-16">
+            Apple Watchを同じiPhoneに再度ペアリングし、「バックアップから復元」を選択、お使いのiPhoneに保存されているバックアップを使用してセットアップと初期設定を行ってください。
+          </div>
+        </li>
+      </ol>
+      <p class="u-Adjust_Mt-16">
+        以上が持ち込み修理のご利用方法になります。
+      </p>
+    </div>
+    <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-24">配送修理</h2>
+      <div class="u-Adjust_Mt-16">
+        宅配業者がご自宅やオフィスにApple Watchを引き取りにうかがい、修理が完了しましたら、Apple よりご返送いたします。<br>
+        修理は通常5～7営業日で完了します。
+      </div>
+      <div class="c-Table u-Adjust_Mt-24 <%= nameSpace %>-Layout_Table">
+        <div class="c-Table_Wrap">
+          <table class="c-Table_Container">
+            <tbody>
+              <tr>
+                <th scope="row">負担額</th>
+                <td>
+                  9,200円
+                  <p class="c-Txt_Cap">※自然故障の場合は無償</p>
+                  <p class="c-Txt_Cap">※送料無料</p>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">予約</th>
+                <td>必須</td>
+              </tr>
+              <tr>
+                <th scope="row">修理日数</th>
+                <td>
+                  通常5～7営業日
+                  <p class="c-Txt_Cap">※故障状況により前後します。別途配送にお時間を頂戴いたします。</p>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">代替機</th>
+                <td>貸出なし</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="u-Adjust_Mt-16 c-Txt_Cap">
+        ※2022年3月25日現在のご利用料金です。<br>
+        ※故障機の診断の結果、全損（壊滅的な損傷）や改造品であった場合、故意・過失の別なく、別途修理価格に定める保証外交換機価格をお支払いいただきます。
+      </p>
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-48">配送修理のご利用方法</h2>
+      <ol class="c-Flow u-Adjust_Mt-32">
+        <li>
+          <h3 class="c-Heading_Lv3">1. Apple サポートから申請する</h3>
+          <div class="u-Adjust_Mt-16">
+            Apple サポートのサイトで該当するトピックを選択してから、ご希望の項目をお選びください。<br>
+            ご予約の際には、あらかじめご自分の Apple IDとパスワードをご確認ください。
+            <div class="u-Adjust_Mt-24">
+              <a href="https://getsupport.apple.com/" class="c-Btn_Regular"><span>Apple サポートにアクセスする<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+            </div>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-16">
+              電話でAppleCare アドバイザーにご相談いただく場合は、以下まで直接お問い合わせください。
+            </p>
+            <a href="tel:0120277535" class="c-Link_Txt c-Txt_Normal-m" style="font-weight: bold;">0120-277-535</a>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">2. 修理の事前準備をする</h3>
+          <div class="u-Adjust_Mt-16">
+            <span class="c-Txt_Emp-02">修理の前に、必ず以下の対応を行ってください。</span><br>
+            修理の過程で製品のデータは消去されますので、ご注意ください。
+            <ul class="c-List_Text-disc u-Adjust_Mt-24">
+              <li>
+                Apple Watch のペアリングを解除する。
+              </li>
+            </ul>
+            <p class="c-Txt_Cap u-Adjust_Pl-16">※ペアリングを解除すると、iPhone 側で Apple Watch のバックアップが作成されます。Apple Watch が修理から戻ってきたら、このバックアップを使って復元できます。</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-24">
+              <li>
+                Apple Watch のバンドを取り外す
+              </li>
+            </ul>
+            <div class="u-Adjust_Mt-16">
+              <a href="https://support.apple.com/ja-jp/HT207826" class="c-Link_Txt-inline-icon" target="_blank">Apple Watchを修理に出す準備の詳細を見る<span class="c-Icon_New-window-l"></span></a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">３. 宅配業者に故障したApple Watchを渡す</h3>
+          <div class="u-Adjust_Mt-16">
+            引き取りにきた宅配業者に故障したApple Watchをお渡しください。
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">4. 修理されたApple Watchを受け取る</h3>
+          <div class="u-Adjust_Mt-16">
+            修理完了後、指定した住所にApple Watchが届きますので、お受け取りをお願いいたします。
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3">5. Apple Watchのセットアップを行う</h3>
+          <div class="u-Adjust_Mt-16">
+            Apple Watchを同じiPhoneに再度ペアリングし、「バックアップから復元」を選択、お使いのiPhoneに保存されているバックアップを使用してセットアップと初期設定を行ってください。
+          </div>
+        </li>
+      </ol>
+      <p class="u-Adjust_Mt-16">
+        以上が配送修理のご利用方法になります。
+      </p>
+    </div>
+    <div class="u-Adjust_Mt-32">
+      <a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップに戻る</span></a>
+    </div>
+    <div class="u-Adjust_Mt-16">
+      <a href="<%= sitepath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a>
+    </div>
+  </div>
+</div>
+
+<%- include('/include/guide/_review') %>
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-un-limit-v2.ejs') %>
+  </div>
+  <%- include('/include/guide/_inquiry') %>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

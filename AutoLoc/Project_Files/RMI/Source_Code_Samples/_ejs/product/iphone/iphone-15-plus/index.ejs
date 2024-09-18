@@ -1,0 +1,587 @@
+<% const pagetitle = "iPhone 15 Plus（5G対応）製品情報・購入" -%>
+<% const directory = "iphone-15-plus" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/iphone/", label:"iPhone"}] -%>
+<%
+  const currentDir = "iphone-15-plus"
+  const l_id = 'product_iphone-15-plus'
+  const namespace = "product-iphone-15-plus"
+  const cp_l_id = 'product_iphone_iphone-15-plus'
+  const watch_l_id = 'product_iphone_iphone-15-plus_product_apple-watch'
+  const tradeinProductName = 'iPhone 14 Plus'
+  const hideFlg = {
+    pro: true,
+    _15: true,
+    se3rd: true,
+  }
+
+  const priceDetailConfig = {
+    tradeinProductName: tradeinProductName,
+    optionPattern: 'tradein',
+    lid: directory,
+    capacity: 512,
+    maxTradeinPrice: 63800,
+    carrier: '楽天モバイル',
+    currentDir,
+    namespace,
+}
+_%>
+<%-
+  include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "楽天モバイルなら最新機種 iPhone 15 Plusが全通信キャリアで最安！スペック・特徴・5G対応の確認もこちらから。※2024.03.27時点。NTTドコモ、au、ソフトバンクの4キャリア公式オンラインのiPhone本体代金との比較。当社調べ",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/<%= directory %>/product-<%= directory %>.css?20240517">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/product-iphone.css?20240426">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+<style>
+  .modaal-video-wrap {
+    margin: 0 !important;
+  }
+</style>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+    <%
+      const productInfo = {
+        'name': 'iPhone 15 Plus',
+        namespace: namespace,
+        ctalabel: 'iPhone 15 Plus を購入する',
+        'color': [
+          {
+            'code': '#EBD0D2',
+            'name': 'ピンク'
+          },
+          {
+            'code': '#ECE6C6',
+            'name': 'イエロー'
+          },
+          {
+            'code': '#CFD9C9',
+            'name': 'グリーン'
+          },
+          {
+            'code': '#D5DDE0',
+            'name': 'ブルー'
+          },
+          {
+            'code': '#3C4042',
+            'name': 'ブラック'
+          },
+        ],
+        'ichiba': {
+          'flag': false,
+          'url': '',
+        },
+        'slider': [
+          [
+            `/assets/img/product/iphone/${directory}/pht-device-00.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-01.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-02.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-03.png?230308`,
+          ],
+          [
+            `/assets/img/product/iphone/${directory}/pht-device-04.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-05.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-02.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-06.png?230308`,
+          ],
+          [
+            `/assets/img/product/iphone/${directory}/pht-device-07.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-08.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-02.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-09.png?230308`,
+          ],
+          [
+            `/assets/img/product/iphone/${directory}/pht-device-10.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-11.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-02.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-12.png?230308`,
+          ],
+          [
+            `/assets/img/product/iphone/${directory}/pht-device-13.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-14.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-02.png?230308`,
+            `/assets/img/product/iphone/${directory}/pht-device-15.png?230308`,
+          ],
+        ],
+        'movie': {
+          'flag': true,
+          'url': 'https://www.youtube.com/embed/Zmoi7WzdZxU',
+          'thumbnail': `/assets/img/product/iphone/${directory}/pht-device-movie.png`,
+        },
+      }
+    %>
+
+<%
+  const NavItems = [
+    {label: '価格', href: 'price', ratid: `${directory}_include-price`},
+    {label: '詳細・スペック', href: 'spec', ratid: `${directory}_include-spec`}
+  ]
+%>
+
+<div id="js-header-nav-dummy"></div>
+<div id="js-header-nav-wrapper" class="<%= namespace %>-Layout_Nav-wrapper">
+  <div id="js-header-nav" class="<%= namespace %>-Layout_Nav" data-fixed-header>
+    <p class="<%= namespace %>-Layout_Nav-product">
+      <%- productInfo.name %>
+    </p>
+    <div class="product-detail-Utility_Show-pc">
+      <div class="<%= namespace %>-Layout_Nav-items">
+        <% NavItems.forEach(function(item, index) { %>
+          <a href="#<%= item.href %>" class="c-Link_Txt-icon-front js-scroll-b js-header-nav-item-<%= index %>" data-ratId="<%= item.ratid %>_navi-<%= item.href %>" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span><%= item.label %></a>
+        <% }) %>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Nav-btn">
+      <a href="" id="js-header-purchase-btn" class="c-Btn_Primary" data-ratId="<%= directory %>_purchase-01" data-ratevent="click" data-ratparam="all"><span>購入する</span></a>
+      <div class="product-detail-Utility_Show-sp <%= namespace %>-Layout_Nav-trigger-wrapper">
+        <button id="js-accordion-header-nav-trigger" type="button" class="<%= namespace %>-Layout_Nav-trigger" data-ratId="<%= directory %>_navi-menu" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-down c-Accordion_Arrow <%= namespace %>-Layout_Nav-arrow"></span></button>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Nav-sp product-detail-Utility_Show-sp">
+      <div class="<%= namespace %>-Layout_Nav-accordion">
+        <div id="js-accordion-content-header-nav-items" style="display: none;">
+          <div class="<%= namespace %>-Layout_Nav-items">
+            <% NavItems.forEach(function(item, index) { %>
+              <a href="#<%= item.href %>" class="c-Link_Txt-icon-front js-scroll-b js-header-nav-item-<%= index %>" data-ratId="<%= directory %>_navi-<%= item.href %>" data-ratevent="click" data-ratparam="all"><%= item.label %></a>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="<%= namespace %>-Layout_Hero">
+  <div class="l-System_Container">
+    <p class="c-Txt_Cap u-Adjust_Align-right">※表記の金額はすべて税込です。</p>
+    <%- include('/include/product/iphone/_bnr-new-iphone', { directory }) %>
+    <div class="<%= namespace %>-Hero_Reference u-Adjust_Mt-8">
+      <a href="<%= sitepath %>product/iphone/comparison/?l-id=product_iphone_<%= directory %>_comparison" class="c-Link_Txt-inline" data-ratId="<%= directory %>_include-spec" data-ratevent="click" data-ratparam="all">ほかのiPhoneと比較する<span class="c-Icon_Chevron-right"></span></a>
+    </div>
+
+    <section class="<%= namespace %>-Hero">
+      <div class="<%= namespace %>-Hero_Data">
+        <div>
+          <div class="<%= namespace %>-Hero_Sp-reverse">
+            <h1 class="c-Heading_Lv1 <%= namespace %>-Hero_Name"><%- productInfo.name %></h1>
+          </div>
+          <%_ if (typeof productInfo.is5g == 'undefined' || productInfo.is5g) { _%>
+            <div class="<%= namespace %>-Hero_Name-5g">
+              <img src="<%= sitepath %>assets/img/common/icon-5g.png" width="52" alt="5G" class="u-Adjust_Mr-16 u-Adjust_Mt-16">
+            </div>
+          <%_ } _%>
+
+          <div class="<%= namespace %>-Layout_PC">
+            <%_ if( productInfo.color.length > 0 ) { _%>
+              <ul class="<%= namespace %>-Hero_Color">
+                <%_ productInfo.color.forEach((value, index) => { _%>
+                  <%_ if( index === 0 ) { _%>
+                    <li class="js-color js-color<%- index + 1 %>" data-ratId="<%= currentDir %>_color-0<%- index + 1 %>" data-ratevent="click" data-ratparam="all" aria-current="true">
+                  <%_ } else { _%>
+                    <li class="js-color js-color<%- index + 1 %>" data-ratId="<%= currentDir %>_color-0<%- index + 1 %>" data-ratevent="click" data-ratparam="all" aria-current="false">
+                  <%_ } _%>
+                    <%_ if( value.name === 'ホワイト' ) { _%>
+                      <div style="background: <%- value.code %>; border: 1px solid #D1D1E0;"></div>
+                      <p><%- value.name %></p>
+                    <%_ } else if ( value.name === '（PRODUCT）RED&#8482;' ) { _%>
+                      <div style="background: <%- value.code %>"></div>
+                      <p class="u-Adjust_Mt-8" ><%- value.name %></p>
+                    <%_ } else { _%>
+                      <div style="background: <%- value.code %>"></div>
+                      <p><%- value.name %></p>
+                    <%_ } _%>
+                    </li>
+                <%_ }); _%>
+              </ul>
+            <%_ } _%>
+
+            <% const discountInfoPart = function() { %>
+              <dl class="<%= namespace %>-Hero_Dl">
+                <dt style="padding: 0;"></dt>
+                <dd>
+                  <p class="<%= namespace %>-Hero_Price-catch">
+                    <img src="<%= sitepath %>assets/img/product/iphone/common/img-hero-price-catch.svg" alt="4キャリア最安値※1" width="230">
+                    <span class="c-Txt_Normal-s <%= namespace %>-Hero_Price-link">
+                      <a href="<%= sitepath %>product/iphone/fee/?l-id=product_iphone_<%= directory %>_product_iphone_fee" class="c-Link_Txt-inline">価格比較表<span class="c-Icon_Chevron-right"></span></a>
+                    </span>
+                  </p>
+                  <p class="<%= namespace %>-Hero_Price-price">
+                    <span class="c-Txt_Emp-01">48回払い<span class="c-Txt_Cap">※2</span></span>
+                    <span class="js-hero-payment48-cost <%= namespace %>-Hero_Price-num"></span>円/月〜
+                  </p>
+
+                  <div class="product-iphone-Hero_Price-total">
+                    <p>支払い総額</p>
+                    <p class="js-hero-totalcost"></p>
+                  </div>
+                  <div class="u-Adjust_Mt-16 <%= namespace %>-Hero_Appeal <%= namespace %>-Hero_Appeal c-Theme-Emphasis1">
+                    <p class="c-Txt_Normal-s c-Txt_Emp-02 u-Adjust_Align-center">キャンペーン開催中！</p>
+                    <p>
+                      <span class="c-Txt_Normal-s c-Txt_Emp-02">最大</span>
+                      <span class="c-Txt_Emp-02 <%= namespace %>-Hero_Txt-price">32,000</span>
+                      <span class="c-Txt_Normal-s c-Txt_Emp-02">円相当</span>
+                      <span class="c-Txt_Normal-s c-Txt_Emp-01"> 還元</span>
+                      <span class="c-Txt_Cap">※3</span>
+                    </p>
+                    <div>
+                      <img src="<%= sitepath %>assets/img/product/iphone/common/img-appeal-price-text-240315.svg" alt="20,000円値引き + 12,000ポイント還元" width="277" height="28">
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-8 <%= namespace %>-Hero_Appeal <%= namespace %>-Hero_Appeal c-Theme-Emphasis1">
+                    <p class="c-Txt_Normal-s c-Txt_Emp-02 u-Adjust_Align-center">3/1よりiPhone 11などの下取り価格アップ！</p>
+                    <p class="u-Adjust_Align-center c-Txt_Emp-01">例えば、iPhone 14 Plus 下取り利用で</p>
+                    <p>
+                      <span class="c-Txt_Normal-s c-Txt_Emp-02">最大</span>
+                      <span class="c-Txt_Emp-02 <%= namespace %>-Hero_Txt-price">63,800</span>
+                      <span class="c-Txt_Normal-s c-Txt_Emp-02">円</span>
+                      <span class="c-Txt_Normal-s c-Txt_Emp-01"> 還元</span>
+                      <span class="c-Txt_Cap">※4</span>
+                    </p>
+                    <div class="u-Adjust_Align-center">
+                      <a href="<%= sitepath %>service/tradein/?l-id=<%= cp_l_id %>_service_tradein-01" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                    </div>
+                  </div>
+
+                  <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-left">
+                    ※1 2024年3月27日時点。NTTドコモ、au、ソフトバンクの公式オンラインのiPhone本体代と比較。<br>
+                    ※2 48回払いは楽天カードのみ。現金販売価格と割賦販売価格（総額）は製品価格と同額。支払回数48回、支払期間48カ月、実質年率0％。機種変更またはお使いいただいた製品を当社が回収する際には事務手数料3,300円のお支払いが必要。当社が回収する製品が当社指定の状態基準を満たさない場合、当社指定の故障費用のお支払いが必要、または返却不可となる場合あり。<a href="<%= sitepath %>service/replacement-program/?l-id=<%= cp_l_id %>_service_replacement-program-01" class="c-Link_Txt">その他条件の詳細はこちら</a><br>
+                    ※3 一括・24回払いで対象iPhone購入、初めて申し込み、他社から乗り換え等、他条件有。ポイントは期間限定ポイントとして付与。<a href="<%= sitepath %>campaign/iphone-point/?l-id=product_iphone_<%= directory %>_campaign_iphone-point#detail" class="c-Link_Txt">詳細はこちら</a><br>
+                    ※4 2024年4月26日時点。楽天モバイルの512GBを下取りに出した場合。良品下取時。楽天キャッシュで付与。
+                  </p>
+                </dd>
+              </dl>
+            <% } %>
+
+            <div class="<%= namespace %>-Hero_Price">
+
+              <div class="<%= namespace %>-Hero_Price-inner">
+                <%= discountInfoPart() %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Hero_Main">
+        <%_ productInfo.slider.forEach((value, index) => { _%>
+          <%_ if( productInfo.color.length <= 0 ) { _%>
+            <ul class="<%= namespace %>-Hero_Main-view c-Carousel js-product-main js-device">
+          <%_ } else if( index === 0 ) { _%>
+            <ul class="<%= namespace %>-Hero_Main-view c-Carousel js-main<%- index + 1 %> js-device" aria-hidden="false">
+          <%_ } else { _%>
+            <ul class="<%= namespace %>-Hero_Main-view c-Carousel js-main<%- index + 1 %> js-device" aria-hidden="true">
+          <%_ } _%>
+            <%_ value.forEach((ele, index) => { _%>
+              <li><span><img data-lazy="<%- ele %>" alt=""></span></li>
+            <%_ }); _%>
+            </ul>
+
+          <%_ if( index === 0 ) { _%>
+            <ul class="<%= namespace %>-Hero_Main-thumbnail thumbnail<%- index + 1 %> is-open">
+          <%_ } else { _%>
+            <ul class="<%= namespace %>-Hero_Main-thumbnail thumbnail<%- index + 1 %>">
+          <%_ } _%>
+            <%_ value.forEach((ele, index) => { _%>
+              <li class="thumbnail-item" data-ratId="<%= directory %>_thumbnail-image-0<%- index + 1 %>" data-ratevent="click" data-ratparam="all"><span><img src="<%- ele %>" alt=""></span></li>
+            <%_ }); _%>
+            <%_ if( productInfo.movie.flag ) { _%>
+              <li data-ratId="<%= currentDir %>_thumbnail-image-05" data-ratevent="click" data-ratparam="all">
+                <a class="js-video" href="<%- productInfo.movie.url %>">
+                  <span><img src="<%- productInfo.movie.thumbnail %>" alt=""></span>
+                </a>
+              </li>
+            <%_ } _%>
+            </ul>
+        <%_ }); _%>
+        <div class="c-Carousel_Nav <%= namespace %>-Layout_Carousel"></div>
+      </div>
+      <div class="<%= namespace %>-Layout_SP">
+        <div class="<%= namespace %>-Hero_Data">
+          <div>
+            <%_ if( productInfo.color.length > 0 ) { _%>
+              <ul class="<%= namespace %>-Hero_Color">
+                <%_ productInfo.color.forEach((value, index) => { _%>
+                  <%_ if( index === 0 ) { _%>
+                    <li class="js-color js-color<%- index + 1 %>" aria-current="true">
+                  <%_ } else { _%>
+                    <li class="js-color js-color<%- index + 1 %>" aria-current="false">
+                  <%_ } _%>
+                    <%_ if( value.name === 'ホワイト' ) { _%>
+                      <div style="background: <%- value.code %>; border: 1px solid #D1D1E0;"></div>
+                      <p><%- value.name %></p>
+                    <%_ } else if ( value.name === '（PRODUCT）RED&#8482;' ) { _%>
+                      <div style="background: <%- value.code %>"></div>
+                      <p class="u-Adjust_Mt-8" ><%- value.name %></p>
+                    <%_ } else { _%>
+                      <div style="background: <%- value.code %>"></div>
+                      <p><%- value.name %></p>
+                    <%_ } _%>
+                    </li>
+                <%_ }); _%>
+              </ul>
+            <%_ } _%>
+          </div>
+
+          <div class="<%= namespace %>-Hero_Price">
+            <div class="<%= namespace %>-Hero_Price-inner">
+              <%= discountInfoPart() %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="u-Adjust_Mt-24">
+  <div id="price"></div>
+  <div id="spec">
+    <div class="l-System_Container">
+      <div class="c-Tab js-Tab">
+        <ul class="c-Tab_Items" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1" data-ratId="<%= currentDir %>_tab-01" data-ratevent="click" data-ratparam="all">価格・特典</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2" data-ratId="<%= currentDir %>_tab-02" data-ratevent="click" data-ratparam="all">製品詳細・スペック</li>
+        </ul>
+        <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="価格・特典">
+          <div class="<%= namespace %>-Simulation_Wrapper">
+            <%# スクロール計測 %>
+            <div class="u-Rat_Appear-height" data-ratId="<%= directory %>_scroll-01_fee-simulation" data-ratevent="appear">&nbsp;</div>
+            <div id="js-simulator" class="<%= namespace %>-Simulation_Choice">
+              <div class="<%= namespace %>-Simulation_Choice-storage-wrapper">
+                <h4 class="c-Heading_Lv4">容量</h4>
+                <ul id="js-btn-storages" class="<%= namespace %>-Simulation_Choice-storage-list">
+                  <%# set by common.js %>
+                </ul>
+              </div>
+              <div id="js-choice-payment" class="<%= namespace %>-Simulation_Choice-payment-wrapper" aria-hidden="true">
+                <h4 class="c-Heading_Lv4">お支払い方法</h4>
+
+                <div class="c-Theme-Light u-Adjust_Mt-8">
+                  <p class="c-Txt_Emp-02">楽天モバイル買い替え超トクプログラム（48回払い）</p>
+                  <p>
+                    25カ月目以降の製品代金のお支払いが不要で、他の対象製品に機種変更いただけます。<br>
+                    プランの申し込みがなくても利用可能です。<a href="<%= sitepath %>service/replacement-program/?l-id=product_iphone_<%= directory %>_simulation_service_replacement-program" class="c-Link_Txt-inline-icon" target="_blank" rel="noreferrer">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                  </p>
+                </div>
+                <ul class="<%= namespace %>-Simulation_Choice-payment-list">
+                  <li class="<%= namespace %>-Simulation_Choice-payment-list-btn-48">
+                    <label class="c-Form_Radioblock">
+                      <input class="js-btn-payment" type="radio" name="payment" value="48" autocomplete="off" data-ratId="<%= directory %>_simulation_payment-01" data-ratevent="click" data-ratparam="all">
+                      <span class="c-Form_Radioblock-wrap <%= namespace %>-Simulation_Choice-payment-list-btn">
+                        <span class="c-Form_Radio-icon"></span>
+                        <span class="c-Form_Radioblock-label">
+                          <span class="<%= namespace %>-Simulation_Choice-payment-list-btn-48-main">
+                            <img src="<%= sitepath %>assets/img/product/iphone/trade-logo.png" alt="" width="72">
+                            <span>
+                              <span>48回払い<span class="c-Txt_Cap">※1</span></span><br>
+                            </span>
+                          </span>
+                        </span>
+                      </span>
+                    </label>
+                  </li>
+                  <li class="<%= namespace %>-Simulation_Choice-payment-list-btn <%= namespace %>-Simulation_Choice-payment-list-btn-24">
+                    <label class="c-Form_Radioblock">
+                      <input class="js-btn-payment" type="radio" name="payment" value="24" autocomplete="off" data-ratId="<%= directory %>_simulation_payment-02" data-ratevent="click" data-ratparam="all">
+                      <span class="c-Form_Radioblock-wrap <%= namespace %>-Simulation_Choice-payment-list-btn">
+                        <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label <%= namespace %>-Simulation_Choice-payment-list-label">24回払い<span class="c-Txt_Cap">※2</span></span>
+                      </span>
+                    </label>
+                  </li>
+                  <li class="<%= namespace %>-Simulation_Choice-payment-list-btn">
+                    <label class="c-Form_Radioblock">
+                      <input class="js-btn-payment" type="radio" name="payment" value="1" autocomplete="off" data-ratId="<%= directory %>_simulation_payment-03" data-ratevent="click" data-ratparam="all">
+                      <span class="c-Form_Radioblock-wrap">
+                        <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">一括払い</span>
+                      </span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <%# スマホ下取りサービス _%>
+              <%- include('/include/product/iphone/_simulation-tradein-iphone', { priceDetailConfig }) %>
+            </div>
+            <%
+              const accessoryCarouselConf = {
+                namespace: namespace,
+                productname: 'iPhone 15 Plus',
+                accessoryArray: [
+                  {
+                    'url': `/product/accessory/apple-rm213004/?l-id=product_iphone_${directory}_accessory_apple-rm213004`,
+                    'image': '/assets/img/accessory/apple-rm213004/pht-accessory-00.png',
+                    'name': '20W USB-C電源アダプタ',
+                    'color': '',
+                    'price': '2,780',
+                  },
+                  {
+                    'url': `/product/accessory/apple-rm213003/?l-id=product_iphone_${directory}_accessory_apple-rm213003`,
+                    'image': '/assets/img/accessory/apple-rm213003/pht-accessory-00.png',
+                    'name': 'MagSafe充電器',
+                    'color': '',
+                    'price': '6,480',
+                  },
+                  {
+                    'url': `/product/accessory/apple-rm2309069/?l-id=product_iphone_${directory}_accessory_apple-rm2309069`,
+                    'image': '/assets/img/accessory/apple-rm2309069/pht-accessory-00.png',
+                    'name': 'MagSafe充電ケース（USB‑C）付きAirPods Pro（第2世代）',
+                    'price': '39,800',
+                  },
+                  {
+                    'url': `/product/accessory/apple-rm2209073/?l-id=product_iphone_${directory}_accessory_apple-rm2209073`,
+                    'image': '/assets/img/accessory/apple-rm2209073/pht-accessory-00.png',
+                    'name': '<span class="c-Txt_Normal-s">Lightning充電ケース付き</span><br>AirPods（第3世代）',
+                    'alt': 'Lightning充電ケース付きAirPods（第3世代）',
+                    'color': '',
+                      'price': '26,800',
+                  },
+                  {
+                    'url': `/product/accessory/apple-rm2104016/?l-id=product_iphone_${directory}_accessory_apple-rm2104016`,
+                    'image': '/assets/img/accessory/apple-rm2104016/pht-accessory-00.png',
+                    'name': 'AirTag',
+                    'color': '',
+                    'price': '4,980',
+                  },
+                  {
+                    'url': `/product/accessory/apple-rm2309045/?l-id=product_iphone_${directory}_accessory_apple-rm2309045`,
+                    'image': '/assets/img/accessory/apple-rm2309045/pht-accessory-00.png',
+                    'name': 'MagSafe対応iPhone 15 Plusシリコーンケース',
+                    'color': [
+                      { 'code': '#ff716f' },
+                      { 'code': '#ffaf85' },
+                      { 'code': '#7b8b7c' },
+                      { 'code': '#a3bcd7' },
+                      { 'code': '#aba296' },
+                      { 'code': '#feece9' },
+                      { 'code': '#465160' },
+                      { 'code': '#454647' },
+                    ],
+                    'price': '7,980',
+                  },
+                  {
+                    'url': `/product/accessory/apple-rm2309066/?l-id=product_iphone_${directory}_accessory_apple-rm2309066`,
+                    'image': '/assets/img/accessory/apple-rm2309066/pht-accessory-00.png',
+                    'name': 'MagSafe対応iPhone 15 Plusクリアケース',
+                    'color': [
+                      { 'code': '#E8FEFF' },
+                    ],
+                    'price': '7,980',
+                  },
+                ]
+              }
+            -%>
+            <%# 特価キャンペーン実施中！ シミュレーション結果 _%>
+            <%- include('/include/product/iphone/_simulation-result', { priceDetailConfig, l_id, namespace, currentDir, urlFeeSimulation: productInfo.urlFeeSimulation, ctalabel: productInfo.ctalabel, accessoryCarouselConf }) %>
+            <%# スクロール計測 %>
+            <div class="u-Rat_Appear-height" data-ratId="<%= currentDir %>_scroll-05_accessory-lineup" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+          </div>
+        </div>
+        <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="製品詳細・スペック">
+          <%- include('/include/product/iphone/spec/_15', { namespace, currentDir, productName: directory, hideFlg, l_id }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="c-Theme-Light u-Adjust_Mb-64 u-Adjust_Pb-56 u-Adjust_Pb-pc-40">
+  <div id="js-ctrl-align">
+    <%- include('/include/product/iphone/_product-accessory.ejs', { accessoryCarouselConf, currentDir }) %>
+  </div>
+  <%- include('/include/product/iphone/_iphone-list', { l_id: currentDir, currentDir }) %>
+  <div class="l-System_Container">
+    <div id="previously-seen"></div>
+  </div>
+</div>
+
+<%- include('/inc/_saikyo') %>
+
+<!-- 注意事項 -->
+<%- include('/include/product/iphone/_iphone-caution-list', { currentDir }) %>
+<div class="product-iphone-Layout_Bg-gray">
+
+  <%- include('/include/product/iphone/_equipment.ejs', { l_id: currentDir }) %>
+  <%- include('/include/product/apple-watch/_apple-watch-list', { l_id: watch_l_id, currentDir }) %>
+</div>
+<!-- iPhoneを使うなら楽天モバイルがおすすめ -->
+<%- include('/include/product/iphone/_recommend-product-iphone-15-plus.ejs', { l_id, currentDir: currentDir }) %>
+<%- include('/include/product/iphone/_chat') %>
+
+<%- include('/include/product/_support') %>
+
+<%- include('/include/product/iphone/_floating', {
+  url: '',
+  message: 'iPhone 15 Proを予約注文する'
+}) %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/_append-body') %>
+<script src="<%= sitepath %>assets/js/product.iphone.common.bundle.js?20240522"></script>
+
+</body>
+</html>

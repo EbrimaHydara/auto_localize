@@ -1,0 +1,99 @@
+<% const pagetitle = "Apple Watchの比較（スペック・性能・サイズ比較）" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/apple-watch/", label:"Apple Watch"}] -%>
+<% const l_id = 'product_apple-watch' %>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '最新のApple Watch比較ができます。楽天モバイルで取り扱い中のApple Watch Series 9、Apple Watch Ultra 2、 Apple Watch SE（第2世代）など、Apple Watchのスペック・性能比較、特徴比較、サイズ比較をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/product-iphone.css?20240426">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/apple-watch/product-apple-watch.css?20240426">
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+  <%- include('/include/_header') %>
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="l-System_Container">
+    <p class="c-Txt_Cap u-Adjust_Align-right u-Adjust_Mt-8">※表記の金額はすべて税込です。</p>
+    <h1 class="c-Heading_Lv1 u-Adjust_Mt-8">Apple Watchのモデルを選んで比較する。</h1>
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mt-24 u-Adjust_Mb-64">
+    <%- include('/include/product/apple-watch/comparison/_apple-watch') %>
+  </div>
+
+  <%- /* Apple Watch一覧 */ include('/include/product/apple-watch/_apple-watch-list', { l_id: 'apple-watch-comparison' }) %>
+  <%- /* Apple Watchを使うなら楽天モバイルがおすすめ */ include('/include/product/apple-watch/_recommend-product-apple-watch-8', {
+    tradeinProduct: 'Watch 7 Hermes 45mm - GPS+Cellular - Stainless',
+    tradeinProductDetail: 'Watch 7 Hermes - 45mm（GPS+Cellular）ステンレスケース',
+    tradeinPrice: '27,500',
+    currentDir: 'comparison',
+    date: '2023年12月22日時点',
+    customTradeinTitle: 'スマホ下取りサービス',
+  }) _%>
+
+  <footer class="g-Footer">
+
+    <div class="g-Footer_Aside">
+
+      <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+      <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    </div>
+    <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+
+    <%- include('/include/_footer') %>
+
+  </footer>
+</div>
+
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+<script src="<%= sitepath %>assets/js/library/apple-watch-comparison.js?230915"></script>
+
+</body>
+</html>

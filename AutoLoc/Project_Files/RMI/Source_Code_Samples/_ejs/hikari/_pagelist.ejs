@@ -1,0 +1,296 @@
+<% const hikaripath = "hikari/" -%>
+<% const pagetitle = "ひかりリニューアルページリスト" -%>
+<% const directories = [] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    <!-- directories: directories, -->
+    description: '',
+    keywords: '',
+    noindex: false,
+    pathname: filepath,
+    ishikari: true
+  });
+%>
+<%- include('/include/hikari/_common-css') %>
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+
+  <%- include('/include/hikari/_header') %>
+
+  <div class="c-hikari-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="l-hikari-Section_Main">
+    <div class="l-hikari-Section_Main-logo"><a href="/hikari/?l-id=rhk_header_hikari_01"><img src="<%= sitepath %>assets/img/hikari/common/logo-hikari-s.svg" width="100" alt="楽天ひかり"></a></div>
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+      <ul class="c-List_Text-disc u-Adjust_Mt-24">
+        <li>meta系は未確定のため仮置き</li>
+      </ul>
+
+      <div class="c-Table_Wrap-scroll">
+        <table class="c-Table_Container u-Adjust_Mt-32 u-Adjust_Mb-32">
+          <colgroup>
+            <col class="u-Adjust_W-200">
+            <col class="u-Adjust_W-400">
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Page</th>
+              <th scope="col">URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">共通テンプレ（ヘッダ・フッタ・ナビ）</th>
+              <td>共通テンプレ（ヘッダ・フッタ・ナビ）</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>template/simple.html"><%= rootpath %><%= hikaripath %>template/simple.html</a></td>
+            </tr>
+            <tr>
+              <th scope="row">トップ</th>
+              <td>トップ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>"><%= rootpath %><%= hikaripath %></a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="4">楽天ひかりとは</th>
+              <td>楽天ひかりとは</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>about/"><%= rootpath %><%= hikaripath %>about/</a></td>
+            </tr>
+            <tr>
+              <td>IPv6とは</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>about/ipv6/"><%= rootpath %><%= hikaripath %>about/ipv6/</a></td>
+            </tr>
+            <tr>
+              <td>サービス提供エリア検索</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>about/area/"><%= rootpath %><%= hikaripath %>about/area/</a></td>
+            </tr>
+            <tr>
+              <td>ひかり電話</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>about/hikari-denwa/"><%= rootpath %><%= hikaripath %>about/hikari-denwa/</a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="9">料金</th>
+              <td>料金</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/"><%= rootpath %><%= hikaripath %>fee/</a></td>
+            </tr>
+            <tr>
+              <td>料金表</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/pricelist/"><%= rootpath %><%= hikaripath %>fee/pricelist/</a></td>
+            </tr>
+            <tr>
+              <td>オプション</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/option/"><%= rootpath %><%= hikaripath %>fee/option/</a></td>
+            </tr>
+            <tr>
+              <td>スーパーセキュリティ マルチプラットフォーム版月額サービス</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/option/super-security/"><%= rootpath %><%= hikaripath %>fee/option/super-security/</a></td>
+            </tr>
+            <tr>
+              <td>ウイルスフィルタ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/option/virus-filter/"><%= rootpath %><%= hikaripath %>fee/option/virus-filter/</a></td>
+            </tr>
+            <tr>
+              <td>アドバンスドスパムフィルタ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/option/advanced-spam-filter/"><%= rootpath %><%= hikaripath %>fee/option/advanced-spam-filter/</a></td>
+            </tr>
+            <tr>
+              <td>無料メールアドレス</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/option/free-mail/"><%= rootpath %><%= hikaripath %>fee/option/free-mail/</a></td>
+            </tr>
+            <tr>
+              <td>メールプラス</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/option/free-mail-plus/"><%= rootpath %><%= hikaripath %>fee/option/free-mail-plus/</a></td>
+            </tr>
+            <tr>
+              <td>電話設定サポート</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>fee/option/remote-support/"><%= rootpath %><%= hikaripath %>fee/option/remote-support/</a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="4">キャンペーン</th>
+              <td>キャンペーン</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>campaign/"><%= rootpath %><%= hikaripath %>campaign/</a></td>
+            </tr>
+            <tr>
+              <td style="background-color: #ccc;">1年無料キャンペーン</td>
+              <td style="background-color: #ccc;">-</td>
+            </tr>
+            <tr>
+              <td>SPU紹介ページ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>campaign/spu/"><%= rootpath %><%= hikaripath %>campaign/spu/</a></td>
+            </tr>
+            <tr>
+              <td>過去キャンペーンアーカイブ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>campaign/archive/"><%= rootpath %><%= hikaripath %>campaign/archive/</a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="3">申込～工事完了までの流れ</th>
+              <td>申込～工事完了までの流れ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>flow/"><%= rootpath %><%= hikaripath %>flow/</a></td>
+            </tr>
+            <tr>
+              <td>開通工事とは</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>flow/construction/"><%= rootpath %><%= hikaripath %>flow/construction/</a></td>
+            </tr>
+            <tr>
+              <td>引っ越しガイド</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>flow/house-moving/"><%= rootpath %><%= hikaripath %>flow/house-moving/</a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="17">会員向け</th>
+              <td>トップ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/"><%= rootpath %><%= hikaripath %>support/</a></td>
+            </tr>
+            <tr>
+              <td>ルーターの設定（IPv6接続方法）</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/setting/router/"><%= rootpath %><%= hikaripath %>support/setting/router/</a></td>
+            </tr>
+            <tr>
+              <td>メール設定</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/setting/mail/"><%= rootpath %><%= hikaripath %>support/setting/mail/</a></td>
+            </tr>
+            <tr>
+              <td rowspan="4">Windows10</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-01/"><%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-01/</a></td>
+            </tr>
+            <tr>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-02/"><%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-02/</a></td>
+            </tr>
+            <tr>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-03/"><%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-03/</a></td>
+            </tr>
+            <tr>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-04/"><%= rootpath %><%= hikaripath %>support/setting/mail/windows10/step-04/</a></td>
+            </tr>
+            <tr>
+              <td>Office365</td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>Outlook2016</td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>Outlook2013</td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>速度改善コンテンツ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/speed/"><%= rootpath %><%= hikaripath %>support/speed/</a></td>
+            </tr>
+            <tr>
+              <td style="background-color: #ccc;">通信方式判別コンテンツ</td>
+              <td style="background-color: #ccc;"><%= rootpath %><%= hikaripath %>support/speed/type/</td>
+            </tr>
+            <tr>
+              <td>速度情報</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/speed/measurement/"><%= rootpath %><%= hikaripath %>support/speed/measurement/</a></td>
+            </tr>
+            <tr>
+              <td>速度改善tips</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/speed/improvement/"><%= rootpath %><%= hikaripath %>support/speed/improvement/</a></td>
+            </tr>
+            <tr>
+              <td>MSでできること</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/members-station/"><%= rootpath %><%= hikaripath %>support/members-station/</a></td>
+            </tr>
+            <tr>
+              <td>メンテナンス・障害情報 <span style="color:red;">※CMSでは？</span></td>
+              <td><a href="<%= rootpath %><%= hikaripath %>support/maintenance/"><%= rootpath %><%= hikaripath %>support/maintenance/</a></td>
+            </tr>
+            <tr>
+              <td>詳細や年別ページ（これから設計）</td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="7">お問い合わせ</th>
+              <td>お問い合わせ</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>inquiry/"><%= rootpath %><%= hikaripath %>inquiry/</a></td>
+            </tr>
+            <tr>
+              <td>チャット問合せページ（暫定） <span style="color: red;">※既存？</span></td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>チャット問合せページ（OKWAVE) <span style="color: red;">※外部サービス、別ドメインでは？</span></td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>お問い合わせフォーム <span style="color: red;">※開発案件？</span></td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>お問い合わせフォーム送信完了画面 <span style="color: red;">※開発案件？</span></td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>FAQ<span style="color: red;">外部サービス</span></td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <td>FAQ詳細<span style="color: red;">外部サービス</span></td>
+              <td><a href=""></a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="2">お知らせ</th>
+              <td>お知らせ<span style="color:red;">※CMSでは？</span></td>
+              <td><a href="<%= rootpath %><%= hikaripath %>info/"><%= rootpath %><%= hikaripath %>info/</a></td>
+            </tr>
+            <tr>
+              <td>詳細や年別ページ（これから設計）<span style="color:red;">※CMSでは？</span></td>
+              <td><a href="<%= rootpath %><%= hikaripath %>info/xxxx/yyyy/mmdd_nn/"><%= rootpath %><%= hikaripath %>info/xxxx/yyyy/mmdd_nn/</a></td>
+            </tr>
+            <tr>
+              <th scope="row" rowspan="1">ご利用について（WF作成時に子ページ作るか整理）</th>
+              <td>ご利用について（WF作成時に子ページ作るか整理）</td>
+              <td><a href="<%= rootpath %><%= hikaripath %>guide/"><%= rootpath %><%= hikaripath %>guide/</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-hikari-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="g-hikari-Footer_Pagetop">
+    <a href="#top" class="js-scroll" title="トップへ戻る">
+      <span class="c-Icon_Arrow-up-l"></span>
+    </a>
+  </div>
+
+  <footer class="g-Footer">
+    <%- include('/include/hikari/_footer') %>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

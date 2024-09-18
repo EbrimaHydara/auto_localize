@@ -1,0 +1,60 @@
+<%#
+ /*
+  * @param {boolean} [breadcrumbs]
+  * ↓breadcrumbs param
+  * @param {string} pagetitle
+  * @param {string} [customtitle]
+  * @param {Array<object>} [directories]
+  * @param {string} directories[].path
+  * @param {string} directories[].label
+ */
+%>
+<% const isBreadcrumbs = (typeof breadcrumbs === 'undefined') ? true : breadcrumbs %>
+<footer class="turbo-Footer">
+  <%_ if (isBreadcrumbs && pagetitle === '【ショップ限定】Rakuten Turbo（ラクテン ターボ）キャッシュバックキャンペーン') { _%>
+    <div class="l-System_Container">
+      <%- include('/include/internet/turbo/_breadcrumbs', {
+        type: 'footer',
+        pagetitle,
+        customroot: {path: `${rootpath}`, label: 'トップ'},
+        ...((typeof customtitle !== 'undefined') && customtitle),
+        ...((typeof directories !== 'undefined') && directories),
+      }) %>
+    </div>
+
+  <%_ } else if (isBreadcrumbs) { _%>
+    <div class="l-System_Container">
+      <%- include('/include/internet/turbo/_breadcrumbs', {
+        type: 'footer',
+        pagetitle,
+        customroot: {path: `${rootpath}internet/turbo/`, label: 'Rakuten Turbo'},
+        ...((typeof customtitle !== 'undefined') && customtitle),
+        ...((typeof directories !== 'undefined') && directories),
+      }) %>
+    </div>
+  <%_ } _%>
+
+
+  <div class="turbo-Footer_Nav">
+    <ul class="turbo-Footer_Nav-main">
+      <li><a href="https://corp.mobile.rakuten.co.jp/" target="_blank" rel="noopener" data-lid_none=true>会社概要</a><span class="c-Icon_New-window-l"></span></li>
+      <li><a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" target="_blank" rel="noopener" data-lid_none=true>個人情報の取扱いについて</a><span class="c-Icon_New-window-l"></span></li>
+      <li><a href="https://corp.mobile.rakuten.co.jp/guide/security/" target="_blank" rel="noopener" data-lid_none=true>情報セキュリティポリシー</a><span class="c-Icon_New-window-l"></span></li>
+      <li><a href="https://corp.mobile.rakuten.co.jp/guide/trademark/" target="_blank" rel="noopener" data-lid_none=true>商標・登録商標について</a><span class="c-Icon_New-window-l"></span></li>
+      <li><a href="<%= sitepath %>secondhand-dealer/" data-lid_none=true>古物営業法に基づく表示</a></li>
+    </ul>
+    <small class="turbo-Footer_Copyright">&copy; Rakuten Mobile, Inc.</small>
+  </div>
+
+ <!-- Responsive footer banner -->
+ <div id="mkdiv_footer_pitari"></div>
+
+  <div class="turbo-Footer_Rgroup">
+    <ul class="turbo-Footer_Rgroup-link">
+      <li>楽天グループ</li>
+      <li><a href="https://www.rakuten.co.jp/sitemap/" target="_blank" rel="noopener" data-lid_none=true>サービス一覧</a><span class="c-Icon_New-window-l"></span></li>
+      <li><a href="https://www.rakuten.co.jp/sitemap/inquiry.html" target="_blank" rel="noopener" data-lid_none=true>お問い合わせ一覧</a><span class="c-Icon_New-window-l"></span></li>
+      <li><a href="https://corp.rakuten.co.jp/sustainability/" target="_blank" rel="noopener" data-lid_none=true>サステナビリティ</a><span class="c-Icon_New-window-l"></span></li>
+    </ul>
+  </div>
+</footer>

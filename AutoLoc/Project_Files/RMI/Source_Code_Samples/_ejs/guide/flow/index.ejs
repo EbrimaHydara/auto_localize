@@ -1,0 +1,197 @@
+<% const pagetitle = "楽天モバイルのプラン変更方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/application/flow/", label:"お申し込み方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルでのプラン変更の仕方。手数料・違約金の有無や、変更料金、既存ユーザのRakuten最強プランへのアップグレードの方法、他キャリア・MVNO（格安SIM、格安スマホ）からのMNP手順をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "お客様サポート" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/flow/top/guide-flow.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+<div class="l-System">
+<%- include('/include/_header') %>
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+<div class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-32">
+  <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-16">楽天モバイル（ドコモ回線／au回線）からのプラン変更（移行）手順、あるいは、他社からのお乗り換え方法など、今お使いの携帯電話料金プランから、Rakuten最強プランへプラン変更方法をご案内します。</p>
+</div>
+<div class="guide-flow_Base">
+  <div class="c-Theme-Light">
+    <p class="guide-flow_Anchor-title">楽天モバイル（Rakuten最強プラン）への<br>
+      <span>プラン変更の仕方</span></p>
+    <ol class="guide-flow_Anchor-list">
+      <li>
+        <a href="#plan02" class="js-scroll">
+          <div class="guide-flow_Anchor-block">
+            <div class="guide-flow_Anchor-img"><img src="<%= sitepath %>assets/img/guide/flow/top/img-guide-flow-02.png" alt=""></div>
+            <div class="guide-flow_Anchor-detail">
+              <p class="guide-flow_Anchor-text c-Link_Txt-icon-front">以前の楽天モバイル（ドコモ回線 / au回線）からプラン変更</p>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#plan03" class="js-scroll">
+          <div class="guide-flow_Anchor-block">
+            <div class="guide-flow_Anchor-img"><img src="<%= sitepath %>assets/img/guide/flow/top/img-guide-flow-13.png" alt=""></div>
+            <div class="guide-flow_Anchor-detail">
+              <p class="guide-flow_Anchor-text c-Link_Txt-icon-front">ドコモ、au、ソフトバンク（他キャリア）からプラン変更</p>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="#plan04" class="js-scroll">
+          <div class="guide-flow_Anchor-block">
+            <div class="guide-flow_Anchor-img"><img src="<%= sitepath %>assets/img/guide/flow/top/img-guide-flow-14.png" alt=""></div>
+            <div class="guide-flow_Anchor-detail">
+              <p class="guide-flow_Anchor-text c-Link_Txt-icon-front">他社MVNO（他社格安SIM・スマホ）からプラン変更</p>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ol>
+  </div>
+  <section class="u-Adjust_Pt-40">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv4 u-Adjust_Align-center">ギガ変更・容量追加は不要</h2>
+      <h3 class="c-Heading_Lv2 u-Adjust_Align-center u-Adjust_Mt-8">楽天モバイルの料金プランはひとつだけ</h3>
+      <div class="u-Adjust_Mt-32">
+        <%- include('/inc/_saikyo') %>
+      </div>
+    </div>
+  </section>
+  <section class="u-Adjust_Mt-56">
+    <div class="l-System_Container">
+        <h2 id="plan02" class="c-Heading_Lv3 guide-flow_Section-ttl u-Adjust_Mt-48">
+          <span>2014年10月29日～2020年4月8日に楽天モバイルをご契約の方</span><br>
+          以前の楽天モバイル（ドコモ回線 / au回線）からプラン変更
+        </h2>
+        <div class="guide-flow_Standing-border u-Adjust_Mt-16">
+          <h3 class="c-Heading_Lv4 guide-flow_box"><span class="guide-flow_checkIcon"><img src="<%= sitepath %>assets/img/guide/flow/top/icon_check.png" alt=""></span><span>無料で変更できます<br>
+            契約解除料は発生しません</span></h3>
+          <div class="l-Media_Grid">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/flow/top/img-guide-flow-12.png" alt="">
+          </div>
+            <div>
+              <p>2014年10月29日～2020年4月8日にご契約の楽天モバイル（<a href="https://mobile.rakuten.co.jp/fee/super_hodai/?l-id=guide_flow_mvno_super-hodai">スーパーホーダイ</a>、<a href="https://mobile.rakuten.co.jp/fee/alacarte/?l-id=guide_flow_mvno_alacarte">組み合わせプラン</a><span class="c-Txt_Normal-ss">[3.1GBプラン、5GBプランなど]</span>、<a href="https://mobile.rakuten.co.jp/fee/package_plan/?l-id=guide_flow_mvno_package_plan">コミコミプラン</a> ）からの、Rakuten最強プランへのプラン変更（移行）は、メンバーズステーションからご変更いただけます。<br>
+                Webでのお手続きの場合、お客様ご自身でのMNP予約番号の発行（MNP転出手続き）は不要です。（<span class="c-Txt_Emp-02">ショップでのお手続きは転出手続きが必要</span>になりますので、<a href="<%= sitepath %>guide/migration/?l-id=guide_flow_guide_migration#migration-flow">こちらをご確認ください。</a>）MNP転出手数料も発生しません。</p>
+            </div>
+          </div>
+          <div class="guide-flow_Btn-center u-Adjust_Mt-24">
+            <a href="<%= sitepath %>guide/mnp/migration/?l-id=guide_flow_guide_mvno-migration" class="c-Btn_Secondly-large"><span>プラン変更（移行）方法を見る</span></a>
+            <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=guide_flow_mvno_ms&mno_migration=1" class="c-Btn_Primary-large"><span>メンバーズステーションにログイン</span></a>
+          </div>
+          <p class="u-Adjust_Mt-16"><a href="https://mobile.rakuten.co.jp/pc/support/brand_integration/ft/?l-id=guide_flow_mvno_freetel" class="c-Link_Txt-inline">楽天モバイル（旧FREETEL）通話SIMをご利用中のお客様<span class="c-Icon_Chevron-right"></span></a></p>
+          <p><a href="https://mobile.rakuten.co.jp/news/service_20200316/?l-id=guide_flow_mvno_dmm" class="c-Link_Txt-inline">DMMモバイル通話SIMをご利用中のお客様<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+        <h2 id="plan03" class="c-Heading_Lv3 guide-flow_Section-ttl u-Adjust_Mt-56">ドコモ、au、ソフトバンク（他キャリア）からプラン変更</h2>
+        <div class="guide-flow_Standing-border u-Adjust_Mt-16">
+          <h3 class="c-Heading_Lv4 guide-flow_box"><span class="guide-flow_checkIcon"><img src="<%= sitepath %>assets/img/guide/flow/top/icon_exclamation.png?210824" alt=""></span><span>乗り換え（MNP）予約お申し込み、<br>
+            もしくは新規お申し込みが必要です</span></h3>
+          <div class="l-Media_Grid">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/flow/top/img-guide-flow-13.png" alt="">
+            </div>
+            <div>
+              <p>他キャリア（ドコモ / au / ソフトバンク）から楽天モバイルへお乗り換えをする場合、MNP（携帯電話ナンバーポータビリティ）をご利用いただくことで、現在お使いの電話番号がそのままお使いいただけます。</p>
+            </div>
+          </div>
+          <div class="guide-flow_3btn-Wrap u-Adjust_Mt-24">
+            <a href="<%= sitepath %>guide/mnp/?l-id=guide_flow_guide_mnp-docomo#accordion-1" class="c-Btn_Regular guide-flow_3btn"><span>NTT docomoからのMNP方法を見る</span></a>
+            <a href="<%= sitepath %>guide/mnp/?l-id=guide_flow_guide_mnp-au#accordion-2" class="c-Btn_Regular guide-flow_3btn"><span>au / 沖縄セルラーからのMNP方法を見る</span></a>
+            <a href="<%= sitepath %>guide/mnp/?l-id=guide_flow_guide_mnp-softbank#accordion-3" class="c-Btn_Regular guide-flow_3btn"><span>SoftBankからのMNP方法を見る</span></a>
+          </div>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-8">
+            <a href="<%= sitepath %>guide/application/?lid-r=guide_flow_guide_application" class="c-Btn_Primary-large"><span>新規 ／ 乗り換え（MNP）お申し込み</span></a>
+          </div>
+        </div>
+        <h2 id="plan04" class="c-Heading_Lv3 guide-flow_Section-ttl u-Adjust_Mt-56">他社MVNO（他社格安SIM・格安スマホ）からプラン変更</h2>
+        <div class="guide-flow_Standing-border u-Adjust_Mt-16">
+          <h3 class="c-Heading_Lv4 guide-flow_box"><span class="guide-flow_checkIcon"><img src="<%= sitepath %>assets/img/guide/flow/top/icon_exclamation.png?210824" alt=""></span><span>乗り換え（MNP）予約お申し込み、<br>
+            もしくは新規お申し込みが必要です</span></h3>
+          <div class="l-Media_Grid">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/flow/top/img-guide-flow-14.png" alt="">
+            </div>
+            <div>
+              <p>他社MVNO（ワイモバイル / UQモバイルなど）から楽天モバイルへお乗り換えをする場合、MNP（携帯電話ナンバーポータビリティ）をご利用いただくことで、現在お使いの電話番号がそのままお使いいただけます。</p>
+            </div>
+          </div>
+          <div class="guide-flow_3btn-Wrap u-Adjust_Mt-24">
+            <a href="<%= sitepath %>guide/mnp/?l-id=guide_flow_guide_mnp-ymobile#accordion-4" class="c-Btn_Regular guide-flow_3btn"><span>Y!mobileからのMNP方法を見る</span></a>
+            <a href="<%= sitepath %>guide/mnp/?l-id=guide_flow_guide_mnp-uqmobile#accordion-5" class="c-Btn_Regular guide-flow_3btn"><span>UQ mobileからのMNP方法を見る</span></a>
+          </div>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-8">
+            <a href="<%= sitepath %>guide/application/?lid-r=guide_flow_guide_application2" class="c-Btn_Primary-large"><span>新規 ／ 乗り換え（MNP）お申し込み</span></a>
+          </div>
+        </div>
+    </div>
+  </section>
+</div>
+
+
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/related/_related-un-limit-v2.ejs') %>
+  </div>
+  <%- include('/include/guide/_inquiry') %>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/guide/_iphone') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

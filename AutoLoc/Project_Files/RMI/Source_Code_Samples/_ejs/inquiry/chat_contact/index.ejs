@@ -1,0 +1,92 @@
+<% const pagetitle = "チャットでお問い合わせ" -%>
+<% const directories = [{path:"inquiry/", label:"お問い合わせ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    // directories: directories,
+    description: 'お客様のご不明点やお困りごとをチャットで受け付けいたします。お申し込み前の方、お申し込み済み・ご契約中の方の各ボタンからお問い合わせ下さい。',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<% const namespace = "inquiry-chat" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/faq/faq.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inquiry/chat/inquiry-chat.css?20240424">
+<%- include('/include/_append-head', {messaging: true}) %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="<%= namespace %>-Layout_Container-inquiry">
+  <div class="l-System_Container u-Adjust_Mb-16">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">
+      お客様のご不明点やお困りごとをチャットで受け付けいたします。<br>
+      該当する項目のボタンからお問合せください。
+    </p>
+    <h4 class="c-Txt_Normal-m u-Adjust_Mt-16">営業時間 9:00〜23:00</h4>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">
+      ※Rakuten Casaに関するお問い合わせは9:00～18:00までとなります。<br>
+      ※営業時間外にいただいたお問い合わせは、AIアシスタントがご回答いたします。
+    </p>
+    <div class="l-Media_Grid-half u-Adjust_Mt-32">
+      <div class="c-Theme-Borderbox u-Adjust_Align-center">
+        <h2 class="c-Heading_Lv4 u-Adjust_Mb-8">お申し込み前の方</h2>
+        <p class="js-waiting-non_member-message u-Adjust_Mt-16 u-Adjust_Mb-24"></p>
+        <div class="<%= namespace %>-Layout_Btn-large u-Adjust_Mt-0 u-Adjust_Align-center">
+          <div id="js-ndep-chat-btn" class="target-messaging <%= namespace %>-Drilldown_Trigger chat_img">
+            <button class="c-Btn_Regular" onclick="Inq.fireCustomEvent('NDEPembeddedChat')" data-ratId="faq_web_chat" data-ratEvent="click" data-ratParam="all"><span>チャット相談を利用する</span></button>
+          </div>
+          <div id="js-use-chat-consultation" class="u-Adjust_Mt-16 <%= namespace %>-Layout_Btn-use-chat-consultation">
+            <button class="c-Btn_Primary" aria-disabled="true" disabled><span>チャット相談を利用する</span></button>
+          </div>
+          <ul class="u-Adjust_Mt-16 c-Txt_Cap u-Adjust_Align-left">
+            <li>※ボタンを押してもチャット画面が表示されない場合、画面右側に表示されている「チャット相談」をタップしてください。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="c-Theme-Borderbox u-Adjust_Align-center">
+        <h2 class="c-Heading_Lv4 u-Adjust_Mb-8">お申し込み済み・ご契約中の方</h2>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※チャット相談のご利用にはmy 楽天モバイルへのログインが必要です。</p>
+        <p class="js-waiting-member-message u-Adjust_Mt-16 u-Adjust_Mb-24"></p>
+        <div class="<%= namespace %>-Layout_Btn-large u-Adjust_Mt-0 u-Adjust_Align-center">
+          <a href="https://portal.mobile.rakuten.co.jp/technical-operation?action=supportChat"
+            class="c-Btn_Regular"
+            data-ratId="faq_myrakuten_web"
+            data-ratEvent="click"
+            data-ratParam="all"
+          ><span>チャット相談を利用する</span></a>
+          <!-- <div class="target-messaging <%= namespace %>-Drilldown_Trigger chat_img">
+            <button class="c-Btn_Regular" onclick="Inq.fireCustomEvent('NDEPembeddedChat')" data-ratId="faq_web_chat" data-ratEvent="click" data-ratParam="all"><span>チャット相談を利用する</span></button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js', {
+  jquery: '3.6.0'
+}) %>
+<script src="<%= sitepath %>assets/js/inquiry.chat.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<% const pagetitle = "請求先住所の確認・変更方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/contract-detail/confirmation/", label:"契約内容の確認・変更"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '請求先住所の確認・変更方法をご案内します。my 楽天モバイル（アプリ・Web）からかんたんに変更のお手続きが可能です',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-40">請求先住所は楽天モバイルのご利用料金をお支払いされる方の住所です。<br>
+    請求先住所の確認・変更は、「my 楽天モバイル」でお手続きいただけます。</p>
+
+    <p class="u-Adjust_Mt-16">請求にかかわる重要書類をお届けできるよう、転居された際はすみやかに請求先住所の変更手続きをお願いいたします。また、変更前のご住所宛でもお届けできるように、郵便局の転居・転送サービスのご利用をお願いいたします。</p>
+
+    <div class="c-Heading_Lv3 u-Adjust_Mt-40">コンビニ払込票（ハガキ）の送付先について</div>
+    <p class="u-Adjust_Mt-16">料金のお支払いが確認できない場合、毎月中旬頃、ご登録いただいている請求先住所へコンビニ払込票（ハガキ）を発送いたします。<br>
+    毎月7日までに住所変更の手続きをしていただくと、当月分のコンビニ払込票（ハガキ）を新しいご住所へお届けいたします。<br>
+    <br>
+    契約住所の変更は「<a href="<%= sitepath %>guide/change-address/">契約住所の確認・変更方法</a>」をご覧ください。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-40">お手続き方法</h2>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-40">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webで確認・変更する</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリで確認・変更する</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. my 楽天モバイル「契約者情報」画面を開く
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※「契約者情報へ進む」をタップしてログインすると、手順２の画面が表示されます。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my
+                楽天モバイル]ログインできません</a>」をご確認ください。</p>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a href="https://portal.mobile.rakuten.co.jp/dashboard?scrollTo=contactInfo#personal-info" target="_blank"
+                class="c-Btn_Secondly-large" data-ratId="guide_ecare_personal-info_contactInfo" data-ratEvent="click"
+                data-ratParam="all">契約者情報へ進む</a>
+            </p>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2.「住所」欄に表示される登録中の請求先住所を確認する
+            </h4>
+            <div>
+              <p class="u-Adjust_Mt-16">請求先住所を変更する場合は、「変更」をタップしてください。</p>
+            </div>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                  src="<%= sitepath %>assets/img/guide/change-billing-address/img-10.png" width="300" height="" alt=""
+                  class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3.「住所」部分の「請求先住所として使う」のスライダーをオフにする。請求先住所を入力し、「変更する」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                  src="<%= sitepath %>assets/img/guide/change-billing-address/img-12.png" width="300" height="" alt=""
+                  class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4. 表示された変更内容を確認し、「変更する」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/change-billing-address/img-14.png" width="300" height="250" alt="表示された変更内容を確認し、「変更する」をタップする" class="c-Img_Capture">
+              </figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              5. ワンタイムパスワードを入力し、「認証する」をタップする
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+            </p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+            </p>
+            <div class="l-Media_Image">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/guide/change-address/img-14-240521.png" width="300" height="535" alt="ワンタイムパスワードを入力し、「認証する」をタップする" class="c-Img_Capture" loading="lazy">
+              </figure>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. my 楽天モバイルを起動する
+            </h4>
+            <div class="u-Adjust_Mt-24">
+              <div class="c-Box_App">
+                <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+                <div class="c-Box_App-txt">
+                  <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                  <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                  <ul class="c-Box_App-link u-Adjust_Mt-16">
+                    <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img
+                          src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a></li>
+                    <li><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img
+                          src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></li>
+                    <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2. 画面右上のメニュー（三本線）をタップし、「契約者情報」をタップする
+            </h4>
+            <div>
+              <div class="l-Media_Image">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/change-billing-address/img-01.png" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+              <div class="l-Media_Image">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/change-billing-address/img-02.png" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3.「住所」欄に表示される登録中の請求先住所を確認する
+            </h4>
+            <div>
+              <p class="u-Adjust_Mt-16">請求先住所を変更する場合は、「変更」をタップしてください。</p>
+            </div>
+            <div>
+              <div class="l-Media_Image">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/change-billing-address/img-03.png" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4.「住所」部分の「請求先住所として使う」のスライダーをオフにする。請求先住所を入力し、「変更する」をタップする
+            </h4>
+            <div>
+              <div class="l-Media_Image">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/change-billing-address/img-05.png" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              5. 表示された変更内容を確認し、「変更する」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/change-billing-address/img-14.png" width="300" height="250" alt="表示された変更内容を確認し、「変更する」をタップする" class="c-Img_Capture">
+              </figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              6. ワンタイムパスワードを入力し、「認証する」をタップする
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+            </p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+            </p>
+            <div class="l-Media_Image">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/guide/change-address/img-14-240521.png" width="300" height="535" alt="ワンタイムパスワードを入力し、「認証する」をタップする" class="c-Img_Capture" loading="lazy">
+              </figure>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="u-Adjust_Mt-32">以上で完了です。</p>
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<% const pagetitle = "冬のスマートフォン取り扱いについて" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/product/setting/", label:"設定・操作・故障"}, {path:"guide/product-safety/", label:"スマートフォン・周辺機器などの使用に関するご注意"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '冬にスマートフォンを安全にご使用いただくために、室内や屋外での注意点をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const namespace = "product-safety-winter" -%>
+<% const layout = `${namespace}-Layout` -%>
+<% const imgPath = `${sitepath}assets/img/guide/product-safety/winter/` -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/product-safety/winter/<%= namespace %>.css?20240424">
+<%- include('/include/guide/product-safety/_warranty-service-css') %>
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <%- include('/include/_breadcrumbs', {
+      type: 'head',
+      pagetitle,
+      directories,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="<%= namespace %>-Hero">
+        <div>
+          <h1 class="c-Heading_Lv1">冬のスマートフォンの扱いについて</h1>
+          <p class="u-Adjust_Mt-24 u-Adjust_Mt-pc-16">
+            冬にスマートフォンを安全にご使用いただくために、室内や屋外での注意点をご案内します。
+          </p>
+        </div>
+        <div class="<%= namespace %>-Hero_Img">
+          <img src="<%= imgPath %>hero.png" alt="" width="348" height="196">
+        </div>
+      </section>
+
+      <section class="u-Adjust_Mt-48 u-Adjust_Mt-pc-56 u-Adjust_Pb-48 u-Adjust_Pb-pc-72">
+        <h2 class="c-Heading_Lv2">暖房器具での高温に注意！</h2>
+        <p class="u-Adjust_Mt-16">
+          スマホに使用されているリチウムイオン電池は熱に弱く、ストーブ・ファンヒーター・こたつなどの暖房器具付近では、スマホも高温になってしまいます。<br>高温になる場所での長時間の使用や充電、放置しないようにご注意ください。
+        </p>
+        <div class="u-Adjust_Mt-24 u-Adjust_Mt-pc-32 <%= layout %>_Pc3col">
+          <div>
+            <p class="c-Txt_Emp-01">電気カーペット上に30分間放置した場合の<br>温度変化</p>
+            <img src="<%= imgPath %>img-01.png" alt="" width="328" height="173">
+          </div>
+          <div>
+            <p class="c-Txt_Emp-01">こたつ内に30分間放置した場合の<br>温度変化</p>
+            <img src="<%= imgPath %>img-02.png" alt="" width="328" height="173">
+          </div>
+          <div>
+            <p class="c-Txt_Emp-01">電気ストーブ前に30分間放置した場合の<br>温度変化</p>
+            <img src="<%= imgPath %>img-03.png" alt="" width="328" height="173">
+          </div>
+        </div>
+        <div class="c-Accordion u-Adjust_Mt-16">
+          <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>なぜ電池が高温になるとよくないのか？</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+            <p>リチウムイオン電池は高温状態になると、電池内の電解液の分解など不可逆な化学反応が進みやすくなり、結果として電池の劣化につながります。</p>
+          </div>
+        </div>
+
+        <div class="u-Adjust_Mt-48">
+          <h3 class="c-Heading_Lv3">スマホが熱くなった時の対処法！</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+            <div class="l-Media_Image">
+              <img src="<%= imgPath %>img-04.png" alt="" width="328" height="243" loading="lazy">
+            </div>
+            <div>
+              <p>スマホが熱くなってしまった際は、以下のような対処法で熱を放出させましょう。</p>
+              <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                <li>充電を中止する</li>
+                <li>スマホカバーを外す</li>
+                <li>電源を切る</li>
+              </ul>
+              <dl class="u-Adjust_Mt-16">
+                <dt>スマホが熱くなってしまった時の対処法について、以下の記事もあわせてご確認ください。</dt>
+                <dd class="u-Adjust_Mt-16"><a href="https://network.mobile.rakuten.co.jp/sumakatsu/contents/articles/2022/00048/" class="c-Link_Txt-inline" target="_blank">スマホが熱いときはどうすれば良い？発熱する原因と対処法<span class="c-Icon_New-window-l"></span></a></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="<%= layout %>_Divider u-Adjust_Pt-48 u-Adjust_Pt-pc-72 u-Adjust_Pb-48 u-Adjust_Pb-pc-72">
+        <h2 class="c-Heading_Lv2">寒い屋外でも注意！</h2>
+        <p class="u-Adjust_Mt-16">寒い屋外での利用や、スキー、スノーボードなどのレジャーでも注意しないといけないことがあります。</p>
+        <div class="u-Adjust_Mt-24">
+          <h3 class="c-Heading_Lv3">いつもより早い充電切れに注意！</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+            <div class="l-Media_Image">
+              <img src="<%= imgPath %>img-05.png" alt="" width="328" height="223" loading="lazy">
+            </div>
+            <div>
+              <p>スマホに使用されているリチウムイオン電池は、低温環境になると一時的に特性が劣化するため、スマホを利用できる時間が短くなる場合があります。</p>
+            </div>
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-40 u-Adjust_Mt-pc-48">
+          <h3 class="c-Heading_Lv3">寒い場所での充電に注意！</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+            <div class="l-Media_Image">
+              <img src="<%= imgPath %>img-06.png" alt="" width="328" height="223" loading="lazy">
+            </div>
+            <div>
+              <p>
+                リチウムイオン電池は、寒い環境下での充電時には、電池内部でリチウム金属が析出しやすくなります。<br>
+                析出したリチウム金属が「セパレータ」と呼ばれる壁を突き破ってしまうと、内部短絡<br>（ショート）を引き起こし、発煙や発火の事故に繋がる危険があります。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="c-Accordion u-Adjust_Mt-16 u-Adjust_Mt-pc-48">
+          <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>リチウム金属析出のメカニズム</button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display: none;">
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <img src="<%= imgPath %>img-07.png" alt="" width="328" height="223" loading="lazy">
+              </div>
+              <div>
+                <p>
+                  リチウムイオン電池は、充放電時にリチウムイオンが電解質を介して正極、負極を移動します。<br>
+                  寒い環境下での充電時には、リチウムイオンが吸収されにくく、電極表面にリチウム金属が析出しやすくなります。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="u-Adjust_Mt-24">
+          このようなリスクを回避するために、機種によっては充電速度を制限したり、充電を停止する保護機能が搭載されています。<br>
+          寒い場所での充電は避け、寒い場所に移動する前に充電をすることをおすすめします。
+        </p>
+      </section>
+
+      <section class="u-Adjust_Pt-48 u-Adjust_Pt-pc-72 <%= layout %>_Divider">
+        <h2 class="c-Heading_Lv2">スマホを安全に使うために</h2>
+        <p class="u-Adjust_Mt-16 u-Adjust_Mt-pc-24">大切なスマホを長くご使用いただくには、暖房器具の近くや寒い屋外以外でも、以下のようなことに気を付けましょう。</p>
+        <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+          <h3 class="c-Heading_Lv3">手袋を着用しながらの使用は避ける</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+            <div class="l-Media_Image">
+              <img src="<%= imgPath %>img-08.png" alt="" width="328" height="206" loading="lazy">
+            </div>
+            <div>
+              <p>
+                手袋を着用することでスマホが滑り落ちやすくなり、落下の危険が高まります。<br>
+                使用時はスマホをしっかりと持つようにご注意ください。
+              </p>
+            </div>
+          </div>
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-48 u-Adjust_Mt-pc-72">お風呂などの高温・高湿になる場所での使用は避ける</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+            <div class="l-Media_Image">
+              <img src="<%= imgPath %>img-09.png" alt="" width="328" height="206" loading="lazy">
+            </div>
+            <div>
+              <p>スマホに防水機能が搭載されていても、温水や熱湯がかかってしまった時の動作は保証外になりますので、お風呂などでは使用しないでください。</p>
+              <p class="u-Adjust_Mt-24">
+                なお、防水機能は製品により保証範囲が異なります。<br>
+                お使いの製品における使用上の注意事項をご確認ください。
+              </p>
+              <p class="u-Adjust_Mt-24">
+                製品が濡れている状態で充電すると、発熱や発煙を引き起こしてしまう可能性があります。<br>
+                製品が濡れている状態では、絶対に充電しないでください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="u-Bg_Monotone97 u-Adjust_Mt-48 u-Adjust_Mt-pc-72 u-Adjust_Py-48">
+      <div class="l-System_Container">
+        <section>
+          <h2 class="c-Heading_Lv2">楽天モバイルの安全啓発活動</h2>
+          <p class="u-Adjust_Mt-24">
+            楽天モバイルはNTTドコモ、KDDI、ソフトバンクと連携し、スマホを安全にご利用いただくための情報をご案内しています。<br>
+            他事業者のご案内もご覧ください。
+          </p>
+          <ul class="u-Adjust_Mt-16">
+            <li><a href="https://apprev.smt.docomo.ne.jp/article/5637829/?utm_source=tw&utm_medium=social&utm_campaign=dapp_202312_4carrier-rm" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">NTTドコモ<span class="c-Icon_New-window-l"></span></a></li>
+            <li class="u-Adjust_Mt-8"><a href="https://www.au.com/mobile/gimon/lp/ts202303/" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">KDDI<span class="c-Icon_New-window-l"></span></a></li>
+            <li class="u-Adjust_Mt-8"><a href="https://www.softbank.jp/sbnews/entry/20190130_01" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">ソフトバンク<span class="c-Icon_New-window-l"></span></a></li>
+          </ul>
+          <p class="u-Adjust_Mt-32">
+            業界団体である<a href="https://www.mcpc-jp.org/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">モバイルコンピューティング推進コンソーシアム（MCPC）<span class="c-Icon_New-window-l"></span></a>を通じて、他の携帯電話会社や製品メーカー、アクセサリメーカーとともに安全啓発活動を実施しています。
+          </p>
+          <div class="u-Adjust_Mt-16">
+            <a href="https://www.mcpc-jp.org/safe/#tab02" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">MCPC『気をつけて！スマートフォンの使い方』のページはこちら<span class="c-Icon_New-window-l"></span></a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <%- include('/include/guide/product-safety/_warranty-service', { lid: 'guide_product-safety-winter' }) %>
+    <%- include('/include/guide/_inquiry') %>
+    <%- include('/include/guide/_review') %>
+
+    <footer class="g-Footer">
+      <div class="l-System_Container">
+        <%- include('/include/_breadcrumbs', {
+          type: 'foot',
+          pagetitle,
+          directories,
+        }) %>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+  <script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+</body>
+</html>

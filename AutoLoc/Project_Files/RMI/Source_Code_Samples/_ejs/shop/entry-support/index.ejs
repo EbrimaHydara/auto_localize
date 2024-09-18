@@ -1,0 +1,84 @@
+<% const pagetitle = "楽天モバイルショップ お申し込み" -%>
+<% const directories = [{path:"shop/", label:"ショップ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '',
+    keywords: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ショップ" -%>
+<% const nameSpace = "shop" -%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/shop/_category-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<%- include('/include/_breadcrumbs', {
+  type: 'head',
+  pagetitle,
+  directories,
+}) %>
+
+<div class="l-System_Container">
+  <h1 class="c-Heading_Lv1 u-Adjust_Mt-24"><%= pagetitle %></h1>
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-24" id="shopName"></h2>
+</div>
+
+<div class="shop-Entry_Area">
+	<div class="shop-Btn_Primary u-Adjust_Pt-24 u-Adjust_Pb-24">
+		<a href="" class="c-Btn_Primary c-Txt_Normal-m" id="entryBtn">エントリーする</a>
+	</div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="l-System_Container">
+    <%- include('/include/_breadcrumbs', {
+      type: 'foot',
+      pagetitle,
+      directories,
+    }) %>
+</div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+
+</div>
+<%- include('/include/_common-js') %>
+<script>
+  (function($){
+    const shoplist = {
+      '7641': ['せいでん さんちか店', '200821'],
+      '7661': ['ヤマダ電機　ＬＡＢＩ新宿西口館', '200821'],
+      '7651': ['ＬＡＢＩ仙台', '200821'],
+      '7671': ['家電住まいる館YAMADA港北センター店', '200821'],
+      '7691': ['家電住まいる館YAMADA横浜泉店', '200821'],
+      '7681': ['家電住まいる館YAMADA幕張店', '200821'],
+      '7731': ['マツヤデンキ香芝店', '201210']
+    };
+    const shopid = Number(location.search.split('=')[1]);
+
+    if (shoplist[shopid]) {
+      $('#shopName').html(shoplist[shopid][0]);
+      $('#entryBtn').attr('href', 'https://oubo.rakuten.co.jp/apply/rmobile/yamada/' + shoplist[shopid][1] + '?ekey=' + shopid + '-newopen');
+    }
+    else {
+      $('#entryBtn').hide();
+    }
+  })(jQuery);
+</script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

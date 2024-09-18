@@ -1,0 +1,110 @@
+
+<%_
+const pagearea = jData.directory2 ? jData.city : jData.pref;
+const imgPath = "/assets/img/area/city/"
+const namespace = "area-city"
+
+const starInfo = { icon: ["icon-1", "icon-2", "icon-3", "icon-4", "icon-5", "icon-6", "icon-7" ] }
+
+const kochi = jData.directory2 === "39201";
+const soka = jData.directory2 === "11221";
+const okayama = jData.directory2 === "33101";
+
+const {icon} = starInfo;
+const iconLabel = [
+  '一貫した品質のリーダー',
+  'カバレッジ',
+  '利用率',
+  'ダウンロード速度',
+  'アップロード速度',
+  'ゲーム用ネットワーク',
+  'ビデオ・ストリーミング',
+];
+
+const iconText = [
+  'Opensignalにより、<span class="c-Txt_Emp-01">一貫した品質のリーダー</span>として認められています',
+  '<span class="c-Txt_Emp-01">カバレッジ</span>で5つ星を獲得',
+  '<span class="c-Txt_Emp-01">利用率</span>で最高評価のネットワークの一つ',
+  '<span class="c-Txt_Emp-01">ダウンロード速度体感</span>で最高評価のネットワークで、より素早く閲覧',
+  '<span class="c-Txt_Emp-01">アップロード速度</span>で最高評価のネットワークで、より素早く共有',
+  '最高評価の<span class="c-Txt_Emp-01">ゲーム用ネットワーク</span>でより良いプレイ体感を',
+  '最高評価のネットワークの一つで、より質の高い<span class="c-Txt_Emp-01">ビデオ・ストリーミング</span>を体感しましょう',
+];
+
+let itemCnt;
+let i;
+
+if (kochi) {
+  itemCnt = 3;
+} else if (okayama) {
+  itemCnt = 5;
+} else if (soka) {
+  itemCnt = 6;
+} else {
+  itemCnt = 0;
+}
+_%>
+<div>
+  <div class="<%= namespace %>-Opensigner_Title">
+    <p class="<%= namespace %>-Layout_Bg-primary <%= namespace %>-Map_Label"><%= pagearea %>では</p>
+  </div>
+  <picture>
+    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>map/opensigner/opensigner-rank-sp.png" width="100%">
+    <img src="<%= imgPath %>map/opensigner/opensigner-rank-pc.png" width="456" height="116" alt="<%= pagearea %> ネットワーク体感品質で最高評価５つ星獲得">
+  </picture>
+  <div class="<%= namespace %>-Opensigner_Badge">
+    <% if (starInfo && Array.isArray(starInfo.icon)) { %>
+    <p class="<%= namespace %>-Opensigner_Count">※7項目中<%= itemCnt %>項目</p>
+    <% const badgeList = kochi ? [1, 3, 5] : (okayama ? [1, 3, 5, 6, 7] : []); %>
+    <% if (badgeList.length > 0) { %>
+      <ul class="<%= namespace %>-Opensigner_Badge-list">
+        <% badgeList.forEach((i) => { %>
+          <li class="<%= okayama && i > 4 ? namespace + '-Opensigner_Badge-sub' : '' %>">
+            <img src="<%= imgPath %>map/opensigner/opensigner-badge-<%= i %>.png" width="60" height="60" alt="<%= iconLabel[i - 1] %>" >
+          </li>
+        <% }) %>
+      </ul>
+      <% } else if (soka) { %>
+        <div class="<%= namespace %>-Layout_Pc-show">
+          <ul class="<%= namespace %>-Opensigner_Badge-sokalist">
+            <% [1, 2, 3, 5, 6, 7].forEach((i) => { %>
+              <li>
+                <img src="<%= imgPath %>map/opensigner/opensigner-badge-<%= i %>.png" width="60" height="60" alt="<%= iconLabel[i - 1] %>">
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+        <div class="<%= namespace %>-Layout_Sp-show">
+          <ul class="<%= namespace %>-Opensigner_Badge-sokalist">
+            <% [1, 2, 3, 5].forEach((i) => { %>
+              <li>
+                <img src="<%= imgPath %>map/opensigner/opensigner-badge-<%= i %>.png" width="60" height="60" alt="<%= iconLabel[i - 1] %>">
+              </li>
+            <% }) %>
+          </ul>
+          <ul class="<%= namespace %>-Opensigner_Badge-last">
+          <% [6, 7].forEach((j) => { %>
+            <li>
+              <img src="<%= imgPath %>map/opensigner/opensigner-badge-<%= j %>.png" width="60" height="60" alt="<%= iconLabel[i - 1] %>">
+            </li>
+          <% }) %>
+          </ul>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+      <ul class="<%= namespace %>-Opensigner_Info">
+        <% if (kochi || okayama || soka) { %>
+          <% var itemCount = kochi ? [1, 3, 5] : (okayama ? [1, 3, 5, 6, 7] : [1, 2, 3, 5, 6, 7]); %>
+          <% itemCount.forEach((i) => { %>
+            <li>
+              <img src="<%= imgPath %>map/opensigner/opensigner-icon-<%= i %>.png" width="36" height="36" alt="<%= iconLabel[i - 1]%>">
+              <span class="<%= namespace %>-Opensigner_Info-txt"><%- iconText[i - 1] %></span>
+            </li>
+          <% }) %>
+        <% } %>
+      </ul>
+    </div>
+  <% } %>
+</div>

@@ -1,0 +1,204 @@
+<% const {theme, price, tradeinProductName, capacity, maxTradeinPrice, lid, carrier} = priceDetailConfig -%>
+<% const carrierName = carrier ? carrier : '楽天モバイル' -%>
+<div class="<%= namespace %>-Simulation_Result-wrapper">
+  <div id="js-simulation-result-box" class="c-Theme-White <%= namespace %>-Simulation_Result-infobox" aria-hidden="true">
+    <div class="u-Adjust_Align-center">
+      <p class="<%= namespace %>-Simulation_Result-discount-txt" aria-hidden="true">＼<span id="js-disp-discount-txt"></span>／</p>
+      <p>
+        <span class="c-Txt_Emp-02">特価キャンペーン実施中！<span style="font-size: 12px;">※9 </span></span><span>製品価格はすべてキャンペーン特価です。</span><br class="product-detail-Utility_Show-sp"><a href="<%= sitepath %>product/iphone/fee/?l-id=iphone_<%= lid %>_price_iphone_fee" class="c-Link_Txt-inline u-Adjust_Ml-8">詳細を見る<span class="c-Icon_Chevron-right"></span></a>
+      </p>
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-16">製品価格</h4>
+
+      <div id="js-disp-payment-realprice-info" class="u-Adjust_Mt-8">
+        <p class="<%= namespace %>-Simulation_Result-s-txt-2 u-Adjust_Align-left">「実質価格」とは、キャンペーン条件達成により後日付与されるポイントを加味した価格であり、実際の支払い金額とは異なります。<a href="#caution-5" class="js-scroll">詳細はこちら</a></p>
+      </div>
+
+      <div class="<%= namespace %>-Simulation_Result-payment">
+        <p id="js-disp-payment"></p>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Simulation_Result-PriceArea">
+
+      <!-- 左エリア -->
+      <div id="js-disp-Result-installments-left" class="<%= namespace %>-Simulation_Result-installments">
+        <div class="<%= namespace %>-Simulation_Result-installments-left">
+          <div>
+            <div id="js-disp-payment-inst" class="c-Txt_Emp-01 c-Txt_Normal-s"></div><!-- AAA -->
+          </div>
+          <div>
+            <span aria-hidden="true"><span id="js-disp-discount-1" class="c-Txt_Normal-m c-Txt_Emp-01 <%= namespace %>-Simulation_Result-line"></span><span>円<span id="js-disp-discount-1-note"></span></span>→</span>
+            <span id="js-disp-payment-number" class="<%= namespace %>-Simulation_Result-installments-number"></span><span>円/月</span>
+          </div>
+
+        </div>
+        <p id="js-disp-payment-initial" class="u-Adjust_Align-right c-Txt_Cap u-Adjust_Mt-8"></p>
+
+        <div id="js-disp-card-info-1" class="">
+          <p class="c-Txt_Normal-s c-Txt_Emp-02 u-Adjust_Mt-8">ご購入は楽天カードがオススメ！<br class="<%= namespace %>-Utility_Disp-sp">楽天カードなら分割手数料0円！</p>
+        </div>
+
+      </div>
+      <!-- //左エリア -->
+
+      <!-- 右エリア -->
+      <div class="<%= namespace %>-Simulation_Result-installments-sum" aria-hidden="false">
+        <div class="<%= namespace %>-Simulation_Result-installments-right">
+          <div>
+            <div id="js-disp-total"></div><!-- AAA -->
+          </div>
+          <div>
+            <span aria-hidden="true"><span id="js-disp-discount-2" class="c-Txt_Normal-m c-Txt_Emp-01 <%= namespace %>-Simulation_Result-line"></span>円<span id="js-disp-discount-2-note"></span>→</span>
+            <span id="js-disp-payment-total" class="<%= namespace %>-Simulation_Result-installments-number"></span><span>円</span>
+          </div>
+        </div>
+        <div id="js-disp-card-info-24" class="<%= namespace %>-Simulation_Result-card-info-24">
+          <p class="c-Txt_Normal-s c-Txt_Emp-02">楽天カードなら<br class="<%= namespace %>-Utility_Disp-sp">分割手数料0円！</p>
+        </div>
+
+        <span id="js-disp-payment-total-note" class="c-Txt_Cap"></span>
+        <p id="js-disp-payment-initial-note" class="c-Txt_Cap u-Adjust_Align-right u-Adjust_Mt-8"></p>
+      </div>
+      <!-- //右エリア -->
+    </div>
+
+
+    <div class="<%= namespace %>-Simulation_Result-installments-option" aria-hidden="false">
+      <p>+ オプション料金<span><span id="js-disp-option"></span>円/月</span></p>
+    </div>
+
+
+    <div id="js-disp-upgrade-area" class="<%= namespace %>-Simulation_Upgrade u-Adjust_Mt-16">
+      <div class="c-Theme-Light">
+        <div id="js-simulation-title" class="<%= namespace %>-Simulation_Upgrade-title">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/product/iphone/common/more.png" width="56" height="56">
+            <img src="<%= sitepath %>assets/img/product/iphone/common/more.png" alt="さらに" width="72" height="72" aria-hidden="true">
+          </picture>
+          <p><span class="c-Txt_Emp-01">25カ月目に機種変更した場合</span><span class="c-Txt_Cap">※1</span></p>
+        </div>
+        <div id="js-simulation-upgrade-note" class="u-Adjust_Align-center">
+          <p class="<%= namespace %>-Simulation_Upgrade-note">残りの24回分の支払いが不要に!</p>
+        </div>
+        <div class="<%= namespace %>-Simulation_Upgrade-price-rwap">
+          <div class="<%= namespace %>-Simulation_Upgrade-price-left">
+            <div><span class="u-Adjust_Mr-8 c-Txt_Emp-01 c-Txt_Normal-s">支払い総額</span><br class="<%= namespace %>-Utility_Disp-sp"><span id="js-disp-upgrade-progrum-total" class="<%= namespace %>-Simulation_Upgrade-price-left-num"></span>円</div>
+          </div>
+          <div class="<%= namespace %>-Simulation_Upgrade-price-right">
+            <p class="c-Txt_Emp-02">
+              <span id="js-disp-upgrade-progrum-price-devicetext" class="<%= namespace %>-Simulation_Upgrade-price-devicetext"></span>
+              <span id="js-disp-upgrade-progrum-price" class="<%= namespace %>-Simulation_Upgrade-price-num"></span><span class="<%= namespace %>-Simulation_Upgrade-price-yen">円</span>
+            </p>
+            <p class="c-Txt_Normal-s c-Txt_Emp-01" style="line-height: 1; margin-top: -2px;">(月々<span id="js-disp-upgrade-progrum-inst" class=""></span>円×24回)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="js-disp-point-info-upgrade" aria-hidden="true">
+      <div class="<%= namespace %>-Simulation_Result-point">
+        <div class="<%= namespace %>-Simulation_Result-point-img">
+          <img src="<%= sitepath %>assets/img/product/iphone/common/more.png" alt="さらに" width="74" height="74">
+        </div>
+        <p class="<%= namespace %>-Simulation_Result-point-txt">
+          <span class="<%= namespace %>-Simulation_Result-point-txt-img">
+            <img src="<%= sitepath %>assets/img/product/iphone/common/more.png" alt="さらに" width="56" height="56">
+            <span class="c-Txt_Emp-01">初めてプラン申し込み&<br class="<%= namespace %>-Utility_Disp-sp">対象機種を下取りで</span>
+          </span>
+          <span class="<%= namespace %>-Simulation_Result-point-txt-emp">最大<span id="js-disp-pointback-48" class="<%= namespace %>-Simulation_Result-point-txt-point"></span>ポイント還元</span>
+          <span class="c-Txt_Cap <%= namespace %>-Simulation_Result-point-txt-cap">※6,7,8,10</span>
+        </p>
+        <div class="<%= namespace %>-Simulation_Result-point-exp u-Adjust_Mt-8">
+          <a class="c-Link_Txt-inline <%= namespace %>-Simulation_Result-point-link" href="<%= sitepath %>campaign/iphone-point/?l-id=iphone_<%= currentDir %>_simulation-48_campaign_iphone-point">詳細を見る<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="js-disp-point-info-upgrade-24-1" aria-hidden="true">
+      <div class="<%= namespace %>-Simulation_Result-point-noplus">
+        <div class="<%= namespace %>-Simulation_Result-point-img">
+          <img src="<%= sitepath %>assets/img/product/iphone/common/more.png" alt="さらに" width="74" height="74">
+        </div>
+        <p class="<%= namespace %>-Simulation_Result-point-txt">
+          <span class="<%= namespace %>-Simulation_Result-point-txt-img">
+            <img src="<%= sitepath %>assets/img/product/iphone/common/more.png" alt="さらに" width="56" height="56">
+            <span class="c-Txt_Emp-01">初めてプラン申し込み&<br class="<%= namespace %>-Utility_Disp-sp">対象機種を下取りで<br>最大<span id="js-disp-pointback-24-1"></span>ポイント還元<span class="c-Txt_Cap" style="font-weight: 400;">※6,7,10</span></span>
+          </span>
+          <span class="<%= namespace %>-Simulation_Result-point-txt-emp">実質<span id="js-disp-realprice-24-1" class="<%= namespace %>-Simulation_Result-point-txt-point"></span>円</span>
+        </p>
+        <div class="<%= namespace %>-Simulation_Result-point-exp u-Adjust_Mt-8">
+          <a id="js-point-info-upgrade-link" class="c-Link_Txt-inline <%= namespace %>-Simulation_Result-point-link" href="<%= sitepath %>campaign/iphone-point/?l-id=iphone_<%= currentDir %>_simulation-24_campaign_iphone-point">詳細を見る<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </div>
+    </div>
+    <p id="js-simulation-result-box-bottom-note" class="c-Txt_Cap u-Adjust_Mt-16" aria-hidden="true">*楽天モバイルでの「iPhone対象機種特価キャンペーン」適用時の販売価格（販売期間：2022年7月22日～2022年10月25日）</p>
+  </div>
+  <div id="js-simulation-result-box-bottom-banner" class="u-Adjust_Mt-32" aria-hidden="true"></div>
+  <!--  -->
+  <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+    <%# スクロール計測 %>
+    <div class="u-Rat_Appear-height" data-ratid="<%= currentDir %>_scroll-02_order" data-ratevent="appear">&nbsp;</div>
+
+    <a id="js-simulation-result-btn" class="c-Btn_Primary-large js-cta" href="<%- urlFeeSimulation %>" aria-disabled="true" data-ratid="<%= currentDir %>_simulation_bss-<%= currentDir %>" data-ratevent="click" data-ratparam="all"><%- ctalabel %></a>
+
+    <div class="u-Adjust_Mt-8">
+      <p class="c-Txt_Cap u-Adjust_Align-center">※カラーや容量、お支払い方法は購入画面で<span class="<%= namespace %>-Utility_Inline-block">選択してください。</span></p>
+
+      <div class="<%= namespace %>-Layout_Attention">
+        <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>-tel-Txt_Icon-front">
+          <span class="<%= namespace %>-tel-Txt_Icon-front-icon"></span>
+          <a href="<%= sitepath %>guide/application-support/?l-id=product_iphone_<%= currentDir %>_guide_application-support" class="c-Link_Txt-inline c-Txt_Normal">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+        <div class="u-Adjust_Mt-24 <%= namespace %>-Utility_Mw-680 c-Theme-White">
+          <p class="c-Txt_Emp-01" style="font-size: 18px;">【ご購入前にご確認ください】</p>
+          <ul class="c-List_Text-disc-emp c-Txt_Normal u-Adjust_Align-left u-Adjust_Mt-8">
+            <li>
+              お申し込み時に選択いただく<span class="c-Txt_Emp-02">希望日時にはお届けできません。</span>あらかじめご了承ください。
+              <br>
+              <a href="<%= sitepath %>guide/mnp/out-of-stock/?l-id=product_<%= currentDir %>_guide_mnp_out-of-stock" class="c-Link_Txt-inline c-Txt_Weight-normal">他社からの乗り換え（MNP）の注意事項を見る<span class="c-Icon_Chevron-right"></span></a><br>
+              <a href="<%= sitepath %>faq/detail/00001971/?l-id=product_<%= currentDir %>_faq_detail_00001971" class="c-Link_Txt-inline c-Txt_Weight-normal">お申し込み製品のキャンセルについてを見る<span class="c-Icon_Chevron-right"></span></a>
+            </li>
+          </ul>
+          <ul class="c-List_Text-disc c-Txt_Normal u-Adjust_Align-left">
+            <li class="u-Adjust_Mt-8">
+              iPhone本体は、<span
+                class="c-Txt_Emp-02">対象機種ごとにおひとり様あたりの購入可能台数に制限</span>があります。購入可能台数は、楽天モバイル公式サイト・楽天モバイル公式楽天市場店・楽天モバイルショップすべてでの購入台数を指します。購入手続き後、当社で審査を実施し、審査の完了をもって購入契約成立となります。ただし、当社所定の条件に該当する場合、注文キャンセルとなる可能性がございます。キャンセルの際は、登録メールアドレス宛にご連絡します。<br>
+              対象機種①（おひとり様1点限り購入可能）：iPhone 14 Pro Max, iPhone 14 Pro<br>
+              対象機種②（おひとり様2点まで購入可能）：iPhone 14 Plus, iPhone 14, iPhone 13 Pro Max, iPhone 13 Pro, iPhone 13, iPhone 13 mini, iPhone
+              SE（第3世代）, iPhone 12<br>
+              <span class="c-Txt_Cap">
+                ※対象製品①を1点、対象製品②を2点、合計3点のご購入は可能。
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="<%= namespace %>-Utility_Mw-680">
+    <div class="<%= namespace %>-Simulation-link">
+      <div class="u-Adjust_Mt-40">
+        <a href="<%= sitepath %>guide/payment/point/?l-id=iphone_<%- currentDir %>_pointpayment" class="<%= namespace %>-Simulation-link-btn">
+          <span class="<%= namespace %>-Simulation-link-btn-txt">期間限定ポイントもOK！製品の購入（初回支払い分）に楽天ポイントが使えます<span class="c-Txt_Normal-s">※5</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="<%= namespace %>-Utility_Mw-680">
+  <div class="u-Adjust_Mt-16">
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※1 <span class="c-Txt_Emp-02">機種変更の際には事務手数料3,300円のお支払いが必要。ご返却の製品が当社指定の状態基準を満たさない場合、当社指定の故障費用のお支払いが必要、または返却不可となる場合あり。</span>現金販売価格と割賦販売価格は支払い総額と同額。支払回数48回、支払期間48カ月、実質年率0％。<a href="#caution-1" class="js-scroll">その他条件の詳細はこちら</a></p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※2 24回払いの<a href="#caution-1" class="js-scroll">詳細はこちら</a></p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※5 楽天ポイント利用の<a href="#caution-3" class="js-scroll">詳細はこちら</a></p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※6,7,8,10 各種キャンペーンのポイント還元の<a href="#caution-3" class="js-scroll">詳細はこちら</a></p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※9 「iPhone対象機種特価キャンペーン」の<a href="<%= sitepath %>product/iphone/fee/#campaign-rule1592">詳細はこちら</a></p>
+    <%_ if (namespace.indexOf('iphone-13') < 0) { _%>
+    <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-16">※楽天モバイルのご利用にあたり、iOS 14.4以降ならびにキャリア設定の最新バージョンへのアップデートをお願いいたします。</p>
+    <%_ } _%>
+  </div>
+</div>

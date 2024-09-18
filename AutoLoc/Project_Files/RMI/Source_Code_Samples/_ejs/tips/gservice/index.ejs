@@ -1,0 +1,2024 @@
+<% const pagetitle = "楽天グループのおトクなサービス" -%>
+<% const pagetitleBread = "楽天グループのおトクなサービス" -%>
+<% const directories = [{path:"tips/1st-step-point/", label:"楽天モバイル活用術"}] -%>
+<% const namespace = "tips" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '70以上のサービスの中から楽天モバイルご契約者様向けに厳選！サービスを使うと楽天ポイントがどんどん貯まる！キャンペーン利用でおトクに始めちゃおう',
+  keywords: '',
+  noindex: false,
+  pathname: filepath,
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/tips/gservise/tips.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+
+    <div class="<%= namespace %>-Hero_bgpink">
+      <div class="<%= namespace %>-Hero_Container">
+        <div class="l-System_Container">
+          <h1>
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-hero-bg-sp.png">
+              <img src="<%= sitepath %>assets/img/tips/gservice/img-hero.png" alt="70以上のサービスの中から楽天モバイルご契約者様向けに厳選 スマホならさらに便利に! 楽天のおトクなサービス">
+            </picture>
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Heading_Sub">
+
+      <div class="l-System_Container">
+        <div>
+          <div id="js-start-position" class="c-Tab js-Tab u-Adjust_Pt-24">
+            <ul id="tab-menu" class="c-Tab_Items" role="tablist">
+              <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1" data-ratid="gservice_tab_service_shopping" data-ratevent="click" data-ratparam="all">お買い物</li>
+              <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2" data-ratid="gservice_tab_service_money" data-ratevent="click" data-ratparam="all">マネー・ファイナンス</li>
+              <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="false" aria-controls="tab-content3" data-ratid="gservice_tab_service_life" data-ratevent="click" data-ratparam="all">生活・エンタメ・レジャー</li>
+            </ul>
+            <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+              <div class="<%= namespace %>-Layout_Link l-System_Container js-position-fixed <%= namespace %>-Util_Custom-Padding-06">
+                <a href="#ichiba" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_anc_ichiba" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>楽天市場</a>
+                <a href="#Rpay" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_anc_pay_shopping" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>楽天ペイ</a>
+                <a href="#Rbooks" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_anc_books" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>楽天ブックス</a>
+                <a href="#Rfashion" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_anc_fashion" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>Rakuten Fashion</a>
+              </div>
+              <div id="js-trigger-nav-01"></div>
+              <nav class="<%= namespace %>-Description_Follow" id="js-fixed-nav-01" aria-expanded="false">
+                <ul id="jsFloatList01" class="js-float-list <%= namespace %>-Description_Follow_List">
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-ichiba">
+                    <a href="#ichiba" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_ichiba" data-ratevent="click" data-ratparam="all">楽天市場</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rpay">
+                    <a href="#Rpay" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_pay_shopping" data-ratevent="click" data-ratparam="all">楽天ペイ</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rbooks">
+                    <a href="#Rbooks" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_books" data-ratevent="click" data-ratparam="all">楽天ブックス</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rfashion">
+                    <a href="#Rfashion" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_fashion" data-ratevent="click" data-ratparam="all">Rakuten Fashion</a>
+                  </li>
+                </ul>
+              </nav>
+                <div id="ichiba" class="<%= namespace %>-Util_Custom-Padding-02">
+                  <div class="u-Adjust_Align-center">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-title-1-sp.png">
+                      <img src="<%= sitepath %>assets/img/tips/gservice/img-title-1.png" width="504" alt="日本最大級の総合インターネットショッピングモール">
+                    </picture>
+                    <h2 class="<%= namespace %>-Txt_custom-size">楽天市場</h2>
+                    <div class="c-Txt_Emp-01">充実の品揃え。毎日おトクなクーポンも。<br class="<%= namespace %>-Util_Sp">楽天ポイントがザクザク貯まる！使える！</div>
+                    <div class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Layout_Section-white-app">
+                      <div>
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/rakuten-logo.png" alt="" width="64">
+                        </div>
+                        <h3 class="<%= namespace %>-Heading_App">
+                          <span class="c-Txt_Emp-01">アプリだけのおトクな特典や機能が充実</span>
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天市場アプリ</span>
+                        </h3>
+                      </div>
+                      <div class="<%= namespace %>-Txt_White2 <%= namespace %>-Util_Custom-Padding-07 u-Adjust_Mt-24 <%= namespace %>-Heading_Round-sp">
+                        <h3 class="<%= namespace %>-Txt_custom-size3">楽天市場アプリの主なメリット</h3>
+                      </div>
+                      <ul class="u-Adjust_Mt-16 <%= namespace %>-List_Grid-4">
+                        <li class="<%= namespace %>-List_Grid-4_Item <%= namespace %>-List_Grid-4_Item-ichiba">
+                          <div class="<%= namespace %>-List_Grid-4_Item-ichiba_Img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-ichiba-coin.png" alt="" width="152" height="134" class="<%= namespace %>-List_Grid-4_Item-ichiba_Coin">
+                          </div>
+                          <p class="<%= namespace %>-List_Grid-4_Item-ichiba_Txt c-Txt_Emp-01">アプリ限定キャンペーンで<br>ポイントが貯まる！</p>
+                        </li>
+                        <li class="<%= namespace %>-List_Grid-4_Item <%= namespace %>-List_Grid-4_Item-ichiba">
+                          <div class="<%= namespace %>-List_Grid-4_Item-ichiba_Img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-ichiba-exclamation-mark.png" alt="" width="128" height="128" class="<%= namespace %>-List_Grid-4_Item-ichiba_Exclamation">
+                          </div>
+                          <p class="<%= namespace %>-List_Grid-4_Item-ichiba_Txt c-Txt_Emp-01">プッシュ通知機能で<br>おトク情報を逃さない！</p>
+                        </li>
+                        <li class="<%= namespace %>-List_Grid-4_Item <%= namespace %>-List_Grid-4_Item-ichiba">
+                          <div class="<%= namespace %>-List_Grid-4_Item-ichiba_Img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-ichiba-barcode.png" alt="" width="194" height="112" class="<%= namespace %>-List_Grid-4_Item-ichiba_Barcode">
+                          </div>
+                          <p class="<%= namespace %>-List_Grid-4_Item-ichiba_Txt c-Txt_Emp-01">バーコード検索や音声検索で<br class="<%= namespace %>-Util_Xsp">いつでもラクラク♪</p>
+                        </li>
+                      </ul>
+                      <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                        <h4 class="c-Heading_Lv4">＼ダウンロード前にチェック／</h4>
+                        <h3 class="c-Heading_Lv3 <%= namespace %>-Txt_Red">楽天市場アプリ 新規ダウンロード＆お買い物で<br class="<%= namespace %>-Util_Sp">1,000ポイントプレゼント</h3>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Dpoint">
+                        <p class="<%= namespace %>-Layout_Dpoint_Ttl"><span class="c-Txt_Emp-01">キャンペーンエントリー後</span>に、楽天市場アプリをダウンロードのうえ、同月内に初ログインと5,000円以上(税込)お買い物すると<span class="c-Txt_Emp-01 <%= namespace %>-Txt_Red">1,000ポイント</span><span class="c-Txt_Cap">※</span>がもらえる！</p>
+                        <div class="u-Adjust_Align-center <%= namespace %>-Layout_Dpoint_Img">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-1000point-panda.png" width="444" height="264" alt="">
+                        </div>
+                        <div class="<%= namespace %>-Layout_Dpoint_Txt">
+                          <a href="https://event.rakuten.co.jp/app/campaign/download/1000pt/?scid=rmb_gservice_icbapp_202302" data-ratid="gservice_ichiba_1000pt" data-ratevent="click" data-ratparam="all" class="c-Link_Txt-inline" target="_blank" rel="noopener">キャンペーン詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                          <p class="c-Txt_Cap u-Adjust_Mt-8">※ 期間限定ポイントにて付与等条件あり。</p>
+                        </div>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                        <div>
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                          </picture>
+                        </div>
+                        <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                          <a href="https://apps.apple.com/jp/app/id419267350" data-ratid="gservice_ios-ichiba" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/ichiba_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                        <div class="js-android <%= namespace %>-Layout-qr-flex">
+                          <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.android" data-ratid="gservice_android-ichiba" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/ichiba_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Layout_Section-white">
+                    <div class="u-Adjust_Align-center">
+                      <h3 class="c-Txt_Normal-l">楽天ポイントが<br class="<%= namespace %>-Util_Sp">どんどん貯まる！</h3>
+                      <div class="u-Adjust_Mt-8 c-Txt_Emp-01">楽天市場のお買い物で<br class="<%= namespace %>-Util_Sp">100円（税抜）につき1ポイント貯まる</div>
+                    </div>
+
+                    <div class="u-Adjust_Mt-24 <%= namespace %>-Layout_Section-panda">
+                      <div class="<%= namespace %>-Layout_Section-panda-img-point">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-spu-panda-sp.png">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-panda.png" width="" alt="さらに楽天スーパーSALEやお買い物マラソンでは複数店舗で買いまわるほど、ポイントアップ！">
+                        </picture>
+                        <p class="u-Adjust_Align-center <%= namespace %>-Util_Pc">
+                          <a data-ratid="gservice_ichiba_supersale" data-ratevent="click" data-ratparam="all" href="https://event.rakuten.co.jp/campaign/supersale/guide/?scid=wi_rmb_tips_gservice_campaign_supersale_guide" class="c-Link_Txt-inline" target="_blank" rel="noopener">楽天スーパーSALEとは？<span class="c-Icon_New-window-l"></span></a>
+                          <a data-ratid="gservice_ichiba_marathon" data-ratevent="click" data-ratparam="all" href="https://event.rakuten.co.jp/campaign/point-up/marathon/guide/?scid=wi_rmb_tips_gservice_campaign_point-up_marathon_guide" class="c-Link_Txt-inline u-Adjust_Ml-24" target="_blank" rel="noopener">お買い物マラソンとは？<span class="c-Icon_New-window-l"></span></a>
+                        </p>
+                      </div>
+                      <div class="<%= namespace %>-Util_Pc">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-panda-2.png" width="180" alt="">
+                      </div>
+                      <div class="<%= namespace %>-Util_Sp <%= namespace %>-Util_Reduction-img u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-panda-2-sp.png" width="" alt="">
+                      </div>
+                      <div class="<%= namespace %>-Util_Sp">
+                        <p><a data-ratid="gservice_ichiba_supersale" data-ratevent="click" data-ratparam="all" href="https://event.rakuten.co.jp/campaign/supersale/guide/?scid=wi_rmb_tips_gservice_campaign_supersale_guide" class="c-Link_Txt-inline" target="_blank" rel="noopener">
+                            楽天スーパーSALEとは？<span class="c-Icon_New-window-l"></span></a></p>
+                        <p><a data-ratid="gservice_ichiba_marathon" data-ratevent="click" data-ratparam="all" href="https://event.rakuten.co.jp/campaign/point-up/marathon/guide/?scid=wi_rmb_tips_gservice_campaign_point-up_marathon_guide" class="c-Link_Txt-inline" target="_blank" rel="noopener">お買い物マラソンとは？<span class="c-Icon_New-window-l"></span></a></p>
+                      </div>
+                    </div>
+
+                    <div class="u-Adjust_Mt-56 <%= namespace %>-Layout_Ichiba-spu">
+                      <p class="<%= namespace %>-Layout_Ichiba-spu_Txt">SPUでもっと貯まる!</p>
+                      <p class="<%= namespace %>-Layout_Ichiba-spu_Img-01">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-spu-01-sp-240401.png" width="554" height="224">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-01-pc-240401.png" width="984" height="174" alt="SPU対象は全部で15サービス！ ポイント最大17倍。">
+                        </picture>
+                      </p>
+                      <p class="u-Adjust_Mt-8">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-spu-04-sp-231201.png" width="559" height="778">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-04-pc-231201.png" width="1808" height="304" alt="通常のお買い物で ポイント1倍。楽天市場アプリ ポイント＋1倍。Rakuten最強プランご利用中は会員ランクに応じて ポイント最大＋4倍！">
+                        </picture>
+                      </p>
+                      <p class="u-Adjust_Mt-8">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-spu-03-sp-231201.png" width="561" height="320">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-03-pc-231201.png" width="1808" height="326" alt="さらにAndroidユーザーなら楽天モバイルキャリア決済を当月、合計2,000円（税込）以上ご利用でポイント＋2倍">
+                        </picture>
+                      </p>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-gray-spu <%= namespace %>-Util_Custom-Padding-01 u-Adjust_Mt-16">
+                      <p>
+                        <a href="https://event.rakuten.co.jp/campaign/point-up/everyday/point/?scid=wi_rmb_tips_gservice_campaign_point-up_everyday_point" data-ratid="gservice_ichiba_spu" data-ratevent="click" data-ratparam="all" class="c-Link_Txt-inline" target="_blank" rel="noopener">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                      </p>
+                      <div class="c-Txt_Cap u-Adjust_Mt-8">
+                      ※各種毎月の獲得上限あり、期間限定ポイントでの付与 ※1 月間獲得上限2,000ポイント ※2 月間獲得上限1,000ポイント<a href="<%= sitepath %>campaign/spu/payment/?l-id=tips_gservice_campaign_spu_payment" class="c-Link_Txt-inline">詳細を見る</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-40">
+                    <h3 class="c-Heading_Lv3 u-Adjust_Align-center">ほかにもこんなサービスが！</h3>
+                    <div class="<%= namespace %>-Layout_Section-service u-Adjust_Mt-16">
+                      <div>
+                        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">スーパーDEAL</h4>
+                        <div>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-deal.png" width="83" alt="">
+                          </div>
+                          <div>
+                            <p>ポイント還元サービス</p>
+                            <p>
+                              <a data-ratid="gservice_ichiba_superdeal" data-ratevent="click" data-ratparam="all" href="https://event.rakuten.co.jp/superdeal/?scid=wi_rmb_tips_gservice_superdeal" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">あす楽</h4>
+                        <div>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-asuraku.png" width="102" alt="">
+                          </div>
+                          <div>
+                            <p>正午までのご注文で<br>明日届く</p>
+                            <p>
+                              <a data-ratid="gservice_ichiba_asuraku" data-ratevent="click" data-ratparam="all" href="https://event.rakuten.co.jp/asuraku/?scid=wi_rmb_tips_gservice_asuraku" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">ふるさと納税</h4>
+                        <div>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-hurusato.png" width="91" alt="">
+                          </div>
+                          <div>
+                            <p>お買い物と同じ<br>フローで寄付が可能</p>
+                            <p>
+                              <a data-ratid="gservice_ichiba_furusato" data-ratevent="click" data-ratparam="all" href="https://event.rakuten.co.jp/furusato/?scid=wi_rmb_tips_gservice_furusato" class="c-Link_Txt-inline u-Adjust_Mt-8" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                    <a data-ratid="gservice_ichiba_ichitop" data-ratevent="click" data-ratparam="all" href="https://www.rakuten.co.jp/?scid=wi_rmb_tips_gservice_ichitop" class="c-Btn_Primary-large" target="_blank" rel="noopener">楽天市場はこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                  </div>
+                </div>
+                <div id="Rpay" class="<%= namespace %>-Layout_Section-yellow">
+                  <div class="l-System_Container">
+                    <div class="u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay.png" width="402" alt="街のお買い物をキャッシュレスでおトクに！">
+                      </picture>
+                      <h2 class="<%= namespace %>-Txt_custom-size" data-ratid="gservice_scroll_pay_shopping" data-ratevent="appear">楽天ペイ</h2>
+                      <div class="c-Txt_Emp-01">毎日のお買い物がスマホ決済で簡単！楽天ポイントの利用でもっと便利に。</div>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-white-pay u-Adjust_Mt-24">
+                      <div>
+                        <div class="u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-pay-logo-231002.png" width="64" alt="">
+                        </div>
+                        <h3 class="<%= namespace %>-Heading_App u-Adjust_Align-center">
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Util_Custom-margin-01">スマホ決済が簡単にできるアプリ</span>
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天ペイアプリ</span>
+                        </h3>
+                      </div>
+                      <div class="c-Txt_Emp-02 u-Adjust_Align-center <%= namespace %>-Util_Pc u-Adjust_Mt-16">
+                        楽天ポイントカードを提示して楽天ペイアプリで決済すればポイントがダブルで貯まる！
+                      </div>
+                      <div class="c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-24 <%= namespace %>-Util_Sp">
+                        楽天ポイントカードを提示して楽天ペイアプリで決済すればポイントがダブルで貯まる！
+                      </div>
+                      <div class="u-Adjust_Mt-24">
+                        <ul class="<%= namespace %>-List_Card-2">
+                          <li class="<%= namespace %>-List_Card-2_Item">
+                            <h4 class="c-Txt_Normal-l <%= namespace %>-Txt_Red">楽天ポイントが<br class="<%= namespace %>-Util_Sp">貯まる！使える！</h4>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay-point-231102.png" alt="" width="210" height="107" class="<%= namespace %>-Util_Custom-margin-03">
+                            <p class="u-Adjust_Align-left"><a href="https://r10.to/hUNeHC" data-ratid="gservice_pay_cpn_shopping" data-ratevent="click" data-ratparam="all" rel="noopener" target="_blank" class="c-Link_Txt-inline-icon"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！コード・QR払いでいますぐおトク！<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/?scid=wi_rmb_tips_gservice_campaign_2020_pointprogram" target="_blank" rel="noopener" data-ratid="gservice_pay_pointprogram_shopping" data-ratevent="click" data-ratparam="all" class="c-Link_Txt-inline-icon">最大1.5％ポイント還元！<span class="c-Icon_New-window-l"></span></a><span class="c-Txt_Cap">※</span>いつものお支払いに楽天ポイントが利用可能。</p>
+                            <div class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-left">
+                              ※一部対象外の店舗及びお支払い方法がございます。詳しくはキャンペーンページよりご確認ください。
+                            </div>
+                          </li>
+                          <li class="<%= namespace %>-List_Card-2_Item">
+                            <h4 class="c-Txt_Normal-l">全国で使えるお店<br class="<%= namespace %>-Util_Sp">日々拡大中！</h4>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay-expansion-231102.png" alt="" width="134" class="<%= namespace %>-Util_Custom-margin-03">
+                            <p class="u-Adjust_Align-left">
+                              コンビニやドラッグストア、スーパーなど、さまざまなお店でご利用可能。オンラインサイトでも簡単にお支払いができる！
+                            </p>
+                            <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+                              <a data-ratid="gservice_pay_shop_shopping" data-ratevent="click" data-ratparam="all" href="https://pay.rakuten.co.jp/shop/?scid=wi_rmb_tips_gservice_shop" class="c-Link_Txt-inline" target="_blank" rel="noopener">街で使えるお店を見る<span class="c-Icon_New-window-l"></span></a><br class="<%= namespace %>-Util_Sp">
+                              <a data-ratid="gservice_pay_site_shopping" data-ratevent="click" data-ratparam="all" href="https://checkout.rakuten.co.jp/site/?scid=wi_rmb_tips_gservice_site" class="c-Link_Txt-inline <%= namespace %>-Util_Custom-margin-02" target="_blank" rel="noopener">ネットで使えるサイトを見る<span class="c-Icon_New-window-l"></span></a>
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                        <div>
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                          </picture>
+                        </div>
+                        <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                          <a href="https://r10.to/hM8yT9" data-ratid="gservice_ios-pay_shopping" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/pay_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                        <div class="js-android <%= namespace %>-Layout-qr-flex">
+                          <a href="https://r10.to/hM8yFT" data-ratid="gservice_android-pay_shopping" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/pay_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                      <a data-ratid="gservice_pay_detail_shopping" data-ratevent="click" data-ratparam="all" target="_blank" href="https://pay.rakuten.co.jp/detail/?scid=wi_rmb_tips_gservice_detail
+                      " class="c-Btn_Primary-large">楽天ペイはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="<%= namespace %>-Layout_Section-white2" id="Rbooks">
+                  <div class="l-System_Container">
+                    <div class="u-Adjust_Pt-56">
+                      <div class="u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-books.png" width="278" alt="品揃え豊富なオンライン書店">
+                      </div>
+                      <h2 class="u-Adjust_Align-center <%= namespace %>-Txt_custom-size">楽天ブックス</h2>
+                      <div class="<%= namespace %>-List_Card-body">
+                        <div class="<%= namespace %>-Layout_Section-gray-books <%= namespace %>-Util_Pc u-Adjust_Align-center">
+                          <div>
+                            <div>
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-books-panda.png" alt="" width="132" height="98">
+                            </div>
+                            <div class="<%= namespace %>-Layout_Section-gray-books_Ttl">
+                              <h2 class="c-Heading_Lv3 <%= namespace %>-Txt_Red">楽天ポイントが貯まる！使える！</h2>
+                              <div class="u-Adjust_Mt-8">お買い物に応じて原則1％のポイントを後日付与。</div>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="u-Adjust_Mt-16">
+                              <img class="<%= namespace %>-Label_br-4" src="<%= sitepath %>assets/img/tips/gservice/img-books-spu-231201.png" width="" alt="楽天ブックスはSPU対象。楽天ブックスご利用でポイント＋0.5倍。">
+                            </div>
+                            <div class="<%= namespace %>-Layout_Section-white-spu <%= namespace %>-Util_Custom-Padding-01">
+                              <p class="<%= namespace %>-Util_Custom-align ">
+                                <a data-ratid="gservice_books_spu" data-ratevent="click" data-ratparam="all" href="https://books.rakuten.co.jp/event/campaign/pointup-program/?scid=wi_rmb_tips_gservice_event_campaign_pointup-program
+                                " class="c-Link_Txt-inline" target="_blank" rel="noopener">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray-books-sp <%= namespace %>-Util_Sp">
+                          <div class="u-Adjust_Align-center">
+                            <div>
+                              <h4 class="c-Txt_Normal-l <%= namespace %>-Txt_Red">楽天ポイントが<br>貯まる！使える！</h4>
+                            </div>
+                            <div>
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-books-panda-sp.png" alt="" width="189" class="<%= namespace %>-Util_Custom-margin-03">
+                            </div>
+                            <div class="u-Adjust_Align-left">お買い物に応じて原則1％のポイントを後日付与。 </div>
+                          <div class="u-Adjust_Mt-16">
+                            <div class="u-Adjust_Align-center">
+                              <img class="<%= namespace %>-Label_br-4 <%= namespace %>-Util_Full-width" src="<%= sitepath %>assets/img/tips/gservice/img-books-spu-sp.png" width="558" height="304" alt="楽天ブックスはSPU対象。楽天ブックスご利用でポイント＋0.5倍。">
+                            </div>
+                            <div class="<%= namespace %>-Layout_Section-white-spu <%= namespace %>-Util_Custom-Padding-01">
+                              <p class="<%= namespace %>-Util_Custom-align u-Adjust_Align-center">
+                                <a data-ratid="gservice_books_spu" data-ratevent="click" data-ratparam="all" href="https://books.rakuten.co.jp/event/campaign/pointup-program/?scid=wi_rmb_tips_gservice_event_campaign_pointup-program
+                                " class="c-Link_Txt-inline" target="_blank" rel="noopener">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>                              </p>
+                              <p class="c-Txt_Cap">※1 当月1回1,000円(税込)以上購入で、その月の楽天市場でのお買い物（初日～末日まで）がポイントアップ対象。※2 上限ポイントあり。期間限定ポイントにて付与。</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="<%= namespace %>-Util_Pc <%= namespace %>-Layout_Section-gray-books2 u-Adjust_Mt-24 u-Adjust_Align-center">
+                          <div>
+                            <div>
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-books-free.png" width="112" alt="">
+                            </div>
+                            <div>
+                              <h3 class="c-Txt_Normal-l">全品送料無料</h3>
+                              <p class="u-Adjust_Mt-8">送料を気にせず安心してショッピングが楽しめる。</p>
+                              <p class="u-Adjust_Mt-8">
+                              <a data-ratevent="click" data-ratparam="all" data-ratid="gservice_books_freeshipping" href="https://books.rakuten.co.jp/info/freeshipping/?scid=wi_rmb_tips_gservice_info_freeshipping" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                              </p>
+                            </div>
+                          </div>
+                          <div>
+                            <div>
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-books-asu.png" width="134" alt="">
+                            </div>
+                            <div>
+                              <h3 class="c-Txt_Normal-l">最短翌日配送</h3>
+                              <p class="u-Adjust_Mt-8">あす楽対象商品を午前中にご注文で、翌日中にお届け！</p>
+                              <p class="u-Adjust_Mt-8">
+                              <a data-ratevent="click" data-ratparam="all" data-ratid="gservice_books_asuraku" href="https://books.faq.rakuten.net/s/article/000015924?scid=wi_rmb_tips_gservice_article_000015924" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="<%= namespace %>-Util_Sp <%= namespace %>-Layout_Section-gray-books2-sp u-Adjust_Mt-16 u-Adjust_Align-center">
+                          <div>
+                            <h3 class="c-Txt_Normal-l u-Adjust_Mb-16">全品送料無料</h3>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-books-free.png" width="89" alt="">
+                            <div class="u-Adjust_Align-left">
+                              <p class="u-Adjust_Mt-8">送料を気にせず安心してショッピングが楽しめる。</p>
+                              <p>
+                              <a data-ratevent="click" data-ratparam="all" data-ratid="gservice_books_freeshipping" href="https://books.rakuten.co.jp/info/freeshipping/?scid=wi_rmb_tips_gservice_info_freeshipping" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="u-Adjust_Mt-16">
+                            <h3 class="c-Txt_Normal-l u-Adjust_Mb-16">最短翌日配送</h3>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-books-asu.png" width="138" alt="">
+                            <div class="u-Adjust_Align-left">
+                              <p class="u-Adjust_Mt-8">あす楽対象商品を午前中にご注文で、翌日中にお届け！</p>
+                              <p>
+                              <a data-ratevent="click" data-ratparam="all" data-ratid="gservice_books_asuraku" href="https://books.faq.rakuten.net/s/article/000015924?scid=wi_rmb_tips_gservice_article_000015924" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="<%= namespace %>-List_Card-body-2 u-Adjust_Align-center">
+                        <div>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-books-logo.png" width="64" alt="">
+                          </div>
+                          <h3 class="<%= namespace %>-Heading_App">
+                            <span class="c-Txt_Emp-01">検索機能が充実！</span>
+                            <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天ブックスアプリ</span>
+                          </h3>
+                        </div>
+                        <div class="c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-16">
+                          バーコードで一発検索！スムーズな操作でお買い物がよりスマートに楽しめる。
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-16">
+                          <div>
+                            <picture>
+                              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                            </picture>
+                          </div>
+                          <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                            <a href="https://apps.apple.com/jp/app/id388066704" data-ratid="gservice_ios-books" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/books_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                          <div class="js-android <%= namespace %>-Layout-qr-flex">
+                            <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.books" data-ratid="gservice_android-books" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/books_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="u-Adjust_Mt-32 u-Adjust_Pb-56 u-Adjust_Align-center">
+                        <a data-ratid="gservice_books_bkstop" data-ratevent="click" data-ratparam="all" target="_blank" href="https://books.rakuten.co.jp/?scid=wi_rmb_tips_gservice_bkstop" class="c-Btn_Primary-large">楽天ブックスはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Fashion" id="Rfashion">
+                  <div class="l-System_Container">
+                    <div class="u-Adjust_Pt-56">
+                      <div class="u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-fashion.png" width="343" height="40" alt="人気ブランドを取り扱うファッション通販サイト">
+                      </div>
+                      <h2 class="u-Adjust_Align-center <%= namespace %>-Txt_custom-size" data-ratid="gservice_scroll_fashion" data-ratevent="appear">Rakuten Fashion</h2>
+                      <div class="<%= namespace %>-Layout_Fashion_Body <%= namespace %>-List_Card-body-2 u-Adjust_Align-center">
+                        <div>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/fashion-logo.png" width="64" height="64" alt="">
+                          </div>
+                          <h3 class="<%= namespace %>-Heading_App">
+                            <span class="c-Txt_Emp-01">アプリでお買い物すると楽天ポイントが貯まる・使える！</span>
+                            <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">Rakuten Fashionアプリ</span>
+                          </h3>
+                        </div>
+                        <div class="u-Adjust_Mt-16 <%= namespace %>-Layout_Fashion_Body_Spu-img">
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-fashion-spu-sp.png" width="594" height="304">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-fashion-spu-pc.png" width="1972" height="146" alt="Rakuten FashionアプリはSPU対象 Rakuten Fashionアプリご利用でポイント＋0.5倍">
+                          </picture>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray-spu <%= namespace %>-Layout_Section-gray-spu-flex <%= namespace %>-Util_Custom-Padding-01">
+                          <p class="u-Adjust_Align-left">
+                            <a href="https://brandavenue.rakuten.co.jp/guide/spu/?scid=wi_rmb_tips_gservice_guide_spu" class="c-Link_Txt-inline" target="_blank" rel="noopener" data-ratid="gservice_fashion_spu" data-ratevent="click" data-ratparam="all">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                          </p>
+                          <p class="c-Txt_Cap u-Adjust_Align-left">※1 Rakuten FashionアプリでRakuten Fashion商品を月1回1注文5,000円以上（クーポン割引後の税込み金額）お買い物で、その月の楽天市場でのお買い物（初日～末日まで）がポイントアップ対象 ※2 上限ポイントあり。期間限定ポイントにて付与</p>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-16">
+                          <div>
+                            <picture>
+                              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                            </picture>
+                          </div>
+                          <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                            <a href="https://apps.apple.com/jp/app/id1495930546" data-ratid="gservice_ios-fashion" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/qr-fashion_ios.png" alt="" width="84" height="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                          <div class="js-android <%= namespace %>-Layout-qr-flex">
+                            <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.fashionAndroid" data-ratid="gservice_android-fashion" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/qr-fashion_and.png" alt="" width="84" height="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="u-Adjust_Mt-24">
+                        <ul class="<%= namespace %>-List_Card-2">
+                          <li class="<%= namespace %>-List_Card-2_Item <%= namespace %>-List_Card-2_Item-radius-8">
+                            <h4 class="c-Txt_Normal-l">ブランド限定クーポンが使える！</h4>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-special-coupon.png" alt="" width="210" height="107" class="<%= namespace %>-Util_Custom-margin-03">
+                            <p class="u-Adjust_Align-left">人気ブランド限定のスペシャルクーポン利用で、おトクにアイテムをゲット！</p>
+                            <p class="c-Txt_Normal-m c-Txt_Emp-01 u-Adjust_Mt-8">＼今すぐチェック／</p>
+                            <p class="u-Adjust_Align-left u-Adjust_Mt-8"><a href="https://brandavenue.rakuten.co.jp/contents/rakuten-link/?scid=wi_rmb_tips_gservice_contents_rakuten-link" class="c-Link_Txt-inline-icon" rel="noopener" target="_blank" data-ratid="gservice_fashion_cpn" data-ratevent="click" data-ratparam="all"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！</p>
+                          </li>
+                          <li class="<%= namespace %>-List_Card-2_Item <%= namespace %>-List_Card-2_Item-radius-8">
+                            <h4 class="c-Heading_Lv3">便利なサービスがたくさん！<br>安心してお買い物ができる</h4>
+                            <div class="<%= namespace %>-Layout_Fashion_Flex u-Adjust_Mt-16">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-fashion-review.png" alt="" width="367" height="317" class="<%= namespace %>-Layout_Fashion_Flex_Img">
+                              <div>
+                                <p class="u-Adjust_Align-left">気になる商品や購入を悩む時に役立つ「商品レビュー機能」、オススメのサイズを教えてくれる「フィット・アドバイザー機能」、ショップスタッフの着こなしが参考になる「コーディネート機能」などお買い物に役立つサービスがたくさん！靴の無料交換もできる。</p>
+                                <p class="u-Adjust_Mt-8 u-Adjust_Align-left">
+                                  <a href="https://brandavenue.rakuten.co.jp/guide/whatsrba/?scid=wi_rmb_tips_gservice_guide_whatsrba" class="c-Link_Txt-inline" target="_blank" rel="noopener" data-ratid="gservice_fashion_guide_whatsrba" data-ratevent="click" data-ratparam="all">サービス詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                                </p>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="u-Adjust_Mt-32 u-Adjust_Pb-56 u-Adjust_Align-center">
+                        <a href="https://brandavenue.rakuten.co.jp/?scid=wi_rmb_tips_gservice_top" class="c-Btn_Primary-large" target="_blank" rel="noopener" data-ratid="gservice_fashion_rbatop" data-ratevent="click" data-ratparam="all">Rakuten Fashionはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+              <div class="<%= namespace %>-Layout_Link js-position-fixed <%= namespace %>-Util_Custom-Padding-06">
+                <a data-ratid="gservice_anc_card" data-ratevent="click" data-ratparam="all" href="#Rcard" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天カード</a>
+                <a data-ratid="gservice_anc_bank" data-ratevent="click" data-ratparam="all" href="#Rbank" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天銀行</a>
+                <a data-ratid="gservice_anc_bank" data-ratevent="click" data-ratparam="all" href="#Rpay2" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天ペイ</a>
+                <a data-ratid="gservice_anc_sec" data-ratevent="click" data-ratparam="all" href="#Rsecurities" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天証券</a>
+                <a data-ratid="gservice_anc_insurance" data-ratevent="click" data-ratparam="all" href="#Rwindow" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天保険の総合窓口</a>
+              </div>
+              <div class="<%= namespace %>-Heading_Sub" id="Rcard">
+              <div id="js-trigger-nav-02"></div>
+              <nav class="<%= namespace %>-Description_Follow" id="js-fixed-nav-02" aria-expanded="false">
+                <ul id="jsFloatList02" class="js-float-list <%= namespace %>-Description_Follow_List">
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rcard <%= namespace %>-Description_Follow_List_Item-active">
+                    <a href="#Rcard" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_card" data-ratevent="click" data-ratparam="all">楽天カード</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rbank">
+                    <a href="#Rbank" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_bank" data-ratevent="click" data-ratparam="all">楽天銀行</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rpay2">
+                    <a href="#Rpay2" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_pay_money" data-ratevent="click" data-ratparam="all">楽天ペイ</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rsecurities">
+                    <a href="#Rsecurities" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_sec" data-ratevent="click" data-ratparam="all">楽天証券</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rwindow">
+                    <a href="#Rwindow" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_insurance" data-ratevent="click" data-ratparam="all">楽天保険の総合窓口</a>
+                  </li>
+                </ul>
+              </nav>
+                <div class="<%= namespace %>-Util_Custom-Padding-02">
+                  <div class="u-Adjust_Align-center">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-title-2-sp.png">
+                      <img src="<%= sitepath %>assets/img/tips/gservice/img-title-2.png" width="504" alt="年会費永年無料のクレジットカード">
+                    </picture>
+                    <h2 class="<%= namespace %>-Txt_custom-size">楽天カード</h2>
+                    <div class="c-Txt_Emp-01">スマホを使って決済もできる！<br class="<%= namespace %>-Util_Sp">ポイントがとにかく貯まりやすい！</div>
+                    <div class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Layout_Section-white-app">
+                      <div>
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/card-logo.png" alt="" width="64">
+                        </div>
+                        <h3 class="<%= namespace %>-Heading_App">
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Util_Mt-8">明細確認も、支出管理もラクラク</span>
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll <%= namespace %>-Util_Mt-8">楽天カードアプリ</span>
+                        </h3>
+                      </div>
+                      <div class="<%= namespace %>-Heading_Round <%= namespace %>-Txt_White <%= namespace %>-Util_Custom-Padding-07 u-Adjust_Mt-24">
+                        <h3 class="<%= namespace %>-Txt_custom-size3">楽天カードアプリの<br class="<%= namespace %>-Util_Sp">おすすめ機能4選</h3>
+                      </div>
+                      <ul class="u-Adjust_Mt-16 <%= namespace %>-List_Grid-4">
+                        <li class="<%= namespace %>-List_Grid-4_Item <%= namespace %>-List_Grid-4_Item-card-app">
+                          <div class="<%= namespace %>-List_Grid-4_Item-card-app_Img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-card-app-01.png" alt="" width="200" height="240">
+                          </div>
+                          <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-4_Item-card-app_Txt">
+                            指紋や顔認証で<br>
+                            簡単・安全ログイン
+                          </p>
+                        </li>
+                        <li class="<%= namespace %>-List_Grid-4_Item <%= namespace %>-List_Grid-4_Item-card-app">
+                          <div class="<%= namespace %>-List_Grid-4_Item-card-app_Img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-card-app-02.png" alt="" width="200" height="240">
+                          </div>
+                          <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-4_Item-card-app_Txt">
+                            いつでもどこでも<br>
+                            ご利用明細の<br class="<%= namespace %>-Util_Sp">確認が可能
+                          </p>
+                        </li>
+                        <li class="<%= namespace %>-List_Grid-4_Item <%= namespace %>-List_Grid-4_Item-card-app">
+                          <div class="<%= namespace %>-List_Grid-4_Item-card-app_Img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-card-app-03.png" alt="" width="200" height="240">
+                          </div>
+                          <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-4_Item-card-app_Txt">
+                            キャンペーンも｢楽天カード<br class="<%= namespace %>-Util_Pc">ポイントプラス｣の<br class="<%= namespace %>-Util_Pc">情報も常に確認
+                          </p>
+                        </li>
+                        <li class="<%= namespace %>-List_Grid-4_Item <%= namespace %>-List_Grid-4_Item-card-app">
+                          <div class="<%= namespace %>-List_Grid-4_Item-card-app_Img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-card-app-04.png" alt="" width="200" height="240">
+                          </div>
+                          <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-4_Item-card-app_Txt">
+                            家計簿機能で<br class="<%= namespace %>-Util_Pc">毎月の<br class="<%= namespace %>-Util_Sp">収支を<br class="<%= namespace %>-Util_Pc">分かりやすく<br class="<%= namespace %>-Util_Sp">｢見える化｣<br>
+                          </p>
+                        </li>
+                      </ul>
+                      <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                        <div>
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                          </picture>
+                        </div>
+                        <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                          <a href="https://apps.apple.com/jp/app/id570105907" data-ratid="gservice_ios-card" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/card-ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                        <div class="js-android <%= namespace %>-Layout-qr-flex">
+                          <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.kc.rakutencardapp.android" data-ratid="gservice_android-card" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/card-and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Layout_Section-white">
+                    <div class="<%= namespace %>-Layout_Card-app-panda">
+                      <h3 class="c-Txt_Normal-l <%= namespace %>-Txt_Red u-Adjust_Align-center <%= namespace %>-Layout_Card-app-panda_Ttl">楽天ポイントの<br class="<%= namespace %>-Util_Sp">還元率がすごい！</h3>
+                      <div class="u-Adjust_Align-center <%= namespace %>-Layout_Card-app-panda_Img <%= namespace %>-Util_Reduction-img">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-spu-panda-3-sp-230127.png" width="532" height="221">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-panda-3-230127.png" width="278" height="218" alt="">
+                        </picture>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Card-app-panda_Txt <%= namespace %>-Util_Custom-align">
+                        <p>新規入会&利用でもれなく楽天ポイントがもらえます。</p>
+                      </div>
+                    </div>
+                    <div class="u-Adjust_Mt-16 <%= namespace %>-Layout_Card-panda-position u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-card-spu-sp.png" width="622" height="418">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-card-spu.png" width="1970" height="162" alt="楽天カードはSPU対象。楽天カードまたは楽天ゴールドカードご利用でポイント＋2倍！" class="<%= namespace %>-Util_Full-width">
+                      </picture>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-gray-spu <%= namespace %>-Layout_Section-gray-spu-flex <%= namespace %>-Util_Custom-Padding-01">
+                      <p class="<%= namespace %>-Util_Custom-align ">
+                        <a data-ratid="gservice_card_spu" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-card.co.jp/campaign/rakuten-card/point-up/?scid=wi_rmb_tips_gservice_campaign_rakuten-card_point-up" class="c-Link_Txt-inline" target="_blank" rel="noopener">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                      </p>
+                      <p class="c-Txt_Cap">※1 上限ポイントあり。期間限定ポイントにて付与。</p>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="<%= namespace %>-Layout_Section-pay2 <%= namespace %>-Util_Pc">
+                      <div>
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-touch.png" width="116" alt="">
+                      </div>
+                      <div>
+                        <h3 class="c-Txt_Normal-l">スマホを利用してスピーディーにお支払い</h3>
+                        <p class="u-Adjust_Mt-8">楽天カードでかんたん設定。タッチ決済マークのあるお店ならどこでも使えます。</p>
+                        <p class="u-Adjust_Mt-8">
+                          <a data-ratid="gservice_card_cashless" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-card.co.jp/cashless/contactless-payment/touch_payment/?scid=wi_rmb_tips_gservice_cashless_contactless-payment" class="c-Link_Txt-inline" target="_blank" rel="noopener">楽天カードタッチ決済を見る<span class="c-Icon_New-window-l"></span></a>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-pay2-sp <%= namespace %>-Util_Sp">
+                      <h3 class="c-Txt_Normal-l u-Adjust_Align-center">スマホを利用して<br>スピーディーにお支払い</h3>
+                      <div class="u-Adjust_Align-center tips-Util_Custom-margin-03">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-touch-sp.png" width="172" alt="">
+                      </div>
+                      <div>
+                        <p>楽天カードでかんたん設定。タッチ決済マークのあるお店ならどこでも使えます。</p>
+                        <p class="u-Adjust_Mt-8">
+                          <a data-ratid="gservice_card_cashless" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-card.co.jp/cashless/contactless-payment/touch_payment/?scid=wi_rmb_tips_gservice_cashless_contactless-payment" target="_blank" class="c-Link_Txt-inline u-Adjust_Mt-8" rel="noopener">楽天カードタッチ決済を見る<span class="c-Icon_New-window-l"></span></a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                    <a data-ratid="gservice_card_rkctop" data-ratevent="click" data-ratparam="all" target="_blank" href="https://www.rakuten-card.co.jp/?scid=wi_rmb_tips_gservice_rkctop" class="c-Btn_Primary-large">楽天カードはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                  </div>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Section-yellow" id="Rbank">
+                <div class="l-System_Container">
+                  <div class="u-Adjust_Align-center">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-rakuten-bank-sp-240328.png">
+                      <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-bank-240328.png" width="402" alt="1,500万口座突破！ネット銀行口座数No.1">
+                    </picture>
+                    <h2 class="<%= namespace %>-Txt_custom-size" data-ratid="gservice_scroll_bank" data-ratevent="appear">楽天銀行</h2>
+                    <div class="c-Txt_Emp-01">スマホから24時間いつでもどこでも便利に利用可能！楽天ポイントも貯まる！使える！！
+                      <br><span class="c-Txt_Cap ">※2023年12月楽天銀行調べ</span>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>-Layout_Section-white-app-service u-Adjust_Mt-24">
+                    <div class="u-Adjust_Align-center">
+                      <div>
+                      <img src="<%= sitepath %>assets/img/tips/gservice/img-bank-logo.png" width="64" alt="">
+                      </div>
+                      <h3 class="<%= namespace %>-Heading_App">
+                        <span class="c-Txt_Emp-01">メインバンクを、いつも手もとに</span>
+                        <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天銀行アプリ</span>
+                      </h3>
+                    </div>
+                    <div class="u-Adjust_Mt-24">
+                      <h3 class="u-Adjust_Align-center c-Txt_Normal-l">アプリで<br class="<%= namespace %>-Util_Sp">ご利用できるサービス</h3>
+                    </div>
+                    <ul class="u-Adjust_Mt-16 <%= namespace %>-List_Grid-8">
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-01.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt">振込</p>
+                      </li>
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-02.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt">入出金明細</p>
+                      </li>
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-03.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt">円定期預金</p>
+                      </li>
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-04.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt">外貨預金</p>
+                      </li>
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-05.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt">BIG・toto /<br class="<%= namespace %>-Util_Pc"> 宝くじ</p>
+                      </li>
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-06.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt">各種ローン</p>
+                      </li>
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-07.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt <%= namespace %>-List_Grid-8_Item_Txt-small">マネーサポート<br>（資産管理）</p>
+                      </li>
+                      <li class="<%= namespace %>-List_Grid-8_Item">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/icon-rakuten-bank-08.svg" alt="" width="48" height="48">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Grid-8_Item_Txt <%= namespace %>-List_Grid-8_Item_Txt-small">楽天銀行<br>コンビニ支払い</p>
+                      </li>
+                    </ul>
+                    <div class="<%= namespace %>-Heading_Round <%= namespace %>-Txt_White <%= namespace %>-Util_Custom-Padding-07 u-Adjust_Mt-48">
+                      <h3 class="u-Adjust_Align-center <%= namespace %>-Txt_custom-size3">楽天銀行アプリのおすすめ機能</h3>
+                    </div>
+                    <ul class="u-Adjust_Mt-16 <%= namespace %>-List_Bank-app">
+                      <li class="<%= namespace %>-List_Bank-app_Item">
+                        <div class="<%= namespace %>-List_Bank-app_Item_Img">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-bank-01.png" alt="" width="364" height="364">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Bank-app_Item_Txt">
+                          <span class="c-Txt_Emp-02 <%= namespace %>-List_Bank-app_Item_Txt-large">カード型のダッシュボード</span>で、<br class="<%= namespace %>-Util_Pc">知りたい情報をすぐに確認できる。
+                        </p>
+                      </li>
+                      <li class="<%= namespace %>-List_Bank-app_Item">
+                        <div class="<%= namespace %>-List_Bank-app_Item_Img">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-bank-02.png" alt="" width="364" height="364">
+                        </div>
+                        <p class="c-Txt_Emp-01 <%= namespace %>-List_Bank-app_Item_Txt">
+                          繰り返しよく使う機能は、<br class="<%= namespace %>-Util_Pc"><span class="c-Txt_Emp-02 <%= namespace %>-List_Bank-app_Item_Txt-large">履歴からいつでもすぐに。</span>
+                        </p>
+                      </li>
+                    </ul>
+                    <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                      <a data-ratid="gservice_bank_lp_app" data-ratevent="click" data-ratparam="all" target="_blank" href="https://www.rakuten-bank.co.jp/lp/app/?scid=wi_rmb_tips_gservice_lp_app" class="c-Btn_Regular-large">動画でアプリのおすすめ機能を見る<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></a>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                      <div>
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                        </picture>
+                      </div>
+                      <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                        <a href="https://apps.apple.com/jp/app/id391048295" data-ratid="gservice_ios-bank" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                          <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                        </a>
+                        <img src="<%= sitepath %>assets/img/tips/gservice/bank-ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                      </div>
+                      <div class="js-android <%= namespace %>-Layout-qr-flex">
+                        <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten_bank.rakutenbank" data-ratid="gservice_android-bank" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                        </a>
+                        <img src="<%= sitepath %>assets/img/tips/gservice/bank-and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>-Layout_Section-white-app-point u-Adjust_Mt-32">
+                    <div class="<%= namespace %>-Layout_Section-white-app-point_Ttl">
+                      <div class="<%= namespace %>-Layout_Section-white-app-point_Ttl_Img"><img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-point-gold-sp.png" width="180" height="158" alt=""></div>
+                      <h3 class="<%= namespace %>-Txt_Red c-Txt_Normal-l">楽天ポイントが<br class="<%= namespace %>-Util_Sp">貯まる・使える！</h3>
+                    </div>
+                    <div class="u-Adjust_Mt-16 <%= namespace %>-Util_Custom-align"><a data-ratevent="click" data-ratparam="all" data-ratid="gservice_bank_cpn" href="https://www.rakuten-bank.co.jp/account/mno/exist1500.html?scid=wi_rmb_tips_gservice_account_mno" class="c-Link_Txt-inline" target="_blank" rel="noopener"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！振込・口座振替などの銀行のお取り引きで楽天ポイントが貯まる。貯まったポイントは振込手数料などのお支払いにも利用できる！</div>
+                    <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-money-spu-sp-231201.png" width="622" height="418">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-money-spu-231201.png" width="1584" height="270" alt="楽天銀行はSPU対象。楽天銀行で楽天カードの引き落としをするとポイント最大＋0.5倍！" class="<%= namespace %>-Util_Full-width">
+                      </picture>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-gray-spu <%= namespace %>-Layout_Section-gray-spu-flex <%= namespace %>-Util_Custom-Padding-01">
+                      <p>
+                        <a data-ratid="gservice_bank_spu" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-bank.co.jp/campaign/spu/?scid=wi_rmb_tips_gservice_campaign_spu" class="c-Link_Txt-inline" target="_blank" rel="noopener">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                      </p>
+                      <p class="c-Txt_Cap">※1 上限ポイントあり。期間限定ポイントにて付与。※2 条件あり。</p>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h3 class="u-Adjust_Align-center c-Heading_Lv3">ほかにもこんなサービスが！</h3>
+                    <div class="<%= namespace %>-Layout_Section-service2 u-Adjust_Mt-16">
+                      <div>
+                        <div class="<%= namespace %>-Layout_Section-service2-img">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-bank-service.png" width="161" alt="">
+                        </div>
+                        <h4 class="c-Heading_Lv4 <%= namespace %>-Layout_Section-service2-title">
+                          コンビニ支払サービス
+                          <small>（アプリで払込票支払）</small>
+                        </h4>
+                        <div class="<%= namespace %>-Layout_Section-service2-link">
+                          <a data-ratid="gservice_bank_cvs-payment" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-bank.co.jp/transfer/cvs-payment/?scid=wi_rmb_tips_gservice_transfer_cvs-payment" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="<%= namespace %>-Layout_Section-service2-img">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-bank-support.png" width="166" alt="">
+                        </div>
+                        <h4 class="c-Heading_Lv4 <%= namespace %>-Layout_Section-service2-title">
+                          マネーサポート
+                          <small>（無料資産管理ツール）</small>
+                        </h4>
+                        <div class="<%= namespace %>-Layout_Section-service2-link">
+                          <a data-ratid="gservice_bank_money" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-bank.co.jp/money/?scid=wi_rmb_tips_gservice_money" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="<%= namespace %>-Layout_Section-service2-img">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-money-bridge.png" width="100" alt="">
+                        </div>
+                        <h4 class="c-Heading_Lv4 <%= namespace %>-Layout_Section-service2-title">
+                          マネーブリッジ
+                          <small>（銀行口座・証券口座連携サービス）</small>
+                        </h4>
+                        <div class="<%= namespace %>-Layout_Section-service2-link">
+                          <a data-ratid="gservice_bank_cashb" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-bank.co.jp/assets/intermediation/moneybridge/?scid=wi_rmb_tips_gservice_moneybridge" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                      <a href="https://www.rakuten-bank.co.jp/?scid=wi_rmb_tips_gservice_rbntop" class="c-Btn_Primary-large" target="_blank" rel="noopener" data-ratid="gservice_bank_rbntop" data-ratevent="click" data-ratparam="all">楽天銀行はこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin: 0 calc(50% - 50vw);width: 100vw;" class="<%= namespace %>-Heading_Sub" id="Rpay2">
+              <div class="u-Adjust_Mt-48 u-Adjust_Pb-48">
+                <div class="l-System_Container">
+                  <div class="u-Adjust_Align-center">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay-sp.png">
+                      <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay.png" width="402" alt="街のお買い物をキャッシュレスでおトクに！">
+                    </picture>
+                    <h2 class="<%= namespace %>-Txt_custom-size" data-ratevent="appear">楽天ペイ</h2>
+                    <div class="c-Txt_Emp-01">毎日のお買い物がスマホ決済で簡単！楽天ポイントの利用でもっと便利に。</div>
+                  </div>
+                  <div class="<%= namespace %>-Layout_Section-white-pay u-Adjust_Mt-24">
+                    <div>
+                      <div class="u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-pay-logo-231002.png" width="64" alt="">
+                      </div>
+                      <h3 class="<%= namespace %>-Heading_App">
+                        <span class="c-Txt_Emp-01 <%= namespace %>-Util_Custom-margin-01">スマホ決済が簡単にできるアプリ</span>
+                        <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天ペイアプリ</span>
+                      </h3>
+                    </div>
+                    <div class="c-Txt_Emp-02 u-Adjust_Align-center <%= namespace %>-Util_Pc u-Adjust_Mt-16">
+                      楽天ポイントカードを提示して楽天ペイアプリで決済すればポイントがダブルで貯まる！
+                    </div>
+                    <div class="c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-24 <%= namespace %>-Util_Sp">
+                      楽天ポイントカードを提示して楽天ペイアプリで決済すればポイントがダブルで貯まる！
+                    </div>
+                    <div class="u-Adjust_Mt-24">
+                      <ul class="<%= namespace %>-List_Card-2">
+                        <li class="<%= namespace %>-List_Card-2_Item">
+                          <h4 class="c-Txt_Normal-l <%= namespace %>-Txt_Red">楽天ポイントが<br class="<%= namespace %>-Util_Sp">貯まる！使える！</h4>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay-point-230127.png" alt="" width="210" height="107" class="<%= namespace %>-Util_Custom-margin-03">
+                          <p class="u-Adjust_Align-left"><a href="https://r10.to/hUNeHC" data-ratid="gservice_pay_cpn" data-ratevent="click" data-ratparam="all" rel="noopener" target="_blank" class="c-Link_Txt-inline-icon"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！コード・QR払いでいますぐおトク！<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/?scid=wi_rmb_tips_gservice_campaign_2020_pointprogram" target="_blank" rel="noopener" data-ratid="gservice_pay_pointprogram" data-ratevent="click" data-ratparam="all" class="c-Link_Txt-inline-icon">最大1.5％ポイント還元！<span class="c-Icon_New-window-l"></span></a><span class="c-Txt_Cap">※</span>いつものお支払いに楽天ポイントが利用可能。</p>
+                          <div class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-left">
+                            ※一部対象外の店舗及びお支払い方法がございます。詳しくはキャンペーンページよりご確認ください。
+                          </div>
+                        </li>
+                        <li class="<%= namespace %>-List_Card-2_Item">
+                          <h4 class="c-Txt_Normal-l">全国で使えるお店<br class="<%= namespace %>-Util_Sp">日々拡大中！</h4>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-pay-expansion.png" alt="" width="97" class="<%= namespace %>-Util_Custom-margin-03">
+                          <p class="u-Adjust_Align-left">
+                            コンビニやドラッグストア、スーパーなど、さまざまなお店でご利用可能。オンラインサイトでも簡単にお支払いができる！
+                          </p>
+                          <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+                            <a data-ratid="gservice_pay_shop" data-ratevent="click" data-ratparam="all" href="https://pay.rakuten.co.jp/shop/?scid=wi_rmb_tips_gservice_shop" class="c-Link_Txt-inline" target="_blank" rel="noopener">街で使えるお店を見る<span class="c-Icon_New-window-l"></span></a><br class="<%= namespace %>-Util_Sp">
+                            <a data-ratid="gservice_pay_site" data-ratevent="click" data-ratparam="all" href="https://checkout.rakuten.co.jp/site/?scid=wi_rmb_tips_gservice_site" class="c-Link_Txt-inline <%= namespace %>-Util_Custom-margin-02" target="_blank" rel="noopener">ネットで使えるサイトを見る<span class="c-Icon_New-window-l"></span></a>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                      <div>
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                        </picture>
+                      </div>
+                      <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                        <a href="https://r10.to/hM8yT9" data-ratid="gservice_ios-pay" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                          <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                        </a>
+                        <img src="<%= sitepath %>assets/img/tips/gservice/pay_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                      </div>
+                      <div class="js-android <%= namespace %>-Layout-qr-flex">
+                        <a href="https://r10.to/hM8yFT" data-ratid="gservice_android-pay" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                          <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                        </a>
+                        <img src="<%= sitepath %>assets/img/tips/gservice/pay_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                    <a data-ratid="gservice_pay_detail" data-ratevent="click" data-ratparam="all" target="_blank" href="https://pay.rakuten.co.jp/detail/?scid=wi_rmb_tips_gservice_detail" class="c-Btn_Primary-large">楽天ペイはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <div style="background-color:white; margin: 0 calc(50% - 50vw);width: 100vw;" id="Rsecurities">
+                <div class="l-System_Container">
+                  <div class="u-Adjust_Pt-56">
+                    <div class="u-Adjust_Align-center">
+                      <div>
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-Securities-sp.png">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-Securities.png" width="551" alt="豊富なオンライントレードで初心者にも経験者にも選ばれるネット証券">
+                        </picture>
+                      </div>
+                      <h2 class="<%= namespace %>-Txt_custom-size" data-ratid="gservice_scroll_sec" data-ratevent="appear">楽天証券</h2>
+                    </div>
+                    <div class="<%= namespace %>-List_Card-body4">
+                      <h3 class="u-Adjust_Align-center c-Txt_Normal-l">はじめての投資なら<br class="<%= namespace %>-Util_Sp">「ポイント投資」</h3>
+                      <div class="<%= namespace %>-Layout_Section-panda-point u-Adjust_Pt-16">
+                        <div class="u-Adjust_Align-center u-Adjust_Mb-16">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-Securities-panda.png" width="148" alt="">
+                        </div>
+                        <div>
+                            <p>ポイントで投資体験。100円（=100ポイント）から投資信託が買えます。<br class="<%= namespace %>-Util_Pc"><a href="<%= sitepath %>campaign/sec-for-member/?l-id=tips_gservice_campaign_sec-for-member"  class="c-Link_Txt"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン</a>実施中！</p>
+                            <p class="u-Adjust_Mt-16"><a data-ratid="gservice_sec_point_investment" data-ratevent="click" data-ratparam="all" target="_blank" href="https://www.rakuten-sec.co.jp/web/service/point/investment/?scid=wi_rmb_tips_gservice_web_service_point_investment" class="c-Link_Txt-inline" rel="noopener">ポイント投資について詳細を見る<span class="c-Icon_New-window-l"></span></a></p>
+                        </div>
+                      </div>
+                      <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-Securities-spu-sp.png" width="622" height="484">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-Securities-spu.png" width="1584" height="286" alt="楽天証券はSPU対象。楽天証券でポイント投資をするとポイント最大＋1倍！" class="<%= namespace %>-Util_Full-width">
+                        </picture>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray-spu <%= namespace %>-Layout_Section-gray-spu-flex <%= namespace %>-Util_Custom-Padding-01">
+                        <p>
+                          <a data-ratid="gservice_sec_spu" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-sec.co.jp/web/campaign/spu/?scid=wi_rmb_tips_gservice_web_campaign_spu" class="c-Link_Txt-inline" target="_blank" rel="noopener">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                        </p>
+                        <p class="c-Txt_Cap">※1 条件あり。※2 上限ポイントあり。期間限定ポイントにて付与。</p>
+                      </div>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-nisa <%= namespace %>-Util_Custom-Padding-05 <%= namespace %>-Util_Pc">
+                      <div class="<%= namespace %>-Util_Pc-margin-63 ">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-nisa.png" width="156" alt="">
+                      </div>
+                      <div>
+                        <h3 class="c-Txt_Normal-l">将来の資産形成もできる<span class="c-Txt_Emp-02">「iDeCo」</span>と<span class="c-Txt_Emp-02">「NISA」</span></h3>
+                        <div class="u-Adjust_Mt-8">将来に備えるための自分でつくる年金をはじめませんか？少額でコツコツ積立投資をしよう！</div>
+                        <div class="u-Adjust_Mt-8">
+                          <a data-ratid="gservice_sec_dcsertop" data-ratevent="click" data-ratparam="all" href="https://dc.rakuten-sec.co.jp/?scid=wi_rmb_tips_gservice_dcsertop" class="c-Link_Txt-inline" target="_blank" rel="noopener">iDeCoについて詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                          <a data-ratid="gservice_sec_nisa_tsumitate" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-sec.co.jp/web/nisa/?scid=wi_rmb_tips_gservice_web_nisa" class="c-Link_Txt-inline <%= namespace %>-Util_Custom-margin-02" target="_blank" rel="noopener">NISAについて詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-nisa <%= namespace %>-Util_Custom-Padding-05 <%= namespace %>-Util_Sp">
+                      <h3 class="c-Txt_Normal-l u-Adjust_Align-center">将来の資産形成もできる<br><span class="c-Txt_Emp-02">「iDeCo」</span>と<span class="c-Txt_Emp-02">「NISA」</span></h3>
+                      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-nisa.png" width="197" alt="">
+                      </div>
+                      <div class="u-Adjust_Mt-16">将来に備えるための自分でつくる年金をはじめませんか？少額でコツコツ積立投資をしよう！</div>
+                      <p class="u-Adjust_Mt-16">
+                        <a data-ratid="gservice_sec_dcsertop" data-ratevent="click" data-ratparam="all" href="https://dc.rakuten-sec.co.jp/?scid=wi_rmb_tips_gservice_dcsertop" class="c-Link_Txt-inline" target="_blank" rel="noopener">iDeCoについて詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                      </p>
+                      <p class="u-Adjust_Mt-8">
+                        <a data-ratid="gservice_sec_nisa_tsumitate" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-sec.co.jp/web/nisa/?scid=wi_rmb_tips_gservice_web_nisa" class="c-Link_Txt-inline" target="_blank" rel="noopener">NISAについて詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h3 class="u-Adjust_Align-center c-Heading_Lv3">ほかにもこんなサービスが！</h3>
+                    <div class="<%= namespace %>-Layout_Section-service3 u-Adjust_Mt-16">
+                      <div>
+                        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">iSPEED</h4>
+                        <div class="<%= namespace %>-Layout_Section-service3-body">
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-iSPEED.png" width="79" alt="">
+                          </div>
+                          <div>
+                            <p>すべてが新しい株アプリ</p>
+                            <p>
+                              <a data-ratid="gservice_sec_ispeed" data-ratevent="click" data-ratparam="all" href="https://ispeed.jp/?scid=wi_rmb_tips_gservice_ispeed" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">投資情報が豊富</h4>
+                        <div class="<%= namespace %>-Layout_Section-service3-body">
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-information.png" width="79" alt="">
+                          </div>
+                          <div>
+                            <p>各種セミナーや情報発信中！</p>
+                            <p>
+                              <a data-ratid="gservice_sec_web_learn" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-sec.co.jp/web/learn/?scid=wi_rmb_tips_gservice_web_learn" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 class="c-Heading_Lv4 u-Adjust_Align-center">ポイントプログラム</h4>
+                        <div class="<%= namespace %>-Layout_Section-service3-body">
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-point-program.png" width="79" alt="">
+                          </div>
+                          <div>
+                            <p>ポイントが貯まるサービスが多数！！</p>
+                            <p>
+                              <a data-ratid="gservice_sec_point" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-sec.co.jp/web/service/point/?scid=wi_rmb_tips_gservice_web_service_point" class="c-Link_Txt-inline" target="_blank" rel="noopener">詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="u-Adjust_Mt-32 u-Adjust_Align-center u-Adjust_Pb-56">
+                      <a data-ratid="gservice_sec_scrtop" data-ratevent="click" data-ratparam="all" target="_blank" href="https://www.rakuten-sec.co.jp/?scid=wi_rmb_tips_gservice_scrtop" class="c-Btn_Primary-large">楽天証券はこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Layout_Section-insurance" id="Rwindow">
+                <div class="l-System_Container">
+                  <div class="u-Adjust_Pt-56">
+                    <div class="u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-insurance-top-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-insurance-top.png" width="551" alt="保険商品の紹介や保険選びに役立つコラムなど充実のコンテンツ">
+                      </picture>
+                      <h2 class="<%= namespace %>-Txt_custom-size">楽天保険の総合窓口 </h2>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Insurance u-Adjust_Mt-24">
+                      <div class="<%= namespace %>-Layout_Insurance_Wrapper">
+                        <div>
+                          <div class="u-Adjust_Align-center">
+                            <h3 class="c-Txt_Normal-l">みんなの保険診断</h3>
+                            <div class="u-Adjust_Mt-8"><img src="<%= sitepath %>assets/img/tips/gservice/img-insurance.png" width="294" alt=""></div>
+                          </div>
+                          <div class="u-Adjust_Mt-8">自分と似たような条件の人が、どんな保険に加入しているか確認できる。</div>
+                          <div class="u-Adjust_Mt-8"><a data-ratid="gservice_insurance_diagnosis" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-insurance.co.jp/diagnosis/?scid=wi_rmb_tips_gservice_diagnosis" class="c-Link_Txt-inline" target="_blank" rel="noopener">みんなの保険加入状況を見る<span class="c-Icon_New-window-l"></span></a></div>
+                        </div>
+                        <div>
+                          <div class="u-Adjust_Align-center">
+                            <h3 class="c-Txt_Normal-l">保険相談</h3>
+                            <div class="u-Adjust_Mt-8"><img src="<%= sitepath %>assets/img/tips/gservice/img-insurance2.png" width="264" alt=""></div>
+                          </div>
+                          <div class="u-Adjust_Mt-8">対面やオンライン面談にて、疑問・不安を何度でも無料でご相談可能！</div>
+                          <div class="u-Adjust_Mt-8"><a data-ratid="gservice_insurance_inquiry" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-insurance.co.jp/inquiry/?scid=wi_rmb_tips_gservice_inquiry" class="c-Link_Txt-inline" target="_blank" rel="noopener">楽天保険グループの無料相談<span class="c-Icon_New-window-l"></span></a></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-white-app-service u-Adjust_Mt-24">
+                      <div>
+                        <div class="u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-insurance-logo.png" width="64" alt="">
+                        </div>
+                        <h3 class="<%= namespace %>-Heading_App">
+                          <span class="c-Txt_Emp-01">契約管理も各種手続きもラクラク</span>
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天保険の総合窓口アプリ</span>
+                        </h3>
+                      </div>
+                      <div class="c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-16">
+                        ご契約内容をアプリから確認し、各種手続きができるので管理がしやすい！
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray <%= namespace %>-24-16 u-Adjust_Mt-24">
+                        <div>
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                          </picture>
+                        </div>
+                        <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                          <a href="https://apps.apple.com/jp/app/id1540688820" data-ratid="gservice_ios-insurance" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/hoken_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                        <div class="js-android <%= namespace %>-Layout-qr-flex">
+                          <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.hoken" data-ratid="gservice_android-insurance" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/hoken_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="u-Adjust_Mt-32 u-Adjust_Pb-64 u-Adjust_Align-center">
+                    <a data-ratid="gservice_insurance_hkmtop" data-ratevent="click" data-ratparam="all" href="https://www.rakuten-insurance.co.jp/?scid=wi_rmb_tips_gservice_hkmtop" class="c-Btn_Primary-large" target="_blank" rel="noopener">楽天保険の総合窓口はこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu3">
+              <div class="<%= namespace %>-Layout_Link js-position-fixed <%= namespace %>-Util_Custom-Padding-06">
+                <a data-ratid="gservice_anc_hikari" data-ratevent="click" data-ratparam="all" href="#Rturbo" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>Rakuten Turbo</a>
+                <a data-ratid="gservice_anc_travel" data-ratevent="click" data-ratparam="all" href="#Rtravel" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天トラベル</a>
+                <a data-ratid="gservice_anc_magazine" data-ratevent="click" data-ratparam="all" href="#Rmagazin" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天マガジン</a>
+                <a data-ratid="gservice_anc_music" data-ratevent="click" data-ratparam="all" href="#Rmusic" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天ミュージック</a>
+                <a data-ratid="gservice_anc_tv" data-ratevent="click" data-ratparam="all" href="#Rtv" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>パ・リーグSpecial（Rakuten TV）</a>
+                <a data-ratid="gservice_anc_nba" data-ratevent="click" data-ratparam="all" href="#Rnba" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>NBA Rakuten</a>
+              </div>
+              <div style="margin: 0 calc(50% - 50vw);width: 100vw;" id="Rturbo" class="<%= namespace %>-Heading_Sub">
+              <div id="js-trigger-nav-03"></div>
+              <nav class="<%= namespace %>-Description_Follow <%= namespace %>-Description_Follow-nav-03" id="js-fixed-nav-03" aria-expanded="false">
+                <ul id="jsFloatList03" class="js-float-list <%= namespace %>-Description_Follow_List">
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rturbo <%= namespace %>-Description_Follow_List_Item-active">
+                    <a href="#Rturbo" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_turbo" data-ratevent="click" data-ratparam="all">Rakuten Turbo</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rtravel">
+                    <a href="#Rtravel" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_travel" data-ratevent="click" data-ratparam="all">楽天トラベル</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rmagazin">
+                    <a href="#Rmagazin" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_magazine" data-ratevent="click" data-ratparam="all">楽天マガジン</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rmusic">
+                    <a href="#Rmusic" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_music" data-ratevent="click" data-ratparam="all">楽天ミュージック</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rtv">
+                    <a href="#Rtv" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_tv" data-ratevent="click" data-ratparam="all">パ・リーグSpecial（Rakuten TV）</a>
+                  </li>
+                  <li class="<%= namespace %>-Description_Follow_List_Item js-float-list-Rnba">
+                    <a href="#Rnba" class="js-scroll c-Link_Txt-icon-front" data-ratid="gservice_float_nba" data-ratevent="click" data-ratparam="all">NBA Rakuten</a>
+                  </li>
+                </ul>
+              </nav>
+                <div class="u-Adjust_Align-center">
+                  <div class="l-System_Container">
+                    <div class="u-Adjust_Pt-48">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-turbo-top-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-turbo-top.png" width="266" alt="工事不要! すぐに使える、おうちのWiFi">
+                      </picture>
+                      <h2 class="<%= namespace %>-Txt_custom-size" data-ratid="gservice_scroll_hikari" data-ratevent="appear">Rakuten Turbo</h2>
+                      <div class="<%= namespace %>-Layout_Section-service4 u-Adjust_Mt-16">
+                        <div class="<%= namespace %>-Layout_Section-service4-item">
+                          <h3 class="c-Txt_Normal-l u-Adjust_Align-center">コンセントにさすだけ!</h3>
+                          <div class="l-Media_Grid u-Adjust_Mt-24">
+                            <div class="l-Media_Image <%= namespace %>-Layout_Section-service4-img">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-turbo-01.png" alt="">
+                            </div>
+                            <div class="u-Adjust_Align-left <%= namespace %>-Layout_Section-service4-text">
+                              <p>煩わしい工事不要。ルーターをコンセントにさしてその日から使えます。</p>
+                              <p class="c-Txt_Cap u-Adjust_Mt-8">
+                                ※ Wi-Fiの接続が必要です。
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-service4-item">
+                          <h3 class="c-Txt_Normal-l u-Adjust_Align-center">データ高速無制限で使える！</h3>
+                          <div class="l-Media_Grid u-Adjust_Mt-24">
+                            <div class="l-Media_Image <%= namespace %>-Layout_Section-service4-img">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-turbo-02.png" alt="">
+                            </div>
+                            <div class="u-Adjust_Align-left <%= namespace %>-Layout_Section-service4-text">
+                              <p>リモートワークも快適。5Gをフルに活かした高速通信がデータ無制限で使えて、プラン料金がおトク。</p>
+                              <p class="c-Txt_Cap u-Adjust_Mt-8">
+                                ※ Turboの提供エリアは楽天回線エリアに限定 されています。<a href="<%= sitepath %>internet/turbo/area/?l-id=tips_gservice_internet_turbo_area">詳しくはこちら</a><br>
+                                ※ 公平なサービス提供のため速度制限する場合あり※ 5Gは一部エリアのみ。ミリ波は非対応
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="u-Adjust_Mt-32 u-Adjust_Pb-56 u-Adjust_Align-center">
+                      <a href="<%= sitepath %>internet/turbo/?l-id=tips_gservice_internet_turbo" class="c-Btn_Primary-large"><span>Rakuten Turboはこちら</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="background-color:#fcfbde; margin: 0 calc(50% - 50vw);width: 100vw;" id="Rtravel">
+                <div class="<%= namespace %>-Util_Custom-Padding-02">
+                  <div class="l-System_Container">
+                    <div>
+                      <div class="u-Adjust_Align-center">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-travel-top-sp.png">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-travel-top.png" width="533" alt="スマホから宿泊予約・航空券予約ができるオンライン総合旅行サイト">
+                        </picture>
+                        <h2 class="<%= namespace %>-Txt_custom-size">楽天トラベル</h2>
+                        <div class="c-Txt_Emp-01">国内旅行、海外旅行に関する<br class="<%= namespace %>-Util_Sp">観光情報も満載！</div>
+                      </div>
+                      <div class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Layout_Section-white-app">
+                        <div>
+                          <div class="u-Adjust_Align-center">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/Travel-logo.png" alt="" width="64">
+                          </div>
+                          <h3 class="<%= namespace %>-Heading_App">
+                            <span class="c-Txt_Emp-01">いつでも、どこでも旅行のお供に</span>
+                            <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天トラベルアプリ</span>
+                          </h3>
+                        </div>
+                        <div class="<%= namespace %>-Txt_White_green <%= namespace %>-Util_Custom-Padding-07 u-Adjust_Mt-24 u-Adjust_Align-center">
+                          <h3 class="<%= namespace %>-Txt_custom-size3">楽天トラベルアプリのおすすめ機能</h3>
+                        </div>
+                        <div class="u-Adjust_Mt-16">
+                          <ul class="<%= namespace %>-List_Card-2 <%= namespace %>-Util_Pc">
+                            <li class="<%= namespace %>-List_Card-2_Item">
+                              <div class="<%= namespace %>-Layout_Section-travel-app">
+                                <div>
+                                  <picture>
+                                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-travel-sp.png">
+                                    <img src="<%= sitepath %>assets/img/tips/gservice/img-travel.png" width="85" alt="">
+                                  </picture>
+                                </div>
+                                <div class="u-Adjust_Align-left">
+                                  <h4 class="c-Txt_Normal-m">予約情報をいつでも確認！</h4>
+                                  <p class="u-Adjust_Mt-8">宿泊先までの道のりを地図から確認できます。</p>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="<%= namespace %>-List_Card-2_Item">
+                              <div class="<%= namespace %>-Layout_Section-travel-app">
+                                <div>
+                                  <picture>
+                                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-travel-2-sp.png">
+                                    <img src="<%= sitepath %>assets/img/tips/gservice/img-travel-2.png" alt="">
+                                  </picture>
+                                </div>
+                                <div class="u-Adjust_Align-left">
+                                  <h4 class="c-Txt_Normal-m">周辺の宿を簡単検索！</h4>
+                                  <p class="u-Adjust_Mt-8">GPS機能で現在地周辺の宿を探せる！空室がある宿を簡単に検索・予約ができます。</p>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                          <ul class="<%= namespace %>-List_Card-2 <%= namespace %>-Util_Sp">
+                            <li class="<%= namespace %>-List_Card-2_Item">
+                              <div class="<%= namespace %>-Layout_Section-travel-app">
+                                <div>
+                                  <h4 class="c-Txt_Normal-l">予約情報を<br>いつでも確認！</h4>
+                                </div>
+                                <div>
+                                  <img src="<%= sitepath %>assets/img/tips/gservice/img-travel-sp.png" width="123" alt="" class="<%= namespace %>-Util_Custom-margin-03">
+                                  <p class="u-Adjust_Align-left">宿泊先までの道のりを地図から確認できます。</p>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="<%= namespace %>-List_Card-2_Item">
+                              <div class="<%= namespace %>-Layout_Section-travel-app">
+                                <div>
+                                  <h4 class="c-Txt_Normal-l">周辺の宿を簡単検索！</h4>
+                                </div>
+                                <div>
+                                  <img src="<%= sitepath %>assets/img/tips/gservice/img-travel-2-sp.png" width="184" alt="" class="<%= namespace %>-Util_Custom-margin-03">
+                                  <p class="u-Adjust_Align-left">GPS機能で現在地周辺の宿を探せる！空室がある宿を簡単に検索・予約ができます。</p>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                          <div>
+                            <picture>
+                              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                            </picture>
+                          </div>
+                          <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                            <a href="https://apps.apple.com/jp/app/id300815151" data-ratid="gservice_ios-travel" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/travel_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                          <div class="js-android <%= namespace %>-Layout-qr-flex">
+                            <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.travel.andro" data-ratid="gservice_android-travel" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/travel_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Layout_Section-white">
+                        <div class="<%= namespace %>-Util_Pc <%= namespace %>-Layout_Section-panda">
+                          <div class="u-Adjust_Align-center">
+                            <h3 class="c-Txt_Normal-l <%= namespace %>-Txt_Red">楽天ポイントが貯まる・使える！</h3>
+                            <div class="u-Adjust_Mt-8">楽天IDを利用して予約するとポイントが貯まります！ <br>
+                              <a data-ratid="gservice_travel_cpn" data-ratevent="click" data-ratparam="all" href="https://travel.rakuten.co.jp/camp/service_debut/?scid=wi_rmb_tips_gservice_camp_service_debut" class="c-Link_Txt-inline" target="_blank" rel="noopener"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！
+                            </div>
+                          </div>
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-panda-4.png" width="180" alt="">
+                          </div>
+                        </div>
+
+                        <div class="<%= namespace %>-Util_Sp <%= namespace %>-Layout_Section-panda">
+                          <h3 class="c-Txt_Normal-l <%= namespace %>-Txt_Red u-Adjust_Align-center">楽天ポイントが<br>貯まる・使える！</h3>
+                          <div class="<%= namespace %>-Util_Reduction-img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-spu-panda-4-sp.png" alt="" class="u-Adjust_Mt-16">
+                          </div>
+                          <div class="u-Adjust_Mt-8 u-Adjust_Align-left">楽天IDを利用して予約するとポイントが貯まります！ <br>
+                            <a data-ratid="gservice_travel_cpn" data-ratevent="click" data-ratparam="all" href="https://travel.rakuten.co.jp/camp/service_debut/?scid=wi_rmb_tips_gservice_camp_service_debut" class="c-Link_Txt-inline" target="_blank" rel="noopener"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！
+                          </div>
+                        </div>
+                        <div class="u-Adjust_Mt-16">
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-travel-spu-sp.png" width="622" height="238">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-travel-spu.png" width="1970" height="128" alt="楽天トラベルはSPU対象。楽天トラベルご利用でポイント＋1倍！" class="<%= namespace %>-Util_Full-width">
+                          </picture>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray-spu <%= namespace %>-Layout_Section-gray-spu-flex <%= namespace %>-Util_Custom-Padding-01">
+                          <p class="u-Adjust_Align-left">
+                            <a data-ratid="gservice_travel_spu" data-ratevent="click" data-ratparam="all" href="https://travel.rakuten.co.jp/camp/spu/?scid=wi_rmb_tips_gservice_camp_spu" class="c-Link_Txt-inline" target="_blank" rel="noopener">SPUの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                          </p>
+                          <p class="c-Txt_Cap">※1 1回 5,000円(税込)以上のご予約＆翌々月末までのご利用でご予約した月の楽天市場のお買い物がポイントアップ対象 ※2 上限ポイントあり。期間限定ポイントにて付与</p>
+                        </div>
+                      </div>
+                      <div class="u-Adjust_Mt-24 <%= namespace %>-Layout_Section-white <%= namespace %>-Layout_Section-pay <%= namespace %>-Util_Pc">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-racoupon.png" width="277" alt="">
+                        </div>
+                        <div>
+                          <h3 class="c-Txt_Normal-l">割引クーポンが豊富！</h3>
+                          <p>割引クーポンを利用して予約すると、予約料金からその場で割引して予約が可能！</p>
+                          <p>
+                            <a data-ratid="gservice_travel_coupon" data-ratevent="click" data-ratparam="all" href="https://travel.rakuten.co.jp/coupon/?scid=wi_rmb_tips_gservice_coupon" class="c-Link_Txt-inline" target="_blank" rel="noopener">宿泊料金割引クーポンを見る<span class="c-Icon_New-window-l"></span></a>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div class="u-Adjust_Mt-24 <%= namespace %>-Layout_Section-white <%= namespace %>-Layout_Section-pay <%= namespace %>-Util_Sp">
+                        <div class="u-Adjust_Align-center">
+                          <h3 class="c-Txt_Normal-l">割引クーポンが豊富！</h3>
+                        </div>
+                        <div>
+                          <div class="<%= namespace %>-Util_Reduction-img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-racoupon.png" alt="" width="554" height="184">
+                          </div>
+                          <p>割引クーポンを利用して予約すると、予約料金からその場で割引して予約が可能！</p>
+                          <p>
+                            <a data-ratid="gservice_travel_coupon" data-ratevent="click" data-ratparam="all" href="https://travel.rakuten.co.jp/coupon/?scid=wi_rmb_tips_gservice_coupon" class="c-Link_Txt-inline" target="_blank" rel="noopener">宿泊料金割引クーポンを見る<span class="c-Icon_New-window-l"></span></a>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                        <a data-ratid="gservice_travel_trvtop" data-ratevent="click" data-ratparam="all" href="https://travel.rakuten.co.jp/?scid=wi_rmb_tips_gservice_trvtop" class="c-Btn_Primary-large" target="_blank" rel="noopener">楽天トラベルはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="background-color:white; margin: 0 calc(50% - 50vw);width: 100vw;" id="Rmagazin">
+                <div class="l-System_Container">
+                  <div class="<%= namespace %>-Util_Custom-Padding-03">
+                    <div class="u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-magazin-top-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-magazin-top.png" width="420" alt="アプリ・PC（パソコン）・タブレットでいつでも読み放題！">
+                      </picture>
+                      <h2 class="<%= namespace %>-Txt_custom-size" data-ratid="gservice_scroll_magazine" data-ratevent="appear">楽天マガジン</h2>
+                    </div>
+                    <div class="<%= namespace %>-List_Card-body3">
+                      <div class="<%= namespace %>-Layout_Section-white-magazin-bg <%= namespace %>-Util_Custom-align">
+                        <div class="c-Txt_Emp-02 c-Txt_Normal-l u-Adjust_Align-center">人気雑誌1,200誌<span class="c-Txt_Cap c-Txt_Emp-02">※</span>以上が読み放題！</div>
+                        <div>
+                          <a data-ratid="gservice_magazine_cpn" data-ratevent="click" data-ratparam="all" href="https://magazine.rakuten.co.jp/cpn/mno/?scid=wi_rmb_tips_gservice_cpn_mno" class="c-Link_Txt-inline" target="_blank" rel="noopener"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！<br><span class="c-Txt_Cap">※2023年4月時点</span>
+                        </div>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-white-app">
+                        <div class="u-Adjust_Align-center">
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/Magazine-logo.png" alt="" width="64">
+                          </div>
+                          <h3 class="<%= namespace %>-Heading_App">
+                            <span class="c-Txt_Emp-01">まずは立ち読み！</span>
+                            <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天マガジンアプリ</span>
+                          </h3>
+                        </div>
+                        <div class="<%= namespace %>-Heading_Round <%= namespace %>-Txt_White <%= namespace %>-Util_Custom-Padding-07 u-Adjust_Mt-24">
+                          <h3 class="u-Adjust_Align-center <%= namespace %>-Txt_custom-size3">楽天マガジンアプリの限定機能！</h3>
+                        </div>
+                        <ul class="u-Adjust_Mt-16 <%= namespace %>-List_Magazine">
+                          <li class="<%= namespace %>-List_Magazine_Item">
+                            <div class="<%= namespace %>-List_Magazine_Item_Icon">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/icon-magazine-01.svg" alt="" width="54" height="60">
+                            </div>
+                            <p class="<%= namespace %>-List_Magazine_Item_Txt">ダウンロードすれば、<span class="c-Txt_Emp-02">オフラインでも雑誌が読める</span></p>
+                          </li>
+                          <li class="<%= namespace %>-List_Magazine_Item">
+                            <div class="<%= namespace %>-List_Magazine_Item_Icon">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/icon-magazine-02.svg" alt="" width="57" height="58">
+                            </div>
+                            <p class="<%= namespace %>-List_Magazine_Item_Txt">
+                              <span class="c-Txt_Emp-02">気になるトピックを検索！</span><br>
+                              記事から雑誌を探せます
+                            </p>
+                          </li>
+                          <li class="<%= namespace %>-List_Magazine_Item">
+                            <div class="<%= namespace %>-List_Magazine_Item_Icon">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/icon-magazine-03.svg" alt="" width="51" height="42">
+                            </div>
+                            <p class="<%= namespace %>-List_Magazine_Item_Txt">雑誌にすぐにアクセスできる！<br class="<%= namespace %>-Util_Pc"><span class="c-Txt_Emp-02">便利なお気に入り登録機能</span></p>
+                          </li>
+                        </ul>
+                        <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                          <div>
+                            <picture>
+                              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                            </picture>
+                          </div>
+                          <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                            <a href="https://apps.apple.com/jp/app/id1136986870" data-ratid="gservice_ios-magazine" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/maz_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                          <div class="js-android <%= namespace %>-Layout-qr-flex">
+                            <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.magazine" data-ratid="gservice_android-magazine" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/maz_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="<%= namespace %>-List_Card-body <%= namespace %>-Layout_Section-white-magazin">
+                      <div class="<%= namespace %>-Layout_Section-white-magazin <%= namespace %>-Util_Pc">
+                        <div>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-magazin2.png" width="317" alt="">
+                        </div>
+                        <div class="u-Adjust_Align-left">
+                          <h3 class="c-Txt_Normal-l">1つのアカウントで5台まで！</h3>
+                          <div class="u-Adjust_Mt-8">1つのアカウントでスマホ・タブレットは5台、パソコンなら2台まで同時に読める。</div>
+                          <div class="u-Adjust_Mt-8">
+                            <a data-ratid="gservice_magazine_service" data-ratevent="click" data-ratparam="all" href="https://magazine.rakuten.co.jp/service.html?scid=wi_rmb_tips_gservice_service" class="c-Link_Txt-inline" target="_blank" rel="noopener">サービス詳細をもっと見る<span class="c-Icon_New-window-l"></span></a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class=" <%= namespace %>-Layout_Section-pay <%= namespace %>-Util_Sp">
+                        <div class="u-Adjust_Align-center">
+                          <h3 class="c-Txt_Normal-l">1つのアカウントで5台まで！</h3>
+                        </div>
+                        <div>
+                          <div class="<%= namespace %>-Util_Reduction-img">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-magazin2-sp.png" alt="" width="622" height="233">
+                          </div>
+                          <p>1つのアカウントでスマホ・タブレットは5台、パソコンなら2台まで同時に読める。</p>
+                          <p>
+                            <a data-ratid="gservice_magazine_service" data-ratevent="click" data-ratparam="all" href="https://magazine.rakuten.co.jp/service.html?scid=wi_rmb_tips_gservice_service" class="c-Link_Txt-inline" target="_blank" rel="noopener">サービス詳細をもっと見る<span class="c-Icon_New-window-l"></span></a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                      <a data-ratid="gservice_magazine_mgztop" data-ratevent="click" data-ratparam="all" href="https://magazine.rakuten.co.jp/?scid=wi_rmb_tips_gservice_mgztop" class="c-Btn_Primary-large" target="_blank" rel="noopener">楽天マガジンはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="background-color:#F7F7F7;margin: 0 calc(50% - 50vw);width: 100vw;" id="Rmusic">
+                <div class="l-System_Container u-Adjust_Pt-48">
+                  <div>
+                    <div class="u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-Rmusic-top-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-Rmusic-top.png" width="287" alt="定額制聴き放題音楽配信サービス">
+                      </picture>
+                      <h2 class="<%= namespace %>-Txt_custom-size">楽天ミュージック</h2>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-white-life">
+                      <div class="c-Txt_Emp-02 c-Txt_Normal-l u-Adjust_Align-center">最新曲や人気曲が1億曲<span class="c-Txt_Cap c-Txt_Emp-02">※</span>以上聴き放題！</div>
+                      <div class="<%= namespace %>-Util_Custom-align">
+                        <a data-ratid="gservice_music_cpn" data-ratevent="click" data-ratparam="all" href="https://music.rakuten.co.jp/campaign/2022/group/mobile/?scid=wi_rmb_tips_gservice_campaign_2022_group_mobile" class="c-Link_Txt-inline" target="_blank" rel="noopener"><strong>楽天モバイル（Rakuten最強プラン）契約者限定</strong>キャンペーン<span class="c-Icon_New-window-l"></span></a>実施中！<br><span class="c-Txt_Cap">※2022年10月時点</span>
+                      </div>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-white-life-bottom">
+                      <div>
+                        <div class="u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/Music-logo.png" width="64" alt="">
+                        </div>
+                        <h3 class="<%= namespace %>-Heading_App">
+                          <span class="c-Txt_Emp-01">聴き放題音楽アプリ</span>
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">楽天ミュージックアプリ</span>
+                        </h3>
+                      </div>
+                      <div class="<%= namespace %>-Txt_White3 u-Adjust_Align-center u-Adjust_Mt-24 <%= namespace %>-Util_Custom-Padding-07">
+                        <h3 class="<%= namespace %>-Txt_custom-size3">好きな曲を聴くだけで<br class="<%= namespace %>-Util_Sp">毎日楽天ポイントが貯まる</h3>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray-music <%= namespace %>-Util_Custom-Padding-08">
+                        <div>
+                          <div class="<%= namespace %>-Util_Pc">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-panda3.png" width="151" alt="">
+                          </div>
+                          <div class="<%= namespace %>-Util_Sp">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/img-panda3-sp.png" width="279" alt="" class="<%= namespace %>-Util_Custom-margin-03">
+                          </div>
+                          <div class="u-Adjust_Align-left">
+                            <p>毎日1曲聞くと1ポイント獲得！お支払いに設定すればプラン料金が安くなる！</p>
+                            <p class="u-Adjust_Mt-8"><a data-ratid="gservice_music_mission" data-ratevent="click" data-ratparam="all" href="https://music.rakuten.co.jp/howto/mission/?scid=wi_rmb_tips_gservice_howto_mission" class="c-Link_Txt-inline" target="_blank" rel="noopener">ポイントの獲得方法の詳細を見る<span class="c-Icon_New-window-l"></span></a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                        <div>
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                          </picture>
+                        </div>
+                        <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                          <a href="https://apps.apple.com/jp/app/id1073815664" data-ratid="gservice_ios-music" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/music_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                        <div class="js-android <%= namespace %>-Layout-qr-flex">
+                          <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.music" data-ratid="gservice_android-music" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/music_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                      </div>
+                      <div class="u-Adjust_Mt-24 <%= namespace %>-Layout_Music-rank">
+                        <h3 class="<%= namespace %>-Layout_Music-rank_Ttl c-Txt_Normal-l">続けるほどおトク！<br class="<%= namespace %>-Util_Sp">Rakuten Musicランク</h3>
+                        <div class="<%= namespace %>-Layout_Music-rank_Img u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/img-music-01.png" width="498" height="285" alt="">
+                        </div>
+                        <div class="<%= namespace %>-Layout_Music-rank_Txt">
+                          <p>Rakuten Musicをご契約中のお客様を対象とした無料のプログラム。料金プランを課金中で、必要な利用日数を満たしていればランクアップができます。ランクごとにクーポンやプレゼントなどの特典もあり！</p>
+                          <div class="u-Adjust_Mt-8">
+                            <a data-ratid="gservice_music_rank" data-ratevent="click" data-ratparam="all" href="https://music.rakuten.co.jp/rank/?scid=wi_rmb_tips_gservice_app_musicrank" class="c-Link_Txt-inline" target="_blank" rel="noopener">Rakuten Musicランクの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32 u-Adjust_Pb-48 u-Adjust_Align-center">
+                    <a data-ratid="gservice_music_msctop" data-ratevent="click" data-ratparam="all" target="_blank" href="https://music.rakuten.co.jp/?scid=wi_rmb_tips_gservice_msctop" class="c-Btn_Primary-large">楽天ミュージックはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                  </div>
+                </div>
+              </div>
+              <div style="background-color:white; margin: 0 calc(50% - 50vw);width: 100vw;" id="Rtv">
+                <div class="l-System_Container">
+                  <div class="<%= namespace %>-Util_Custom-Padding-03">
+                    <div class="u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-tv-top-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-tv-top.png" width="231" alt="パ・リーグ主催試合が見放題">
+                      </picture>
+                      <h2 class="<%= namespace %>-Txt_custom-size-rtv" data-ratid="gservice_scroll_tv" data-ratevent="appear">パ・リーグSpecial<br class="<%= namespace %>-Util_Sp">（Rakuten TV）</h2>
+                    </div>
+                    <div class="<%= namespace %>-List_Card-body3">
+                      <div class="<%= namespace %>-Layout_Section-white-life <%= namespace %>-Util_Custom-align">
+                        <div class="c-Txt_Emp-02 c-Txt_Normal-l u-Adjust_Align-center">パ・リーグが主催する<br class="<%= namespace %>-Util_Sp">一軍の公式戦を視聴できる</div>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-white-life-bottom">
+                        <div class="u-Adjust_Align-center">
+                          <div>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/Tv-logo.png" alt="" width="64">
+                          </div>
+                          <h3 class="<%= namespace %>-Heading_App">
+                            <span class="c-Txt_Emp-01">快適視聴！プレイヤーの機能も充実！</span>
+                            <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">Rakuten TVアプリ</span>
+                          </h3>
+                        </div>
+                        <div class="<%= namespace %>-Txt_White2 u-Adjust_Align-center u-Adjust_Mt-24 <%= namespace %>-Util_Custom-Padding-07">
+                          <h3 class="<%= namespace %>-Txt_custom-size3">LIVE配信はもちろん<br class="<%= namespace %>-Util_Sp">見逃し配信も</h3>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray-tv <%= namespace %>-Util_Custom-Padding-01">
+                          <div>
+                            <div class="u-Adjust_Align-center">
+                              <picture>
+                                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-r-tv-sp.png">
+                                <img src="<%= sitepath %>assets/img/tips/gservice/img-r-tv.png" width="221" alt="" class="<%= namespace %>-Util_Custom-margin-04">
+                              </picture>
+                            </div>
+                            <div>
+                              <p>配信予定の全試合がLIVE配信で楽しめる。LIVEで観られなかった場合は、見逃し配信も！</p>
+                              <p class="u-Adjust_Mt-8"><a data-ratid="gservice_tv_pacificleague_detail" data-ratevent="click" data-ratparam="all" href="https://tv.rakuten.co.jp/static/pacificleague/lp/general/#sec-about/?scid=wi_rmb_tips_gservice_static_pacificleague_lp_general" class="c-Link_Txt-inline" target="_blank" rel="noopener">サービス詳細をもっと見る<span class="c-Icon_New-window-l"></span></a></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                          <div>
+                            <picture>
+                              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                            </picture>
+                          </div>
+                          <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                            <a href="https://apps.apple.com/jp/app/id835637502" data-ratid="gservice_ios-tv" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/tv_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                          <div class="js-android <%= namespace %>-Layout-qr-flex">
+                            <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.video.showtimeplayer" data-ratid="gservice_android-tv" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                              <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                            </a>
+                            <img src="<%= sitepath %>assets/img/tips/gservice/tv_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+                      <a data-ratid="gservice_tv_pacificleague" data-ratevent="click" data-ratparam="all" href="https://sports.tv.rakuten.co.jp/pacificleague/?scid=wi_rmb_tips_gservice_pacificleague" class="c-Btn_Primary-large" target="_blank" rel="noopener">パ・リーグSpecialはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="background-color:#F7F7F7;margin: 0 calc(50% - 50vw);width: 100vw;" id="Rnba">
+                <div class="l-System_Container">
+                  <div class="u-Adjust_Pt-48">
+                    <div class="u-Adjust_Align-center">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-nba-top-sp-231201.png">
+                        <img src="<%= sitepath %>assets/img/tips/gservice/img-nba-top-231201.png" width="271" alt="NBAの全試合を動画で楽しもう！">
+                      </picture>
+                      <h2 class="<%= namespace %>-Txt_custom-size">NBA Rakuten</h2>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-white-life <%= namespace %>-Util_Custom-align">
+                      <div class="c-Txt_Emp-02 c-Txt_Normal-l u-Adjust_Align-center">日本人選手も活躍する<br class="<%= namespace %>-Util_Sp">NBAの全試合を配信！</div>
+                    </div>
+                    <div class="<%= namespace %>-Layout_Section-white-life-bottom">
+                      <div>
+                        <div class="u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/tips/gservice/NBA-logo.png" width="64" alt="">
+                        </div>
+                        <h3 class="<%= namespace %>-Heading_App">
+                          <span class="c-Txt_Emp-01">試合のダウンロードやチャット機能も充実！</span>
+                          <span class="c-Txt_Emp-01 <%= namespace %>-Heading-ll">NBA Rakutenアプリ</span>
+                        </h3>
+                      </div>
+                      <div class="<%= namespace %>-Txt_White_Blue u-Adjust_Align-center u-Adjust_Mt-24 <%= namespace %>-Heading_Card-nba">
+                        <h3 class="<%= namespace %>-Txt_custom-size3-nba">好きな時間に好きな場所で</h3>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray-tv">
+                        <div>
+                          <div class="u-Adjust_Align-center">
+                            <picture>
+                              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-rakuten-nba-sp.png">
+                              <img src="<%= sitepath %>assets/img/tips/gservice/img-rakuten-nba.png" width="183" alt="" class="<%= namespace %>-Util_Custom-margin-03">
+                            </picture>
+                          </div>
+                          <div>
+                            <p>お手持ちのスマホやリビングの大画面テレビでいつでどこでもNBAの全試合を視聴可能！</p>
+                            <p class="u-Adjust_Mt-8"><a data-ratid="gservice_nba_package" data-ratevent="click" data-ratparam="all" href="https://nba.rakuten.co.jp/package/?scid=wi_rmb_tips_gservice_package" class="c-Link_Txt-inline" target="_blank" rel="noopener">サービス詳細をもっと見る<span class="c-Icon_New-window-l"></span></a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="<%= namespace %>-Layout_Section-gray u-Adjust_Mt-24">
+                        <div>
+                          <picture>
+                            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/download-sp.png">
+                            <img src="<%= sitepath %>assets/img/tips/gservice/download.png" alt="ダウンロードはこちらから" width="180">
+                          </picture>
+                        </div>
+                        <div class="js-ios <%= namespace %>-Layout-qr-flex">
+                          <a href="https://apps.apple.com/jp/app/id1436684275" data-ratid="gservice_ios-nba" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/nba_ios.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                        <div class="js-android <%= namespace %>-Layout-qr-flex">
+                          <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.nba" data-ratid="gservice_android-nba" data-ratevent="click" data-ratparam="all" target="_blank" rel="noopener noreferrer">
+                            <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162">
+                          </a>
+                          <img src="<%= sitepath %>assets/img/tips/gservice/nba_and.png" alt="" width="84" class="<%= namespace %>-Util_Pc">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32 u-Adjust_Pb-48 u-Adjust_Align-center">
+                    <a data-ratid="gservice_nba_nbatop" data-ratevent="click" data-ratparam="all" href="https://nba.rakuten.co.jp/?scid=wi_rmb_tips_gservice_nbatop" class="c-Btn_Primary-large" target="_blank" rel="noopener">NBA Rakutenはこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="u-Adjust_Align-center l-System_Container u-Adjust_Mt-24 u-Adjust_Mt-pc-48">
+        <h3 class="c-Heading_Lv3 c-Txt_Emp-01">＼ 他のカテゴリもみる／</h3>
+        <ul class="<%= namespace %>-List_Cta">
+          <li id="cta-tab-menu1" class="<%= namespace %>-List_Cta_Item <%= namespace %>-List_Cta_Item-active"><a href="#tab-menu" class="js-scroll" data-ratid="gservice_btn_service_shopping" data-ratevent="click" data-ratparam="all">お買い物<span class="<%= namespace %>-List_Cta_Item_Icon"></span></a></li>
+          <li id="cta-tab-menu2" class="<%= namespace %>-List_Cta_Item"><a href="#tab-menu" class="js-scroll" data-ratid="gservice_btn_service_money" data-ratevent="click" data-ratparam="all">マネー・<br>ファイナンス<span class="<%= namespace %>-List_Cta_Item_Icon"></span></a></li>
+          <li id="cta-tab-menu3" class="<%= namespace %>-List_Cta_Item"><a href="#tab-menu" class="js-scroll" data-ratid="gservice_btn_service_life" data-ratevent="click" data-ratparam="all">生活・エンタメ<br>・レジャー<span class="<%= namespace %>-List_Cta_Item_Icon"></span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="u-Adjust_Align-center l-System_Container u-Adjust_Mt-64">
+        <div class="c-Txt_Emp-01">おトクに楽天サービスをはじめてみよう！</div>
+        <h2 class="<%= namespace %>-Txt_custom-size2" data-ratid="gservice_scroll_campaign" data-ratevent="appear">楽天モバイルご契約者様<br class="<%= namespace %>-Util_Sp">限定キャンペーン</h2>
+        <div class="u-Adjust_Mt-24">
+          <a href="<%= sitepath %>campaign/member/?l-id=tips_gservice_campaign_member">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/gservice/img-exclusive-sp.png">
+              <img src="<%= sitepath %>assets/img/tips/gservice/img-exclusive.png" width="" alt="限定特典もりだくさん！ご契約者様向けキャンペーン情報">
+            </picture>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="u-Adjust_Mt-32 u-Adjust_Mt-pc-56 u-Adjust_Align-center">
+      <div class="l-System_Container">
+        <a href="https://www.rakuten.co.jp/sitemap/?scid=wi_rmb_tips_gservice_sitemap" class="c-Btn_Primary-large" target="_blank" rel="noopener" data-ratid="gservice_sitemap" data-ratevent="click" data-ratparam="all">楽天サービス一覧はこちら<span class="c-Icon_New-window-f c-Btn_Icon-end"></span></a>
+      </div>
+    </div>
+
+    <!-- ReX UX Survey: Mounting point for embedded components -->
+    <div id="rexSurveyEmbedded" class="rexSurveyNamespace u-Adjust_Pt-64"></div>
+
+
+    <footer class="g-Footer <%= namespace %>-Layout_Footer u-Adjust_Mt-64">
+      <div class="g-Footer_Aside">
+        <%#- include('/include/footer/related/_related-campaign-v2.ejs') %>
+
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/tips.gservice.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+
+
+  <!-- ReX UX Survey: Config -->
+  <script>
+    window.rexSurveyConfig = {
+      "language": "ja",
+      "surveyId": "40806",
+      "cId": {
+          "name": "answers[40806_277180]",
+          "value": ""
+      },
+      "embedded": true,
+      "url": {
+          "name": "answers[40806_277181]"
+      },
+      "triggerIdName": "trigger",
+      "reappearancePeriodWithRespond": "10",
+      "reappearancePeriodWithoutRespond": "10",
+      "enableDisplaySuppressionPerPage": true,
+      "enableFormAction": true,
+      "displayStartDate": "",
+      "displayEndDate": "",
+      "permission": {
+          "inquiryTxt": "キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)",
+          "yesBtnTxt": "協力する",
+          "noBtnTxt": "今は協力しない",
+          "available": true
+      },
+      "thanks": {
+          "txt0": "ご協力ありがとうございました",
+          "txt1": "いただいた情報は、サービス改善のために使用させていただきます。"
+      },
+      "nps": {
+          "available": true,
+          "question": {
+              "label": "このページの総合的な「わかりやすさ」について、どのように感じましたか？"
+          },
+          "options": [
+              {
+                  "name": "answers[40806_277182]",
+                  "value": "732153"
+              },
+              {
+                  "name": "answers[40806_277182]",
+                  "value": "732154"
+              },
+              {
+                  "name": "answers[40806_277182]",
+                  "value": "732155"
+              },
+              {
+                  "name": "answers[40806_277182]",
+                  "value": "732156"
+              },
+              {
+                  "name": "answers[40806_277182]",
+                  "value": "732157"
+              }
+          ],
+          "txt0": "わかりづらかった",
+          "txt1": "わかりやすかった",
+          "checked": 4
+      },
+      "inquiry": {
+          "available": true,
+          "checkList": {
+              "questionType": "multipleAnswer",
+              "available": true,
+              "question": "あなたがこのページについて思ったことで、当てはまるものを教えてください (複数可)",
+              "shuffleChoices": false,
+              "options": [
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732158",
+                      "label": "情報が魅力的でない"
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732159",
+                      "label": "知りたいサービスが掲載されてない"
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732160",
+                      "label": "説明文がわかりにくい"
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732161",
+                      "label": "デザインがわかりにくい"
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732162",
+                      "label": "情報が多すぎる"
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732163",
+                      "label": "特になし"
+                  },
+                  {
+                      "name": "",
+                      "value": "",
+                      "label": ""
+                  }
+              ]
+          },
+          "freeInput": {
+              "available": true,
+              "name": "answers[40806_277184]",
+              "title": "ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"
+          },
+          "sendBtnTxt": "送信する",
+          "footerNote": {
+              "available": true,
+              "text": "お客様よりご提供いただく情報はサービス向上のため使用させていただきます。",
+              "link": "https://privacy.rakuten.co.jp/",
+              "htmlText": ""
+          }
+      },
+      "inquiryNegative": {
+          "checkList": {
+              "available": false,
+              "options": [
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732158",
+                      "label": ""
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732159",
+                      "label": ""
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732160",
+                      "label": ""
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732161",
+                      "label": ""
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732162",
+                      "label": ""
+                  },
+                  {
+                      "name": "answers[40806_277183][]",
+                      "value": "732163",
+                      "label": ""
+                  },
+                  {
+                      "name": "",
+                      "value": "",
+                      "label": ""
+                  }
+              ]
+          }
+      },
+      "ua": {
+          "name": "answers[40806_277185]"
+      },
+      "href": {
+          "name": "answers[40806_277186]"
+      },
+      "cookie": {
+          "available": false
+      },
+      "assetPaths": {
+          "closeButton": "",
+          "checkIcon": ""
+      }
+    }  
+  </script>
+  <!-- ReX UX Survey: Script -->
+  <script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/1.8.0/js/main.js" defer></script>
+</body>
+</html>

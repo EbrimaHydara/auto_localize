@@ -1,0 +1,28 @@
+<% const {namespace, category, linkListContent, relatedCategory, icon} = pageInfo -%>
+<div class="<%= namespace %>-Layout_Category">
+  <div class="l-System_Container">
+    <div class="<%= namespace %>-Category_Heading u-Adjust_Align-center">
+      <h2 class="c-Heading_Lv2"><span><%- category %>の<br></span>他カテゴリーから探す</h2>
+      <div class="<%= namespace %>-Category_Infobox">
+        <ul class="<%= namespace %>-Category_List">
+          <% relatedCategory.forEach(function(elem) { -%>
+            <li><a href="<%= sitepath %><%= elem.path %>/?l-id=support_category_category"><%= elem.name %><span class="c-Icon_Chevron-right"></span></a></li>
+          <% }); -%>
+        </ul>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Utility_Disp-tab u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Mb-32">
+      <img src="<%= sitepath %>assets/img/support/search.png" width="165" alt="">
+    </div>
+    <div class="<%= namespace %>-Category_Nav u-Adjust_Align-center">
+
+      <div class="">
+        <a class="c-Btn_Regular-semiauto" href="<%= sitepath %>support/?l-id=footer_related_support">お客様サポートトップへ</a>
+      </div>
+      <div class="">
+        <a class="c-Btn_Regular-semiauto" href="<%= rootpath %>?l-id=footer_related_top">楽天モバイルトップへ</a>
+      </div>
+    </div>
+  </div>
+
+</div>

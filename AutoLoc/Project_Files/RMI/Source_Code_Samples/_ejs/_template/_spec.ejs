@@ -1,0 +1,648 @@
+<%
+  const directory = jData.code;
+  const leng = Object.keys(jData).length;
+  for ( let i = 0; i < leng; i++ ) {
+    jData[Object.keys(jData)[i]] = jData[Object.keys(jData)[i]]
+    .replace(/，/g, ',')
+    .trim();
+  }
+-%>
+<%%-
+  include('/_header', {
+    pagetitle: 'スペック詳細',
+    directories: [{path:"product/smartphone/", label:"Android"}, {path:"product/smartphone/<%= directory %>/", label:"<%- jData.name %>"}],
+    description: '「<%- jData.name %>」のスペック詳細。カメラ機能・容量・色・サイズ（解像度）・バッテリー持ちなど性能についてご覧いただけます',
+    noindex: false,
+    pathname: 'product/smartphone/<%- jData.code %>/spec.html'
+  });
+%%>
+
+<%%- include('/include/common-css-v2') %>
+<%%- include('/include/append-head') %>
+</head>
+<body>
+<%%- include('/include/prepend-body') %>
+
+<div class="l-System">
+
+<%%- include('/include/header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%%= rootpath %>"><%%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <li><a href="<%%= sitepath %>product/">製品</a><span class="c-Icon_Chevron-right"></span></li>
+    <li>スマートフォン<span class="c-Icon_Chevron-right"></span></li>
+    <li><a href="<%%= sitepath %>product/smartphone/<%= directory %>/"><%- jData.name %></a><span class="c-Icon_Chevron-right"></span></li>
+    <li aria-current="true">スペック詳細</li>
+  </ul>
+</div>
+
+<div class="u-Adjust_Pb-64">
+  <div class="l-System_Container u-Adjust_Mt-32">
+    <h1 class="c-Heading_Lv1"><%- jData.name %></h1>
+
+    <div class="u-Adjust_Mt-24 c-Accordion">
+      <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="true" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>基本スペック</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false">
+        <dl class="c-Dl">
+          <% if(jData.manufacturer !== '' ) { %>
+          <div>
+            <dt>メーカー</dt>
+            <dd>
+            <%- jData.manufacturer %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.name !== '' ) { %>
+          <div>
+            <dt>製品名</dt>
+            <dd>
+              <%- jData.name %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.color !== '' ) { %>
+          <div>
+            <dt>色</dt>
+            <dd>
+              <%- jData.color %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.dimensions !== '' ) { %>
+          <div>
+            <dt>サイズ</dt>
+            <dd>
+              <%- jData.dimensions %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.weight !== '' ) { %>
+          <div>
+            <dt>重量</dt>
+            <dd>
+              <%- jData.weight %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.sizeType !== '' && jData.resolution !== '') { %>
+          <div>
+            <dt>ディスプレイ</dt>
+            <dd>
+              <p>サイズ / 種類</p>
+              <%- jData.sizeType %>
+              <p class="u-Adjust_Mt-16">解像度</p>
+              <%- jData.resolution %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.CPU !== '' ) { %>
+          <div>
+            <dt>CPU</dt>
+            <dd>
+              <%- jData.CPU %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.OS !=='' ) { %>
+          <div>
+            <dt>OS</dt>
+            <dd>
+              <%- jData.OS %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.memory !=='' ) { %>
+          <div>
+            <dt>内蔵メモリ（RAM / ROM）</dt>
+            <dd>
+              <%- jData.memory %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.cardslot !=='' ) { %>
+          <div>
+            <dt>外部メモリ</dt>
+            <dd>
+              <%- jData.cardslot %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.battery !=='' ) { %>
+          <div>
+            <dt>バッテリー容量</dt>
+            <dd>
+              <%- jData.battery %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.wirelessCharge !=='' ) { %>
+          <div>
+            <dt>ワイヤレス充電</dt>
+            <dd>
+              <%- jData.wirelessCharge %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.standbyTime1 !=='' ) { %>
+          <div>
+            <dt>連続待受時間</dt>
+            <dd>
+              <p>LTE</p>
+              <%- jData.standbyTime1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.talkTime1) { %>
+          <div>
+            <dt>連続通話時間</dt>
+            <dd>
+              <p>LTE</p>
+              <%- jData.talkTime1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData['down(LTE)'] !== '') { %>
+          <div>
+            <dt>通信速度</dt>
+            <dd>
+              <% if(jData['down(LTE)'] !=='' ) { %>
+                <p>LTE 受信時</p>
+                <%- jData['down(LTE)'] %>
+              <% } %>
+              <% if(jData['up(LTE)'] !=='' ) { %>
+                <p class="u-Adjust_Mt-16">LTE 送信時</p>
+                <%- jData['up(LTE)'] %>
+              <% } %>
+              <% if(jData['down(sub6)'] !=='' ) { %>
+                <p class="u-Adjust_Mt-16">sub6 受信時</p>
+                <%- jData['down(sub6)'] %>
+              <% } %>
+              <% if(jData['up(sub6)'] !=='' ) { %>
+                <p class="u-Adjust_Mt-16">sub6 送信時</p>
+                <%- jData['up(sub6)'] %>
+              <% } %>
+              <% if(jData['down (mmW)'] !=='' ) { %>
+                <p class="u-Adjust_Mt-16">ミリ波 受信時</p>
+                <%- jData['down (mmW)'] %>
+              <% } %>
+              <% if(jData['up (mmW)'] !=='' ) { %>
+                <p class="u-Adjust_Mt-16">ミリ波 送信時</p>
+                <%- jData['up (mmW)'] %>
+              <% } %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.SIM !=='' ) { %>
+          <div>
+            <dt>SIM</dt>
+            <dd>
+              <%- jData.SIM %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.fullsegOneseg !=='' ) { %>
+          <div>
+            <dt>ワンセグ / フルセグ</dt>
+            <dd>
+              <%- jData.fullsegOneseg %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.FeliCa !=='' ) { %>
+          <div>
+            <dt>おサイフケータイ</dt>
+            <dd>
+              <%- jData.FeliCa %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.NFC !=='' ) { %>
+          <div>
+            <dt>NFC</dt>
+            <dd>
+              <%- jData.NFC %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.waterDustresistant !=='' ) { %>
+          <div>
+            <dt>防水 / 防塵</dt>
+            <dd>
+              <%- jData.waterDustresistant %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.shockResistant !=='' ) { %>
+          <div>
+            <dt>耐衝撃</dt>
+            <dd>
+              <%- jData.shockResistant %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.biometricID !=='' ) { %>
+          <div>
+            <dt>生体認証（指紋 / 顔）</dt>
+            <dd>
+              <%- jData.biometricID %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.fastCharge !=='' ) { %>
+          <div>
+            <dt>急速充電</dt>
+            <dd>
+              <%- jData.fastCharge %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.accessories1 !=='' ) { %>
+          <div>
+            <dt>付属品</dt>
+            <dd>
+            <%- jData.accessories1 %>
+            </dd>
+          </div>
+          <% } %>
+        </dl>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>通信</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+        <dl class="c-Dl">
+          <% if(jData.connectivity1 !=='' ) { %>
+          <div>
+            <dt>4x4 MIMO</dt>
+            <dd>
+              <%- jData.connectivity1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.connectivity2 !=='' ) { %>
+          <div>
+            <dt>256 QAM</dt>
+            <dd>
+              <%- jData.connectivity2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.wifi !=='' ) { %>
+          <div>
+            <dt>Wi-Fi</dt>
+            <dd>
+              <%- jData.wifi %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.tethering !=='' ) { %>
+          <div>
+            <dt>テザリング</dt>
+            <dd>
+              <%- jData.tethering %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.bluetooth !=='' ) { %>
+          <div>
+            <dt>Bluetooth&reg;</dt>
+            <dd>
+              <%- jData.bluetooth %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.infrared !=='' ) { %>
+          <div>
+            <dt>赤外線通信</dt>
+            <dd>
+              <%- jData.infrared %>
+            </dd>
+          </div>
+          <% } %>
+        </dl>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>カメラ</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+        <p class="c-Txt_Emp-01 u-Adjust_Pt-32 u-Adjust_Pb-16">メインカメラ（外側）</p>
+        <dl class="c-Dl">
+          <% if(jData.resolution1 !=='' ) { %>
+          <div>
+            <dt>解像度</dt>
+            <dd>
+              <%- jData.resolution1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.opticalZoom1 !=='' ) { %>
+          <div>
+            <dt>オプティカルズーム（写真 / 動画） ※最大</dt>
+            <dd>
+              <%- jData.opticalZoom1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.digitalZoom1 !=='' ) { %>
+          <div>
+            <dt>デジタルズーム（写真 / 動画） ※最大</dt>
+            <dd>
+              <%- jData.digitalZoom1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.stabilizer1 !=='' ) { %>
+          <div>
+            <dt>手振れ補正（写真 / 動画）</dt>
+            <dd>
+              <%- jData.stabilizer1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.autoFocus1 !=='' ) { %>
+          <div>
+            <dt>オートフォーカス</dt>
+            <dd>
+              <%- jData.autoFocus1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.focalratio1 !=='' ) { %>
+          <div>
+            <dt>F値</dt>
+            <dd>
+              <%- jData.focalratio1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.ISO1 !=='' ) { %>
+          <div>
+            <dt>ISO（最大）</dt>
+            <dd>
+              <%- jData.ISO1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.HDR1 !=='' ) { %>
+          <div>
+            <dt>HDR</dt>
+            <dd>
+              <%- jData.HDR1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.LEDflash1 !=='' ) { %>
+          <div>
+            <dt>LEDフラッシュ</dt>
+            <dd>
+              <%- jData.LEDflash1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.AIcamera1 !=='' ) { %>
+          <div>
+            <dt>AIカメラ</dt>
+            <dd>
+              <%- jData.AIcamera1 %>
+            </dd>
+          </div>
+          <% } %>
+        </dl>
+
+        <p class="c-Txt_Emp-01 u-Adjust_Pt-32 u-Adjust_Pb-16">フロントカメラ（内側）</p>
+        <dl class="c-Dl">
+          <% if(jData.resolution2 !=='' ) { %>
+          <div>
+            <dt>解像度</dt>
+            <dd>
+              <%- jData.resolution2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.opticalZoom2 !=='' ) { %>
+          <div>
+            <dt>オプティカルズーム（写真 / 動画） ※最大</dt>
+            <dd>
+              <%- jData.opticalZoom2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.digitalZoom2 !=='' ) { %>
+          <div>
+            <dt>デジタルズーム（写真 / 動画） ※最大</dt>
+            <dd>
+              <%- jData.digitalZoom2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.stabilizer2 !=='' ) { %>
+          <div>
+            <dt>手振れ補正（写真 / 動画）</dt>
+            <dd>
+              <%- jData.stabilizer2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.autoFocus2 !=='' ) { %>
+          <div>
+            <dt>オートフォーカス</dt>
+            <dd>
+              <%- jData.autoFocus2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.focalratio2 !=='' ) { %>
+          <div>
+            <dt>F値</dt>
+            <dd>
+              <%- jData.focalratio2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.ISO2 !=='' ) { %>
+          <div>
+            <dt>ISO（最大）</dt>
+            <dd>
+              <%- jData.ISO2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.HDR2 !=='' ) { %>
+          <div>
+            <dt>HDR</dt>
+            <dd>
+              <%- jData.HDR2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.LEDflash2 !=='' ) { %>
+          <div>
+            <dt>LEDフラッシュ</dt>
+            <dd>
+              <%- jData.LEDflash2 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.AIcamera2 !=='' ) { %>
+          <div>
+            <dt>AIカメラ</dt>
+            <dd>
+              <%- jData.AIcamera2 %>
+            </dd>
+          </div>
+          <% } %>
+        </dl>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>その他</button>
+      <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true">
+        <dl class="c-Dl">
+          <% if(jData.HiRes !=='' ) { %>
+          <div>
+            <dt>ハイレゾ・オーディオ</dt>
+            <dd>
+              <%- jData.HiRes %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.ETWS !=='' ) { %>
+          <div>
+            <dt>緊急速報機能</dt>
+            <dd>
+              <%- jData.ETWS %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.microphonejack !=='' ) { %>
+          <div>
+            <dt>イヤホンマイクジャック</dt>
+            <dd>
+              <%- jData.microphonejack %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.USB !=='' ) { %>
+          <div>
+            <dt>USB</dt>
+            <dd>
+              <%- jData.USB %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.GPS !=='' ) { %>
+          <div>
+            <dt>GPS</dt>
+            <dd>
+              <%- jData.GPS %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.codec1 !=='' ) { %>
+          <div>
+            <dt>動画コーデック</dt>
+            <dd>
+              <%- jData.codec1 %>
+            </dd>
+          </div>
+          <% } %>
+        </dl>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>対応周波数</button>
+      <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true">
+        <dl class="c-Dl">
+          <% if(jData['5G(sub6)1'] !=='' ) { %>
+          <div>
+            <dt>5G（Sub6）</dt>
+            <dd>
+              <%- jData['5G(sub6)1'] %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData['5G (mmW)1'] !=='' ) { %>
+          <div>
+            <dt>5G（ミリ波）</dt>
+            <dd>
+              <%- jData['5G (mmW)1'] %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.LTE1 !=='' ) { %>
+          <div>
+            <dt>FDD-LTE</dt>
+            <dd>
+              <%- jData.LTE1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.tdLTE1 !=='' ) { %>
+          <div>
+            <dt>TD-LTE</dt>
+            <dd>
+              <%- jData.tdLTE1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.wcdma1 !=='' ) { %>
+          <div>
+            <dt>WCDMA</dt>
+            <dd>
+              <%- jData.wcdma1 %>
+            </dd>
+          </div>
+          <% } %>
+          <% if(jData.GSM1 !=='' ) { %>
+          <div>
+            <dt>GSM</dt>
+            <dd>
+              <%- jData.GSM1 %>
+            </dd>
+          </div>
+          <% } %>
+        </dl>
+      </div>
+    </div>
+
+    <p class="u-Adjust_Mt-32"><a href="<%%= sitepath %>product/smartphone/<%= directory %>/" class="c-Link_Txt-icon-front"><span class="c-Icon_Chevron-left"></span>製品詳細へ戻る</a></p>
+
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%%- include('/include/footer/related/related-product-v2.ejs') %>
+
+    <%%- include('/include/footer/bnr/bnr.ejs') %>
+
+    <%%#- include('/faq/include/related-product.ejs') %>
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+        <li><a href="<%%= rootpath %>"><%%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <li><a href="<%%= sitepath %>product/">製品</a><span class="c-Icon_Chevron-right"></span></li>
+        <li>スマートフォン<span class="c-Icon_Chevron-right"></span></li>
+        <li><a href="<%%= sitepath %>product/smartphone/<%= directory %>/"><%- jData.name %></a><span class="c-Icon_Chevron-right"></span></li>
+        <li aria-current="true">スペック詳細</li>
+      </ul>
+    </div>
+  </div>
+
+  <%%- include('/include/footer') %>
+
+</footer>
+
+</div>
+<%%- include('/include/common-js') %>
+<%%- include('/include/append-body') %>
+</body>
+</html>
+
+

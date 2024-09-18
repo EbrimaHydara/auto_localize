@@ -1,0 +1,773 @@
+<% const pagetitle = "Rakuten最強プラン（料金プラン）" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '料金プラン「Rakuten最強プラン」は、データ高速無制限エリアが超拡大で、日本全国の通信エリアで高速データ通信が無制限に※。どれだけ使っても月々2,980円（税込3,278円）使わなければ勝手に安くなる！※公平なサービスのため、速度制限の場合あり。環境により速度低下する場合あり',
+    keywords: '',
+    noindex: true,
+    pathname: filepath,
+    canonical_custom: 'https://network.mobile.rakuten.co.jp/fee/saikyo-plan/',
+    browseragent: false,
+  });
+%>
+
+<% const nameSpace = "saikyo-plan" -%>
+<!-- Preconnect styles -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.rakuten.co.jp/com/advance/mobile/mnoprj_gadget_plan/responsive/condition.js">
+<link rel="preconnect" href="https://www.rakuten.co.jp/com/advance/mobile/mnoprj_prefectures/responsive/condition.js">
+<link rel="preconnect" href="https://r.r10s.jp/com/ap/target/phoenix-2.9.0.min.js">
+
+<!-- Preload critical styles -->
+<link rel="preload" href="<%= sitepath %>assets/css/fee/saikyo-plan/common-v2.optimized.css<%= common_v2_param %>">
+<link rel="preload" href="<%= sitepath %>assets/css/fee/saikyo-plan/saikyo-plan-critical.optimized.css?20240521" as="style">
+
+<!-- Sync load critical styles -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="<%= sitepath %>assets/css/fee/saikyo-plan/common-v2.optimized.css<%= common_v2_param %>">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/fee/saikyo-plan/saikyo-plan-critical.optimized.css?20240521">
+
+<!-- Async load uncritical styles -->
+<link rel="stylesheet" href="<%= sitepath %>assets/css/fee/saikyo-plan/saikyo-plan-uncritical.optimized.css?20240424" media="print" onload="this.media='all'">
+<%- include('/include/login-gadget-default/_css') %>
+<%- include('/include/prefecture-gadget/_css') %>
+
+<%- include('/include/_append-head') %>
+<script defer src="https://www.rakuten.co.jp/com/advance/mobile/mnoprj_gadget_plan/responsive/condition.js"></script>
+<script defer src="https://www.rakuten.co.jp/com/advance/mobile/mnoprj_prefectures/pc/16441/condition_pre.js"></script>
+<script defer src="https://r.r10s.jp/com/ap/target/phoenix-2.9.0.min.js"></script>
+<script defer src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script defer src="<%= sitepath %>assets/js/common.fee-saikyo-plan.bundle.js?20240521"></script>
+<script defer src="<%= sitepath %>assets/js/vendor.bundle.js?20240521"></script>
+<script defer src="<%= sitepath %>assets/js/search.common.bundle.js?20240521"></script>
+<script defer src="<%= sitepath %>assets/js/fee.saikyo.bundle.js?20240521"></script>
+<%- include('/include/prefecture-gadget/_js2') %>
+<%- include('/include/login-gadget-default/_js') %>
+<!-- RAT tags-->
+<script defer type="text/javascript" src="https://r.r10s.jp/com/rat/js/rat-sec.js"></script>
+<!-- Beacon tag -->
+<script defer src="/assets/js/library/as_beacon.min.js"></script>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+<%- include('/include/_breadcrumbs', {
+  type: 'head',
+  pagetitle,
+}) %>
+
+<div class="<%= nameSpace %>-Utility_Bg-mono97 <%= nameSpace %>-Utility_Login-gadget">
+  <div>
+    <%#_ PITARI mnoprj_gadget_planで操作しているDOM %>
+    <div id="pitari-non-login" style="display:none"></div>
+    <div id="pitari-non-mno-holder" style="display:none"></div>
+    <div id="pitari-mno-holder" style="display:none"></div>
+    <%# end %>
+    <%- include('/inc/_login-gadget-default', {url: filepath, page: 'saikyo-plan'}) %>
+    <%- include('/inc/_prefecture2',{ pagename: nameSpace }) %>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Hero">
+  <div class="l-System_Container">
+  <h1>
+    <picture>
+      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/hero-sp-230802.png" width="802" height="1024">
+      <img src="<%= sitepath %>assets/img/fee/saikyo-plan/hero-pc-230802.png" width="1032" height="400" alt="「Rakuten最強プラン」は、全通信キャリアのデータ高速無制限プランで最安！※1 日本全国の通信エリアで高速データ通信が無制限で月2,980円（税込3,278円）、使わなければ勝手に安く3GBまで980円（税込1,078円）">
+    </picture>
+  </h1>
+  </div>
+</div>
+
+<div class="l-System_Container">
+  <p class="c-Txt_Cap u-Adjust_Mt-8">※1 2023年7月時点 ※2 公平なサービス提供または環境により速度低下する場合あり</p>
+  <div class="<%= nameSpace %>-Lead_Btn-wrapper u-Adjust_Mt-16 u-Adjust_Mt-pc-32">
+    <div class="">
+    	<a href="<%= sitepath %>guide/application/?lid-r=fee_saikyo-plan_guide_application" class="c-Btn_Primary-large <%= nameSpace %>-Lead_Btn-custom">
+    	  <span>新規／乗り換え（MNP）お申し込み</span>
+    	</a>
+    </div>
+    <div class="">
+    	<a href="<%= sitepath %>shop/?l-id=fee_saikyo-plan_shop" class="c-Btn_Secondly-large <%= nameSpace %>-Lead_Btn-custom">
+    	  <span>お近くのショップを探す・来店予約</span>
+    	</a>
+    </div>
+  </div>
+
+
+  <div class="<%= nameSpace %>-Lead_Link-wrapper u-Adjust_Mt-24 u-Adjust_Mt-pc-32">
+    <div>
+      <a href="<%= sitepath %>guide/application-support/?l-id=fee_saikyo-plan_guide_application-support" class="c-Link_Txt-inline">
+        オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span>
+      </a>
+    </div>
+    <div>
+      <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=fee_saikyo-plan_ms&mno_migration=1" class="c-Link_Txt-inline">
+        楽天モバイル（ドコモ回線・au回線）からの変更手続き<span class="c-Icon_Chevron-right"></span>
+      </a>
+    </div>
+  </div>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-32" id="js-bnr-non-mno-holder" style="display:none">
+      <a href="<%= sitepath %>shop/entry-shop-visit/?l-id=fee_saikyo-plan_shop_entry-shop-visit" class="c-Banner_Hover-act">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/entry-shop-visit-343-146.png" width="682" height="232">
+          <img src="<%= sitepath %>assets/img/bnr/entry-shop-visit-1032-78.png" width="1032" height="78" alt="お申し込みから初期設定まで丁寧にサポートします ご不明点があれば楽天モバイルショップへ！エントリ＆楽天モバイルショップにご来店で200ポイント！" loading="lazy">
+        </picture>
+      </a>
+    </div>
+</div>
+
+<div class="<%= nameSpace %>-Reason u-Adjust_Mt-pc-32 u-Adjust_Mt-sp-40">
+<div class="l-System_Container u-Adjust_Pt-56 u-Adjust_Pb-56">
+  <div class="u-Adjust_Align-center">
+    <picture>
+      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/catch-sp.png" width="710" height="302">
+      <img src="<%= sitepath %>assets/img/fee/saikyo-plan/catch-pc.png" width="909" height="271" loading="lazy" alt="">
+    </picture>
+  </div>
+</div>
+</div>
+
+<div class="<%= nameSpace %>-Reason_Wrapper" id="js-trigger">
+  <div class="u-Rat_Appear-height" data-ratid="saikyo-plan_scroll-02_reason" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <div class="u-Adjust_Align-center <%= nameSpace %>-Reason_Bg">
+    <div class="l-System_Container">
+    <picture>
+      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/saikyo-reason-lead-sp-230802.png" width="802" height="1152">
+      <img class="<%= nameSpace %>-Reason_Lead" src="<%= sitepath %>assets/img/fee/saikyo-plan/saikyo-reason-lead-pc-230802.png" loading="lazy" width="1440" height="400" alt="">
+    </picture>
+    </div>
+  </div>
+  <div class="l-System_Container u-Adjust_Pt-56 u-Adjust_Pt-pc-80 u-Adjust_Pb-56 u-Adjust_Pb-pc-80">
+  	<div class="<%= nameSpace %>-Reason_Flex u-Adjust_Mt-16">
+  	  <div>
+        <a href="#data" class="js-scroll">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-1-sp.png" width="802" height="256">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-1-pc.png" loading="lazy" width="328" height="419" alt="">
+          </picture>
+        </a>
+      </div>
+  	  <div>
+        <a href="#call" class="js-scroll">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-2-sp-230802.png" width="802" height="254">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-2-pc-230802.png" loading="lazy" width="328" height="419" alt="">
+          </picture>
+        </a>
+      </div>
+  	  <div>
+        <a href="#price" class="js-scroll">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-3-sp.png" width="802" height="256">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-3-pc.png" loading="lazy" width="328" height="419" alt="">
+          </picture>
+        </a>
+      </div>
+  	</div>
+    <div class="<%= nameSpace %>-Reason_Flex-sub u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+      <a href="#benefits" class="js-scroll">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-4-sp.png" width="802" height="277">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/card-saikyo-4-pc.png" loading="lazy" width="1032" height="139" alt="">
+        </picture>
+      </a>
+    </div>
+    <p class="c-Txt_Cap <%= nameSpace %>-Utility_Color-white u-Adjust_Mt-16">
+      ※「データ通信」「価格」「通話」が最強とは全通信キャリアにてデータ無制限プラン＋かけ放題オプションで比較した場合、最も安いことを意味します。2023年7月時点<br>
+      ※2 公平なサービス提供または環境により速度低下する場合あり ※3 一部対象外番号あり。アプリ未使用時30秒22円。データタイプのお申し込みでは、データ通信のみの利用となり通話・Linkアプリはご利用いただけません
+    </p>
+  </div>
+</div>
+
+<section class="<%= nameSpace %>-Utility_Bg-mono97 u-Adjust_Py-40 u-Adjust_Py-pc-56">
+  <div class="l-System_Container u-Adjust_Align-center u-Adjust_Px-pc-16">
+    <h2 class="c-Heading_Lv2 u-Adjust_Ml-16 u-Adjust_Mr-16 <%= nameSpace %>-Utility_Show-pc">＼楽天モバイルへの乗り換えでお悩みの方に／</h2>
+    <h2 class="c-Heading_Lv2 u-Adjust_Ml-16 u-Adjust_Mr-16 <%= nameSpace %>-Utility_Show-sp">
+      <picture>
+        <img src="<%= sitepath %>assets/img/fee/saikyo-plan/title-saikyo-data-type-sp.png" width="400" height="80" alt="＼楽天モバイルへの乗り換えでお悩みの方に／" loading="lazy">
+      </picture>
+    </h2>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+      <a href="#data-type" class="c-Banner_Hover-act" data-ratid="fee_saikyo-plan_saikyo-plan-data-type_recommend" data-ratevent="click" data-ratparam="all">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-data-type-375-192-230802.png" width="750" height="384">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-data-type-1032-160-230802.png" width="1032" height="160" alt="データ通信専用 Rakuten最強プラン データタイプ 1,081円／月（3GB）を1,081ポイント還元で初月実質3GB相当無料でお試し！" loading="lazy">
+        </picture>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="l-System_Container">
+  <h2 class="u-Adjust_Mt-72 u-Adjust_Mt-pc-88" id="data">
+    <picture>
+      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/title-data-sp.png" width="809" height="469">
+      <img src="<%= sitepath %>assets/img/fee/saikyo-plan/title-data-pc.png" width="1032" height="186" loading="lazy" alt="データ通信が最強※ 日本全国の通信エリアどこでも データ高速無制限※2">
+    </picture>
+  </h2>
+  <div id="js-trigger-nav"></div>
+  <%- include('/fee/saikyo-plan/parts/_nav') %>
+	<div class="u-Adjust_Mt-24 u-Adjust_Mt-pc-48">
+		<div class="u-Adjust_Align-center">
+		  <picture>
+		    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/img-cover-ratio-sp-230825.png" width="686" height="664">
+		    <img src="<%= sitepath %>assets/img/fee/saikyo-plan/img-cover-ratio-pc-230825.png" loading="lazy" width="1032" height="223" alt="">
+		  </picture>
+      <div class="<%= nameSpace %>-Utility_Mt-sp-11">
+        <a href="<%= sitepath %>area/?l-id=saikyo-plan_area" class="c-Btn_Regular <%= nameSpace %>-Utility_Btn-regular-328">通信エリアを見る</a>
+      </div>
+		</div>
+	</div>
+
+  <div class="saikyo-plan-Layout_Data-overseas-wrapper-border">
+    <span class="saikyo-plan-Layout_Data-overseas-label">海外でも</span>
+    <div class="saikyo-plan-Layout_Data-overseas-img"><img src="<%= sitepath %>assets/img/fee/saikyo-plan/illust-global.png" width="249" height="109" loading="lazy" alt=""></div>
+    <div class="saikyo-plan-Layout_Data-overseas-txt">
+      <div>
+        <p>
+          <span class="c-Txt_Emp-01">対象の国と地域で</span><br>
+          <span class="saikyo-plan-Layout_Data-overseas-heading">高速データ通信が毎月2GB無料</span><span class="c-Txt_Cap">※5</span>
+        </p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※プランのデータ利用量に加算</p>
+      </div>
+      <p class="u-Adjust_Mt-sp-16"><a href="<%= sitepath %>service/global/overseas/?l-id=saikyo-plan_service_global_overseas01" class="c-Link_Txt-inline">詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+    </div>
+  </div>
+  <p class="c-Txt_Cap u-Adjust_Mt-8">
+    ※2 公平なサービス提供または環境により速度低下する場合あり<br>
+    ※データ通信が最強とは全通信キャリアにてデータ無制限プラン＋かけ放題オプションで比較した場合、プラン料金が最も安いことを意味します。2023年7月時点
+  </p>
+</div>
+
+<div class="<%= nameSpace %>-Appeal_Call-wrapper">
+  <div class="<%= nameSpace %>-Appeal_Call-inner">
+    <div class="l-System_Container <%= nameSpace %>-Appeal_Call-content">
+      <h2 id="call">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/title-call-sp-230802.png" width="801" height="452">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/title-call-pc-230802.png" loading="lazy" width="1032" height="178" alt="通話が最強※ アプリ利用で国内通話無料※6">
+        </picture>
+      </h2>
+      <div class="u-Adjust_Mt-24 u-Adjust_Mt-pc-48">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/call-merits-sp-230802.png" width="801" height="779">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/call-merits-pc-230802.png" width="925" height="264" loading="lazy" alt="">
+        </picture>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <a href="<%= sitepath %>service/rakuten-link/?l-id=fee_saikyo-plan_service_rakuten-link" class="c-Btn_Regular <%= nameSpace %>-Utility_Btn-regular-328">詳細を見る</a>
+      </div>
+      <p class="c-Txt_Cap u-Align_Llc u-Adjust_Mt-16">
+        ※3 一部対象外番号あり。アプリ未使用時30秒22円。データタイプのお申し込みでは、データ通信のみの利用となり通話はご利用いただけません<br>
+        ※通話が最強とは全通信キャリアにてデータ無制限プラン＋かけ放題オプションで比較した場合、最も安いことを意味します。2023年7月時点
+      </p>
+      <div class="saikyo-plan-Layout_Data-overseas-wrapper-white">
+        <span class="saikyo-plan-Layout_Data-overseas-label">海外でも</span>
+        <div class="saikyo-plan-Layout_Data-overseas-img-2"><img src="<%= sitepath %>assets/img/fee/saikyo-plan/illust-global-2.png" width="230" height="143" loading="lazy" alt=""></div>
+        <div class="saikyo-plan-Layout_Data-overseas-txt">
+          <div>
+            <p>
+              <span class="c-Txt_Emp-01">Rakuten Link利用で</span><br>
+              <span class="saikyo-plan-Layout_Data-overseas-heading">日本の電話番号との国際通話が無料</span>
+            </p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※一部対象外番号あり</p>
+          </div>
+          <p class="u-Adjust_Mt-sp-16" data-ratid="saikyo-plan_scroll-04_call" data-ratevent="appear" data-ratparam="all">
+            <a href="<%= sitepath %>service/global/overseas/?l-id=saikyo-plan_service_global_overseas02#anc2" class="c-Link_Txt-inline">詳細を見る<span class="c-Icon_Chevron-right"></span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Appeal_Price-wrapper">
+  <div class="<%= nameSpace %>-Appeal_Price-inner">
+    <div class="l-System_Container <%= nameSpace %>-Appeal_Price-content">
+      <h2 id="price">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/title-price-sp.png" width="801" height="395">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/title-price-pc.png" width="1032" height="183" loading="lazy" alt="価格が最強※ 圧倒的な低価格">
+        </picture>
+      </h2>
+      <h3 class="c-Heading_Lv2 <%= nameSpace %>-Appeal_Price-subtitle u-Adjust_Align-center u-Adjust_Mt-40 u-Adjust_Mt-pc-48">毎月のデータ利用量で<br class="u-Show_Oxx">お支払い金額が決まる</h3>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/ladder-sp.png" width="632" height="382">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/ladder-pc.png" width="878" height="321" loading="lazy" alt="毎月のデータ利用量でお支払い金額が決まる料金プラン 20GB超過後どれだけ使っても無制限※2で2,980円/月(税込3,278円) 3GB超過後20GBまでは1,980 円/月(税込2,178円)  3GBまでは980円/月(税込1,078円)  使わなければ勝手に安くなる!">
+        </picture>
+      </div>
+      <p class="c-Txt_Cap u-Align_Llc u-Adjust_Mt-16">
+        ※2 公平なサービス提供または環境により速度低下する場合あり<br>
+        ※ 「価格が最強」「圧倒的な低価格」とは全通信キャリアにてデータ無制限プラン＋かけ放題オプションで比較した場合、最も安いことを意味します。2023年7月時点
+      </p>
+      <h3 class="c-Heading_Lv3 u-Adjust_Align-center u-Adjust_Mt-56">ショップでも<br class="u-Show_Oxx">契約事務手数料0円</h3>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/shop-transaction-sp.png" width="685" height="325">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/shop-transaction-pc.png" width="1032" height="127" loading="lazy" alt="">
+        </picture>
+      </div>
+      <p class="c-Txt_Cap u-Align_Llc u-Adjust_Mt-16">
+        ※2023年6月時点
+        ※ドコモおよびソフトバンクでは店頭での手続きを行った場合のみ事務手数料が発生<br>
+        ※ソフトバンクではブランド間の乗り換えによる新規契約の場合はキャンペーンにより手数料無料
+      </p>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+        <div class="u-Rat_Appear-height" data-ratid="saikyo-plan_scroll-05_plan" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+        <div>
+          <a href="<%= sitepath %>fee/saikyo-plan/detail/?l-id=fee_saikyo-plan_saikyo-plan-detail" class="c-Btn_Regular <%= nameSpace %>-Utility_Btn-regular-328">料金プラン詳細を見る</a>
+        </div>
+        <div class="<%= nameSpace %>-Utility_Flex-center u-Adjust_Mt-16">
+          <a href="#compareother" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>他社プラン料金比較を確認する</a>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-48 u-Adjust_Align-center">
+        <a class="c-Banner_Hover-act" href="<%= sitepath %>fee/simulation/?l-id=fee_un-limit_fee-un-limit_simulation">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-fee-simulation-343-108-230905.png" width="686" height="216">
+            <img src="<%= sitepath %>assets/img/bnr/bnr-fee-simulation-1032-160-230905.png" alt="他社プランと比較もできる！かんたん料金シミュレーション" width="1032" height="160" loading="lazy">
+          </picture>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Appeal_Benefit-wrapper">
+  <div class="<%= nameSpace %>-Appeal_Benefit-inner">
+    <div id="js-benefit-intersection" class="l-System_Container <%= nameSpace %>-Appeal_Benefit-content js-slick-intersection">
+      <h2 class="u-Adjust_Align-right" id="benefits">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-catch-sp.png" width="453" height="157">
+          <img class="<%= nameSpace %>-Appeal_Benefit-catch" src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-catch-pc.png" width="504" height="175" loading="lazy" alt="おトクな特典盛りだくさん。">
+        </picture>
+      </h2>
+      <h3 class="u-Adjust_Mt-72">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/title-point-sp.png" width="802" height="95">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/title-point-pc.png" width="1032" height="116" loading="lazy" alt="楽天ポイントが断然貯まる">
+        </picture>
+      </h3>
+      <div class="<%= nameSpace %>-Appeal_Benefit-point-flex u-Adjust_Mt-40">
+        <div>
+          <div class="<%= nameSpace %>-Utility_Flex-center">
+            <p class="c-Heading_Lv2 u-Adjust_Align-center <%= nameSpace %>-Appeal_Benefit-point-title <%= nameSpace %>-Utility_Marker-yellow">楽天市場のお買い物で！</p>
+          </div>
+          <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-spu-sp-230901.png" width="100%">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-spu-pc-230901.png" width="504" height="463" loading="lazy" alt="">
+            </picture>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">
+            ※ダイヤモンド会員かつSPU全達成の場合。獲得ポイント上限あり
+          </p>
+          <div class="u-Rat_Appear-height" data-ratid="saikyo-plan_scroll-06_spu" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+            <a href="<%= sitepath %>campaign/spu/?l-id=fee_saikyo-plan_campaign_spu" class="c-Btn_Regular <%= nameSpace %>-Appeal_Benefit-point-flex-btn">SPUの詳細を見る</a>
+          </div>
+        </div>
+        <div>
+          <div class="<%= nameSpace %>-Utility_Flex-center">
+            <p class="c-Heading_Lv2 u-Adjust_Align-center <%= nameSpace %>-Appeal_Benefit-point-title <%= nameSpace %>-Utility_Marker-yellow">楽天モバイルご紹介で！</p>
+          </div>
+          <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-referral-sp-230922.png" width="100%">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-referral-pc-230922.png" width="504" height="463" loading="lazy" alt="">
+            </picture>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">
+            ※紹介された方のRakuten Link利用・データタイプ対象外等条件あり
+          </p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+            <a href="<%= sitepath %>campaign/referral/?l-id=fee_saikyo-plan_campaign_referral" class="c-Btn_Regular <%= nameSpace %>-Appeal_Benefit-point-flex-btn">キャンペーン詳細を見る</a>
+          </div>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-64">
+        <a href="<%= sitepath %>fee/family/?l-id=fee_saikyo-plan_family" class="c-Banner_Hover-act">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-family-sp.png" width="802" height="252">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-family-pc.png" width="1032" height="160" loading="lazy" alt="">
+          </picture>
+        </a>
+      </div>
+
+      <h3 class="u-Adjust_Mt-72">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/title-degicon-sp.png" width="802" height="197">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/title-degicon-pc.png" width="1032" height="70" loading="lazy" alt="エンタメコンテンツがおトクに楽しめる！">
+        </picture>
+      </h3>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/contents-degicon-sp-230802.png">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/contents-degicon-pc-230802.png" width="914" height="215" loading="lazy" alt="">
+        </picture>
+      </div>
+
+      <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+        <a href="<%= sitepath %>campaign/digital-contents/?l-id=fee_saikyo-plan_campaign_digital_contents" class="c-Btn_Regular <%= nameSpace %>-Appeal_Benefit-degicon-btn">詳細を見る</a>
+      </div>
+      <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-16">
+        ※9 YouTube Premium特典は、YouTube Premium等サービス初めての利用に限る<br>
+        ※各キャンペーンは、予告なく変更・終了する場合あり。NBAは2023年10月19日までベーシックパス限定。 2023年10月20日にリーグパスへアップグレード。一部条件あり
+      </p>
+      <h3 class="u-Adjust_Align-center u-Adjust_Mt-72" data-ratid="saikyo-plan_scroll-07_benefit" data-ratevent="appear" data-ratparam="all">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-more-title-sp-230802.png" width="802" height="99">
+          <img class="<%= nameSpace %>-Appeal_Benefit-knowhow-title" src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-more-title-pc-230802.png" width="1032" loading="lazy" alt="使い方次第でもっとおトクに！">
+        </picture>
+      </h3>
+      <!-- PC -->
+      <div class="<%= nameSpace %>-Appeal_Benefit-knowhow u-Adjust_Mt-32 u-Show_Xxo">
+        <div class="<%= nameSpace %>-Appeal_Benefit-item">
+          <div class="u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-icon-yen.png" width="40" height="40" loading="lazy" alt="">
+          </div>
+          <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-8">貯まったポイントで</p>
+          <p class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead u-Adjust_Align-center">
+            毎月のスマホ代を<br>
+            「0円」にすることも！<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-caption">※10</span>
+          </p>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-card-1.png" width="280" height="149" loading="lazy" alt="">
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <a href="<%= sitepath %>guide/payment/point/?l-id=fee_saikyo-plan_guide_payment-point" class="c-Btn_Regular">詳細を見る</a>
+            </div>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※月々のお支払いに口座振替をご指定の場合は、楽天ポイントをご利用いただけません。利用上限あり
+            </p>
+        </div>
+        <div class="<%= nameSpace %>-Appeal_Benefit-item">
+          <div class="u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-icon-tel.png" width="40" height="40" loading="lazy" alt="">
+          </div>
+          <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-8">よりクリアで快適な通話なら！</p>
+          <p class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead u-Adjust_Align-center">15分<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-standard">（標準）</span>通話かけ放題<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-caption">※11</span></p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-card-2-230901.png" width="280" height="160" loading="lazy" alt="">
+          </div>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <a href="<%= sitepath %>service/standard-free-call/?l-id=fee_saikyo-plan_service_standard-free-call" class="c-Btn_Regular">詳細を見る</a>
+          </div>
+          <div class="<%= nameSpace %>-Appeal_Benefit-knowhow-border">
+            <p class="c-Txt_Emp-01 u-Adjust_Pt-16">その他通話サービス<span class="c-Label_Emp <%= nameSpace %>-Appeal_Benefit-knowhow-lead-label u-Adjust_Ml-8">無料</span></p>
+            <ul class="<%= nameSpace %>-Appeal_Benefit-knowhow-list u-Adjust_Mt-16">
+              <li><a href="<%= sitepath %>service/voice-mail/?l-id=fee_saikyo-plan_service_voice_mail" class="c-Link_Txt-inline">留守番電話<span class="c-Icon_Chevron-right"></span></a></li>
+              <li><a href="<%= sitepath %>service/call-waiting/?l-id=fee_saikyo-plan_service_call-waiting" class="c-Link_Txt-inline">割込通話／通話保留<span class="c-Icon_Chevron-right"></span></a></li>
+              <li><a href="<%= sitepath %>service/call-forwarding/?l-id=fee_saikyo-plan_service_call-forwarding" class="c-Link_Txt-inline">着信転送<span class="c-Icon_Chevron-right"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="<%= nameSpace %>-Appeal_Benefit-item">
+          <div class="u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-icon-mail.png" width="40" height="40" loading="lazy" alt="">
+          </div>
+          <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-8">Rakuten Linkで一括管理！</p>
+          <p class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead u-Adjust_Align-center">
+            楽メール<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-caption">※13</span>
+            <span class="c-Label_Emp <%= nameSpace %>-Appeal_Benefit-knowhow-lead-label">無料</span>
+          </p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-card-3.png" width="280" height="160" loading="lazy" alt="">
+          </div>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <a href="<%= sitepath %>service/rakumail/?l-id=fee_saikyo-plan_service_rakumail" class="c-Btn_Regular">詳細を見る</a>
+          </div>
+          <div class="<%= nameSpace %>-Appeal_Benefit-knowhow-border u-Adjust_Align-center">
+            <p class="c-Txt_Emp-01 u-Adjust_Pt-16">今お使いのメールアドレスを
+              そのまま利用されたい方におすすめ</p>
+            <p class="u-Adjust_Align-center u-Adjust_Mt-8"><a href="<%= sitepath %>cm/mail_portability/?l-id=fee_saikyo-plan_cm_mail_portability01" class="c-Link_Txt-inline">キャリアメール持ち運びサービス<span class="c-Icon_Chevron-right"></span></a></p>
+          </div>
+        </div>
+      </div>
+      <!-- PC -->
+
+      <!-- SP -->
+      <div class="u-Show_Oox">
+        <div id="js-benefitCarousel-sp" class="<%= nameSpace %>-Appeal_Benefit-knowhow u-Adjust_Mt-24">
+          <div class="<%= nameSpace %>-Appeal_Benefit-item">
+            <div class="u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-icon-yen.png" width="40" height="40" loading="lazy" alt="">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-8">貯まったポイントで</p>
+            <p class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead u-Adjust_Align-center">
+              毎月のスマホ代を<br>
+              「0円」にすることも！<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-caption">※10</span>
+            </p>
+              <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-card-1.png" width="280" height="149" loading="lazy" alt="">
+              </div>
+              <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/payment/point/?l-id=fee_saikyo-plan_guide_payment-point" class="c-Btn_Regular">詳細を見る</a>
+              </div>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">
+                ※月々のお支払いに口座振替をご指定の場合は、楽天ポイントをご利用いただけません。利用上限あり
+              </p>
+          </div>
+          <div class="<%= nameSpace %>-Appeal_Benefit-item">
+            <div class="u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-icon-tel.png" width="40" height="40" loading="lazy" alt="">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-8">よりクリアで快適な通話なら！</p>
+            <p class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead u-Adjust_Align-center">15分<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-standard">（標準）</span>通話かけ放題<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-caption">※11</span></p>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-card-2-230901.png" width="280" height="160" loading="lazy" alt="">
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <a href="<%= sitepath %>service/standard-free-call/?l-id=fee_saikyo-plan_service_standard-free-call" class="c-Btn_Regular">詳細を見る</a>
+            </div>
+            <div class="<%= nameSpace %>-Appeal_Benefit-knowhow-border">
+              <p class="c-Txt_Emp-01 u-Adjust_Pt-16">その他通話サービス<span class="c-Label_Emp <%= nameSpace %>-Appeal_Benefit-knowhow-lead-label u-Adjust_Ml-8">無料</span></p>
+              <ul class="<%= nameSpace %>-Appeal_Benefit-knowhow-list u-Adjust_Mt-16">
+                <li><a href="<%= sitepath %>service/voice-mail/?l-id=fee_saikyo-plan_service_voice_mail" class="c-Link_Txt-inline">留守番電話<span class="c-Icon_Chevron-right"></span></a></li>
+                <li><a href="<%= sitepath %>service/call-waiting/?l-id=fee_saikyo-plan_service_call-waiting" class="c-Link_Txt-inline">割込通話／通話保留<span class="c-Icon_Chevron-right"></span></a></li>
+                <li><a href="<%= sitepath %>service/call-forwarding/?l-id=fee_saikyo-plan_service_call-forwarding" class="c-Link_Txt-inline">着信転送<span class="c-Icon_Chevron-right"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="<%= nameSpace %>-Appeal_Benefit-item">
+            <div class="u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-icon-mail.png" width="40" height="40" loading="lazy" alt="">
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Align-center u-Adjust_Mt-8">Rakuten Linkで一括管理！</p>
+            <p class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead u-Adjust_Align-center">
+              楽メール<span class="<%= nameSpace %>-Appeal_Benefit-knowhow-lead-caption">※13</span>
+              <span class="c-Label_Emp <%= nameSpace %>-Appeal_Benefit-knowhow-lead-label">無料</span>
+            </p>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/benefit-card-3.png" width="280" height="160" loading="lazy" alt="">
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <a href="<%= sitepath %>service/rakumail/?l-id=fee_saikyo-plan_service_rakumail" class="c-Btn_Regular">詳細を見る</a>
+            </div>
+            <div class="<%= nameSpace %>-Appeal_Benefit-knowhow-border u-Adjust_Align-center">
+              <p class="c-Txt_Emp-01 u-Adjust_Pt-16">今お使いのメールアドレスを
+                そのまま利用されたい方におすすめ</p>
+              <p class="u-Adjust_Align-center u-Adjust_Mt-8"><a href="<%= sitepath %>cm/mail_portability/?l-id=fee_saikyo-plan_cm_mail_portability01" class="c-Link_Txt-inline">キャリアメール持ち運びサービス<span class="c-Icon_Chevron-right"></span></a></p>
+            </div>
+          </div>
+        </div>
+        <div class="c-Carousel_Nav-v2-wrap">
+          <div class="c-Carousel_Nav-v2"></div>
+          <div class="c-Carousel_Nav-v2-bar"></div>
+        </div>
+      </div>
+      <!-- SP -->
+      <p class="c-Txt_Cap u-Adjust_Mt-16">※データタイプのお申し込みでは、データ通信のみの利用となり通話・Linkアプリはご利用いただけません</p>
+
+      <h3 class="u-Adjust_Align-center u-Adjust_Mt-72">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/campaign-title-sp.png" width="802" height="196">
+          <img class="<%= nameSpace %>-Appeal_Benefit-knowhow-title" src="<%= sitepath %>assets/img/fee/saikyo-plan/campaign-title-pc.png" width="1032" height="70" loading="lazy" alt="おトクなキャンペーンも開催中！">
+        </picture>
+      </h3>
+      <%- include('/fee/saikyo-plan/parts/_banner2') %>
+    </div>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Appeal_Data-type-wrapper">
+  <div class="<%= nameSpace %>-Appeal_Data-type-inner">
+    <div class="l-System_Container <%= nameSpace %>-Appeal_Data-type-content">
+      <h2 id="data-type" class="u-Adjust_Align-center">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/title-data-type-sp.png" width="686" height="228">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/title-data-type-pc.png" width="1032" height="140" loading="lazy" alt="＼楽天モバイルへの乗り換えでお悩みの方に／ データタイプがおすすめ">
+        </picture>
+      </h2>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16 u-Adjust_Mt-pc-32">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/data-type-plan-sp-230802.png" width="686" height="961">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/data-type-plan-pc-230802.png" width="1032" height="322" loading="lazy" alt="Rakuten最強プラン データタイプ データ高速無制限※2 2,980円/月 税込3,278円 3GBまで980円/月 税込1,078円">
+        </picture>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-data-type-375-192-230802.png" width="750" height="384">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-data-type-1032-160-230802.png" width="1032" height="160" alt="データ通信専用 Rakuten最強プラン データタイプ 1,081円／月（3GB）を1,081ポイント還元で初月実質3GB相当無料でお試し！" loading="lazy">
+        </picture>
+        </div>
+      <div class="u-Adjust_Align-center u-Adjust_Pt-16 u-Adjust_Pt-pc-24 u-Adjust_Pb-16 u-Adjust_Pb-pc-24 u-Adjust_Pl-16 u-Adjust_Pr-16 <%= nameSpace %>-Utility_Bg-pink">
+        <a href="<%= sitepath %>fee/saikyo-plan/data-type/?l-id=fee_saikyo-plan_fee_saikyo-plan_data-type_under" class="c-Btn_Secondly-large">
+          <span>データタイプの詳細・お申し込みはこちら</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="<%= nameSpace %>-Appeal_Dakara-wrapper">
+  <div class="<%= nameSpace %>-Appeal_Dakara-inner">
+    <div class="l-System_Container <%= nameSpace %>-Appeal_Dakara-content">
+      <div class="u-Adjust_Align-center u-Adjust_Pt-pc-32">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/dakara-sp-230802.png" width="802" height="307">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/dakara-pc-230802.png" width="928" height="319" alt="" loading="lazy">
+        </picture>
+      </div>
+  </div>
+  </div>
+</div>
+
+<div class="l-System_Container">
+  <p class="c-Txt_Cap u-Adjust_Mt-16">
+    ※3 Rakuten Linkアプリ未使用時30秒22円 ※4 2023年9月時点。人口カバー率は、国勢調査に用いられる約500m区画において、50%以上の場所で通信可能なエリアを基に算出  ※5 通話料等別。2GB超過後は最大128kbps ※7 プラチナ・ゴールド・シルバー・レギュラー会員 ※12 かけ放題の初回申し込み時 ※13 楽天モバイル（楽天回線）のご契約、初期設定、Rakuten Linkアプリが必要。データ利用量としてカウント<br>
+    ※<a href="#anc_note" class="c-Link_Txt js-scroll">その他条件の詳細はこちら</a>
+  </p>
+</div>
+
+<%- include('/fee/saikyo-plan/parts/_banner3') %>
+<div id="js-multi-intersection" class="l-System_Container <%= nameSpace %>-Layout_Overwrite-recommend u-Adjust_Mt-64 js-slick-intersection">
+  <%- /* キャンペーン・おすすめ情報 */ include('/include/_bnr-cpn-recommend-v2.ejs') %>
+</div>
+<div class="u-Adjust_Mt-40 u-Adjust_Mb-64 l-System_Container">
+  <div class="u-Adjust_Align-center">
+    <a class="c-Banner_Hover-act" href="<%= sitepath %>guide/procedure/?l-id=fee_saikyo-plan_guide_procedure01">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-apply-guide-343-116.png" width="1032" height="78">
+        <img src="<%= sitepath %>assets/img/bnr/bnr-apply-guide-1032-78.png" width="1032" height="78" loading="lazy" alt="お申し込み手続きでお困りごとはありますか？ はじめてでも安心！お申し込みガイド ご利用開始までかんたん4ステップでご案内します">
+      </picture>
+    </a>
+  </div>
+</div>
+
+<%- include('/fee/saikyo-plan/parts/_compareother') %>
+
+<div class="u-Adjust_Pt-64">
+  <div class="l-System_Container u-Adjust_Mb-80 fee-Utility_Anc">
+      <h2 id="anc_note" class="c-Heading_Lv2 u-Adjust_Mt-8 u-Adjust_Align-center" data-ratid="saikyo-plan_scroll-10_attention" data-ratevent="appear" data-ratparam="all">
+        注意事項
+      </h2>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■料金プランについて</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※ご契約1回線目において、一定期間以上回線のご利用がない場合は、回線の利用停止または解約をさせていただく場合がございます。<br>
+        ※1つの楽天IDにつき最大10回線まで契約可能。詳しくは「<a href="<%= sitepath %>faq/detail/00001243/?l-id=fee_saikyo-plan_faq_detail-00001243">契約可能上限数を教えてください</a>」をご確認ください。複数の楽天IDを作成/保有することは禁止しております。
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■全通信キャリアのデータ無制限プランで最安について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※1 2023年7月時点。NTTドコモの「eximo」、KDDIの「使い放題MAX 5G/4G」、ソフトバンクの「メリハリ無制限」と比較
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■データ高速無制限について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※2 公平なサービス提供または環境により速度低下する場合あり
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■アプリ利用で国内通話無料について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※3（0570）などから始まる他社接続サービス、一部特番（188）への通話については、無料通話の対象外となります。OS標準の電話アプリを利用した場合、30秒22円
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■データタイプについて</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※データタイプお申し込みには楽天カードが必要。実質無料とは、キャンペーンの条件達成（楽天モバイルに初めてお申し込みなど）により後日付与されるポイントを加味した価格であり、実際のお支払い金額とは異なります。期間限定ポイントで付与
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■サービスエリアについて</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※4 2023年9月時点。人口カバー率は、国勢調査に用いられる約500m区画において、50%以上の場所で通信可能なエリアを基に算出
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■海外は2GBまで無料について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※5 通話料等別。プランのデータ利用量に加算。2GB超過後は最大128kbps。対象エリアおよび条件は変更する場合あり。<a href="<%= sitepath %>service/global/overseas/#accordion-1">対象エリア</a>をご確認ください。</p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■「楽天市場のお買い物が最大15.5倍」特典について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※6 会員ランク特典に応じてポイント倍率が異なります。毎月の獲得上限ポイント数は会員ランクに応じて5,000～7,000ポイント、期間限定ポイントでの付与。詳細は<a href="<%= sitepath %>campaign/spu/">こちら</a>をご確認ください。<br>
+        ※7 プラチナ・ゴールド・シルバー・レギュラー会員<br>
+        ※8 SPUによる楽天モバイル対象プランご契約者会員ランク特典最大+3倍とその他グループサービスご利用で最大12.5倍の合計値です。達成条件、獲得ポイント上限あり。期間限定ポイントでの付与。<a href="https://event.rakuten.co.jp/campaign/point-up/everyday/point/">SPUの詳細</a>をご確認ください
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■Youtube Premium3カ月無料について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※9 YouTube Premium、YouTube Music Premium、YouTube Red、Google Play Music のうち、いずれかの定期購入や無料お試しを行ったことがある場合は対象外です。
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■楽天ポイント利用について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※10 月々のお支払いに口座振替をご指定の場合は、楽天ポイントをご利用いただけません。一度に利用できるポイント数は1～30,000（ダイヤモンド会員の方は～500,000）ポイントです。製品を分割払いでご購入の場合、初回のみポイントがご利用いただけます。分割払いの2回目以降のお支払いにはご利用いただけません。
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■15分（標準）通話かけ放題について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※11 15分（標準）通話かけ放題（オプションサービス）は、15分超過後は30秒22円。本オプションサービスは日割り対象外。 一部対象外番号あり<br>
+        ※12 2022年5月13日（金）以降、初めて「10分（標準）通話かけ放題」に加入した場合は、2022年7月1日（金）に「15分（標準）通話かけ放題」へ自動移行され、月額料金が3カ月無料となります。2023年9月1日（金）以降、初めてお申し込みされた方は1カ月無料となります。
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■楽メールについて</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※13 楽天モバイル（楽天回線）のご契約、初期設定、Rakuten Linkアプリが必要です。データ利用量としてカウントされます。楽天IDに対して、1つのメールアドレスの設定が可能です。複数回線をご契約の場合も同様となります。ご契約中の回線を解約した場合、楽メールのご利用／閲覧ができなくなります。※ストレージ容量の上限を超える場合、メールの送受信が制限される場合があります。受信されなかったメールは、後日ストレージ容量が空いた場合でも受信できないことがあります。
+      </p>
+
+      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">■他社プラン比較条件について</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※<span class="c-Txt_Emp-02">その他、各種キャンペーンによって、割引が適用される場合があります。</span><br>
+        *1 公平なサービスのため、速度制限の場合あり。環境により速度低下する場合あり<br>
+        *2 毎月のデータ利用量によってプラン料金が変動いたします。データ利用量は日本全国の通信エリアおよび海外ローミングエリアのすべてのエリアでカウントされます（データ高速モードがOFFであってもデータ利用量はカウントされます）。<br>
+        *3 データ容量は都度トッピングするプランです。<br>
+        *4（0570）などから始まる他社接続サービス、一部特番（188）への通話については、無料通話の対象外となります。OS標準の電話アプリを利用した場合、30秒22円。国内SMSは3円（税込3.3円）／70文字（全角）～。<br>
+        *5 楽天モバイル「15分（標準）通話かけ放題」は、15分超過後は30秒22円。一部対象外番号あり。SMS送信件数は1日あたりの上限あり。<br>
+        *6  「ahamo」「povo2.0」「SoftBank LINEMO」の国内通話5分かけ放題の5分超過後は30秒22円。一部対象外番号あり。<br>
+        *7  「ahamo」「povo2.0」「SoftBank LINEMO」のかけ放題オプション、「SoftBank LINEMO」のLINE同士の通話はかけ放題は、一部対象外番号あり。<br>
+        ※ 記載された情報は2023年6月1日時点の情報です。
+      </p>
+  </div>
+</div>
+
+
+<div class="saikyo-plan-Layout_Bottom-fixed" id="js-fixed-btn" aria-expanded="false" style="display: none;">
+  <div class="saikyo-plan-Layout_Bottom-fixed-inner">
+    <div class="saikyo-plan-Layout_Bottom-fixed-btn">
+      <a href="<%= sitepath %>guide/application/?lid-r=fee_saikyo-plan_guide_application02" class="c-Btn_Primary-large">
+        <div class="saikyo-plan-Layout_Bottom-fixed-btn-inner-box"><span>新規／乗り換え（MNP）お申し込み</span></div>
+      </a>
+    </div>
+    <div class="saikyo-plan-Layout_Bottom-fixed-btn js-btn-ms" aria-hidden="false">
+      <a href="<%= sitepath %>shop/?l-id=fee_saikyo-plan_shop02" class="c-Btn_Secondly-large">
+        <div class="saikyo-plan-Layout_Bottom-fixed-btn-inner-box"><span>お近くのショップを探す</span></div>
+      </a>
+    </div>
+    <div class="saikyo-plan-Layout_Bottom-fixed-btn-sp">
+      <a href="<%= sitepath %>guide/application/?lid-r=fee_saikyo-plan-sp_guide-application" class="c-Btn_Primary-large saikyo-plan-Layout_Bottom-fixed-btn-sp-link">新規／乗り換え(MNP)</a>
+    </div>
+    <div class="saikyo-plan-Layout_Bottom-fixed-btn-sp">
+      <a href="<%= sitepath %>shop/?l-id=fee_saikyo-plan-sp_shop" class="c-Btn_Secondly-large saikyo-plan-Layout_Bottom-fixed-btn-sp-link">お近くのショップを探す</a>
+    </div>
+    <div class="saikyo-plan-Layout_Bottom-fixed-guide">
+      <a href="<%= sitepath %>guide/procedure/?l-id=fee_saikyo-plan_guide_procedure"></a>
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+  <div class="l-System_Container">
+    <%- include('/include/_breadcrumbs', {
+      type: 'foot',
+      pagetitle,
+    }) %>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+</div>
+<!-- RAT tags -->
+<input type="hidden" name="rat" id="ratAccountId" value="1312">
+<input type="hidden" name="rat" id="ratServiceId" value="1">
+<!-- /RAT tags -->
+</body>
+</html>

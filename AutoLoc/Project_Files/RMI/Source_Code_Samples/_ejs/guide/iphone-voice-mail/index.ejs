@@ -1,0 +1,130 @@
+<% const pagetitle = " iPhoneビジュアルボイスメールのご利用方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/plan/service/", label:"オプションサービス"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'iPhoneビジュアルボイスメールを利用して、留守番電話の伝言メッセージを再生する方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const namespace = "iphone-voice-mail" -%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<section class="u-Adjust_Pt-8">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1 u-Adjust_Mt-24"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">iPhoneビジュアルボイスメールを利用して留守番電話の伝言メッセージを再生する方法をご案内します。</p>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+      <a href="<%= sitepath %>service/voice-mail/" class="c-Btn_Regular-large">特長・サービス内容を見る</a>
+    </div>
+  </div>
+
+  <div class="u-Adjust_Mt-56 l-System_Container">
+    <h2 class="c-Heading_Lv2">ご利用方法</h2>
+    <ol class="c-Flow u-Adjust_Mt-24">
+      <li>
+        <h3 class="c-Heading_Lv3">1. OS標準の電話アプリを起動する。</h3>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img
+            src="<%= sitepath %>assets/img/guide/iphone-voice-mail/img-flow-01.png" width="300" alt=""></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">2. 「留守番電話」をタップする。</h3>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img
+            src="<%= sitepath %>assets/img/guide/iphone-voice-mail/img-flow-02.png" width="300" alt=""></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">3. 再生したいメッセージをタップする。</h3>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img
+            src="<%= sitepath %>assets/img/guide/iphone-voice-mail/img-flow-03.png" width="300" alt=""></div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">4. 伝言メッセージが再生される。</h3>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img
+            src="<%= sitepath %>assets/img/guide/iphone-voice-mail/img-flow-04.png" width="300" alt=""></div>
+      </li>
+    </ol>
+    <p class="u-Adjust_Mt-40">iPhoneビジュアルボイスメールを利用して留守番電話メッセージを再生する方法については以上です。また、Rakuten Linkでも同様にスマートフォン上で留守番電話メッセージを再生することができます。</p>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+      <a href="https://service.link.link/guide/call/voice_message_free.html" target="_blank"
+        class="c-Btn_Regular-large">Rakuten Linkで留守番電話を再生する方法はこちら
+        <span class="c-Icon_New-window-l"></span></a></div>
+    <div class="l-Media_Grid-half u-Adjust_Mt-64">
+      <div class="u-Align_Llr">
+        <a href="<%= sitepath %>support/" class="c-Btn_Regular <%= namespace %>-Util_Btn-costom">お客様サポートトップにもどる</a>
+      </div>
+      <div><a href="<%= sitepath %>" class="c-Btn_Regular <%= namespace %>-Util_Btn-costom">楽天モバイルトップへ</a></div>
+    </div>
+  </div>
+
+</section>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

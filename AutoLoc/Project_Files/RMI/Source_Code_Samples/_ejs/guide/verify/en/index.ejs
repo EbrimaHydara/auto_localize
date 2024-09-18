@@ -1,0 +1,1293 @@
+<% const pagetitle = "Identity verification documents" -%>
+<% const directories = [{path:"support/", label:"Support"}, {path:"support/application/verification/", label:"Identity verification"}] -%>
+<% const sitetitle = "Top" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'We provide information on the identity verification documents required for application for both Japanese and foreign national customers.',
+    noindex: false,
+    pathname: filepath,
+    isEnglish: true,
+  });
+%>
+<% const nameSpace = "guide-en" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/verify/japanese-nationals/en/guide-en.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body class="<%= nameSpace %>-Base">
+  <%- include('/include/_prepend-body') %>
+
+  <div class="l-System">
+
+    <%- include('/include/_header') %>
+
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= sitepath %>fee/un-limit/en/"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+
+    <div class="<%= nameSpace %>-Layout_Container">
+      <div class="l-System_Container">
+        <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+        <div class="<%= nameSpace %>-Hero <%= nameSpace %>-Hero_Verify">
+          <p>Verify Your Identity In-Store, Online, or At Home.*<br>
+            Get Ready with Our Easy ID Guide!</p>
+          <p class="u-Adjust_Align-center u-Adjust_Mt-16 u-Show_Oox">
+            <img class="<%= nameSpace %>-Hero_Img" src="<%= sitepath %>assets/img/guide/verify/hero-image-01-230831.png" alt="" width="290" height="128">
+          </p>
+          <p class="c-Txt_Emp-02 c-Txt_Cap u-Adjust_Mt-16">* Please note, the verification method and required documents may vary based on nationality.</p>
+        </div>
+
+        <div class="u-Adjust_Mt-16">
+          <p class="c-Txt_Normal">Rakuten Mobile offers a variety of identity verification methods to meet your needs.</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">*Please <a href="<%= sitepath %>flow/for-minors/">refer here</a> for the identity verification documents required for applications for those under 18.</p>
+        </div>
+
+        <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+          <h3 class="c-Heading_Lv3">Select a method </h3>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">Identity verification in person at shops</p>
+          <p class="u-Adjust_Mt-8"><a href="#shop" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>Identify at a shop</a></p>
+
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">Identity verification on the web</p>
+          <p class="u-Adjust_Mt-8"><a href="#upload" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>Upload identity verification documents</a></p>
+          <p class="u-Adjust_Mt-8"><a href="#ekyc" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>AI quick identity verification (eKYC) (for Japanese nationals only)</a></p>
+          <p class="u-Adjust_Mt-8"><a href="#verification" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>CONFIRMED BY DOCUMENTS SUBMITTED TO RAKUTEN GROUP</a></p>
+
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">Identity verification at home (for Japanese nationals only)</p>
+          <p class="u-Adjust_Mt-8"><a href="#home" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>Delivery & identity verification</a></p>
+        </div>
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2">Identify at a shop, or upload identity verification documents</h2>
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="shop">Identify at a shop</h3>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">When applying at a shop, please prepare one of the following documents ready and always bring the original. Copying is unacceptable.</p>
+
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="upload">Upload identity verification documents</h3>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">When applying online and verifying identity by uploading documents, please prepare one of the following documents and upload the photographed images according to the procedure.</p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/verify/img-upload/?l-id=verify_en_service_verify_img-upload" class="c-Link_Txt-icon">How to upload identity verification documents<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+
+        <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">List of identity verification documents</h3>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">*Documents other than the following are not available.</p>
+
+
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+              <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Japanese Nationals</li>
+              <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">Foreign Nationals</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+
+            <div class="c-Accordion">
+              <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Driver's license</button>
+              <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_List-3">
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-02-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-03-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                        <li>The front and back sides must be uploaded</li>
+                        <li>Must be issued by the Public Safety Commission</li>
+                        <li>Name, address, and date of birth must match the information on the application</li>
+                        <li>Must be within the expiration date</li>
+                        <li>Must have a photo of the applicant's face</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="u-Adjust_Pt-40">If the name and address listed are not up-to-date, please submit your health insurance card and supporting documents.</p>
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your driver's license is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Driving record certificate</button>
+              <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_List-3">
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-07-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-08-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                        <li>The front and back sides must be uploaded</li>
+                        <li>Must be issued by the Public Safety Commission</li>
+                        <li>Name, address, and date of birth must match the information on the application</li>
+                        <li>The grant date must be on or after April 1, 2012.</li>
+                        <li>Must have a photo of the applicant's face</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="u-Adjust_Pt-40">If the name and address listed are not up-to-date, please submit your health insurance card and supporting documents.</p>
+
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your driving record certificate is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Individual Number Card (my number card)</button>
+              <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-09-230209.png" alt="">
+                    </div>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>Only the front side (the side with the face photo) must be uploaded.</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                      <li>Must be within the expiration date</li>
+                    </ul>
+                    <ul class="c-List_Cap u-Adjust_Mt-24">
+                      <li>*We will discard the data if the image on the back is uploaded.</li>
+                    </ul>
+                    <div class="c-Theme-Light u-Adjust_Mt-24">
+                      <div class="l-Media_Grid">
+                        <div class="l-Media_Image">
+                          <div class="u-Adjust_Align-center">
+                            <img src="<%= sitepath %>assets/img/guide/verify/main-image-22-230209.png" alt="" width="144">
+                          </div>
+                        </div>
+                        <div class="c-Txt_Emp-02">
+                          An Individual Number notification card is not accepted as identification document or supporting document. Please use other identification documents.
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <p class="u-Adjust_Pt-40">If the name and address listed are not up-to-date, please apply after making the change at your local municipal office.</p>
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your Individual Number Card is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="c-Accordion">
+              <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Mental disability certificate</button>
+              <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-11-230209.png" alt="">
+                    </div>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>The front side must be uploaded.</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                      <li>Must be within the expiration date</li>
+                      <li>Must have address listed</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p class="u-Adjust_Pt-40">If your address is not listed, or if the name and address listed are not up-to-date, please submit your health insurance card and supporting documents.</p>
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your mental disability certificate is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-6">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Medical rehabilitation handbook</button>
+              <div id="accordion-content-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-6" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-12-230209.png" alt="">
+                    </div>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>The side with the face photo must be uploaded.</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                      <li>Must be within the expiration date</li>
+                      <li>Must have address listed</li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="u-Adjust_Pt-40">If your address is not listed, or if the name and address listed are not up-to-date, please submit your health insurance card and supporting documents.</p>
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your medical rehabilitation handbook is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="c-Accordion">
+              <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger <%= nameSpace %>-Utility_Line-height-sp" aria-expanded="false" aria-controls="accordion-content-4">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Physical disability certificate<br class="<%= nameSpace %>-Utility_Show-sp"><span class="c-Txt_Emp-02 c-Txt_Normal-s <%= nameSpace %>-Accordion_emp-txt">Supporting documents required</span>
+              </button>
+              <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes
+                </h3>
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-10-230209.png" alt="">
+                    </div>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>The front side must be uploaded.</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="u-Adjust_Pt-40">If your address is listed on the document, you do not need to submit supporting documents.<br>
+                  Due to system configuration, the submission of supporting documents is mandatory. Please upload the picture of Medical rehabilitation handbook in the supporting documents section.</p>
+                <p class="u-Adjust_Pt-40">The supporting documents must be submitted together.</p>
+                <div class="c-Theme-Light u-Adjust_Mt-16">
+                  <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">Notes on supporting documents</h3>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                    <li>The document must be within <span class="c-Txt_Emp-02">3 months</span> of issuance and the name and address must match the information on the application.</li>
+                    <li class="c-Txt_Emp-02">If the name on the document is not that of the applicant, such as a family member, it cannot be used. The same applies if the name, including kana/katakana/kanji, does not match the name on the identification documents.</li>
+                    <li>Please take a picture of the entire document.</li>
+                  </ul>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li class="c-Txt_Emp-02">*The building name and room number of the actual address must be correctly stated. Only a part of the current address is not acceptable.</li>
+                        <li>*The receipt must have a receipt stamp (date of receipt or date of issue) or proof of account transfer.</li>
+                        <li class="c-Txt_Emp-02">*Screen shots of bills/statements printed from the Internet, web statements, etc. will not be accepted.</li>
+                        <li>*Demand letters for overdue utility bills will not be accepted.</li>
+                        <li>*Rakuten Denki billing statements are not accepted because they are web statements.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of residence</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*When obtaining a certificate of residence, please prepare one that does not include your Individual Number (my number).</li>
+                        <li>*If your permanent address and  Individual Number (my number) are included, please take a picture and upload it with only the part of your permanent address and Individual Number hidden by paper or other means.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of evacuation shelter</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*Please confirm that the evacuation site addresses the reacquired residence.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your Physical disability certificate is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="c-Accordion">
+              <button id="accordion-7" class="c-Accordion_Trigger js-Accordion_Trigger <%= nameSpace %>-Utility_Line-height-sp" aria-expanded="false" aria-controls="accordion-content-7">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Health insurance certificate<br class="<%= nameSpace %>-Utility_Show-sp"><span class="c-Txt_Emp-02 c-Txt_Normal-s <%= nameSpace %>-Accordion_emp-txt">Supporting documents required</span>
+              </button>
+              <div id="accordion-content-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-7" aria-hidden="true">
+
+                <div class="u-Adjust_Pt-8 c-Txt_Emp-01">*Health insurance cards cannot be used as identification documents for the smartphone trade-in service and Rakuten Mobile Kaikae Chotoku Program.</div>
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-24">Notes</h3>
+                <div class="l-Media_List-3">
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-13-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-14-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                        <li class="c-Txt_Emp-02">For card-type health insurance certificate  front and back sides must be uploaded</li>
+                        <li class="c-Txt_Emp-02">If the address is required to be written on the back side, it must be filled out in advance.</li>
+                        <li>In the case of a paper health insurance certificate,  the dependent must upload a picture of the part where the applicant's name is written.</li>
+                        <li>Name, address, and date of birth must match the information on the application</li>
+                        <li>Must be within the expiration date (National health insurance certificate only)</li>
+                      </ul>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">*The health insurance special retirement certificate is also eligible.</p>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+                  <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">Request for masking before uploading</h3>
+                  <p class="u-Adjust_Pt-16">In accordance with the October 2020 revision of the Health Insurance Act, please mask the "symbol," "number," "insurer number," and "QR code (if any)" information (e.g., cover it with a sticky note before taking a picture of the document, or use an image editing application or software to cover it up after taking a picture) before uploading the document.</p>
+                  <ul class="c-List_Cap u-Adjust_Mt-8">
+                    <li>*Please mask the "symbol" and "number" information even if they are left blank.</li>
+                    <li>*Please take a picture of the entire health insurance card including the insurer's name, issuing entity, and date of issue.</li>
+                    <li>*The position of the information on the health insurance card differs depending on each insurance card.</li>
+                  </ul>
+                  <div class="l-Media_List-2 u-Adjust_Pt-24">
+                    <div>
+                      <h4 class="c-Txt_Emp-01 c-Theme-Light u-Adjust_Align-center u-Adjust_Pt-8 u-Adjust_Pb-8">In the case of a card-type </h4>
+                      <div class="l-Media_Image">
+                        <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/guide/verify/main-image-25-230209.png" alt="" width="300">
+                        </p>
+                        <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/guide/verify/main-image-26-230209.png" alt="" width="300">
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 class="c-Txt_Emp-01 c-Theme-Light u-Adjust_Align-center u-Adjust_Pt-8 u-Adjust_Pb-8">In the case of a paper</h4>
+                      <div class="l-Media_Image">
+                        <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/guide/verify/main-image-27-230209.png" alt="" width="293">
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="u-Adjust_Pt-40">The supporting documents must be submitted together.</p>
+
+                <div class="c-Theme-Light u-Adjust_Mt-16">
+                  <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">Notes on supporting documents</h3>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                    <li>The document must be within <span class="c-Txt_Emp-02">3 months</span> of issuance and the name and address must match the information on the application.</li>
+                    <li class="c-Txt_Emp-02">If the name on the document is not that of the applicant, such as a family member, it cannot be used. The same applies if the name, including kana/katakana/kanji, does not match the name on the identification documents.</li>
+                    <li>Please take a picture of the entire document.</li>
+                  </ul>
+                  <h3 class="c-Heading_Lv4 u-Adjust_Mt-32">Notes on supporting documents</h3>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-16">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li class="c-Txt_Emp-02">*The building name and room number of the actual address must be correctly stated. Only a part of the current address is not acceptable.</li>
+                        <li>*The receipt must have a receipt stamp (date of receipt or date of issue) or proof of account transfer.</li>
+                        <li class="c-Txt_Emp-02">*Screen shots of bills/statements printed from the Internet, web statements, etc. will not be accepted.</li>
+                        <li>*Demand letters for overdue utility bills will not be accepted.</li>
+                        <li>*Rakuten Denki billing statements are not accepted because they are web statements.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of residence</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*When obtaining a certificate of residence, please prepare one that does not include your Individual Number (my number).</li>
+                        <li>*If your permanent address and  Individual Number (my number) are included, please take a picture and upload it with only the part of your permanent address and Individual Number hidden by paper or other means.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of evacuation shelter</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*Please confirm that the evacuation site addresses the reacquired residence.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your health insurance certificate is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                  <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-8" class="c-Accordion_Trigger js-Accordion_Trigger <%= nameSpace %>-Utility_Line-height-sp" aria-expanded="false" aria-controls="accordion-content-8">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Japanese passport<br class="<%= nameSpace %>-Utility_Show-sp"><span class="c-Txt_Emp-02 c-Txt_Normal-s <%= nameSpace %>-Accordion_emp-txt">Supporting documents required</span>
+              </button>
+              <div id="accordion-content-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-8" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_List-3">
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-15-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-16-230209.png" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+                      <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                        <li>The page with face photo and the page with the holder's name or emergency contact information must be uploaded.</li>
+                        <li>Name, address, and date of birth must match the information on the application</li>
+                        <li>Must be within the expiration date</li>
+                        <li>Must have a photo of the applicant's face</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <p class="u-Adjust_Pt-40">The supporting documents must be submitted together.</p>
+
+                <div class="c-Theme-Light u-Adjust_Mt-16">
+                  <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">Notes on supporting documents</h3>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                    <li>The document must be within <span class="c-Txt_Emp-02">3 months</span> of issuance and the name and address must match the information on the application</li>
+                    <li class="c-Txt_Emp-02">If the name on the document is not that of the applicant, such as a family member, it cannot be used. The same applies if the name, including kana/katakana/kanji, does not match the name on the identification documents.</li>
+                    <li>Please take a picture of the entire document.</li>
+                  </ul>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li class="c-Txt_Emp-02">*The building name and room number of the actual address must be correctly stated. Only a part of the current address is not acceptable.</li>
+                        <li>*The receipt must have a receipt stamp (date of receipt or date of issue) or proof of account transfer.</li>
+                        <li class="c-Txt_Emp-02">*Screen shots of bills/statements printed from the Internet, web statements, etc. will not be accepted.</li>
+                        <li>*Demand letters for overdue utility bills will not be accepted.</li>
+                        <li>*Rakuten Denki billing statements are not accepted because they are web statements.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of residence</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*When obtaining a certificate of residence, please prepare one that does not include your Individual Number (my number).</li>
+                        <li>*If your permanent address and  Individual Number (my number) are included, please take a picture and upload it with only the part of your permanent address and Individual Number hidden by paper or other means.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of evacuation shelter</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*Please confirm that the evacuation site addresses the reacquired residence.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your Japanese passport is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-9" class="c-Accordion_Trigger js-Accordion_Trigger <%= nameSpace %>-Utility_Line-height-sp" aria-expanded="false" aria-controls="accordion-content-9">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Basic Resident Registration Card<br class="<%= nameSpace %>-Utility_Show-sp"><span class="c-Txt_Emp-02 c-Txt_Normal-s <%= nameSpace %>-Accordion_emp-txt">Supporting documents required</span>
+              </button>
+              <div id="accordion-content-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-9" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-17-230209.png" alt="">
+                    </div>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>The front and back sides must be uploaded</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                      <li>Must be within the expiration date</li>
+                      <li>Must have address listed</li>
+                    </ul>
+                  </div>
+                </div>
+                <p class="u-Adjust_Pt-40">The supporting documents must be submitted together.</p>
+
+                <div class="c-Theme-Light u-Adjust_Mt-16">
+                  <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">Notes on supporting documents</h3>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                    <li>The document must be within <span class="c-Txt_Emp-02">3 months</span> of issuance and the name and address must match the information on the application</li>
+                    <li class="c-Txt_Emp-02">If the name on the document is not that of the applicant, such as a family member, it cannot be used. The same applies if the name, including kana/katakana/kanji, does not match the name on the identification documents.</li>
+                    <li>Please take a picture of the entire document.</li>
+                  </ul>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li class="c-Txt_Emp-02">*The building name and room number of the actual address must be correctly stated. Only a part of the current address is not acceptable.</li>
+                        <li>*The receipt must have a receipt stamp (date of receipt or date of issue) or proof of account transfer.</li>
+                        <li class="c-Txt_Emp-02">*Screen shots of bills/statements printed from the Internet, web statements, etc. will not be accepted.</li>
+                        <li>*Demand letters for overdue utility bills will not be accepted.</li>
+                        <li>*Rakuten Denki billing statements are not accepted because they are web statements.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of residence</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*When obtaining a certificate of residence, please prepare one that does not include your Individual Number (my number).</li>
+                        <li>*If your permanent address and  Individual Number (my number) are included, please take a picture and upload it with only the part of your permanent address and Individual Number hidden by paper or other means.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">Certificate of evacuation shelter</h4>
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                      </div>
+                    </div>
+                    <div>
+                      <ul class="c-List_Cap u-Adjust_Mt-24">
+                        <li>*Please confirm that the evacuation site addresses the reacquired residence.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your Basic Resident Registration Card is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the document’s contents are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+                <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                  <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                    <span>FAQ</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+
+            <div class="c-Accordion">
+              <button id="accordion-13" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-13">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Residence card</button>
+              <div id="accordion-content-13" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-13" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-19-230209.png" alt="">
+                    </p>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>The the front and back sides must be uploaded</li>
+                      <li>Name, address, and date of birth must match the information on the application<br>
+                        <span class="c-Txt_Cap c-Txt_Emp-02">*Enter the application information in romaji for those whose name is written both in kanji and romaji.</span>
+                      </li>
+                      <li>Must be within the expiration date</li>
+                      <li>Must have address listed</li>
+                      <li>Must have a photo of the applicant's face</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your residence card is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the contents of the document are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div class="c-Accordion">
+              <button id="accordion-14" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-14">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Special permanent resident certificate</button>
+              <div id="accordion-content-14" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-14" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-18-230209.png" alt="">
+                    </p>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>The the front and back sides must be uploaded</li>
+                      <li>Name, address, and date of birth must match the information on the application<br>
+                        <span class="c-Txt_Cap c-Txt_Emp-02">*Enter the application information in romaji for those whose name is written both in kanji and romaji.</span>
+                      </li>
+                      <li>Must be within the expiration date</li>
+                      <li>Must have address listed</li>
+                      <li>Must have a photo of the applicant's face</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your special permanent resident certificate is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the contents of the document are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="c-Accordion">
+              <button id="accordion-15" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-15">
+                <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+                </span>Diplomatic identification card<br><span class="c-Txt_Emp-02 c-Txt_Normal-s">Certificate of Residential Address required</span></button>
+              <div id="accordion-content-15" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-15" aria-hidden="true">
+                <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+
+                <div class="l-Media_Grid">
+                  <div class="l-Media_Image">
+                    <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-gaikoukan-230209.png" alt="" width="343" height="196">
+                    </p>
+                  </div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>The the front and back sides must be uploaded</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                      <li>Must be within the expiration date</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p class="u-Adjust_Mt-16">
+                  You do not need to submit a Certificate of Residential Address in Japan if your address is listed on the diplomatic identification card.<br>Since the specifications require the submission of supporting documents, please upload the same picture of the diplomatic identification card.<br>Please submit your diplomatic identification card and a Certificate of Residential Address in Japan if your address is not listed.
+                </p>
+
+                <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">Tips for taking a picture</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>Please ensure that your diplomatic identification card is entirely captured in the picture.</li>
+                  <li>Upload the original in color, without altering the image. If you make a mistake in uploading, you can re-take the picture.</li>
+                  <li>If the contents of the document are difficult to read due to strong reflections or other reasons, please take another picture and upload it again (turning off the camera's flash function will reduce strong reflections).</li>
+                </ul>
+
+              </div>
+            </div>
+
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              *Consular officer ID cards, international organizations representatives’ ID cards, and identification documents issued by the Ministry of Foreign Affairs (with face photo) are also acceptable. If your current address is not listed on the document, please submit it together with your Certificate of Residential Address in Japan.
+            </p>
+          </div>
+        </div>
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2" id="ekyc">AI quick identity verification (eKYC) (for Japanese nationals only)</h2>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">If you have a driver's license or an Individual Number Card, you can use the "AI quick identity verification (eKYC)" that completes identity verification on the spot.</p>
+
+          <p class="u-Adjust_Mt-32"><a href="<%= sitepath %>guide/verify/ekyc/?l-id=verify_en_service_verify_ekyc" class="c-Link_Txt-icon">For details of eKYC<span class="c-Icon_Chevron-right"></span></a></p>
+
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">List of identity verification documents</h3>
+          <div class="c-Accordion u-Adjust_Mt-24">
+            <button id="accordion-18" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-18">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+              </span>Driver's license</button>
+            <div id="accordion-content-18" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-18" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+              <div class="l-Media_List-3">
+                <div>
+                  <div class="l-Media_Image">
+                    <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-02-230209.png" alt="">
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div class="l-Media_Image">
+                    <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-03-230209.png" alt="">
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>Front, back sides, and thickness must be uploaded</li>
+                      <li>Must be issued by the Public Safety Commission</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                      <li>Must be within the expiration date</li>
+                      <li>Must have a photo of the applicant's face</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>FAQ</span>
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-19" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-19">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+              </span>Individual Number Card (my number card)</button>
+            <div id="accordion-content-19" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-19" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-09-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>Only the front side (the side with the face photo) must be uploaded.</li>
+                    <li>Name, address, and date of birth must match the information on the application</li>
+                    <li>Must be within the expiration date</li>
+                  </ul>
+                  <div class="c-Theme-Light u-Adjust_Mt-24">
+                    <div class="l-Media_Grid">
+                      <div class="l-Media_Image">
+                        <div class="u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/guide/verify/main-image-22-230209.png" alt="" width="144">
+                        </div>
+                      </div>
+                      <div class="c-Txt_Emp-02">
+                        An Individual Number notification card is not accepted as identification document or supporting document. Please use other identification documents.
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <p class="u-Adjust_Pt-40">If the name and address listed are not up-to-date, please apply after making the change at your local municipal office.</p>
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                  <span>FAQ</span>
+                </a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2" id="verification">CONFIRMED BY DOCUMENTS SUBMITTED TO RAKUTEN GROUP</h2>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">If you're already a customer of Rakuten Bank, Rakuten Securities, or Rakuten Life Insurance, you won't need to submit identity verification documents again when signing up for Rakuten Mobile. Also, choosing eSIM allows for immediate activation and use of the service after your application is complete.</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">
+            * Having a contract with Rakuten Bank, Rakuten Securities, or Rakuten Life Insurance doesn't guarantee eligibility for "verification through exsiting Rakuten Group documents".<br>
+            * If we cannot confirm receipt of the non-forwardable email sent to you after your application, your application may be canceled or subject to additional identity verification steps.
+          </p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/verify/group-kyc/?l-id=verify_en_service_verify_group-kyc" class="c-Link_Txt-icon">What is "CONFIRMED BY DOCUMENTS SUBMITTED TO RAKUTEN GROUP"?<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+
+
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2" id="home">Delivery & identity verification</h2>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">You can skip identity verification at the time of application online and verify your identity at home when receiving products. Please prepare one of the following documents ready.</p>
+
+          <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">*In the following cases, delivery & identity verification cannot be made.</p>
+          <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8"><span>・</span>When your payment method is Cash on Delivery (COD)</p>
+          <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>When the subscriber is under 18 years old</p>
+          <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>If you live in some regions excluded or remote islands.</p>
+
+          <ul class="c-List_Cap u-Adjust_Mt-16">
+            <li>Please submit supporting documents if your address is not up-to-date or if you present your "Japanese Passport" as identity verification documents. For details, please refer to the "Notes on Supporting Documents" displayed by clicking on the document's name below.</li>
+          </ul>
+          <p class="u-Adjust_Mt-32"><a href="<%= sitepath %>guide/verify/home-kyc/?l-id=verify_en_service_verify_home-ekyc" class="c-Link_Txt-icon">For details of delivery & identity verification<span class="c-Icon_Chevron-right"></span></a></p>
+
+
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">List of identity verification documents</h3>
+          <div class="c-Accordion u-Adjust_Mt-24">
+            <button id="accordion-16" class="c-Accordion_Trigger js-Accordion_Trigger <%= nameSpace %>-Utility_Line-height-sp" aria-expanded="false" aria-controls="accordion-content-16">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+              </span>Driver's license<br class="guide-en-Utility_Show-sp"><span class="c-Txt_Emp-02 <%= nameSpace %>-Accordion_emp-txt c-Txt_Normal-s">Driving record certificate is not acceptable</span></button>
+            <div id="accordion-content-16" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-16" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+              <p class="c-Txt_Emp-02 u-Adjust_Mt-8">When verifying your identity at home, a driving record certificate cannot be used as an identification document. Please be sure to have your driver's license ready.</p>
+              <div class="l-Media_List-3">
+                <div>
+                  <div class="l-Media_Image">
+                    <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-02-230209.png" alt="">
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div class="l-Media_Image">
+                    <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-03-230209.png" alt="">
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>Must be issued by the Public Safety Commission</li>
+                      <li>Name, address, and date of birth must match the information on the application</li>
+                      <li>Must be within the expiration date</li>
+                      <li>Must have a photo of the applicant's face</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <p class="c-Txt_Emp-02 u-Adjust_Mt-32">If the address listed is not up-to-date, please prepare supporting documents.</p>
+
+              <div class="c-Theme-Light u-Adjust_Mt-16">
+                <h3 class="c-Heading_Lv4">Notes on supporting documents</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>The document must be within <span class="c-Txt_Emp-02">3 months</span> of issuance and the name and address must match the information on the application</li>
+                  <li class="c-Txt_Emp-02">If the name on the document is not that of the applicant, such as a family member, it cannot be used. The same applies if the name, including kana/katakana/kanji, does not match the name on the identification documents.</li>
+                </ul>
+                <div class="l-Media_Grid-small u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-sp u-Adjust_Mb-24 u-Adjust_Align-left">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</p>
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                  <div class="">
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-pc">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</p>
+                    <ul class="c-List_Cap u-Adjust_Mt-16">
+                      <li class="c-Txt_Emp-02">*The building name and room number of the actual address must be correctly stated. Only a part of the current address is not acceptable.</li>
+                      <li>*The receipt must have a receipt stamp (date of receipt or date of issue) or proof of account transfer.</li>
+                      <li class="c-Txt_Emp-02">*Screen shots of bills/statements printed from the Internet, web statements, etc. will not be accepted.</li>
+                      <li>*Demand letters for overdue utility bills will not be accepted.</li>
+                      <li>*Rakuten Denki billing statements are not accepted because they are web statements.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div class="">
+                    <p class="c-Txt_Emp-01">Certificate of tax payment</p>
+                  </div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pl-40 u-Adjust_Pr-40">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-23-230209.png" alt="">
+                      </div>
+                  </div>
+                </div>
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div class="">
+                    <p class="c-Txt_Emp-01">Receipt of social insurance premiums</p>
+                  </div>
+                  <div class="l-Media_Image">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-24-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>FAQ</span>
+                </a>
+              </p>
+
+
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-17" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-17">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+              </span>Individual Number Card (my number card)</button>
+            <div id="accordion-content-17" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-17" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-09-230209.png" alt="">
+                  </p>
+                </div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>Name, address, and date of birth must match the information on the application</li>
+                    <li>Must be within the expiration date</li>
+                  </ul>
+                  <div class="l-Media_Grid-small u-Adjust_Mt-24 c-Theme-Light">
+                    <div class="l-Media_Image">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-22-230209.png" alt="" width="144">
+                    </div>
+                    <div class="">
+                      <p class="c-Txt_Emp-02">An Individual Number notification card is not accepted as identification document or supporting document. Please use other identification documents.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <p class="u-Adjust_Mt-16">If the name and address listed are not up-to-date, please apply after making the change at your local municipal office.</p>
+              <p class="u-Adjust_Mt-24 c-Txt_Emp-02">If the address listed is not up-to-date, please prepare supporting documents.</p>
+
+              <div class="c-Theme-Light u-Adjust_Mt-16">
+                <h3 class="c-Heading_Lv4">Notes on supporting documents</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16 u-Adjust_Mb-24">
+                  <li>The document must be within <span class="c-Txt_Emp-02">3 months</span> of issuance and the name and address must match the information on the application</li>
+                  <li class="c-Txt_Emp-02">If the name on the document is not that of the applicant, such as a family member, it cannot be used. The same applies if the name, including kana/katakana/kanji, does not match the name on the identification documents.</li>
+                </ul>
+
+                <div class="l-Media_Grid-small u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-sp u-Adjust_Mb-24 u-Adjust_Align-left">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</p>
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-pc">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</p>
+                    <ul class="c-List_Cap u-Adjust_Mt-16">
+                      <li class="c-Txt_Emp-02">*The building name and room number of the actual address must be correctly stated. Only a part of the current address is not acceptable.</li>
+                      <li>*The receipt must have a receipt stamp (date of receipt or date of issue) or proof of account transfer.</li>
+                      <li class="c-Txt_Emp-02">*Screen shots of bills/statements printed from the Internet, web statements, etc. will not be accepted.</li>
+                      <li>*Rakuten Denki billing statements are not accepted because they are web statements.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div class="">
+                    <p class="c-Txt_Emp-01">Certificate of tax payment</p>
+                  </div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pl-40 u-Adjust_Pr-40">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-23-230209.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div class="">
+                    <p class="c-Txt_Emp-01">Receipt of social insurance premiums</p>
+                  </div>
+                  <div class="l-Media_Image">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-24-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>FAQ</span>
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-20" class="c-Accordion_Trigger js-Accordion_Trigger <%= nameSpace %>-Utility_Line-height-sp" aria-expanded="false" aria-controls="accordion-content-20">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+              </span>Japanese passport<br class="<%= nameSpace %>-Utility_Show-sp"><span class="c-Txt_Emp-02 c-Txt_Normal-s <%= nameSpace %>-Accordion_emp-txt">Supporting documents required</span></button>
+            <div id="accordion-content-20" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-20" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">Notes</h3>
+            <div class="l-Media_List-3">
+              <div>
+                <div class="l-Media_Image">
+                  <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-15-230209.png" alt="">
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <p class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-16-230209.png" alt="">
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>Name, address, and date of birth must match the information on the application
+                    </li>
+                    <li>Must be within the expiration date</li>
+                    <li>Must have address listed</li>
+                    <li>Must have a photo of the applicant's face</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <p class="u-Adjust_Mt-32">The supporting documents must be submitted together.</p>
+
+            <div class="c-Theme-Light u-Adjust_Mt-16">
+              <h3 class="c-Heading_Lv4">Notes on supporting documents</h3>
+              <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                <li>The document must be within <span class="c-Txt_Emp-02">3 months</span> of issuance and the name and address must match the information on the application</li>
+                <li class="c-Txt_Emp-02">If the name on the document is not that of the applicant, such as a family member, it cannot be used. The same applies if the name, including kana/katakana/kanji, does not match the name on the identification documents.</li>
+              </ul>
+              <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                <div class="">
+                    <p class="c-Txt_Emp-01">Utility bill/receipt (electricity, gas, or water/new electric power, LP gas, or propane gas is acceptable)</p>
+                    <ul class="c-List_Cap u-Adjust_Mt-16">
+                      <li class="c-Txt_Emp-02">*The building name and room number of the actual address must be correctly stated. Only a part of the current address is not acceptable.</li>
+                      <li>*The receipt must have a receipt stamp (date of receipt or date of issue) or proof of account transfer.</li>
+                      <li class="c-Txt_Emp-02">*Screen shots of bills/statements printed from the Internet, web statements, etc. will not be accepted.</li>
+                      <li>*Demand letters for overdue utility bills will not be accepted.</li>
+                      <li>*Rakuten Denki billing statements are not accepted because they are web statements.</li>
+                    </ul>
+                </div>
+                <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                </div>
+              </div>
+              <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                <div class="">
+                  <p class="c-Txt_Emp-01">Certificate of tax payment</p>
+                </div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pl-40 u-Adjust_Pr-40">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-23-230209.png" alt="">
+                    </div>
+                </div>
+              </div>
+              <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                <div class="">
+                  <p class="c-Txt_Emp-01">Receipt of social insurance premiums</p>
+                </div>
+                <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-24-230209.png" alt="">
+                </div>
+              </div>
+            </div>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>FAQ</span>
+              </a>
+            </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="u-Adjust_Mt-64 u-Adjust_Pb-32">
+          <h2 class="c-Heading_Lv2">Important Notes</h2>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>If the information on the application form does not match the information on the identification documents or the uploaded documents are incomplete, the application cannot be accepted.<br>
+              <p class="u-Adjust_Mt-8" style="text-indent: 0;"><a href="<%= sitepath %>faq/detail/10000653/?l-id=verify_japanese-nationals-en_faq_detail-10000653_01" class="c-Link_Txt-icon">Common mistakes made while submitting the identity verification documents<span class="c-Icon_Chevron-right"></span></a></p>
+            </li>
+            <li>After you use Rakuten Mobile, you may be asked to resubmit identification documents by email or other means.</li>
+            <li>Rakuten Mobile may cancel your application based on the screening process. In such cases, please note that depending on the timing of the cancellation, you may receive an email asking to resubmit your identification documents.</li>
+          </ul>
+        </div>
+
+          <%- include('/include/guide/_faq-en') %>
+
+      </div>
+    </div>
+
+
+
+
+    <%- include('/include/guide/_inquiry-en') %>
+    <%- include('/include/guide/_review-en') %>
+
+    <footer class="g-Footer">
+
+      <div class="g-Footer_Aside">
+
+        <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+      </div>
+      <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= sitepath %>fee/un-limit/en/"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+      </div>
+
+      <%- include('/include/_footer') %>
+
+    </footer>
+
+  </div>
+  <%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

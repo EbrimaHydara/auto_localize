@@ -1,0 +1,266 @@
+<% const pagetitle = "契約時に登録したメールアドレスの確認・変更方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/contract-detail/confirmation/", label:"契約内容の確認・変更"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '契約時に登録したメールアドレスの確認・変更方法をご案内します。my 楽天モバイル（アプリ・Web）からかんたんに変更のお手続きが可能です',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+      <li><a href="https://ichiba.faq.rakuten.net/detail/000006468" class="c-Link_Txt-inline" target="_blank" rel="noopener" data-ratid="guide_change-email_ichiba_faq_000006468" data-ratevent="click" data-ratparam="all">楽天IDのメールアドレスを変更したい方はこちら<span class="c-Icon_New-window-l"></span></a></li>
+      <li><a href="https://www.rakuten-card.co.jp/support/address-tel-change/" class="c-Link_Txt-inline" target="_blank" rel="noopener" data-ratid="guide_change-email_card_support_address-tel-change" data-ratevent="click" data-ratparam="all">楽天カードのメールアドレスを変更したい方はこちら<span class="c-Icon_New-window-l"></span></a></li>
+    </ul>
+
+    <p class="u-Adjust_Mt-32">ご契約時に登録したメールアドレスは、my 楽天モバイルで変更のお手続きができます。</p>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-40">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webで確認・変更する</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリで確認・変更する</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. my 楽天モバイル「契約者情報」画面を開く
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※「契約者情報へ進む」をタップしてログインすると、手順２の画面が表示されます。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my
+                楽天モバイル]ログインできません</a>」をご確認ください。</p>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a href="https://portal.mobile.rakuten.co.jp/dashboard?scrollTo=contactInfo#personal-info" target="_blank"
+                class="c-Btn_Secondly-large" data-ratId="guide_ecare_personal-info_contactInfo" data-ratEvent="click"
+                data-ratParam="all">契約者情報へ進む</a>
+            </p>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2.「連絡先情報」欄に表示される登録中のメールアドレスを確認する
+            </h4>
+            <div>
+              <p class="u-Adjust_Mt-16">メールアドレスを変更する場合は、「変更」をタップしてください。</p>
+            </div>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                  src="<%= sitepath %>assets/img/guide/change-email/img-09.png" width="300" height="" alt=""
+                  class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3.メールアドレスを入力し、「変更する」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                  src="<%= sitepath %>assets/img/guide/change-email/img-10.png" width="300" height="" alt=""
+                  class="c-Img_Capture"></figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4. ワンタイムパスワードを入力し、「認証する」をタップする
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+            </p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+            </p>
+            <div class="l-Media_Image">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/guide/change-address/img-14-240521.png" width="300" height="535" alt="ワンタイムパスワードを入力し、「認証する」をタップする" class="c-Img_Capture" loading="lazy">
+              </figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              5. お手続き完了
+            </h4>
+            <p class="u-Adjust_Mt-24">手続きが完了すると変更前のメールアドレス宛に<span class="c-Txt_Emp-01">「[楽天モバイル]
+                ご契約者様情報の変更完了のお知らせ」</span>メールをお送りいたします。</p>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                  src="<%= sitepath %>assets/img/guide/change-email/img-05.png" width="300" height="" alt=""
+                  class="c-Img_Capture"></figure>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. my 楽天モバイルを起動する
+            </h4>
+            <div class="u-Adjust_Mt-24">
+              <div class="c-Box_App">
+                <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+                <div class="c-Box_App-txt">
+                  <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                  <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                  <ul class="c-Box_App-link u-Adjust_Mt-16">
+                    <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a></li>
+                    <li><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></li>
+                    <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2. 画面右上のメニュー（三本線）をタップし、「契約者情報」をタップする
+            </h4>
+            <div>
+                <div class="l-Media_Image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/change-email/img-01.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+                <div class="l-Media_Image">
+                  <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/change-email/img-02.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3.「連絡先情報」欄に表示される登録中のメールアドレスを確認する
+            </h4>
+            <div>
+              <p class="u-Adjust_Mt-16">メールアドレスを変更する場合は、「変更」をタップしてください。</p>
+            </div>
+            <div>
+                <div class="l-Media_Image">
+                  <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/change-email/img-03.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              4.メールアドレスを入力し、「変更する」をタップする
+            </h4>
+            <div>
+                <div class="l-Media_Image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/change-email/img-04.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              5. ワンタイムパスワードを入力し、「認証する」をタップする
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+            </p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+            </p>
+            <div class="l-Media_Image">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/guide/change-address/img-14-240521.png" width="300" height="535" alt="ワンタイムパスワードを入力し、「認証する」をタップする" class="c-Img_Capture" loading="lazy">
+              </figure>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              6. お手続き完了
+            </h4>
+            <p class="u-Adjust_Mt-24">手続きが完了すると変更前のメールアドレス宛に<span class="c-Txt_Emp-01">「[楽天モバイル] ご契約者様情報の変更完了のお知らせ」</span>メールをお送りいたします。</p>
+            <div>
+                <div class="l-Media_Image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/change-email/img-05.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

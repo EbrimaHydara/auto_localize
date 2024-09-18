@@ -1,0 +1,60 @@
+<%# @param
+  id[string] : CPNコード(必須)
+  period[string]: 見出しに追加する文言
+  class[string]: 外枠class(マージン調整)
+  year[]string: CPN年度(必須)
+  title[string]: CPN名
+%>
+<% include('./_master2023.ejs'); -%>
+<% include('./_master2024.ejs'); -%>
+
+<%
+let rulesClosedMaster;
+
+switch (campaign.year) {
+  case '2023' :
+    rulesClosedMaster = campaignRulesMaster2023;
+    break;
+  case '2024' :
+    rulesClosedMaster = campaignRulesMaster2024;
+    break;
+  default :
+    console.log('please check year!!');
+}
+
+const masterKey = 'r' + campaign.id;
+const campaignInfo = {...rulesClosedMaster[masterKey], ...campaign};
+-%>
+
+<% if (rulesClosedMaster.hasOwnProperty(masterKey)) { %>
+  <% if (campaignInfo.class !== '') { %>
+  <div class="c-Accordion <%= campaignInfo.class %>">
+  <% } else { %>
+  <div class="c-Accordion">
+  <% } %>
+    <button id="accordion-<%= campaignInfo.id %>" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-<%= campaignInfo.id %>">
+      <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><%= campaignInfo.title %><%= campaignInfo.period %>
+    </button>
+    <div id="accordion-content-<%= campaignInfo.id %>" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-<%= campaignInfo.id %>" aria-hitden="true" style="display: none;">
+      <div>
+        <%- include('/include/campaign/rules/' + campaignInfo.year + '/_campaign-rule-' + campaignInfo.id +'.ejs') %>
+        <dl class="c-Dl_Origin">
+          <div>
+            <dt>ページURL</dt>
+            <dd><p><a href="<%= sitepath %><%= campaignInfo.path %>" class="u-Adjust_Txt-break"><%= sitedomain %>/<%= campaignInfo.path %></a></p>
+              <% if (campaignInfo.subpath != null) { %>
+                <p><a href="<%= sitepath %><%= campaignInfo.subpath %>" class="u-Adjust_Txt-break"><%= sitedomain %>/<%= campaignInfo.subpath %></a></p>
+                <% } else { %>
+              <% } %>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div class="close-pagetop u-Adjust_Mt-40">
+        <a href="#top" class="js-scroll c-Link_Anchor c-Link_Txt-icon">
+          <span class="c-Icon_Arrow-up-l c-Link_Icon u-Adjust_Pr-8"></span>ページトップへ
+        </a>
+      </div>
+    </div>
+  </div>
+<% } %>

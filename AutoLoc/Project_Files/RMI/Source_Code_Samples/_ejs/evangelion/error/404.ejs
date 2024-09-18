@@ -1,0 +1,124 @@
+<% const pagetitle = "お探しのページが見つかりません" -%>
+<%_
+  sitepath = "/";
+_%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title><%= pagetitle %></title>
+<meta name="author" content="楽天モバイル">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico?yymmdd">
+<style>
+.l-System { display: none; }
+</style>
+</head>
+<body>
+  <div class="l-System js-mno">
+    <link rel="stylesheet" href="/assets/css/error/error.css?20240424">
+    <link rel="stylesheet" href="/assets/css/common/common.css?20240424">
+    <link rel="stylesheet" href="/assets/css/common-v2/common-v2.css?20240424">
+
+    <header class="g-Header">
+      <div class="g-Header_Container">
+        <div class="g-Header_Logo"><a href="/">Rakuten Mobile</a></div>
+      </div>
+    </header>
+    <div class="l-System_Container">
+      <div class="error-Layout"></div>
+        <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+        <div class="error-Layout_Main">
+          <div class="error-Layout_Img"><img src="/assets/img/error/img-404-glasses.png" width="49" alt=""></div>
+          <div class="error-Layout_Txt">
+            <p class="u-Adjust_Mt-64">
+              お探しのページは削除されたか、一時的にご利用できない可能性があります。<br>
+              URLをご確認いただくか、楽天モバイルトップページからお探しください。
+            </p>
+            <div class="u-Adjust_Mt-40">
+              <a href="/" class="c-Btn_Regular-semiauto">楽天モバイルトップへ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="error-Layout_Footer">
+      <small class="g-Footer_Copyright">&copy; Rakuten Mobile, Inc.</small>
+    </footer>
+
+  <div class="l-System js-hikari">
+    <link rel="stylesheet" href="/assets/css/hikari/error/error.css?20240424">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400%3B700&display=swap">
+    <link rel="preload" as="font" href="/assets/fonts/RakutenSans_W_Rg.woff2" type="font/woff2">
+    <link rel="preload" as="font" href="/assets/fonts/RakutenSans_W_SBd.woff2" type="font/woff2">
+    <link rel="preload" as="font" href="/assets/fonts/RakutenSans_W_Bd.woff2" type="font/woff2">
+        <link rel="stylesheet" href="/assets/css/hikari/common-v2/common-v2.css?20240424">
+    <link rel="stylesheet" href="/assets/css/common-v2/common-v2.css?20240424">
+    <link rel="stylesheet" href="/assets/css/hikari/common-v2/common-v2-hikari.css?20240424">
+    <%- include('/hikari/include/_header', {headerType: 'logo', tax: 'none'}) %>
+    <div class="l-System_Container">
+      <div class="error-Layout">
+        <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+        <div class="error-Layout_Main">
+          <div class="error-Layout_HikariImg"></div>
+          <div class="error-Layout_Txt">
+            <p class="u-Adjust_Mt-32">
+              お探しのページは削除されたか、一時的にご利用できない可能性があります。<br>
+              URLをご確認いただくか、楽天ひかりトップページからお探しください。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+        <a href="/hikari/" class="c-Btn_Secondly-large error-Layout_Btn"><span><span>楽天ひかりトップページ</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></a>
+      </div>
+    </div>
+    <footer class="g-Footer u-Adjust_Mt-24">
+      <div class="c-Footer u-Adjust_Mt-40 u-Adjust_Align-center" style="background-color: rgb(255, 255, 255);">
+        <div class="c-Footer_Link">
+          <a class="c-Link_Txt" href="/hikari/information/?l-id=rhk_footer_information_01" data-lid_parts="footer" data-ratid="rhk_footer_information_01" data-ratevent="click" data-ratparam="all">お知らせ</a>
+          <a class="c-Link_Txt" href="/hikari/inquiry/?l-id=rhk_footer_inquiry_01" data-lid_parts="footer" data-ratid="rhk_footer_inquiry_01" data-ratevent="click" data-ratparam="all">お問い合わせ</a>
+          <a class="c-Link_Txt" href="/hikari/terms/?l-id=rhk_footer_terms_01" data-lid_parts="footer" data-ratid="rhk_footer_terms_01" data-ratevent="click" data-ratparam="all">利用規約・重要事項説明書</a>
+        </div>
+      </div>
+      <%- include('/include/_footer-simple') %>
+    </footer>
+    <style>
+      .c-Footer_Nav {
+        margin-top: 24px;
+      }
+      .c-Footer {
+        padding-top: 8px;
+      }
+    </style>
+    <%- include('/include/hikari/_common-js') %>
+    <script src="/assets/js/hikari/top.index.bundle.js?20240521"></script>
+    <script src="/assets/js/library/purify.min.js"></script>
+  </div>
+
+  <script>
+    const loc = location.pathname;
+    document.addEventListener("DOMContentLoaded", function(){
+      if(loc.indexOf("hikari") == 1){
+        let link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+          link = document.createElement('link');
+          link.rel = 'icon';
+          document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        link.href = '/assets/img/hikari/favicon.png';
+        const selector1 = document.querySelector('.js-hikari');
+        selector1.style.display = "block";
+        const selector2 = document.getElementsByClassName('error-Layout_Footer');
+        selector2[0].style.display = "none";
+        const cFooter = document.getElementsByClassName('c-Footer');
+        cFooter[0].style.backgroundColor = "#fff";
+      } else {
+        const selector = document.querySelector('.js-mno');
+        selector.style.display = "block";
+      }
+    }, false);
+  </script>
+</body>
+</html>

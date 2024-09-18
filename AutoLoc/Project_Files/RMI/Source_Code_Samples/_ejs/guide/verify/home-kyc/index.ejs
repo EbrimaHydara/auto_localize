@@ -1,0 +1,308 @@
+<% const pagetitle = "受け取り時に自宅で確認とは" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, , {path:"support/application/verification/", label:"本人確認"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Webからのお申し込みで、商品のお届け時に本人確認書類を提示するだけで本人確認が完了する「受け取り時に自宅で確認」をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "home-kyc" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/home-kyc/home-kyc.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+<div class="home-kyc-Hero_Tradein">
+  <div class="l-System_Container">
+    <div class="home-kyc-Hero_Tradein-ttl">
+      <h1 class="c-Heading_Lv1">アップロードは不要<br>
+        配達員に見せるだけ</h1>
+      <p>受け取り時に自宅で確認とは</p>
+    </div>
+  </div>
+</div>
+
+<div class="l-System_Container">
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">Webからのお申し込みをもっと簡単に！</h2>
+  <div class="l-Media_Grid">
+    <div class="l-Media_Image">
+      <p class="u-Adjust_Align-center u-Adjust_Mt-32">
+        <img class="js-lazy" src="<%= sitepath %>assets/img/home-kyc/img-home-kyc-01.png" alt="">
+      </p>
+    </div>
+    <div>
+      <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">本人確認書類の撮影やアップロードが不要</h3>
+      <p class="u-Adjust_Mt-16">スマホのお申し込みに必要な本人確認。これまでは本人確認書類をお客様ご自身で撮影して、アップロードいただいていました。そのお手間を解消すべく、楽天モバイルがはじめたのが「受け取り時に自宅で確認」です。商品をご自宅でお受け取りになる際に本人確認を行うので、書類のアップロードが一切不要になりました。</p>
+    </div>
+
+  </div>
+
+  <div class="l-Media_Grid">
+    <div class="l-Media_Image">
+      <p class="u-Adjust_Align-center u-Adjust_Mt-24">
+        <img class="js-lazy" src="<%= sitepath %>assets/img/home-kyc/img-home-kyc-02.png" alt="">
+      </p>
+    </div>
+    <div>
+      <h3 class="c-Heading_Lv3 u-Adjust_Mt-24">商品のお届け時に、配達員に本人確認書類を提示するだけ</h3>
+      <p class="u-Adjust_Mt-16">お申し込みでスキップした本人確認は、商品の配達時に行います。ご自宅に伺った配達員に本人確認書類をご提示ください。本人確認が完了すれば、そのまま商品をお受け取りになれます。追加料金は一切かかりません。</p>
+    </div>
+  </div>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="trade-in-price">ご利用いただける本人確認書類一覧</h2>
+
+  <p class="u-Adjust_Mt-16">ご自宅での本人確認の際、以下よりいずれか1点を配達員にご提示ください。</p>
+
+  <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※</span>本人確認書類は写真付きのものが必要です。</p>
+  <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※</span>ご来店や書類のアップロードでの本人確認の場合とは、対応できる書類が異なります。必ず以下よりお選びください。</p>
+  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+    <li>運転免許証 <p class="c-Txt_Cap u-Adjust_Mt-8 c-Txt_Emp-02"><span>※</span>運転経歴証明書はご利用いただけません。</p></li>
+    <li class="u-Adjust_Mt-8">マイナンバーカード（個人番号カード）</li>
+    <li class="u-Adjust_Mt-8">日本国パスポート　<span class="c-Txt_Emp-02">補助書類必要</span></li>
+  </ul>
+
+  <div class="c-Infobox_Standing-light u-Adjust_Mt-32">
+    <h3 class="c-Heading_Lv3">補助書類について</h3>
+    <p class="u-Adjust_Mt-16">「日本国パスポート」を本人確認書類としてご提示いただく場合、以下の補助書類を併せてご提示いただくことが必要です。また、「日本国パスポート」以外の本人確認書類で、住所が最新ではない場合、最新の住所が記載された以下の補助書類を併せてご提示いただくことで本人確認をすることができます。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※</span>氏名を変更されている場合は、補助書類では受け付けられません。</p>
+    <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8"><span>※</span>補助書類は発行から3カ月以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</p>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>公共料金の領収書（電気・ガス・水道）</li>
+      <li class="u-Adjust_Mt-8">納税証明書</li>
+      <li class="u-Adjust_Mt-8">社会保険料の領収証書</li>
+    </ul>
+  </div>
+  <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/verify/index.html#home" class="c-Link_Txt-icon">本人確認書類の詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">ご利用の流れ</h2>
+
+  <div class="c-Infobox_Standing-border u-Adjust_Mt-24">
+    <h3 class="c-Heading_Lv3">1.お申し込み</h3>
+    <div class="l-Media_Grid">
+      <div class="l-Media_Image">
+        <p class="u-Adjust_Align-center u-Adjust_Mt-24">
+          <img class="js-lazy" src="<%= sitepath %>assets/img/home-kyc/img-home-kyc-03.png" alt="">
+        </p>
+      </div>
+      <div>
+        <p class="u-Adjust_Mt-16">本人確認書類をご用意のうえ、お申し込みボタンより、お申し込み画面にお進みください。プランや製品を選択いただき、契約者情報をご登録いただいたあと、本人確認のステップに進みます。</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8"><span>※</span>以下の場合は、ご自宅での本人確認がご利用いただけません。</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>お支払い方法が代金引換の場合</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>ご契約者が18歳未満の場合</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>離島など一部の地域にお住まいの場合</p>
+
+        <p class="u-Adjust_Mt-16"><a href="#anc_01" class="c-Link_Txt-icon"><span class="c-Icon_Arrow-down-l"></span>注意事項を確認する</a></p>
+
+        <div class="u-Adjust_Mt-24">
+          <a class="c-Btn_Regular-auto" href="<%= sitepath %>guide/flow/application/"><span>Rakuten最強プランお申し込み方法を見る</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-Infobox_Standing-border u-Adjust_Mt-48 home-kyc-Layout_Flow-item">
+    <h3 class="c-Heading_Lv3">2.本人確認方法の選択</h3>
+    <div class="l-Media_Grid">
+      <div class="l-Media_Image">
+        <p class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <img class="js-lazy" src="<%= sitepath %>assets/img/home-kyc/img-home-kyc-04.png" alt="">
+        </p>
+      </div>
+      <div>
+        <p class="u-Adjust_Mt-16">本人確認のステップにて、「受け取り時に自宅で確認」をご選択のうえ、お申し込みを完了してください。</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-16"><span>※</span>氏名や住所の相違が発生しています。お申し込み内容と本人確認書類の内容に相違がある場合、商品をお受け取りになることができませんので、ご確認のうえ、お申し込みください。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-Infobox_Standing-border u-Adjust_Mt-48 home-kyc-Layout_Flow-item">
+    <h3 class="c-Heading_Lv3">3.商品の配達</h3>
+    <div class="l-Media_Grid">
+      <div class="l-Media_Image">
+        <p class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <img class="js-lazy" src="<%= sitepath %>assets/img/home-kyc/img-home-kyc-05.png" alt="">
+        </p>
+      </div>
+      <div>
+        <p class="u-Adjust_Mt-16">配達員が商品をお届けに伺います。商品のお受け取りの際、必ず本人確認書類が必要となりますので、ご準備のうえ、ご契約者本人がご在宅ください。</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8"><span>※</span>商品の受け取り場所は、お申し込みいただいたご自宅住所のみとなります。マンションのエントランスや楽天モバイルショップ、配送会社の営業所などではお受け取りになれません。また、転送サービス、置き配サービスもご利用になれません。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-Infobox_Standing-border u-Adjust_Mt-48 home-kyc-Layout_Flow-item">
+    <h3 class="c-Heading_Lv3">4.本人確認書類の提示</h3>
+    <div class="l-Media_Grid">
+      <div class="l-Media_Image">
+        <p class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <img class="js-lazy" src="<%= sitepath %>assets/img/home-kyc/img-home-kyc-06.png" alt="">
+        </p>
+      </div>
+      <div>
+        <p class="u-Adjust_Mt-16">商品の配達時、お申し込みいただいたご契約者本人が、本人確認書類を配達員に提示してください。配達員にて、本人確認書類に記載されている住所、氏名などの確認を行います。</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8"><span>※</span>お申し込みいただいたご契約者本人のみ、商品のお受け取りが可能です。ご家族など、代理の方がお受け取りになることはできません。</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02"><span>※</span>本人確認で不備となった場合、商品をお渡しできません。お申し込みはキャンセルとさせていただきます。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-Infobox_Standing-border u-Adjust_Mt-48 home-kyc-Layout_Flow-item">
+    <h3 class="c-Heading_Lv3">5.商品のお受け取り</h3>
+    <div class="l-Media_Grid">
+      <div class="l-Media_Image">
+        <p class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <img class="js-lazy" src="<%= sitepath %>assets/img/home-kyc/img-home-kyc-07.png" alt="">
+        </p>
+      </div>
+      <div>
+        <p class="u-Adjust_Mt-16">配達員による本人確認が完了すると、商品をお受け取りになれます。</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">お申し込み前にご確認ください</h2>
+  <p class="u-Adjust_Mt-16">事前にご確認のうえお申し込みください。</p>
+
+  <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">楽天会員情報は最新ですか？</h3>
+  <p class="u-Adjust_Mt-16">お申し込み画面では、ご住所などは楽天会員情報から自動入力されます。この内容が本人確認書類と異なる場合は、事前に楽天会員情報を変更するか、お申し込み画面内の「内容変更」ボタンよりご変更のうえお申し込みください。</p>
+
+  <p class="u-Adjust_Mt-16"><a href="https://member.id.rakuten.co.jp/rms/nid/menufwd" class="c-Link_Txt-icon">楽天会員情報を確認・変更する<span class="c-Icon_Chevron-right"></span></a></p>
+
+  <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">略字、旧字の使用も含めて正確ですか？</h3>
+  <p class="u-Adjust_Mt-16">ご契約者情報のご入力の際は、略字、旧字使いにご注意ください。たとえば、本人確認書類が「渡邊」であれば、お申し込み画面でも「渡邊」とご入力ください。もし、ご入力いただいた情報が「渡辺」となっている場合、本人確認が不備となる場合があります。</p>
+
+  <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">本人確認書類に記載の住所は最新ですか？</h3>
+  <p class="u-Adjust_Mt-16">必ず最新のご住所が記載された本人確認書類をご用意ください。最新ではない場合、最新のご住所が記載された補助書類を併せてご提示いただきます。</p>
+  <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8"><span>※</span>氏名や住所の相違が発生しています。お申し込み内容と本人確認書類の内容に相違がある場合、商品をお受け取りになることができませんので、ご確認のうえ、お申し込みください。</p>
+
+  <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/verify/index.html#home" class="c-Link_Txt-icon">本人確認書類の詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+  <div class="u-Adjust_Align-center u-Adjust_Mt-48">
+    <a href="<%= sitepath %>guide/application/?lid-r=guide_verify_home-kyc_guide_application" class="c-Btn_Primary-half <%= nameSpace %>-Btn_Large"><span>Rakuten最強プランお申し込み</span></a>
+  </div>
+
+  <h2 id="anc_01" class="c-Heading_Lv2 u-Adjust_Mt-64">注意事項</h2>
+  <div class="u-Adjust_Mt-32">
+    <h3 class="c-Heading_Lv3">お申し込み時</h3>
+    <p class="u-Adjust_Mt-16">以下の場合は「受け取り時に自宅で確認」がご利用になれません。</p>
+<h4 class="u-Adjust_Mt-16 c-Heading_Lv4">お支払い方法が代金引換の場合</h4>
+<ul class="c-List_Text-disc u-Adjust_Mt-8">
+  <li>本人確認で「受け取り時に自宅で確認」を選択した場合、お支払い方法で代金引換をご利用できません。</li>
+</ul>
+
+<h4 class="u-Adjust_Mt-16 c-Heading_Lv4">ご契約者が18歳未満の場合</h4>
+<ul class="c-List_Text-disc u-Adjust_Mt-8">
+  <li>18歳未満の方がお申し込みになる場合、本人確認方法の選択肢に「受け取り時に自宅で確認」が表示されません。</li>
+</ul>
+
+<h4 class="u-Adjust_Mt-16 c-Heading_Lv4">離島など一部の地域にお住まいの場合</h4>
+<ul class="c-List_Text-disc u-Adjust_Mt-8">
+  <li>配送会社の配達エリアの都合上、「受け取り時に自宅で確認」がご利用になれない地域があります。</li>
+  <li class="u-Adjust_Mt-8">お申し込みいただいたあとに、配達可能エリアかどうかの確認が入るため、配達不可となった場合は、大変申し訳ありませんが、お申し込みのキャンセルをさせていただきます。</li>
+  <li class="u-Adjust_Mt-8">配達不可によるキャンセルの際はメールにてお知らせいたします。お手数ですが、「受け取り時に自宅で確認」以外の方法で本人確認のうえ、あらためてお申し込みいただきますようお願いいたします。</li>
+</ul>
+
+<h3 class="c-Heading_Lv3 u-Adjust_Mt-32">お受け取り時</h3>
+<ul class="c-List_Text-disc u-Adjust_Mt-16">
+  <li>本人確認で「受け取り時に自宅で確認」を選択した場合、商品の受け取り場所は、お申し込みいただいたご自宅住所のみとなります。マンションのエントランスや楽天モバイルショップ、配送会社の営業所などではお受け取りになれません。また、転送サービス、置き配サービスもご利用になれません。</li>
+  <li>楽天モバイルが指定した配送業者の配達員が、本人確認書類に記載の氏名・住所・生年月日がお申し込み内容と一致しているかを目視・口頭により確認し、本人確認結果として下記の情報のいずれかを専用端末に入力いたします。指定配送業者（佐川急便）の個人情報取り扱いについては、<a href="https://www.sagawa-exp.co.jp/personal-data/" target="_blank">佐川急便の個人情報保護方針のページ</a>をご覧ください。
+    <br>
+    運転免許証：運転免許証番号<br>
+    日本国パスポート：旅券番号<br>
+    マイナンバーカード：セキュリティコードおよび有効期限</li>
+  <li>公的証書が運転免許証である場合、OCR機能により記載情報を読み取って入力することがあります。</li>
+  <li>お申し込みいただいたご契約者本人のみ、商品のお受け取りが可能です。ご家族など、代理の方がお受け取りになることはできません。</li>
+  <li>配達時に、ご契約者様が不在の場合や、本人確認書類が一時的に準備できていないなどの場合、再配達のお手続きをお願いいたします。配送会社での保管期間は7日です。それでも受け渡しができない場合、お申し込みはキャンセルとさせていただきます。</li>
+  <li>本人確認で不備となった場合、商品をお渡しできません。お申し込みはキャンセルとさせていただきます。</li>
+</ul>
+
+  </div>
+
+<div class="u-Adjust_Mt-48 u-Adjust_Mb-64">
+  <a class="c-Btn_Regular-semiauto" href="<%= sitepath %>guide/verify/"><span>本人確認書類にもどる</span></a>
+</div>
+
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-service.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-service.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

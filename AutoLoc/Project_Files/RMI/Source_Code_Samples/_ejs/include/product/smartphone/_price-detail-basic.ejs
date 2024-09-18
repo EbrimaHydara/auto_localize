@@ -1,0 +1,404 @@
+<%#
+  * 製品価格コンポーネント
+  *** （テーマ）
+  * @param {string} theme - 必須 - カラーテーマ（'Light' || 'Dark'|| 'Rakuten'）
+  * @return {html} - product-detail-Theme_{theme}-price など、色の変更が必要になるclassがつきます
+  *
+  *** （一括払い）
+  * @param {number} price - 必須 - 71980
+  * @return {string} - 製品価格
+  *
+  * @param {number} priceBefore - 任意 - 99800
+  * @return {string} - 値引き前の製品価格
+  *
+  * @param {number} PriceBeforeUnnumberedAnnotationText - 任意 - 'テキスト'
+  * @return {string} - 値引き前の製品価格 注釈の説明文
+  *
+  * @param {string} addAnnotation - 任意 - '※2'
+  * @return {string} - 値引き前の製品価格に脚注番号をふる
+  *
+  *　製品購入還元がある場合セットで設定するーーーーー
+  * @param {number} pointBackPriceModel - 任意 - 1000
+  * @return {string} - 製品購入で別途割引がある場合の割引額ポイント
+  *
+  * @param {html} pointModelText - pointBackPriceModelがある場合設定する- `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  * @return {html} - 製品購入還元で「製品購入で2,000ポイント※1」の「」内のテキスト　※HTML形式で出力
+  * ーーーーー
+  *
+  * @param {number} pointBackPrice - 必須 - 21300
+  * @return {string} - ポイント還元での最大値引額
+  *
+  * @param {html} pointBackText - 必須 - `最大${point}ポイント<sub>※1,2</sub>`,
+  * @return {html} - ポイント還元で「最大22,000ポイント※1,2」の「」内のテキスト　※HTML形式で出力
+  *
+  * @param {html} pointEntryText - 任意 - 実質価格からさらに値引きがある場合に設定する - `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  * @return {html} - 実質価格から、さらに値引きがある時「さらに、エントリー＆抽選で2,000ポイント※2」の「」内のテキスト　※HTML形式で出力
+  *
+  *** （分割払い）
+  * @param {number} division24 - 必須 - 2999
+  * @return {string} - 24回払いの月のお支払い額
+  *
+  * @param {number} division24Before - 任意 - 4158
+  * @return {string} - 24回払いの月のお支払い額値引き前
+  *
+  * @param {number} division48 - 必須 - 1499
+  * @return {string} - 48回払いの月のお支払い額
+  *
+  * @param {number} division48Before - 任意 - 2079
+  * @return {string} - 48回払いの月のお支払い額値引き前
+  *
+  *** （おすすめオプション）
+  * @param {string} optionPattern - 任意 - （'tradein' || 'non-tradein'|| 'special-a'）基本3パターン、今後、増減する可能性あり
+  * @return {html} - パターンを選択、設定しない場合は出力されない
+  *
+  * @param {string} lid - 必須 - 'rakuten-mini'
+  * @return {html} - ポイント訴求 と スマホ交換保証プラス と スマホ下取りサービス　のl-id
+  *
+  * @param {string} tradeinProductName - optionPattern: 'tradein' の時のみ設定 - 'HUAWEI nova 3'
+  * @return {string} - 下取り対象商品の名前を出力
+  *
+  * @param {number} maxTradeinPrice - optionPattern: 'tradein' の時のみ設定 - 6475
+  * @return {string} - 下取りの最大価格
+  *
+  * @param {number} capacity - optionPattern: 'tradein' の時のみ設定 - 123
+  * @return {string} - 注釈4の容量（MB数）を出力
+  *
+  * @param {number} carrier - 下取り製品のキャリアが"楽天モバイル"以外の時に設定（デフォルトは、"楽天モバイル"） - 'NTTドコモ'
+  * @return {string} - 下取り製品のキャリア名を出力
+  * ーーーーー
+  *
+  * @param {number} pointAppealBtnCapNo - 必須 - 3
+  * @return {string} - ポイント訴求の脚注番号
+  *
+  * @param {string} btnLabel - 任意 - XXXXを予約注文する
+  * @return {string} - ボタンのラベル名
+_%>
+<% const namespace = "product-detail" -%>
+<% const {
+  theme,
+  addAnnotation,
+  price,
+  point,
+  priceBefore,
+  priceBeforeIsText,
+  PriceBeforeUnnumberedAnnotationText,
+  pointBackPriceModel,
+  pointBackPrice,
+  pointEntry,
+  pointModelText,
+  pointBackTextA,
+  pointEntryText,
+  division24,
+  division24Before,
+  division48,
+  division48Before,
+  division48last,
+  optionPattern,
+  tradeinProductName,
+  lid,
+  tradeinPass,
+  capacity,
+  maxTradeinPrice,
+  pointAppealBtnCapNo,
+  carrier,
+  notificationEmail,
+  notificationEmailLink,
+  discountPrice,
+  applyPoint,
+  firstTimeApplyPoint,
+  applicationFromWebPoint,
+  mnp,
+  anchorId,
+  trakingId,
+  exid,
+  reserve,
+  btnLabel
+} = priceDetailConfig -%>
+
+<% const practicallyprice = () => {
+  return price - applyPoint - firstTimeApplyPoint
+}
+-%>
+
+<% const discountPrice2 = practicallyprice() - maxTradeinPrice; -%>
+
+<% const annotation = addAnnotation ? ` ${addAnnotation}` : null -%>
+<% const carrierName = carrier ? carrier : '楽天モバイル' -%>
+<% const tradeinUrl = tradeinPass ? tradeinPass : sitepath + 'service/tradein/?l-id=product_' + lid + '_cpn_02' -%>
+
+<% const isXperia10v = lid === 'xperia-10m5'; -%>
+<% const isAqsW3OrGlxyA235g = lid === 'aquos-wish3' || lid === 'galaxy-a23-5g'; -%>
+<% const isReno9a = lid === 'reno9-a'; -%>
+<% const isAquos8 = lid === 'aquos-sense8'; -%>
+
+<% const planseSetDiscountValue1 = 26930; -%>
+<% const planseSetDiscountValue2 = 20000; -%>
+
+<div class="u-Adjust_Pt-8">
+  <div class="<%= namespace %>-Price_Container l-System_Container">
+    <p class="c-Txt_Cap u-Adjust_Align-right">※表記の金額はすべて税込です。</p>
+    <div class="u-Adjust_Mt-24 <%= namespace %>-Theme_<%= theme %>-info c-Theme-Light">
+      <% if (isXperia10v || isAqsW3OrGlxyA235g) { %>
+        <p class="c-Txt_Cap <%= namespace %>-Theme_<%= theme %>-info-text">
+          「実質負担額」とは、楽天キャッシュを加味した価格であり、実際の支払い金額とは異なります。
+        </p>
+      <% } else if(isReno9a || isAquos8) { %>
+        <p class="c-Txt_Cap <%= namespace %>-Theme_<%= theme %>-info-text">「実質負担額」とは、楽天キャッシュを加味した価格であり、実際の支払い金額とは異なります。</p>
+      <% } else { %>
+        <p class="c-Txt_Cap <%= namespace %>-Theme_<%= theme %>-info-text">「実質負担額」とは、キャンペーン条件達成により後日付与されるポイント・楽天キャッシュを加味した価格であり、実際の支払い金額とは異なります。詳しくは<a href="<%= sitepath %>campaign/start-point/#campaign-rule" class="c-Link_Txt">キャンペーンルール</a>をご確認ください。</p>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="l-System_Container">
+    <div class="<%= namespace %>-Theme <%= namespace %>-Theme_<%= theme %> <%= namespace %>-Theme_<%= theme %>-border u-Adjust_Mt-32 u-Adjust_Mb-40">
+      <div class="<%= namespace %>-Theme_Inner">
+        <h2 id="price" class="u-Adjust_Mt-16 c-Txt_Normal-ll <%= namespace %>-Price_Grid u-Adjust_Align-center">製品価格</h2>
+        <table class="c-Table_Container <%= namespace %>-Price_Grid-table u-Adjust_Mt-16">
+          <tbody>
+            <tr>
+              <th>
+                <p>48回払い <span class="c-Txt_Cap">※1（楽天カードのみ）</span></p>
+              </th>
+              <td>
+                <p class="u-Adjust_Align-right">
+                  <%# 48回払い、値引き前の製品価格がある場合（打ち消し価格が表示される）_%>
+                  <%_ if (typeof division48Before !== 'undefined') { _%>
+                    <span><%= division48Before.toLocaleString() %>円<span> &rarr;</span></span>
+                  <%_ } _%>
+                  <span class="<%= namespace %>-Price_Num"><%= division48.toLocaleString() %></span><span style="font-size: 16px; font-weight: 700;">円/月</span>
+                  <%_ if (typeof division48last !== 'undefined') { _%>
+                    <br><span class="<%= namespace %>-Price_Grid-table-cap">※1回目<%= division48last.toLocaleString() %>円/月</span>
+                  <%_ } _%>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="<%= namespace %>-Price_Grid-split-wrapper">
+            <div class="<%= namespace %>-Price_Grid-split">
+              <p>24回払い<span class="c-Txt_Cap">※2</span></p>
+              <p>
+                <%_ if (typeof division24Before !== 'undefined') { _%>
+                  <span class="<%= namespace %>-Price_Strikethrough"><%= division24Before.toLocaleString() %>円<span> &rarr;</span></span>
+                <%_ } _%>
+                <span class="<%= namespace %>-Price_Num"><%= division24.toLocaleString() %></span>円/月
+              </p>
+            </div>
+            <div class="<%= namespace %>-Price_Grid-split">
+              <p>一括払い</p>
+              <p>
+              <% if (priceBefore) { %>
+                <span class="<%= namespace %>-Price_Grid-table-double">
+                  <s><%= priceBefore.toLocaleString() %></s>円<span class="c-Txt_Cap"></span><sup>*</sup> →
+                </span>
+              <% } %>
+                <span class="<%= namespace %>-Price_Num"><%= price.toLocaleString() %></span>円
+              </p>
+            </div>
+        </div>
+        <div class="<%= namespace %>-Price_Grid-label u-Adjust_Mt-24">
+          <span>キャンペーンでおトクに！</span>
+        </div>
+        <div class="<%= namespace %>-Price_Grid-split-wrapper">
+            <% if (applyPoint) { %>
+              <div class="<%= namespace %>-Price_Grid-split">
+                <p>楽天モバイルへ初めて<br class="u-Show_Oxx">お申し込みで<span class="c-Txt_Cap">※3</span></p>
+                <p class="<%= namespace %>-Price_Pay c-Txt_Emp-01">
+                  <span class="<%= namespace %>-Price_Num">-<%= applyPoint.toLocaleString() %></span>pt
+                </p>
+              </div>
+            <% } %>
+            <div class="<%= namespace %>-Price_Grid-split u-Adjust_Mt-8">
+              <% if (isXperia10v || isAqsW3OrGlxyA235g || isReno9a || isAquos8) { %>
+                <p>楽天モバイルへ<br class="u-Show_Oxx">お申し込みで<span class="c-Txt_Cap">※3</span></p>
+              <% } else { %>
+                <p>楽天モバイルへ初めて<br class="u-Show_Oxx">お申し込み＆他社から<br class="u-Show_Oxx">乗り換えで<span class="c-Txt_Cap">※4</span></p>
+              <% } %>
+              <p class="<%= namespace %>-Price_Pay c-Txt_Emp-01">
+                <% if (isXperia10v) { %>
+                  <span class="<%= namespace %>-Price_Num">-<%= planseSetDiscountValue1.toLocaleString() %></span>円
+                <% } else if (isAqsW3OrGlxyA235g || isReno9a || isAquos8) { %>
+                  <span class="<%= namespace %>-Price_Num">-<%= planseSetDiscountValue2.toLocaleString() %></span>円
+                <% } else { %>
+                  <span class="<%= namespace %>-Price_Num">-<%= firstTimeApplyPoint.toLocaleString() %></span>pt
+                <% } %>
+              </p>
+            </div>
+        </div>
+        <div class="c-Txt_Emp-02 u-Adjust_Align-right u-Adjust_Mt-8 <%= namespace %>-Utility_Border-top">
+          <% if (isXperia10v) { %>
+            <span class="<%= namespace %>-Price_Practically-txt">値引き後価格</span>
+            <span class="<%= namespace %>-Price_Practically-num <%= namespace %>-Price_Font-normal"><%= (price - planseSetDiscountValue1).toLocaleString() %></span>
+          <% } else if (isAqsW3OrGlxyA235g || isReno9a || isAquos8) { %>
+            <span class="<%= namespace %>-Price_Practically-txt">値引き後価格</span>
+            <span class="<%= namespace %>-Price_Practically-num <%= namespace %>-Price_Font-normal"><%= (price - planseSetDiscountValue2).toLocaleString() %></span>
+          <% } else { %>
+            <span class="<%= namespace %>-Price_Practically-txt">実質負担額</span>
+            <span class="<%= namespace %>-Price_Practically-num <%= namespace %>-Price_Font-normal"><%= practicallyprice().toLocaleString() %></span>
+          <% } %>
+          <span class="<%= namespace %>-Price_Practically-txt">円</span>
+        </div>
+        <div class="<%= namespace %>-Price_Grid-label u-Adjust_Mt-24">
+          <span>スマホ下取りサービスでさらにおトクに！</span>
+        </div>
+        <div class="<%= namespace %>-Price_Grid-split-wrapper">
+          <div class="<%= namespace %>-Price_Grid-split">
+            <p>例えば、<%= tradeinProductName %>を<br class="<%= namespace %>-Utility_Show-sp">下取りに出すと<span class="c-Txt_Cap">*1</span></p>
+            <p class="<%= namespace %>-Price_Pay c-Txt_Emp-01">
+              <span class="<%= namespace %>-Price_Num">-<%= maxTradeinPrice.toLocaleString() %></span>円
+            </p>
+          </div>
+        </div>
+        <div class="c-Txt_Emp-02 u-Adjust_Align-right u-Adjust_Mt-8 <%= namespace %>-Utility_Border-top">
+          <span class="<%= namespace %>-Price_Practically-txt">実質負担額</span>
+          <span class="<%= namespace %>-Price_Practically-num <%= namespace %>-Price_Font-normal">
+            <% if (isXperia10v) { %>
+              <%= price - planseSetDiscountValue1 - maxTradeinPrice > 0 ? (price - planseSetDiscountValue1 - maxTradeinPrice).toLocaleString() : 0 %>
+            <% } else if (isAqsW3OrGlxyA235g || isAquos8) { %>
+              <%= price - planseSetDiscountValue2 - maxTradeinPrice > 0 ? (price - planseSetDiscountValue2 - maxTradeinPrice).toLocaleString() : 0 %>
+            <% } else { %>
+              <%= discountPrice2 > 0 ? discountPrice2.toLocaleString() : 0 %>
+            <% } %>
+          </span>
+          <span class="<%= namespace %>-Price_Practically-txt">円</span>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-8 u-Adjust_Py-8 <%= namespace %>-Utility_Border-pink <%= namespace %>-Price_Option-txt">
+          <span class="c-Txt_Emp-01"><span class="u-Show_Sp">＼</span>3/1より一部製品の下取り価格アップ！<span class="u-Show_Sp">／</span></span><br class="u-Show_Sp">
+          <a href="#tradein" class="c-Link_Txt-inline js-scroll-b" data-ratid="<%= lid %>_tradein-anchor" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>お持ちの製品の下取り価格を確認する</a>
+        </div>
+        <% if ( PriceBeforeUnnumberedAnnotationText ) { %>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">
+            * <%= PriceBeforeUnnumberedAnnotationText %>
+          </p>
+        <% } %>
+        <p class="c-Txt_Cap<%= PriceBeforeUnnumberedAnnotationText ? '' : ' u-Adjust_Mt-16' %>">
+          *1 <%= carrierName %>の<%= capacity %>GBを下取りに出した場合。良品下取時。1カ月程で楽天キャッシュで付与。<a href="https://cash.rakuten.co.jp/overview/" class="c-Link_Txt">楽天キャッシュの詳細はこちら</a>
+        </p>
+
+        <% if ( trakingId !== 'rakuten-hand-5g' ) { %>
+          <div class="<%= namespace %>-Price_Cta">
+            <%# スクロール計測 %>
+            <div data-ratid="<%= trakingId %>_scroll-02_payment-order" data-ratevent="appear" data-ratparam="all">
+              <div class="l-System_Container">
+
+                <p class="c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-24 c-Txt_Normal-s">
+                  ＼ご購入は楽天カードがオススメ！<br class="<%= namespace %>-Utility_Show-sp">
+                  <span>楽天カードなら分割手数料0円！</span>／
+                </p>
+                <%_ if (bundleFlag === 'bundle') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-8 <%= bundleFlag %>">
+                  <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-2_bss" data-ratevent="click" data-ratparam="all">購入する</a>
+                </div>
+                <%_ } else if(bundleFlag === 'stock') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-8"><a class="c-Btn_Primary-large">購入する</a>
+                </div>
+                <%_ } else if(bundleFlag === 'soldout') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-8"><a class="c-Btn_Primary-large" aria-disabled="true">2022年6月30日発売予定</a></div>
+                <%_ } else if(bundleFlag === 'backorder') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-8"><a class="c-Btn_Primary-large" aria-disabled="true">現在入荷待ち</a></div>
+                <%_ } else if(bundleFlag === 'reserve') { _%>
+                  <div class="u-Adjust_Align-center u-Adjust_Mt-8">
+                    <a href="<%= onboardingpath2 %>equipment-details?exid=<%= exid %>&selectAvailable=true" class="c-Btn_Primary-large" data-ratid="product_detail-page_order-button-2_bss" data-ratevent="click" data-ratparam="all">
+                      <%_ if (typeof btnLabel !== 'undefined') { _%><%= btnLabel %><%_ } else { _%>予約注文する<%_ } _%>
+                    </a>
+                  </div>
+                <%_ } else if(bundleFlag === 'recommend-shop') { _%>
+                <div class="u-Adjust_Align-center u-Adjust_Mt-8"><a class="c-Btn_Primary-large" aria-disabled="true">購入する</a></div>
+                <%_ } _%>
+              </div>
+            </div>
+            <%_ if (bundleFlag === 'recommend-shop') { _%>
+            <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-center">※現在、ショップのみでの販売となっております。お近くの楽天モバイルショップに在庫の有無をお問い合わせのうえ、ご購入ください。</p>
+            <p class="u-Adjust_Mt-24 u-Align_Llc">
+              <a href="<%= sitepath %>shop/?l-id=product_smartphone_<%= trakingId %>_shop#shop" class="c-Link_Txt-inline c-Txt_Normal-s">お近くのショップ（店舗）を探す<span class="c-Icon_Chevron-right"></span></a>
+            </p>
+            <%_ } else { _%>
+            <p class="u-Adjust_Mt-24 u-Align_Llc <%= namespace %>-Utility_Icon">
+              <span class="<%= namespace %>-Utility_Icon-tel"></span>
+              <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_<%= trakingId %>_guide_application-support" class="c-Link_Txt-inline c-Txt_Normal-s">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+            </p>
+            <%_ } _%>
+            <div class="<%= namespace %>-Price_Container u-Adjust_Mt-24">
+              <a href="<%= sitepath %>guide/payment/point/?l-id=product_<%= lid %>_pointpayment" class="<%= namespace %>-Price_Btn-point-appeal"><span class="<%= namespace %>-Price_Btn-point-appeal-text u-Weight_Normal">期間限定ポイントもOK！製品の購入に楽天ポイントが使えます<span class="<%= namespace %>-Price_Btn-point-appeal-cap">※<%= pointAppealBtnCapNo %></span></span><span class="c-Icon_Chevron-right"></span></a>
+            </div>
+          </div>
+        <% } %>
+
+        <div class="u-Adjust_Mt-24">
+          <div id="tradein" class="product-detail-Price_Simulator u-Adjust_Pt-16 u-Adjust_Pb-32 u-Adjust_Px-16 u-Adjust_Pt-pc-24 u-Adjust_Pb-pc-40 u-Adjust_Px-pc-24">
+            <div class="product-detail-Price_Simulator-inner">
+              <div id="tradein-plice-detail"></div>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>service/tradein/?l-id=product_<%= lid %>_cpn_02_b" class="c-Btn_Secondly-large" target="_blank">
+                  下取りサービスを申し込む
+                  <span class="c-Icon_New-window-l"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <% if ( trakingId === 'rakuten-hand-5g' ) { %>
+      <div id="recommend" class="u-Adjust_Mt-24">
+        <div class="product-Rakuten-hand-5g-Section_Cover">
+          <div class="product-Rakuten-hand-5g-Section_Cover-wrapper">
+            <figure class="product-Rakuten-hand-5g-Section_Cover-image_Pc"><img src="<%= sitepath %>assets/img/product/rakuten-hand-5g/pht-accessory-180-173-220916.png" width="180" height="173" alt=""></figure>
+            <div class="product-Rakuten-hand-5g-Section_Cover-inner">
+              <span class="c-Txt_Emp-02 c-Label_Emp product-Rakuten-hand-5g-Section_Cover-normal-text">特別価格</span>
+              <h3 class="u-Adjust_Mt-8 c-Txt_Normal-l">Rakuten Hand 5G本体と専用ケースのセット購入がおトク！</h3>
+              <figure class="product-Rakuten-hand-5g-Section_Cover-image_Sp u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/product/rakuten-hand-5g/pht-accessory-180-173-220916.png" width="180" height="173" alt=""></figure>
+              <p class="u-Adjust_Mt-16"><a class="c-Link_Txt" href="https://network.mobile.rakuten.co.jp/product/accessory/rselect-rmtnrktnh5c0192bk/?l-id=product_rakuten_hand_5g_rselect-rmtnrktnh5c0192bk">縦横スタンド機能付き 手帳型ケース ブラック</a>を本体とセットで購入すると、ケース単体で購入した場合よりも <span class="c-Txt_Emp-02">約43％OFF！</span> <span class="c-Txt_Cap">※2022年11月22日以降の単体販売価格との比較</span></p>
+              <div class="u-Adjust_Mt-8 product-Rakuten-hand-5g-Section_Cover-price">
+                <span class="c-Txt_Emp-02 c-Txt_Normal-l">1,980円</span>
+              </div>
+              <p class="c-Txt_Normal u-Adjust_Mt-8">動画視聴時にワイド画面で表示できる横置きと、ビデオ通話やWeb会議に最適な縦置きが両方できる手帳型ケース。</p>
+              <p class="c-Txt_Emp-02 u-Adjust_Mt-8 c-Txt_Cap">※ 本体と専用ケースを別々でカートに入れた場合はセット割引対象外となります。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-24">
+        <ul class="product-Rakuten-hand-5g-Section_Cover_Cta-pre" data-ratid="rakuten-hand-5g_scroll-02_payment-order" data-ratevent="appear">
+          <li>
+            <a href="<%= onboardingpath2 %>equipment-details?exid=600396&selectAvailable=true" class="c-Btn_Primary-large c-Txt_Normal" data-ratevent="click" data-ratparam="all" data-ratid="product_detail-page_order-button-2_bss_bundle">本体と専用ケースをセットで購入する</a>
+          </li>
+          <li>
+            <%_ if (bundleFlag === 'bundle') { _%>
+              <a href="<%= onboardingpath2 %>equipment-details?exid=600314&selectAvailable=true" class="c-Btn_Primary-large c-Txt_Normal" data-ratevent="click" data-ratparam="all" data-ratid="product_detail-page_order-button-2_bss">本体のみ購入する</a>
+            <%_ } else if(bundleFlag === 'stock') { _%>
+              <a class="c-Btn_Primary-large c-Txt_Normal">本体のみ購入する</a>
+            <%_ } else if(bundleFlag === 'soldout') { _%>
+              <a class="c-Btn_Primary-large c-Txt_Normal" aria-disabled="true">在庫切れ</a>
+            <%_ } else if(bundleFlag === 'backorder') { _%>
+              <a class="c-Btn_Primary-large c-Txt_Normal" aria-disabled="true">2022年2月14日発売予定</a>
+            <%_ } _%>
+          </li>
+        </ul>
+      </div>
+      <p class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>-Utility_Icon">
+        <span class="<%= namespace %>-Utility_Icon-tel"></span>
+        <a href="<%= sitepath %>guide/application-support/?l-id=product_smartphone_rakuten-hand-5g_guide_application-support" class="c-Link_Txt-inline">オペレーターと相談しながらお申し込み！詳細はこちら<span class="c-Icon_Chevron-right"></span></a>
+      </p>
+      <div class="<%= namespace %>-Price_Container u-Adjust_Mt-24">
+        <a href="<%= sitepath %>guide/payment/point/?l-id=product_<%= lid %>_pointpayment" class="<%= namespace %>-Price_Btn-point-appeal"><span class="<%= namespace %>-Price_Btn-point-appeal-text">期間限定ポイントもOK！製品の購入に楽天ポイントが使えます<span class="<%= namespace %>-Price_Btn-point-appeal-cap">※<%= pointAppealBtnCapNo %></span></span><span class="c-Icon_Chevron-right"></span></a>
+      </div>
+    <%_ } _%>
+
+    <%_ if (typeof optionPattern !== 'undefined') { _%>
+      <%- include(`/include/product/smartphone/option-pattern/_${optionPattern}`, {priceDetailConfig, namespace}) %>
+    <%_ } _%>
+    <div class="<%= namespace %>-Price_Pt-16-24 u-Adjust_Align-center">
+      <%_ if (typeof infoTrue !=='undefined' ) { _%>
+        <%- infoTrue.text %>
+      <%_ } _%>
+      <%# CTAボタン通常_%>
+      <%_ if (typeof singleBtnPath !== 'undefined') { _%>
+        <div class="l-System_Container"><a href="<%= sitepath %><%= singleBtnPath %>" class="c-Btn_Primary-large"><span>購入する</span></a></div>
+      <%_ } _%>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<% const pagetitle = "QRコード対応楽天モバイルショップ一覧" -%>
+<% const directories = [{path:"shop/", label:"ショップ"}] -%>
+<% const breadcrumbs = "楽天モバイル（ドコモ回線・au回線）をご利用中の方向け「QRコード対応楽天モバイルショップ一覧」" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイル（ドコモ回線・au回線）をご利用中の方向けの、QRコードをご持参いただくだけで、MNPの予約番号発行不要でかんたんにプラン変更（移行）出来る、日本全国の楽天モバイルショップ（店舗）をご紹介します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/shop/_category-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System" id="js-result-top">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= breadcrumbs %></li>
+  </ul>
+</div>
+
+<div class="shop-Layout_Container">
+  <div class="l-System_Container">
+    <p class="c-Txt_Normal-m c-Txt_Emp-01">楽天モバイル（ドコモ回線・au回線）をご利用中の方向け</p>
+    <h1 class="c-Heading_Lv1 u-Adjust_Mt-8"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">
+      楽天モバイル（ドコモ回線・au回線）の、スーパーホーダイ、組み合わせプラン、コミコミプランをご利用中の方は、以下の対象ショップではQRコードをご持参いただくだけで、MNPの予約番号発行不要でかんたんにプラン変更（移行）ができます。QRコードと合わせて当日ご持参いただくものを、必ずご確認ください。
+    </p>
+
+    <div class="shop-Layout_Warning-box">
+      <p class="shop-Layout_Warning-box-text"><span class="shop-Layout_Warning-box-text-icon c-Icon_Sign-warning-l"></span>ご利用状況によって、手順が異なります。詳しくは下記ページをご覧ください。</p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-24">
+        <li>楽天モバイル（ドコモ回線・au回線）をご利用中のお客様は以下のページからプラン変更（移行）方法をご確認ください</li>
+      </ul>
+      <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/migration/?tab-list=tab-menu4#migration-flow" class="c-Link_Txt-inline">ショップでのプラン変更（移行）方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+      <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/mnp/migration/" class="c-Link_Txt-inline u-Adjust_Mt-8">Webでのプラン変更（移行）方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+      <ul class="c-List_Text-disc u-Adjust_Mt-24">
+        <li>楽天モバイル（ドコモ回線・au回線）を「利用者登録」でご利用中のお客様はご利用中のお客様は以下のページからプラン変更（移行）方法をご確認ください</li>
+      </ul>
+      <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>flow/mvno-user-registration/" class="c-Link_Txt-inline u-Adjust_Mt-8">利用者登録でご利用中のお客様向けRakuten最強プランへのプラン変更（移行）お手続きご案内を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">エリアからお近くの対象ショップを探す</h2>
+    <div id="searchresult"></div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">来店予約のご案内</h2>
+    <p class="u-Adjust_Mt-16">
+      ご来店の際は、ネットでできる「来店予約」が便利です。営業日時もご確認いただけます。<br>
+      また、予約された方を優先的にご案内しますので、混雑を気にせずに都合の良い時間にご来店いただけます。
+    </p>
+    <p class="u-Adjust_Mt-16">
+      各ショップページの「Webで予約する」ボタンよりご予約ください。
+    </p>
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-shop-v2.ejs') %>
+
+    <%#- include('/include/footer/bnr/bnr-shop.ejs') %>
+
+    <%#- include('/faq/include/related-shop.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= breadcrumbs %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/shop.migration-qr-shop.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

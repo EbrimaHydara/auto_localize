@@ -1,0 +1,161 @@
+<%_
+const namespace = "area-city"
+const imgPath = "/assets/img/area/city/"
+const donutTxt1 = "※楽天モバイルユーザー調査　有効回答数：n=25,582"
+const donutTxt2 = "調査対象者：全国18〜69歳の男女　かつ　現在利用しているキャリアが楽天モバイル"
+const donutTxt3 = "調査機関：楽天インサイト株式会社 調査年月：2023年10月"
+const donutTxt4 = "調査手法：楽天インサイト登録モニターに対するインターネットリサーチ"
+const q1_per = jData.q1_percentage.slice(0)
+const q2_per = jData.q2_percentage.slice(0)
+_%>
+<section id="city-voice" class="<%= namespace %>-Layout_Bg-pink <%= namespace %>-Voice u-Adjust_Pb-48 u-Adjust_Pb-pc-64 u-Adjust_Align-center contents_inner">
+  <%_ if( jData.directory2 ) { _%>
+    <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="city_uservoice" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } else { _%>
+    <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="prefecture_uservoice" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } _%>
+  <div class="<%= namespace %>-Layout_Arrow u-Adjust_Pt-16 u-Adjust_Pb-16">
+    <div class="l-System_Container">
+      <img src="<%= imgPath %>voice/Voice-title-icon.png" class="<%= namespace %>-Layout_Icon" alt="お客様の声">
+      <span class="<%= namespace %>-Layout_Title">お客様の声</span>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="<%= namespace %>-Voice_Top">
+      <h3 class="<%= namespace %>-Voice_Title">
+        <% if (jData.directory2) { %>
+          <% if (jData.q_prefecture) { %>
+            <%= jData.pref %>
+          <% } else { %>
+            <%= jData.city %>
+          <% } %>
+        <% } else { %>
+          <%= jData.pref %>
+        <% } %>
+        にお住まいの</h3>
+      <h3 class="<%= namespace %>-Voice_Title-sub">楽天モバイルユーザーにお聞きしました！</h3>
+      <div class="<%= namespace %>-Voice_Donut-frame u-Adjust_Mt-16" id="city-donut">
+        <div class="<%= namespace %>-Voice_Donut-flex-line">
+          <div class="<%= namespace %>-Voice_Donut-flex-box">
+            <div class="<%= namespace %>-Voice_Donut-balloon">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>voice/<%= jData.q1_img_sp %>" width="320" height="54">
+                <img src="<%= imgPath %>voice/<%= jData.q1_img_pc %>" loading="lazy" width="426" height="60" alt="乗り換えてよかった">
+              </picture>
+            </div>
+            <div class="<%= namespace %>-Voice_Donut-container">
+              <p class="donut1" data-percent="<%= q1_per %>"><span class="<%= namespace %>-Voice_Donut-chart">%</span></p>
+            </div>
+          </div>
+          <div class="<%= namespace %>-Voice_Donut-txt u-Adjust_Mt-8">
+            <p class="c-Txt_Cap">※n=<%= jData.q1_n %></p>
+            <p class="c-Txt_Cap"><%= jData['q1_disclaimer'] %></p>
+          </div>
+        </div>
+        <div class="<%= namespace %>-Voice_Donut-flex-line">
+          <div class="<%= namespace %>-Voice_Donut-flex-box">
+            <div class="<%= namespace %>-Voice_Donut-balloon">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>voice/<%= jData.q2_img_sp %>" width="320" height="54">
+                <img src="<%= imgPath %>voice/<%= jData.q2_img_pc %>" loading="lazy" width="426" height="60" alt="毎月の支出が節約できた">
+              </picture>
+            </div>
+            <div class="<%= namespace %>-Voice_Donut-container">
+              <p class="donut2" data-percent="<%= q2_per %>"><span class="<%= namespace %>-Voice_Donut-chart">%</span></p>
+            </div>
+          </div>
+          <div class="<%= namespace %>-Voice_Donut-txt u-Adjust_Mt-8">
+            <p class="c-Txt_Cap">※n=<%= jData.q2_n %></p>
+            <p class="c-Txt_Cap"><%= jData['q2_disclaimer'] %></p>
+          </div>
+        </div>
+      </div>
+      <p class="<%= namespace %>-Voice_Donut-txt u-Adjust_Pt-16 c-Txt_Cap"><%- donutTxt1 %></p>
+      <p class="<%= namespace %>-Voice_Donut-txt c-Txt_Cap"><%- donutTxt2 %></p>
+      <p class="<%= namespace %>-Voice_Donut-txt c-Txt_Cap"><%- donutTxt3 %></p>
+      <p class="<%= namespace %>-Voice_Donut-txt c-Txt_Cap"><%- donutTxt4 %></p>
+
+    </div>
+    <div class="u-Adjust_Mt-40">
+      <p class="<%= namespace %>-Voice_Comment-title">実際に使った<span class="<%= namespace %>-Voice_Comment-point">感想</span>をお聞きしました！</p>
+    </div>
+    <div class="<%= namespace %>-Voice_Wrapper">
+      <div class="<%= namespace %>-Voice_List">
+        <% if (jData.uv1_title ) { %>
+          <% if (jData.uv1_title) { %>
+            <ul class="<%= namespace %>-Voice_List-content">
+              <li>
+                <img src="<%= imgPath %>voice/<%=jData.uv1_img %>" width="68" height="68" alt="<%= jData.uv1_title %>">
+              </li>
+              <li>
+                <p><%= jData.uv1_title %></p>
+                <a href="<%= jData.uv1_url %>?l-id=area_prefecture_<%= jData.directory1 %>_uservoice_01">...続きを読む</a>
+              </li>
+            </ul>
+          <% } %>
+          <% if (jData.uv2_title) { %>
+            <ul class="<%= namespace %>-Voice_List-content">
+              <li>
+                <img src="<%= imgPath %>voice/<%= jData.uv2_img %>" width="68" height="68" alt="<%= jData.uv2_title %>">
+              </li>
+              <li>
+                <p><%= jData.uv2_title %></p>
+                <a href="<%= jData.uv2_url %>?l-id=area_prefecture_<%= jData.directory1 %>_uservoice_02">...続きを読む</a>
+              </li>
+            </ul>
+          <% } %>
+          <% if (jData.uv3_title) { %>
+            <ul class="<%= namespace %>-Voice_List-content">
+              <li>
+                <img src="<%= imgPath %>voice/<%= jData.uv3_img %>" width="68" height="68" alt="<%= jData.uv3_title %>">
+              </li>
+              <li>
+                <p><%= jData.uv3_title %></p>
+                <a href="<%= jData.uv3_url %>?l-id=area_prefecture_<%= jData.directory1 %>_uservoice_03">...続きを読む</a>
+              </li>
+            </ul>
+          <% } %>
+        <% } else { %>
+          <% const voice_universal = [{
+            img:'uv1_all.jpg',
+            comment:'滋賀県内でもデータ通信が快適。夫婦で毎月約2万円の節約！',
+            url:'https://network.mobile.rakuten.co.jp/uservoice/06/'
+          },
+          {
+            img:'uv2_all.jpg',
+            comment:'家族で乗り換え！シンプルなワンプランでスマホ代も安心',
+            url:'https://network.mobile.rakuten.co.jp/uservoice/43/'
+          },
+          {
+            img:'uv3_all.jpg',
+            comment:'福井県でしっかりつながる！通信速度や安定性を気にして避けてたらもったいない',
+            url:'https://network.mobile.rakuten.co.jp/uservoice/56/'
+          }]; -%>
+          <% let counts = [1, 2, 3]; %>
+          <% voice_universal.forEach(function(item, index) { %>
+            <ul class="<%= namespace %>-Voice_List-content">
+              <li>
+                <img src="<%= imgPath + 'voice/' + item.img %>" width="68" height="68" alt="<%= item.comment %>">
+              </li>
+              <li>
+                <p><%= item.comment %></p>
+                <a href="<%= item.url %>?l-id=area_prefecture_<%= jData.directory1 %>_uservoice_0<%= counts[index] %>">...続きを読む</a>
+              </li>
+            </ul>
+          <% }); %>
+        <% } %>
+      </div>
+    </div>
+    <div class="u-Adjust_Mt-40">
+      <p class="<%= namespace %>-Voice_Title-sub">全国の楽天モバイルユーザーに<br class="u-Show_Oox">アンケートを実施！</p>
+      <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-24">
+        <a class="c-Banner_Hover-act" href="<%= sitepath %>ad/reportcard/?l-id=area_<%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_nationwide_reportcard">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>voice/bnr_reportcard_sp.jpg" width="656" height="370">
+            <img src="<%= imgPath %>voice/bnr_reportcard_pc.jpg" width="1032" height="160" loading="lazy" alt="みんなに聞いた！楽天モバイル通信簿">
+          </picture>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

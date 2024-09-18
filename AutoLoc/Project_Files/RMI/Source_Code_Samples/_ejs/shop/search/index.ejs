@@ -1,0 +1,158 @@
+<% const pagetitle = "都道府県から探す" -%>
+<% const directories = [{path:"shop/", label:"ショップ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルの店舗検索。日本全国からお近くの楽天モバイルショップをお探しいただけます。店舗案内、スマホ使い方教室などのイベント情報も。窓口では新商品の実機でお試しほか、最適なプランのご提案も可能です',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/shop/_category-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System" id="js-result-top">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="shop-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <div id="searchresult"></div>
+    <a href="<%= sitepath %>shop/" class="c-Btn_Regular u-Adjust_Mt-32"><span>ショップトップへ</span></a>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-80">お近くにショップがない場合はこちらが便利です</h2>
+    <div class="u-Adjust_Mt-16">
+      <a href="<%= sitepath %>guide/application-support/" id="js-pref-lid-bnr">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.s %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-2207_application-support-375-192-230428.png" alt="" width="750" height="384">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-2207_application-support-1032-160-230428.png" alt="" width="1032" height="160">
+        </picture>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-shop-v2.ejs') %>
+
+    <%#- include('/include/footer/bnr/bnr-shop.ejs') %>
+
+    <%#- include('/faq/include/related-shop.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/shop.search.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+<script type="text/javascript">
+  const urlParams = new URLSearchParams(window.location.search)
+  const selectedPref = urlParams.get('prefecture')
+
+  const getPrefectureCode = (prefectureName) => {
+    const prefectureList = {
+    '北海道': '01',
+    '青森県': '02',
+    '岩手県': '03',
+    '宮城県': '04',
+    '秋田県': '05',
+    '山形県': '06',
+    '福島県': '07',
+    '茨城県': '08',
+    '栃木県': '09',
+    '群馬県': '10',
+    '埼玉県': '11',
+    '千葉県': '12',
+    '東京都': '13',
+    '神奈川県': '14',
+    '新潟県': '15',
+    '富山県': '16',
+    '石川県': '17',
+    '福井県': '18',
+    '山梨県': '19',
+    '長野県': '20',
+    '岐阜県': '21',
+    '静岡県': '22',
+    '愛知県': '23',
+    '三重県': '24',
+    '滋賀県': '25',
+    '京都府': '26',
+    '大阪府': '27',
+    '兵庫県': '28',
+    '奈良県': '29',
+    '和歌山県': '30',
+    '鳥取県': '31',
+    '島根県': '32',
+    '岡山県': '33',
+    '広島県': '34',
+    '山口県': '35',
+    '徳島県': '36',
+    '香川県': '37',
+    '愛媛県': '38',
+    '高知県': '39',
+    '福岡県': '40',
+    '佐賀県': '41',
+    '長崎県': '42',
+    '熊本県': '43',
+    '大分県': '44',
+    '宮崎県': '45',
+    '鹿児島県': '46',
+    '沖縄県': '47',
+  };
+
+    return prefectureList[prefectureName] || '00';
+  }
+
+  const setLinkToPrefBnr = (selectedPref) => {
+    const targetLink = document.getElementById('js-pref-lid-bnr')
+    const baseURL = targetLink.href
+    const prefCode = getPrefectureCode(selectedPref)
+    const updatedURL = `${baseURL}?l-id=shop_search_pre${prefCode}_guide_application-support`
+    targetLink.setAttribute('href', updatedURL)
+  }
+  setLinkToPrefBnr(selectedPref)
+
+</script>
+</body>
+</html>

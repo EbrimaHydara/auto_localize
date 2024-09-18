@@ -1,0 +1,641 @@
+<% const pagetitle = "Xperia 10 III Lite" -%>
+<% const directory = "xperia-10m3-lite" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/smartphone/", label:"Android"}] -%>
+<% const namespace = "product-xperia-10m3-lite" -%>
+<% const theme = "Light" -%>
+<% const point = 3000 -%>
+<%# const pointModel = 2000 -%>
+<%# const pointEntry = 5000 -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+<% const priceDetailConfig = {
+  theme: theme,
+  price: 25000,
+  priceBefore: 36790,
+  // pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  // pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  pointBackTextA: `<span>最大<span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当の</span>ポイント還元<sub>※1</sub>`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 1041,
+  // division24Before: ,
+  division48: 520,
+  // division48Before: ,
+  tradeinProductName: 'Xperia 10 II ',
+  optionPattern: 'one-option',
+  lid: directory,
+  capacity: 64,
+  maxTradeinPrice: 8640,
+  pointAppealBtnCapNo: 3,
+  carrier: 'au',
+  //　notificationEmail: 'true',
+  //　notificationEmailLink: '/product/reservation/xperia-10m3-lite/'
+  discountPrice: 16000,
+  // mnp: true,
+  trakingId: 'xperia-10m3-lite',
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "Xperia 10 III Lite（エクスペリア）のスペック・特徴などをご確認いただけます。楽天モバイル対応Android製品。オンライン簡単手続きが便利！",
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+
+<%- include('/include/product/_history-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+*/
+const bundleFlag = 'bundle';
+const modalInfo = [
+  {
+    question: {
+      title: '色を選択',
+      warning: '購入する製品の色を選択してください。',
+      type: 'color',
+      value: 'color',
+      select: [
+        {
+          'id': 'blue',
+          'name': 'ブルー',
+          'sub': '',
+          'color': '#819ABD',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'pink',
+          'name': 'ピンク',
+          'sub': '',
+          'color': '#D85863',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'black',
+          'name': 'ブラック',
+          'sub': '',
+          'color': '#414349',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'white',
+          'name': 'ホワイト',
+          'sub': '',
+          'color': '#DCE0DC',
+          'checked': false,
+          'disabled': false,
+        }
+      ],
+      upperinfo: ``,
+      lowerinfo: ``
+    },
+  },
+  {
+    question: {
+      title: 'SIMタイプ・プラン（Rakuten UN-LIMIT VI）を選択',
+      warning: 'プランを選択してください。',
+      type: 'radio',
+      value: 'plan',
+      select: [
+        {
+          'id': 'sim',
+          'name': 'nanoSIM＋プランで申し込む',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nosim',
+          'name': 'プランを申し込まない（製品のみ購入）',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: ``,
+      lowerinfo: `
+        <p class="c-Txt_Cap">※製品のみ購入の場合、SIM購入（プラン選択）は不要です。</p>
+      `
+    }
+  },
+  {
+    question: {
+      title: 'スマホ交換保証プラスを選択',
+      warning: 'スマホ交換保証プラスを選択してください。',
+      type: 'radio',
+      value: 'warranty',
+      select: [
+        {
+          'id': 'warranty',
+          'name': '申し込む：715円／月（税込）',
+          'sub': '',
+          'checked': true,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nowarranty',
+          'name': '申し込まない',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: `
+        <p class="c-Txt_Emp-02">加入できるのは購入時のみ</p>
+        <p class="u-Adjust_Mt-8">楽天モバイルで購入したスマートフォンやモバイルルーターの故障・紛失時に、最短で当日<sub>※</sub>に新品同等の同一機種を交換品としてお届けします。</p>
+        <small>※対象地域：東京／神奈川／千葉／埼玉（12時までに受付の場合）</small>
+        <p>サービスの詳細は、こちらの<a href="/service/replacement-warranty-plus/">スマホ交換保証プラス</a>をご参照ください。</p>
+      `,
+      lowerinfo: ``
+    }
+  }
+]
+%>
+<%_ if (bundleFlag !== true) { _%>
+<script>
+const urlList = {
+  'iceblue_sim_warranty': '/',
+  'iceblue_sim_nowarranty': '/',
+  'iceblue_nosim_warranty': '/',
+  'iceblue_nosim_nowarranty': 'https://onboarding.mobile.rakuten.co.jp/equipment-details?id=50150668&selectAvailable=true',
+  'silverblack_sim_warranty': '/',
+  'silverblack_sim_nowarranty': '/',
+  'silverblack_nosim_warranty': '/',
+  'silverblack_nosim_nowarranty': '/',
+}
+</script>
+<%- include('/include/product/_purchase-modal', { modalInfo: modalInfo }) %>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="u-Adjust_Pt-16 u-Adjust_Pr-16 u-Adjust_Pl-16 u-Adjust_Pb-16 l-System_Container u-Adjust_Align-center">
+  <p class="c-Txt_Emp-01 c-Txt_Normal-l">Xperia 10 III Liteは販売を終了いたしました。</p>
+  <div class="u-Adjust_Pt-16 u-Adjust_Align-center">
+    <a class="c-Btn_Regular" href="<%= sitepath %>product/smartphone/?l-id=end_product_smartphone"><span>販売中のAndroid製品を見る</span></a>
+  </div>
+</div>
+
+<div class="product-detail-Theme_<%= theme %> u-Adjust_Pt-24">
+  <div class="product-detail-Layout_Hero-with-bnr <%= namespace %>_Hero u-Adjust_Pt-32">
+    <div class="l-System_Container">
+      <section class="product-detail-Hero">
+        <div class="product-detail-Hero_Data">
+          <div>
+            <h1 class="co-Heading_Lv1 product-detail-Hero_Name"><img src="<%= sitepath %>assets/img/product/<%= directory %>/logo.svg" alt="<%= pagetitle %>"></h1>
+            <p class="product-detail-Hero_Maker">Sony</p>
+            <p class="product-detail-Hero_Copy">5G時代の新スタンダードXperia™</p>
+          </div>
+        </div>
+        <div class="product-detail-Hero_Main u-Adjust_Mt-0">
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+            <li><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main3 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-10.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-11.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-12.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-13.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-14.png" alt=""></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-device c-Carousel js-main4 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-15.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-16.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-17.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-18.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-19.png" alt=""></li>
+          </ul>
+
+
+          <ul class="product-detail-Hero_Main-color product-detail-Theme_<%= theme %>-color">
+            <li class="js-color js-color1" aria-current="true"><span style="background:#819ABD" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-01"></span></li>
+            <li class="js-color js-color2" aria-current="false"><span style="background:#D85863" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-02"></span></li>
+            <li class="js-color js-color3" aria-current="false"><span style="background:#414349" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-03"></span></li>
+            <li class="js-color js-color4" aria-current="false"><span style="background:#DCE0DC" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-04"></span></li>
+          </ul>
+
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-00.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-01_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-01.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-01_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-02.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-01_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-03.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-01_thumbnail-04"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-04.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-01_thumbnail-05"></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-05.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-02_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-06.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-02_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-07.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-02_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-08.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-02_thumbnail-04"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-09.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-02_thumbnail-05"></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail3 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-10.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-03_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-11.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-03_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-12.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-03_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-13.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-03_thumbnail-04"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-14.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-03_thumbnail-05"></li>
+          </ul>
+          <ul class="product-detail-Hero_Main-thumbnail c-Carousel js-thumbnail4 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-15.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-04_thumbnail-01"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-16.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-04_thumbnail-02"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-17.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-04_thumbnail-03"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-18.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-04_thumbnail-04"></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/<%= directory %>/pht-device-19.png" alt="" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_color-04_thumbnail-05"></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="product-detail-Layout_Main">
+    <div class="l-System_Container">
+      <div class="product-detail-Spec">
+        <ul class="product-detail-Spec_<%= theme %>">
+          <li aria-current="true"><span class="c-Icon_Product-waterproof"></span>防水</li>
+          <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>FeliCa</li>
+          <li aria-current="true"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+          <li aria-current="false"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+          <li aria-current="true"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+          <li aria-current="false"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+          <li aria-current="true"><span class="c-Icon_Product-connection"></span>高速通信</li>
+        </ul>
+        <p class="u-Adjust_Mt-64"><a href="#spec" class="c-Link_Txt-icon-front js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_spec-anchor"><span class="c-Icon_Arrow-down-l"></span>基本スペックを見る</a></p>
+      </div>
+
+      <section id="feature" class="product-detail-Layout_Section">
+        <h2 class="c-Heading_Lv2-rich" data-ratid="xperia-10m3-lite_scroll-03_feature" data-ratevent="appear">特長</h2>
+
+        <ul class="product-detail-Catch <%= namespace %>_Catch">
+          <li><a href="#feature1" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_feature-anchor-01">大容量4,500mAh&長寿命バッテリー</a></li>
+          <li><a href="#feature2" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_feature-anchor-02">スリムで軽量なハンドフィットサイズ</a></li>
+          <li><a href="#feature3" class="js-scroll" data-ratevent="click" data-ratparam="all" data-ratid="xperia-10m3-lite_feature-anchor-03">HDR対応有機ELディスプレイ</a></li>
+        </ul>
+
+        <section class="product-detail-Feature" id="feature1">
+          <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-01.png" alt=""></figure>
+          <h3 class="c-Heading_Lv3">快適に使える、大容量＆長寿命バッテリー</h3>
+          <p class="product-detail-Feature_Txt">高速の5G※1 による驚きのスピードで1日中使える※2 から、楽しさは格別。さらに、バッテリーは3年※3 使っても劣化しにくいので、安心感も抜群です。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">
+            ※1 5G利用は一部エリアのみ。<br>
+            ※2 お客様のご使用環境やご利用時間により使用可能時間は異なります。<br>
+            ※3 同タイプバッテリーで充放電を繰り返すシミュレーションに基づく。バッテリーの寿命は利用状況によって変化します。
+          </p>
+        </section>
+        <section class="product-detail-Feature" id="feature2">
+        <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-02.png" alt=""></figure>
+          <h3 class="c-Heading_Lv3">手に優しくフィット！持ちやすいハンドフィットサイズ</h3>
+          <p class="product-detail-Feature_Txt">約169gの軽量ボディに、幅約68mmのスリムサイズ。手にやさしくフィットする使い心地を追求したデザインです。</p>
+        </section>
+        <section class="product-detail-Feature" id="feature3">
+        <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/main-image-03.png" alt=""></figure>
+          <h3 class="c-Heading_Lv3">HDR対応有機ELディスプレイ</h3>
+          <p class="product-detail-Feature_Txt">ブラビア®で培った映像技術のノウハウを取り入れたトリルミナス®ディスプレイ for mobileに より、鮮やかな色を生き生きと描きます。HDR対応有機ELディスプレイで、高コントラストを実現。明暗の差が出てくっきりと鮮やかな映像を楽しめます。</p>
+        </section>
+      </section>
+
+      <div class="product-detail-Layout_Sub <%= namespace %>_Sub">
+        <div class="l-System_Container">
+          <section class="product-detail-Layout_Section">
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-01.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4" data-ratid="xperia-10m3-lite_scroll-04_feature" data-ratevent="appear">大容量バッテリーで1日を楽しみつくす</h3>
+                <p>大容量4500mAhバッテリーを搭載。更に、独自の省電力設計で無駄な消費を制限。一度の充電で長く使えるから、充電を気にせずに1日を過ごせます。※1</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※1 お客さまのご使用環境やご利用状況により使用可能時間は異なります。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-02.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">3年※1 使っても劣化しにくいバッテリー</h3>
+                <p>バッテリーの負荷を軽減する「いたわり充電」とXperia独自の「充電最適化技術」により、3年※1 使っても劣化しにくい長持ちバッテリーを実現。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※1 同タイプバッテリーで充放電を繰り返すシミュレーションに基づく。バッテリーの寿命は利用状況によって変化します。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-03.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">21：9ワイドディスプレイで迫力満点の視聴体験を</h3>
+                <p>21：9とは、多くの映画コンテンツで採用されている画面比率。上下に黒帯なしで画面いっぱいに表示することで、圧倒的な没入感を実現します。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-04.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">ハイレゾ / ハイレゾワイヤレス / DSEE Ultimate※1</h3>
+                <p>CDを超える高音質の「ハイレゾ」に対応。ストリーミングサービス※2 で聴く曲も、ハイレゾ相当のいい音で。 </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※1 DSEE Ultimateの設定ON時に有効です。ハイレゾ相当の音質で楽しむには、ハイレゾ対応ヘッドホン（別売）が必要です。<br>
+                  ※2 お使いのサービスの仕様により、非対応の場合があります。
+                </p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-05.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">撮りたいイメージにこたえるトリプルレンズカメラ</h3>
+                <p>超広角・広角・望遠の3つのレンズで、思わずシェアしたくなる1枚を。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-06.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">ナイトモード / F値1.8* / オートHDR</h3>
+                <p>夜景撮影は、ナイトモードとF値1.8の明るいレンズ、ノイズ低減技術で鮮明に。逆光時には、 オートHDRが活躍。明暗を自動で判断・合成し、白飛びや黒つぶれの少ない自然な仕上がりに。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※広角レンズのみ。</p>
+              </div>
+            </section>
+            <section class="product-detail-Feature_Sub">
+              <figure class="product-detail-Feature_Img"><img src="<%= sitepath %>assets/img/product/<%= directory %>/sub-image-07.png" alt=""></figure>
+              <div class="product-detail-Feature_Txt">
+                <h3 class="c-Heading_Lv4">防水性能 IPX5・IPX8 / Corning®Gorilla®Glass6/指紋認証</h3>
+                <p>水回りでも音楽や動画などを楽しめる優れた 防水性と高強度ガラス採用による落としても割れにくいボディ。さらに指紋認証対応で、マスクをしたままロックの解除が可能。 </p>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="product-detail-Layout_Other">
+  <div class="l-System_Container">
+
+    <%- include('/include/product/_compensation') %>
+
+    <section class="product-detail-Layout_Section" id="spec">
+      <h2 class="c-Heading_Lv2" data-ratid="xperia-10m3-lite_scroll-06_spec" data-ratevent="appear">スペック</h2>
+      <dl class="c-Dl">
+        <div>
+          <dt>製品名</dt>
+          <dd>
+            Xperia 10 III Lite
+          </dd>
+        </div>
+        <div>
+          <dt>色</dt>
+          <dd>
+            ブラック / ホワイト / ブルー / ピンク
+          </dd>
+        </div>
+        <div>
+          <dt>サイズ</dt>
+          <dd>
+            約154 x 約68 x 約8.3 (mm)
+          </dd>
+        </div>
+        <div>
+          <dt>質量</dt>
+          <dd>
+            約169g
+          </dd>
+        </div>
+        <div>
+          <dt>ディスプレイ</dt>
+          <dd>
+            <p>サイズ / 種類</p>
+              約6.0インチ / OLED
+              <p class="u-Adjust_Mt-16">解像度</p>
+              FHD+ / 1,080 × 2,520
+          </dd>
+        </div>
+        <div>
+          <dt>連続待受時間（LTE）</dt>
+          <dd>
+            約690時間
+          </dd>
+        </div>
+        <div>
+          <dt>連続通話（通信）時間（LTE）</dt>
+          <dd>
+            約35時間
+          </dd>
+        </div>
+        <div>
+          <dt>CPU</dt>
+          <dd>
+            Qualcomm® Snapdragon™ 690 5G Mobile Platform / オクタコア 2GHz + 1.7GHz
+          </dd>
+        </div>
+        <div>
+          <dt>OS<span class="c-Txt_Cap">※1</span></dt>
+          <dd>
+            Android™ 11
+          </dd>
+        </div>
+        <div>
+          <dt>内部メモリ（RAM / ROM）</dt>
+          <dd>
+            6GB (RAM) / 64GB (ROM)
+          </dd>
+        </div>
+        <div>
+          <dt>メインカメラ（外側）</dt>
+          <dd>
+            約800万画素 (超広角) + 約1,200万画素 (広角) + 約800万画素 (望遠)
+          </dd>
+        </div>
+        <div>
+          <dt>フロントカメラ（内側）</dt>
+          <dd>
+            約800万画素 (広角)
+          </dd>
+        </div>
+        <div>
+          <dt>バッテリー容量</dt>
+          <dd>
+            4,500mAh
+          </dd>
+        </div>
+        <div>
+          <dt>ワイヤレス充電</dt>
+          <dd>
+            非対応
+          </dd>
+        </div>
+        <div>
+          <dt>おサイフケータイ / NFC</dt>
+          <dd>
+            対応 / 対応
+          </dd>
+        </div>
+        <div>
+          <dt>防水 / 防塵</dt>
+          <dd>
+            対応 (IPX5 / IPX8 / IP6X)
+          </dd>
+        </div>
+        <div>
+          <dt>生体認証（指紋 / 顔）</dt>
+          <dd>
+            対応 / 非対応
+          </dd>
+        </div>
+        <div>
+          <dt>VoLTE（Rakuten, docomo, au, SoftBank）</dt>
+          <dd>
+            対応 / 対応 / 対応 / 対応
+          </dd>
+        </div>
+        <div>
+          <dt>Wi-Fi規格</dt>
+          <dd>
+            IEEE802.11 a/b/g/n/ac
+          </dd>
+        </div>
+        <div>
+          <dt>テザリング（Wi-Fi）</dt>
+          <dd>
+            10台
+          </dd>
+        </div>
+        <div>
+          <dt>SIMタイプ</dt>
+          <dd>
+            nanoSIM / eSIM
+          </dd>
+        </div>
+        <div>
+          <dt>付属品</dt>
+          <dd>
+            保証書 / 取扱説明書 ～ 重要なお知らせ /  取扱説明書 ～ スタートアップガイド
+          </dd>
+        </div>
+      </dl>
+      <ul class="c-Txt_Cap u-Adjust_Mt-24">
+        <li class="c-Txt_Emp-01"><span>※</span>充電器が付属されていません。充電器は当社推奨品をご利用ください。推奨品は<a href="<%= sitepath %>product/accessory/owltech-owlapd18c1a1/" class="c-Link_Txt">こちら</a>。</li>
+        <li class="u-Adjust_Mt-8"><span>※1</span>発売時点のOSのバージョンを記載しています。最新のOSバージョン情報は<a href="<%= sitepath %>information/software/xperia-10m3-lite/" class="c-Link_Txt">こちら</a>をご確認ください。</li>
+      </ul>
+
+      <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html?l-id=product_xperia-10m3-lite_spec_xperia-10m3-lite" class="c-Link_Txt-inline">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+      <section class="product-detail-Layout_Section">
+        <h2 class="c-Heading_Lv2" data-ratid="xperia-10m3-lite_scroll-07_accessory-lineup" data-ratevent="appear">専用アクセサリー</h2>
+        <div class="c-Carousel js-Carousel-multi">
+          <div><a href="<%= sitepath %>product/accessory/rselect-rmsoxprx3lf0156cl/?l-id=<%= directory %>_rselect-rmsoxprx3lf0156cl"><img data-lazy="<%= sitepath %>assets/img/accessory/rselect-rmsoxprx3lf0156cl/pht-accessory-00.png" alt=""></a></div>
+          <div><a href="<%= sitepath %>product/accessory/rselect-rmsoxprx3lc0157cl/?l-id=<%= directory %>_rselect-rmsoxprx3lc0157cl"><img data-lazy="<%= sitepath %>assets/img/accessory/rselect-rmsoxprx3lc0157cl/pht-accessory-00.png" alt=""></a></div>
+          <div><a href="<%= sitepath %>product/accessory/sony-xqzcbbt/?l-id=<%= directory %>_sony-xqzcbbt"><img data-lazy="<%= sitepath %>assets/img/accessory/sony-xqzcbbt/pht-accessory-00.png" alt=""></a></div>
+        </div>
+        <div class="c-Carousel_Nav-v2-wrap">
+          <div class="c-Carousel_Nav-v2"></div>
+          <div class="c-Carousel_Nav-v2-bar"></div>
+        </div>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/accessory/smartphone-related/?l-id=product_xperia-10m3-lite_product_accessory" class="c-Link_Txt-inline">その他アクセサリーを見る<span class="c-Icon_Chevron-right"></span></a></p>
+      </section>
+
+      <section class="product-detail-Layout_Section">
+        <h2 class="c-Heading_Lv2">設定・サポート</h2>
+        <div>
+          <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/setting/xperia-10m3-lite/?l-id=product_xperia-10m3-lite_guide_setting_xperia-10m3-lite" class="c-Link_Txt-inline">初期設定方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+          <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>guide/inquiry/?l-id=product_xperia-10m3-lite_guide_inquiry" class="c-Link_Txt-inline">メーカーへのお問い合わせ<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">メーカー公式サイト</h2>
+        <div>
+          <p class="u-Adjust_Mt-24"><a href="https://xperia.sony.jp/xperia/xperia10m3/" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer" data-ratevent="click" data-ratparam="all" data-ratid="product_smartphone_xperia-10m3-lite_external_xperia10m3">SONY公式サイトで製品情報を見る<span class="c-Icon_New-window-l"></span></a></p>
+        </div>
+      </section>
+
+    </section>
+    <div id="previously-seen"></div>
+  </div>
+  <div class="u-Adjust_Mt-40">
+    <%- include('/include/product/_support') %>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+  </div>
+  <div class="l-System_Container">
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/_append-body') %>
+<script src="<%= sitepath %>assets/js/product.purchase-modal.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/product.xperia-10m3-lite.bundle.js?20240521"></script>
+</body>
+</html>

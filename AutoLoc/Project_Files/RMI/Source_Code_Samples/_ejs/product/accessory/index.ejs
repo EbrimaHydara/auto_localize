@@ -1,0 +1,405 @@
+<% const pagetitle = "アクセサリ" -%>
+<% const directories = [{path:"product/", label:" 製品（iPhone、Android／スマートフォン）"}] -%>
+<% const namespace = "accessory-top" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルのアクセサリラインアップ。楽天モバイルで人気のApple純正iPhoneケース、充電器、AirPodsや、Rakutenオリジナルのスマホアクセサリなどがご覧いただけます。',
+    noindex: false,
+    pathname: filepath,
+    browseragent: false
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/product-top.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/accessory/accessory-common.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/accessory/accessory-top.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/accessory/detail/accessory-detail.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async></script>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+<div class="l-System">
+
+  <%- include('/include/_header') %>
+
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="l-System_Container">
+    <p class="c-Txt_Cap u-Adjust_Align-right u-Adjust_Mt-8">※表記の金額はすべて税込です。</p>
+    <h1 class="c-Heading_Lv1 u-Adjust_Mt-8">アクセサリ</h1>
+  </div>
+
+  <div class="u-Adjust_Mt-24">
+    <%- include('/include/product/accessory/_bnr-carousel-accessory-top') %>
+  </div>
+  <div class="l-System_Container u-Adjust_Mt-24">
+    <p class="u-Adjust_Align-center product-top-Utility_Show-sp">
+      <span class="c-Txt_Emp-01 c-Txt_Normal-m">Apple Watchの</span>
+      <br>
+      <span class="c-Txt_Emp-02 c-Txt_Normal-ll">バンド発売中！</span>
+    </p>
+    <p class="u-Adjust_Align-center product-top-Utility_Show-pc">
+      <span class="c-Txt_Emp-01 c-Txt_Normal-l">Apple Watchの</span>
+      <span class="c-Txt_Emp-02" style="font-size: 38px;">バンド発売中！</span>
+    </p>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+      <a href="<%= sitepath %>product/accessory/apple/?l-id=accessory_apple-watch#watch" class="c-Btn_Regular"><span>Apple Watchのバンド一覧を見る</span></a>
+    </div>
+  </div>
+  <div class="accessory-common-Layout_Split">
+    <span class="c-Txt_Emp-02">すべてのアクセサリが<br class="product-top-Utility_Show-sp">分割払い可能になりました！</span>
+  </div>
+
+  <div class="u-Adjust_Mt-24" style="background-color: #F7F7F7;">
+    <div class="l-System_Container accessory-top-Layout_Nav-wrap">
+      <ul class="accessory-top-Layout_Nav">
+        <li class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span><a href="#apple" class="js-scroll" alt="">Apple純正アクセサリ</a></li>
+        <li class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span><a href="#apple-related" class="js-scroll" alt="">Apple関連アクセサリ</a></li>
+        <li class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span><a href="#smartphone-related" class="js-scroll" alt="">スマートフォン関連アクセサリ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!--最近チェックしたアクセサリ-->
+  <div id="previously-seen" class="u-Adjust_Mt-48"></div>
+  <!--/最近チェックしたアクセサリ-->
+
+  <div class="l-System_Container">
+
+
+    <p id="apple" class="c-Txt_Normal-ll c-Txt_Emp-01 u-Adjust_Mt-32">Apple純正アクセサリ</p>
+    <p class="u-Adjust_Mt-8">Apple製のiPhoneケースや充電器、AirPods、AirTagなどをお取り扱いしています。</p>
+    <!--アクセサリカード-->
+    <%
+      const appleItems = [
+        {category:'ケース', link:'product/accessory/apple/?l-id=accessory_apple-case#case', imgPc:'assets/img/accessory/apple-rm2309067/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'充電器', link:'product/accessory/apple/?l-id=accessory_apple-chargers#chargers', imgPc:'assets/img/accessory/apple-rm213004/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'オーディオ', link:'product/accessory/apple/?l-id=accessory_apple-audio#audio', imgPc:'assets/img/accessory/apple-rm2309069/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'ケーブル', link:'product/accessory/apple/?l-id=accessory_apple-cable#cable', imgPc:'assets/img/accessory/apple-rm2403002/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'モバイルバッテリー', link:'product/accessory/apple/?l-id=accessory_apple-battery#battery', imgPc:'assets/img/accessory/apple-rm2108009/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'Watchアクセサリ', link:'product/accessory/apple/?l-id=accessory_apple-watch#watch', imgPc:'assets/img/accessory/apple-rm2303002/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'AirTag＆その他', link:'product/accessory/apple/?l-id=accessory_apple-other#other', imgPc:'assets/img/accessory/apple-rm2104016/pht-accessory-00.png?211105', srcSp:'', alt:''},
+      ];
+    -%>
+    <%- include('/include/accessory/_accessoryList.ejs', {accessoryInfo: appleItems, namespace}) %>
+    <!--/アクセサリカード-->
+  </div>
+  <div style="background-color: #F7F7F7;">
+    <div class="l-System_Container">
+      <div class="<%= namespace %>-Carousel">
+        <%_
+          const recAppleItems =  [
+            {
+              model: 'MagSafe充電ケース（USB‑C）付きAirPods Pro（第2世代）',
+              price: '39800',
+              img: 'assets/img/accessory/apple-rm2309069/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/apple-rm2309069/?l-id=accessory_apple-rm2309069',
+            },
+            {
+              model: 'MagSafe充電ケース付きAirPods（第3世代）',
+              price: '27800',
+              img: 'assets/img/accessory/apple-rm2110009/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/apple-rm2110009/?l-id=accessory_apple-rm2110009',
+            },
+            {
+              model: 'MagSafe充電器',
+              price: '6480',
+              img: 'assets/img/accessory/apple-rm213003/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/apple-rm213003/?l-id=accessory_apple-rm213003',
+            },
+            {
+              model: 'AirTag',
+              price: '4980',
+              img: 'assets/img/accessory/apple-rm2104016/pht-accessory-00.png?211105',
+              colors: [],
+              link: 'product/accessory/apple-rm2104016/?l-id=accessory_apple-rm2104016',
+            },
+            {
+              model: '20W USB-C電源アダプタ',
+              price: '2780',
+              img: 'assets/img/accessory/apple-rm213004/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/apple-rm213004/?l-id=accessory_apple-rm213004',
+            },
+            {
+              model: '240W USB-C充電ケーブル（2m）',
+              price: '4780',
+              img: 'assets/img/accessory/apple-rm2309071/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/apple-rm2309071/?l-id=accessory_apple-rm2309071',
+            },
+            {
+              model: 'Lightning - USBケーブル（1m）',
+              price: '2780',
+              img: 'assets/img/accessory/apple-rm2403002/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/apple-rm2403002/?l-id=accessory_apple-rm2403002',
+            },
+            {
+              model: 'MagSafeバッテリーパック',
+              price: '14780',
+              img: 'assets/img/accessory/apple-rm2108009/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/apple-rm2108009/?l-id=accessory_apple-rm2108009',
+            },
+          ]
+        _%>
+        <p class="c-Txt_Normal-l c-Txt_Emp-01">おすすめアクセサリ</p>
+        <div class="<%= namespace%>-Util_Mt-24-16">
+          <%- include('/include/accessory/_carousel.ejs', {items: recAppleItems, namespace}) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="u-Adjust_Align-center">
+      <a href="<%= sitepath %>product/accessory/apple/?l-id=accessory_apple" class="c-Btn_Regular-large u-Adjust_Mt-40"><span>Apple純正アクセサリ一覧を見る</span></a>
+    </div>
+    <p id="apple-related" class="c-Txt_Normal-ll c-Txt_Emp-01 u-Adjust_Mt-80">Apple関連アクセサリ</p>
+    <p class="u-Adjust_Mt-8">RakutenオリジナルのiPhone用のケースやフィルムなど。お買いものパンダのアクセサリもあります。</p>
+    <!--アクセサリカード-->
+    <%
+      const appleRelated = [
+        {category:'ケース', link:'product/accessory/apple-related/?l-id=accessory_apple-related-case#case', imgPc:'assets/img/accessory/rselect-rmapphne22c0207cl/pht-accessory-00.png?240117', srcSp:'', alt:''},
+        {category:'フィルム', link:'product/accessory/apple-related/?l-id=accessory_apple-related-film#film', imgPc:'assets/img/accessory/trinity-rmapphne23f0230cl/pht-accessory-00.png?240117', srcSp:'', alt:''},
+      ];
+    -%>
+    <%- include('/include/accessory/_accessoryList.ejs', {accessoryInfo: appleRelated, namespace}) %>
+    <!--/アクセサリカード-->
+  </div>
+  <div style="background-color: #F7F7F7;">
+    <div class="l-System_Container">
+      <div class="<%= namespace %>-Carousel">
+        <%_
+          const recAppleRelated = [
+            {
+              model: 'iPhone 15/15 Plus カメラレンズ保護ガラス (6.1/6.7inch 2lens model)',
+              price: '980',
+              img: 'assets/img/accessory/trinity-rm-ip23ml2-lca-pcccc/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/trinity-rm-ip23ml2-lca-pcccc/?l-id=accessory_trinity-rm-ip23ml2-lca-pcccc',
+            },
+            {
+              model: 'iPhone 15 Pro/15 Pro Max カメラレンズ保護ガラス (6.1/6.7inch 3lens model)',
+              price: '980',
+              img: 'assets/img/accessory/trinity-rm-ip23ml3-lca-pcccc/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/trinity-rm-ip23ml3-lca-pcccc/?l-id=accessory_trinity-rm-ip23ml3-lca-pcccc',
+            },
+            {
+              model: 'iPhone 15/15 Pro 全面ガラスフィルム 高光沢 ブルーライトカット (6.1inch 2/3lens model)',
+              price: '2580',
+              img: 'assets/img/accessory/trinity-rmapphne23f0230cl/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/trinity-rmapphne23f0230cl/?l-id=accessory_trinity-rmapphne23f0230cl',
+            },
+            {
+              model: 'iPhone 15 Plus/15 Pro Max 全面ガラスフィルム 高光沢 ブルーライトカット (6.7inch 2/3lens model)',
+              price: '2580',
+              img: 'assets/img/accessory/trinity-rmapphne23f0231cl/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/trinity-rmapphne23f0231cl/?l-id=accessory_trinity-rmapphne23f0231cl',
+            },
+            {
+              model: 'iPhone 14/14 Plus カメラレンズ保護ガラス',
+              price: '980',
+              img: 'assets/img/accessory/trinity-rmip22m2lcacccc/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/trinity-rmip22m2lcacccc/?l-id=accessory_trinity-rmip22m2lcacccc',
+            },
+            {
+              model: 'iPhone 14 ハイブリッドクリアケース（6.1inch 2lens model）',
+              price: '2380',
+              img: 'assets/img/accessory/rselect-rmapphne22c0207cl/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/rselect-rmapphne22c0207cl/?l-id=accessory_rselect-rmapphne22c0207cl',
+            },
+            {
+              model: 'iPhone 13 / 13 Pro 平面ガラスフィルム 高光沢',
+              price: '1100',
+              img: 'assets/img/accessory/rselect-rmapphne21f0167cl/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/rselect-rmapphne21f0167cl/?l-id=accessory_rselect-rmapphne21f0167cl',
+            },
+            {
+              model: 'iPhone SE 第3世代/第2世代/8/7 iFace Reflection 強化ガラスクリアケース (ブラック)',
+              price: '3520',
+              img: 'assets/img/accessory/hamee-41907108/pht-accessory-00.png',
+              colors: [],
+              link: 'product/accessory/hamee-41907108/?l-id=accessory_hamee-41907108',
+            }
+          ]
+        _%>
+        <p class="c-Txt_Normal-l c-Txt_Emp-01">おすすめアクセサリ</p>
+        <div class="<%= namespace%>-Util_Mt-24-16">
+          <%- include('/include/accessory/_carousel.ejs', {items: recAppleRelated, namespace}) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="u-Adjust_Align-center">
+      <a href="<%= sitepath %>product/accessory/apple-related/?l-id=accessory_apple-related" class="c-Btn_Regular-large u-Adjust_Mt-40"><span>Apple関連アクセサリ一覧を見る</span></a>
+    </div>
+    <p id="smartphone-related" class="c-Txt_Normal-ll c-Txt_Emp-01 u-Adjust_Mt-80">スマートフォン関連アクセサリ</p>
+    <p class="u-Adjust_Mt-8">Android用のケースや充電器、モバイルバッテリーなど。お買いものパンダのアクセサリもあります。</p>
+    <!--アクセサリカード-->
+    <%
+      const spRelated = [
+        {category:'ケース', link:'product/accessory/smartphone-related/?l-id=accessory_smartphone-related-case#case', imgPc:'assets/img/accessory/sony-xqzcbdcbjpcx/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'フィルム', link:'product/accessory/smartphone-related/?l-id=accessory_smartphone-related-film#film', imgPc:'assets/img/accessory/rselect-rmsoxpraxvf0224cl/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'充電器', link:'product/accessory/smartphone-related/?l-id=accessory_smartphone-related-chargers#chargers', imgPc:'assets/img/accessory/owltech-apd20c1a1bk/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'ケーブル', link:'product/accessory/smartphone-related/?l-id=accessory_smartphone-related-cable#cable', imgPc:'assets/img/accessory/mot-scbccg200-bk/pht-accessory-00.png', srcSp:'', alt:''},
+        {category:'モバイルバッテリー', link:'product/accessory/smartphone-related/?l-id=accessory_smartphone-related-battery#battery', imgPc:'assets/img/accessory/owltech-owl-lpb10012-rwh/pht-accessory-00.png', srcSp:'', alt:''},
+        // {category:'その他', link:'product/accessory/smartphone-related/?l-id=accessory_smartphone-related-other#other', imgPc:'assets/img/accessory/rselect-rmmtsdxc64m0015bk/pht-accessory-00.png', srcSp:'', alt:''},
+      ];
+    -%>
+    <%- include('/include/accessory/_accessoryList.ejs', {accessoryInfo: spRelated, namespace}) %>
+    <!--/アクセサリカード-->
+  </div>
+  <div style="background-color: #F7F7F7;">
+    <div class="l-System_Container">
+      <div class="<%= namespace %>-Carousel">
+        <%_
+          const recSpRelated = [
+            {
+              model: 'OwltechAC充電器（20W）',
+              price: '2618',
+              img: 'assets/img/accessory/owltech-apd20c1a1bk/pht-accessory-00.png',
+              colors: [{ bgColor: '#000' }, { bgColor: '#fff', isBorder: true }],
+              link: 'product/accessory/owltech-apd20c1a1bk/?l-id=accessory_owltech-apd20c1a1bk',
+            },
+            {
+              model: '小型・軽量 モバイルバッテリー 10,000mAh ホワイト/オリーブグリーン/アッシュブルー',
+              price: '4880',
+              img: 'assets/img/accessory/owltech-owl-lpb10012-rwh/pht-accessory-00.png',
+              colors: [{ bgColor: '#FFFFFF', isBorder: true },{ bgColor: '#556B2F' },{ bgColor: '#483D8B' }],
+              link: 'product/accessory/owltech-owl-lpb10012-rwh/?l-id=accessory_owltech-owl-lpb10012-rwh',
+            },
+            {
+              model: 'USB Type-A to Type-C シリコンケーブル 1m（ブラック/ホワイト）​',
+              price: '1080',
+              img: 'assets/img/accessory/owltech-owlcbsac10bk/pht-accessory-00.png',
+              colors: [{ bgColor: 'rgb(34, 34, 34)' }, { bgColor: '#fff', isBorder: true }],
+              link: 'product/accessory/owltech-owlcbsac10bk/?l-id=product_accessory_product_accessory_ owltech-owlcbsac10bk',
+            },
+            {
+              model: 'USB Type-A to Type-C シリコンケーブル 2m（ブラック/ホワイト）',
+              price: '1280',
+              img: 'assets/img/accessory/mot-scbacg200-bk/pht-accessory-00.png',
+              colors: [{ bgColor: 'rgb(34, 34, 34)' }, { bgColor: '#fff', isBorder: true }],
+              link: 'product/accessory/mot-scbacg200-bk/?l-id=accessory_mot-scbacg200-bk',
+            },
+            {
+              model: 'USB Type-C to Type-C シリコンケーブル 2m（ブラック）',
+              price: '1480',
+              img: 'assets/img/accessory/mot-scbccg200-bk/pht-accessory-00.png',
+              colors: [{ bgColor: 'rgb(34, 34, 34)' }],
+              link: 'product/accessory/mot-scbccg200-bk/?l-id=accessory_mot-scbccg200-bk',
+            },
+          ]
+        _%>
+        <p class="c-Txt_Normal-l c-Txt_Emp-01">おすすめアクセサリ</p>
+        <div class="<%= namespace%>-Util_Mt-24-16">
+          <%- include('/include/accessory/_carousel.ejs', {items: recSpRelated, namespace}) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="u-Adjust_Align-center">
+      <a href="<%= sitepath %>product/accessory/smartphone-related/?l-id=accessory_smartphone-related" class="c-Btn_Regular-large u-Adjust_Mt-40"><span>スマートフォン関連<br class="<%= namespace %>-Util_Br-sp">アクセサリ一覧を見る</span></a>
+    </div>
+    <div class="u-Adjust_Mt-80">
+    <a href="https://www.rakuten.ne.jp/gold/rakutenmobile-store/product/accessory/guide/?scid=wi_rm_howtofilm" class="c-Banner_Hover-act" target="_blank" rel="noopener noreferrer">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/bnr/bnr-product-accessory-guide-sp-220908.png">
+        <img src="<%= sitepath %>assets/img/bnr/bnr-product-accessory-guide-pc-220908.png" alt="ケース素材の選び方やフィルムの正しい貼り方をご紹介">
+      </picture>
+    </a>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="<%= namespace %>-Layout_product">
+      <p>iPhoneやRakuten オリジナル製品などを見たい方はこちらからご確認ください。</p>
+      <a href="<%= sitepath %>product/?l-id=accessory_product" class="u-Adjust_Mt-16 c-Btn_Regular">楽天モバイル取り扱い製品を見る</a>
+    </div>
+    <div class="u-Adjust_Mt-80">
+      <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+    </div>
+    <div class="u-Adjust_Mt-64">
+      <%- include('/include/accessory/_recommend-option-iphone.ejs', { l_id: 'accessory' }) %>
+    </div>
+  </div>
+  <div class="l-System_Container u-Adjust_Mt-48">
+    <%- include('/include/service/check/_bnr', {lid: 'accessory_service_check'}) %>
+    <div class="<%= namespace %>-FindUsed u-Adjust_Mt-32">
+      <p class="c-Txt_Emp-02 u-Adjust_Pt-16">＼ iPhoneは使えるの？ ／</p>
+      <p class="c-Txt_Normal-l u-Adjust_Pt-8"><b>お持ちのスマホが使えるか<br>確認してみませんか？</b></p>
+      <div class="<%= namespace %>-FindUsed-btn u-Adjust_Pt-8">
+        <a href="<%= sitepath %>product/byod/?l-id=accessory_product_byod" class="c-Btn_Secondly-large">楽天モバイルで使えるか調べる</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="g-Footer">
+
+    <div class="g-Footer_Aside">
+
+      <%- include('/include/footer/related/_related-product-top-v2.ejs') %>
+
+      <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+
+    </div>
+    <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+
+    <%- include('/include/_footer') %>
+
+  </footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/accessory.history.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/accessory.index.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<% const nameSpace = "input-corporation-information" -%>
+<section id="step1" class="js-step" aria-hidden="true">
+  <h2 id="js-observe-1" class="c-Heading_Lv1 js-show-business-type" aria-hidden="true">Rakuten Casaお申し込み情報のご入力 - <span class="js-business-type"></span>のお客様用</h2>
+  <nav id="js-nav-1" class="<%= nameSpace %>-Progress">
+    <div id="js-observe-sp-1">
+      <ul class="<%= nameSpace %>-Progress_Bar js-progressbar">
+        <li class="<%= nameSpace %>-Progress_Bar-current" aria-current="step"><span>店舗</span></li>
+        <li><span>契約者<br><span class="<%= nameSpace %>-Util_Pc">店舗管理者</span></span></li>
+        <li><span>口座</span></li>
+        <li><span>ご連絡先</span></li>
+        <li><span>確認</span></li>
+      </ul>
+    </div>
+    <div id="js-heading-sp-1">
+      <h2 class="c-Heading_Lv2">店舗について</h2>
+    </div>
+  </nav>
+  <dl class="c-Form_List u-Adjust_Mt-32">
+    <div>
+      <dt>店舗名<span class="c-Form_List-required">必須</span></dt>
+      <dd>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※50文字以内で入力してください</p>
+        <p id="err-required_WebForm_ItemName__c" class="c-Form_Txt-error u-Adjust_Mb-8" aria-hidden="true">必須項目です</p>
+        <input type="text" class="c-Form_Input js-input-step1" value="" name="WebForm_ItemName__c" maxlength="50" placeholder="例）楽天商店" aria-required="true" data-validate="required" autocomplete="off">
+      </dd>
+    </div>
+    <div>
+      <dt>店舗住所<span class="c-Form_List-required">必須</span></dt>
+      <dd>
+        <p class="c-Txt_Emp-01 u-Adjust_Mb-8">郵便番号<span class="c-Form_List-required">必須</span></p>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※半角数字7文字で入力してください</p>
+        <p id="err-required_WebForm_PostNumber__c" class="c-Form_Txt-error u-Adjust_Mb-8" aria-hidden="true">必須項目です</p>
+        <p id="err-numeric_WebForm_PostNumber__c" class="c-Form_Txt-error u-Adjust_Mb-8" aria-hidden="true">半角数字で入力してください</p>
+        <p id="err-length_WebForm_PostNumber__c" class="c-Form_Txt-error u-Adjust_Mb-8" aria-hidden="true">7文字で入力してください</p>
+        <p id="err-address_WebForm_PostNumber__c" class="c-Form_Txt-error u-Adjust_Mb-8" aria-hidden="true">申し訳ございません。ご入力いただいた郵便番号は住所自動表示に対応していないため、手動入力をお願いいたします。</p>
+        <input id="WebForm_PostNumber__c" type="text" class="c-Form_Input <%= nameSpace %>-Form_Auxiliary-item u-Adjust_W-160 js-input-step1 js-zipcode" minlength="7" maxlength="7" name="WebForm_PostNumber__c" placeholder="例）0123456" aria-required="true" data-validate="required length numeric" autocomplete="off">
+        <button id="btn_WebForm_PostNumber__c" type="button" class="c-Btn_Regular"><span>郵便番号から住所表示</span></button>
+
+        <p class="c-Txt_Emp-01 u-Adjust_Mb-8 u-Adjust_Mt-24">都道府県～市区町村<span class="c-Form_List-required">必須</span></p>
+        <p id="err-required_WebForm_PrefCityTown__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+        <p id="err-wordcount_WebForm_PrefCityTown__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">都道府県～階数部屋番号 合計100文字以内で入力してください</p>
+        <input id="WebForm_PrefCityTown__c" type="text" class="c-Form_Input js-input-step1 js-address" name="WebForm_PrefCityTown__c" placeholder="例）東京都世田谷区玉川" aria-required="true" data-validate="required" autocomplete="off">
+
+        <p class="c-Txt_Emp-01 u-Adjust_Mb-8 u-Adjust_Mt-24">丁目番地号<span class="c-Form_List-required">必須</span></p>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※全角数字・ハイフン「－」のみで入力してください</p>
+        <p id="err-required_WebForm_ChoBanchi__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+        <p id="err-full-n-hyphen_WebForm_ChoBanchi__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">全角数字・ハイフン「－」のみで入力してください</p>
+        <input type="text" class="c-Form_Input js-input-step1" maxlength="" name="WebForm_ChoBanchi__c" placeholder="例）１－１４－１" ria-required="true" data-validate="required full-n-hyphen" autocomplete="off">
+
+        <p class="c-Txt_Emp-01 u-Adjust_Mb-8 u-Adjust_Mt-24">建物名</p>
+        <input type="text" class="c-Form_Input js-input-step1" maxlength="" name="WebForm_BuildingName__c" placeholder="例）楽天マンション" aria-required="false" data-validate="" autocomplete="off">
+
+        <p class="c-Txt_Emp-01 u-Adjust_Mb-8 u-Adjust_Mt-24">フロア種別<span class="c-Form_List-required">必須</span></p>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※地上の場合は「F」、地下の場合は「B」を選択してください</p>
+        <p id="err-required_WebForm_FloorType__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+        <div class="c-Form_Select u-Adjust_W-200">
+          <select id="js-basement" name="WebForm_FloorType__c" class="js-input-step1" aria-required="true" data-validate="required">
+            <option value="">選択してください</option>
+            <option value="Ｆ">F</option>
+            <option value="Ｂ">B</option>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+
+        <p class="c-Txt_Emp-01 u-Adjust_Mb-8 u-Adjust_Mt-24">階数<span class="c-Form_List-required">必須</span></p>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※全角数字で入力してください</p>
+        <p id="err-required_WebForm_PlaceFloor__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+        <p id="err-full-num_WebForm_PlaceFloor__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">※全角数字で入力してください</p>
+        <input id="js-floor" type="text" class="c-Form_Input u-Adjust_W-160 js-input-step1" maxlength="3" name="WebForm_PlaceFloor__c" placeholder="例）２" aria-required="true" data-validate="required full-num" autocomplete="off">
+        <span class="u-Adjust_Ml-8">階</span>
+
+        <p class="c-Txt_Emp-01 u-Adjust_Mb-8 u-Adjust_Mt-24">部屋番号<span class="c-Form_List-required">必須</span></p>
+        <div class="u-Adjust_Mb-16">
+          <label class="c-Form_Checkbox">
+            <input class="js-input-step-room-number-chk" type="checkbox" name="WebForm_FloorRoomNumber__c-2" value="" autocomplete="off">
+            <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">部屋番号なし</span>
+          </label>
+        </div>
+        <div class="js-input-step-room-number-wrapper">
+          <p class="c-Txt_Cap u-Adjust_Mb-8">※全角文字で入力してください</p>
+          <p id="err-required_WebForm_FloorRoomNumber__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+          <p id="err-full-width_WebForm_FloorRoomNumber__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">※全角文字で入力してください</p>
+          <input id="js-WebFormFloorRoomNumberC" type="text" class="c-Form_Input u-Adjust_W-200 js-input-step1" maxlength="20" name="WebForm_FloorRoomNumber__c" placeholder="例）２０１" aria-required="true" data-validate="required full-width" autocomplete="off">
+        </div>
+      </dd>
+    </div>
+    <!--  法人 -->
+    <div class="<%= nameSpace %>-Layout_Flex js-corporations" aria-hidden="true">
+      <dt>会社名<span class="c-Form_List-required">必須</span></dt>
+      <dd>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※50文字以内で入力してください</p>
+        <p id="err-required_WebForm_honbuCompanyName__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+        <input type="text" class="c-Form_Input js-input-step1" value="-" name="WebForm_honbuCompanyName__c" maxlength="50" placeholder="例）○○株式会社" aria-required="true" data-validate="required" autocomplete="off">
+      </dd>
+    </div>
+    <!-- / 法人 -->
+    <div>
+      <dt>店舗電話番号<span class="c-Form_List-required">必須</span></dt>
+      <dd>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※半角数字10～11桁で入力してください</p>
+        <p id="err-required_WebForm_ShopTel__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+        <p id="err-tel_WebForm_ShopTel__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+
+        <p id="err-telsize_WebForm_ShopTel__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">10～11桁で入力してください</p>
+
+        <div class="<%= nameSpace %>-Layout_Tel">
+          <input type="text" class="c-Form_Input js-input-step-tel-1 js-tel" value="" name="WebForm_ShopTel__c_tel" minlength="2" maxlength="5" placeholder="例）03" aria-required="true" data-validate="required tel" autocomplete="off">
+          <span>-</span>
+          <input type="text" class="c-Form_Input js-input-step-tel-1 js-tel" value="" name="WebForm_ShopTel__c_tel" minlength="4" maxlength="4" placeholder="例）1234" aria-required="true" data-validate="required tel" autocomplete="off">
+          <span>-</span>
+          <input type="text" class="c-Form_Input js-input-step-tel-1 js-tel" value="" name="WebForm_ShopTel__c_tel" minlength="4" maxlength="4" placeholder="例）5678" aria-required="true" data-validate="required tel" autocomplete="off">
+          <input type="hidden" value="" name="WebForm_ShopTel__c" maxlength="" placeholder="" data-validate="" aria-required="true">
+        </div>
+      </dd>
+    </div>
+  </dl>
+
+  <div class="u-Adjust_Align-center u-Adjust_Mt-48">
+    <button type="button" class="c-Btn_Primary-large js-goto-next-step" id="js-next-step2"><span>次に進む</span></button>
+    <div class="u-Adjust_Mt-24">
+      <button type="button" class="<%= nameSpace %>-Form_Back js-backto-prev-step" id="js-prev-step0"><span class="c-Icon_Chevron-left"></span><span>前に戻る</span></button>
+    </div>
+  </div>
+</section>

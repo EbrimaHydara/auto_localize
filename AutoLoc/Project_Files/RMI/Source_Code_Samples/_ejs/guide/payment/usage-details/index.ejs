@@ -1,0 +1,602 @@
+<% const pagetitle = "利用明細と各種明細の確認方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/payment/bill/", label:"請求金額の確認"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルでの利用料金、通話・SMS・データ利用の内訳が確認できる利用明細についてご案内します。 各種明細はmy 楽天モバイルでご確認いただけます。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-40">楽天モバイルでの利用料金、通話・SMS・データ利用の内訳が確認できる利用明細についてご案内します。<br>
+    各種明細はmy 楽天モバイルでご確認いただけます。</p>
+
+    <ul class="<%= nameSpace %>-Layout_Anchorlink u-Adjust_Mt-0">
+      <li><a href="#anc01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>各明細の発行タイミングについて</a></li>
+      <li><a href="#anc02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>各種明細の確認方法</a></li>
+      <li><a href="#anc08" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>各種明細の見方</a></li>
+      <li><a href="#anc06" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>当月の利用料金（確定前）を確認する</a></li>
+      <li><a href="#anc07" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャリア決済の利用履歴を確認する</a></li>
+      <li><a href="#anc10" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>楽天ポイントの利用履歴を確認する</a></li>
+      <li><a href="#anc11" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>各種明細の請求書をPDFファイルで保存・印刷する方法</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc01">各明細の発行タイミングについて</h2>
+    <p class="u-Adjust_Mt-16">ご利用月の翌月4日以降順次、以下のタイミングで利用明細が発行されます。利用明細は「my 楽天モバイル」からダウンロードが可能です。</p>
+    <dl class="u-Adjust_Mt-24">
+      <dt class="c-Txt_Emp-01 u-Adjust_Mt-16">利用月翌月4日以降</dt>
+      <dd class="u-Adjust_Mt-8">
+        <p>利用明細<sup>※1</sup>、通話・データ・SMSの明細の発行</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※1 楽天ポイント利用前の金額となります。</p>
+      </dd>
+      <dt class="c-Txt_Emp-01 u-Adjust_Mt-16">利用月翌月12日頃</dt>
+      <dd class="u-Adjust_Mt-8">
+        <p>支払い証明書<sup>※2</sup></p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※2 クレジットカード・デビットカードの場合</p>
+      </dd>
+      <dt class="c-Txt_Emp-01 u-Adjust_Mt-16">利用月翌々月1日頃</dt>
+      <dd class="u-Adjust_Mt-8">
+        <p>支払い証明書<sup>※3</sup></p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※3 口座振替利用の場合</p>
+      </dd>
+      <dt class="c-Txt_Emp-01 u-Adjust_Mt-16">楽天モバイル買い替え超トクプログラムの初回請求時</dt>
+      <dd class="u-Adjust_Mt-8">
+        <p>割賦購入製品代金通知書、割賦購入製品返却通知書</p>
+      </dd>
+    </dl>
+    <p class="u-Adjust_Mt-16">詳細は「<a href="<%= sitepath %>guide/payment/flow/">請求金額の確定と請求スケジュールについて</a>」をご確認ください。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc02">各種明細の確認方法</h2>
+    <p class="u-Adjust_Mt-16">利用明細、支払い証明書、通話／SMS／データ利用明細のダウンロード方法をご案内いたします。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※各種明細は最大で過去12ヶ月分をご確認いただけます。</p>
+
+  <div class="c-Tab js-Tab u-Adjust_Mt-40">
+    <ul class="c-Tab_Items" role="tablist">
+      <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webで確認する</li>
+      <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリで確認する</li>
+    </ul>
+    <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+      <ul class="u-Adjust_Mt-16 c-Flow">
+        <li>
+          <h3 class="c-Heading_Lv4">
+            1. my 楽天モバイル「利用料金」画面を開く
+          </h3>
+
+          <p class="c-Txt_Cap u-Adjust_Mt-16">※「利用料金へ進む」をタップしてログインすると、手順２の画面が表示されます。</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/">[my 楽天モバイル]ログインできない</a>」をご確認ください。</p>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <a href="https://portal.mobile.rakuten.co.jp/dashboard#billing" class="c-Btn_Secondly-large" data-ratId="guide_ecare_billing" data-ratEvent="click" data-ratParam="all"><span>利用料金へ進む</span></a>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">
+            2. 「利用料金」画面上部から、確認したい利用月を選択し、「利用明細を見る」をタップする
+          </h3>
+          <div>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※左右の矢印ボタンをタップすることで、表示する利用月を変更できます。</p>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-02-230320.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">
+            3.「利用内訳」で各項目の利用明細を確認する
+          </h3>
+          <div>
+            <p class="u-Adjust_Mt-16">電話番号のプルダウンをタップすると、利用内訳をご確認いただけます。</p>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※楽天モバイルを2回線以上ご契約中の場合、利用明細を確認したい電話番号のプルダウンをタップしてください。</p>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-03-230320.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="u-Adjust_Mt-16">月々の利用料金の下の「利用明細・支払い証明書」より各種明細をダウンロードできます。</p>
+            <p class="u-Adjust_Mt-16"><a href="#anc08" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>各種明細の見方はこちら</a></p>
+            <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-04-230904.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※割賦購入製品代金通知書は、楽天モバイル買い替え超トクプログラムに2023年8月上旬以降に契約したお客様に順次表示されます。<br>
+              ※割賦購入製品返却通知書は、楽天モバイル買い替え超トクプログラムご利用後、2023年8月以降に製品を返却されたお客様のみに表示されます。
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+      <p class="c-Txt_Cap u-Adjust_Mt-16" style="padding-left: 12px;text-indent: -12px;">
+        ※アプリが最新バージョンでない場合、一部機能が利用できなかったり、ご案内した内容や見た目が異なる場合があります。<br>その場合は、アプリのバージョンをアップデートいただくか、Web版のmy 楽天モバイルをご利用ください。
+      </p>
+      <ul class="u-Adjust_Mt-16 c-Flow">
+        <li>
+          <h3 class="c-Heading_Lv4">
+            1. my 楽天モバイルを起動する
+          </h3>
+          <div class="u-Adjust_Mt-24">
+            <div class="c-Box_App">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a></li>
+                  <li><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">
+            2. 画面下メニューの「利用料金」をタップする
+          </h3>
+          <div>
+              <div class="l-Media_Image">
+                  <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-01.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">
+            3.「利用用金」画面上部から、確認したい利用月を選択し、「利用明細を見る」をタップする
+          </h3>
+          <div>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※左右の矢印ボタンをタップすることで、表示する利用月を変更できます。</p>
+              <div class="l-Media_Image">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-02-230320.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+              </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv4">
+            4.「利用内訳」で各項目の利用明細を確認する
+          </h3>
+          <div>
+            <p class="u-Adjust_Mt-16">電話番号のプルダウンをタップすると、利用内訳をご確認いただけます。</p>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※楽天モバイルを2回線以上ご契約中の場合、利用明細を確認したい電話番号のプルダウンをタップしてください。</p>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-03-app-230320.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="u-Adjust_Mt-16">月々の利用料金の下の「利用明細ダウンロード」より各種明細をダウンロードできます。</p>
+            <p class="u-Adjust_Mt-16"><a href="#anc08" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>各種明細の見方はこちら</a></p>
+            <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-04-app-231017.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※割賦購入製品代金通知書は、楽天モバイル買い替え超トクプログラムに2023年8月上旬以降に契約したお客様に順次表示されます。<br>
+              ※割賦購入製品返却通知書は、楽天モバイル買い替え超トクプログラムご利用後、2023年8月以降に製品を返却されたお客様のみに表示されます。
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc08">各種明細の見方</h2>
+  <ul class="<%= nameSpace %>-Layout_Anchorlink u-Adjust_Mt-0">
+    <li><a href="#anc03" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>利用明細を確認する</a></li>
+    <li><a href="#anc05" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>通話／SMS／データ利用明細を確認する</a></li>
+    <li><a href="#anc04" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>支払い証明書を確認する</a></li>
+    <li><a href="#anc09" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>割賦購入製品代金通知書／割賦購入製品返却通知書を確認する</a></li>
+  </ul>
+
+  <h3 class="c-Heading_Lv3 u-Adjust_Mt-64" id="anc03">利用明細を確認する</h3>
+  <p class="u-Adjust_Mt-16">利用明細の各項目は以下のとおりです。</p>
+  <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+    <picture>
+      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/payment/usage-details/img-09-sp.png" width="600" height="680">
+      <img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-09-pc.png" width="1032" height="1170" alt="" loading="lazy" style="border: 1px solid #e0e0e0;">
+    </picture>
+  </div>
+
+  <p class="u-Adjust_Mt-48">各項目をタップすることで、詳細をご確認いただけます。</p>
+  <div class="c-Accordion u-Adjust_Mt-16">
+    <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>①対象月の請求金額合計</button>
+    <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+      <p>課税・非課税金額の内訳と、ポイント利用分、消費税を合算した金額です。こちらの金額のみ税込となります。</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+      ※2021年11月以降の利用明細には、楽天ポイント利用分は記載されておりません。楽天ポイント利用後のお支払い料金は、お支払い後に表示される「支払い証明書」でご確認ください。
+      </p>
+    </div>
+  </div>
+
+
+    <div class="c-Accordion">
+      <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>②契約回線に紐づかない利用料金</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+        <p>下記のオプションに加入している場合、こちらに利用料金が記載されます。</p>
+
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li><a href="<%= sitepath %>service/iphone/applecare/" class="c-Link_Txt">故障紛失保証 with AppleCare Services</a></li>
+          <li><a href="<%= sitepath %>service/iphone/applecare-icloud/" class="c-Link_Txt">故障紛失保証 with AppleCare Services & iCloud+</a></li>
+          <li><a href="<%= sitepath %>service/applewatch-care/" class="c-Link_Txt">あんしん保証with AppleCare Services for Apple Watch</a></li>
+          <li><a href="<%= sitepath %>service/replacement-warranty-plus/" class="c-Link_Txt">スマホ交換保証プラス</a></li>
+          <li><a href="<%= sitepath %>service/rakumail-portability/" class="c-Link_Txt">楽メール持ち運び</a></li>
+          <li><a href="<%= sitepath %>service/replacement-program/?l-id=guide_payment_usage-details_service_replacement-program" class="c-Link_Txt">楽天モバイル買い替え超トクプログラム</a></li>
+        </ul>
+
+        <p class="c-Txt_Cap u-Adjust_Mt-8">
+          ※持ち込みスマホあんしん保証」は③の項目に記載されます。<br>
+          ※保証サービスは月途中で加入または解約された場合、月額利用料が日割りとなります。
+        </p>
+      </div>
+    </div>
+
+
+    <div class="c-Accordion">
+      <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>③契約回線に紐づく利用料金</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+        <p>
+          利用した電話番号に紐づく利用料金です。2回線目以降の利用料金は1回線目の明細の下からご確認いただけます。<br>
+          以下の項目が記載されています。
+        </p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>プラン料金</li>
+          <li>通話料（SMS含む）</li>
+          <li>加入中の各種オプションサービス（一部保証サービスを除く）</li>
+          <li>ユニバーサルサービス料</li>
+          <li>電話リレーサービス料</li>
+        </ul>
+
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-40">
+          通話料の発生について
+        </h4>
+        <p class="u-Adjust_Mt-16">
+          「Rakuten Link」アプリで通話された場合でも、以下の番号など、特定の番号へ発信をされた場合は通話料が発生いたします。詳細は「<a href="<%= sitepath %>guide/special-number-service/" class="c-Link_Txt">特番通話</a>」をご覧ください。
+        </p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>（0570）などの他社接続サービス</li>
+          <li>一部特番（188）</li>
+          <li>ナビダイヤル</li>
+        </ul>
+        <p class="u-Adjust_Mt-16">ご利用状況は「<a href="#anc05" class="c-Link_Txt js-scroll">通話／SMS／データ利用明細</a>」でご確認いただけます。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">
+          ※OS標準の電話アプリを利用した通話の場合、発信時刻を基準として当月利用分の通話料金として算定いたします。ただし、海外から海外の電話番号へかける・海外から日本の電話番号へかける場合の通話は翌月利用分の通話料金として算定する場合があります。
+        </p>
+
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-40">
+          オプションサービスの料金について
+        </h4>
+        <p class="u-Adjust_Mt-16">
+          オプションサービスは月途中で解約した場合、解約日を含めた日割りでの請求となるサービスと月額料金での請求となるサービスがございます。
+        </p>
+
+        <h5 class="c-Heading_Lv4 u-Adjust_Mt-40">
+          解約日含む日割り請求となるオプション
+        </h5>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li><a href="<%= sitepath %>service/number-share/" class="c-Link_Txt-inline">電話番号シェアサービス<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/i-filter/" class="c-Link_Txt-inline">あんしんコントロール by i-フィルター<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/remote-support-for-device-operation/" class="c-Link_Txt-inline">スマホ操作遠隔サポート<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/norton-mobile-security/" class="c-Link_Txt-inline">ノートン™モバイル セキュリティ<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/rakutenmobile-wifi/" class="c-Link_Txt-inline">楽天モバイルWiFi by エコネクト<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/replacement-warranty-sim/" class="c-Link_Txt-inline">持ち込みスマホあんしん保証<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/iphone/applecare/" class="c-Link_Txt-inline">故障紛失保証 with AppleCare Services<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/iphone/applecare-icloud/" class="c-Link_Txt-inline">故障紛失保証 with AppleCare Services & iCloud+<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/replacement-warranty-plus/" class="c-Link_Txt-inline">スマホ交換保証プラス<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/applewatch-care/" class="c-Link_Txt-inline">あんしん保証with AppleCare Services for Apple Watch<span class="c-Icon_Chevron-right"></span></a></li>
+        </ul>
+
+        <h5 class="c-Heading_Lv4 u-Adjust_Mt-40">
+          月額料金で請求となるオプション
+        </h5>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li><a href="<%= sitepath %>service/international-unlimited-talk/" class="c-Link_Txt-inline">国際通話かけ放題<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>service/standard-free-call/" class="c-Link_Txt-inline">15分（標準）通話かけ放題<span class="c-Icon_Chevron-right"></span></a></li>
+        </ul>
+
+      </div>
+    </div>
+
+
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64" id="anc05">通話／SMS／データ利用明細を確認する</h3>
+    <p class="u-Adjust_Mt-16">通話／SMS／データ利用明細では、以下の情報がご確認いただけます。</p>
+    <ul class="<%= nameSpace %>-Layout_Anchorlink u-Adjust_Mt-0">
+      <li><a href="#anc05-01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用明細（国内通話／SMS）</a></li>
+      <li><a href="#anc05-02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用明細（楽天リンク 国内通話/SMS）</a></li>
+      <li><a href="#anc05-03" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用明細（国内データ）</a></li>
+      <li><a href="#anc05-04" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用明細（国際ローミングデータ）</a></li>
+    </ul>
+
+    <h4 id="anc05-01" class="c-Heading_Lv4 u-Adjust_Mt-48">ご利用明細（国内通話／SMS）</h4>
+    <p class="u-Adjust_Mt-16">OS標準アプリを利用した（Rakuten Linkを利用していない）国内の発信やSMS送信の明細は以下のとおりです。</p>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center">
+      <img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-12-230626.png" width="1032" height="684" alt="" style="border: 1px solid #e0e0e0;">
+    </figure>
+
+    <p class="u-Adjust_Mt-16">各項目をタップすることで、詳細をご確認いただけます。</p>
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="accordion-21" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-21"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>①通信先</button>
+      <div id="accordion-content-21" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-21" aria-hidden="true">
+        音声通話の発信先、SMSの送信先番号が記載されています。
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-22" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-22"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>②通信時間</button>
+      <div id="accordion-content-22" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-22" aria-hidden="true">
+        音声通話の時間が記載されています。
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-23" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-23"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>③通信料</button>
+      <div id="accordion-content-23" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-23" aria-hidden="true">
+        音声通話・SMS発信の料金が記載されます。<br>
+        音声通話は20円（税込22円）/30秒でご利用いただけます。<a href="<%= sitepath %>service/sms/" class="c-Link_Txt">SMSの料金についてはこちら</a>をご確認ください。
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-24" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-24"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>④通信先区分</button>
+      <div id="accordion-content-24" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-24" aria-hidden="true">
+        利用サービスの種類が記載されています。
+      </div>
+    </div>
+
+    <p class="u-Adjust_Mt-16 c-Txt_Cap">※ フリーダイヤルや一部特番通話など、通話料が発生しない電話番号への発信分はご利用明細には記載されません。</p>
+    <h4 id="anc05-02" class="c-Heading_Lv4 u-Adjust_Mt-16">ご利用明細（楽天リンク 国内通話/SMS）</h4>
+    <p class="u-Adjust_Mt-16">Rakuten Linkを利用した発信やSMS送信の明細は以下のとおりです。</p>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center">
+      <img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-13-230626.png" width="1032" height="651" alt="" style="border: 1px solid #e0e0e0;">
+    </figure>
+    <p class="u-Adjust_Mt-16">各項目をタップすることで、詳細をご確認いただけます。</p>
+
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="accordion-detail-rakutenlink01" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-detail-rakutenlink01"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>①通信先</button>
+      <div id="accordion-content-detail-rakutenlink01" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-detail-rakutenlink01" aria-hidden="true">
+        <p>音声通話の発信先、SMSの送信先番号が記載されています。</p>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-detail-rakutenlink02" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-detail-rakutenlink02"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>②通信時間</button>
+      <div id="accordion-content-detail-rakutenlink02" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-detail-rakutenlink02" aria-hidden="true">
+        <p>音声通話の時間が記載されています。</p>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-detail-rakutenlink03" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-detail-rakutenlink03"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>③通信料</button>
+      <div id="accordion-content-detail-rakutenlink03" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-detail-rakutenlink03" aria-hidden="true">
+        <p>音声通話・SMS発信の料金が記載されます。</p>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">※ OS標準のアプリを利用した場合、有料となります。</p>
+        <p class="u-Adjust_Mt-16 c-Txt_Emp-01">「Rakuten Link」アプリを利用しても有料となる場合について</p>
+        <p class="u-Adjust_Mt-16">「Rakuten Link」アプリで通話された場合でも、以下の番号など、特定の番号へ発信をされた場合は通話料が発生いたします。詳細は「<a href="<%= sitepath %>guide/special-number-service/" class="c-Link_Txt">特番通話</a>」をご覧ください。</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>（0570）などの他社接続サービス</li>
+          <li>一部特番（188）</li>
+          <li>ナビダイヤル</li>
+        </ul>
+        <p class="u-Adjust_Mt-16">その他、通話料金が発生する場合については、「<a href="<%= sitepath %>faq/detail/00001823/">[Rakuten Link]Rakuten Linkを利用し通話しているにも関わらず、通話料金が請求されています</a>」をご確認ください。</p>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-detail-rakutenlink04" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-detail-rakutenlink04"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>④通信先区分</button>
+      <div id="accordion-content-detail-rakutenlink04" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-detail-rakutenlink04" aria-hidden="true">
+        <p>
+          利用サービスの種類が記載されています。<br>
+          音声通話は「音声」、SMS配信は「SMS」と記載されます。
+        </p>
+      </div>
+    </div>
+
+    <p class="u-Adjust_Mt-16 c-Txt_Cap">※ フリーダイヤルや一部特番通話など、通話料が発生しない電話番号への発信分はご利用明細には記載されません。</p>
+
+    <h4 id="anc05-03" class="c-Heading_Lv4 u-Adjust_Mt-48">ご利用明細（国内データ）</h4>
+
+    <p class="u-Adjust_Mt-16">国内での通信データ量の明細は以下のとおりです。</p>
+    <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/payment/usage-details/img-14-sp.png" width="600" height="260">
+        <img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-14-pc.png" width="1032" height="450" alt="" loading="lazy" style="border: 1px solid #e0e0e0;">
+      </picture>
+    </div>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※上記の画像は2023年9月発行以降（最強プランへ移行後）のご利用明細のサンプルです。2023年8月発行以前のご利用明細は「通話データ量（高速）「通信データ量（低速）」と分かれて表示される場合があります。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※本明細はすべての回線エリアでの通信データ利用量を含み、プラン料金に影響を与えない通信データ利用量も含みます。</p>
+    <p class="u-Adjust_Mt-16">以下の各項目をタップすることで、詳細をご確認いただけます。</p>
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="accordion-detail-domestic01" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-detail-domestic01"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>①通信データ量</button>
+      <div id="accordion-content-detail-domestic01" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-detail-domestic01" aria-hidden="true">
+        通信データ利用量が記載されます。<br>
+        データ利用量としてカウントする通信サービスは<a href="<%= sitepath %>guide/data-traffic/#count" class="c-Link_Txt">こちら</a>よりご確認いただけます。
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-detail-domestic02" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-detail-domestic02"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>②ご利用通信データ量</button>
+      <div id="accordion-content-detail-domestic02" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-detail-domestic02" aria-hidden="true">
+        当月にご利用された国内の通信データ利用量の合計を<br>1GB＝1,073,741,824byteで変換した値が記載されます。
+      </div>
+    </div>
+
+    <h4 id="anc05-04" class="c-Heading_Lv4 u-Adjust_Mt-48">ご利用明細（国際ローミングデータ）</h4>
+    <p class="u-Adjust_Mt-16">海外での通信データ量の明細は以下のとおりです。</p>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center">
+      <img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-15-230626.png" width="1032" height="591" alt="" style="border: 1px solid #e0e0e0;">
+    </figure>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※上記の画像は、2023年5月以降のご利用明細に反映される表記のサンプルです。2023年4月以前のご利用明細は、表記が一部異なります。</p>
+    <p class="u-Adjust_Mt-16">以下の各項目をタップすることで、詳細をご確認いただけます。</p>
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="acc-t-anc05-04-01" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="acc-c-anc05-04-01"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>①通信データ量</button>
+      <div id="acc-c-anc05-04-01" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="acc-t-anc05-04-01" aria-hidden="true">
+        <p>
+          海外でのデータ利用量と通信料が記載されています。<br>
+          データ利用量としてカウントする通信サービスは<a href="<%= sitepath %>guide/data-traffic/#count" class="c-Link_Txt">こちら</a>よりご確認いただけます。
+        </p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="acc-t-anc05-04-02" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="acc-c-anc05-04-02"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>②合計</button>
+      <div id="acc-c-anc05-04-02" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="acc-t-anc05-04-02" aria-hidden="true">
+        <p>
+          月間の海外のデータ利用量と通信料の合計が記載されます。
+        </p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="acc-t-anc05-04-03" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="acc-c-anc05-04-03"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>③ご利用通信データ量</button>
+      <div id="acc-c-anc05-04-03" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="acc-t-anc05-04-03" aria-hidden="true">
+        <p>
+          当月にご利用された海外の通信データ利用量の合計を1GB＝1073741824byteで変換した値が記載されます。
+        </p>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="acc-t-anc05-04-04" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="acc-c-anc05-04-04"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>④国際ローミングデータご利用料金</button>
+      <div id="acc-c-anc05-04-04" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="acc-t-anc05-04-04" aria-hidden="true">
+        <p>
+          当月の国際ローミングデータご利用料金が記載されます。
+        </p>
+      </div>
+    </div>
+
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64" id="anc04">支払い証明書を確認する</h3>
+    <p class="u-Adjust_Mt-24">
+      領収書の代わりとなる支払い証明書はお支払い完了後にご確認いただけます。<br>
+      年末調整／ 確定申告などの際にも公式な書類として利用可能です。
+    </p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">
+    ※製品（スマートフォンやアクセサリ）の購入に関する証明書は、「<a href="<%= sitepath %>faq/detail/00001911/" class="c-Link_Txt">製品を購入／支払いした時の証明書（端末購入証明書／支払い証明書）を確認する方法を教えてください</a>」をご確認ください。
+    </p>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-10.png" height="" alt="" style="border: 1px solid #e0e0e0;"></figure>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc09">割賦購入製品代金通知書／割賦購入製品返却通知書を確認する</h2>
+    <ul class="<%= nameSpace %>-Layout_Anchorlink u-Adjust_Mt-0">
+      <li class="u-Adjust_Mt-16"><a href="#anc09-01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>割賦購入製品代金通知書</a></li>
+      <li class="u-Adjust_Mt-16"><a href="#anc09-02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>割賦購入製品返却通知書</a></li>
+    </ul>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="anc09-01">割賦購入製品代金通知書</h3>
+    <p class="u-Adjust_Mt-16">
+      インボイス制度における適格請求書として、「割賦購入製品代金通知書」を発行いたします。<br>
+      楽天モバイル買い替え超トクプログラムをご利用された場合、初回の請求時に表示されます。
+    </p>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">
+      ※割賦購入製品代金通知書は、楽天モバイル買い替え超トクプログラムに2023年8月上旬以降に契約したお客様に順次表示されます。
+    </p>
+    <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/payment/usage-details/img-16-sp.png" width="600" height="400">
+        <img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-16-pc.png" width="1032" height="688" alt="" loading="lazy" style="border: 1px solid #e0e0e0;">
+      </picture>
+    </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="anc09-02">割賦購入製品返却通知書</h3>
+    <p class="u-Adjust_Mt-16">
+      インボイス制度における適格返還請求書として、「割賦購入製品返却通知書」を発行いたします。<br>
+      楽天モバイル買い替え超トクプログラムをご利用され、製品残額の支払いが免除される場合、初回の請求時に表示されます。
+    </p>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">
+      ※割賦購入製品返却通知書は、楽天モバイル買い替え超トクプログラムご利用後、2023年8月以降に製品を返却されたお客様のみに表示されます。
+    </p>
+    <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/payment/usage-details/img-17-sp.png" width="600" height="400">
+        <img src="<%= sitepath %>assets/img/guide/payment/usage-details/img-17-pc.png" width="1032" height="688" alt="" loading="lazy" style="border: 1px solid #e0e0e0;">
+      </picture>
+    </div>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc06">当月の利用料金（確定前）を確認する</h2>
+    <p class="u-Adjust_Mt-16">プラン料金を決定するデータ利用量や通話時間、SMS送信数は「my 楽天モバイル」でご確認いただけます。</p>
+    <p class="u-Adjust_Mt-16">詳細は「<a href="<%= sitepath %>guide/data-traffic/">データ利用量の確認方法</a>」をご確認ください。</p>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc07">キャリア決済の利用履歴を確認する</h2>
+    <p class="u-Adjust_Mt-16">楽天モバイルキャリア決済のご利用履歴は「my 楽天モバイル」でご確認いただけます。</p>
+    <p class="u-Adjust_Mt-16">詳細は「<a href="<%= sitepath %>guide/payment/google/setting/#google-3" class="c-Link_Txt">キャリア決済の履歴確認</a>」をご確認ください。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc10">楽天ポイントの利用履歴を確認する</h2>
+    <p class="u-Adjust_Mt-16">楽天ポイントのご利用履歴は「my 楽天モバイル」でご確認いただけます。</p>
+    <p class="u-Adjust_Mt-16">詳細は「<a href="<%= sitepath %>guide/point-payment/#link02" class="c-Link_Txt">楽天ポイントの利用設定・利用履歴の確認方法</a>」をご確認ください。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc11">各種明細の請求書をPDFファイルで保存・印刷する方法</h2>
+    <p class="u-Adjust_Mt-16">以下から各種明細の請求書をPDFファイルで保存する方法や印刷する方法をご確認いただけます</p>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="anc11-01">各種明細の請求書をPDFファイルで保存する方法</h3>
+    <p class="u-Adjust_Mt-8">詳細は「<a href="<%= sitepath %>faq/detail/10000647/?l-id=guide_payment_usage-details_faq_10000647" class="c-Link_Txt">利用明細／支払証明書／端末購入証明書／インボイス制度に対応した請求書などを、PDFファイルで保存できますか？</a>」をご確認ください。</p>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="anc11-02">保存したPDFファイルを印刷する方法</h3>
+    <p class="u-Adjust_Mt-8">詳細は「<a href="<%= sitepath %>faq/detail/10000648/?l-id=guide_payment_usage-details_faq_10000648" class="c-Link_Txt">プリンターを持っていませんが、利用明細や各種証明書が書面で欲しいです。どうすればよいですか？</a>」をご確認ください。</p>
+
+    <%- include('/include/guide/_faq') %>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

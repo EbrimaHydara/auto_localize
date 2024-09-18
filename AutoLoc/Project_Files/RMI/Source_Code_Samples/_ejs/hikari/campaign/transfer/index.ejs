@@ -1,0 +1,648 @@
+<% const information = {
+  campaignState:'finish'
+}; %>
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "他社からの乗り換えキャンペーン" -%>
+<% const directories = [{path: hikariroot.path + "campaign/spu/", label:"キャンペーン"}] -%>
+<% const namespace = "hikari-campaign-transfer" -%>
+<%-
+  include('/_header', {
+    pagetitle: pagetitle,
+    description: '簡単手続きで工事不要！他社から楽天ひかりへの乗り換えで毎月のお支払いが1年間ずっと2,000円割引！さらにSPU対象でお得にポイントも貯まる！',
+    noindex: false,
+    pathname: filepath,
+    ishikari: true,
+    ogp_img: 'https://network.mobile.rakuten.co.jp/assets/img/hikari/campaign/transfer/ogp-transfer-230627.png?231201',
+    canonical_custom: 'https://network.mobile.rakuten.co.jp/hikari/campaign/transfer/'
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/campaign/transfer/transfer.css?20240424">
+<%- include('/include/_append-head-hikari') %>
+<style>
+  .c-Breadcrumbs_Head {display: none;}
+</style>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+  <%-
+    include('/hikari/include/_header', {
+      headerType: 'normal',
+      directories: directories,
+      pagetitle: '他社から乗り換えで1年間2,000円引きキャンペーン',
+      pathname: filepath,
+      tax: 'true'
+      })
+  _%>
+
+
+  <div class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-48">
+    <p class="<%= namespace %>-Utility_Fs-34-24 u-Adjust_Align-center c-Txt_Emp">本キャンペーンは終了しました</p>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+      <a href="<%= sitepath %>hikari/" class="c-Btn_Secondly-large"><span><span>楽天ひかりトップページを見る</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></a>
+    </div>
+    <p class="c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Align-center">※ページの情報はキャンペーン開催時点の情報です</p>
+  </div>
+
+  <div class="<%= namespace %>-Kv">
+    <div class="<%= namespace %>-Kv_Inner">
+        <h1>
+          <picture class="<%= namespace %>-Kv_Image">
+            <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/kv-sp.png" width="375" height="330">
+            <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/kv-pc.png" alt="ひかり回線他社から乗り換えキャンペーン！1年間ずーっと毎月2,000円おトク！" width="834" height="383">
+          </picture>
+        </h1>
+    </div>
+  </div>
+
+  <div class=" u-Adjust_Pt-32 u-Adjust_Pb-32">
+    <div class="l-System_Container">
+      <ul class="<%= namespace %>-List_Links-internal">
+        <li><a href="#anc01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>月額基本料</a></li>
+        <li><a href="#anc02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>事業者変更とは</a></li>
+        <li><a href="#anc03" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>乗り換え方法</a></li>
+        <li><a href="#anc04" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>楽天ひかりについて</a></li>
+        <li><a href="#anc05" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>よくあるご質問</a></li>
+        <li><a href="#anc06" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Box_Content-step <%= namespace %>-Utility_Bg-gray">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="scroll-01_flow" data-ratevent="appear">キャンペーンの流れ</h2>
+      <ol class="<%= namespace %>-List_Step u-Adjust_Mt-16">
+        <li class="<%= namespace %>-List_Step-item">
+          <div class="<%= namespace %>-List_Step-content">
+            <h3 class="<%= namespace %>-List_Step-title">
+              <span class="<%= namespace %>-List_Step-counter">STEP 1</span>
+              事業者変更承諾番号を<br class="<%= namespace %>-Utility_Display-pc">取得する
+            </h3>
+            <div class="<%= namespace %>-List_Step-image">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-step-1.svg" width="145" height="87" alt="">
+            </div>
+          </div>
+          <div class="u-Adjust_Align-center">
+            <a href="<%= sitepath %>hikari/flow/transfer-number/" class="c-Link_Txt-inline" data-lid_no="01">承諾番号の取得方法を見る<span class="c-Icon_Arrow-right-l"></span></a>
+          </div>
+        </li>
+        <li class="<%= namespace %>-List_Step-item">
+          <div class="<%= namespace %>-List_Step-content">
+            <h3 class="<%= namespace %>-List_Step-title">
+              <span class="<%= namespace %>-List_Step-counter">STEP 2</span>
+              楽天ひかりに申し込む
+            </h3>
+            <div class="<%= namespace %>-List_Step-image">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-step-2.svg" width="199" height="120" alt="">
+            </div>
+          </div>
+        </li>
+        <li class="<%= namespace %>-List_Step-item">
+          <div class="<%= namespace %>-List_Step-content">
+            <h3 class="<%= namespace %>-List_Step-title">
+              <span class="<%= namespace %>-List_Step-counter">STEP 3</span>
+              工事費不要！開通
+            </h3>
+            <div class="<%= namespace %>-List_Step-image">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-step-3.svg" width="200" height="119" alt="">
+            </div>
+          </div>
+        </li>
+        <li class="<%= namespace %>-List_Step-item">
+          <h3>
+            <picture>
+              <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-step-4-sp.png" width="275" height="58">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-step-4-pc.png" alt="楽天ひかりの月額基本料 1年間2,000円割引" width="210" height="146">
+            </picture>
+          </h3>
+        </li>
+      </ol>
+
+      <ul class="<%= namespace %>-List_Cap u-Adjust_Mt-16">
+        <li class="c-Txt_Cap">※ SoftBank 光、ドコモ光、OCN 光、ぷらら光、ビッグローブ光、So-net 光 プラスなど他社光コラボレーション事業者から「楽天ひかり」にお乗り換えの方。</li>
+        <li class="c-Txt_Cap">※ キャンペーン期間中に楽天ひかりにお申し込みいただき、お申し込み月を1カ月目として４カ月目末日までに開通した方。</li>
+        <li class="c-Txt_Cap">※ 詳細条件はページ下部の<a href="#anc06" class="js-scroll">キャンペーンルール</a>参照。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="anc01" class="<%= namespace %>-Box_Content-fee">
+    <div class="l-System_Container">
+      <h2 id="js-trigger" class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="scroll-02_fee" data-ratevent="appear">他社からのお乗り換えで月額基本料がおトクに</h2>
+      <div class="<%= namespace %>-Box_Content-profit u-Adjust_Mt-16">
+        <picture class="<%= namespace %>-Box_Content-image">
+          <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-profit-sp.svg" width="312" height="434">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-profit-pc.svg" alt="楽天ひかりの月額基本料 キャンペーン適用で1年間2,000円割引 マンションプラン（集合住宅） 1,800円(税込1,980円) ファミリープラン（戸建） 2,800円(税込3,080円) 1年で24,000円もおトクに!" width="856" height="426">
+        </picture>
+        <div class="<%= namespace %>-Box_Content-gray">
+          <p class="<%= namespace %>-Txt_Emp u-Adjust_Align-center">2年目以降は通常料金になります</p>
+          <p class="u-Adjust_Mt-8 u-Adjust_Align-center">
+            マンションプラン（集合住宅）<br class="<%= namespace %>-Utility_Display-sp">
+            <span class="c-Txt_Emp">3,800円（税込4,180円）</span><br class="<%= namespace %>-Utility_Display-sp">
+            <span class="<%= namespace %>-Utility_Display-pc">/</span>
+            <span class="<%= namespace %>-Utility_Mt-8-sp">
+              ファミリープラン（戸建）<br class="<%= namespace %>-Utility_Display-sp">
+              <span class="c-Txt_Emp">4,800円（税込5,280円）</span>
+            </span>
+          </p>
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※ 本キャンペーンは【楽天ひかり】SPU特設 楽天ひかりを初めてお申し込みで1,000ポイントプレゼントキャンペーン」のみ併用可能。詳細条件はページ下部の<a href="#anc06" class="js-scroll">キャンペーンルール</a>参照。</p>
+      </div>
+
+      <div class="<%= namespace %>-Box_Content-more">
+        <p class="c-Txt_Normal-l c-Txt_Emp u-Adjust_Align-center">さらに、開通工事も不要</p>
+        <ul class="<%= namespace %>-List_Info u-Adjust_Mt-16">
+          <li class="<%= namespace %>-List_Info-item">
+            <span class="<%= namespace %>-List_Info-checkbox">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/icon-checkbox.svg" alt="" width="30" height="24">
+            </span>
+            工事費不要
+          </li>
+          <li class="<%= namespace %>-List_Info-item">
+            <span class="<%= namespace %>-List_Info-checkbox">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/icon-checkbox.svg" alt="" width="30" height="24">
+            </span>
+            工事の立ち会い不要
+          </li>
+          <li class="<%= namespace %>-List_Info-item">
+            <span class="<%= namespace %>-List_Info-checkbox">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/icon-checkbox.svg" alt="" width="30" height="24">
+            </span>
+            短期間で開通
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="anc02" class="<%= namespace %>-Box_Content-about <%= namespace %>-Utility_Bg-gray">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="scroll-03_flow" data-ratevent="appear">他社からのお乗り換え（事業者変更）とは？</h2>
+      <p class="u-Adjust_Mt-24">
+        事業者変更とは、他社光コラボレーションサービスから、新たに工事を実施することなく「楽天ひかり」に乗り換えることです。<br>
+        光コラボレーションサービスとは、フレッツ光の回線を他の事業者が借り受けて提供しているサービスのことを言います。
+      </p>
+      <picture class="<%= namespace %>-Image_Content-about">
+        <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-about-sp.svg" width="318" height="365">
+        <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-about-pc.svg" alt="回線はそのまま（工事不要） 契約先の変更だけで完了! 乗り換え前 他社光コラボ SoftBank 光 ぷらら光 ドコモ光 ビッグローブ光 OCN 光 So-net 光 プラスなど 乗り換え後 Rakuten 光" width="963" height="251">
+      </picture>
+    </div>
+  </div>
+
+  <div id="anc03" class="<%= namespace %>-Box_Content-application">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="scroll-04_application" data-ratevent="appear">月額利用料を2,000円おトクにするには（乗り換え方法）</h2>
+
+      <ol class="<%= namespace %>-Flow c-Flow u-Adjust_Mt-40">
+        <li>
+          <h3 class="c-Heading_Lv3 u-Adjust_Align-center">1.&nbsp;事業者変更承諾番号を取得する</h3>
+          <div class="<%= namespace %>-Box_App">
+            <div class="<%= namespace %>-Box_App-icon">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-mobile.svg" width="185" height="100" alt="">
+            </div>
+            <div class="<%= namespace %>-Box_App-txt">
+              <p>
+                「楽天ひかり」お申し込みの前に、お客様ご自身でご契約中の光コラボ事業者<br>
+                （ドコモ光、SoftBank 光、OCN 光、ぷらら光、ビッグローブ光、So-net 光 プラスなど）へご連絡いただき、取得をお願いします。
+              </p>
+              <div class="u-Adjust_Mt-8">
+                <a href="<%= sitepath %>hikari/flow/transfer-number/" class="c-Link_Txt-inline" data-lid_no="02">承諾番号の取得方法を見る<span class="c-Icon_Arrow-right-l"></span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-Infobox_Standing-warning">
+            <p class="c-Txt_Emp">楽天ひかりへ申し込む際の注意事項</p>
+            <ul class="<%= namespace %>-List_Warning c-List_Text-disc">
+              <li>事業者変更承諾番号の有効期限は15日間で、期限が残り4日以上あればお申し込み可能です。4日未満の場合は、お客様ご自身で再度取得していただく必要があります。</li>
+              <li class="u-Adjust_Mt-8">契約中の光コラボ事業者と、楽天ひかりの契約は同一契約名義・同一設置先である必要があります。</li>
+              <li class="u-Adjust_Mt-8">申し込み時に入力間違いがある場合、正しい番号の確認に時間を要するため、利用開始が遅れる可能性があります。</li>
+              <li class="u-Adjust_Mt-8">事業者変更承諾番号は”F”または”T”から始まる11桁の英数字の番号です。</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3 u-Adjust_Align-center">2.&nbsp;楽天ひかりに申し込む</h3>
+          <div class="<%= namespace %>-Box_Content-separate">
+            <div>
+              <h4 class="<%= namespace %>-Utility_Txt-align-center c-Heading_Lv4">
+                <span class="<%= namespace %>-Image_Content-separate">
+                  <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-web.svg" alt="" width="72" height="72">
+                </span>
+                Webでお申し込み
+              </h4>
+              <p class="<%= namespace %>-Utility_Txt-separate">24時間いつでもお申し込みが可能です。お申し込みの際は、事業者変更承諾番号の入力をお願いします。お申し込みから2日以内に、申し込み完了メールを送付します。</p>
+              <!-- <a href="https://secure3.gol.com/mod-pl/rbb/rmch.cgi?scode=qngTI9rXJpRlc1l6roM&cpnkind=nori2306f7" class="c-Btn_Primary-large" data-lid_no="02"><span><span>楽天ひかりへ乗り換える</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></a> -->
+            </div>
+            <div>
+              <h4 class="<%= namespace %>-Utility_Txt-align-center c-Heading_Lv4">
+                <span class="<%= namespace %>-Image_Content-separate">
+                  <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-shop.svg" alt="" width="72" height="72">
+                </span>
+                ショップでお申し込み
+              </h4>
+              <p>お近くの楽天モバイルショップでお申し込みが可能です。ご来店の際は本人確認書類と事業者変更承諾番号をご持参ください。また、キャンペーンルールに記載のキャンペーンコードを、ショップスタッフにお伝えください。</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <h3 class="c-Heading_Lv3 u-Adjust_Align-center">3.&nbsp;開通</h3>
+          <p class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <picture>
+              <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-opening-sp.svg" width="311" height="58">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-opening-pc.svg" alt="キャンペーン適用で開通翌月から1年間月額基本料が2,000円割引" width="585" height="28">
+            </picture>
+          </p>
+          <ul class="u-Adjust_Mt-8">
+            <li class="c-Txt_Cap">※ キャンペーン期間中に楽天ひかりにお申し込みいただき、お申し込み月を1カ月目として４カ月目末日までに開通した方。</li>
+            <li class="c-Txt_Cap">※ 本キャンペーンは【楽天ひかり】SPU特設 楽天ひかりを初めてお申し込みで1,000ポイントプレゼントキャンペーン」のみ併用可能。詳細条件はページ下部の<a href="#anc06" class="js-scroll">キャンペーンルール</a>参照。</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div id="anc04" class="<%= namespace %>-Box_Content-speed <%= namespace %>-Utility_Bg-gray">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="scroll-05_speed" data-ratevent="appear">高速＆安定の光回線</h2>
+      <div class="<%= namespace %>-Layout_Column u-Adjust_Mt-32">
+        <div class="<%= namespace %>-Layout_Column-content">
+          <h3 class="c-Heading_Lv4">いつでも快適</h3>
+          <div class="<%= namespace %>-Layout_Column-image">
+            <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-speed-1.svg" alt="" width="240" height="162">
+          </div>
+          <p class="<%= namespace %>-Layout_Column-txt">お昼時や夜のピークタイムでもサクサク！</p>
+        </div>
+        <div class="<%= namespace %>-Layout_Column-content">
+          <h3 class="c-Heading_Lv4">どこでも快適</h3>
+          <div class="<%= namespace %>-Layout_Column-image">
+            <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-speed-2.svg" alt="" width="240" height="162">
+          </div>
+          <p class="<%= namespace %>-Layout_Column-txt">人口密集エリアでも快適！</p>
+        </div>
+        <div class="<%= namespace %>-Layout_Column-content">
+          <h3 class="c-Heading_Lv4">安定した通信</h3>
+          <div class="<%= namespace %>-Layout_Column-image">
+            <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-speed-3.svg" alt="" width="240" height="162">
+          </div>
+          <p class="<%= namespace %>-Layout_Column-txt">ドラマの一気見でも
+            途切れない！</p>
+        </div>
+        <div class="<%= namespace %>-Layout_Column-content">
+          <h3 class="c-Heading_Lv4">ギガ使い放題</h3>
+          <div class="<%= namespace %>-Layout_Column-image">
+            <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-speed-4.svg" alt="" width="240" height="162">
+          </div>
+          <p class="<%= namespace %>-Layout_Column-txt">ギガは気にしなくて大丈夫！</p>
+        </div>
+      </div>
+
+      <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+        <a href="<%= sitepath %>hikari/internet/" class="c-Btn_Secondly-large"><span><span>高速＆安定の光回線を詳しく見る</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></a>
+      </div>
+
+      <div data-ratid="scroll-06_spu" data-ratevent="appear"></div>
+
+      <p class="u-Adjust_Mt-56 u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/logo-r-point.svg" alt="R POINT" width="78" height="78">
+      </p>
+
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+        <picture class="<%= namespace %>-Image_Content-speed">
+          <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-speed-2-sp-240408.svg" width="343" height="238">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-speed-2-pc-240408.svg" alt="楽天モバイルとセットで使えば楽天市場のお買い物がポイントUP！毎日全員7倍！！※" width="1032" height="149">
+        </picture>
+      </p>
+      <div class="<%= namespace %>-Box_Content-spu u-Adjust_Mt-24">
+        <p class="<%= namespace %>-Box_Content-spu-txt">
+          楽天市場のお買い物で<br>
+          獲得できるポイントの内訳
+        </p>
+        <p class="u-Adjust_Align-center">
+          <picture class="<%= namespace %>-Image_Content-spu-1">
+            <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-spu-1-sp-240408.svg" width="311" height="150">
+            <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-spu-1-pc-240408.svg" alt="楽天ひかり R SPU +2倍 楽天モバイル R SPU +4倍※" width="652" height="161">
+          </picture>
+        </p>
+
+        <p class="u-Adjust_Align-center u-Adjust_Mt-32">
+          <picture>
+            <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-spu-3-sp-240408.svg" width="311" height="86">
+            <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-spu-3-pc-240408.svg" alt="その他グループサービスと合わせてポイント最大17倍" width="652" height="60">
+          </picture>
+        </p>
+
+        <p class="u-Adjust_Mt-8 u-Adjust_Align-center">
+          <a href="https://event.rakuten.co.jp/campaign/point-up/everyday/point/" class="c-Link_Txt-inline" target="_blank">
+            SPUの詳細はこちら
+            <span class="c-Icon_New-window-l"></span>
+          </a>
+        </p>
+
+      </div>
+      <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+        <a href="<%= sitepath %>internet/turbo/campaign/spu/?tab-list=tab-menu2&l-id=rhk_mno_internet_turbo_campaign_spu_02#tabArea" class="c-Btn_Secondly-large"><span><span>楽天ひかりのSPUを詳しく見る</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></a>
+      </div>
+      <ul class="u-Adjust_Mt-24">
+        <li class="c-Txt_Cap">
+          ※楽天会員1倍、Rakuten Turboまたは楽天ひかりご契約中＋2倍 、楽天モバイルご利用で＋4倍（スーパーホーダイ、組み合わせプラン、コミコミプランはSPUの対象外）※楽天ひかりはプロバイダーとして楽天ブロードバンドのみ契約されている場合は特典対象外。※毎月の獲得上限ポイントはRakuten Turboまたは楽天ひかりが1,000ポイント、楽天モバイルが2,000ポイント。いずれも期間限定ポイントでの進呈 ※ポイント未利用時の倍率
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="anc05" class="<%= namespace %>-Box_Content-quesetion">
+    <div class="<%= namespace %>-Box_Content-quesetion-inner">
+      <h2 class="c-Heading_Lv4 u-Adjust_Align-center" data-ratid="scroll-07_faq" data-ratevent="appear">よくあるご質問</h2>
+      <div class="<%= namespace %>-Layout_Accordion">
+        <div class="c-Accordion">
+          <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>事業者変更承諾番号を取得する方法を知りたい。</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false">
+            <p>「楽天ひかり」お申し込みの前に、お客様ご自身でご契約中の光コラボ事業者（ドコモ光、SoftBank 光、OCN 光、ぷらら光、ビッグローブ光、So-net 光 プラスなど）へご連絡いただき、取得をお願いします。</p>
+            <p class="c-Txt_Emp u-Adjust_Mt-24">■事業者変更承諾番号の取得時に必要なもの</p>
+            <p class="u-Adjust_Mt-16">一般的には下記の情報が必要です。</p>
+            <p class="c-Txt_Cap">※ご契約中の光コラボ事業者により異なる場合がございます。</p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>契約者名</li>
+              <li class=" u-Adjust_Mt-0">お客様ID（CAF番号）※西日本のみ</li>
+            </ul>
+            <p class="c-Txt_Emp u-Adjust_Mt-24">■注意事項</p>
+            <p class="u-Adjust_Mt-16">①有効期限は15日間で、期限が残り4日以上あればお申し込み可能です。4日未満の場合は、お客様ご自身で再度取得していただく必要があります。</p>
+            <p class="u-Adjust_Mt-16">②事業者変更承諾番号は”F”または”T”から始まる11桁の英数字の番号です。</p>
+            <div class="c-Theme-Borderbox u-Adjust_Mt-8">
+              <p class="c-Txt_Normal-l">事業者変更承諾番号とは</p>
+              <p><span class="c-Txt_Normal-m c-Txt_Emp">F</span>（東日本）または<span class="c-Txt_Normal-m c-Txt_Emp">T</span>（西日本）から始まる<span class="c-Txt_Normal-m c-Txt_Emp">11桁</span>の英数字</p>
+              <div class="u-Adjust_Mt-24">
+                <picture>
+                  <source media="(max-width: 834px)" srcset="<%= sitepath %>assets/img/hikari/campaign/transfer/img-quesetion-1-sp.svg" width="311" height="42">
+                  <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-quesetion-1-pc.svg" alt="FまたはT-0000-000000" width="456" height="43">
+                </picture>
+              </div>
+            </div>
+            <p class="u-Adjust_Mt-16">③申し込み時に入力間違いがある場合、正しい番号の確認に時間を要するため、利用開始が遅れる可能性があります。契約中の光コラボ事業者と、楽天ひかりの契約は同一契約名義・同一設置先である必要があります</p>
+            <p class="u-Adjust_Mt-16">④NTT西日本エリアのお客様はCAFから始まるお客様IDも必ずご確認をお願いします。</p>
+            <p class="u-Adjust_Mt-8">
+              <img src="<%= sitepath %>assets/img/hikari/campaign/transfer/img-quesetion-2.svg" alt="お客様のIDの例 CAF**********" width="260" height="68">
+            </p>
+            <dl class="c-Dl_Origin u-Adjust_Mt-24">
+              <div>
+                <dt>ドコモ光</dt>
+                <dd>
+                  <p class="c-Txt_Emp">ドコモ携帯電話の場合　151</p>
+                  <p class="c-Txt_Emp">一般電話などの場合　0120-800-000</p>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">9:00～20:00（年中無休）</p>
+                </dd>
+              </div>
+              <div>
+                <dt>SoftBank 光</dt>
+                <dd>
+                  <p class="c-Txt_Emp">0800-111-2009</p>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">10:00～19:00（年中無休）</p>
+                </dd>
+              </div>
+              <div>
+                <dt>OCN 光</dt>
+                <dd>
+                  <p class="c-Txt_Emp">0120-506-506</p>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">10:00〜18:00（日曜・祝日・年末年始を除く）</p>
+                </dd>
+              </div>
+              <div>
+                <dt>ぷらら光</dt>
+                <dd>
+                  <p class="c-Txt_Emp">固定電話の場合　009192-33</p>
+                  <p class="c-Txt_Emp">ひかり電話の場合　0120-971-391</p>
+                  <p class="c-Txt_Emp">携帯電話の場合　050-7560-0033</p>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">10:00～19:00（年中無休）</p>
+                </dd>
+              </div>
+              <div>
+                <dt>ビッグローブ光</dt>
+                <dd>
+                  <p class="c-Txt_Emp">固定電話の場合　0120-907-505</p>
+                  <p class="c-Txt_Emp">携帯電話・IP電話の場合　03-6479-5716</p>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">9:00～18:00（年中無休）</p>
+                </dd>
+              </div>
+              <div>
+                <dt>So-net 光 プラス</dt>
+                <dd>
+                  <p class="c-Txt_Emp">0120-45-2522​</p>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">9:00～18:00（1月1日・2日を除く）</p>
+                </dd>
+              </div>
+            </dl>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※ 2022年7月29日（金）​現在の情報です。取得連絡先や受付時間が変更されている場合がありますので、詳しくは各事業者へお問い合わせください。</p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>申込み手続き後、楽天ひかり利用開始までの流れを教えてください。</button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="false">
+            <p class="c-Txt_Emp">①弊社より、開通工事日をご案内するためにメールをお送りいたします。</p>
+            <ul class="u-Adjust_Mt-16">
+              <li>※お申し込み内容に不明点がある場合は、弊社よりお電話いたします。</li>
+              <li>※申し込み日により、開通工事日が異なります。</li>
+            </ul>
+            <ul class="u-Adjust_Mt-16">
+              <li>毎月5日までの申込分 → 翌月1日開通工事</li>
+              <li>毎月15日までの申込分 → 翌月10日開通工事</li>
+              <li>毎月25日までの申込分 → 翌月20日開通工事</li>
+            </ul>
+            <p class="c-Txt_Emp u-Adjust_Mt-24">②弊社より、開通工事日前日までに、「開通通知書（契約内容及びアカウントのお知らせ）」を郵送いたします。</p>
+            <p class="c-Txt_Emp u-Adjust_Mt-24">③弊社にて、開通工事を行います。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※お客様宅に訪問して行う工事等はありません。</p>
+            <p class="c-Txt_Emp u-Adjust_Mt-24">④お客様にて、ルーターなどの設定を行っていただくと、インターネットが利用できます。</p>
+            <ul class="u-Adjust_Mt-8">
+              <li class="c-Txt_Cap">※フレッツ光から変更の場合、光対応機器（HGW、もしくはONU）を継続してご利用いただきます。</li>
+              <li class="c-Txt_Cap">※開通日の0時以降にルーター等の機器設定をしてください。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天ひかりを契約する場合に必要な料金（工事費、初期登録費、月額料金）</button>
+          <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="false">
+            <p>
+              楽天ひかりをお申し込みの際は、工事費・初期登録費・月額料金が発生いたします。<br>
+              詳しい料金は、お客様のご利用環境によって異なりますので料金表をご確認ください。
+            </p>
+            <div class="u-Adjust_Mt-8">
+              <a href="<%= sitepath %>hikari/fee/pricelist/" class="c-Link_Txt-inline">料金・お支払い方法<span class="c-Icon_Arrow-right-l"></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button type="button" id="accordion-content-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>利用中のルーターなどは、転用や事業者変更で楽天ひかりに加入した後も利用可能？</button>
+          <div id="accordion-content-4accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-content-4" aria-hidden="false">
+            <p>
+              利用できます。<br>
+              ただし、楽天ひかりのIPv6（クロスパス）に対応していないルーターをご利用の場合、楽天ひかりのIPv6（クロスパス）はご利用いただけません。
+            </p>
+            <p class="u-Adjust_Mt-8">楽天ひかりのIPv6（クロスパス）対応ルーターは下記よりご確認ください。</p>
+            <div class="u-Adjust_Mt-8">
+              <a href="<%= sitepath %>hikari/support/wifi-router/" class="c-Link_Txt-inline">楽天ひかりのIPv6（クロスパス）対応ルーター<span class="c-Icon_Arrow-right-l"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="anc06" class="<%= namespace %>-Box_Content-quesetion">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center" data-ratid="scroll-08_rule" data-ratevent="appear">他社から乗り換えで1年間2,000円引き キャンペーンルール</h2>
+      <dl class="c-Dl_Origin u-Adjust_Mt-24">
+        <div>
+          <dt>キャンペーンコード</dt>
+          <dd>
+            <div>
+                <p>1904</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</p>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>キャンペーン期間</dt>
+          <dd>
+            <div class="u-Adjust_Ml-8">
+              <p>Web</p>
+              <p class="u-Adjust_Ml-8">2023年6月27日（火）10:00～2024年1月16日（火）9:59</p>
+              <p class="u-Adjust_Mt-8">店舗（楽天モバイルショップ）</p>
+              <p class="u-Adjust_Ml-8">2023年6月27日（火）開店～2024年1月15日（月）閉店</p>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>キャンペーン条件</dt>
+          <dd>
+              <div>
+                  <p>以下①、②の条件をすべて満たした楽天会員の方</p>
+                  <ol class="u-Adjust_Mt-16">
+                    <li>
+                      <p>➀他社光コラボレーション事業者<sup>※1</sup>から「楽天ひかり」にお乗り換え</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※1SoftBank 光、ドコモ光、OCN 光、ぷらら光、ビッグローブ光、So-net 光 プラスなどが対象となります</p>
+                    </li>
+                    <li class="u-Adjust_Mt-8">
+                      <p>②「楽天ひかり」の開通</p>
+                      <p>キャンペーン期間中に楽天ひかりにお申し込みいただき、お申し込み月を1カ月目として4カ月目末日までに開通<sup>※2</sup>した方</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※2開通とは、楽天ひかりを使ってインターネット接続を行った状態を指します。なお、開通工事は新規で光回線を敷設する方が対象となり、すでにフレッツ光をご利用中の方（転用）、他社光コラボをご利用中の方（事業者変更）は宅内工事不要です</p>
+                    </li>
+                  </ol>
+              </div>
+          </dd>
+        </div>
+        <div>
+          <dt>キャンペーン特典</dt>
+          <dd>
+            <div>
+              <p class="c-Txt_Emp-01">■特典内容</p>
+              <p class="u-Adjust_Mt-8">マンションプラン</p>
+              <p class="u-Adjust_Ml-8">開通月翌月から12カ月間、月額基本料1,800円（税込1,980円）</p>
+              <p class="u-Adjust_Mt-8">ファミリープラン</p>
+              <p class="u-Adjust_Ml-8">開通月翌月から12カ月間、月額基本料2,800円（税込3,080円）</p>
+              <ul class="u-Adjust_Mt-8">
+                <li class="c-Txt_Cap">※開通月の月額基本料は無料</li>
+                <li class="c-Txt_Cap">※権利の譲渡はできません</li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>キャンペーンに関する、楽天ひかりの契約に関して</dt>
+          <dd>
+            <div>
+              <p class="c-Txt_Emp-01">■対象サービス</p>
+              <p class="u-Adjust_Mt-8">楽天ひかり</p>
+              <p class="u-Adjust_Ml-8">全プラン(マンションプラン、ファミリープラン)</p>
+              <p class="c-Txt_Emp-01 u-Adjust_Mt-8">■契約期間</p>
+              <p class="u-Adjust_Mt-8">楽天ひかり マンションプラン、ファミリープラン</p>
+              <p>2年間（24カ月）／自動更新あり</p>
+              <ul class="u-Adjust_Mt-8">
+                <li class="c-Txt_Cap">※契約期間（2年）は、開通月の翌月を起算点とします</li>
+                <li class="c-Txt_Cap">※24カ月ご利用後、25カ月目から新たな契約期間（2年）が始まり、以降24カ月ごとに同様の繰り返しとなります</li>
+                <li class="c-Txt_Cap">※24カ月目～26カ月目に解約申請、または事業者変更承諾番号の発行を行い、 24カ月目～28カ月目以内に回線撤去もしくは他社光コラボに事業者変更が完了した場合、契約解除料は発生しません</li>
+                <li class="c-Txt_Cap">※例）2023年4月に開通をしたお客様は、2025年4月1日〜2025年6月30日の期間に解約申請をいただき、2025年4月1日から5カ月以内に回線撤去もしくは他社光コラボに事業者変更が完了した場合、契約解除料は発生いたしません。</li>
+                <li class="c-Txt_Cap">※工事費の分割払い期間中に解約される場合は残債額を一括でお支払いいただきます</li>
+              </ul>
+              <p class="c-Txt_Emp-01 u-Adjust_Mt-8">■契約解除料</p>
+              <p class="u-Adjust_Mt-8">楽天ひかり</p>
+              <p>契約解除料：ファミリープラン（戸建）5,280円、マンションプラン（集合住宅）4,180円</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※無料解約申請期間（24カ月目～26カ月目）以外に解約申請し、解約が完了した場合は、契約解除料が発生（本キャンペーンの特典期間中も含みます）</p>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>特典適用対象外</dt>
+          <dd>
+            <div>
+              <p>以下の条件に当てはまる場合は、<span class="c-Txt_Emp-warning">特典適用対象外</span>となります</p>
+              <ul class="u-Adjust_Mt-8">
+                <li class="c-Txt_Cap">※ 本キャンペーン開始時点で楽天ひかりをご利用中の場合</li>
+                <li class="c-Txt_Cap">※ 現在、すでに楽天ひかりをお申し込みされている場合</li>
+                <li class="c-Txt_Cap">※ 過去に楽天ひかりをご利用いただいたことがある場合</li>
+                <li class="c-Txt_Cap">※ 楽天ひかりのお申し込みをキャンセルされた場合</li>
+                <li class="c-Txt_Cap">※ 楽天ひかりにご登録の楽天IDを別の楽天IDに変更した場合</li>
+                <li class="c-Txt_Cap">※ NTT東日本・NTT西日本のフレッツ光回線をご利用中で、プロバイダーが楽天ブロードバンドの方の転用お申し込みの場合</li>
+                <li class="c-Txt_Cap">※ 楽天ひかり開通後にプラン変更を行った場合（ファミリープランからマンションプラン、またはその逆の変更）</li>
+                <li class="c-Txt_Cap">※ お申し込み後、楽天会員を退会した場合</li>
+                <li class="c-Txt_Cap">※ 楽天ひかりの解約手続きを行った場合</li>
+                <li class="c-Txt_Cap">※ 楽天ひかりを利用されている方と同居されている方が、同じ設置先住所で、新たに楽天ひかりをお申し込みされた場合（契約者の名義変更含む）</li>
+                <li class="c-Txt_Cap">※ 過去楽天コミュニケーションズ光もしくは楽天ひかりを利用されている方と同居されていた方が、過去利用していた場所と同じ設置先住所で、新たに楽天ひかりをお申し込みされた場合</li>
+                <li class="c-Txt_Cap">※ 当社または楽天グループの提供するサービスなどの料金のお支払いを、お支払い期限までに行わなかった場合</li>
+                <li class="c-Txt_Cap">※ 当社または楽天グループが定める規約などに違反した場合</li>
+                <li class="c-Txt_Cap">※ そのほか、当社または楽天グループが会員として不適格であると判断した場合</li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>併用可能キャンペーン</dt>
+          <dd>
+            <div>
+              <p>以下のキャンペーンは併用可能となります。以下記載のキャンペーン以外は併用不可となります</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">【楽天ひかり】SPU特設 楽天ひかりを初めてお申し込みで1,000ポイントプレゼントキャンペーン_1166</p>
+            </div>
+          </dd>
+        </div>
+        <div>
+          <dt>注意事項</dt>
+          <dd>
+            <div>
+              <ul>
+                <li class="c-Txt_Cap">※ 本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                <li class="c-Txt_Cap">※ 本キャンペーンの特典付与対象者は、同時期に行われている他のキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                <li class="c-Txt_Cap">※ 本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                <li class="c-Txt_Cap">※ 記載の内容は2023年12月15日（金）時点の情報となります</li>
+              </ul>
+            </div>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <footer class="g-Footer">
+    <%- include('/hikari/include/_footer', {
+      pagetitle: '他社から乗り換えで1年間2,000円引きキャンペーン',
+      directories: directories,
+      // hiddenFooterCtaLink: '',
+      hiddenFooterCtaText: '',
+      hiddenFooterCta:true,
+      // hiddenCta: true,
+      hiddenMenu: true,
+      hiddenPopask: true,
+      uniquePopask: 'transfer',
+      // hiddenBacktop: true,
+      // hiddenBreadcrumbs: true
+      appearTag: true
+    }) _%>
+    <div class="c-Cta_Footer u-Adjust_Pb-0"></div>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<script src="<%= sitepath %>assets/js/hikari/campaign.transfer.index.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

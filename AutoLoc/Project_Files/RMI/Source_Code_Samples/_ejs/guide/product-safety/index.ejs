@@ -1,0 +1,241 @@
+<% const pagetitle = "スマートフォン・周辺機器などの使用に関するご注意" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/product/setting/", label:"設定・操作・故障"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'スマートフォンやモバイルバッテリーなどリチウムイオン電池を使用した製品の発熱・発火事故について原因や対処法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const namespace = "product-safety" -%>
+<% const layout = `${namespace}-Layout` -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/guide/product-safety/_warranty-service-css') %>
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<h1 class="c-Heading_Lv1 u-Adjust_Align-center">
+  <picture>
+    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/product-safety/hero-sp-230127.png" width="375" height="331">
+    <img src="<%= sitepath %>assets/img/guide/product-safety/hero-pc-230127.png" alt="スマートフォン・周辺機器などの使用に関するご注意" width="1440" height="240">
+  </picture>
+</h1>
+
+<div class="l-System_Container u-Adjust_Mt-32">
+  <section>
+    <h2 class="c-Heading_Lv2">スマ－トフォン・周辺機器の発熱・発火事故について</h2>
+    <p class="u-Adjust_Mt-16">スマートフォンやモバイルバッテリーなどリチウムイオン電池を使用した製品が身の回りに増え、幅広い年齢層の方に利用されています。また、機能や仕様もより複雑になり、扱う電力も大きくなっており、発熱・発火などの事故が増えてきているので注意が必要です。<br>事故がどうやって起きるのか、原因にあわせた対処法など、製品を安全にご利用いただくための方法をご案内いたします。</p>
+    <div class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/product-safety/summer/?l-id=guide_product-safety_guide_product-safety_summer" class="c-Link_Txt-inline">夏のスマートフォン取り扱いについてはこちら<span class="c-Icon_Chevron-right"></span></a></div>
+    <div class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/product-safety/winter/?l-id=guide_product-safety_guide_product-safety_winter" class="c-Link_Txt-inline">冬のスマートフォン取り扱いについてはこちら<span class="c-Icon_Chevron-right"></span></a></div>
+  </section>
+  <section class="<%= layout %>_Safety">
+    <h3 class="c-Heading_Lv3">製品を安全にご使用いただくために</h3>
+    <p class="u-Adjust_Mt-16">楽天モバイルでは業界団体である、モバイルコンピューティング推進コンソーシアム（ MCPC ）を通じて、他の通信事業者や端末メーカー、充電器メーカーとともに安全啓発活動を実施しています。</p>
+    <div class="<%= layout %>_Safety-container <%= layout %>_Pc2col <%= layout %>_Pc2col-safety">
+      <div class="<%= layout %>_Safety-item">
+        <p class="c-Txt_Emp-01">安全啓発ロゴ・キャッチフレーズ</p>
+        <img src="<%= sitepath %>assets/img/guide/product-safety/img-02-230127.png" alt="キケン！水ぬれ充電 あぶない！電池への衝撃" width="504" height="287">
+        <p>広く知っていただくために、ロゴ・キャッチフレーズを制作し、<br class="<%= namespace %>-Util_Show-pc">水ぬれ充電の危険性を訴求しています。</p>
+      </div>
+      <div class="<%= layout %>_Safety-item">
+        <p class="c-Txt_Emp-01">安全啓発動画</p>
+        <img src="<%= sitepath %>assets/img/guide/product-safety/img-01-230127.png" alt="MCPC スマホ使うなら気をつけて" width="504" height="287">
+        <p>スマートフォンを充電する際の注意動画を制作し、<br class="<%= namespace %>-Util_Show-pc">幅広い利用者層に訴求しています。</p>
+        <p class="u-Adjust_Mt-8"><a href="https://www.youtube.com/watch?v=cTZ-8cgqIt4" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">安全啓発動画を見る<span class="c-Icon_New-window-l"></span></a></p>
+      </div>
+    </div>
+  </section>
+  <ul class="c-List_Text-disc u-Adjust_Mt-32">
+    <li><a href="https://www.mcpc-jp.org/safe/#tab02" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">MCPC『気をつけて！スマートフォンの使い方』のページはこちら<span class="c-Icon_New-window-l"></span></a></li>
+  </ul>
+</div>
+
+<div class="l-System <%= layout %>_Accident">
+  <div class="l-System_Container">
+    <section>
+      <h2 class="<%= namespace %>-Util_Center-sp c-Heading_Lv2">どんなときに発熱・<br class="<%= namespace %>-Util_Show-sp">発火事故が起きるのか</h2>
+      <p class="u-Adjust_Mt-16">発熱・発火事故が起きやすい要因としては、<span class="c-Txt_Emp-01">1.異物が付着、2.分解や改造、3.強い衝撃が加わる</span>といった条件が挙げられます。<br>３つの要因について詳しく解説し、事故を起こさないポイントを紹介します。</p>
+      <div class="<%= layout %>_Accident-container u-Adjust_Mt-32">
+        <h3 class="c-Heading_Lv3 c-Txt_Emp-02">1.異物付着が原因による事故</h3>
+        <p class="u-Adjust_Mt-16">充電ケーブルと充電アダプターまたはスマートフォンに接続する端子内部に、導電性の異物（金属片や液体など）が付着したまま充電を行うと、短絡（ショート）して異常発熱が発生し、発火事故につながります。</p>
+        <p class="u-Adjust_Mt-8" style="color:#676767;">※短絡（ショート）：電位差のある２点を抵抗が非常に小さい導体で接続されること。短絡すると大きな電流が流れ、熱が発生する。</p>
+        <p class="<%= layout %>_Accident-ctitle c-Txt_Emp-01">異常発熱を発生させた実験動画</p>
+        <div class="<%= namespace %>-Util_Show-pc u-Adjust_Align-center u-Adjust_Mt-16" style="margin: 0 auto; position: relative; display: block; max-width: 640px;"><div style="padding-top: 56.25%;"><iframe src="https://players.brightcove.net/5068808272001/default_default/index.html?videoId=6318533859112" allowfullscreen="" allow="encrypted-media" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div></div>
+        <div class="<%= namespace %>-Util_Show-sp u-Adjust_Align-center u-Adjust_Mt-16" style="margin: 0 auto; position: relative; display: block; max-width: 300px;"><div style="padding-top: 56.25%;"><iframe src="https://players.brightcove.net/5068808272001/default_default/index.html?videoId=6318533859112" allowfullscreen="" allow="encrypted-media" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;"></iframe></div></div>
+        <p class="<%= namespace %>-Util_Center-pc u-Adjust_Mt-16">他通信業者と合同で行った実験で、充電端子に異物（実験では醤油）を付着させて充電を実施した動画です。<br class="<%= namespace %>-Util_Show-pc">液体（醤油）付着した状態で充電すると大幅な温度上昇が発生する可能性があります。</p>
+        <div class="<%= layout %>_Accident-pinkband"><h4 class="c-Heading_Lv4 c-Txt_Emp-02">事故を起こさないために</h4></div>
+        <p class="u-Adjust_Mt-16 <%= namespace %>-Util_Center-pc">異物などが付着した場合は、下記の対処を行ってください。</p>
+        <div class="<%= layout %>_Pc3col <%= layout %>_Pc3col-measures u-Adjust_Mt-16">
+          <div>
+            <div class="<%= layout %>_Pc3col-measures-imgwrap">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/product-safety/img-03-sp-230127.png" width="311" height="257">
+                <img src="<%= sitepath %>assets/img/guide/product-safety/img-03-230127.png" alt="充電端子に水などが付着している場合" width="308" height="284">
+              </picture>
+            </div>
+            <p>綿棒などを使用し、可能な限りふき取り、乾燥させてください。</p>
+            <p class="<%= layout %>_Pc3col-measures-cap c-Txt_Cap">※端子内に綿棒などを挿入しないでください。</p>
+          </div>
+          <div>
+            <div class="<%= layout %>_Pc3col-measures-imgwrap">
+              <img src="<%= sitepath %>assets/img/guide/product-safety/img-04-230127.png" alt="水以外の液体（ジュース、ペットの尿など）がスマホにかかってしまった場合" width="323" height="280">
+            </div>
+            <p><span class="c-Txt_Emp-02">電源を切って</span>修理に出してください。</p>
+            <p class="<%= layout %>_Pc3col-measures-cap c-Txt_Cap">※不純物が内部に入り込むと短絡する可能性があります。むやみに電源を入れたり、充電したりすると発熱・発煙・焼損する可能性もあります。</p>
+          </div>
+          <div>
+            <div class="<%= layout %>_Pc3col-measures-imgwrap">
+              <img src="<%= sitepath %>assets/img/guide/product-safety/img-05-230127.png" alt="充電差し込み口や充電ケーブルの内部に異物（ゴミ）が付着した場合" width="305" height="280">
+            </div>
+            <p>下向きにして軽くたたいてゴミを落とします。異物が取れない時は修理に出してください。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="<%= layout %>_Accident-container u-Adjust_Mt-32">
+        <h3 class="c-Heading_Lv3 c-Txt_Emp-02">2.改造・分解が原因による事故</h3>
+        <p class="u-Adjust_Mt-16">本来取り外せないカバーなどの部品を無理に開けると、内部の電池パックに損傷が生じ発火事故につながります。</p>
+        <p class="<%= layout %>_Accident-ctitle c-Txt_Emp-01">製品のこじ開けが原因による実際の発火事故例</p>
+        <div class="<%= layout %>_Pc2col <%= layout %>_Pc2col-custom u-Adjust_Pt-16">
+          <img src="<%= sitepath %>assets/img/guide/product-safety/img-06-230127.png" alt="" width="416" height="260">
+          <img src="<%= sitepath %>assets/img/guide/product-safety/img-07-230127.png" alt="" width="416" height="260">
+        </div>
+        <p class="<%= namespace %>-Util_Center-pc u-Adjust_Mt-16">カバーのこじ開けに使用されたドライバーが電池（バッテリー）を損傷させて、短絡により発火が発生。</p>
+        <div class="<%= layout %>_Accident-pinkband"><h4 class="c-Heading_Lv4 c-Txt_Emp-02">事故を起こさないために</h4></div>
+        <div class="<%= namespace %>-Util_Center-pc <%= namespace %>-Util_Pt-24-16">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/product-safety/img-08-sp-230127.png" width="343" height="266">
+            <img src="<%= sitepath %>assets/img/guide/product-safety/img-08-230127.png" alt="製品内部に何か混入した場合" width="343" height="262">
+          </picture>
+          <p class="<%= namespace %>-Util_Center-pc"><span class="c-Txt_Emp-02">分解して取り除くことは絶対に行わずに</span>修理に出してください。</p>
+        </div>
+      </div>
+
+      <div class="<%= layout %>_Accident-container u-Adjust_Mt-32">
+        <h3 class="c-Heading_Lv3 c-Txt_Emp-02">3.強い衝撃が加わったことが原因による事故</h3>
+        <p class="u-Adjust_Mt-16">下記のような強い衝撃が加わることにより、電池（バッテリー）が損傷し、発火事故につながります。</p>
+        <p class="<%= layout %>_Accident-ctitle">ポケットに入れたまま座る、転倒した際の強い衝撃 / 製品の踏みつけや落下による衝撃 / 飼っているペットの噛みつき</p>
+        <div class="<%= layout %>_Pc2col <%= layout %>_Pc2col-custom u-Adjust_Pt-16">
+          <img src="<%= sitepath %>assets/img/guide/product-safety/img-09-230127.png" alt="" width="416" height="260">
+          <img src="<%= sitepath %>assets/img/guide/product-safety/img-10-230127.png" alt="" width="416" height="260">
+        </div>
+        <div class="<%= layout %>_Accident-pinkband"><h4 class="c-Heading_Lv4 c-Txt_Emp-02">事故を起こさないために</h4></div>
+        <p class="u-Adjust_Mt-16 <%= namespace %>-Util_Center-pc">スマートフォンを持ち運ぶ際は下記のことにご注意ください。</p>
+        <div class="<%= layout %>_Pc3col <%= layout %>_Pc3col-measures u-Adjust_Mt-16">
+          <div>
+            <div class="<%= layout %>_Pc3col-measures-imgwrap">
+              <img src="<%= sitepath %>assets/img/guide/product-safety/img-11-230127.png" alt="ケースやフィルムなどを取り付ける。" width="308" height="268">
+            </div>
+            <p>ケースやフィルムなどを取り付けることで衝撃の吸収につながります。</p>
+          </div>
+          <div>
+            <div class="<%= layout %>_Pc3col-measures-imgwrap">
+              <img src="<%= sitepath %>assets/img/guide/product-safety/img-12-230127.png" alt="バッグの底に入れない。" width="308" height="268">
+            </div>
+            <p>バッグの底など、強い圧力がかかる場所に保管しないようにしてください。</p>
+          </div>
+          <div>
+            <div class="<%= layout %>_Pc3col-measures-imgwrap">
+              <img src="<%= sitepath %>assets/img/guide/product-safety/img-13-230127.png" alt="ストラップなどを使用する。" width="308" height="268">
+            </div>
+            <p>衣服（特にズボン）の中にそのまましまわず、落下防止としてストラップなどを使用してください。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="l-System_Container">
+  <section class="<%= layout %>_Other-corporation">
+    <h4 class="c-Heading_Lv4">他通信業者でも同様のテーマで安全啓発活動を行っています。</h4>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li><a href="https://apprev.smt.docomo.ne.jp/news/news-1447907/" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">NTTドコモ：やってはいけないスマホの取扱いについて<span class="c-Icon_New-window-l"></span></a></li>
+      <li><a href="https://www.au.com/lp/ts202301/" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">au：やってはいけないスマホの取り扱いかたを教えて！実験結果をもとにプロが解説<span class="c-Icon_New-window-l"></span></a></li>
+      <li><a href="https://www.softbank.jp/sbnews/entry/20230314_01" class="c-Link_Txt-inline" target="_blank" rel="noopener noreferrer">ソフトバンク：分解・改造は絶対にNG！ やってはいけないスマホの取り扱い方<span class="c-Icon_New-window-l"></span></a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-48">製品の廃棄について</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>
+        <a href="<%= sitepath %>guide/product-safety/battery-disposal/" class="c-Link_Txt-inline">
+          不要になったスマホなどの廃棄方法について<span class="c-Icon_Chevron-right"></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://corp.mobile.rakuten.co.jp/sustainability/resource/recycle/" class="c-Link_Txt-inline" target="_blank">
+          製品リサイクルの取り組み<span class="c-Icon_New-window-l"></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://corp.mobile.rakuten.co.jp/sustainability/" class="c-Link_Txt-inline" target="_blank">
+          楽天モバイルのサステナビリティ活動<span class="c-Icon_New-window-l"></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<%- include('/include/guide/product-safety/_warranty-service', { lid: 'guide_product-safety' }) %>
+
+<footer class="g-Footer">
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

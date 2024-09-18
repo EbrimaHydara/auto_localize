@@ -1,0 +1,124 @@
+<% const pagetitle = "お引越しの手続き" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/contract/", label:"契約内容・お手続き"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    isUserCategory: true
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboをご契約中の方が、お引越しをされる際に必要な設置先住所、請求先住所をmy 楽天モバイル（アプリ・Web）で変更する方法をご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-32">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">Rakuten Turboをご契約中の方で、お引越しされる場合に必要なお手続きをご案内いたします。</p>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">注意事項</h2>
+        <ul class="c-List_Text-disc u-Adjust_Mt-24">
+          <li class="c-Txt_Emp-02">設置先住所を変更するまで、お引越し先でのご利用はできません。</li>
+          <li>設置先住所は前回の変更から30日以内は変更できません。<br><span class="c-Txt_Cap">※変更日の次の日を1日目と数えます。</span></li>
+          <li>設置先住所変更のお手続き完了後、お引越し先住所で製品を設置するまでは、製品の電源を入れないでください。<br><span class="c-Txt_Cap">※設置先住所と電源を入れた住所が一致しない場合、サービスの利用停止が行われます。サービスの利用再開のお手続きはコミュニケーションセンターへお問い合わせください。</span></li>
+        </ul>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">お引越し手続きの流れ</h2>
+        <ol class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">1. 契約住所・請求先住所を変更する（変更が必要な方）</h3>
+            <p class="u-Adjust_Mt-16">my 楽天モバイルにログインし、「契約者情報」へ進んでください。</p>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※my 楽天モバイルへのログインが必要です。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my 楽天モバイル]ログインできません</a>」をご確認ください。</p>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a href="<%= ecarepath %>dashboard#contracts" data-lid_no="02" target="_blank" rel="noopener noreferrer" class="c-Btn_Secondly-large"><span>契約情報へ進む<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+            </p>
+            <p class="u-Adjust_Mt-16">my 楽天モバイルでのお手続きについては、以下のサポートページをご確認ください。</p>
+            <ul class="u-Adjust_Mt-16">
+              <li><a href="<%= sitepath %>guide/change-address/" class="c-Link_Txt-inline">契約住所の変更手続きを見る<span class="c-Icon_Chevron-right"></span></a></li>
+              <li class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/change-billing-address/" class="c-Link_Txt-inline">請求先住所の変更手続きを見る<span class="c-Icon_Chevron-right"></span></a></li>
+            </ul>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">2. 設置先住所を変更する（必須）</h3>
+            <p class="u-Adjust_Mt-16">事前にコンセントから抜き、製品の電源をお切りください。</p>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※住所変更が先になると、新しい住所で電源を入れた際にご利用できなくなります。</p>
+            <p class="u-Adjust_Mt-16">
+              コミュニケーションセンターへお電話いただき、設置先住所が変更になることをお伝えください。<br>
+              お電話の完了と同時に、設置先住所の変更手続きも完了いたします。
+            </p>
+            <p class="u-Adjust_Mt-16 c-Txt_Emp-01">Rakuten Turbo 電話窓口</p>
+            <div class="u-Adjust_Mt-8">
+              <p class="<%= namespace %>-Utility_Disp-tab c-Txt_Emp-01">電話番号：<a href="tel:08008050040" class="c-Txt_Alphanumeric">0800-805-0040</a></p>
+              <p class="<%= namespace %>-Utility_Disp-pc c-Txt_Emp-01">電話番号：<span class="c-Txt_Alphanumeric">0800-805-0040</span></p>
+              <p>営業時間　9:00 ～ 17:00（年中無休）</p>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">3. お引越し先で製品を設置し、コンセントにさす</h3>
+            <div class="l-Media_Grid u-Adjust_Mt-24">
+              <div class="l-Media_Image">
+                <p class="u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/internet/turbo/support/contract/house-moving/img-01.png" width="328" height="128" alt="3. お引越し先で製品を設置し、コンセントにさす">
+                </p>
+              </div>
+              <div>
+                <p>うまくできない場合はこちらの対処法をご確認ください。</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="/internet/turbo/support/setting/troubleshooting/" class="c-Link_Txt-inline">うまく接続できない場合の対処法を見る<span class="c-Icon_Chevron-right"></span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-64">以上で完了です。</p>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

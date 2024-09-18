@@ -1,0 +1,126 @@
+<% const pagetitle = "緊急速報メール（ご利用方法）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/plan/sms/", label:"メール・SMSサービス"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '「緊急速報メール」のご利用方法はこちら。気象庁や国・地方公共団体が配信する災害・避難情報などを対象エリアにいるお客様に一斉にメールでお知らせするサービスです',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <div class="u-Adjust_Mt-32">
+      <ul>
+        <li><a href="<%= sitepath %>service/emergency-alert-mail/" class="c-Btn_Regular-semiauto"><span>特長・サービス内容を見る</span></a></li>
+      </ul>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-32">ご利用方法</h2>
+    <p class="u-Adjust_Mt-24">
+      緊急速報メールをご利用するためには機種ごとの設定が必要となります。
+    </p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-40">注意事項</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>緊急速報メールの受信にかかる通信料・情報料は無料です。ただし、情報内に記載のあるサイトリンクに接続した場合は、別途通信料などが発生します。</li>
+      <li>日本国内のサービスです （海外ではご利用いただけません）。</li>
+      <li>緊急速報メールは、専用の警報音とバイブレーション、画面上の表示で通知します。</li>
+      <li>警報音を変更することはできません。警報音の音量や鳴動時間の変更設定は、機種ごとに異なります。</li>
+      <li>電源を切っている場合や通話・パケット通信中は、緊急速報メールを受信できない場合があります。</li>
+      <li>電波の届かない場所（トンネル、地下など）や電波状態の悪い場所では、緊急速報メールを受信できない場合があります。</li>
+      <li>当社は、本サービスに関して、通信障害やシステム障害による情報の不達・遅延、および情報の内容、そのほか当社の責に帰すべからざる事由に起因して発生したお客さまの損害について責任を負いません。</li>
+      <li>緊急地震速報は、必ずしも地震などの揺れを感じるよりも先に受信できるとは限りません。</li>
+      <li>緊急速報メールを受信できなかった場合の再受信はできません。</li>
+      <li>機種の通信方式により配信エリアに差分があります。</li>
+      <li>パートナー回線エリアまたはその境界付近にいる場合や製品の状態などにより、同じ内容の通知が複数回届く場合があります。</li>
+    </ul>
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

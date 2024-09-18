@@ -1,0 +1,197 @@
+<% const nameSpace = "service-top" -%>
+<%_ const search = [] -%>
+
+<div class="<%= nameSpace %>-Search">
+  <h3 class="c-Heading_Lv4">対象機種・カテゴリで絞り込む</h3>
+  <p class="u-Adjust_Mt-8">ご利用の機種や目的にあったカテゴリを選択してください。対象のサービスを表示します。</p>
+  <p class="c-Txt_Cap u-Adjust_Mt-8">※「プラン料金に含む」に該当するサービスは、無料のサービスとなっており、別途料金は発生しません。</p>
+  <div class="u-Adjust_Mt-16">
+    <a href="#modal1" class="c-Data_Filter js-Modal"><span class="c-Icon_Sliders-l c-Data_Icon"></span><span>対象機種・カテゴリを選択する</span></a>
+  </div>
+
+  <div id="modal1" style="display:none;">
+    <div class="js-service-Refine_Searchbox">
+      <h4 class="c-Heading_Lv4">対象機種を選択する</h4>
+      <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="device" value="" class="js-service-Refine_Item" checked >
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">すべて</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="device" value="iphone" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">iPhone・iPad</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="device" value="android" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">Android</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="device" value="wifi" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">Wi-Fi</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="device" value="apple-watch" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">Apple Watch</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <div class="js-service-Refine_Searchbox">
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">Rakuten最強プランの料金に含むかを選択する</h4>
+      <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="plan" value="" class="js-service-Refine_Item" checked >
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">すべて</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="plan" value="plan" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">プランに含まれている</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="plan" value="noplan" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">プランに含まれていない</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <div class="js-service-Refine_Searchbox">
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">Rakuten最強プラン（データタイプ）対象かを選択する</h4>
+      <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="data_plan" value="" class="js-service-Refine_Item" checked >
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">すべて</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="data_plan" value="data_type" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">データタイプ対象</span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Radio">
+            <input type="radio" name="data_plan" value="no_data_type" class="js-service-Refine_Item">
+            <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">データタイプ対象外</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <div class="js-service-Refine_Searchbox">
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">カテゴリを選択する</h4>
+      <ul class="<%= nameSpace %>-Search_List">
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="call" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">通話・SMS・メール</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="warranty" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">保証</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="security" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">セキュリティ</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="support" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">サポート</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="data" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">データ通信</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="disaster" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">災害関連</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="global" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">海外</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="iupg" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">製品購入サポート</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="tradein" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">下取り</span>
+            </span>
+          </label>
+        </li>
+        <li>
+          <label class="c-Form_Checkboxblock">
+            <input type="checkbox" name="category" value="shop" class="js-service-Refine_Item" checked>
+            <span class="c-Form_Checkboxblock-wrap">
+              <span class="c-Icon_Check"></span>
+              <span class="c-Form_Checkboxblock-label">ショップサポート</span>
+            </span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-32">
+      <button class="js-Modal_Close js-service-Refine_Trigger c-Btn_Secondly <%= nameSpace %>-Search_Button" data-ratid="service_category-button" data-ratevent="click" data-ratparam="all"><span>絞り込む</span></button>
+    </div>
+  </div>
+</div>

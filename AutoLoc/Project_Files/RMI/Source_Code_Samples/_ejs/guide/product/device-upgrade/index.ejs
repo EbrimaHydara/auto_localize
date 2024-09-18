@@ -1,0 +1,977 @@
+<% const pagetitle = "楽天モバイルでの機種変更方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/product/upgrade/", label:"機種変更の方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '機種変更する際の流れや、必要なお手続きについてご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "楽天モバイルでの機種変更方法" -%>
+<% const namespace = "guide-product-device-upgrade" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/product/device-upgrade/device-upgrade.css?240521">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="l-System_Container u-Adjust_Py-32">
+      <h1 class="u-Adjust_Mt-8 c-Txt_Normal-xl c-Txt_Emp-01"><%= parentTiltle %></h1>
+      <p class="u-Adjust_Mt-16">機種変更する際の流れや、必要なお手続きについてご案内します。</p>
+
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/replacement-program/?l-id=guide_product_device-upgrade_guide_replacement-program#anc02" class="c-Link_Txt-inline">楽天モバイル買い替え超トクプログラムをご利用の方はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+    </div>
+    <div id="js-trigger" class="<%= namespace %>-Layout_Anchor-container">
+      <div id="js-fixed-btn" class="<%= namespace %>-Layout_Anchor" aria-expanded="false" data-fixed-header>
+        <div class="l-System_Container">
+          <ul class="<%= namespace %>-Link_List">
+            <li>
+              <a href="#anc01" class="c-Anchor_Basic js-scroll">
+                <span class="c-Icon_Arrow-down-l"></span>
+                事前準備
+              </a>
+            </li>
+            <li>
+              <a href="#anc02" class="c-Anchor_Basic js-scroll">
+                <span class="c-Icon_Arrow-down-l"></span>
+                機種変更方法
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="l-System_Container u-Adjust_Pb-24">
+      <div class="<%= namespace %>-Content <%= namespace %>-Layout_Pt-fixed-btn" id="check-sim">
+        <div class="u-Adjust_Align-center">
+          <h2 id="anc01" class="c-Txt_Emp-01 c-Txt_Normal-ll">事前準備</h2>
+          <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-check-sim-type-240510.png" class="<%= namespace %>-Content_Main-image" alt="製品の初期設定方法スマホのSIMタイプを確認する／データ移行・バックアップを行う" width="185" height="139">
+          <p class="u-Adjust_Mt-16 u-Align_Llc">製品の購入、データ移行・バックアップがお済みの方は「<a href="#anc02" class="c-Link_Txt-inline js-scroll">機種変更方法</a>」へお進みください。</p>
+        </div>
+        <%# ▼ 製品の購入 %>
+        <div class="c-Accordion-emp u-Adjust_Mt-16">
+          <button type="button" id="accordion-emp-3" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-3-content">
+              <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+              <span class="c-Accordion-emp_Trigger-txt">製品の購入</span>
+          </button>
+          <div id="accordion-emp-3-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-3" aria-hidden="true">
+            <div class="c-Tab js-Tab">
+              <ul class="c-Tab_Items" role="tablist">
+                <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">アプリの場合</li>
+                <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">Webの場合</li>
+              </ul>
+              <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Emp-01 c-Txt_Normal">my 楽天モバイルをダウンロードする</h3>
+                    <div class="c-Box_App u-Adjust_Mt-16">
+                      <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/my-rakuten-mobile-icon.png?220615" alt="my 楽天モバイル"></div>
+                      <div class="c-Box_App-txt">
+                        <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                        <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Flow_App">
+                          <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/google-play-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="Google Playで手に入れよう"></a></li>
+                          <li><a href="https://apps.apple.com/app/id1473535769"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/appstore-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="App Storeからダウンロード"></a></li>
+                          <li class="c-Txt_Cap <%= namespace %>-Flow_App-caution">iPhoneのみ対応<br>※iPad、iPod touchには対応していません</li>
+                        </ul>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/?l-id=product_device-upgrade_guide_my-rakuten-mobile" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Emp-01 c-Txt_Normal">機種変更する製品を購入する</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「申し込み」から「iPhone • Apple Watch」もしくは、「スマートフォン・その他」を選択します。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img class="<%= namespace %>-Layout_Only-pc" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-2-1_20240517-sp.png" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                        <img class="<%= namespace %>-Layout_Only-pc" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-2-2.png?221006" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                        <img class="<%= namespace %>-Layout_Only-sp" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-2-1_20240517-sp.png?221006" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                        <img class="<%= namespace %>-Layout_Only-sp" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-2-2.png?221006" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                      </div>
+                    </div>
+                    <p class="u-Adjust_Mt-32">機種変更したい製品を決め、「製品を選ぶ」を選択し、表示される案内に沿って製品を購入します。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-web-2-3_20240517.png" alt="「製品」の一覧に画面が変わりましたら、機種変更したい製品を決め、「製品を選ぶ」を選択します。">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Emp-01 c-Txt_Normal">製品の購入完了</h3>
+                    <p class="u-Adjust_Mt-16">ご登録されているメールアドレスにメールが届きますので、ご確認いただき、製品の到着をお待ちください。</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Emp-01 c-Txt_Normal">my 楽天モバイルにアクセスする</h3>
+                    <a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/?l-id=network_header_ecare_product_device-upgrade_my-rakuten" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Emp-01 c-Txt_Normal">機種変更する製品を購入する</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「申し込み」から「iPhone • Apple Watch」もしくは、「スマートフォン・その他」を選択します。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-web-2-1_20240517.png" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-web-2-2.png?221006" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                      </div>
+                    </div>
+                    <p class="u-Adjust_Mt-32">機種変更したい製品を決め、「製品を選ぶ」を選択し、表示される案内に沿って製品を購入します。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-2-3_20240517-sp.png" alt="「製品」の一覧に画面が変わりましたら、機種変更したい製品を決め、「製品を選ぶ」を選択します。">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Emp-01 c-Txt_Normal">製品の購入完了</h3>
+                    <p class="u-Adjust_Mt-16">ご登録されているメールアドレスにメールが届きますので、ご確認いただき、製品の到着をお待ちください。</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%# ▲ 製品の購入 %>
+        <%# ▼ データ移行・バックアップ %>
+        <div class="c-Accordion-emp u-Adjust_Mt-16">
+          <button type="button" id="accordion-emp-2" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-2-content">
+              <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+              <span class="c-Accordion-emp_Trigger-txt">データ移行・バックアップ</span>
+          </button>
+          <div id="accordion-emp-2-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel u-Adjust_Pb-24" role="region" aria-labelledby="accordion-emp-2" aria-hidden="true">
+            <div>
+              <p>機種変更時、お使いの機種から新しい機種へデータを移行する方法や、万一の事態に備えて、データのバックアップ方法をご案内します。</p>
+              <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/data-migration/?l-id=product_device-upgrade_guide_data-migration" class="c-Link_Txt-inline">Androidに機種変更の方はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+              <p class="u-Adjust_Mt-8"><a href="https://support.apple.com/ja-jp/118670" class="c-Link_Txt-inline">AndroidからiPhoneに機種変更の方はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+              <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/iphone/setting/esim-upgrade/?l-id=product_device-upgrade_guide_iphone_setting_esim-upgrade" class="c-Link_Txt-inline">iPhoneからiPhoneに機種変更の方はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+            </div>
+          </div>
+        </div>
+        <%# ▲ データ移行・バックアップ %>
+      </div>
+    </div>
+
+    <div class="l-System_Container u-Adjust_Pb-24 u-Adjust_Mt-40">
+      <div class="<%= namespace %>-Content">
+        <div class="c-Txt_Emp-01 u-Adjust_Align-center">
+          <h2 id="anc02" class="c-Txt_Normal-ll">機種変更方法</h2>
+          <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow.png?220615" class="<%= namespace %>-Content_Main-image" alt="">
+        </div>
+        <div class="u-Adjust_Align-center">
+          <p class="u-Adjust_Mt-8 u-Align_Lcc">ご利用中のSIMタイプと機種変更後のSIMタイプにより、手順が異なります。</p>
+          <p class="u-Align_Lcc">SIMタイプを選択のうえ、機種変更方法をご確認ください。</p>
+          <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>product/sim/?l-id=product_device-upgrade_product_sim" class="c-Link_Txt-inline">SIMタイプについてはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+      </div>
+      <%# ▼ SIMタイプの確認方法 %>
+      <div class="c-Accordion-emp u-Adjust_Mt-40">
+        <button type="button" id="accordion-emp-1" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-1-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt">SIMタイプの確認方法</span>
+        </button>
+        <div id="accordion-emp-1-content" class="c-Accordion-emp_Panel-normal js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-1" aria-hidden="true">
+          <div class="<%= namespace %>-Content_Check-sim-type">
+            <h3 class="c-Txt_Normal">ご利用中の製品のSIMタイプを確認</h3>
+            <p class="u-Adjust_Mt-8">「<a href="<%= sitepath %>guide/my-rakuten-mobile/?l-id=product_device-upgrade_guide_my-rakuten-mobile" class="c-Link_Txt">my 楽天モバイル</a>」からご確認ください。</p>
+            <div class="<%= namespace %>-Content_Check-sim-type-link u-Adjust_Mt-8">
+              <a href="<%= sitepath %>faq/detail/10000220/" class="u-Adjust_Mt-16 c-Btn_Regular">SIMタイプの確認方法はこちら</a>
+            </div>
+            <h3 class="c-Txt_Normal u-Adjust_Mt-16">機種変更後の製品のSIMタイプを確認</h3>
+            <p class="u-Adjust_Mt-8">各製品詳細ページのスペックからSIMタイプをご確認ください。</p>
+
+            <div class="c-Accordion u-Adjust_Mt-24">
+              <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Rakuten（楽天）</button>
+              <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/rakuten-hand-5g/spec.html">Rakuten Hand 5G</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/rakuten-big-s/spec.html">Rakuten BIG s</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/rakuten-mini/spec.html">Rakuten Mini</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/rakuten-big/spec.html">Rakuten BIG</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/rakuten-hand/spec.html">Rakuten Hand</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-8"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Apple（アップル）</button>
+              <div id="accordion-content-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-8" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 15 Pro Max</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 15 Pro</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 15 Plus</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 15</a></li>
+                </ul>
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 14 Pro Max</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 14 Pro</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 14 Plus</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 14</a></li>
+                </ul>
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone SE（第3世代）</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 13 Pro Max</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 13 Pro</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 13</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 13 mini</a></li>
+                </ul>
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 12 Pro Max</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 12 Pro</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 12</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone 12 mini</a></li>
+                  <li><a href="<%= sitepath %>product/sim/esim/#product-rakuten-esim">iPhone SE （第2世代）</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>SHARP（シャープ）</button>
+              <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense8/spec.html?l-id=guide_product_device-upgrade_product_smartphone_aquos-sense8_spec">AQUOS sense8</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-wish3/spec.html?l-id=guide_product_device-upgrade_product_smartphone_aquos-wish3_spec">AQUOS wish3</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense7/spec.html">AQUOS sense7</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense6s/spec.html">AQUOS sense6s</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-wish/spec.html">AQUOS wish</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense6/spec.html">AQUOS sense6</a></li>
+                </ul>
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-zero6/spec.html">AQUOS zero6</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense4-lite/spec.html">AQUOS sense4 lite</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense4-plus/spec.html">AQUOS sense4 plus</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-r5g/spec.html">AQUOS R5G</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense3-lite/spec.html">AQUOS sense3 lite</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/aquos-sense3-plus/spec.html">AQUOS sense3 plus</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>OPPO（オッポ）</button>
+              <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/a79-5g/spec.html">OPPO A79 5G</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/reno9-a/spec.html">OPPO Reno9 A</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/reno7-a/spec.html">OPPO Reno7 A</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/a55s-5g/spec.html">OPPO A55s 5G</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/reno5-a/#spec">OPPO Reno5 A</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/a73/spec.html">OPPO A73</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/reno3-a/spec.html">OPPO Reno3 A</a></li>
+                </ul>
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/a5-2020/spec.html">OPPO A5 2020</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/reno-a/spec.html">OPPO Reno A 128GB</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Samsung（サムスン）</button>
+              <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/galaxy-s23/spec.html">Galaxy S23</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/galaxy-a23-5g/spec.html">Galaxy A23 5G</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/galaxy-z-flip4/spec.html">Galaxy Z Flip4</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/galaxy-s10/spec.html">Galaxy S10</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/galaxy-note10-plus/spec.html">Galaxy Note10+</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/galaxy-a7/spec.html">Galaxy A7</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>HUAWEI（ファーウェイ）</button>
+              <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/nova5t/spec.html">HUAWEI nova 5T</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-6"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>FUJITSU（富士通）</button>
+              <div id="accordion-content-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-6" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/arrows-rx/spec.html">arrows RX</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-7"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>SONY（ソニー）</button>
+              <div id="accordion-content-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-7" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/xperia-5m5/spec.html?l-id=guide_product_device-upgrade_product_smartphone_xperia-5m5_spec">Xperia 5 V</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/xperia-10m5/spec.html?l-id=guide_product_device-upgrade_product_smartphone_xperia-10m5_spec">Xperia 10 V</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/xperia-5m4/spec.html">Xperia 5 IV</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/xperia-10m4/spec.html">Xperia 10 IV</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/xperia-10m3-lite/#spec">Xperia 10 III Lite</a></li>
+                  <li><a href="<%= sitepath %>product/smartphone/xperia-ace/spec.html">Xperia Ace</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button id="accordion-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-9"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Xiaomi（シャオミ）</button>
+              <div id="accordion-content-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-9" aria-hidden="false" style="">
+                <ul class="c-List_Text-disc <%= namespace %>-Content_Check-sim-type-list">
+                  <li><a href="<%= sitepath %>product/smartphone/redmi-note-11-pro-5g/spec.html">Redmi Note 11 Pro 5G</a></li>
+                </ul>
+              </div>
+            </div>
+            <h3 class="c-Txt_Normal u-Adjust_Mt-24">その他の楽天回線対応製品の情報はこちら</h3>
+            <a href="<%= sitepath %>product/byod/?l-id=product_device-upgrade_product_byod" class="c-Btn_Regular u-Adjust_Mt-16"><span>ご利用製品の対応状況を確認する</span></a>
+          </div>
+        </div>
+      </div>
+      <%# ▲ SIMタイプの確認方法 %>
+
+      <h3 class="u-Adjust_Mt-32 u-Adjust_Align-center c-Heading_Lv4">SIMタイプを選択してください</h3>
+
+      <div class="u-Adjust_Mt-24 js-tab-btn">
+        <div class="<%= namespace %>-Tab_List">
+          <button class="<%= namespace %>-Tab_List-item js-scroll <%= namespace %>-Tab_Item" role="tab-btn" aria-controls="tab-content01" aria-selected="true">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-ttl-01.png" alt="eSIM→eSIM" width="224" height="31" loading="lazy">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-btn-01.png" alt="" width="142" height="75" loading="lazy">
+          </button>
+          <button class="<%= namespace %>-Tab_List-item js-scroll <%= namespace %>-Tab_Item-sim" role="tab-btn" aria-controls="tab-content02" aria-selected="false">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-ttl-02.png" alt="SIMカード→eSIM" width="224" height="31" loading="lazy">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-btn-02.png" alt="" width="132" height="76" loading="lazy">
+          </button>
+          <button class="<%= namespace %>-Tab_List-item js-scroll <%= namespace %>-Tab_Item-simcard" role="tab-btn" aria-controls="tab-content03" aria-selected="false">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-ttl-03.png" alt="SIMカード→SIMカード" width="224" height="31" loading="lazy">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-btn-03.png" alt="" width="124" height="70" loading="lazy">
+          </button>
+          <button class="<%= namespace %>-Tab_List-item js-scroll <%= namespace %>-Tab_Item-esim" role="tab-btn" aria-controls="tab-content04" aria-selected="false">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-ttl-04.png" alt="eSIM→SIMカード" width="224" height="31" loading="lazy">
+            <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/icon-tab-btn-04.png" alt="" width="132" height="76" loading="lazy">
+          </button>
+        </div>
+        <div class="u-Adjust_Mt-40">
+          <%# ▼ eSIM→eSIM %>
+          <div id="tab-content01" class="<%= namespace %>-Content <%= namespace %>-Tab_Content" role="tab-content" aria-hidden="false">
+
+            <h2 class="u-Adjust_Align-center <%= namespace %>-Tab_Content-title">
+              <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/tab-content-ttl-01.png" alt="eSIM→eSIM" width="137" height="34">
+            </h2>
+            <p class="u-Adjust_Mt-16">eSIMをご利用中で新しい製品でもeSIMを利用する場合、「SIM再発行」、「開通手続き」が必要です。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※iPhoneのeSIM クイック転送をご利用の方はSIMの再発行が不要になる場合があります。詳しくは<a href="<%= sitepath %>guide/iphone/setting/esim-upgrade/?l-id=product_device-upgrade_guide_iphone_setting_esim-upgrade" class="c-Link_Txt">こちら</a>をご確認ください。
+            </p>
+            <h3 class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-24">
+              <span class="c-Txt_Emp-02 c-Txt_Normal">STEP 1</span><br>
+              <span class="u-Adjust_Mt-8">SIMの再発行</span>
+            </h3>
+
+            <div class="c-Tab js-Tab u-Adjust_Mt-16">
+              <ul class="c-Tab_Items" role="tablist">
+                <li class="c-Tab_Item" id="tab-menu-sim1-01" role="tab" aria-selected="true" aria-controls="tab-content-sim1-01">アプリの場合</li>
+                <li class="c-Tab_Item" id="tab-menu-sim2-01" role="tab" aria-selected="false" aria-controls="tab-content-sim2-01">Webの場合</li>
+              </ul>
+              <div class="c-Tab_Panel" id="tab-content-sim1-01" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-sim1-01">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Normal">my 楽天モバイルをダウンロードする</h3>
+                    <div class="c-Box_App u-Adjust_Mt-16">
+                      <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/my-rakuten-mobile-icon.png?221006" alt="my 楽天モバイル"></div>
+                      <div class="c-Box_App-txt">
+                        <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                        <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Flow_App">
+                          <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/google-play-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="Google Playで手に入れよう"></a></li>
+                          <li><a href="https://apps.apple.com/app/id1473535769"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/appstore-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="App Storeからダウンロード"></a></li>
+                          <li class="c-Txt_Cap <%= namespace %>-Flow_App-caution">iPhoneのみ対応<br>※iPad、iPod touchには対応していません</li>
+                        </ul>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/?l-id=product_device-upgrade_guide_my-rakuten-mobile" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行を申し込む</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「契約プラン」を選択し、「各種手続き」内の「SIM再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-1_20240517.png" alt="">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-2.png?221006" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込むSIMタイプを選ぶ</h3>
+                    <p class="u-Adjust_Mt-16">「SIM再発行」から、SIM再発行の理由と申し込むSIMタイプを選択し「再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-3-240510.png" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">ワンタイムパスワードを入力し、「認証する」をタップする</h3>
+                    <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                      ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+                    </p>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap">
+                      ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+                    </p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-5-240521.png" width="300" height="535" loading="lazy" alt="ワンタイムパスワードを入力し、「認証する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込み内容を確認し、「確定する」をタップする</h3>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-4-app_20240517.png" alt="申し込み内容を確認し、「確定する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行お申し込み完了</h3>
+                    <p class="u-Adjust_Mt-16">ご登録されているメールアドレスに確認メールが届きますので、ご確認いただき、開通手続きにお進みください。</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="c-Tab_Panel" id="tab-content-sim2-01" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-sim2-01">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Normal">my 楽天モバイルにアクセスする</h3>
+                    <a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/?l-id=network_header_ecare_product_device-upgrade_my-rakuten" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行を申し込む</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「契約プラン」を選択し、「各種手続き」内の「SIM再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-1_20240517-sp.png" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-2-sp.png?221006" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込むSIMタイプを選ぶ</h3>
+                    <p class="u-Adjust_Mt-16">「SIM再発行」から、SIM再発行の理由と申し込むSIMタイプを選択し「再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-3-240510.png" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">ワンタイムパスワードを入力し、「認証する」をタップする</h3>
+                    <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                      ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+                    </p>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap">
+                      ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+                    </p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-5-240521.png" width="300" height="535" loading="lazy" alt="ワンタイムパスワードを入力し、「認証する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込み内容を確認し、「確定する」をタップする</h3>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-4-app_20240517-sp.png" alt="申し込み内容を確認し、「確定する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行お申し込み完了</h3>
+                    <p class="u-Adjust_Mt-16">
+                      ご登録されているメールアドレスに確認メールが届きますので、ご確認いただき、開通手続きにお進みください。
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-32">
+              <span class="c-Txt_Emp-02 c-Txt_Normal">STEP 2</span><br>
+              <span class="u-Adjust_Mt-8">開通手続き</span>
+            </h3>
+            <div class="c-Tab u-Adjust_Mt-16">
+              <ul class="c-Flow">
+                <li>
+                  <h3 class="c-Txt_Normal">開通手続きを開始する</h3>
+                  <p class="u-Adjust_Mt-16">my 楽天モバイルアプリを起動後、「お申し込み履歴を見る」を選択し、表示された画面で「開通手続きへ進む」を選択してください。</p>
+                  <p class="u-adjust_Mt-8 c-Txt_Cap u-Adjust_Mt-8">※eSIM対応製品でmy 楽天モバイルアプリでの開通ができない場合は<a href="<%= sitepath %>faq/detail/00002024/" class="c-Link_Txt">こちら</a>をご確認ください。</p>
+                  <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                    <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                      <img class="<%= namespace %>-Layout_Only-pc" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-1_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                      <img class="<%= namespace %>-Layout_Only-sp" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-1_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                      <img class="<%= namespace %>-Layout_Only-pc" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-2_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                      <img class="<%= namespace %>-Layout_Only-sp" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-2_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <h3 class="c-Txt_Normal">ネットワーク接続を行う</h3>
+                  <p class="u-Adjust_Mt-16">「my 楽天モバイルネットワークに接続します」と表示されますので、「接続」を選択します。処理に少し時間がかかります。画面が切り替わるまでそのままでお待ちください。</p>
+                  <p class="u-Adjust_Mt-8">「開通手続きが完了しました」と表示されます。</p>
+                </li>
+                <li>
+                  <h3 class="c-Txt_Normal">機種変更完了</h3>
+                  <p class="u-Adjust_Mt-16">回線の設定が「開通済み」と表示され、しばらくお待ちいただくと、インターネットがご利用いただけます。<br>うまく開通しない場合は、WiFiをOFFにする、機内モードのON/OFF切り替え、再起動などをお試しください。</p>
+                  <p class="u-Adjust_Mt-16">引き続き、楽天モバイルをご利用ください。</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <%# ▲ eSIM→eSIM %>
+          <%# ▼ SIMカード→eSIM %>
+          <div id="tab-content02" class="<%= namespace %>-Content <%= namespace %>-Tab_Content" role="tab-content" aria-hidden="true">
+            <h2 class="u-Adjust_Align-center <%= namespace %>-Tab_Content-title-sim">
+              <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/tab-content-ttl-02.png" alt="SIMカード→eSIM" width="191" height="34">
+            </h2>
+            <p class="u-Adjust_Mt-16">SIMカードをご利用中で、新しい製品でeSIMを利用する場合、「SIM再発行」、「開通手続き」が必要です。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※iPhoneのeSIM クイック転送をご利用の方はSIMの再発行が不要になる場合があります。詳しくは<a href="<%= sitepath %>guide/iphone/setting/esim-upgrade/?l-id=product_device-upgrade_guide_iphone_setting_esim-upgrade" class="c-Link_Txt">こちら</a>をご確認ください。
+            </p>
+            <h3 class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-24">
+              <span class="c-Txt_Emp-02 c-Txt_Normal">STEP 1</span><br>
+              <span class="u-Adjust_Mt-8">SIMの再発行</span>
+            </h3>
+
+            <div class="c-Tab js-Tab u-Adjust_Mt-16">
+              <ul class="c-Tab_Items" role="tablist">
+                <li class="c-Tab_Item" id="tab-menu-sim1-02" role="tab" aria-selected="true" aria-controls="tab-content-sim1-02">アプリの場合</li>
+                <li class="c-Tab_Item" id="tab-menu-sim2-02" role="tab" aria-selected="false" aria-controls="tab-content-sim2-02">Webの場合</li>
+              </ul>
+              <div class="c-Tab_Panel" id="tab-content-sim1-02" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-sim1-02">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Normal">my 楽天モバイルをダウンロードする</h3>
+                    <div class="c-Box_App u-Adjust_Mt-16">
+                      <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/my-rakuten-mobile-icon.png?221006" alt="my 楽天モバイル"></div>
+                      <div class="c-Box_App-txt">
+                        <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                        <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Flow_App">
+                          <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/google-play-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="Google Playで手に入れよう"></a></li>
+                          <li><a href="https://apps.apple.com/app/id1473535769"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/appstore-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="App Storeからダウンロード"></a></li>
+                          <li class="c-Txt_Cap <%= namespace %>-Flow_App-caution">iPhoneのみ対応<br>※iPad、iPod touchには対応していません</li>
+                        </ul>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/?l-id=product_device-upgrade_guide_my-rakuten-mobile" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行を申し込む</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「契約プラン」を選択し、「各種手続き」内の「SIM再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-1_20240517.png" alt="">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-2.png?221006" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込むSIMタイプを選ぶ</h3>
+                    <p class="u-Adjust_Mt-16">「SIM再発行」から、SIM再発行の理由と申し込むSIMタイプを選択し「再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-3-240510.png" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">ワンタイムパスワードを入力し、「認証する」をタップする</h3>
+                    <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                      ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+                    </p>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap">
+                      ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+                    </p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-5-240521.png" width="300" height="535" loading="lazy" alt="ワンタイムパスワードを入力し、「認証する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込み内容を確認し、「確定する」をタップする</h3>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-4-app_20240517.png" alt="申し込み内容を確認し、「確定する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行お申し込み完了</h3>
+                    <p class="u-Adjust_Mt-16">ご登録されているメールアドレスに確認メールが届きますので、ご確認いただき、開通手続きにお進みください。</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="c-Tab_Panel" id="tab-content-sim2-02" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-sim2-02">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Normal">my 楽天モバイルにアクセスする</h3>
+                    <a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/?l-id=network_header_ecare_product_device-upgrade_my-rakuten" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行を申し込む</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「契約プラン」を選択し、「各種手続き」内の「SIM再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-1_20240517-sp.png" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-2-sp.png?221006" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込むSIMタイプを選ぶ</h3>
+                    <p class="u-Adjust_Mt-16">「SIM再発行」から、SIM再発行の理由と申し込むSIMタイプを選択し「再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-3-240510.png" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">ワンタイムパスワードを入力し、「認証する」をタップする</h3>
+                    <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                      ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+                    </p>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap">
+                      ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+                    </p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-5-240521.png" width="300" height="535" loading="lazy" alt="ワンタイムパスワードを入力し、「認証する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込み内容を確認し、「確定する」をタップする</h3>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-4-app_20240517-sp.png" alt="申し込み内容を確認し、「確定する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行お申し込み完了</h3>
+                    <p class="u-Adjust_Mt-16">
+                      ご登録されているメールアドレスに確認メールが届きますので、ご確認いただき、開通手続きにお進みください。
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+
+            <h3 class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-32">
+              <span class="c-Txt_Emp-02 c-Txt_Normal">STEP 2</span><br>
+              <span class="u-Adjust_Mt-8">開通手続き</span>
+            </h3>
+            <div class="u-Adjust_Mt-16">
+              <ul class="c-Flow">
+                <li>
+                  <h3 class="c-Txt_Normal">開通手続きを開始する</h3>
+                  <p class="u-Adjust_Mt-16">my 楽天モバイルアプリを起動後、「お申し込み履歴を見る」を選択し、表示された画面で「開通手続きへ進む」を選択してください。</p>
+                  <p class="u-adjust_Mt-8 c-Txt_Cap u-Adjust_Mt-8">※eSIM対応製品でmy 楽天モバイルアプリでの開通ができない場合は<a href="<%= sitepath %>faq/detail/00002024/" class="c-Link_Txt">こちら</a>をご確認ください。</p>
+                  <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                    <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                      <img class="<%= namespace %>-Layout_Only-pc" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-1_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                      <img class="<%= namespace %>-Layout_Only-sp" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-1_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                      <img class="<%= namespace %>-Layout_Only-pc" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-2_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                      <img class="<%= namespace %>-Layout_Only-sp" src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-esim-6-2_20240517-sp.png" alt="my 楽天モバイルにログイン後、「申込番号」を選択し、表示された画面の「楽天回線の回線手続きを行う」を選択してください。">
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <h3 class="c-Txt_Normal">ネットワーク接続を行う</h3>
+                  <p class="u-Adjust_Mt-16">「my 楽天モバイルネットワークに接続します」と表示されますので、「接続」を選択します。処理に少し時間がかかります。画面が切り替わるまでそのままでお待ちください。</p>
+                  <p class="u-Adjust_Mt-8">「開通手続きが完了しました」と表示されます。</p>
+                </li>
+                <li>
+                  <h3 class="c-Txt_Normal">機種変更完了</h3>
+                  <p class="u-Adjust_Mt-16">回線の設定が「開通済み」と表示され、しばらくお待ちいただくと、インターネットがご利用いただけます。<br>うまく開通しない場合は、WiFiをOFFにする、機内モードのON/OFF切り替え、再起動などをお試しください。</p>
+                  <p class="u-Adjust_Mt-16">引き続き、楽天モバイルをご利用ください。</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <%# ▲ SIMカード→eSIM %>
+          <%# ▼ SIMカード→SIMカード %>
+          <div id="tab-content03" class="<%= namespace %>-Content <%= namespace %>-Tab_Content" role="tab-content" aria-hidden="true">
+            <h2 class="u-Adjust_Align-center <%= namespace %>-Tab_Content-title-simcard">
+              <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/tab-content-ttl-03.png" alt="SIMカード→SIMカード" width="245" height="34">
+            </h2>
+            <p class="u-Adjust_Mt-16">SIMカードをご利用中で、新しい製品でもSIMカードを利用する場合、「開通手続き」が必要です。</p>
+            <h3 class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-24">
+              <span class="c-Txt_Emp-02 c-Txt_Normal">STEP 1</span><br>
+              <span class="u-Adjust_Mt-8">開通手続き</span>
+            </h3>
+            <ul class="c-Flow">
+              <li>
+                <h3 class="c-Txt_Normal">機種変更完了</h3>
+                <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-16">
+                  <div class="l-Media_Image <%= namespace %>-Flow_List-image-left">
+                    <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-7-1_20240517.png" alt="新しいスマホにSIMをセットしてください。">
+                  </div>
+                  <div>
+                    <p>新しいスマホにSIMをセットしてください。</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※詳しくは製品の初期設定をご確認ください</p>
+                    <a href="#initial-setting" class="c-Link_Txt-icon-front u-Adjust_Mt-16"><span class="c-Icon_Arrow-down-l"></span>製品の初期設定 </a>
+                    <p class="u-Adjust_Mt-16">引き続き、楽天モバイルをご利用ください。</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+          <%# ▲ SIMカード→SIMカード %>
+          <%# ▼ eSIM→SIMカード %>
+          <div id="tab-content04" class="<%= namespace %>-Content <%= namespace %>-Tab_Content" role="tab-content" aria-hidden="true">
+            <h2 class="u-Adjust_Align-center <%= namespace %>-Tab_Content-title-esim">
+              <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/tab-content-ttl-04.png" alt="eSIM→SIMカード" width="191" height="34">
+            </h2>
+            <div class="c-Accordion u-Adjust_Mt-16">
+              <button type="button" id="accordion-tab-content04" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-tab-content04"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Rakutenオリジナル（eSIM）からSIMカードへの機種変更方法について</button>
+              <div id="accordion-content-tab-content04" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-tab-content04" aria-hidden="true">
+                <p>楽天モバイルで購入済みのeSIM製品からSIMカード製品へ機種変更する場合の手順は、下記からご確認ください。</p>
+                <div class="u-Adjust_Mt-16">
+                  <p><a href="<%= sitepath %>product/smartphone/rakuten-hand-5g/support/upgrade/?l-id=product_device-upgrade_product_smartphone_rakuten-hand-5g_support_upgrade" class="c-Link_Txt-inline">Rakuten Hand 5Gから機種変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                  <p><a href="<%= sitepath %>product/smartphone/rakuten-big-s/support/upgrade/?l-id=product_device-upgrade_product_smartphone_rakuten-big-s_support_upgrade" class="c-Link_Txt-inline">Rakuten BIG sから機種変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                  <p><a href="<%= sitepath %>product/smartphone/rakuten-hand/support/upgrade/?l-id=product_device-upgrade_product_smartphone_rakuten-hand_support_upgrade" class="c-Link_Txt-inline">Rakuten Handから機種変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                  <p><a href="<%= sitepath %>product/smartphone/rakuten-mini/support/upgrade/?l-id=product_device-upgrade_product_smartphone_rakuten-mini_support_upgrade" class="c-Link_Txt-inline">Rakuten Miniから機種変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                  <p><a href="<%= sitepath %>product/smartphone/rakuten-big/support/upgrade/?l-id=product_device-upgrade_product_smartphone_rakuten-big_support_upgrade" class="c-Link_Txt-inline">Rakuten BIGから機種変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                </div>
+              </div>
+            </div>
+            <p class="u-Adjust_Mt-16">eSIMをご利用中で、新しい製品でSIMカードを利用する場合、「SIM再発行」、「開通手続き」が必要です。</p>
+            <h3 class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-24">
+              <span class="c-Txt_Emp-02 c-Txt_Normal">STEP 1</span><br>
+              <span class="u-Adjust_Mt-8">SIMの再発行</span>
+            </h3>
+            <div class="c-Tab js-Tab u-Adjust_Mt-16">
+              <ul class="c-Tab_Items" role="tablist">
+                <li class="c-Tab_Item" id="tab-menu-sim1-04" role="tab" aria-selected="true" aria-controls="tab-content-sim1-04">アプリの場合</li>
+                <li class="c-Tab_Item" id="tab-menu-sim2-04" role="tab" aria-selected="false" aria-controls="tab-content-sim2-04">Webの場合</li>
+              </ul>
+              <div class="c-Tab_Panel" id="tab-content-sim1-04" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-sim1-04">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Normal">my 楽天モバイルをダウンロードする</h3>
+                    <div class="c-Box_App u-Adjust_Mt-16">
+                      <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/my-rakuten-mobile-icon.png?221006" alt="my 楽天モバイル"></div>
+                      <div class="c-Box_App-txt">
+                        <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                        <ul class="c-Box_App-link u-Adjust_Mt-16 <%= namespace %>-Flow_App">
+                          <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/google-play-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="Google Playで手に入れよう"></a></li>
+                          <li><a href="https://apps.apple.com/app/id1473535769"><img src="<%= sitepath %>assets/img/guide/product/device-upgrade/appstore-badge.png?220615" class="<%= namespace %>-Flow_App-link" alt="App Storeからダウンロード"></a></li>
+                          <li class="c-Txt_Cap <%= namespace %>-Flow_App-caution">iPhoneのみ対応<br>※iPad、iPod touchには対応していません</li>
+                        </ul>
+                        <a href="<%= sitepath %>guide/my-rakuten-mobile/?l-id=product_device-upgrade_guide_my-rakuten-mobile" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行を申し込む</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「契約プラン」を選択し、「各種手続き」内の「SIM再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-1_20240517.png" alt="">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-2.png?221006" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込むSIMタイプを選ぶ</h3>
+                    <p class="u-Adjust_Mt-16">「SIM再発行」から、SIM再発行の理由と申し込むSIMタイプを選択し「再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-3-240510.png" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">ワンタイムパスワードを入力し、「認証する」をタップする</h3>
+                    <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                      ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+                    </p>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap">
+                      ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+                    </p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-5-240521.png" width="300" height="535" loading="lazy" alt="ワンタイムパスワードを入力し、「認証する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込み内容を確認し、「確定する」をタップする</h3>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-4-240510.png" alt="申し込み内容を確認し、「確定する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行お申し込み完了</h3>
+                    <p class="u-Adjust_Mt-16">ご登録されているメールアドレスに確認メールが届きますので、ご確認ください。</p>
+                    <p class="u-Color_Primary">ご登録の住所にSIMカードが届くまでお待ち下さい。</p>
+                    <p>以下の手順通り、機種変更完了までお進みください。</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="c-Tab_Panel" id="tab-content-sim2-04" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-sim2-04">
+                <ul class="c-Flow u-Adjust_Mt-24">
+                  <li>
+                    <h3 class="c-Txt_Normal">楽天モバイルにアクセスする</h3>
+                    <a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/?l-id=network_header_ecare_product_device-upgrade_my-rakuten" class="c-Btn_Regular u-Adjust_Mt-16 <%= namespace %>-Flow_Link"><span>my 楽天モバイルの詳細を見る</span></a>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行を申し込む</h3>
+                    <p class="u-Adjust_Mt-16">my 楽天モバイルの右上のメニュー「契約プラン」を選択し、「各種手続き」内の「SIM再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                      <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-1_20240517-sp.png" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-2-sp.png?221006" alt="my 楽天モバイルの右上のメニュー「申し込み」から「製品」を選択します。">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込むSIMタイプを選ぶ</h3>
+                    <p class="u-Adjust_Mt-16">「SIM再発行」から、SIM再発行の理由と申し込むSIMタイプを選択し「再発行を申請する」をタップします。</p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-3-240510.png" alt="">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">ワンタイムパスワードを入力し、「認証する」をタップする</h3>
+                    <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                      ※ワンタイムパスワードは、ご登録されているメールアドレスまたは楽天モバイル回線の携帯電話番号（SMS）に送信されます。
+                    </p>
+                    <p class="u-Adjust_Mt-8 c-Txt_Cap">
+                      ※ワンタイムパスワードに関してお困りの場合は<a href="<%= sitepath %>faq/detail/00001914/" class="c-Link_Txt">こちら</a>をご参照ください。
+                    </p>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-5-240521.png" width="300" height="535" loading="lazy" alt="ワンタイムパスワードを入力し、「認証する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">申し込み内容を確認し、「確定する」をタップする</h3>
+                    <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-one-col">
+                      <div class="<%= namespace %>-Flow_List-image-one-col-inner">
+                        <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-Sim-4-240510.png" alt="申し込み内容を確認し、「確定する」をタップする">
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <h3 class="c-Txt_Normal">SIM再発行お申し込み完了</h3>
+                    <p class="u-Adjust_Mt-16">
+                      ご登録されているメールアドレスに確認メールが届きますので、ご確認いただき、開通手続きにお進みください。
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 id="tab-content04-anc" class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-32">
+              <span class="c-Txt_Emp-02 c-Txt_Normal">STEP 2</span><br>
+              <span class="u-Adjust_Mt-8">開通手続き</span>
+            </h3>
+            <ul class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Txt_Normal">開通手続きを開始する</h3>
+                <p class="u-Adjust_Mt-16">お使いのスマホ、PCから、my 楽天モバイルにログイン後、「申し込み履歴」を選択します。表示された画面で「SIMの初期設定をする」を選択してください。</p>
+                <div class="<%= namespace %>-Flow_List-image <%= namespace %>-Flow_List-image-two-col">
+                  <div class="<%= namespace %>-Flow_List-image-two-col-inner">
+                    <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-6-1_20240517.png" alt="お使いのスマホ、PCから、my 楽天モバイルにログイン後、「申し込み履歴」を選択します。表示された画面で「SIMの初期設定をする」を選択してください。">
+                    <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-6-2_20240517.png" alt="お使いのスマホ、PCから、my 楽天モバイルにログイン後、「申し込み履歴」を選択します。表示された画面で「SIMの初期設定をする」を選択してください。">
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Txt_Normal">機種変更完了</h3>
+                <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-16">
+                  <div class="l-Media_Image <%= namespace %>-Flow_List-image-left">
+                    <img src="<%= sitepath %>assets/img/guide/product/device-upgrade/device-upgrade-flow-7-1_20240517.png" alt="新しいスマホにSIMをセットしてください。">
+                  </div>
+                  <div>
+                    <p>新しいスマホにSIMをセットしてください。</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※詳しくは製品の初期設定をご確認ください</p>
+                    <a href="#initial-setting" class="c-Link_Txt-icon-front u-Adjust_Mt-16"><span class="c-Icon_Arrow-down-l"></span>製品の初期設定 </a>
+                    <p class="u-Adjust_Mt-16">引き続き、楽天モバイルをご利用ください。</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <%# ▲ eSIM→SIMカード %>
+        </div>
+      </div>
+
+      <div class="<%= namespace %>-Content u-Adjust_Mt-40" id="initial-setting">
+        <div>
+          <h2 class="-Heading_Lv2 ">製品の初期設定方法</h2>
+          <p class="u-Adjust_Mt-16">製品によって、設定方法が異なります。以下よりご確認ください。</p>
+          <a href="<%= sitepath %>guide/setting/?l-id=product_device-upgrade_guide_setting" class="c-Btn_Regular u-Adjust_Mt-16">製品の初期設定</a>
+        </div>
+      </div>
+      <%- include('/include/guide/_faq') %>
+    </div>
+
+
+    <%- include('/include/guide/_review') %>
+    <%- include('/include/guide/_inquiry') %>
+
+    <footer class="g-Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/bnr/_bnr.ejs') %>
+      </div>
+
+      <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span>
+          </li>
+          <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+  <%- include('/include/guide/product/_device-upgrade-js') %>
+  <%- include('/include/_append-body') %>
+</body>
+
+</html>

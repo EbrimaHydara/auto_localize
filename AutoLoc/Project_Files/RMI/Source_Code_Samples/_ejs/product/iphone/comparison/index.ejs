@@ -1,0 +1,94 @@
+<% const pagetitle = "iPhoneの比較（スペック・性能・サイズ比較）" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/iphone/", label:"iPhone"}] -%>
+<% const l_id = 'product_iphone_comparison' %>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '最新のiPhone比較ができます。楽天モバイルで取り扱い中のiPhone（アイフォン）、 最新機種 iPhone 15 Pro Max、iPhone 15 Pro、iPhone 15 Plus、iPhone 15に加え、既存モデル（iPhone 14、iPhone 14 Pro、 iPhone 14 Pro Max、 iPhone 14 Plus、iPhone 13、iPhone 13 mini、iPhone SE（第3世代））など、Apple製品のスペック・性能比較、特徴比較、サイズ比較、カメラの仕様比較をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/product-iphone.css?20240426">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/iphone-top.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+  <%- include('/include/_header') %>
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="l-System_Container">
+    <p class="c-Txt_Cap u-Adjust_Align-right u-Adjust_Mt-8">※表記の金額はすべて税込です。</p>
+    <h1 class="c-Heading_Lv1 u-Adjust_Mt-8">iPhoneのモデルを選んで比較する</h1>
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mt-24 u-Adjust_Mb-64">
+    <%- include('/include/product/iphone/comparison/_iphone') %>
+  </div>
+
+  <%- include('/include/product/iphone/_iphone-list', { l_id: 'product_iphone_comparison', comparison:false }) %>
+  <%- include('/include/product/iphone/_recommend-v2.ejs', { l_id: 'product_iphone_comparison', pbOff: true }) %>
+  <%- include('/include/product/iphone/_chat') %>
+
+
+  <footer class="g-Footer">
+
+    <div class="g-Footer_Aside">
+
+      <%- include('/include/footer/related/_related-product-top-v2.ejs') %>
+
+      <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-product.ejs') %>
+
+    </div>
+    <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+    <%- include('/include/_footer') %>
+
+  </footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/library/iphone-comparison.js?220920"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

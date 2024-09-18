@@ -1,0 +1,189 @@
+<% const pagetitle = "楽天モバイルショップ　コーヒー試飲会　感想フォーム" -%>
+<% const directories = [{path:"shop/", label:"ショップ（店舗）"}] -%>
+<%-
+include('/_header', {
+  pagetitle,
+  directories,
+  description: '',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header-simple') %>
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1 u-Adjust_Mt-32"><%= pagetitle %></h1>
+      <form action="https://form.rakuten.co.jp/ans/apply/40034" name="enenForm" method="POST" onsubmit="return checkForm()" class="u-Adjust_Mt-24">
+        <dl class="c-Form_List">
+          <div>
+            <dt>店舗コードをご入力ください<span class="c-Form_List-required">【必須】</span></dt>
+            <dd>
+              <ul class="c-Txt_Cap">
+                <li>※店舗スタッフにご確認ください</li>
+                <li>※半角数字4文字以内で入力してください</li>
+              </ul>
+              <input class="c-Form_Input u-Adjust_Mt-16" type="text" name="answers[40034_272618]" size="20" maxlength="4" aria-required="true" autocomplete="off">
+            </dd>
+          </div>
+          <div>
+            <dt>楽天モバイルショップで試飲会を実施していることを知っていましたか？<span class="c-Form_List-required">【必須】</span></dt>
+            <dd>
+              <div>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="answers[40034_272619]" id="a756331" value="756331" autocomplete="off">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radio-label">はい</span>
+                </label>
+              </div>
+              <div class="u-Adjust_Mt-8">
+                <label class="c-Form_Radio">
+                  <input type="radio" name="answers[40034_272619]" id="a756332" value="756332" autocomplete="off">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radio-label">いいえ</span>
+                </label>
+              </div>
+            </dd>
+          </div>
+          <div>
+            <dt>今回の試飲会をきっかけに、試飲したコーヒーを購入したいと思いましたか？<span class="c-Form_List-required">【必須】</span></dt>
+            <dd>
+              <div>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="answers[40034_272620]" id="a756333" value="756333" autocomplete="off">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radio-label">はい</span>
+                </label>
+              </div>
+              <div class="u-Adjust_Mt-8">
+                <label class="c-Form_Radio">
+                  <input type="radio" name="answers[40034_272620]" id="a756334" value="756334" autocomplete="off">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radio-label">いいえ</span>
+                </label>
+              </div>
+            </dd>
+          </div>
+          <div>
+            <dt>そのほかお気づきの点があれば教えてください</dt>
+            <dd>
+              <p class="c-Txt_Cap u-Adjust_Mb-8">※256文字以内で入力してください</p>
+              <textarea class="c-Form_Input" type="text" name="answers[40034_272621]" maxlength="256" autocomplete="off"></textarea>
+            </dd>
+          </div>
+        </dl>
+        <input type="hidden" name="c" value="楽天">
+        <input type="hidden" name="l" value="ja">
+        <div class="u-Adjust_Mt-24 u-Adjust_Mb-32 u-Adjust_Align-center">
+          <input type="submit" class="c-Btn_Primary-large" value="送信する">
+        </div>
+      </form>
+    </div>
+    <footer class="g-Footer">
+      <%- include('/include/_footer-simple') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+
+  <script>
+    function doTrim(el) {
+      el.value = el.value.replace(/^\s+|\s+$/g, '');
+    }
+
+    function isInput(el) {
+      return el.value.length != 0;
+    }
+
+    function isChecked(el) {
+      if (el.length) {
+        for (var i = 0; i < el.length; i++) {
+          if (el[i].checked) {
+            return true;
+          }
+        }
+      } else {
+        if (el.checked) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function isNum(el) {
+      return (el.value == "" || /^[0-9]+$/.test(el.value));
+    }
+
+    function isLength(el, len) {
+      if ("え".length == 2) {
+        len *= 2;
+      }
+      return el.value.length <= len;
+    }
+
+    function zen2han(el) {
+      el.value = el.value.replace(/[０]/g, "0");
+      el.value = el.value.replace(/[１]/g, "1");
+      el.value = el.value.replace(/[２]/g, "2");
+      el.value = el.value.replace(/[３]/g, "3");
+      el.value = el.value.replace(/[４]/g, "4");
+      el.value = el.value.replace(/[５]/g, "5");
+      el.value = el.value.replace(/[６]/g, "6");
+      el.value = el.value.replace(/[７]/g, "7");
+      el.value = el.value.replace(/[８]/g, "8");
+      el.value = el.value.replace(/[９]/g, "9");
+    }
+
+    function checkForm() {
+      var el;
+      var obj = document.enenForm;
+
+      el = obj.elements['answers[40034_272618]'];
+
+      doTrim(el);
+      zen2han(el);
+      if (!isInput(el)) {
+        alert("「店舗コードをご入力ください　※店舗スタッフにご確認ください」を入力してください。");
+        return false;
+      }
+
+      if (!isNum(el)) {
+        alert("「店舗コードをご入力ください　※店舗スタッフにご確認ください」は数値で入力してください。");
+        return false;
+      }
+
+      if (!isLength(el, 4)) {
+        alert("「店舗コードをご入力ください　※店舗スタッフにご確認ください」は4文字以内で入力してください。");
+        return false;
+      }
+
+      el = obj.elements['answers[40034_272619]'];
+      if (!isChecked(el)) {
+        alert("「楽天モバイルショップで試飲会を実施していることを知っていましたか？」を選択してください。");
+        return false;
+      }
+
+      el = obj.elements['answers[40034_272620]'];
+      if (!isChecked(el)) {
+        alert("「今回の試飲会をきっかけに、試飲したコーヒーを購入したいと思いましたか？」を選択してください。");
+        return false;
+      }
+
+      el = obj.elements['answers[40034_272621]'];
+      doTrim(el);
+      zen2han(el);
+      if (!isLength(el, 256)) {
+        alert("「そのほかお気づきの点があれば教えてください」は256文字以内で入力してください。");
+        return false;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

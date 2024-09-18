@@ -1,0 +1,207 @@
+<% const pagetitle = "楽天モバイルIDの確認方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/contract-detail/confirmation/", label:"契約内容の確認・変更"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルIDの確認方法をご案内します。my 楽天モバイル（アプリ・Web）からかんたんに確認することが可能です',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/payment/change/change.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-32">楽天モバイルIDは、my 楽天モバイルでご確認いただけます。</p>
+  </div>
+
+  <div class="l-System_Container">
+
+    <div class="c-Accordion u-Adjust_Mt-24">
+      <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルIDと楽天ID（ユーザID）の違いについて</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+        <h4 class="c-Heading_Lv4">楽天モバイルID とは</h4>
+        <p class="u-Adjust_Mt-16">楽天モバイルIDは、楽天モバイルご契約者ごとに登録されているIDのことを指します。「<a href="<%= sitepath %>inquiry/input.html">電波改善・調査専用フォーム</a>」や「<a href="<%= sitepath %>service/replacement-warranty-plus/">スマホ交換保証プラス</a>」等をご利用の際に必要となります。</p>
+        <p class="u-Adjust_Mt-16">楽天のサービス共通の楽天ID（ユーザID）とは異なりますのでご注意ください。</p>
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-16">楽天ID（ユーザID）とは</h4>
+        <p class="u-Adjust_Mt-16">楽天ID（ユーザID）は、楽天会員登録をされた際にご入力いただいたIDのことを指します。楽天グループの各種サービスのご登録・ログイン時に必要となります。</p>
+        <p class="u-Adjust_Mt-16">ユーザIDは、「メールアドレス」または「メールアドレス以外」を選択いただいたうえでご登録されております。</p>
+        <ul class="c-Txt_Cap u-Adjust_Mt-16">
+          <li>※ユーザIDが不明な場合は、「<a href="<%= sitepath %>faq/detail/00001207/#sec1">ユーザID、パスワードを忘れてしまった場合</a>」をご確認ください。</li>
+        </ul>
+        <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/guide/rakuten-mobile-id/app_step0.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="c-Tab js-Tab">
+      <ul class="c-Tab_Items-bg u-Adjust_Mt-16" role="tablist">
+        <li class="c-Tab_Item u-Adjust_Align-center" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webで確認する</li>
+        <li class="c-Tab_Item u-Adjust_Align-center" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリで確認する</li>
+      </ul>
+
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ol class="c-Flow u-Adjust_Mt-40">
+          <li>
+            <h3 class="c-Heading_Lv3">1. my 楽天モバイル「契約情報」画面を開く</h3>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※「契約情報へ進む」をタップしてログインすると、手順２の画面が表示されます。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my
+                楽天モバイル]ログインできません</a>」をご確認ください。</p>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a href="https://portal.mobile.rakuten.co.jp/dashboard#contracts" target="_blank" class="c-Btn_Secondly-large"
+                data-ratId="guide_ecare_contracts" data-ratEvent="click" data-ratParam="all">契約情報へ進む</a>
+            </p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 「ご契約内容のダウンロード」をタップする</h3>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakuten-mobile-id/web_step2_20221220.png" alt="" class="c-Img_Capture"></p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「ご契約者様情報」内の「楽天モバイルID」を確認する</h3>
+            <p class="u-Adjust_Mt-24">「楽天モバイルID」に記載されている13桁の数字が楽天モバイルIDです。</p>
+            <h4 class="c-Heading_Lv4 u-Adjust_Mt-32">楽天モバイルIDをコピーして利用したい場合</h4>
+            <p class="u-Adjust_Mt-24">楽天モバイルIDの数字を長押しすることでコピーができます。<br>
+              コピーした楽天モバイルIDは、貼り付けたい位置（楽天モバイルIDの入力欄など）を長押しすることでペースト（貼り付け）ができます。
+            </p>
+            <ul class="c-Txt_Cap u-Adjust_Mt-16">
+              <li>※操作方法はご利用の製品によって異なります。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakuten-mobile-id/app_step4.png" class="c-Img_Capture" style="width: 600px;" alt=""></p>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-32">以上で完了です。</p>
+      </div>
+
+
+
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ol class="c-Flow u-Adjust_Mt-40">
+          <li>
+            <h3 class="c-Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+            <div class="c-Box_App u-Adjust_Mt-24">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-16">
+                  <li class="<%= nameSpace %>-App_Btn-store">
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 画面右上のメニュー（三本線）をタップし、「契約情報」をタップする</h3>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakuten-mobile-id/app_step2.png" alt="" class="c-Img_Capture"></p>
+            <p class="u-Adjust_Mt-32 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakuten-mobile-id/app_step2_2.png" alt="" class="c-Img_Capture"></p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「ご契約内容のダウンロード」をタップする</h3>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakuten-mobile-id/app_step3_20221220.png" class="c-Img_Capture" alt=""></p>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. 「ご契約者様情報」内の「楽天モバイルID」を確認する</h3>
+            <p class="u-Adjust_Mt-24">「楽天モバイルID」に記載されている13桁の数字が楽天モバイルIDです。</p>
+            <h4 class="c-Heading_Lv4 u-Adjust_Mt-32">楽天モバイルIDをコピーして利用したい場合</h4>
+            <p class="u-Adjust_Mt-24">楽天モバイルIDの数字を長押しすることでコピーができます。<br>
+              コピーした楽天モバイルIDは、貼り付けたい位置（楽天モバイルIDの入力欄など）を長押しすることでペースト（貼り付け）ができます。
+            </p>
+            <ul class="c-Txt_Cap u-Adjust_Mt-16">
+              <li>※操作方法はご利用の製品によって異なります。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakuten-mobile-id/app_step4.png" class="c-Img_Capture" style="width: 600px;" alt=""></p>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-32">以上で完了です。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

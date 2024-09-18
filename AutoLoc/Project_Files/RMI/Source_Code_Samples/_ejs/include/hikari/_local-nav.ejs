@@ -1,0 +1,29 @@
+<%_
+  let containerClass = ''
+  if (typeof noContainer === 'undefined') {
+    containerClass = 'l-System_Container'
+  }
+  if (typeof localNav !== 'undefined') {
+_%>
+<div class="<%= containerClass %>">
+  <div class="u-Adjust_Mt-48">
+    <nav aria-labelledby="local-navigation" class="c-hikari-Localnav">
+      <h2 id="local-navigation" class="c-hikari-Localnav_Title"><%- localNavTitle %></h2>
+      <ul class="c-hikari-Localnav_List">
+        <% for ( let i = 0; i < localNav.length; i++ ) { %>
+          <li>
+            <%_ if (localNav[i].current === true) { _%>
+            <a href="<%= localNav[i].url %>" aria-current="true" data-lid_parts="sibling">
+            <%_ } else { _%>
+            <a href="<%= localNav[i].url %>" data-lid_parts="sibling">
+            <%_ } _%>
+              <h3><%= localNav[i].title %></h3>
+              <p><%= localNav[i].text %></p>
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</div>
+<%_ } _%>

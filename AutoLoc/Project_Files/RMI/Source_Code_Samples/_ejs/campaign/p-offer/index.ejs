@@ -1,0 +1,503 @@
+<% const pagetitle = "【あなただけに特別なご案内】楽天モバイルお申し込みで1,000ポイントプレゼントキャンペーン" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "p-offer" -%>
+<% const information = {
+  campaignState:'start'
+}; %>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '【あなただけに特別なご案内】楽天モバイルお申し込みで1,000ポイントプレゼントキャンペーン',
+  keywords: '',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<% const finishSchedule = "2024年5月31日" -%>
+<% const hiddenItem = "false" -%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/<%= namespace %>/<%= namespace %>.css?20240424">
+<%_  if (information.campaignState !== 'finish') { _%>
+  <%- include('/inc/_saikyo-css') %>
+<%_ } _%>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/_entry-button/rex-overwrite_v2.css?20240424">
+<!-- ReX Campaign Button: stylesheet -->
+<link rel="stylesheet" href="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/css/main.css?20240424" />
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script defer="defer" src="https://r.r10s.jp/com/js/c/common/entry_button/1.1/entry_button-1.1.0.min.js"></script>
+<link rel="dns-prefetch" href="https://cdn.rex.contents.rakuten.co.jp">
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header',{applyHide:true}) %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List <%= namespace %>-Layout_Label-list">
+        <li class="c-Label_Normal">エントリー必要</li>
+        <li class="c-Label_Normal">Rakuten Link利用必要</li>
+        <li><span class="<%= namespace %>-Layout_Label-point">ポイント：付与日を含めて6カ月の期間限定ポイント</span></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Hero_Return">
+      <div class="l-System_Container <%= namespace %>-Hero_Container">
+        <div class="<%= namespace %>-Hero_Main">
+          <h1><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-heading-pc.png?240304" alt="5/31（金）23:59まで あなただけに特別なご案内！ 本ページからエントリー＆楽天モバイルにお申し込みで1,000円相当分ポイントプレゼント ※要エントリー ほかにもおトクなキャンペーン実施中！" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-heading-sp.png?240304" alt="5/31（金）23:59まで あなただけに特別なご案内！ 本ページからエントリー＆楽天モバイルにお申し込みで1,000円相当分ポイントプレゼント ※要エントリー ほかにもおトクなキャンペーン実施中！" class="<%= namespace %>-Utility_Img-sp"></h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Body">
+      <div class="l-System_Container">
+      <% if (information.campaignState == 'finish') { %>
+        <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= finishSchedule %>をもちまして終了いたしました。<br>
+          このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+      <% } %>
+        <ul class="c-Txt_Cap">
+          <li><span>※</span>付与日から6カ月間有効の期間限定ポイント。</li>
+          <li class="c-Txt_Emp-02"><span>※</span>本キャンペーンにはエントリーが必要です。お申し込み後のエントリーはポイント付与の対象外となります。</li>
+          <li class="c-Txt_Emp-02"><span>※</span>Rakuten Link利用等条件あり。詳細は<a href="#campaign-rule" class="js-scroll">キャンペーンルール</a>をご確認ください。</li>
+          <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です。</li>
+        </ul>
+      </div>
+
+    <% if (information.campaignState == 'finish') { %>
+    <% } else { %>
+      <!-- else -->
+      <div id="first_entry_button" class=" <%= namespace %>-Layout_Entry-Area u-Adjust_Mt-40">
+        <p class="c-Txt_Emp-01 u-Adjust_Align-center <%= namespace %>-Utility_Mt-unique">エントリー期間：2024年3月4日（月）09:00<br class="<%= namespace %>-Layout_Break-sp">～2024年5月31日（金）23:59</p>
+        <!-- ReX Campaign Entry Button: Mounting points -->
+        <!-- mounting point for button 1 --><div id="rex-ceb-01" class="campaign-Rexoverwrite"></div>
+        <div id="js-trigger"></div>
+        <div class="<%= namespace %>-Btn_Area l-System_Container u-Bg_White u-Adjust_Mt-32">
+          <div class="<%= namespace %>-Btn_Area-arrow u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-btn-area-arrow-01.png?240304" alt="">
+          </div>
+          <p class="c-Txt_Emp-01 u-Adjust_Align-center">エントリー済みの方は下記より<br class="<%= namespace %>-Layout_Break-sp">楽天モバイルにお申し込みください</p>
+          <div class="<%= namespace %>-Flow_Btn entry-Area_btn u-Adjust_Mt-24">
+            <a href="<%= sitepath %>guide/application/?l-id-r=campaign_<%= namespace %>_guide_application_01" class="c-Btn_Primary-large">新規／乗り換え（MNP）お申し込み</a>
+            <a href="<%= sitepath %>shop/?l-id=campaign_<%= namespace %>_shop_01" class="c-Btn_Secondly-large">お近くのショップを探す</a>
+          </div>
+          <div class="<%= namespace %>-Btn_Area-link <%= namespace %>-Txt_Left-sp u-Adjust_Mt-16 c-Link_Txt-inline">
+            <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_<%= namespace %>_ms_01&mno_migration=1">スーパーホーダイ・組み合わせプランからのプラン変更（移行）お申し込み</a><span class="c-Icon_Chevron-right"></span>
+          </div>
+          <ul class="<%= namespace %>-Table_Rule-Cap">
+            <li class="u-Adjust_Mt-24"><span>※</span>詳しい手順は「<a href="#campaign-flow">キャンペーンの流れ</a>」をご確認ください。
+            </li>
+            <li class="u-Adjust_Mt-0"><span>※</span>お申し込み後のエントリーは特典付与対象外となるため、必ずエントリー後にお申し込みください。</li>
+          </ul>
+        </div>
+      </div>
+    <% } %>
+
+      <div id="campaign-schedule" class="l-System_Container nav-Pad_Schedule">
+        <div class="c-Accordion ac-Schedule">
+          <button type="button" id="accordion-schedule" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-schedule"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーン期間</button>
+          <div id="accordion-content-schedule" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-schedule" aria-hidden="true">
+            <div class="<%= namespace %>-Layout_Table-period">
+              <dl>
+                <dt>エントリー期間</dt>
+                <dd>2024年3月4日（月）09:00 ～ 2024年5月31日（金）23:59</dd>
+              </dl>
+              <dl>
+                <dt>お申し込み期間</dt>
+                <dd>Web：2024年3月4日（月）09:00 ～ 2024年5月31日（金）23:59<br>
+                  店舗（楽天モバイルショップ）：2024年3月4日（月）開店 ～ 2024年5月31日（金）閉店</dd>
+              </dl>
+              <dl>
+                <dt>プラン利用開始期限</dt>
+                <dd>プランのお申し込みの翌月末日23:59まで</dd>
+              </dl>
+              <dl>
+                <dt>Rakuten Link利用開始期限</dt>
+                <dd>プランのお申し込みの翌月末日23:59まで</dd>
+              </dl>
+            </div>
+            <ul class="<%= namespace %>-Table_Rule-Cap">
+              <li class="u-Adjust_Mt-16"><span>※</span>2024年5月31日（金）23:59までにエントリーおよびお申し込みの完了をお願いします。 </li>
+            </ul>
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-24">
+          <a href="#campaign-rule" class="js-scroll c-Link_Txt-inline"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a>
+        </div>
+        <h2 class="c-Heading_Lv2 nav-Pad_Default u-Adjust_Align-center nav-Pad_Rule" id="campaign-flow">キャンペーンの流れ</h2>
+        <ul class="<%= namespace %>-Flow c-Flow u-Adjust_Mt-24">
+          <li>
+            <h4 class="c-Heading_Lv4 <%= namespace %>-Txt_Left-pc"><span class="c-Txt_Emp-02">STEP 1</span><br class="<%= namespace %>-Layout_Break-sp">このページからエントリー</h4>
+            <div class="l-Media_Grid u-Adjust_Mt-16">
+              <div class="l-Media_Image c-Flow_Image">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-01.png?240304" alt="">
+              </div>
+              <div class="u-Adjust_Mt-0">
+                <ul class="<%= namespace %>-Table_Rule-Cap">
+                  <li class="u-Adjust_Mt-24"><span>※</span><a href="#campaign-schedule" class="accordion-schedule_opan">キャンペーン期間</a>中にお申し込みください。</li>
+                  <li class="u-Adjust_Mt-0"><span class="c-Txt_Emp-02">※</span><span class="c-Txt_Emp-02">お申し込み後のエントリーは対象外となります。</span>詳しくは<a href="#campaign-rule" class="js-scroll">キャンペーンルール</a>をご確認ください。</li>
+                  <li class="c-Txt_Emp-02 u-Adjust_Mt-0"><span>※</span>お申し込み前の本キャンペーンに関する問い合わせは専用窓口（楽天サービス事務局 0800-300-9573）にご連絡ください。</li>
+                </ul>
+              <%_  if (information.campaignState !== 'finish') { _%>
+                <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <!-- ReX Campaign Entry Button: Mounting points -->
+                  <!-- mounting point for button 2 --><div id="rex-ceb-02" class="campaign-Rexoverwrite"></div>
+                </div>
+              <% } %>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4 <%= namespace %>-Txt_Left-pc"><span class="c-Txt_Emp-02">STEP 2</span><br class="<%= namespace %>-Layout_Break-sp">Rakuten最強プランを申し込む</h4>
+              <div class="l-Media_Grid u-Adjust_Mt-16">
+                  <div class="l-Media_Image c-Flow_Image">
+                      <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-02.png?240304" alt="">
+                  </div>
+                  <div>
+                      <p class="<%= namespace %>-Txt_Left-pc">WebまたはショップでRakuten最強プランをお申し込みください</p>
+                      <div class="<%= namespace %>-Step_Table u-Adjust_Mt-16">
+                        <div class="<%= namespace %>-Step_Table-head u-Adjust_Pt-8 u-Adjust_Pb-8">
+                          <p class="c-Txt_Emp-01 u-Adjust_Align-center">期間</p>
+                        </div>
+                        <dl class="c-Dl_Origin">
+                          <div>
+                            <dt>Web</dt>
+                            <dd>
+                              2024年3月4日（月）09:00～2024年5月31日（金）23:59
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>店舗（楽天モバイルショップ）</dt>
+                            <dd>
+                              2024年3月4日（月）開店～2024年5月31日（金）閉店
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
+                      <div class="<%= namespace %>-Flow_Btn u-Adjust_Mt-24">
+                        <a href="<%= sitepath %>guide/application/?l-id-r=campaign_<%= namespace %>_guide_application_02" class="c-Btn_Primary-large">新規／乗り換え（MNP）お申し込み</a>
+                        <a href="<%= sitepath %>shop/?l-id=campaign_<%= namespace %>_shop_02" class="c-Btn_Secondly-large">お近くのショップを探す</a>
+                      </div>
+                      <ul class="<%= namespace %>-Table_Rule-Cap">
+                        <li class="c-Txt_Emp-02 u-Adjust_Mt-24"><span>※</span>お申し込み後に本キャンペーンにエントリーした場合、特典適用対象外となります。</li>
+                      </ul>
+                      <div class="<%= namespace %>-Btn_Area-link <%= namespace %>-Txt_Left-sp u-Adjust_Mt-16 c-Link_Txt-inline">
+                        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_<%= namespace %>_ms_02&mno_migration=1">スーパーホーダイ・組み合わせプランからのプラン変更（移行）お申し込み</a><span class="c-Icon_Chevron-right"></span>
+                      </div>
+                  </div>
+              </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4 <%= namespace %>-Txt_Left-pc"><span class="c-Txt_Emp-02">STEP 3</span><br class="<%= namespace %>-Layout_Break-sp">Rakuten最強プラン利用開始</h4>
+            <div class="l-Media_Grid u-Adjust_Mt-16">
+              <div class="l-Media_Image c-Flow_Image">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-03.png?240304" alt="">
+              </div>
+              <div class="u-Adjust_Mt-0">
+                <p><span class="c-Txt_Emp-01">【期限】</span><br class="<%= namespace %>-Layout_Break-sp">プランお申し込みの翌月末日23:59まで</p>
+                <div class="<%= namespace %>-Layout_Display-pc u-Adjust_Mt-24">
+                  <a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/?l-id=campaign_<%= namespace %>_faq_detail_00001648" class="c-Btn_Regular-large">プラン利用開始手順を見る</a>
+                  <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span> 「Rakuten Link」を用いた発信で10秒以上の通話が必要です。</p>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Display-sp u-Adjust_Align-center u-Adjust_Mt-24">
+              <a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/?l-id=campaign_<%= namespace %>_faq_detail_00001648" class="c-Btn_Regular-large">プラン利用開始手順を見る</a>
+              <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span> 「Rakuten Link」を用いた発信で10秒以上の通話が必要です。</p>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4 u-Adjust_Align-center c-Txt_Emp-02">1,000円相当のポイント還元！</h4>
+              <p class="<%= namespace %>-Txt_Left-sp u-Adjust_Mt-16">キャンペーン条件達成の3カ月後末日ごろに、期間限定ポイントとして1,000ポイントを進呈します。</p>
+          </li>
+        </ul>
+
+        <h2 id="campaign-app" class="nav-Pad_Default c-Heading_Lv2 u-Adjust_Align-center">楽天モバイルのお申し込み方法</h2>
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Web</li>
+            <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">ショップ</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+            <ul class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+              <li>
+                <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-8">
+                  <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-04.png?240304" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                    <div class="u-Adjust_Mt-8">
+                      <ul class="<%= namespace %>-Flow_List-link c-List_Text-disc">
+                        <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/?l-id=campaign_<%= namespace %>_guide_verify" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                        <li class="u-Adjust_Mt-8">楽天ID、パスワード</li>
+                        <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/?l-id=campaign_<%= namespace %>_guide_payment" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a>
+                          <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                            <span>※</span><a href="<%= sitepath %>flow/for-minors/?l-id=campaign_<%= namespace %>_flow_for-minors">未成年の方のお申し込み方法はこちら</a></p>
+                          <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                            <span>※</span>MNPワンストップ未対応の携帯電話会社から乗り換えの方は、MNP予約番号の取得が必要です。MNPワンストップ対象の携帯電話会社は<a href="<%= sitepath %>guide/mnp/?l-id=campaign_<%= namespace %>_guide_mnp#career">こちら</a>からご確認ください。</p>
+                          <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                            <span>※</span>ショップでのお手続きは、MNPワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="<%= namespace %>-Flow_List-step-unlimit u-Adjust_Mt-24 <%= namespace %>-Layout_Step-ptn2">
+              <div class="<%= namespace %>-Flow_List-content <%= namespace %>-Flow_List-detail-left">
+                <div class="<%= namespace %>-Flow_List-detail">
+                  <div class="step-pran-change"><span class="c-Icon_New-user-f c-Txt_Emp-02"></span><h4 class="c-Heading_Lv4 u-Adjust_Mt-8 u-Adjust_Mb-16"> 新規電話番号／他社から乗り換え（MNP）</h4></div>
+                  <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                  <% if (information.campaignState == 'finish') { %>
+                    <div class="c-Btn_Primary-large cp-Fin">Rakuten最強プランに申し込む</div>
+                  <% } else { %>
+                    <!-- else -->
+                    <a href="<%= sitepath %>guide/application/?l-id-r=campaign_<%= namespace %>_guide_application_03" class="c-Btn_Primary-large <%= namespace %>-Flow_List-button-secondly u-Adjust_Mt-24"><span>Rakuten最強プランに申し込む</span></a>
+                    <% } %>
+                  </div>
+                  <p class="u-Adjust_Align-left u-Adjust_Mt-24"><a href="<%= sitepath %>fee/saikyo-plan/?l-id=campaign_<%= namespace %>_fee_saikyo-plan_01" class="c-Link_Txt-inline">Rakuten最強プランの詳細<span class="c-Icon_Chevron-right"></span></a></p>
+                  <p class="u-Adjust_Align-left u-Adjust_Mt-8"><a href="<%= sitepath %>guide/flow/application/?l-id=campaign_<%= namespace %>_guide_flow_application" class="c-Link_Txt-inline">Rakuten最強プランお申し込み方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                </div>
+              </div>
+              <div class="<%= namespace %>-Flow_List-content <%= namespace %>-Flow_List-detail-right">
+                <div class="<%= namespace %>-Flow_List-detail">
+                  <div class="step-pran-change"><span class="c-Icon_Paper-plane-l c-Txt_Emp-02"></span>
+                  <h4 id="members" class="c-Heading_Lv4 u-Adjust_Mt-8 u-Adjust_Mb-16">楽天モバイル（ドコモ回線・au回線）からプラン変更（移行）</h4></div>
+                  <div class="u-Adjust_Mt-24">
+                    <p class="u-Adjust_Align-center"><a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_<%= namespace %>_ms_03&mno_migration=1" class="c-Btn_Secondly-large <%= namespace %>-Flow_List-button-secondly"><span>メンバーズステーションから<br>
+                      プラン変更（移行）する</span></a></p>
+                    <p class="u-Adjust_Align-left u-Adjust_Mt-24"><a href="<%= sitepath %>guide/migration/?l-id=campaign_<%= namespace %>_guide_migration" class="c-Link_Txt-inline">スーパーホーダイ・組み合わせプラン（※）との比較<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="c-Txt_Cap u-Adjust_Align-left u-Adjust_Mt-8">※2020年4月8日に受付終了のドコモ回線・au回線使用プラン</p>
+                    <p class="u-Adjust_Align-left u-Adjust_Mt-8"><a href="<%= sitepath %>guide/mnp/migration/?l-id=campaign_<%= namespace %>_guide_mnp_migration" class="c-Link_Txt-inline">楽天モバイル（楽天回線）への移行方法<span class="c-Icon_Chevron-right"></span></a></p>
+                    <p class="u-Adjust_Align-left u-Adjust_Mt-8"><a href="<%= sitepath %>flow/mvno-user-registration/?l-id=campaign_<%= namespace %>_flow_mvno-user-registration" class="c-Link_Txt-inline">利用者登録でご利用中の方の移行方法<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+            <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+              <a href="<%= sitepath %>shop/?l-id=campaign_<%= namespace %>_shop_03" class="c-Btn_Secondly-large">お近くのショップを探す</a>
+            </div>
+            <ul class="<%= namespace %>-Flow_List u-Adjust_Mt-32">
+              <li>
+                <div class="l-Media_Grid <%= namespace %>-Flow_List-in u-Adjust_Mt-8">
+                  <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-04.png?240304" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                    <div class="u-Adjust_Mt-8">
+                      <ul class="<%= namespace %>-Flow_List-link c-List_Text-disc">
+                        <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/?l-id=campaign_<%= namespace %>_guide_verify_shop" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                        <li class="u-Adjust_Mt-8">楽天ID、パスワード</li>
+                        <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/?l-id=campaign_<%= namespace %>_guide_payment_shop" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a>
+                          <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                            <span>※</span><a href="<%= sitepath %>flow/for-minors/?l-id=campaign_<%= namespace %>_flow_for-minors_shop">未成年の方のお申し込み方法はこちら</a></p>
+                          <p class="<%= namespace %>-Flow_List-note-multiline c-Txt_Cap u-Adjust_Mt-8">
+                            <span>※</span>ショップでのお手続きは、MNPワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    <% if (information.campaignState == 'finish') { %>
+    <% } else { %>
+      <!-- else -->
+      <div class="u-Adjust_Mt-40">
+        <%- include('/inc/_saikyo') %>
+      </div>
+    <% } %>
+
+      <div class="l-System_Container">
+        <h2 id="faq" class="c-Heading_Lv2 nav-Pad_Default u-Adjust_Mb-16 u-Adjust_Align-center">よくあるご質問</h2>
+        <div class="u-Adjust_Mt-16 u-Adjust_Mb-40">
+          <div class="c-Accordion">
+            <button id="accordion-faq1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>エントリーされているか、どこで確認できますか？</button>
+            <div id="accordion-content-faq1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq1" aria-hidden="true">
+                <p>エントリーされた場合、本キャンペーンページのエントリーボタンが「エントリー済みです」と表示されます。<br>
+                  また、楽天PointClubの「<a href="https://oubo.rakuten.co.jp/list">キャンペーンエントリー履歴</a>」から確認することができます。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーン期間内に楽天モバイルに申し込みができているか、確認方法はありますか？</button>
+            <div id="accordion-content-faq2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq2" aria-hidden="true">
+              <p>以下2種類の方法があります。<br>
+                1.お申し込み完了メールを確認する<br>
+                2.「<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/">my 楽天モバイル</a>」の申し込み履歴から確認する<br>
+                詳しい手順はお客様サポート内「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001827/?l-id=campaign_<%= namespace %>_faq_detail_00001827">申し込みが正常にできているか確認したい</a>」からもご確認いただけます。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>申し込み後に、本人確認書類の不備などで再提出になった場合でもキャンペーンは適用されますか？</button>
+            <div id="accordion-content-faq3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq3" aria-hidden="true">
+              <p>お申し込み後に、書類の再提出などいただきお申し込みが完了できた場合は、キャンペーンが適用されます。ただし、お申し込み画面内で入力された情報と本人確認書類の内容が一致しないなどの理由で楽天モバイルが定める審査に基づき、お申し込みをキャンセルさせていただく場合、キャンペーンは適用できません。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ポイントの付与はいつになりますか？</button>
+            <div id="accordion-content-faq4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq4" aria-hidden="true">
+              <p>「Rakuten最強プラン」のお申し込み後、期限までにすべての条件を達成した場合、利用期限月の3カ月後末日ごろに進呈いたします。<br>
+                付与されたポイントは楽天PointClubの「<a href="https://point.rakuten.co.jp/history/">ポイント実績</a>」から確認することができます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% if (information.campaignState == 'finish') { %>
+    <% } else { %>
+      <!-- else -->
+      <div class="<%= namespace %>-Layout_Entry-Area u-Adjust_Mt-56">
+        <p class="c-Txt_Emp-01 <%= namespace %>-Utility_Mt-unique u-Adjust_Align-center">エントリー期間：2024年3月4日（月）09:00<br class="<%= namespace %>-Layout_Break-sp">～2024年5月31日（金）23:59</p>
+        <!-- ReX Campaign Entry Button: Mounting points -->
+        <!-- mounting point for button 3 --><div id="rex-ceb-03" class="campaign-Rexoverwrite"></div>
+      </div>
+    <% } %>
+
+      <div class="l-System_Container">
+        <div class="u-Adjust_Mt-40">
+          <%- /* キャンペーン・おすすめ情報 */ include('/include/_bnr-cpn-recommend-v2.ejs') %>
+        </div>
+
+        <div id="campaign-rule" class="nav-Pad_Rule">
+        <% if (information.campaignState == 'finish') { %>
+          <h3 class="c-Heading_Lv3">あなただけに特別なご案内！楽天モバイル新規契約で1,000ポイントプレゼントキャンペーン</h3>
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= finishSchedule %>をもちまして終了いたしました。<br>
+            このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+          <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2213', level: '', year: '2024', class: '' }}) %>
+        <% } else { %>
+          <!-- else -->
+          <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2213', level: 'h3', year: '2024', class: '' }}) %>
+        <% } %>
+        </div>
+      <% if (hiddenItem == 'true') { %>
+        <div class="c-Accordion">
+          <button id="accordion-past-rule" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-past-rule"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>過去のキャンペーン</button>
+          <div id="accordion-content-past-rule" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-past-rule" aria-hidden="true">
+            <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-0">
+              <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2213_xxxxxx', level: '', year: '2024', class: '', comments: '<p class="c-Txt_Emp-01">あなただけに特別なご案内！楽天モバイル新規契約で1,000ポイントプレゼントキャンペーン</p>' }}) %>
+            </div>
+          </div>
+        </div>
+      <% } %>
+        <div class="u-Adjust_Mt-40">
+          <!-- ReX UX Survey: Mounting point for embedded components -->
+          <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+        </div>
+      </div>
+    </div>
+
+  <% if (information.campaignState == 'finish') { %>
+  <% } else { %>
+    <!-- else -->
+    <div id="js-fixed-btn" class="<%= namespace %>-Layout_Bottom-fixed fixed-top" aria-expanded="false" role="region">
+      <div class="<%= namespace %>-Layout_Bottom-fixed-inner">
+        <div class="<%= namespace %>-Layout_Bottom-fixed-btn-box">
+          <a href="#first_entry_button" class="c-Btn_Primary-large">エントリーはこちら</a>
+        </div>
+      </div>
+    </div>
+  <% } %>
+
+    <footer class="g-Footer <%= namespace %>-Layout_Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+  <script>
+    (function($){
+        const trigger = document.getElementById('js-trigger');
+        const fixedBtn = document.getElementById('js-fixed-btn');
+        function fixedBottomBtn() {
+            let scrollY = window.pageYOffset;
+            const triggerRect = trigger.getBoundingClientRect();
+            const triggerY = scrollY + triggerRect.top;
+
+        if ( scrollY > triggerY ) {
+          fixedBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          fixedBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+      if( fixedBtn && trigger ) {
+        window.addEventListener('scroll', fixedBottomBtn);
+      }
+    })();
+  </script>
+  <script>
+    (function($){
+      $(function(){
+        $('.accordion-schedule_opan').on('click', function(){
+          $('#accordion-schedule').attr('aria-expanded', 'true');
+          $('#accordion-content-schedule').attr('aria-hidden', 'false');
+          $('#accordion-content-schedule').slideDown(200);
+        });
+        $('.nav-Btn').on('click',function() {
+          $('.nav-Btn_Arrow').toggleClass('nav-On');
+          $('.<%= namespace %>-Layout_Bottom-fixed-link-sp').slideToggle();
+        });
+      });
+    })(jQuery);
+  </script>
+  <!-- ReX UX Survey: Config -->
+  <script>
+    window.rexSurveyConfig = {"language":"ja","surveyId":"39499","cId":{"name":"answers[39499_269617]","value":""},"embedded":true,"url":{"name":"answers[39499_269618]"},"triggerIdName":"trigger","reappearancePeriodWithRespond":"10","reappearancePeriodWithoutRespond":"10","enableDisplaySuppressionPerPage":true,"enableFormAction":true,"displayStartDate":"","displayEndDate":"","permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":false},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。","thanksDisplaySeconds":3},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[39499_269619]","value":"746867"},{"name":"answers[39499_269619]","value":"746868"},{"name":"answers[39499_269619]","value":"746869"},{"name":"answers[39499_269619]","value":"746870"},{"name":"answers[39499_269619]","value":"746871"}],"txt0":"わかりづらかった","txt1":"わかりやすかった","checked":4},"inquiry":{"available":true,"checkList":{"questionType":"multipleAnswer","available":true,"question":"あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ","shuffleChoices":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":"ポイント獲得の条件や流れがわかりにくい"},{"name":"answers[39499_269620][]","value":"746873","label":"文字数や情報量が多すぎてわかりにくい"},{"name":"answers[39499_269620][]","value":"746874","label":"色や文字サイズ等のデザインが見にくい"},{"name":"answers[39499_269620][]","value":"746875","label":"楽天モバイルの申し込み方法がわかりにくい"},{"name":"answers[39499_269620][]","value":"746876","label":"キャンペーンに申し込むメリットを感じない"},{"name":"answers[39499_269620][]","value":"746877","label":"その他(次の設問でご記入ください)"},{"name":"answers[39499_269620][]","value":"746878","label":" 特に無い"}]},"freeInput":{"available":true,"name":"answers[39499_269621]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のため使用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":""},{"name":"answers[39499_269620][]","value":"746873","label":""},{"name":"answers[39499_269620][]","value":"746874","label":""},{"name":"answers[39499_269620][]","value":"746875","label":""},{"name":"answers[39499_269620][]","value":"746876","label":""},{"name":"answers[39499_269620][]","value":"746877","label":""},{"name":"answers[39499_269620][]","value":"746878","label":""}]}},"ua":{"name":"answers[39499_269622]"},"href":{"name":"answers[39499_269623]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+  </script>
+
+  <!-- ReX UX Survey: Script -->
+  <script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/2.1.0/js/main.js" defer></script>
+
+  <!-- ReX Campaign Entry Button: Configuration -->
+  <script>
+    var rexButtons = [{"code":"/rmobile/special/240226","theme":"red","wide":false,"showCelebration":false,"below":{"checkboxText":"メルマガやアンケートなどをSMSやメールで受け取る","html":"※楽天モバイルよりSMSや<a href=\"https://my.rakuten.co.jp/\">楽天会員情報</a><span class=\"c-Txt_Emp-01\">ご登録のメールアドレス</span>にお送りする<span class=\"c-Txt_Emp-01\">楽天モバイルニュース</span>やおトクな情報などを<span class=\"c-Txt_Emp-01\">受け取らない方はチェックを外してください。</span>","isCheckboxMandatory":false,"isChecked":true},"ids":["rex-ceb-01","rex-ceb-02","rex-ceb-03"]}]
+  </script>
+  <!-- ReX Campaign Entry Button: Script -->
+  <script src="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/js/main.js" defer></script>
+</body>
+</html>

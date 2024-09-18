@@ -1,0 +1,415 @@
+<% const pagetitle = "お申し込みサポート" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/application/flow/", label:"お申し込み方法"}] -%>
+<% const namespace = "guide-application-support" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'オペレーターと電話またはビデオ通話で相談しながらお申し込みいただけるサポートサービスです。サポートの特長やサポートの流れ、お電話の前にご確認いただきたい内容等をご案内します。',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/application-support/guide-application-support.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+<div class="<%= namespace %>-Hero c-Hero_Black">
+  <div class="c-Hero_Content <%= namespace %>-Hero_Contents">
+    <h1 class="c-Hero_Title-reverse">
+      <span class="c-Txt_Emp-02">お申し込みサポート</span>
+      <small><span class="<%= namespace %>-Flow_Banner_support_text">電話</span>または<span class="<%= namespace %>-Flow_Banner_support_text">ビデオ通話<sup style="color:#676767;">※</sup></span>で<br class="<%= namespace %>-Hero_Sp">相談しながらお手続き出来る</small>
+    </h1>
+  </div>
+  <div class="<%= namespace %>-Hero_Sp">
+    <img src="<%= sitepath %>assets/img/guide/application-support/hero-sp.png" alt="">
+  </div>
+</div>
+<p class="c-Txt_Cap u-Adjust_Align-right" style="max-width: 1064px; margin: 0 auto;">※Zoomアプリのダウンロードの必要があります。</p>
+<div class="l-System_Container u-Adjust_Mt-8">
+  <p>お申し込みに関する疑問や不安を、オペレーターが丁寧にお答えいたします。ショップでのお申し込みと同様に、オペレーターからの質問に口頭でお答えいただきながら、お申し込みいただけます。</p>
+</div>
+<nav class="<%= namespace %>-Nav u-Adjust_Mt-16">
+  <div class="l-System_Container">
+    <ul>
+      <li><a href="#application" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>お申し込み窓口</a></li>
+      <li><a href="#procedure" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>対象のお手続き</a></li>
+      <li><a href="#recommend" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>こんな方におすすめ</a></li>
+      <li><a href="#flow" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>サポートの流れ</a></li>
+      <li><a href="#before" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>お電話の前に</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="l-System_Container u-Adjust_Mt-48">
+    <h2 class="c-Heading_Lv2 u-Adjust_Align-center" id="application">お申し込み窓口</h2>
+    <div class="l-Media_Grid u-Adjust_Mt-32">
+      <div>
+        <div class="<%= namespace %>-Utility_Br-sp">
+          <h3 class="c-Heading_Lv3 c-Txt_Emp-02 u-Adjust_Align-center">＼こんな方は／</h3>
+          <h3 class="c-Heading_Lv3 u-Adjust_Align-center">まずは「ご相談窓口」へお電話ください</h3>
+        </div>
+        <div class="l-Media_Image">
+          <img src="<%= sitepath %>assets/img/guide/application-support/img-feature-01.png" alt="">
+        </div>
+      </div>
+      <div>
+        <div class="<%= namespace %>-Utility_Br-pc">
+          <h3 class="c-Heading_Lv3 c-Txt_Emp-02">＼こんな方は／</h3>
+          <h3 class="c-Heading_Lv3">まずは「ご相談窓口」へお電話ください</h3>
+        </div>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>簡単な相談だけしたい</li>
+          <li>料金プランやオプションサービスについてまずは少し知りたい</li>
+          <li>現在よりも毎月の携帯電話料金が安くなるのか確認したい</li>
+          <li>申し込みに関する疑問を解消したい</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c-Theme-Light u-Adjust_Mt-24">
+      <div class="l-Media_List-2">
+        <div>
+          <h3 class="u-Adjust_Align-center c-Txt_Normal-m">お申し込みに関する相談をご希望の場合</h3>
+          <div class="c-Theme-Borderbox u-Adjust_Mt-8">
+            <h3 class="u-Adjust_Align-center c-Txt_Normal-m">ご相談窓口</h3>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-8"><a class="c-Txt_Alphanumeric-m" href="tel:05058400321">050-5840-0321</a></div>
+            <p class="c-Txt_Cap u-Adjust_Mt-8"><span class="c-Txt_Emp-02">※電話でのお申し込みをご希望の方はご契約窓口をご利用ください。</span>ご相談窓口にお問合せいただき、お申し込み手続きに進む場合もご契約窓口へご案内させていただきます。</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="u-Adjust_Align-center c-Txt_Normal-m">お申し込みをご希望の場合</h3>
+          <div class="c-Theme-Borderbox u-Adjust_Mt-8 ">
+            <h3 class="u-Adjust_Align-center c-Txt_Normal-m">ご契約窓口</h3>
+            <p class="u-Adjust_Mt-24">
+              対象のお手続きや必要書類等をご確認いただき、2つのチェックボックスにチェックを入れていただくと、ご契約窓口の電話番号が本ページ末尾に表示されます。
+            <br class="<%= namespace %>-Utility_Br-pc"></p>
+          </div>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Feature_Info u-Adjust_Mt-16 u-Adjust_Align-center">
+        <p>営業時間：10:00～19:00<br>（土日祝含む。年末年始を除く）</p>
+        <p class="c-Txt_Cap">※混雑時はお電話がつながりにくい場合があります。<br>※通話料金はお客様負担となります。ご希望の場合、オペレーターからおかけ直しします。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Feature" id="procedure">
+    <div class="l-System_Container">
+      <h3 class="c-Heading_Lv3  u-Adjust_Align-center">ご契約窓口での対象のお手続き</h3>
+      <div class="<%= namespace %>-Feature_Procedure01">
+        <div>
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/application-support/img-procedure01-sp.png">
+            <img src="<%= sitepath %>assets/img/guide/application-support/img-procedure01.png?221031" alt="新規電話番号でのお申し込み" width="239" height="239">
+          </picture>
+        </div>
+        <div>
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/application-support/img-procedure02-sp.png">
+            <img src="<%= sitepath %>assets/img/guide/application-support/img-procedure02.png?221031" alt="他社からの乗り換え（MNP）" width="239" height="239">
+          </picture>
+        </div>
+        <div>
+          <a href="<%= sitepath %>guide/mnp/migration/" class="c-Banner_Hover-act">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/application-support/img-procedure03-sp.png">
+              <img src="<%= sitepath %>assets/img/guide/application-support/img-procedure03.png?221031" alt="プラン変更（移行）" width="239" height="239">
+            </picture>
+          </a>
+        </div>
+      </div>
+
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-right c-Txt_Cap">※MNP予約番号の取得が必要です。</p>
+
+      <div class="c-Theme-Light u-Adjust_Mt-32">
+        <h4 class="c-Heading_Lv4 <%= namespace %>-Feature_Procedure02-title">以下の場合は、Web／店舗（楽天モバイルショップ）でお手続きください</h4>
+        <div class="<%= namespace %>-Feature_Procedure02">
+          <div>
+            <img src="<%= sitepath %>assets/img/guide/application-support/img-procedure06.png?220726" alt="" width="80">
+            <p class="<%= namespace %>-Feature_Procedure02-text">製品のみ購入</p>
+          </div>
+          <div>
+            <img src="<%= sitepath %>assets/img/guide/application-support/img-procedure05.png?220726" alt="" width="80">
+            <p class="<%= namespace %>-Feature_Procedure02-text">18歳未満のお客様</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8"><a href="<%= sitepath %>flow/for-minors/" class="c-Link_Txt">詳細はこちら</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Feature_Procedure02-horizontal-link">
+        <p><a href="<%= sitepath %>guide/application/?lid-r=guide_application-support_guide_application" class="c-Link_Txt-inline">Webでお申し込み<span class="c-Icon_Chevron-right"></span></a></p>
+        <p><a href="<%= sitepath %>shop/" class="c-Link_Txt-inline">近くのショップを探す<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Recommend" id="recommend">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center">こんな方におすすめ</h2>
+      <ul class="<%= namespace %>-Recommend_List-1">
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/icon-people-01.png" alt="">
+          <span>ネット申し込みは不安…難しくてよくわからない</span>
+        </li>
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/icon-people-02.png" alt="">
+          <span>料金プランについて知りたい</span>
+        </li>
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/icon-people-03.png" alt="">
+          <span>自分にあったスマホや、おトクに買えるスマホを知りたい</span>
+        </li>
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/icon-people-04.png" alt="">
+          <span>お店に行きたいけれど、忙しくてなかなか時間がとれない</span>
+        </li>
+      </ul>
+      <h3 class="c-Heading_Lv3 u-Adjust_Align-center">オペレーターと相談しながらお申し込みできる</h3>
+      <ul class="<%= namespace %>-Recommend_List-2">
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/img-01.png" alt="">
+          <span>オペレーターと直接会話ができて安心</span>
+        </li>
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/img-02.png" alt="">
+          <span>現在のご利用状況からおよその月額料金がわかる</span>
+        </li>
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/img-03.png" alt="">
+          <span>あなたにぴったりの、おトクなスマホをご提案</span>
+        </li>
+        <li>
+          <img src="<%= sitepath %>assets/img/guide/application-support/img-04.png" alt="">
+          <span>ご来店不要。店舗と同様にお申し込みをサポート</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Flow" id="flow">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center">電話でのお申し込みの流れ</h2>
+      <ul class="<%= namespace %>-Flow_List">
+        <li>
+          <div class="<%= namespace %>-Flow_List-img"><img src="<%= sitepath %>assets/img/guide/application-support/img-05.png" width="109" alt=""></div>
+          <p class="<%= namespace %>-Flow_List-step"><span>STEP1</span>必要書類等の準備・確認</p>
+          <p class="<%= namespace %>-Flow_List-txt">お申し込みに必要な書類や、利用規約等をご確認いただき、お電話！</p>
+        </li>
+        <li>
+          <div class="<%= namespace %>-Flow_List-img"><img src="<%= sitepath %>assets/img/guide/application-support/img-06.png" width="109" alt=""></div>
+          <p class="<%= namespace %>-Flow_List-step"><span>STEP2</span>相談しながらお申し込み</p>
+          <p class="<%= namespace %>-Flow_List-txt">オペレーターの質問に回答いただきながらお申し込み</p>
+          <p class="<%= namespace %>-Flow_List-txt c-Txt_Cap u-Adjust_Mt-8">電話またはビデオ通話でご相談いただけます。ビデオ通話でのご相談をご希望の方は<a href="#contact" class="js-scroll">こちら</a>をご確認ください。</p>
+        </li>
+        <li>
+          <div class="<%= namespace %>-Flow_List-img"><img src="<%= sitepath %>assets/img/guide/application-support/img-07.png" width="109" alt=""></div>
+          <p class="<%= namespace %>-Flow_List-step"><span>STEP3</span>確認・お手続き</p>
+          <p class="<%= namespace %>-Flow_List-txt">お電話後にお送りするメールでお申し込み内容を確認し、お支払い方法を登録</p>
+        </li>
+        <li>
+          <div class="<%= namespace %>-Flow_List-img">
+            <picture>
+              <source srcset="<%= sitepath %>assets/img/guide/application-support/img-08-sp.png" media="(max-width: 768px)" class="<%= namespace %>-Flow_List-img-2">
+              <img src="<%= sitepath %>assets/img/guide/application-support/img-08-pc.png" alt="" class="<%= namespace %>-Flow_List-img-2">
+            </picture>
+          </div>
+          <p class="<%= namespace %>-Flow_List-step"><span>STEP4</span>ご本人様確認・ご利用開始</p>
+          <p class="<%= namespace %>-Flow_List-txt">スマホやSIMをご自宅にお届け時に本人確認を実施。初期設定を行い、ご利用開始！</p>
+          <p class="<%= namespace %>-Flow_List-link"><a href="<%= sitepath %>guide/verify/home-kyc/" class="c-Link_Txt-inline" >受け取り時に自宅で本人確認の詳細<span class="c-Icon_Chevron-right"></span></a></p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Before" id="before">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center">お申し込みのお電話の前に</h2>
+      <p class="u-Adjust_Mt-8 u-Adjust_Align-center">お電話いただく前に、ご契約窓口での対象のお手続きをご確認ください</p>
+      <ul class="<%= namespace %>-Before_Flex u-Adjust_Mt-32">
+        <li class="c-Theme-Borderbox">
+          <h3 class="c-Heading_Lv4">以下のお手続きが「ご契約窓口」の対象です</h3>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>新規お申し込み</li>
+            <li>他社からの乗り換え（MNP）</li>
+            <li>プラン変更（移行）</li>
+          </ul>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">
+            ※製品購入のみは対象外。<br>
+            ※18歳未満のお客様は対象外。<a href="<%= sitepath %>flow/for-minors/" class="c-Link_Txt">お手続き方法</a>をご確認ください。
+          </p>
+        </li>
+      </ul>
+      <div class="u-Adjust_Mt-16">
+        <div class="u-Adjust_Mt-8">
+          <a href="<%= sitepath %>guide/application/?lid-r=guide_application-support_guide_application" class="c-Link_Txt-inline">Webでお申し込み<span class="c-Icon_Chevron-right"></span></a>
+          <br class="<%= namespace %>-Utility_Show-sp">
+          <a href="<%= sitepath %>shop/" class="c-Link_Txt-inline">近くのショップを探す<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="l-System_Container">
+      <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+        <h3 class="c-Heading_Lv3 u-Adjust_Align-center">必要書類等</h3>
+        <div class="u-Adjust_Mt-8 u-Adjust_Align-center c-Theme-Emphasis1"><span class="c-Txt_Emp-02">「3つの必要書類」「重要事項説明・利用規約等の確認」を確認後、<br>各チェックボックスにチェックを入れていただく</span>とご契約窓口の電話番号が表示されます。</div>
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-32 u-Adjust_Align-center">以下3つをご用意ください</h4>
+        <ul class="<%= namespace %>-Before_Flex u-Adjust_Mt-32">
+          <li>
+            <div class="u-Adjust_Align-center <%= namespace %>-Utility_Br-pc"><img src="<%= sitepath %>assets/img/guide/application-support/img-09.png" width="152" alt=""></div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-16">1.楽天会員ログイン用のユーザID、パスワード</p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Utility_Br-sp u-Adjust_Mt-16 u-Adjust_Mb-16"><img src="<%= sitepath %>assets/img/guide/application-support/img-09.png" width="152" alt=""></div>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※本人確認書類と、楽天会員情報が一致している必要があります。</p>
+            <p class="u-Adjust_Mt-8"><a href="https://member.id.rakuten.co.jp/rms/nid/registfwdi" target="_blank" class="c-Link_Txt-inline" rel="noopener">楽天の会員登録（無料）をする<span class="c-Icon_New-window-l"></span></a></p>
+            <p class="u-Adjust_Mt-8"><a href="https://member.id.rakuten.co.jp/rms/nid/menufwd" target="_blank" class="c-Link_Txt-inline" rel="noopener">楽天会員情報を確認・修正する<span class="c-Icon_New-window-l"></span></a></p>
+          </li>
+          <li>
+            <div class="u-Adjust_Align-center <%= namespace %>-Utility_Br-pc"><img src="<%= sitepath %>assets/img/guide/application-support/img-10.png" width="152" alt=""></div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-16">2.本人確認書類</p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Utility_Br-sp u-Adjust_Mt-16 u-Adjust_Mb-16"><img src="<%= sitepath %>assets/img/guide/application-support/img-10.png" width="152" alt=""></div>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※運転免許証、マイナンバーカード（個人番号カード）、日本国パスポートが対象です。</p>
+            <div class="c-Txt_Cap u-Adjust_Mt-8 c-Theme-Borderbox">■補助書類について<br>
+              <p> 「日本国パスポート」を本人確認書類としてご提示いただく場合、以下の補助書類を併せてご提示いただく必要があります。また、「日本国パスポート」以外の本人確認書類で、住所が最新ではない場合、最新の住所が記載された以下の補助書類を併せてご提示いただくことで本人確認をすることができます。</p>
+                <p class="u-Adjust_Mt-16">
+                  ・公共料金の領収書（電気・ガス・水道）<br>
+                  ・納税証明書<br>
+                  ・社会保険料の領収証書
+                </p>
+              <p class="u-Adjust_Mt-16">※氏名を変更されている場合は、補助書類では受け付けられません。<br>
+                ※補助書類は発行から3カ月以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。
+              </p>
+              <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/home-kyc/" class="c-Link_Txt-inline">受け取り時に自宅で本人確認の詳細<span class="c-Icon_Chevron-right"></span></a></p>
+            </div>
+          </li>
+          <li>
+            <div class="u-Adjust_Align-center <%= namespace %>-Utility_Br-pc"><img src="<%= sitepath %>assets/img/guide/application-support/img-11.png" width="152" alt=""></div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mt-16">3.クレジットカード</p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Utility_Br-sp u-Adjust_Mt-16 u-Adjust_Mb-16"><img src="<%= sitepath %>assets/img/guide/application-support/img-11.png" width="152" alt=""></div>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※お申し込みサポートは、クレジットカード・デビットカード支払いのみが対象です。</p>
+            <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/card/" class="c-Link_Txt-inline">お支払い方法の詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+          </li>
+        </ul>
+
+        <div class="<%= namespace %>-Before_Agreebox">
+          <label class="c-Form_Checkbox">
+            <input type="checkbox" name="agree1" id="js-agree1" value="agree1">
+            <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label c-Txt_Emp-02">上記の項目を確認しました</span>
+          </label>
+        </div>
+
+        <h4 class="c-Heading_Lv4 u-Adjust_Align-center u-Adjust_Mt-32">重要事項説明・利用規約等の確認</h4>
+        <p class="u-Adjust_Mt-8 u-Adjust_Align-center">以下、4つの規約等を必ずご一読ください。ご不明点がある場合は、お電話の際にオペレーターにお伝えください。</p>
+        <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-8">
+          ※「快適なサービスをご利用いただくための情報提供についての規約」については、オペレーターからお客様にご確認させていただきます。<br>
+          ※以下をお読みいただくと、チェックボックスがチェックできる状態になります。
+        </p>
+        <ul class="<%= namespace %>-Before_Flex-auto u-Adjust_Mt-16">
+          <li class="js-agree-list">1. <a href="<%= sitepath %>terms/pdf/rakuten_mobile_important_explanation.pdf?20240502" class="c-Link_Txt-inline" target="_blank" rel="noopener">重要事項説明書<span class="c-Icon_Pdf-l"></span></a></li>
+          <li class="js-agree-list">2. <a href="https://corp.mobile.rakuten.co.jp/guide/privacy/bandwidth/" class="c-Link_Txt-inline" target="_blank" rel="noopener">帯域制御のための通信に関する情報の取得、利用に関する規約<span class="c-Icon_New-window-l"></span></a></li>
+        </ul>
+        <p class="u-Adjust_Mt-32 u-Adjust_Align-center">各オプションサービスやその他規約は以下よりご確認ください。</p>
+        <ul class="<%= namespace %>-Before_Flex-auto u-Adjust_Mt-8">
+          <li class="js-agree-list">3. <a href="<%= sitepath %>terms/" class="c-Link_Txt-inline" target="_blank" rel="noopener">その他の利用規約<span class="c-Icon_New-window-l"></span></a></li>
+          <li class="js-agree-list">4. <a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" class="c-Link_Txt-inline" target="_blank" rel="noopener">個人情報の取扱い<span class="c-Icon_New-window-l"></span></a></li>
+        </ul>
+
+        <div class="<%= namespace %>-Before_Agreebox" id="js-agree-box" aria-disabled="true">
+          <p class="c-Txt_Emp-02 c-Txt_Normal u-Adjust_Mb-8" id="js-agree-txt" aria-hidden="false">4つの規約等をすべてご確認いただくと、チェックできる状態となります</p>
+          <label class="c-Form_Checkbox">
+            <input type="checkbox" name="agree2" id="js-agree2" value="agree2" disabled>
+            <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label c-Txt_Emp-02">上記の項目を確認しました</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="l-System_Container">
+      <div class="c-Theme-Borderbox u-Adjust_Mt-32 u-Adjust_Align-center">
+        <p class="c-Txt_Emp-01" id="js-tel-txt" aria-hidden="false">「2つの必要書類」および「重要事項説明・利用規約等の確認」、2つのチェックボックスをチェックいただくと、ご契約窓口の電話番号が表示されます</p>
+        <div id="js-tel-info" data-nosnippet aria-hidden="true">
+          <a href="tel:050-5434-8560" class="c-Btn_Primary-large u-Adjust_Mb-16 <%= namespace %>-Utility_Show-sp" style="margin: 0 auto;"><span>電話をかける</span></a>
+          <p class="c-Txt_Alphanumeric-m"><a href="tel:050-5434-8560">050-5434-8560</a></p>
+          <p class="u-Adjust_Mt-8">営業時間：10:00～19:00<br class="<%= namespace %>-Utility_Br-sp">（土日祝含む。年末年始を除く）</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※混雑時はお電話がつながりにくい場合があります。</p>
+          <p class="c-Txt_Cap">※通話料金はお客様負担となります。ご希望の場合、オペレーターからおかけ直しします。</p>
+          <div class="u-Adjust_Mt-8">
+            ご契約窓口対象外のお手続きをご希望の場合は、Webまたは店舗（楽天モバイルショップ）をご利用ください。
+            <div class="u-Adjust_Mt-8">
+              <a class="c-Link_Txt-inline" href="<%= sitepath %>guide/application/?lid-r=guide_application-support_guide_application">Webでお申し込み<span class="c-Icon_Chevron-right"></span></a>
+              <br class="<%= namespace %>-Utility_Show-sp">
+              <a class="c-Link_Txt-inline" href="<%= sitepath %>shop/">近くのショップを探す<span class="c-Icon_Chevron-right"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="l-System_Container">
+      <div class="c-Theme-Borderbox u-Adjust_Mt-32" id="contact">
+        <div class="l-System_Container">
+          <h3 class="c-Heading_Lv3 u-Adjust_Align-center">ビデオ通話でのご相談をご希望の方へ</h3>
+          <p class="u-Adjust_Mt-8 u-Adjust_Align-center">オペレーターとのビデオ通話にはZoomアプリを使用いたします。お電話の前にあらかじめダウンロードいたしますと、スムーズにご相談いただけます。<br>使用方法など、詳細はオペレーターにご確認ください。</p>
+          <p class="u-Adjust_Mt-8"><a href="https://play.google.com/store/apps/details?id=us.zoom.videomeetings" class="c-Link_Txt-inline">Zoom（Android用）のダウンロードはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+          <p class="u-Adjust_Mt-8"><a href="https://apps.apple.com/us/app/id546505307" class="c-Link_Txt-inline">Zoom（iPhone用）のダウンロードはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+      </div>
+    </div>
+</main>
+
+
+  <footer class="g-Footer">
+    <div class="g-Footer_Aside">
+      <%- include('/include/footer/bnr/_bnr.ejs') %>
+    </div>
+      <div class="c-Breadcrumbs_Foot">
+        <div class="l-System_Container">
+          <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+    <%- include('/include/_footer') %>
+  </footer>
+
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.application-support.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</div>
+</body>
+</html>

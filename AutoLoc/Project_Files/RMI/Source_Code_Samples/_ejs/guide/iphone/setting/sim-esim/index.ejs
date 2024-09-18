@@ -1,0 +1,276 @@
+<% const pagetitle = "iPhoneを使用したSIMカードからeSIMへのSIMタイプ変更方法" -%>
+<% const category = "製品（Android）" -%>
+<% const subCategory = "iPhone" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/iphone/initial-setting/", label:"初期設定（iPhone・Apple Watch）"}] -%>
+<% const namespace = "support-iphone-setting" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'お手持ちのiPhoneでSIMカードからeSIMへSIMタイプを変更する場合の手順をご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/support/support.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/support/iphone/setting/<%= namespace %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+<div id="attention"></div>
+
+
+<div class="<%= namespace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Pt-24">お手持ちのiPhoneでSIMカードからeSIMへSIMタイプを変更する場合の手順をご案内します。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※eSIMからSIMカードへ変更をする場合は<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile">my 楽天モバイル</a>よりお手続きを行ってください</p>
+
+    <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+      <li><a href="#howto1" class="c-Link_Txt-icon c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用前の確認事項</a></li>
+      <li><a href="#howto2" class="c-Link_Txt-icon c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>設定方法</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-40" id="howto1">ご利用前の確認事項</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li class="c-Txt_Emp-02">ご利用中のiPhoneがiPhone 11以降（iPhone SE 第2世代除く）であること</li>
+    </ul>
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="accordion-item1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-item-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>対象のiPhoneを確認する</button>
+      <div id="accordion-item-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-item1" aria-hidden="true">
+        <ul class="c-List_Text-disc">
+          <li>iPhone 11</li>
+          <li>iPhone 11 Pro</li>
+          <li>iPhone 11 Pro Max</li>
+          <li>iPhone 12 mini</li>
+          <li>iPhone 12</li>
+          <li>iPhone 12 Pro</li>
+          <li>iPhone 12 Pro Max</li>
+          <li>iPhone 13 mini</li>
+          <li>iPhone 13</li>
+          <li>iPhone 13 Pro</li>
+          <li>iPhone 13 Pro Max</li>
+          <li>iPhone SE(第3世代)</li>
+          <li>iPhone 14</li>
+          <li>iPhone 14 Plus</li>
+          <li>iPhone 14 Pro</li>
+          <li>iPhone 14 Pro Max</li>
+        </ul>
+      </div>
+    </div>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li class="c-Txt_Emp-02">ご使用中のiPhoneがiOS16.0以上であること</li>
+    </ul>
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>OSのバージョン確認とアップデート方法</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+        <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-8">
+          <li>
+            <h3 class="c-Heading_Lv4">1. 一般画面を開く</h3>
+            <p class="u-Adjust_Mt-16">設定にある「一般」をタップしてください。</p>
+            <div class="u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/setting/esim/capture46.png" width="300" height="" alt="" class="c-Img_Capture">
+              </div>
+            </div>
+            <div class="u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/setting/esim/capture47.png" width="300" height="" alt="" class="c-Img_Capture">
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv4">2. 「ソフトウェア・アップデート」をタップ</h3>
+            <div class="u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/setting/esim/capture48.png" width="300" height="" alt="" class="c-Img_Capture">
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv4">3. 「ダウンロードしてインストール」をタップ</h3>
+            <p class="u-Adjust_Mt-16">OSが最新版ではない場合、最新版のソフトウェアのダウンロード・インストールが案内されます。<br>「ダウンロードしてインストール」をタップし、画面の案内に沿ってインストールを行ってください。</p>
+            <div class="u-Adjust_Mt-24">
+              <div class="l-Media_Image u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/iphone/setting/esim/capture49.png" width="300" height="" alt="" class="c-Img_Capture">
+              </div>
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-32">以上でOSのバージョン確認とアップデートは完了です。</p>
+      </div>
+    </div>
+
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>SIMカードを利用していること
+        <p class="c-Txt_Cap">※本手続きよりeSIMからSIMカードへのタイプ変更は行えません</p>
+      </li>
+    </ul>
+    <p class="u-Adjust_Mt-32">以下の設定を事前に行ってください。</p>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>Wi-Fiに接続</li>
+      <li><a href="https://support.apple.com/ja-jp/guide/iphone/iph14a867ae/ios" target="_blank">パスコード設定がON</a></li>
+    </ul>
+    <p class="u-Adjust_Mt-16">※事前に充電を行い、バッテリー残量が十分ある状態にしてください。</p>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto2">設定方法</h2>
+    <ul class="u-Adjust_Mt-16 <%= namespace %>-Flow_List">
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">1. iPhoneの設定からモバイル通信をタップする</h4>
+        <p class="u-Adjust_Mt-16">「設定」をタップし、「モバイル通信」をタップしてください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-01a.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-01b.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">2.「eSIMに変更」をタップする</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-02.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">3.「モバイル通信プランを変更」をタップする</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-03.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">4.「eSIMに変更」をタップする</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-04.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">5. 本体のサイドボタンをダブルクリックする</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-05.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">6. アクティベートが完了するまで待つ</h4>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-06.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h4 class="c-Heading_Lv4">7. アクティベート完了を確認する</h4>
+        <p class="u-Adjust_Pt-16">アクティベートが完了されると、以前の SIM カードは無効（オフ）になります。<br>SIM カードは iPhone から取り外して設定完了です。</p>
+        <ul class="c-Txt_Emp-02 c-List_Cap u-Adjust_Pt-16">
+          <li><span>※</span>SIMタイプ変更後、「 [楽天モバイル]eSIMプロファイルダウンロードのお願い」というメールが届きますが、プロファイルのダウンロードは不要です。</li>
+        </ul>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-07a.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+        <p class="u-Adjust_Pt-24">SIMカード変更履歴は「my 楽天モバイル」の申込履歴よりご確認いただけます</p>
+        <div class="u-Adjust_Mt-16">
+          <div class="l-Media_Image u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/guide/iphone/setting/sim-esim/capture-sim01-07b.png" width="300" height="" alt="" class="c-Img_Capture">
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/support/_smallcategory-js') %>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

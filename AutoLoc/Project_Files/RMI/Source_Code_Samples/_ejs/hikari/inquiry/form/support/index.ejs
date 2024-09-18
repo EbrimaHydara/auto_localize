@@ -1,0 +1,234 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "ご契約内容に関するお問い合わせ" -%>
+<% const directories = [{path: hikariroot.path + "inquiry/", label:"お問い合わせ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天ひかりのご契約内容に関するお問い合わせのメールフォームはこちらです。',
+    noindex: false,
+    pathname: filepath,
+    ishikari: true,
+    canonical_custom: 'https://network.mobile.rakuten.co.jp/hikari/inquiry/form/support/',
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/inquiry/form/consult/consult.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/inquiry/form/support/support.css?20240424">
+
+
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+  <%- include('/hikari/include/_header', { headerType: 'normal', pagetitle: pagetitle, directories: directories, tax: false }) %>
+
+  <div class="l-hikari-Section_Main">
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+      <p class="u-Adjust_Mt-24">ご契約中の方専用のお問い合わせフォームです。新規お申し込みに関するお問い合わせは、<a href="<%= sitepath %><%= hikariroot.path %>inquiry/">お問い合わせページ</a>に記載の専用窓口へお願いします。</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">※ご本人確認のため、契約時にご登録いただいた「氏名」「連絡先電話番号」「住所」をご入力ください。</p>
+      <form id="js-hikari-inquiry_Form" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+      <!-- <form id="js-hikari-inquiry_Form" action="" method="POST"> -->
+        <input type="hidden" name="orgid" value="00D2v000001WJL6">
+        <input type="hidden" name="retURL" value="https://network.mobile.rakuten.co.jp/hikari/inquiry/form/support/completion/">
+
+        <dl id="js-hikari-inquiry_Form-top" class="c-Form_List u-Adjust_Mt-24">
+          <div>
+            <dt>氏名<span class="c-Form_List-required">必須</span></dt>
+            <dd class="hikari-inquiry-form-support-Form_Horizontal">
+              <div><input id="00N2v00000JLlAA" name="00N2v00000JLlAA" class="c-Form_Input js-required" maxlength="40" size="20" type="text" placeholder="例：楽天" autocomplete="off"></div>
+              <div><input id="00N2v00000JLlA6" name="00N2v00000JLlA6" class="c-Form_Input js-required" maxlength="40" size="20" type="text" placeholder="例：太郎" autocomplete="off"></div>
+            </dd>
+          </div>
+          <div>
+            <dt>メールアドレス<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <input id="email" name="email" class="c-Form_Input js-required js-chkmail" size="20" type="text" placeholder="例：example@example.com" autocomplete="off">
+            </dd>
+          </div>
+          <div>
+            <dt>連絡先電話番号<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <input id="phone" name="phone" class="c-Form_Input js-required js-chkphone" maxlength="20" size="20" type="text" placeholder="例：03XXXXYYYY" autocomplete="off">
+            </dd>
+          </div>
+          <div>
+            <dt>郵便番号<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <div class="inquiry-Form_Auxiliary">
+                <input id="00N2v00000JLlAI" name="00N2v00000JLlAI" class="c-Form_Input js-required hikari-inquiry-form-support-Form_Auxiliary-item u-Adjust_W-160" maxlength="8" size="20" type="text" placeholder="例：1234567">
+                <button type="button" class="c-Btn_Secondly hikari-inquiry-form-support-Form_Auxiliary-item js-hikari-inquiry_Zip2addr" style="padding: 12px 24px;"><span style="text-align: center;display: block;">郵便番号から住所表示</span></button>
+              </div>
+            </dd>
+          </div>
+          <div>
+            <dt>都道府県<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <div class="c-Form_Select">
+                <select id="00N2v00000JLlAb" name="00N2v00000JLlAb" size="1" autocomplete="off" class="js-required">
+                  <option value="">選択してください</option>
+                  <option value="北海道">北海道</option>
+                  <option value="青森県">青森県</option>
+                  <option value="岩手県">岩手県</option>
+                  <option value="宮城県">宮城県</option>
+                  <option value="秋田県">秋田県</option>
+                  <option value="山形県">山形県</option>
+                  <option value="福島県">福島県</option>
+                  <option value="茨城県">茨城県</option>
+                  <option value="栃木県">栃木県</option>
+                  <option value="群馬県">群馬県</option>
+                  <option value="埼玉県">埼玉県</option>
+                  <option value="千葉県">千葉県</option>
+                  <option value="東京都">東京都</option>
+                  <option value="神奈川県">神奈川県</option>
+                  <option value="新潟県">新潟県</option>
+                  <option value="富山県">富山県</option>
+                  <option value="石川県">石川県</option>
+                  <option value="福井県">福井県</option>
+                  <option value="山梨県">山梨県</option>
+                  <option value="長野県">長野県</option>
+                  <option value="岐阜県">岐阜県</option>
+                  <option value="静岡県">静岡県</option>
+                  <option value="愛知県">愛知県</option>
+                  <option value="三重県">三重県</option>
+                  <option value="滋賀県">滋賀県</option>
+                  <option value="京都府">京都府</option>
+                  <option value="大阪府">大阪府</option>
+                  <option value="兵庫県">兵庫県</option>
+                  <option value="奈良県">奈良県</option>
+                  <option value="和歌山県">和歌山県</option>
+                  <option value="鳥取県">鳥取県</option>
+                  <option value="島根県">島根県</option>
+                  <option value="岡山県">岡山県</option>
+                  <option value="広島県">広島県</option>
+                  <option value="山口県">山口県</option>
+                  <option value="徳島県">徳島県</option>
+                  <option value="香川県">香川県</option>
+                  <option value="愛媛県">愛媛県</option>
+                  <option value="高知県">高知県</option>
+                  <option value="福岡県">福岡県</option>
+                  <option value="佐賀県">佐賀県</option>
+                  <option value="長崎県">長崎県</option>
+                  <option value="熊本県">熊本県</option>
+                  <option value="大分県">大分県</option>
+                  <option value="宮崎県">宮崎県</option>
+                  <option value="鹿児島県">鹿児島県</option>
+                  <option value="沖縄県">沖縄県</option>
+                  <option value="海外">海外</option>
+                </select>
+                <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+              </div>
+            </dd>
+          </div>
+          <div>
+            <dt>市区町村以下<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <input id="00N2v00000JLl9z" name="00N2v00000JLl9z" class="c-Form_Input js-required" size="20" type="text" placeholder="例：世田谷区玉川一丁目14番1号　楽天クリムゾンハウス" autocomplete="off">
+            </dd>
+          </div>
+          <div>
+            <dt>お客様番号</dt>
+            <dd>
+              <input id="00N2v00000JLlA2" name="00N2v00000JLlA2" class="c-Form_Input" maxlength="20" size="20" type="text" placeholder="例：200XXXXX" autocomplete="off">
+            </dd>
+          </div>
+          <div>
+            <dt>ユーザーID</dt>
+            <dd>
+              <input id="00N2v00000JLlAd" name="00N2v00000JLlAd" class="c-Form_Input" maxlength="20" size="20" type="text" placeholder="例：ra12345xxxxxx" autocomplete="off">
+            </dd>
+          </div>
+          <div>
+            <dt>お問い合わせ内容<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <textarea id="description" name="description" class="c-Form_Input js-required"></textarea>
+            </dd>
+          </div>
+        </dl>
+        <input id="kou" type="hidden" name="00N2v00000JLlAZ" value="楽天ひかり">
+        <h2 class="c-Heading_Lv3 u-Adjust_Mt-64">個人情報の取扱いについて</h2>
+        <p class="u-Adjust_Mt-24">「<a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" target="_blank" rel="noopener" class="c-Link_Txt-inline">個人情報の取扱いについて<span class="c-Icon_New-window-l"></span></a>」をご確認いただき、同意される場合は「同意して確認」を選択してお進みください。</p>
+        <p class="u-Adjust_Align-center u-Adjust_Mt-40">
+          <button id="js-hikari-inquiry_Confirm" type="button" class="c-Btn_Primary-large"><span><span>同意して確認</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></button>
+        </p>
+
+        <div id="modal-confirm" style="display:none;">
+          <h2 class="c-Heading_Lv3 u-Adjust_Mb-24">入力内容の確認</h2>
+          <p class="u-Adjust_Mb-24">以下の内容に問題がなければ「送信する」を選択してください。</p>
+          <dl class="c-Form_List-confirm">
+            <div>
+              <dt>氏名</dt>
+              <dd>
+                <span id="00N2v00000JLlAA-disp" class="u-Adjust_Txt-break u-Adjust_Mr-8"></span>
+                <span id="00N2v00000JLlA6-disp" class="u-Adjust_Txt-break"></span>
+              </dd>
+            </div>
+            <div>
+              <dt>メールアドレス</dt>
+              <dd><p id="email-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div>
+              <dt>連絡先電話番号</dt>
+              <dd><p id="phone-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div>
+              <dt>郵便番号</dt>
+              <dd><p id="00N2v00000JLlAI-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div>
+              <dt>都道府県</dt>
+              <dd><p id="00N2v00000JLlAb-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div>
+              <dt>市区町村以下</dt>
+              <dd><p id="00N2v00000JLl9z-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div>
+              <dt>お客様番号</dt>
+              <dd><p id="00N2v00000JLlA2-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div>
+              <dt>ユーザーID</dt>
+              <dd><p id="00N2v00000JLlAd-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div>
+              <dt>お問い合わせ内容</dt>
+              <dd><p id="description-disp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+          </dl>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+            <button type="button" id="js-hikari-inquiry_Submit" class="c-Btn_Primary-large"><span><span>送信する</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></button>
+          </div>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+            <button type="button" id="js-hikari-inquiry_Confirm-close" class="c-Btn_Secondly"><span><span>修正する</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <footer class="g-Footer">
+    <%- include('/hikari/include/_footer', { pagetitle: pagetitle, directories: directories, hiddenFooterCta: true, hiddenCta: true, hiddenMenu: true, hiddenPopask: true, hiddenBacktop: true }) %>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<script src="<%= sitepath %>assets/js/hikari/inquiry.form.support.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/library/ajaxzip3.js" charset="UTF-8"></script>
+<script>
+(function() {
+  const triggerZip2addr = document.getElementsByClassName('js-hikari-inquiry_Zip2addr');
+
+  triggerZip2addr[0].addEventListener('click', function(e) {
+      AjaxZip3.zip2addr('00N2v00000JLlAI', '', '00N2v00000JLlAb', '00N2v00000JLl9z');
+  });
+})();
+</script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,1159 @@
+<% const pagetitle = "DMM mobileと楽天モバイル 料金プランを徹底比較" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'DMM mobileをご利用中の方向けに、楽天モバイルとDMM mobileの料金プランを徹底比較します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const namespace = "dmm" -%>
+<% const titleQ2 = `
+  <div class="${namespace}-Drilldown_Question-heading">
+    <h3 class="c-Heading_Lv3 ${namespace}-Drilldown_Question-title"><span class="${namespace}-Utility_Break-sp">どんなお悩みが</span>ありますか？</h3>
+    <div class="u-Adjust_Mt-16">
+      <img src="${sitepath}assets/img/guide/migration/dmm/img-q02.png?210820" alt="" class="" width="311">
+    </div>
+  </div>
+` -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/migration/dmm/dmm.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= namespace %>-Hero">
+  <div class="<%= namespace %>-Hero_Main">
+    <div class="<%= namespace %>-Hero_Main-inner">
+      <h1 class="<%= namespace %>-Hero_Title">
+        <img src="<%= sitepath %>assets/img/guide/migration/dmm/hero2-pc.png" alt="<%= pagetitle %>" class="<%= namespace %>-Hero_Title-pc" width="1032" height="312">
+        <img src="<%= sitepath %>assets/img/guide/migration/dmm/hero2-sp.png" alt="<%= pagetitle %>" class="<%= namespace %>-Hero_Title-sp" width="375" height="320">
+      </h1>
+    </div>
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mt-24">
+    <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+  </div>
+
+  <div class="<%= namespace %>-Hero_Sub u-Adjust_Align-center">
+    <p class="c-Txt_Cap c-Txt_Emp-02">＼今すぐお申し込みはこちらから／</p>
+    <p><a href="<%= sitepath %>guide/application/?lid-r=guide_migration_dmm_application" class="c-Btn_Primary-large u-Adjust_Mt-16 u-Adjust_Mb-16">新規／乗り換え（MNP）お申し込み</a></p>
+    <p><a href="<%= sitepath %>guide/flow/application/?l-id=guide_migration_dmm_flow-application" class="<%= namespace %>-Hero_Link-icon c-Link_Txt-inline-icon">お申し込み方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+  </div>
+</div>
+
+<div class="<%= namespace %>-Utility_Container">
+  <div class="<%= namespace %>-Drilldown_Container">
+    <div class="l-System_Container">
+      <p class="<%= namespace %>-Txt_Flex-center">楽天モバイルに乗り換えると、今よりどのくらいおトクになるか、現在ご利用中の料金プランと比較してみませんか？</p>
+      <p class="c-Heading_Lv2 u-Adjust_Align-center u-Adjust_Mt-64"><span class="<%= namespace %>-Utility_Break-sp">現在のご利用状況を</span>教えてください</p>
+      <p class="u-Adjust_Align-center u-Adjust_Mt-8"><span class="<%= namespace %>-Utility_Break-sp">各選択肢の中から一番近い項目を</span>お選びください</p>
+      <div class="<%= namespace %>-Drilldown_List-radio">
+        <%# data-level="0" -%>
+        <div class="<%= namespace %>-Drilldown_Question js-drilldown-q c-Theme-Light" data-level="0">
+          <div class="<%= namespace %>-Drilldown_Question-heading">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Drilldown_Question-title"><span class="<%= namespace %>-Utility_Break-sp">あなたのスマホの使い方</span>どれがあてはまりますか？</h3>
+            <div class="u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-q01.png?210820" alt="" class="" width="311">
+            </div>
+          </div>
+          <ul>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input type="radio" name="faq_0" value="101" data-level="1" data-is-answer="true" data-ratId="inquiry-101" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radioblock-label">データ通信の利用がメイン</span>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input type="radio" name="faq_0" value="102" data-level="1" data-is-answer="true" data-ratId="inquiry-102" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radioblock-label">通話の利用がメイン</span>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input type="radio" name="faq_0" value="103" data-level="1" data-is-answer="true" data-ratId="inquiry-103" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radioblock-label">複数枚のSIMカードを利用中</span>
+                </span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <%## data-level="1" data-number="101" -%>
+        <div class="<%= namespace %>-Drilldown_Question js-drilldown-q c-Theme-Light" data-number="101" data-level="1">
+          <%- titleQ2 %>
+          <ul>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input class="<%= namespace %>-Drilldown_Question-txt-break-input" type="radio" name="faq_1" value="101_m01" data-level="2" data-is-answer="true" data-ratId="inquiry-101_m01" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap <%= namespace %>-Drilldown_Question-txt-break">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radioblock-label">データ容量が足りないと<br>感じている</span>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input class="<%= namespace %>-Drilldown_Question-txt-break-input" type="radio" name="faq_1" value="101_m02" data-level="2" data-is-answer="true" data-ratId="inquiry-101_m02" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap <%= namespace %>-Drilldown_Question-txt-break">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radioblock-label">データ容量はキープしつつ<br>もっと安く、おトクに使いたい</span>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input type="radio" name="faq_1" value="101_m03" data-level="2" data-is-answer="true" data-ratId="inquiry-101_m03" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap">
+                  <span class="c-Form_Radio-icon <%= namespace %>-Drilldown_Question-txt-break-icon"></span>
+                  <span class="c-Form_Radioblock-label">データ利用量には満足だけど、通話料金が高くなってしまうときがある</span>
+                </span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <%## data-level="1" data-number="102" -%>
+        <div class="<%= namespace %>-Drilldown_Question js-drilldown-q c-Theme-Light" data-number="102" data-level="1">
+          <%- titleQ2 %>
+          <ul>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input type="radio" name="faq_2" value="102_m01" data-level="2" data-is-answer="true" data-ratId="inquiry-102_m01" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radioblock-label">通話料金が高いので<br>もっと安くしたい</span>
+                </span>
+              </label>
+            </li>
+            <li>
+              <label class="c-Form_Radioblock">
+                <input type="radio" name="faq_2" value="102_m02" data-level="2" data-is-answer="true" data-ratId="inquiry-102_m02" data-ratEvent="click" data-ratParam="all">
+                <span class="c-Form_Radioblock-wrap">
+                  <span class="c-Form_Radio-icon"></span>
+                  <span class="c-Form_Radioblock-label">データをあまり使わないので<br>通信料をもっと安くしたい</span>
+                </span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Drilldown_Answer-container">
+      <%## data-level="1" data-number="103" -%>
+      <div class="<%= namespace %>-Drilldown_Answer js-drilldown-a" data-number="103" data-level="1">
+        <div class="l-System_Container">
+          <h3 class="c-Heading_Lv3 u-Adjust_Align-center">例えばこんなあなた...</h3>
+          <div class="u-Adjust_Pt-16">
+            <div class="l-Media_List-2 <%= namespace %>-List_2">
+              <div class="<%= namespace %>-List_2-fullwidth c-Theme-Light">
+                <h4 class="c-Heading_Lv4 u-Adjust_Align-center"><span class="<%= namespace %>-Utility_Break-sp">他キャリアとDMM mobile</span>の2回線を契約中</h4>
+                <div class="l-Media_Grid-half">
+                  <div>
+                    <p class="u-Adjust_Mt-16">2回線分の料金が高いからもっと安くしたい...1つに纏めたいけど高いのでできない...</p>
+                  </div>
+                  <div class="l-Media_Image u-Adjust_Mb-0">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-5-4.png?210820" width="224" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="<%= namespace %>-List_2-fullwidth c-Theme-Light">
+                <h4 class="c-Heading_Lv4 u-Adjust_Align-center"><span class="<%= namespace %>-Utility_Break-sp">DMM mobile</span>で複数枚のSIMを契約中</h4>
+                <div class="l-Media_Grid-half">
+                  <div>
+                    <p class="u-Adjust_Mt-16">メインスマホ以外の利用のために複数枚契約。できればもう少し安くしたい...</p>
+                  </div>
+                  <div class="l-Media_Image u-Adjust_Mb-0">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-5-5.png?210820" width="224" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="<%= namespace %>-Toyou <%= namespace %>-Drilldown_Toyou">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Toyou_Heading"><span>そんなあなたに</span>楽天モバイルなら</h3>
+            <div class="<%= namespace %>-Toyou_Body">
+              <div class="<%= namespace %>-Toyou_Inner">
+                <h4 class="<%= namespace %>-Toyou_Title">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-5-1-sp.svg">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-5-1-pc.svg" width="364" alt="データと通話の両方が完結。">
+                  </picture>
+                  <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-saikyo.svg" width="397" alt="Rakuten最強プラン" class="<%= namespace %>-Toyou_Title-en <%= namespace %>-Toyou_Title-en1"></span>
+                  <small>
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-sub-sp.svg">
+                      <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-sub-pc.svg" width="392" alt="毎月使ったデータ分だけお支払い" class="<%= namespace %>-Toyou_Title-sub">
+                    </picture>
+                  </small>
+                </h4>
+                <div class="u-Adjust_Pt-16">
+                  <div class="l-Media_List-2">
+                    <div class="c-Infobox_Standing-border <%= namespace %>-List_2-fullwidth <%= namespace %>-Toyou_Card">
+                      <h5 class="u-Adjust_Align-center">通話とデータを別でご契約していた方</h5>
+                      <div class="<%= namespace %>-Toyou_Card-icon u-Adjust_Mt-8">
+                        <div class="<%= namespace %>-Toyou_Card-image">
+                          <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-5-1.png?210820" width="77" alt="">
+                        </div>
+                        <div>
+                          <p class="c-Txt_Normal-m c-Txt_Emp-01">データ通信と通話のSIMをひとまとめにするなんてことも！</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="c-Infobox_Standing-border <%= namespace %>-List_2-fullwidth <%= namespace %>-Toyou_Card">
+                      <h5 class="u-Adjust_Align-center">複数のデータSIMをご契約していた方</h5>
+                      <div class="<%= namespace %>-Toyou_Card-icon u-Adjust_Mt-8">
+                        <div class="<%= namespace %>-Toyou_Card-image">
+                          <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-5-2.png?210820" width="77" alt="">
+                        </div>
+                        <div>
+                          <p class="c-Txt_Normal-m c-Txt_Emp-01">テザリング利用でSIMをひとまとめにするなんてことも！</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="u-Adjust_Mt-40 c-Heading_Lv3 <%= namespace %>-Utility_Align-center-left">SIMを1枚にまとめて、毎月のお支払いを安くしませんか？</p>
+                <div class="u-Adjust_Pt-16">
+                  <div class="l-Media_List-2">
+                    <div>
+                      <div>
+                        <h5 class="c-Heading_Lv4 <%= namespace %>-List_2-fullwidth <%= namespace %>-Utility_Align-center-left">どれだけ使っても最大2,980円/月<br>（税込3,278円）</h5>
+                      </div>
+                      <div class="l-Media_Image">
+                        <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-5-3-230601.png" width="310" alt="" class="u-Adjust_Mt-8">
+                        <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-left">※ 公平なサービスのため、速度制限の場合あり。環境により速度低下する場合あり</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <h5 class="c-Heading_Lv4 <%= namespace %>-Heading_Cap-position">Rakuten Linkアプリ利用で国内通話かけ放題<sub>※</sub></h5>
+                      </div>
+                      <div class="l-Media_Image">
+                        <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-4-2-220701.png" width="310" alt="0円タダ※" class="u-Adjust_Mt-8">
+                        <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-left">※ 国内通話かけ放題（Rakuten Linkアプリ使用時）はプランに含まれる。Rakuten Linkアプリ未使用時30秒20円（税込22円）。一部対象外番号あり。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-Adjust_Mt-32">
+                  <a href="<%= sitepath %>fee/family/?l-id=guide_migration_dmm-sim1_fee_family" class="c-Banner_Hover-act">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-343-108-240430.png" width="100%">
+                      <img src="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-1032-160-240430.png" width="1032" height="160" alt="最強家族プログラム（家族割引）は家族全員ずーっとおトク！データ3GB（家族割引適用時）全キャリア最安880円/月～（税込968円～） ※通話料等別">
+                    </picture>
+                  </a>
+                </div>
+
+                <%- include('/include/guide/migration/dmm/_toyou-cta') %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%### data-level="99" data-number="101_m01" -%>
+      <div class="<%= namespace %>-Drilldown_Answer js-drilldown-a" data-number="101_m01" data-level="99">
+        <div class="l-System_Container">
+          <div class="<%= namespace %>-Toyou">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Toyou_Heading"><span>そんなあなたに</span>楽天モバイルなら</h3>
+            <div class="<%= namespace %>-Toyou_Body">
+              <div class="<%= namespace %>-Toyou_Inner">
+                <h4 class="<%= namespace %>-Toyou_Title">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-ja-sp.svg">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-ja-pc.svg" width="392" alt="安さとデータ通信大容量が実現" class="<%= namespace %>-Toyou_Title-ja">
+                  </picture>
+                  <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-saikyo.svg" width="332" alt="Rakuten最強プラン" class="<%= namespace %>-Toyou_Title-en <%= namespace %>-Toyou_Title-en1"></span>
+                  <small>
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-sub-sp.svg">
+                      <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-sub-pc.svg" width="392" alt="毎月使ったデータ分だけお支払い" class="<%= namespace %>-Toyou_Title-sub">
+                    </picture>
+                  </small>
+                </h4>
+                <p class="<%= namespace %>-Utility_Mt-32-24 u-Adjust_Align-center c-Txt_Emp-01"><span class="<%= namespace %>-Utility_Break-sp">例えば</span>通話対応SIMプランご利用中の場合</p>
+                <div class="u-Adjust_Pt-8">
+                  <div class="l-Media_List-2 <%= namespace %>-List_2">
+                    <div>
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-3gb-sp-220701.png">
+                        <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-3gb-pc-220701.png" width="416" alt="3GB DMM mobile 1,500円/月（税込1,650円）&rarr;Rakuten Mobile 980円/月（税込1,078円）※通話料等別">
+                      </picture>
+                    </div>
+                    <div>
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-5gb-sp-220701.png">
+                        <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-5gb-pc-220701.png" width="416" alt="5GB DMM mobile 1,910円/月（税込2,101円）&rarr;+70円（税込77円）で20GB使える！ Rakuten Mobile 1,980円/月（税込2,178円）※通話料等別">
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <p class="c-Txt_Normal-m u-Adjust_Align-center u-Adjust_Mt-8 c-Txt_Emp-01">今よりデータ利用量が少ない月はプラン料金を安くすることも！</p>
+                <div class="u-Adjust_Mt-32">
+                  <a href="<%= sitepath %>fee/family/?l-id=guide_migration_dmm-data1_fee_family" class="c-Banner_Hover-act">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-343-108-240430.png" width="100%">
+                      <img src="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-1032-160-240430.png" width="1032" height="160" alt="最強家族プログラム（家族割引）は家族全員ずーっとおトク！データ3GB（家族割引適用時）全キャリア最安880円/月～（税込968円～） ※通話料等別">
+                    </picture>
+                  </a>
+                </div>
+
+                <%- include('/include/guide/migration/dmm/_toyou-cta') %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%### data-level="99" data-number="101_m02" -%>
+      <div class="<%= namespace %>-Drilldown_Answer js-drilldown-a" data-number="101_m02" data-level="99">
+        <div class="l-System_Container">
+          <div class="<%= namespace %>-Toyou">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Toyou_Heading"><span>そんなあなたに</span>楽天モバイルなら</h3>
+            <div class="<%= namespace %>-Toyou_Body">
+              <div class="<%= namespace %>-Toyou_Inner">
+                <h4 class="<%= namespace %>-Toyou_Title">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-ja02-sp.svg">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-ja02-pc.svg" width="700" alt="同じデータ利用量でも毎月のお支払いが安くなることも">
+                  </picture>
+                  <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-saikyo.svg" width="332" alt="Rakuten最強プラン" class="<%= namespace %>-Toyou_Title-en <%= namespace %>-Toyou_Title-en1"></span>
+                  <small>
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-sub-sp.svg">
+                      <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-sub-pc.svg" width="392" alt="毎月使ったデータ分だけお支払い" class="<%= namespace %>-Toyou_Title-sub">
+                    </picture>
+                  </small>
+                </h4>
+                <p class="<%= namespace %>-Utility_Mt-32-24 u-Adjust_Align-center c-Txt_Emp-01"><span class="<%= namespace %>-Utility_Break-sp">例えば</span>通話対応SIMプランご利用中の場合</p>
+                <div class="u-Adjust_Pt-8">
+                  <div class="l-Media_List-2 <%= namespace %>-List_2">
+                    <div>
+                      <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-1gb-sp-220701.png">
+                          <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-1gb-pc-220701.png" width="416" alt="1GB DMM mobile 1,260円/月（税込1,386円）&rarr;Rakuten Mobile 980円/月※通話料等別">
+                        </picture>
+                    </div>
+                    <div>
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-3gb02-sp-220701.png">
+                        <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-3gb02-pc-220701.png" width="416" alt="3GB DMM mobile 1,500円/月（税込1,650円）&rarr;Rakuten Mobile 980円/月（税込1,078円）※通話料等別">
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <p class="c-Txt_Normal-m u-Adjust_Align-center u-Adjust_Mt-32 c-Txt_Emp-01">月のデータ利用量に合わせてプラン料金が決まる！使い方はあなた次第</p>
+
+                <div class="u-Adjust_Mt-32">
+                  <a href="<%= sitepath %>fee/family/?l-id=guide_migration_dmm-data2_fee_family" class="c-Banner_Hover-act">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-343-108-240430.png" width="100%">
+                      <img src="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-1032-160-240430.png" width="1032" height="160" alt="最強家族プログラム（家族割引）は家族全員ずーっとおトク！データ3GB（家族割引適用時）全キャリア最安880円/月～（税込968円～） ※通話料等別">
+                    </picture>
+                  </a>
+                </div>
+
+                <%- include('/include/guide/migration/dmm/_toyou-cta') %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%### data-level="99" data-number="101_m03" -%>
+      <div class="<%= namespace %>-Drilldown_Answer js-drilldown-a" data-number="101_m03" data-level="99">
+        <%- include('/include/guide/migration/dmm/_toyou01', {key: '-1-3'}) %>
+      </div>
+
+      <%### data-level="99" data-number="102_m01" -%>
+      <div id="communication-center" class="<%= namespace %>-Drilldown_Answer js-drilldown-a" data-number="102_m01" data-level="99">
+        <%- include('/include/guide/migration/dmm/_toyou01', {key: '-2-1'}) %>
+      </div>
+
+      <%### data-level="99" data-number="102_m02" -%>
+      <div class="<%= namespace %>-Drilldown_Answer js-drilldown-a" data-number="102_m02" data-level="99">
+        <div class="l-System_Container">
+          <div class="<%= namespace %>-Toyou">
+            <h3 class="c-Heading_migration/dmm/_common013 <%= namespace %>-Toyou_Heading"><span>そんなあなたに</span>楽天モバイルなら</h3>
+            <div class="<%= namespace %>-Toyou_Body">
+              <div class="<%= namespace %>-Toyou_Inner">
+                <h4 class="<%= namespace %>-Toyou_Title">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-2-3-sp-220701.svg">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-ttl-2-3-pc-220701.svg" width="383" alt="毎月のお支払いが安くなることも">
+                  </picture>
+                </h4>
+                <div class="u-Adjust_Pt-32">
+                  <div class="l-Media_List-2 <%= namespace %>-List_2">
+                    <div>
+                      <div>
+                        <h5 class="c-Heading_Lv4 <%= namespace %>-Txt_Flex-center">例えば通話対応SIMプランご利用中の場合</h5>
+                      </div>
+                      <div class="l-Media_Image">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/toyou-4-1-sp-220701.png">
+                          <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-4-1-pc-220701.png" width="416" alt="1GB DMM mobile 1,260円/月（税込1,386円）&rarr;Rakuten Mobile 3GBまで使えて980円/月（税込1,078円）※通話料等別">
+                        </picture>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <h5 class="c-Heading_Lv4 <%= namespace %>-Heading_Cap-position">Rakuten Linkアプリ利用で国内通話かけ放題<sub>※</sub></h5>
+                      </div>
+                      <div class="l-Media_Image">
+                        <img src="<%= sitepath %>assets/img/guide/migration/dmm/toyou-4-2-220701.png" width="310" alt="0円タダ※" class="u-Adjust_Mt-8">
+                        <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-left">※ 国内通話かけ放題（Rakuten Linkアプリ使用時）はプランに含まれる。Rakuten Linkアプリ未使用時30秒20円（税込22円）。一部対象外番号あり。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="u-Adjust_Mt-32">
+                  <a href="<%= sitepath %>fee/family/?l-id=guide_migration_dmm-call1_fee_family" class="c-Banner_Hover-act">
+                    <picture>
+                      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-343-108-240430.png" width="100%">
+                      <img src="<%= sitepath %>assets/img/bnr/bnr-saikyo-family-program-1032-160-240430.png" width="1032" height="160" alt="最強家族プログラム（家族割引）は家族全員ずーっとおトク！データ3GB（家族割引適用時）全キャリア最安880円/月～（税込968円～） ※通話料等別">
+                    </picture>
+                  </a>
+                </div>
+
+                <%- include('/include/guide/migration/dmm/_toyou-cta') %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%#  共通コンテンツ　_%>
+  <div class="<%= namespace %>-Drilldown_Common js-drilldown-common">
+    <div class="u-Adjust_Align-center u-Adjust_Pt-24 u-Adjust_Pb-24 <%= namespace %>-Utility_Mt-64-100 <%= namespace %>-Hero_Sub">
+      <p class="c-Txt_Cap c-Txt_Emp-02">＼今すぐお申し込みはこちらから／</p>
+      <p><a href="<%= sitepath %>guide/application/?lid-r=guide_migration_dmm_application" class="c-Btn_Primary-large u-Adjust_Mt-16 u-Adjust_Mb-16">新規／乗り換え（MNP）お申し込み</a></p>
+      <p><a href="<%= sitepath %>guide/flow/application/?l-id=guide_migration_dmm_flow-application" class="<%= namespace %>-Hero_Link-icon c-Link_Txt-inline-icon">お申し込み方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+      <p class="u-Adjust_Mt-24 c-Txt_Emp-01">ご満足いただけなければいつでも解約可能。契約解除料はかかりません<sub>※</sub></p>
+      <p class="c-Txt_Cap <%= namespace %>-Txt_Flex-center u-Adjust_Mt-8 u-Adjust_Align-left">※ Rakuten最強プランの契約解除料は無料。製品代等は別。<br>
+        ※ DMM mobileは新規申し込みを停止しております。解約後、MNP転出後の再契約はできませんので、あらかじめご了承ください。</p>
+    </div>
+
+    <div id="js-trigger" class="l-System_Container u-Adjust_Mt-64">
+
+      <div class="js-drilldown-switch" data-content="another">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Heading-with-icon">
+          <small>
+            <span>＼どんなところがおトクになる？／</span>
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/commentary-another-ttl-sp.svg">
+              <img src="<%= sitepath %>assets/img/guide/migration/dmm/commentary-another-ttl-pc.svg" width="419" alt="他キャリア・DMM mobile&rarr;Rakuten Mobile" class="<%= namespace %>-Heading-with-icon-another">
+            </picture>
+          </small>
+          乗り換え徹底解説！
+        </h2>
+
+        <p class="u-Adjust_Mt-16">他社とDMM mobileなど複数枚ご利用中のSIMを「Rakuten最強プラン」ひとつにまとめることで、毎月のお支払い額がおトクになることも。現在のご契約状況と比較してみませんか？</p>
+
+        <ul class="<%= namespace %>-Toc">
+          <li><a href="#data-communication" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>データ通信</a></li>
+          <li><a href="#communication" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>通話</a></li>
+          <li><a href="#fee" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>手数料もおトク</a></li>
+          <li><a href="#point" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ポイント利用</a></li>
+          <li><a href="#flow" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用までの流れ</a></li>
+        </ul>
+      </div>
+
+      <div class="js-drilldown-switch" data-content="common">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Heading-with-icon">
+          <small>
+            <span>＼どんなところがおトクになる？／</span>
+            <img src="<%= sitepath %>assets/img/guide/migration/dmm/commentary-ttl.svg" width="299" alt="DMM mobile&rarr;Rakuten Mobile">
+          </small>
+          乗り換え徹底解説！
+        </h2>
+
+        <ul class="<%= namespace %>-Toc">
+          <li><a href="#data-communication" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>データ通信</a></li>
+          <li><a href="#communication" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>通話</a></li>
+          <li><a href="#plan-comparison" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>料金プラン比較</a></li>
+          <li><a href="#point" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ポイント利用</a></li>
+          <li><a href="#flow" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用までの流れ</a></li>
+        </ul>
+
+        <p class="u-Adjust_Mt-32"><a href="https://mvno.dmm.com" class="c-Link_Txt-inline-icon" target="_blank">DMM mobileサポートセンター<span class="c-Icon_New-window-l"></span></a></p>
+      </div>
+
+
+
+      <h3 id="data-communication" class="c-Heading_Lv3 <%= namespace %>-Heading-with-icon dmm-Utility_Mt-64-72">
+        <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/icon-phone.png?210820" alt="" width="65" height="37"></span>
+        データ通信
+      </h3>
+      <ul class="<%= namespace %>-List_Arrow">
+        <li class="js-drilldown-switch" data-content="common">
+          <h4 class="<%= namespace %>-Heading_Dmm">DMM mobile</h4>
+          <div class="c-Infobox_Standing-border u-Adjust_Mt-24">
+            <div class="l-Media_Grid-large">
+              <div class="l-Media_Image <%= namespace %>-Utility_Align-right-center">
+                <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-data-cm01.png?210820" width="328" alt="">
+              </div>
+              <div>
+                <p class="u-Adjust_Mt-8 c-Txt_Emp-01 c-Txt_Normal-m">データ容量に応じた固定プラン料金</p>
+                <p class="u-Adjust_Mt-8 c-Txt_Emp-01 c-Txt_Normal-m">足りない場合はデータチャージ</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="js-drilldown-switch <%= namespace %>-Utility_Border" data-content="list">
+          <h4 class="<%= namespace %>-Heading_Rakuten">Rakuten Mobile</h4>
+          <div class="c-Infobox_Standing-border u-Adjust_Mt-40 u-Adjust_Align-center">
+            <div class="u-Adjust_Align-center">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/img-plan-sp-230601.png">
+                <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-plan-pc-230601.png" width="856" alt="毎月のデータ利用量でお支払い金額が決まる※1 Rakuten最強プラン 楽天回線エリアデータ無制限※2で2,980円/月(税込3,278円) さらに使わなければ勝手に安くなる!">
+              </picture>
+              <div class="c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Align-center">※2 公平なサービス提供のため速度制限する場合あり。環境により速度低下する場合あり ※通話料等別費用</div>
+            </div>
+            <div class="u-Adjust_Pt-32">
+              <div class="l-Media_List-2 <%= namespace %>-List_2 <%= namespace %>-List_2-center">
+                <div class="u-Adjust_Align-center">
+                  <div>
+                    <p class="c-Heading_Lv4">どれだけ使っても最大2,980円/月</p>
+                    <p class="c-Txt_Cap">（税込 3,278円）</p>
+                  </div>
+                  <div class="l-Media_Image u-Adjust_Mt-8">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-data-cm04-220701.png" width="328" alt="無制限※3">
+                  </div>
+                </div>
+                <div class="u-Adjust_Align-center">
+                  <div>
+                    <p class="c-Heading_Lv4">4G+5G対応<sub>※3</sub></p>
+                    <p class="c-Txt_Cap">5Gサービスは一部エリアのみ</p>
+                  </div>
+                  <div class="l-Media_Image u-Adjust_Mt-8">
+                    <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-data-cm05.png?210820" width="311" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Ml-16 u-Adjust_Mr-16">
+                <a href="<%= sitepath %>fee/saikyo-plan/?l-id=guide_migration_dmm_fee_saikyo-plan" class="c-Btn_Primary-large"><span><span class="<%= namespace %>-Utility_Break-sp">Rakuten最強プランの</span>詳細を見る</span></a>
+              </p>
+
+              <p class="c-Txt_Cap u-Adjust_Mt-24 l-System_Container u-Adjust_Mb-16 u-Adjust_Align-left">※1 毎月のデータ利用量によってプラン料金が変動いたします（日本全国の通信エリア／海外ローミングエリア）。データ高速モードがOFFであってもデータ利用量はカウントされます。<br>
+                ※2 公平なサービスのため、速度制限の場合あり。環境により速度低下する場合あり。<br>
+                ※3 5Gは一部エリアのみ。順次拡大予定。5Gのご利用には、<a href="https://network.mobile.rakuten.co.jp/area/?l-id=guide_migration_dmm_5g-area">対象エリア</a>と<a href="https://network.mobile.rakuten.co.jp/product/?l-id=guide_migration_dmm_product">対応製品</a>が必要です。</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+      <h3 id="communication" class="c-Heading_Lv3 <%= namespace %>-Heading-with-icon dmm-Utility_Mt-64-72">
+        <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/icon-phone.png?210820" alt="" width="65" height="37"></span>
+        通話
+      </h3>
+      <ul class="<%= namespace %>-List_Arrow">
+        <li class="js-drilldown-switch" data-content="common">
+          <h4 class="<%= namespace %>-Heading_Dmm">DMM mobile</h4>
+          <div class="c-Infobox_Standing-border l-System_Container u-Adjust_Mb-16 u-Adjust_Mt-16">
+            <div class="l-Media_Grid-large">
+              <div class="l-Media_Image <%= namespace %>-Utility_Align-right-center">
+                <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-talk01.png?210820" width="328" alt="">
+              </div>
+              <div class="u-Adjust_Mb-16">
+                <p class="u-Adjust_Mt-8 c-Txt_Emp-01 c-Txt_Normal-m">国内 20円<span class="<%= namespace %>-Txt_Tax">（税込22円）</span>/30秒</p>
+                <p class="u-Adjust_Mt-8 c-Txt_Emp-01 c-Txt_Normal-m">10分かけ放題<sub>※</sub> 850円/月<span class="<%= namespace %>-Txt_Tax">（税込935円）</span></p>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 10分以内の国内通話が回数無制限でかけ放題になるサービスです。</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="js-drilldown-switch <%= namespace %>-Utility_Border" data-content="list">
+          <h4 class="<%= namespace %>-Heading_Rakuten">Rakuten Mobile</h4>
+          <div class="c-Infobox_Standing-border l-System_Container">
+            <div class="l-Media_List-2 u-Adjust_Pt-16">
+              <div class="u-Adjust_Align-center">
+                <div>
+                  <p class="c-Heading_Lv4">Rakuten Linkアプリ利用で<br>
+                    国内通話かけ放題<sub>※4</sub></p>
+                </div>
+                <div class="l-Media_Image u-Adjust_Mt-8">
+                  <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-talk02.png?210820" width="415" alt="">
+                </div>
+                <ul class="c-List_Text-disc u-Adjust_Align-left u-Adjust_Mt-8">
+                  <li class="<%= namespace %>-List_Noarrow">Rakuten Linkを利用していないスマホや固定電話への通話もかけ放題</li>
+                  <li class="<%= namespace %>-List_Noarrow">海外から国内への通話もかけ放題<small>※5</small></li>
+                </ul>
+              </div>
+              <div class="u-Adjust_Align-center">
+                <div>
+                  <p class="c-Heading_Lv4">いままではオプションだったけど<br>
+                    留守番電話も0円で使える</p>
+                </div>
+                <div class="l-Media_Image u-Adjust_Mt-8">
+                  <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-talk04.png?210820" width="415" alt="">
+                </div>
+              </div>
+            </div>
+
+            <p class="u-Adjust_Align-center u-Adjust_Mt-32">
+              <a href="<%= sitepath %>service/rakuten-link/?l-id=guide_migration_dmm_rakuten-link" class="c-Btn_Regular-large"><span>Rakuten Linkの詳細を見る</span></a>
+            </p>
+
+            <p class="c-Txt_Cap u-Adjust_Mt-24 u-Adjust_Mb-16">※4 国内通話かけ放題（Rakuten Linkアプリ使用時）はプランに含まれる。Rakuten Linkアプリ未使用時30秒20円（税込22円）。一部対象外番号あり。<br>※5 Rakuten Linkアプリ使用時。通話料には消費税相当額は加算されません。海外の対象国と地域からのみ利用可能。その他の地域に関してはWi-Fi接続中のみ利用可能。対象エリアおよび条件は変更する場合あり。<a href="<%= sitepath %>service/global/overseas/#accordion-1">対象エリア</a>をご確認ください。また、OS標準の電話アプリを利用した場合、海外の対象国と地域でのみ国・地域別従量課金で利用可能。なお、iOSの場合、Rakuten Linkアプリでは着信できないため、 iOS標準の電話アプリでの着信となり、海外での着信も国・地域別従量課金となります。</p>
+          </div>
+        </li>
+      </ul>
+
+
+      <div class="js-drilldown-switch" data-content="common">
+        <h3 id="plan-comparison" class="c-Heading_Lv3 <%= namespace %>-Heading-with-icon dmm-Utility_Mt-64-72">
+          <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/icon-fee.png?210820" alt="" width="65" height="35"></span>
+          料金プラン比較
+        </h3>
+        <p class="u-Adjust_Mt-16">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/img-plan01-sp-230601.png">
+            <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-plan01-pc-230601.png" width="1032" alt="DMM mobileとRakuten Mobileの料金比較表">
+          </picture>
+        </p>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">
+          ※6 通話対応SIMプランは標準でSMS機能がついています。<br>
+          ※7 通信速度を気にせず、とにかく安く利用したい方向けのプランです。ライトプランの最大通信速度は200Kbps（高速データ通信OFF時と同等の速度）です。追加チャージをすることで高速データ通信もご利用いただけます。3日間の通信量が366MBを超えた場合、通信速度を制限する場合があります。ライトプランはシングルコースでのみご利用いただけます。
+        </p>
+
+        <div class="c-Accordion u-Adjust_Mt-16">
+          <button id="accordion-plan1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-plan1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>料金比較の詳細を見る</button>
+          <div id="accordion-content-plan1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-plan1" aria-hidden="true">
+            <p class="u-Adjust_Mt-16">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/img-plan02-sp-230601.png">
+                <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-plan02-pc-230601.png" width="1032" alt="DMM mobileとRakuten Mobileの料金比較表詳細">
+              </picture>
+            </p>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※4 国内通話かけ放題（Rakuten Linkアプリ使用時）はプランに含まれる。Rakuten Linkアプリ未使用時30秒20円（税込22円）。一部対象外番号あり。<br>
+              ※6 通話対応SIMプランは標準でSMS機能がついています。<br>
+              ※7 通信速度を気にせず、とにかく安く利用したい方向けのプランです。ライトプランの最大通信速度は200Kbps（高速データ通信OFF時と同等の速度）です。追加チャージをすることで高速データ通信もご利用いただけます。3日間の通信量が366MBを超えた場合、通信速度を制限する場合があります。ライトプランはシングルコースでのみご利用いただけます。<br>
+              ※8 10分以内の国内通話が回数無制限でかけ放題になるサービスです。<br>
+              ※9 通話・通信料には消費税相当額は加算されません。海外の対象国と地域で利用可能。海外の対象国と地域以外ではWi-Fi接続時のみ利用可能。対象エリアおよび条件は変更する場合あり。<a href="<%= sitepath %>service/global/overseas/#accordion-1" class="c-Link_Txt">対象エリア</a>をご確認ください。<br>
+              ※10 海外では、通常の電話を利用した発着信、SMSの送受信はできませんので、Rakuten Linkをご利用ください。<br>
+              ※11 オプションサービス「国際通話かけ放題」加入時。オプションに加入しない場合、は国別の従量課金。Rakuten Linkアプリ使用時。通話料には消費税相当額は加算されません。海外の対象国と地域からのみ利用可能。その他の地域に関してはWi-Fi接続中のみ利用可能。対象エリアおよび条件は変更する場合あり。対象エリアをご確認ください。また、OS標準の電話アプリを利用した場合、海外の対象国と地域でのみ国・地域別従量課金で利用可能。なお、iOSの場合、Rakuten Linkアプリでは着信できないため、 iOS標準の電話アプリでの着信となり、海外での着信も国・地域別従量課金となります。<br>
+              ※12 送信料は送信文字数により異なります。<br>
+              ※13 Rakuten Linkアプリ未使用時は3円（税込3.3円）/ 70文字（全角）。iOSの場合、Rakuten Linkアプリ以外からのSMSの送受信はできません。iOS標準のメッセージアプリでの送受信となります。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-40 js-drilldown-switch" data-content="commonTitle">各種手数料もおトク</h4>
+      <h3 id="fee" class="c-Heading_Lv3 <%= namespace %>-Heading-with-icon dmm-Utility_Mt-64-72 js-drilldown-switch" data-content="anotherTitle">
+        <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/icon-fee.png?210820" alt="" width="65" height="35"></span>
+        各種手数料もおトク
+      </h3>
+      <ul class="<%= namespace %>-List_Plan js-drilldown-switch" data-content="adjMt">
+        <li>
+          <p class="<%= namespace %>-List_Plan-txt"><small>DMM mobileからの</small><br>
+            <span>契約解除料※</span>MNP転出手数料※</p>
+          <div class="<%= namespace %>-List_Plan-plice"><span>0</span>円</div>
+        </li>
+        <li>
+          <p class="<%= namespace %>-List_Plan-txt"><small>楽天モバイルお申し込み時の</small><br>
+            契約事務手数料</p>
+          <div class="<%= namespace %>-List_Plan-plice"><span>0</span>円</div>
+        </li>
+      </ul>
+
+      <p class="c-Txt_Emp-02 u-Adjust_Mt-16">ご満足いただけなければいつでも解約可能。契約解除料はかかりません※</p>
+      <p class="c-Txt_Emp-02 c-Txt_Cap u-Adjust_Mt-8">※ Rakuten最強プランの契約解除料は無料。製品代等は別。</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-16">※いずれもDMM mobileでのご請求後、後日ご返金させていただきます。楽天モバイル（楽天回線）への移行に伴い、DMM mobileのプラン料金と楽天回線のプラン料金が重複する可能性があります。その場合は、DMM mobileのプラン料金、また、楽天モバイル「Rakuten最強プラン」のプラン料金と引き継いだオプションサービスの月額利用料いずれもご請求が発生します。</p>
+
+
+      <h3 id="point" class="c-Heading_Lv3 <%= namespace %>-Heading-with-icon dmm-Utility_Mt-64-72">
+        <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/icon-point.png?210820" alt="" width="65" height="35"></span>
+        ポイント利用OK
+      </h3>
+      <div class="c-Theme-Light u-Adjust_Mt-24">
+        <p class="c-Txt_Normal-s c-Txt_Emp-02 <%= namespace %>-Txt_Flex-center">＼楽天ならではのメリット／</p>
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-8 <%= namespace %>-Txt_Flex-center">月々のお支払いや製品購入に楽天ポイントが使える！※</h4>
+        <p class="u-Adjust_Mt-8 <%= namespace %>-Txt_Flex-center">毎月のスマホ代を、貯まった楽天ポイントを利用することで「0円」にするなんてことも！</p>
+        <div class="l-Media_Grid u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/guide/migration/dmm/img-point01-sp.png?210825">
+              <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-point01-pc.png?210820" width="312" alt="">
+            </picture>
+          </div>
+          <div>
+            <ul class="c-List_Text-disc">
+              <li>1ポイント＝1円としてご利用可能</li>
+              <li>ポイント利用額を設定しておけば、毎月自動的に充当されて便利</li>
+            </ul>
+            <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/point/?l-id=guide_migration_dmm_payment-point" class="c-Link_Txt-inline-icon">楽天ポイント利用の詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※一度に利用できるポイント数は1～30,000（ダイヤモンド会員の方は～500,000）ポイントです。製品を分割払いでご購入の場合、初回のみポイントがご利用いただけます。分割払いの2回目以降のお支払いにはご利用いただけません。</p>
+          </div>
+        </div>
+      </div>
+
+
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-40">お持ちのスマホそのままで楽天モバイル（楽天回線）が使えることも</h4>
+      <div class="<%= namespace %>-Product_FindUsed">
+        <p class="c-Txt_Emp-02 u-Adjust_Pt-16">＼ iPhoneは使えるの？ ／</p>
+        <p class="c-Txt_Normal-l u-Adjust_Pt-8 c-Txt_Emp-01">お持ちのスマホが、SIM差し替えで使えるか<br>今すぐチェック！</p>
+        <div class="<%= namespace %>-Product_FindUsed-btn u-Adjust_Pt-8">
+          <a href="<%= sitepath %>product/byod/?l-id=guide_migration_dmm_byod" class="c-Btn_Secondly-large">楽天モバイルで使えるか調べる</a>
+        </div>
+        <p class="u-Adjust_Mt-8 <%= namespace %>-Txt_Flex-center"><a href="<%= sitepath %>product/certified-products/?l-id=guide_migration_dmm_certified-products" class="c-Link_Txt-inline-icon">楽天回線対応製品を見る<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+      <p class="u-Adjust_Mt-8">楽天回線対応のスマホやタブレット、モバイルルーターなら、SIM差し替えでご利用可能※！<span class="c-Txt_Emp-02">お持ちの製品が使えるか必ずご確認ください。</span></p>
+      <p class="u-Adjust_Mt-8 c-Txt_Cap">
+        ※eSIMの場合、SIMの入れ替えは不要で、別途設定が必要です。<br>
+        ※iPhone XS、XR 以降のシリーズでご利用いただけます。一部ご利用いただけない機能があります。
+      </p>
+
+
+      <h3 id="flow" class="c-Heading_Lv3 <%= namespace %>-Heading-with-icon dmm-Utility_Mt-64-72">
+        <span><img src="<%= sitepath %>assets/img/guide/migration/dmm/icon-phone.png?210820" alt="" width="65" height="37"></span>
+        楽天モバイルご利用までの流れ
+      </h3>
+      <p class="u-Adjust_Mt-24">DMM mobileの解約方法やMNPお手続き方法から、楽天モバイルのお申し込みまでの流れをご案内いたします。</p>
+      <h4 class="u-Adjust_Mt-32">DMM mobile　通話対応SIMプランご利用中の場合</h4>
+
+      <%#### 新規お申し込み _%>
+      <div class="c-Accordion u-Adjust_Mt-16">
+        <button id="accordion-flow1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-flow1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>新規お申し込み</button>
+        <div id="accordion-content-flow1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-flow1" aria-hidden="true">
+          <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+            <%#### 1. DMM mobileの解約お手続きを行う _%>
+            <%- include('/include/guide/migration/dmm/_flow-item01') %>
+            <li class="<%= namespace %>-Flow_List-item-tab">
+              <div class="c-Tab js-Tab">
+                <ul class="c-Tab_Items" role="tablist">
+                  <li class="c-Tab_Item" id="tab-menu-flow1" role="tab" aria-selected="true" aria-controls="tab-content-flow1">今のスマホをそのまま使う</li>
+                  <li class="c-Tab_Item" id="tab-menu-flow2" role="tab" aria-selected="false" aria-controls="tab-content-flow2">新しくスマホを購入する</li>
+                </ul>
+                <div class="c-Tab_Panel" id="tab-content-flow1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow1">
+                  <%#### 今のスマホをそのまま使う(2. お持ちのスマホが楽天回線対応製品かを確認する) _%>
+                  <%- include('/include/guide/migration/dmm/_flow-item02-1') %>
+                </div>
+                <div class="c-Tab_Panel" id="tab-content-flow2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow2">
+                  <%#### 新しくスマホを購入する(2. 楽天回線対応製品を確認する) _%>
+                  <%- include('/include/guide/migration/dmm/_flow-item02-2') %>
+                </div>
+              </div>
+            </li>
+            <li class="<%= namespace %>-Flow_List-item-tab">
+              <div class="c-Tab js-Tab <%= namespace %>-Flow_Container">
+                <ul class="c-Tab_Items" role="tablist">
+                  <li class="c-Tab_Item" id="tab-menu-flow3" role="tab" aria-selected="true" aria-controls="tab-content-flow3">Webでお申し込み</li>
+                  <li class="c-Tab_Item" id="tab-menu-flow4" role="tab" aria-selected="false" aria-controls="tab-content-flow4">ショップでお申し込み</li>
+                </ul>
+                <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow3">
+                  <ol class="<%= namespace %>-Flow_List">
+                    <%#### Webでお申し込み(3. Webで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item03-1',) %>
+                    <%- include('/include/guide/migration/dmm/_flow-item04-1',) %>
+                  </ol>
+                </div>
+                <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow4">
+                  <ol class="<%= namespace %>-Flow_List">
+                    <%#### ショップでお申し込み(3. ショップで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item03-2',) %>
+                    <%- include('/include/guide/migration/dmm/_flow-item04-2',) %>
+                  </ol>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <%#### 乗り換え（MNP） _%>
+      <div class="c-Accordion">
+        <button id="accordion-flow2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-flow2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>乗り換え（MNP）</button>
+        <div id="accordion-content-flow2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-flow2" aria-hidden="true">
+          <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+            <li class="<%= namespace %>-Flow_List-item">
+              <h3 class="c-Heading_Lv3">1. DMM mobileでMNP予約番号を取得する</h3>
+              <p class="u-Adjust_Mt-24">DMM mobileのマイページよりMNP予約番号を取得してください。</p>
+              <p class="u-Adjust_Mt-16"><a href="https://mvno.dmm.com/" class="c-Link_Txt-inline-icon" target="_blank">DMM mobileのマイページでMNP予約番号を取得する<span class="c-Icon_New-window-l"></span></a></p>
+              <p class="u-Adjust_Mt-24">乗り換え（MNP）のお申し込みの流れは以下よりご確認いただけます。</p>
+              <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/mnp/" class="c-Link_Txt-inline-icon">他社から乗り換え（MNP）方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+            </li>
+            <li class="<%= namespace %>-Flow_List-item-tab">
+              <div class="c-Tab js-Tab">
+                <ul class="c-Tab_Items" role="tablist">
+                    <li class="c-Tab_Item" id="tab-menu-flow5" role="tab" aria-selected="true" aria-controls="tab-content-flow5">今のスマホをそのまま使う</li>
+                    <li class="c-Tab_Item" id="tab-menu-flow6" role="tab" aria-selected="false" aria-controls="tab-content-flow6">新しくスマホを購入する</li>
+                </ul>
+                <div class="c-Tab_Panel" id="tab-content-flow5" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow5">
+                  <%#### 今のスマホをそのまま使う(2. お持ちのスマホが楽天回線対応製品かを確認する) _%>
+                  <%- include('/include/guide/migration/dmm/_flow-item02-1') %>
+                </div>
+                <div class="c-Tab_Panel" id="tab-content-flow6" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow6">
+                  <%#### 新しくスマホを購入する(2. 楽天回線対応製品を確認する) _%>
+                  <%- include('/include/guide/migration/dmm/_flow-item02-2') %>
+                </div>
+              </div>
+            </li>
+            <li class="<%= namespace %>-Flow_List-item-tab">
+              <div class="c-Tab js-Tab <%= namespace %>-Flow_Container">
+                <ul class="c-Tab_Items" role="tablist">
+                  <li class="c-Tab_Item" id="tab-menu-flow7" role="tab" aria-selected="true" aria-controls="tab-content-flow7">Webでお申し込み</li>
+                  <li class="c-Tab_Item" id="tab-menu-flow8" role="tab" aria-selected="false" aria-controls="tab-content-flow8">ショップでお申し込み</li>
+                </ul>
+                <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow7" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow7">
+                  <ol class="<%= namespace %>-Flow_List">
+                    <li class="<%= namespace %>-Flow_List-item">
+                      <h3 class="c-Heading_Lv3">3. Webで楽天モバイル（楽天回線）に申し込む</h3>
+                      <div class="l-Media_Grid u-Adjust_Mt-24">
+                        <div class="l-Media_Image">
+                          <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-point-03.png" alt="">
+                        </div>
+                        <div>
+                          <p><a href="<%= sitepath %>guide/application/?lid-r=guide_migration_dmm_application" class="c-Btn_Secondly-semiauto">お申し込み画面に進む</a></p>
+                          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/flow/application/?l-id=guide_migration_dmm_flow-application" class="c-Link_Txt-inline-icon">お申し込み方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                        </div>
+                      </div>
+                      <div class="c-Theme-Light u-Adjust_Mt-24">
+                        <h4 class="c-Heading_Lv4">お申し込み・お支払いに必要なものをご準備ください</h4>
+                        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-inline-icon">本人確認書類<span class="c-Icon_Chevron-right"></span></a></p>
+                        <p class="u-Adjust_Mt-16">楽天会員ログイン用のユーザID、パスワード</p>
+                        <p class="c-Txt_Cap u-Adjust_Mt-8">※本人確認書類の情報と、楽天会員情報が一致している必要があります。</p>
+                        <p class="u-Adjust_Mt-16"><a href="https://member.id.rakuten.co.jp/rms/nid/menufwd" class="c-Link_Txt-inline-icon">楽天会員情報を確認・変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/" class="c-Link_Txt-inline-icon">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></p>
+                        <p class="c-Txt_Cap u-Adjust_Mt-8">※ご契約者本人名義と異なるクレジットカードをご利用希望のお客様は、<a href="<%= sitepath %>faq/detail/00001238/">こちらのご案内ページ</a>を必ず事前にご確認ください。</p>
+                        <p class="u-Adjust_Mt-16">MNP予約番号</p>
+                        <p class="c-Txt_Cap u-Adjust_Mt-8">
+                          ※Webページからお申し込みの場合は、MNP有効期間が「7日以上」残っているMNP予約番号が必要です。店舗（楽天モバイルショップ）でお申し込みの場合は、MNP有効期間内であればお手続き可能です。<br>
+                          ※お申し込みの際、MNP有効期限の入力も必要です。MNP予約番号取得の際に忘れずにお控えください。<br>
+                          ※現在契約中の名義と楽天モバイルでご契約いただく名義が同一である必要があります。名義が異なる場合は、現在の携帯電話会社で名義を変更した後に、MNP予約番号を取得してください。<br>
+                          ※MNP有効期限を実際の期日と異なる期日を入力した場合、製品到着後、再度MNP予約番号の取得が必要となる場合があります。
+                        </p>
+                      </div>
+                    </li>
+                    <%#### Webでお申し込み(4. MNP開通手続きを行う - 5. 製品の初期設定を行い、ご利用開始) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item04-3') %>
+                    <%- include('/include/guide/migration/dmm/_flow-item05-1') %>
+                  </ol>
+                </div>
+                <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow8" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow8">
+                  <ol class="<%= namespace %>-Flow_List">
+                    <%#### ショップでお申し込み(3. ショップで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item03-2',) %>
+                    <%- include('/include/guide/migration/dmm/_flow-item04-2',) %>
+                  </ol>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+
+      <h4 class="u-Adjust_Mt-32">DMM mobile　データ通信SIMプランご利用中の場合</h4>
+
+      <%#### 新規お申し込み _%>
+      <div class="c-Accordion u-Adjust_Mt-16">
+        <button id="accordion-flow6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-flow6"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>新規お申し込み</button>
+        <div id="accordion-content-flow6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-flow6" aria-hidden="true">
+          <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+            <%#### 1. DMM mobileの解約お手続きを行う _%>
+            <%- include('/include/guide/migration/dmm/_flow-item01') %>
+            <li class="<%= namespace %>-Flow_List-item-tab">
+              <div class="c-Tab js-Tab">
+                <ul class="c-Tab_Items" role="tablist">
+                    <li class="c-Tab_Item" id="tab-menu-flow17" role="tab" aria-selected="true" aria-controls="tab-content-flow17">今のスマホをそのまま使う</li>
+                    <li class="c-Tab_Item" id="tab-menu-flow18" role="tab" aria-selected="false" aria-controls="tab-content-flow18">新しくスマホを購入する</li>
+                </ul>
+                <div class="c-Tab_Panel" id="tab-content-flow17" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow17">
+                  <%#### 今のスマホをそのまま使う(2. お持ちのスマホが楽天回線対応製品かを確認する) _%>
+                  <%- include('/include/guide/migration/dmm/_flow-item02-1') %>
+                </div>
+                <div class="c-Tab_Panel" id="tab-content-flow18" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow18">
+                  <%#### 新しくスマホを購入する(2. 楽天回線対応製品を確認する) _%>
+                  <%- include('/include/guide/migration/dmm/_flow-item02-2') %>
+                </div>
+              </div>
+            </li>
+            <li class="<%= namespace %>-Flow_List-item-tab">
+              <div class="c-Tab js-Tab <%= namespace %>-Flow_Container">
+                <ul class="c-Tab_Items" role="tablist">
+                  <li class="c-Tab_Item" id="tab-menu-flow19" role="tab" aria-selected="true" aria-controls="tab-content-flow19">Webでお申し込み</li>
+                  <li class="c-Tab_Item" id="tab-menu-flow20" role="tab" aria-selected="false" aria-controls="tab-content-flow20">ショップでお申し込み</li>
+                </ul>
+                <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow19" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow19">
+                  <ol class="<%= namespace %>-Flow_List">
+                    <%#### Webでお申し込み(3. Webで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item03-1',) %>
+                    <%- include('/include/guide/migration/dmm/_flow-item04-1',) %>
+                  </ol>
+                </div>
+                <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow20" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow20">
+                  <ol class="<%= namespace %>-Flow_List">
+                    <%#### ショップでお申し込み(3. ショップで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item03-2',) %>
+                    <%- include('/include/guide/migration/dmm/_flow-item04-2',) %>
+                  </ol>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+
+      <div class="js-drilldown-switch" data-content="another">
+        <h4 class="u-Adjust_Mt-32">DMM mobileと他キャリアのSIMをご契約中の場合</h4>
+        <p class="u-Adjust_Mt-8">複数枚ご利用中のSIMを、楽天モバイルに変更する場合は以下よりご確認ください。</p>
+
+        <%#### 新規お申し込み _%>
+        <div class="c-Accordion u-Adjust_Mt-16">
+          <button id="accordion-flow4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-flow4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>新規お申し込み</button>
+          <div id="accordion-content-flow4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-flow4" aria-hidden="true">
+            <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+              <li class="<%= namespace %>-Flow_List-item">
+                <h3 class="c-Heading_Lv3">1. 解約お手続きを行う</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>DMM mobileの解約</li>
+                </ul>
+                  <p class="u-Adjust_Mt-8">以下よりご確認のうえ、お手続きください。</p>
+                  <p class="u-Adjust_Mt-8"><a href="https://help.dmm.com/-/detail/=/qid=43667/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">DMM mobile解約方法を確認する<span class="c-Icon_New-window-l"></span></a></p>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>他キャリア（NTTドコモ / au / SoftBank）の解約</li>
+                </ul>
+                  <p class="u-Adjust_Mt-8">各キャリアにお問い合わせのうえ、お手続きしてください。</p>
+              </li>
+              <li class="<%= namespace %>-Flow_List-item-tab">
+                <div class="c-Tab js-Tab">
+                  <ul class="c-Tab_Items" role="tablist">
+                      <li class="c-Tab_Item" id="tab-menu-flow9" role="tab" aria-selected="true" aria-controls="tab-content-flow9">今のスマホをそのまま使う</li>
+                      <li class="c-Tab_Item" id="tab-menu-flow10" role="tab" aria-selected="false" aria-controls="tab-content-flow10">新しくスマホを購入する</li>
+                  </ul>
+                  <div class="c-Tab_Panel" id="tab-content-flow9" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow9">
+                    <%#### 今のスマホをそのまま使う(2. お持ちのスマホが楽天回線対応製品かを確認する) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item02-1') %>
+                  </div>
+                  <div class="c-Tab_Panel" id="tab-content-flow10" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow10">
+                  <%#### 新しくスマホを購入する(2. 楽天回線対応製品を確認する) _%>
+                  <%- include('/include/guide/migration/dmm/_flow-item02-2') %>
+                </div>
+                </div>
+              </li>
+              <li class="<%= namespace %>-Flow_List-item-tab">
+                <div class="c-Tab js-Tab <%= namespace %>-Flow_Container">
+                  <ul class="<%= namespace %>-Flow_Tab" role="tablist">
+                    <li id="tab-menu-flow11" role="tab" aria-selected="true" aria-controls="tab-content-flow11">Webでお申し込み</li>
+                    <li id="tab-menu-flow12" role="tab" aria-selected="false" aria-controls="tab-content-flow12">ショップでお申し込み</li>
+                  </ul>
+                  <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow11" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow11">
+                    <ol class="<%= namespace %>-Flow_List">
+                      <%#### Webでお申し込み(3. Webで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                      <%- include('/include/guide/migration/dmm/_flow-item03-1',) %>
+                      <%- include('/include/guide/migration/dmm/_flow-item04-1',) %>
+                    </ol>
+                  </div>
+                  <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow12" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow12">
+                    <ol class="<%= namespace %>-Flow_List">
+                      <%#### ショップでお申し込み(3. ショップで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                      <%- include('/include/guide/migration/dmm/_flow-item03-2',) %>
+                      <%- include('/include/guide/migration/dmm/_flow-item04-2',) %>
+                    </ol>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <%#### 乗り換え（MNP） _%>
+        <div class="c-Accordion">
+          <button id="accordion-flow5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-flow5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>乗り換え（MNP）</button>
+          <div id="accordion-content-flow5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-flow5" aria-hidden="true">
+            <ol class="<%= namespace %>-Flow_List u-Adjust_Mt-16">
+              <li class="<%= namespace %>-Flow_List-item">
+                <h3 class="c-Heading_Lv3">1. MNP予約番号を取得する</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>DMM mobileの場合</li>
+                </ul>
+                  <p class="u-Adjust_Mt-8">DMM mobileのマイページよりMNP予約番号を取得してください。</p>
+                  <p class="u-Adjust_Mt-8"><a href="https://mvno.dmm.com/" class="c-Link_Txt-inline-icon" target="_blank">DMM mobileのマイページでMNP予約番号を取得する<span class="c-Icon_New-window-l"></span></a></p>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>他キャリア（NTTドコモ / au / SoftBank）の場合</li>
+                </ul>
+                <ul class="<%= namespace %>-Flow_3btn-Wrap u-Adjust_Pt-8">
+                  <li>
+                    <a href="https://www.nttdocomo.co.jp/support/cancel_mnp/?dynaviid=case0023.dynavi" class="c-Btn_Regular <%= namespace %>-Flow_3btn" target="_blank" rel="noopener noreferrer"><span>NTTドコモからのMNP方法を見る</span></a>
+                  </li>
+                  <li>
+                    <a href="https://www.au.com/support/service/mobile/procedure/contract/cancel_b/" class="c-Btn_Regular <%= namespace %>-Flow_3btn" target="_blank" rel="noopener noreferrer"><span>au / 沖縄セルラーからのMNP方法を見る</span></a>
+                  </li>
+                  <li>
+                    <a href="https://www.softbank.jp/partners/guides/buy/preparation/mnp/" class="c-Btn_Regular <%= namespace %>-Flow_3btn" target="_blank" rel="noopener noreferrer"><span>SoftBankからのMNP方法を見る</span></a>
+                  </li>
+                </ul>
+                  <p class="u-Adjust_Mt-24">乗り換え（MNP）のお申し込みの流れは以下よりご確認いただけます。</p>
+                  <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/mnp/" class="c-Link_Txt-inline-icon">他社から乗り換え（MNP）方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+              </li>
+              <li class="<%= namespace %>-Flow_List-item-tab">
+                <div class="c-Tab js-Tab">
+                  <ul class="c-Tab_Items" role="tablist">
+                      <li class="c-Tab_Item" id="tab-menu-flow13" role="tab" aria-selected="true" aria-controls="tab-content-flow13">今のスマホをそのまま使う</li>
+                      <li class="c-Tab_Item" id="tab-menu-flow14" role="tab" aria-selected="false" aria-controls="tab-content-flow14">新しくスマホを購入する</li>
+                  </ul>
+                  <div class="c-Tab_Panel" id="tab-content-flow13" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow13">
+                    <%#### 今のスマホをそのまま使う(2. お持ちのスマホが楽天回線対応製品かを確認する) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item02-1') %>
+                  </div>
+                  <div class="c-Tab_Panel" id="tab-content-flow14" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow14">
+                    <%#### 新しくスマホを購入する(2. 楽天回線対応製品を確認する) _%>
+                    <%- include('/include/guide/migration/dmm/_flow-item02-2') %>
+                  </div>
+                </div>
+              </li>
+              <li class="<%= namespace %>-Flow_List-item-tab">
+                <div class="c-Tab js-Tab <%= namespace %>-Flow_Container">
+                  <ul class="c-Tab_Items" role="tablist">
+                    <li class="c-Tab_Item" id="tab-menu-flow15" role="tab" aria-selected="true" aria-controls="tab-content-flow15">Webでお申し込み</li>
+                    <li class="c-Tab_Item" id="tab-menu-flow16" role="tab" aria-selected="false" aria-controls="tab-content-flow16">ショップでお申し込み</li>
+                  </ul>
+                  <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow15" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu-flow15">
+                    <ol class="<%= namespace %>-Flow_List">
+                      <li class="<%= namespace %>-Flow_List-item">
+                        <h3 class="c-Heading_Lv3">3. Webで楽天モバイル（楽天回線）に申し込む</h3>
+                        <div class="l-Media_Grid u-Adjust_Mt-24">
+                          <div class="l-Media_Image">
+                            <img src="<%= sitepath %>assets/img/guide/migration/dmm/img-point-03.png" alt="">
+                          </div>
+                          <div>
+                            <p><a href="<%= sitepath %>guide/application/?lid-r=guide_migration_dmm_application" class="c-Btn_Secondly-semiauto">お申し込み画面に進む</a></p>
+                            <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/flow/application/?l-id=guide_migration_dmm_flow-application" class="c-Link_Txt-inline-icon">お申し込み方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                          </div>
+                        </div>
+                        <div class="c-Theme-Light u-Adjust_Mt-24">
+                          <h4 class="c-Heading_Lv4">お申し込み・お支払いに必要なものをご準備ください</h4>
+                          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/verify/" class="c-Link_Txt-inline-icon">本人確認書類<span class="c-Icon_Chevron-right"></span></a></p>
+                          <p class="u-Adjust_Mt-16">楽天会員ログイン用のユーザID、パスワード</p>
+                          <p class="c-Txt_Cap u-Adjust_Mt-8">※本人確認書類の情報と、楽天会員情報が一致している必要があります。</p>
+                          <p class="u-Adjust_Mt-16"><a href="https://member.id.rakuten.co.jp/rms/nid/menufwd" class="c-Link_Txt-inline-icon">楽天会員情報を確認・変更する<span class="c-Icon_Chevron-right"></span></a></p>
+                          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/" class="c-Link_Txt-inline-icon">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></p>
+                          <p class="c-Txt_Cap u-Adjust_Mt-8">※ご契約者本人名義と異なるクレジットカードをご利用希望のお客様は、<a href="<%= sitepath %>faq/detail/00001238/">こちらのご案内ページ</a>を必ず事前にご確認ください。</p>
+                          <p class="u-Adjust_Mt-16">MNP予約番号</p>
+                          <p class="c-Txt_Cap u-Adjust_Mt-8">
+                            ※Webページからお申し込みの場合は、MNP有効期間が「7日以上」残っているMNP予約番号が必要です。店舗（楽天モバイルショップ）でお申し込みの場合は、MNP有効期間内であればお手続き可能です。<br>
+                            ※お申し込みの際、MNP有効期限の入力も必要です。MNP予約番号取得の際に忘れずにお控えください。<br>
+                            ※現在契約中の名義と楽天モバイルでご契約いただく名義が同一である必要があります。名義が異なる場合は、現在の携帯電話会社で名義を変更した後に、MNP予約番号を取得してください。<br>
+                            ※MNP有効期限を実際の期日と異なる期日を入力した場合、製品到着後、再度MNP予約番号の取得が必要となる場合があります。
+                          </p>
+                        </div>
+                      </li>
+                      <%#### Webでお申し込み(4. MNP開通手続きを行う - 5. 製品の初期設定を行い、ご利用開始) _%>
+                      <%- include('/include/guide/migration/dmm/_flow-item04-3') %>
+                      <%- include('/include/guide/migration/dmm/_flow-item05-1') %>
+                    </ol>
+                  </div>
+                  <div class="<%= namespace %>-Flow_Tab-panel" id="tab-content-flow16" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu-flow16">
+                    <ol class="<%= namespace %>-Flow_List">
+                      <%#### ショップでお申し込み(3. ショップで楽天モバイル（楽天回線）に申し込む - 4. 製品の初期設定を行い、ご利用開始) _%>
+                      <%- include('/include/guide/migration/dmm/_flow-item03-2',) %>
+                      <%- include('/include/guide/migration/dmm/_flow-item04-2',) %>
+                    </ol>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <p class="u-Adjust_Mt-32"><a href="https://mvno.dmm.com" class="c-Link_Txt-inline-icon" target="_blank">DMM mobileサポートセンター<span class="c-Icon_New-window-l"></span></a></p>
+    </div>
+
+  <div class="l-System_Container">
+    <div class="u-Adjust_Align-center u-Adjust_Pt-24 u-Adjust_Pb-24 u-Adjust_Mt-64">
+      <p class="c-Txt_Cap c-Txt_Emp-02">＼今すぐお申し込みはこちらから／</p>
+      <p><a href="<%= sitepath %>guide/application/?lid-r=guide_migration_dmm_application" class="c-Btn_Primary-large u-Adjust_Mt-16 u-Adjust_Mb-16">新規／乗り換え（MNP）お申し込み</a></p>
+      <p><a href="<%= sitepath %>guide/flow/application/?l-id=guide_migration_dmm_flow-application" class="<%= namespace %>-Hero_Link-icon c-Link_Txt-inline-icon u-Adjust_Mt-16">お申し込み方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+      <p class="u-Adjust_Mt-24 c-Txt_Emp-01">ご満足いただけなければいつでも解約可能。契約解除料はかかりません<sub>※</sub></p>
+      <p class="c-Txt_Cap <%= namespace %>-Txt_Flex-center u-Adjust_Mt-8 u-Adjust_Align-left">※ Rakuten最強プランの契約解除料は無料。製品代等は別。<br>
+        ※ DMM mobileは新規申し込みを停止しております。解約後、MNP転出後の再契約はできませんので、あらかじめご了承ください。</p>
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+        <li>
+          <a href="<%= rootpath %>"><%= sitetitle %></a>
+          <span class="c-Icon_Chevron-right"></span>
+        </li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.migration-dmm.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

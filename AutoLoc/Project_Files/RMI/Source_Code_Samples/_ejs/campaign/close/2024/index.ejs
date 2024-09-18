@@ -1,0 +1,193 @@
+<% const pagetitle = "過去のキャンペーン・特典" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "close" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '受付を終了した楽天モバイル（楽天回線）限定のキャンペーン・特典のルールをご案内します。ご参加いただいたキャンペーン・特典の適用条件やポイント付与の時期などをご確認いただけます。',
+    keywords: '',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/close/close.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+<%- include('/include/_header') %>
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+<div class="l-System_Container">
+  <ul class="c-List_Cap-wide u-Adjust_Mt-8 u-Adjust_Align-right">
+    <li class="c-Txt_Cap">※ 表記の金額は特に記載のある場合を除き全て税別です。</li>
+  </ul>
+</div>
+<div class="l-System_Container">
+
+  <div class="<%= namespace %>-Hero">
+    <h1>
+      過去のキャンペーン・特典
+    </h1>
+  </div>
+
+  <div class="c-Tab js-Tab u-Adjust_Mt-48">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu11" role="tab" aria-selected="true" aria-controls="tab-content11" onclick="location.href='<%= sitepath %>campaign/close/2024/';return false;">2024年終了分</li>
+        <li class="c-Tab_Item" id="tab-menu12" role="tab" aria-selected="false" aria-controls="tab-content12" onclick="location.href='<%= sitepath %>campaign/close/2023/';return false;">2023年終了分</li>
+        <li class="c-Tab_Item" id="tab-menu13" role="tab" aria-selected="false" aria-controls="tab-content13" onclick="location.href='<%= sitepath %>campaign/close/2022/';return false;">2022年終了分</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content11" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu11">
+      </div>
+      <div class="c-Tab_Panel" id="tab-content12" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu12">
+      </div>
+      <div class="c-Tab_Panel" id="tab-content13" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu13">
+      </div>
+    </div>
+
+  <div class="close-tab u-Adjust_Mb-40">
+    <div class="tab-button-outer c-Tab js-Tab u-Adjust_Mt-40">
+      <div class="close-tab-select-outer c-Form_Select u-Adjust_Mt-40">
+        <select id="js-tab-select" class="close-tab-select">
+          <option id="tab-menu1" value="#tab-menu1">すべてのキャンペーン</option>
+          <option id="tab-menu2" value="#tab-menu2">製品＋プランセット</option>
+          <option id="tab-menu3" value="#tab-menu3">ポイントキャンペーン</option>
+          <option id="tab-menu4" value="#tab-menu4">その他のキャンペーン・特典</option>
+        </select>
+        <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+      </div>
+
+      <!-- 製品＋プランセット -->
+      <div class="c-Tab_Panel js-tab-panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu2">
+        <h2 class="u-Adjust_Mt-40 u-Adjust_Mb-40">製品＋プランセット</h2>
+        <!-- ここからーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2231', period: '（～2024/3/31 23:59）', path: 'campaign/iphone-point/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2144', period: '（～2024/2/21 8:59）', path: 'campaign/iphone-point/', year: '2023' }}) %>
+        <!-- ここまでーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+      </div>
+      <!-- 製品＋プランセット -->
+
+      <!-- ポイントキャンペーン -->
+      <div class="c-Tab_Panel js-tab-panel" id="tab-content2" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu3">
+        <h2 class="u-Adjust_Mt-40 u-Adjust_Mb-40">ポイントキャンペーン</h2>
+        <!-- ここからーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2286', period: '（～2024/5/20 9:59）', path: 'campaign/card-flyer/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2268', period: '（～2024/5/16 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2288', period: '（～2024/5/13 8:59）', path: 'campaign/girls-award2024aw/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '1815_240401', period: '（～2024/5/1 8:59）', path: 'campaign/payment-service/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2227', period: '（～2024/4/30 閉店）', path: 'campaign/shop-extra-sim/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2238', period: '（～2024/4/27 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2297', period: '（～2024/4/18 13:59）', path: 'campaign/x/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2239', period: '（～2024/4/17 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2161', period: '（～2024/4/15 20:59）', path: 'campaign/entertainment/', subpath: 'campaign/entertainment/hulu/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2164', period: '（～2024/4/15 20:59）', path: 'campaign/entertainment/', subpath: 'campaign/entertainment/dazn/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2165', period: '（～2024/4/15 20:59）', path: 'campaign/entertainment/', subpath: 'campaign/entertainment/abema/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2166', period: '（～2024/4/15 20:59）', path: 'campaign/entertainment/', subpath: 'campaign/entertainment/dmm/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2167', period: '（～2024/4/15 20:59）', path: 'campaign/entertainment/', subpath: 'campaign/entertainment/audiobook/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2168', period: '（～2024/4/15 20:59）', path: 'campaign/entertainment/', subpath: 'campaign/entertainment/unext/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2217', period: '（～2024/4/15 10:00）', path: 'campaign/card-mobile-majitoku/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2179', period: '（～2024/4/11 8:59）', path: 'campaign/x-quiz/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2237_240410', period: '（～2024/4/10 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '1815_240301', period: '（～2024/4/1 8:59）', path: 'campaign/payment-service/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2208', period: '（～2024/4/1 8:59）', path: 'campaign/pay-partner/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2124_202403', period: '（～2024/3/31 閉店）', path: 'campaign/shop-yamawake/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2216', period: '（～2024/3/29 9:59）', path: 'campaign/ichiba_newlife/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2218', period: '（～2024/3/27 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2252', period: '（～2024/3/20 9:59）', path: 'campaign/x-simulation-result/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2205', period: '（～2024/3/11 9:59）', path: 'campaign/supersale/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '1815_240201', period: '（～2024/3/1 8:59）', path: 'campaign/payment-service/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2103_240201', period: '（～2024/2/29 23:59）', path: 'campaign/data3g/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2200', period: '（～2024/2/29 8:59）', path: 'area/campaign/xfr/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2204', period: '（～2024/2/23 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2181', period: '（～2024/2/10 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2087', period: '（～2024/1/31 23:59）', path: 'campaign/payment-google/', year: '2023' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2150', period: '（～2024/1/31 9:59）', path: 'area/campaign/ibarakirobots/', year: '2023' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2180', period: '（～2024/1/28 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '1815_240105', period: '（～2024/2/1 8:59）', path: 'campaign/payment-service/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2137', period: '（～2024/1/16 9:59）', path: 'campaign/marathon/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2141', period: '（～2024/1/15 9:59）', path: 'campaign/fukubukuro/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2129', period: '（～2024/1/11 8:59）', path: 'campaign/welcomeback/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2155', period: '（～2024/1/9 9:59）', path: 'campaign/card-membership/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '1815_231201', period: '（～2024/1/5 8:59）', path: 'campaign/payment-service/', year: '2023' }}) %>
+      </div>
+      <!-- ポイントキャンペーン -->
+
+      <!-- その他のキャンペーン・特典 -->
+      <div class="c-Tab_Panel js-tab-panel" id="tab-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu4">
+        <h2 class="u-Adjust_Mt-40 u-Adjust_Mb-40">その他のキャンペーン・特典</h2>
+        <!-- ここからーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '1934', period: '（～2024/4/30 8:59）', path: 'campaign/visselkobe-supporters/', year: '2023' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2253', period: '（～2024/4/16 9:59）', path: 'area/campaign/inac-kobe/20240316/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2267', period: '（～2024/4/1 23:59）', path: 'area/campaign/saikyoday/202404/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2172', period: '（～2024/3/3 閉店）', path: 'campaign/shop-panda-speedkuji/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '2138', period: '（～2024/2/29 23:59）', path: 'campaign/nba/present/', year: '2024' }}) %>
+        <%- include('/include/campaign/rules/_campaign-rule-closed.ejs', {campaign: {id: '1976', period: '（～2024/2/21 23:59）', path: 'fee/apple-watch-family-sharing/', year: '2024' }}) %>
+        <!-- ここまでーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+      </div>
+      <!-- その他のキャンペーン・特典 -->
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-news.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/campaign.close.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

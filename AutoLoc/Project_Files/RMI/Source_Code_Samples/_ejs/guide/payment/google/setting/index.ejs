@@ -1,0 +1,363 @@
+<% const pagetitle = "楽天モバイルキャリア決済 ご利用情報の変更・利用履歴の確認方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/payment/", label:"楽天モバイルでのお支払い方法"}, {path:"guide/payment/google/", label:"楽天モバイルキャリア決済"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルキャリア決済のご利用情報の変更・利用履歴の確認方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+      <p class="c-Txt_Normal u-Adjust_Mt-24">
+        「 my 楽天モバイル」から、ご利用設定（有効／無効）の変更や、月額最大利用料の変更が可能です。ご利用履歴は過去1年分確認できます。<br>
+複数回線所有している場合は、キャリア決済の有効／無効や上限額は、回線ごとに設定が可能です。
+      </p>
+      <p class="u-Adjust_Mt-32"><a href="#google-1" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用設定（有効／無効）の変更</a></p>
+      <p class="u-Adjust_Mt-16"><a href="#google-2" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>月額最大利用料の変更</a></p>
+      <p class="u-Adjust_Mt-16"><a href="#google-3" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャリア決済の履歴確認</a></p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="google-1">ご利用設定（有効／無効）の変更</h2>
+    <ul class="c-List_Cap u-Adjust_Align-left u-Adjust_Mt-24">
+      <li class="c-Txt_Cap c-Txt_Emp-02"><span>※</span>初期設定時は「有効」に設定されています。</li>
+    </ul>
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          1. my 楽天モバイルにログインしてください。
+      </h3>
+        <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+          <p class="u-Adjust_Mt-24 u-Adjust_Mb-24">
+            <a href="<%= ecarepath %>my-rakuten-mobile" class="c-Btn_Regular-semiauto"><span>my 楽天モバイル</span></a>
+            </p>
+                <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-01.png?210820" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          2.「利用料金」をタップしてください。
+      </h3>
+        <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+                <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-21-230623.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          3. キャリア決済の「設定・ご利用明細確認」をタップしてください。
+      </h3>
+        <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+                <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-22.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          4. キャリア決済の画面が表示されます。ご利用設定（有効／無効）を変更してください。
+        </h3>
+        <div class="<%= nameSpace %>-Flow_List-grid u-Adjust_Mt-24">
+          <div class="c-Theme-Light <%= nameSpace %>-Flow_List-grid-item">
+            <h5 class="c-Txt_Normal">
+              <ul class="c-List_Text-disc">
+                <li>「有効」に変更する場合</li>
+              </ul>
+            </h5>
+            <p class="c-Txt_Normal u-Adjust_Mt-16">
+              ピンク枠の状態になっている場合、サービスは「有効」の状態です。
+            </p>
+            <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+              <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/payment/google/setting/img-04.png?210825" width="300" height=""
+                    alt="" class="c-Img_Capture"></figure>
+              </div>
+            </div>
+            <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+              <p class="c-Txt_Normal u-Adjust_Mt-32">
+                切り替え後、ポップアップが表示されます。「OK」をタップしてください。
+              </p>
+              <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/payment/google/setting/img-05.png?210820" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </div>
+          <div class="c-Theme-Light <%= nameSpace %>-Flow_List-grid-item">
+            <h5 class="c-Txt_Normal">
+              <ul class="c-List_Text-disc">
+                <li>「無効」に変更する場合</li>
+              </ul>
+            </h5>
+            <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+              <p class="c-Txt_Normal u-Adjust_Mt-16">
+                ピンク枠の状態になっている場合、サービスは「無効」の状態です。
+              </p>
+              <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/payment/google/setting/img-06.png?210825" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+            </div>
+            <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+              <p class="c-Txt_Normal u-Adjust_Mt-32">
+                切り替え後、ポップアップが表示されます。「OK」をタップしてください。
+              </p>
+              <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img
+                  src="<%= sitepath %>assets/img/guide/payment/google/setting/img-07.png?210903" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <p class="c-Txt_Normal u-Adjust_Mt-24">
+      以上で設定は完了です。
+    </p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="google-2">月額最大利用料の変更</h2>
+
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          1. my 楽天モバイルにログインしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <p class="u-Adjust_Mt-24 u-Adjust_Mb-24">
+          <a href="<%= ecarepath %>my-rakuten-mobile" class="c-Btn_Regular-semiauto"><span>my 楽天モバイル</span></a>
+          </p>
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-08.png?210825" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+        </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          2.「利用料金」をタップしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-21-230623.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          3. キャリア決済の「設定・ご利用明細確認」をタップしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-22.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          4. キャリア決済画面が表示されます。「変更する」をタップしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-11.png?210825" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          5. 月額最大利用料（税込）の金額をご入力いただき、「変更する」ボタンをタップしてください。
+      </h3>
+      <div class="<%= nameSpace %>-Flow_List-grid">
+        <div class="<%= nameSpace %>-Flow_List-grid-item">
+          <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+            <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-12.png?210827" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </div>
+        </div>
+        <div class="<%= nameSpace %>-Flow_List-grid-item">
+          <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+            <ul class="c-List_Cap u-Adjust_Align-left u-Adjust_Mt-40">
+              <li class="c-Txt_Cap c-Txt_Emp-02"><span>※</span>ご利用設定が「有効」になっている必要があります。ピンク枠の状態になっていることを確認してください。</li>
+            </ul>
+            <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                <figure class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-13.png?210820" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+        </div>
+        </div>
+      </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          6. キャリア決済画面で、月額利用可能額が変更後の金額になっているかご確認ください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-14.png?210820" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+    </ul>
+    <p class="c-Txt_Normal u-Adjust_Mt-24">
+      以上で設定は完了です。
+    </p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="google-3">キャリア決済の履歴確認</h2>
+
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          1. my 楽天モバイルにログインしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <p class="u-Adjust_Mt-24 u-Adjust_Mb-24">
+          <a href="<%= ecarepath %>my-rakuten-mobile" class="c-Btn_Regular-semiauto"><span>my 楽天モバイル</span></a>
+          </p>
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-15.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          2.「利用料金」をタップしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-21-230623.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          3. キャリア決済の「設定・ご利用明細確認」をタップしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-22.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          4. キャリア決済画面が表示されます。利用履歴の年月選択をタップしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-18.png?210820" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          5. 以下の画面が表示されます。確認したい年月を一つ選択し、「OK」をタップしてください。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <ul class="c-List_Cap u-Adjust_Align-left u-Adjust_Mt-16">
+          <li class="c-Txt_Cap c-Txt_Emp-02"><span>※</span>確認できる利用履歴は過去1年分です。</li>
+        </ul>
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-19.png?210820" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+      <li class="c-Infobox_Standing-border">
+        <h3 class="c-Heading_Lv4">
+          6. 選択した年月の利用履歴が表示されます。
+      </h3>
+      <div class="l-Media_Grid <%= nameSpace %>-Flow_List-image-wrapper">
+        <ul class="c-List_Cap u-Adjust_Align-left u-Adjust_Mt-16">
+          <li class="c-Txt_Cap c-Txt_Emp-02"><span>※</span>1画面に表示できる利用履歴は10件です。10件以上の履歴がある場合は、次ページ以降に表示されます。画面下部より、次ページをご確認いただけます。</li>
+        </ul>
+        <div class="l-Media_Image <%= nameSpace %>-Flow_List-image">
+                    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/google/setting/img-20.png?210820" width="300" height="" alt="" class="c-Img_Capture"></figure>
+                </div>
+            </div>
+      </li>
+    </ul>
+
+
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+    <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

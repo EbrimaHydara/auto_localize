@@ -1,0 +1,31 @@
+<% const pagetitle = "通信・エリア" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイルの通信エリア（4G・5Gの電波状況）を、地図や住所検索で簡単にご確認いただけます。あなたの住む街でも快適に。楽天回線がつながるエリア拡大中！',
+    noindex: true,
+    pathname: filepath,
+    browseragent: false,
+  });
+%>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<%- include('/include/_common-js') %>
+<script>
+  $.ajax({
+    url: "https://app.rakuten.co.jp/engine/zapi/MemberInformation/GetPointWithRz/20160519",
+    xhrFields: {
+        withCredentials: true
+    }
+  }).done(function(data) {
+    location.href = "https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=rm005&client_id=rmn_app_web&redirect_uri=https%3A%2F%2Fnetwork.mobile.rakuten.co.jp%2Farea%2F&err_redirect_uri=https%3A%2F%2Fnetwork.mobile.rakuten.co.jp%2F&scope=memberinfo_read_safebulk%2Cmemberinfo_read_point%2Cmemberinfo_get_card_token%2C30days%40Access%2C90days%40Refresh&contact_info_required=false&rae_service_id=rm005";
+  }).fail(function(jqXHR, textStatus, errorThrown){
+    location.href = "/area/?status=false";
+  });
+</script>
+
+<%- include('/include/_append-body') %>
+</body>
+</html>

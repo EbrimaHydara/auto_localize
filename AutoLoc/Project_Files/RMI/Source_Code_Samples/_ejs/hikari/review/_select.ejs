@@ -1,0 +1,25 @@
+<% const namespace = "hikari-review" -%>
+<% const radio = [
+  { item: "すべて表示", ratid: ""},
+  { item: "動画", ratid: "rhk_review_radio_movie_01"},
+  { item: "ネットショッピング", ratid: "rhk_review_radio_shopping_01"},
+  { item: "SNS", ratid: "ratid=”rhk_review_radio_sns_01"},
+  { item: "テレワーク", ratid: "rhk_review_radio_telework_01"},
+  { item: "ゲーム", ratid: "rhk_review_radio_game_01"},
+  { item: "オンライン授業", ratid: "rhk_review_radio_onlineclass_01"},
+] -%>
+
+<ul class="<%= namespace %>-Layout_Voice-select">
+  <% for (let i = 0; i < radio.length; i++) { %>
+  <li>
+    <label class="c-Form_Radio">
+      <%_ if ( i === 0 ) { _%>
+        <input type="radio" name="tag" class="js-radio" value="<%= radio[0].item %>" data-ratid="<%= radio[0].ratid %>" data-ratevent="click" data-ratparam="all" checked>
+      <%_ } else { _%>
+        <input type="radio" name="tag" class="js-radio" value="<%= radio[i].item %>" data-ratid="<%= radio[i].ratid %>" data-ratevent="click" data-ratparam="all">
+      <%_ } _%>
+      <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label"><%= radio[i].item %></span>
+    </label>
+  </li>
+  <% }; %>
+</ul>

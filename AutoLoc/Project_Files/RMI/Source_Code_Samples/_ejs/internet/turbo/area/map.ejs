@@ -1,0 +1,37 @@
+<% const pagetitle = "Rakuten Turbo 対応サービスエリア" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイルのホームルーターRakuten Turboの対応サービスエリアを、地図や検索でご確認いただけます。',
+    noindex: true,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/internet/turbo/common/fullmap.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+<%- include('/include/internet/turbo/_fullmap', { pagePath: 'internet/turbo/area/' }) %>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/library/map_cpe.js?231116-2"></script>
+<script>
+const referrer = document.referrer;
+if(referrer.match('/internet/turbo/campaign/rank/d/')) {
+  const changeURL = document.getElementById('exit');
+  changeURL.classList.add('c-Btn_Secondly');
+  changeURL.setAttribute('href', '#');
+  changeURL.textContent = '閉じる';
+
+  // 別窓表示のため戻るボタン押下後にページを閉じる
+  changeURL.addEventListener("click", function() {
+    window.close();
+  });
+}
+</script>
+
+<%- include('/include/_append-body') %>
+</body>
+</html>

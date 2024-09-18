@@ -1,0 +1,216 @@
+<% const pagetitle = "楽天モバイル×楽天市場 新生活応援 Twitterフォロー＆RTキャンペーン当選のお知らせ" -%>
+<% const directories = [] -%>
+<% const namespace = "eagles" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイル×楽天市場 新生活応援 Twitterフォロー＆RTキャンペーン当選のお知らせです。',
+    keywords: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/eagles/eagles.css?20240424">
+<%- include('/include/_append-head') %>
+<script type="text/javascript">
+<!--
+function doTrim(el) {
+  el.value = el.value.replace(/^\s+|\s+$/g, '');
+}
+
+function isInput(el) {
+  return el.value.length != 0;
+}
+
+function isChecked(el) {
+  if (el.length) {
+    for (var i = 0; i < el.length; i++) {
+      if (el[i].checked) {
+        return true;
+      }
+    }
+  } else {
+    if (el.checked) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function isLength(el, len) {
+  if ("え".length == 2) {
+    len *= 2;
+  }
+  return el.value.length <= len;
+}
+
+function zen2han(el) {
+  el.value = el.value.replace(/[０]/g, "0");
+  el.value = el.value.replace(/[１]/g, "1");
+  el.value = el.value.replace(/[２]/g, "2");
+  el.value = el.value.replace(/[３]/g, "3");
+  el.value = el.value.replace(/[４]/g, "4");
+  el.value = el.value.replace(/[５]/g, "5");
+  el.value = el.value.replace(/[６]/g, "6");
+  el.value = el.value.replace(/[７]/g, "7");
+  el.value = el.value.replace(/[８]/g, "8");
+  el.value = el.value.replace(/[９]/g, "9");
+}
+
+function checkForm() {
+  var el;
+  var obj = document.enenForm;
+
+  el = obj.elements['answers[37421_257156]'];
+  doTrim(el);
+  zen2han(el);
+  if (!isInput(el)) {
+    alert("「Twitterのユーザー名を（4文字以上15文字以内）で記載してください」を入力してください。");
+    return false;
+  }
+
+  if (!isLength(el, 15)) {
+    alert("「Twitterのユーザー名を（4文字以上15文字以内）で記載してください」は15文字以内で入力してください。");
+    return false;
+  }
+
+  el = obj.elements['answers[37421_257158]'];
+  if (!isChecked(el)) {
+    alert("「ルール＆注意事項を確認し、了承しました。」を選択してください。");
+    return false;
+  }
+
+}
+// -->
+</script>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+
+  <div class="<%= namespace %>-Layout_Section <%= namespace %>-Section_List">
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv2 u-Adjust_Mt-32"><%= pagetitle %></h1>
+
+      <p class="u-Adjust_Mt-24">
+        この度は「楽天モバイル×楽天市場 新生活応援 Twitterフォロー＆RTキャンペーン 抽選で30名様に5,000ポイントプレゼント」にご応募いただき、誠にありがとうございました。<br>
+        厳正なる抽選の結果、あなた様が当選されました。おめでとうございます！<br>
+        <a href="#campaign-rule">ルール＆注意事項</a>をご了承の上、楽天会員登録およびアンケートのご回答をもって、楽天モバイルからポイントをプレゼントいたします。<br>
+        ※楽天会員登録がまだの方は、アンケートの送信前に登録を<a href="https://grp01.id.rakuten.co.jp/rms/nid/registfwd" target="_blank">こちら</a>からお願いいたします。
+      </p>
+
+      <form class="u-Adjust_Mt-24" action="https://form.rakuten.co.jp/ans/apply/37421" name="enenForm" method="POST" onsubmit="return checkForm()">
+
+        <dl class="c-Dl_Origin u-Adjust_Mt-24">
+          <div>
+            <dt>
+              Twitterのユーザー名 <span class="c-Txt_Emp-02 c-Txt_Normal-ss">必須</span>
+            </dt>
+            <dd>
+              <p class="c-Txt_Cap u-Adjust_Mb-8">4文字以上15文字以内</p>
+              <textarea name="answers[37421_257156]" rows="1" cols="40" class="c-Form_Input" placeholder="Twitterのユーザー名を入力してください。"></textarea>
+            </dd>
+          </div>
+          <div>
+            <dt>
+              ルール＆注意事項を確認し、了承しました <span class="c-Txt_Emp-02 c-Txt_Normal-ss">必須</span>
+            </dt>
+            <dd>
+              <div class="l-Media_List-2">
+        <div>
+          <label  class="c-Form_Radioblock" for="a712041"><input type="radio" data-validate="radio" name="answers[37421_257158]" id="a712041" value="712041">
+  <span class="c-Form_Radioblock-wrap u-Adjust_W-160">
+  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">はい</span>
+</span>
+</label>
+        </div>
+    </div>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="u-Adjust_Align-center u-Adjust_Mt-56">
+          <input type="hidden" name="c" value="楽天">
+          <input type="hidden" name="l" value="ja">
+          <button class="c-Btn_Primary-large" type="submit"><span>アンケートを送信する</span></button>
+        </div>
+      </form>
+
+    </div>
+</div>
+
+<div class="<%= namespace %>-Layout_Foot">
+  <div class="l-System_Container">
+    <div id="campaign-rule">
+      <div class="c-Infobox_Standing-light u-Adjust_Mt-48">
+      <h2 class="c-Heading_Lv2">ルール＆注意事項</h2>
+  </div>
+
+      <ul class="c-List_Text-disc u-Adjust_Mt-16">
+        <li>2022年4月時点の楽天会員情報を参照します。</li>
+        <li><a href="https://grp01.id.rakuten.co.jp/rms/nid/registfwd" target="_blank">楽天会員登録</a>がまだの方は、DMにてご案内した期限内に会員登録の上、アンケートの送信をお願いいたします。</li>
+        <li>DMにてご案内した期限内にアンケートの送信をいただけない場合は当選を無効とさせていただきます。</li>
+        <li>当選の権利を他人へ譲渡、あるいは換金することはできません。</li>
+        <li>ポイントはアンケートの送信から翌々月末日頃迄に付与いたします。ただし、ポイント付与までに楽天会員から退会している場合はポイント付与対象外となります。</li>
+        <li>ポイントは<a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank">期間限定ポイント</a>です。有効期限は付与日を含めて6カ月です。</li>
+        <li>有効期限までにポイントを利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+      </ul>
+
+      </div>
+  </div>
+</div>
+
+  <footer class="g-Footer <%= namespace %>-Layout_Footer">
+    <div class="g-Footer_Aside">
+      <%- include('/include/footer/related/_related-news.ejs') %>
+      <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+    </div>
+    <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+    <%- include('/include/_footer') %>
+  </footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

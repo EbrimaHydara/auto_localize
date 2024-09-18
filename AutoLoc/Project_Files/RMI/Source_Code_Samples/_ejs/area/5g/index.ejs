@@ -1,0 +1,790 @@
+<% const pagetitle = "5G（ファイブジー）とは（楽天モバイルの5Gサービス）" -%>
+<% const directories = [{path:"area/", label:"通信・エリア"}] -%>
+<% const namespace = "area-5g" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '5G（ファイブジー）が使えると何が変わるのかといった情報、楽天モバイルの5G料金プランはお得に使えるのか、5G製品・スマートフォン（5Gスマホ）端末情報や5G通信・サービスエリアなどをご紹介します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/5g/area-5g.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= namespace %>-Hero">
+  <div class="l-System_Container">
+    <h1><img src="<%= sitepath %>assets/img/area/5g/hero-5g.svg" alt="5Gとは"></h1>
+    <h2 class="<%= namespace %>-Hero_Txt-top">
+      <span>今さら聞けない「5G」とは？4G<br class="area-5g-Utility_Sp">との違いなど疑問にお答えします</span>
+      <span class="<%= namespace %>-Hero_Txt-top-cap">※ 5Gは一部エリアで提供</span>
+    </h2>
+    <p class="<%= namespace %>-Hero_Txt-bottom">VR・AR、ドローン、自動運転、遠隔医療など様々な分野で必要になる、次世代通信規格「5G」。<br>超高速・大容量、超低遅延、多数同時接続を実現する5G通信をご紹介します。</p>
+  </div>
+</div>
+
+<div class="<%= namespace %>-Link">
+  <h2 class="c-Heading_Lv2">楽天モバイルの<br>5Gコンテンツ</h2>
+  <ul class="<%= namespace %>-Link_List">
+    <li class="<%= namespace %>-Link_List-item">
+      <a href="#whatis" class="js-scroll">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Pc">5G通信とは</h3>
+        <div class="<%= namespace %>-Link_List-item-grid">
+        <div class="<%= namespace %>-Link_List-item-grid-img">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/area/5g/img-link01-sp.png?210720">
+            <source srcset="<%= sitepath %>assets/img/area/5g/img-link01-pc.png?210720">
+            <img src="<%= sitepath %>assets/img/area/5g/img-link01-pc.png?210720" alt="">
+          </picture>
+        </div>
+        <div class="<%= namespace %>-Link_List-item-grid-txt">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Sp">5G通信とは</h3>
+        <p class="<%= namespace %>-Link_List-item-txt">5G（ファイブジー）とは / 5Gで何ができるようになる？</p>
+        </div>
+        </div>
+        <div class="c-Icon_Chevron-right <%= namespace %>-Link_List-item-icon"></div>
+      </a>
+    </li>
+    <li class="<%= namespace %>-Link_List-item">
+      <a href="#plan" class="js-scroll">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Pc">料金プラン</h3>
+        <div class="<%= namespace %>-Link_List-item-grid">
+          <div class="<%= namespace %>-Link_List-item-grid-img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/area/5g/img-link02-sp.png?210720">
+              <source srcset="<%= sitepath %>assets/img/area/5g/img-link02-pc.png?210720">
+              <img src="<%= sitepath %>assets/img/area/5g/img-link02-pc.png?210720" alt="">
+            </picture>
+          </div>
+          <div class="<%= namespace %>-Link_List-item-grid-txt">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Sp">料金プラン</h3>
+            <p class="<%= namespace %>-Link_List-item-txt">楽天モバイルの5G料金プラン
+              「Rakuten最強プラン」</p>
+          </div>
+        </div>
+        <div class="c-Icon_Chevron-right <%= namespace %>-Link_List-item-icon"></div>
+      </a>
+    </li>
+    <li class="<%= namespace %>-Link_List-item">
+      <a href="#product" class="js-scroll">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Pc">対応製品</h3>
+        <div class="<%= namespace %>-Link_List-item-grid">
+          <div class="<%= namespace %>-Link_List-item-grid-img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/area/5g/img-link03-sp.png?210720">
+              <source srcset="<%= sitepath %>assets/img/area/5g/img-link03-pc.png?210720">
+              <img src="<%= sitepath %>assets/img/area/5g/img-link03-pc.png?210720" alt="">
+            </picture>
+          </div>
+          <div class="<%= namespace %>-Link_List-item-grid-txt">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Sp">対応製品</h3>
+            <p class="<%= namespace %>-Link_List-item-txt">楽天モバイルの5G対応スマートフォン（5Gスマホ）ラインアップ</p>
+          </div>
+        </div>
+        <div class="c-Icon_Chevron-right <%= namespace %>-Link_List-item-icon"></div>
+      </a>
+    </li>
+    <li class="<%= namespace %>-Link_List-item">
+      <a href="#area" class="js-scroll">
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Pc">通信エリア</h3>
+        <div class="<%= namespace %>-Link_List-item-grid">
+          <div class="<%= namespace %>-Link_List-item-grid-img">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/area/5g/img-link04-sp.png?210720">
+              <source srcset="<%= sitepath %>assets/img/area/5g/img-link04-pc.png?210720">
+              <img src="<%= sitepath %>assets/img/area/5g/img-link04-pc.png?210720" alt="">
+            </picture>
+          </div>
+          <div class="<%= namespace %>-Link_List-item-grid-txt">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Sp">通信エリア</h3>
+            <p class="<%= namespace %>-Link_List-item-txt">楽天モバイルの5G通信・<span>サービスエリア</span></p>
+          </div>
+        </div>
+        <div class="c-Icon_Chevron-right <%= namespace %>-Link_List-item-icon"></div>
+      </a>
+    </li>
+  </ul>
+
+  <p class="u-Adjust_Mt-24 <%= namespace %>-Layout_Flex">
+    <a href="#setting" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>5G通信の設定手順を見る</a>
+  </p>
+
+</div>
+<div id="js-trigger-nav"></div>
+<div class="<%= namespace %>-Link_Fixed-nav" id="js-fixed-nav" aria-expanded="false">
+  <ul class="<%= namespace %>-Link_Fixed-nav-container">
+    <li><a href="#whatis" class="js-scroll"><span>5G通信とは</span></a></li>
+    <li><a href="#plan" class="js-scroll"><span>料金プラン</span></a></li>
+    <li><a href="#product" class="js-scroll"><span>対応製品</span></a></li>
+    <li><a href="#area" class="js-scroll"><span>通信エリア</span></a></li>
+  </ul>
+</div>
+
+<div id="whatis" class="<%= namespace %>-Layout_Section">
+  <div class="l-System_Container">
+    <h2 class="<%= namespace %>-Title"><span>WHAT IS 5G ?</span>5G（ファイブジー）とは / 5Gで何ができる？</h2>
+    <p class="u-Adjust_Mt-40">第5世代移動通信システム「5G」では、今より高速で遅延がなく、さらに多くの通信ができるようになり、世の中のいろいろなものがネットワークにつなげられるようになります。遠隔医療や自動運転など、「未来が現実になる」と表現される5Gが、身近に普及すると生活はどのように変わっていくのでしょうか。</p>
+
+    <div class="u-Adjust_Mt-64">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center">5Gまでのモバイル通信</h2>
+      <p class="u-Adjust_Mt-16">モバイル通信は、これまでの第1世代（1G）から、第4世代（4G）までの間にも大きな進化を続けてきましたが、4G（4G/LTE, LTE-Advanced）の次の世代となる5Gは、これまで以上に爆発的な発展を遂げる可能性があると言われています。</p>
+      <div class="u-Adjust_Align-center">
+        <picture>
+          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/area/5g/img-5g-sp.png?210720">
+          <source srcset="<%= sitepath %>assets/img/area/5g/img-5g-pc.png?210720">
+          <img src="<%= sitepath %>assets/img/area/5g/img-5g-pc.png?210720" alt="" class="u-Adjust_Mt-16">
+        </picture>
+      </div>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Feature">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center">5Gの技術と特徴</h2>
+      <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+        <h3 class="c-Heading_Lv3">5Gを支える技術</h3>
+        <div class="l-Media_Grid-large u-Adjust_Mt-16">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/area/5g/img-feature-01.png?210903" alt="">
+          </div>
+          <div>
+            <p>5Gは、多くのデータを利用する、超高速・大容量化が期待されていますが、これは電波の帯域幅が広がることで、実現できるようになります。<br>図のように5Gの帯域幅は、4Gで使われてきた3.6GHz以下※の周波数帯に加え3.6～6GHz帯や、より高い周波数の28GHz帯が利用されるようになっていきます。</p>
+            <p class="u-Adjust_Mt-16">このうち、<span class="c-Txt_Emp-02">6GHz未満を「Sub6」</span>、<span class="c-Txt_Emp-02">28GHz帯を「ミリ波」</span>と呼びます。周波数が高くなるほど高速化しやすくなる反面、電波が遠くへ届きにくくなる特性もあります。そのため、複数の周波数をバランスよく配置してエリア拡大と通信速度向上を両立します。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※3.6GHz以下は、一般的な4Gについてです。</p>
+            <p class="u-Adjust_Mt-16"><a href="#what" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>周波数ってなんだろう？</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+        <h3 class="c-Heading_Lv3">5Gの特長と魅力「超高速・大容量、超低遅延、多数同時接続」</h3>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※今後、導入を検討している技術も含まれます。</p>
+        <div class="l-Media_List-3 <%= namespace %>-Layout_Media_List-3">
+          <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/area/5g/img-feature-02.png?210720" alt="">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <h4 class="c-Heading_Lv4 <%= namespace %>-Title_Pink">超高速・大容量</h4>
+                <p>VRや3Dなど臨場感ある<br>映像サービスなど</p>
+              </div>
+          </div>
+          <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/area/5g/img-feature-03-230418.png" alt="">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <h4 class="c-Heading_Lv4 <%= namespace %>-Title_Pink">超低遅延</h4>
+                <p>タイムラグを感じることなく、<br>遠隔地のロボットなどを操作</p>
+              </div>
+          </div>
+          <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/area/5g/img-feature-04.png?210720" alt="">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <h4 class="c-Heading_Lv4 <%= namespace %>-Title_Pink">多数同時接続</h4>
+                <p>身の回りの様々なモノが同時に通信でき、スマートホームなどを実現</p>
+              </div>
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+          <a href="<%= sitepath %>fee/saikyo-plan/?l-id=area_5g_fee_saikyo-plan" class="c-Btn_Primary-large"><span>5G料金プラン詳細を見る</span></a>
+        </div>
+      </div>
+
+      <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+        <h3 class="c-Heading_Lv3">5Gは携帯（スマートフォン）以外にもつながる・拡がる</h3>
+        <p class="u-Adjust_Mt-16">楽天の配送やスポーツ事業を中心とした5Gの展望。<br>大容量/低遅延の5Gを活用し、ドローン・AR・VRによる新たなスポーツ観戦、サービス展開も検討してまいります。</p>
+        <div class="l-Media_List-3 <%= namespace %>-Layout_Media_List-2">
+          <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/area/5g/img-feature-05.png" alt="">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <h4 class="c-Heading_Lv4 <%= namespace %>-Title_Pink">5G × AR観戦</h4>
+                <p>スタジアムでの観戦をもっと熱いものに！スマホをかざすと、リアルタイム
+                  の選手＆試合データを表示</p>
+              </div>
+          </div>
+          <div>
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/area/5g/img-feature-06.png" alt="">
+              </div>
+              <div class=" u-Adjust_Align-center">
+                <h4 class="c-Heading_Lv4 <%= namespace %>-Title_Pink">5G × ライブVR</h4>
+                <p>その場にいる臨場感をご自宅でも！試合をマルチアングル/360°のVRでリアルタイム生中継</p>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="what" class="u-Adjust_Pt-32">
+        <div class="c-Theme-Light">
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Title_Label"><span class="c-Label_Normal <%= namespace %>-Label">おまけ</span><span class="<%= namespace %>-Title_Label-txt">ヘルツ？周波数？「電波 （電磁波）と周波数って何だろう？」</span></h3>
+          <p class="<%= namespace %>-Layout_16-32"><span class="c-Txt_Emp-01">「電波」とは、300万メガヘルツ以下の周波数の電磁波のことを指します。</span><br>電波は電界と磁界が互いに影響し合いながら空間を伝わる「電磁波」の一種です。電磁波には波の性質があり、この波が 1秒間に振動する回数を「周波数」といいます。周波数は電波の大きさをあらわしており、1秒間に繰り返される波の数はヘルツ（Hz）という単位であらわします。
+          電波はスマートフォン・携帯電話、タブレットの通信を行うだけではなく、テレビやラジオ放送、電子レンジなど身のまわりでも利用していることに気がつきます。周波数の高いもの低いものと様々ですが、携帯電話で使用できる電波も周波数が限られています。</p>
+          <div class="u-Adjust_Align-center">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/area/5g/img-bonus-sp.png?210720">
+              <source srcset="<%= sitepath %>assets/img/area/5g/img-bonus-pc.png?210720">
+              <img src="<%= sitepath %>assets/img/area/5g/img-bonus-pc.png?210720" alt="" class="<%= namespace %>-Layout_16-32">
+            </picture>
+          </div>
+          <div class="<%= namespace %>-Layout_24-32 u-Adjust_Align-center">
+            <a href="<%= sitepath %>area/5g/signal/?l-id=area_5g_area_signal" class="c-Btn_Regular-large"><span>電波とは？を詳しく見る</span></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="u-Adjust_Mt-64 <%= namespace %>-Layout_Network">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center">低価格で高品質な5Gを実現する「楽天モバイルの5G対応ネットワーク」</h2>
+    </div>
+    <a href="https://corp.mobile.rakuten.co.jp/innovation/cloud-network/?l-id=area_5g_cloud-network" class="<%= namespace %>-Layout_Network-bnr" target="_blank">
+      <div class="<%= namespace %>-Layout_Network-bg">
+        <h3 class="<%= namespace %>-Layout_Network-title">世界初、完全仮想化<br class="area-5g-Utility_Sp">クラウドネイティブモバイルネットワーク<sub>※</sub><span>※</span></h3>
+        <p class="<%= namespace %>-Layout_Network-txt">低価格・高品質なサービスをあなたに</p>
+        <p class="<%= namespace %>-Layout_Network-cap">※ 大規模商用ネットワークとして（2019年10月1日時点）/ ステラアソシエ調べ </p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div id="plan" class="<%= namespace %>-Layout_Section">
+
+  <div class="l-System_Container">
+    <h2 class="<%= namespace %>-Title"><span>PRICE PLAN</span>楽天モバイルの5G料金プラン「Rakuten最強プラン」</h2>
+    <div class="u-Adjust_Mt-32">
+
+      <%- include('/inc/_saikyo') %>
+
+    </div>
+
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mt-24">
+    <ul class="<%= namespace %>-Layout_List-2">
+      <li>
+        <a href="<%= sitepath %>guide/application/?lid-r=area_5g_guide_application" class="c-Btn_Primary-large"><span><span class="c-Txt_Normal-s">Rakuten最強プラン に</span><br>新規お申し込み</span></a>
+      </li>
+      <li>
+        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=area_5g_ms_migration&mno_migration=1" class="c-Btn_Primary-large"><span><span class="c-Txt_Normal-s">スーパーホーダイ・組み合わせプランからの</span><br>プラン変更（移行）お申し込み</span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="product" class="<%= namespace %>-Layout_Section-bg u-Adjust_Mt-64">
+  <div class="l-System_Container">
+    <h2 class="<%= namespace %>-Title"><span>SUPPORTED PRODUCT</span>楽天モバイルの5G対応スマートフォン（5Gスマホ）ラインアップ</h2>
+    <h3 class="<%= namespace %>-Title-model c-Heading_Lv3 u-Adjust_Mt-32 u-Adjust_Mb-16">iPhone</h3>
+    <div class="<%= namespace %>-Carousel <%= namespace %>-Carousel_Iphone">
+      <%_
+        const carouselItemsIphone = [
+        {
+          model: 'iPhone 15 Pro Max',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphone15promax.png',
+          is5g: true,
+          colors: [
+            {color: '#BAB4A9', isBorder: true},
+            {color: '#3D4555', isBorder: true},
+            {color: '#F2F1EB', isBorder: true},
+            {color: '#3F4042', isBorder: true},
+          ],
+          capacitys: [
+            '256GB',
+            '512GB',
+            '1TB'
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-15-pro-max/?l-id=area_5g_product_iphone_iphone-15-pro-max',
+        },
+        {
+          model: 'iPhone 15 Pro',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphone15pro.png',
+          is5g: true,
+          colors: [
+            {color: '#BAB4A9', isBorder: true},
+            {color: '#3D4555', isBorder: true},
+            {color: '#F2F1EB', isBorder: true},
+            {color: '#3F4042', isBorder: true},
+          ],
+          capacitys: [
+            '128GB',
+            '256GB',
+            '512GB',
+            '1TB'
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-15-pro/?l-id=area_5g_product_iphone_iphone-15-pro',
+        },
+        {
+          model: 'iPhone 15 Plus',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphone15plus.png',
+          is5g: true,
+          colors: [
+            {color: '#EBD0D2', isBorder: true},
+            {color: '#ECE6C6', isBorder: true},
+            {color: '#CFD9C9', isBorder: true},
+            {color: '#D5DDE0', isBorder: true},
+            {color: '#3C4042', isBorder: true},
+          ],
+          capacitys: [
+            '128GB',
+            '256GB',
+            '512GB',
+            '1TB'
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-15-plus/?l-id=area_5g_product_iphone_iphone-15-plus',
+        },
+        {
+          model: 'iPhone 15',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphone15.png',
+          is5g: true,
+          colors: [
+            {color: '#EBD0D2', isBorder: true},
+            {color: '#ECE6C6', isBorder: true},
+            {color: '#CFD9C9', isBorder: true},
+            {color: '#D5DDE0', isBorder: true},
+            {color: '#3C4042', isBorder: true},
+          ],
+          capacitys: [
+            '128GB',
+            '256GB',
+            '512GB',
+            '1TB'
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-15/?l-id=area_5g_product_iphone_iphone-15',
+        },
+        {
+          model: 'iPhone 14 Plus',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphone14plus.png?230308',
+          is5g: true,
+          colors: [
+          {color: '#F9E479', isBorder: true},
+          {color: '#E6DDEB', isBorder: true},
+          {color: '#A0B4C7', isBorder: true},
+          {color: '#FC0324', isBorder: true},
+          {color: '#FAF6F2', isBorder: true},
+          {color: '#222930', isBorder: true}
+          ],
+          capacitys: [
+            '128GB',
+            '256GB',
+            '512GB',
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-14-plus/?l-id=area_5g_product_iphone_iphone-14-plus',
+        },
+        {
+          model: 'iPhone 14',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphone14.png?230308',
+          is5g: true,
+          colors: [
+            {color: '#F9E479', isBorder: true},
+            {color: '#E6DDEB', isBorder: true},
+            {color: '#A0B4C7', isBorder: true},
+            {color: '#FC0324', isBorder: true},
+            {color: '#FAF6F2', isBorder: true},
+            {color: '#222930', isBorder: true}
+          ],
+          capacitys: [
+            '128GB',
+            '256GB',
+            '512GB',
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-14/?l-id=area_5g_product_iphone_iphone-14',
+        },
+        {
+          model: 'iPhone 13',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphone13.png?220309',
+          is5g: true,
+          colors: [
+            {color: '#394C38', isBorder: true},
+            {color: '#faddd7', isBorder: true},
+            {color: '#266787', isBorder: true},
+            {color: '#222a30', isBorder: true},
+            {color: '#fbf6f2', isBorder: true},
+            {color: '#bf0013', isBorder: true}
+          ],
+          capacitys: [
+            '128GB',
+            '256GB',
+            '512GB'
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-13/?l-id=area_5g_product_iphone_iphone-13',
+        },
+        {
+          model: 'iPhone SE（第3世代）',
+          img: 'assets/img/product/iphone/top/thumb-product-iphone-top-iphonese3rd.png',
+          is5g: true,
+          colors: [
+            {color: '#232A31', isBorder: true},
+            {color: '#FAF6F2', isBorder: true},
+            {color: '#BF0013', isBorder: true}
+          ],
+          capacitys: [
+            '64GB',
+            '128GB',
+            '256GB'
+          ],
+          isNew: false,
+          link: 'product/iphone/iphone-se-3rd/?l-id=area_5g_product_iphone_iphone-se-3rd',
+        }
+        ]
+      _%>
+      <%- include('/include/area/_carousel.ejs', {items: carouselItemsIphone, namespace}) %>
+    </div>
+    <h3 class="<%= namespace %>-Title-model c-Heading_Lv3 u-Adjust_Mt-32 u-Adjust_Mb-16">Android</h3>
+    <div class="<%= namespace %>-Carousel">
+      <%_
+        const carouselItems = [
+          {
+            model: 'OPPO A79 5G',
+            lead: '「選んでよかった」を、しっかり搭載。',
+            features: [
+              'うれしい大画面と立体ステレオサウンド',
+              '頼れる急速充電と大容量バッテリー',
+              'スリムボディに便利機能をもれなく搭載'
+            ],
+            img: 'assets/img/product/a79-5g/pht-device-thumb.png?yymmdd',
+            is5g: true,
+            colors: [
+              {color: '#afdbd1', isBorder: false},
+              {color: '#66676c', isBorder: false}
+            ],
+            isNew: false,
+            link: 'product/smartphone/a79-5g/?l-id=area_5g_product_smartphone_a79-5g',
+          },
+          {
+            model: 'AQUOS sense8',
+            lead: 'ブレない”快適さ”と<br class="area-5g-Utility_Pc">止まらない”進化<span class="c-Txt_Cap" style="font-weight: normal">※1</span>”。',
+            features: [
+              '片手で素早くブレずに撮れる。',
+              '<p style="display:inline">電池残量を気にせず、やりたいことを余裕で楽しめる<sub class="c-Txt_Cap">※2</sub></p>',
+              'なめらか表示のディスプレイで見やすいから快適に映像が楽しめる。'
+            ],
+            img: 'assets/img/product/aquos-sense8/pht-device-thumb.png?yymmdd',
+            is5g: true,
+            colors: [
+              {color: '#cddac1', isBorder: false},
+              {color: '#e1d2d3', isBorder: false},
+              {color: '#213d4d', isBorder: false},
+            ],
+            isNew: false,
+            link: 'product/smartphone/aquos-sense8/?l-id=area_5g_product_smartphone_aquos-sense8',
+          },
+          {
+            model: 'Xperia 5 V',
+            lead: '新しいスマホ。新しいワタシ。',
+            features: [
+              'いい音で感動。もっと頑張れる',
+              '大切な思い出をありのままに残すからシェアしたくなる',
+              'いつでもサクサク・快適。 バテない、バッテリー'
+            ],
+            img: 'assets/img/product/xperia-5m5/pht-device-thumb.png?yymmdd',
+            is5g: true,
+            colors: [
+              {color: '#C9C9C8', isBorder: false},
+              {color: '#494D53', isBorder: true},
+            ],
+            isNew: false,
+            link: 'product/smartphone/xperia-5m5/?l-id=area_5g_product_smartphone_xperia-5m5',
+          },
+          {
+            model: 'Xperia 10 V',
+            lead: 'たっぷり使えて、どっぷりハマる',
+            features: [
+              '”聴く”も”観る”もリッチにたのしむ',
+              'いつでもお手軽ベストショット',
+              'バテない、バッテリー',
+            ],
+            img: 'assets/img/product/xperia-10m5/pht-device-thumb.png',
+            is5g: true,
+            colors:[
+              {color: '#A4ABD5', isBorder: true},
+              {color: '#BDD5BC', isBorder: true},
+              {color: '#FFFFFF', isBorder: true},
+              {color: '#39373B', isBorder: true},
+            ],
+            isNew: false,
+            link: 'product/smartphone/xperia-10m5/?l-id=area_5g_product_smartphone_xperia-10m5',
+            isAdjustImg: true,
+          },
+          {
+            model: 'AQUOS wish3',
+            lead: 'シンプルであんしん。みんなに心地よい使いやすさ',
+            features: [
+              'コンパクトで使いやすい、心地よい手触りとニュアンスカラー',
+              '家族みんなが使いやすい。スマホデビューにもぴったりな機能満載',
+              '落としても安心の丈夫さと防水対応。電池の劣化を抑えて長く使える',
+            ],
+            img: 'assets/img/product/aquos-wish3/pht-device-thumb.png',
+            is5g: true,
+            colors:[
+              {color: '#B7C7C5', isBorder: true},
+              {color: '#EFECE4', isBorder: true},
+              {color: '#434852', isBorder: true},
+            ],
+            isNew: false,
+            link: 'product/smartphone/aquos-wish3/?l-id=area_5g_product_smartphone_aquos-wish3',
+            isAdjustImg: true,
+          },
+          {
+            model: 'OPPO Reno9 A',
+            lead: 'もっと、サクサク。もっと、ワクワク。',
+            features: [
+              'ガラスの質感が美しいデザイン',
+              'サクサクがすごい8GB RAM',
+              'スリムなのに頼もしいバッテリー',
+            ],
+            img: 'assets/img/product/reno9-a/pht-device-thumb.png',
+            is5g: true,
+            colors:[
+              {color: '#f5f5f5', isBorder: true},
+              {color: '#000000', isBorder: true},
+            ],
+            isNew: false,
+            link: 'product/smartphone/reno9-a/?l-id=area_5g_product_reno9-a',
+            isAdjustImg: true,
+          },
+          {
+            model: 'Galaxy S23',
+            lead: 'ワクワク体験を手のひらに',
+            features: [
+              '感動をシェアするナイトグラフィー',
+              '大容量バッテリー',
+              '高性能が詰まった手になじむサイズ感',
+            ],
+            img: 'assets/img/product/galaxy-s23/pht-device-thumb.png',
+            is5g: true,
+            colors: [
+              {color: '#F0EAE0', isBorder: false},
+              {color: '#231F20', isBorder: true},
+            ],
+            isNew: false,
+            link: 'product/smartphone/galaxy-s23/?l-id=area_5g_product_galaxy-s23',
+            isAdjustImg: true,
+          }
+        ]
+      _%>
+      <%- include('/include/area/_carousel.ejs', {items: carouselItems, namespace}) %>
+    </div>
+    <p class="u-Adjust_Mt-16 c-Txt_Cap">
+    ※1 AQUOS sense7との比較、2023年9月時点（メーカー調べ）。<br>
+    ※2 電池の持ち時間や寿命は、ご利用環境やご利用状況によって異なる。
+    </p>
+
+  </div>
+</div>
+
+<div id="area" class="<%= namespace %>-Layout_Section">
+  <div class="l-System_Container">
+    <h2 class="<%= namespace %>-Title"><span>NETWORK & COVERAGE</span>楽天モバイルの5G通信・<br>サービスエリア</h2>
+    <div class="<%= namespace %>-Layout_Service u-Adjust_Align-center u-Adjust_Mt-32">
+      <h3 class="<%= namespace %>-Layout_Service-title">サービスエリア</h3>
+      <p class="<%= namespace %>-Layout_Service-txt u-Adjust_Mt-16">お住まいのエリアの<br>データ通信環境が確認できます</p>
+      <div class="<%= namespace %>-Layout_Service-btn <%= namespace %>-Layout_24-32">
+        <a href="<%= sitepath %>area/?l-id=area_5g_area_5g-area" class="c-Btn_Secondly-large"><span>5Gのサービスエリアを見る</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="setting" class="<%= namespace %>-Layout_Setting u-Adjust_Mt-56">
+  <h2 class="c-Heading_Lv2 u-Adjust_Align-center">5G通信の設定手順</h2>
+
+    <div class="l-System_Container">
+      <p class="u-Adjust_Mt-16">
+        <a href="#whatis" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-up-l"></span>5G（ファイブジーとは）</a>
+      </p>
+
+      <!--  -->
+      <div class="c-Tab js-Tab">
+      <ul class="c-Tab_Items-bg u-Adjust_Mt-16" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">iPhoneの場合</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">Androidの場合</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※「iPhone15（iOS 17）」の例。</p>
+
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 「設定」を開く</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-01-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 「モバイル通信」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-02-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「通信のオプション」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-03-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. 「音声通話とデータ」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-04-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. 「5Gオート」または「5Gオン」を選択する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-05-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">以上で5G通信の設定は完了です。</p>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※「AQUOS sense7」の例。</p>
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 「設定」を開く</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-01-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 「ネットワークとインターネット」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-02-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「Wi-Fiとモバイルネットワーク」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-03-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. ネットワーク名部分にある設定アイコンをタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-04-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. 「優先ネットワークの種類」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-05-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. 「5G（推奨）」を選択する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-06-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">以上で5G通信の設定は完了です。</p>
+      </div>
+    </div>
+  <!--  -->
+  </div>
+</div>
+
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-area-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/area/_5g-js') %>
+<%- include('/include/_append-body') %>
+<script>
+  function fixedBtn(trigger, elm) {
+    let scrollY = window.pageYOffset;
+
+    if( !elm || !trigger ) return;
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const triggerY = scrollY + triggerRect.top;
+
+    if ( scrollY > triggerY ) {
+      elm.setAttribute('aria-expanded', 'true');
+    } else {
+      elm.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function fixedBtnInit() {
+    const navTrigger = document.getElementById('js-trigger-nav');
+    const navBtn = document.getElementById('js-fixed-nav');
+
+    fixedBtn(navTrigger, navBtn)
+  }
+
+  window.addEventListener('scroll', fixedBtnInit);
+</script>
+</body>
+</html>

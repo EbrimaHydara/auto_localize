@@ -1,0 +1,262 @@
+<% const pagetitle = "テザリング（ご利用方法）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/product/setting/", label:"設定・操作・故障"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'テザリング（楽天モバイル）のご利用方法はこちら。外出先でも、スマートフォン（スマホ）を介してパソコンやゲーム機などのWi-Fi対応機器をインターネットに接続できます',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1">テザリング</h1>
+
+    <p class="u-Adjust_Mt-24">
+      お出かけ先でも、スマートフォンを介してパソコンやゲーム機などのWi-Fi対応機器をインターネットに接続できます。
+    </p>
+
+    <div class="u-Adjust_Mt-24">
+      <a href="<%= sitepath %>service/tethering/" class="c-Btn_Regular-large"><span>サービス内容を見る</span></a>
+    </div>
+
+    <div class="guide-number-share-Layout_Anchor u-Adjust_Mt-32">
+      <a href="#anc-1" class="c-Link_Txt-icon-front u-Adjust_Mb-8" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span>ご利用方法</a>
+      <a href="#anc-2" class="c-Link_Txt-icon-front u-Adjust_Mb-8" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span>注意事項</a>
+      <a href="#anc-3" class="c-Link_Txt-icon-front u-Adjust_Mb-8" class="js-scroll"><span class="c-Icon_Arrow-down-l"></span>よく見られているご質問</a>
+    </div>
+
+    <h2 id="anc-1" class="c-Heading_Lv2 u-Adjust_Mt-64">ご利用方法</h2>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">※Wi-Fiテザリングの場合</p>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-32">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">iPhoneの場合</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">Androidの場合</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1.ホーム画面の「設定」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-01-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+
+          <li>
+            <h3 class="c-Heading_Lv3">2.「インターネット共有」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-02-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3.「ほかの人の接続を許可」のオン・オフ切り替えボタンをタップして、オンにする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-03-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4.ポップアップが表示された場合は、利用したいテザリング方法を選択する</h3>
+
+            <p class="u-Adjust_Mt-16">Wi-Fiがオフの場合</p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-04-231127.png" class="c-Img_Capture" alt="">
+            </div>
+
+            <p class="u-Adjust_Mt-24">Bluetoothがオフの場合</p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-05-231127.png" class="c-Img_Capture" alt="">
+            </div>
+
+            <p class="u-Adjust_Mt-24">Wi-FiとBluetoothがオフの場合</p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-06-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. Wi-Fiテザリングをご利用の場合は、表示されるパスワードを確認し、パソコン等の外部機器側で設定する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-07-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. テザリングでパソコン等の外部機器と接続されると、ホーム画面の上部などでラベルが表示されます</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-iphone-08-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16">以上で完了です。</p>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※キャプチャはRakuten Hand 5Gの場合です。</p>
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1.ホーム画面の「設定」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-01-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2.「ネットワークとインターネット」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-02-231127.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3.「アクセスポイントとテザリング」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-03-231127.png"  class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4.「Wi-Fiアクセスポイント」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-04-231127.png"  class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. オンオフ切り替えボタンをタップして、オンにする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-05-231127.png"  class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. オンの表示で接続準備が整います</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-06-231127.png"  class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">7. QRコードまたはパスワードを確認し、パソコン等の外部機器側で設定する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-07-231127.png"  class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">8. テザリングでパソコン等の外部機器と接続されると、ホーム画面の上部などにテザリングアイコンが表示されます</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/service/tethering/img-flow-android-08-231127.png"  class="c-Img_Capture" alt="">
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16">以上で完了です。</p>
+      </div>
+    </div>
+
+    <h2 id="anc-2" class="c-Heading_Lv2 u-Adjust_Mt-64">注意事項</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>Wi-Fiテザリングご利用時は、第三者による不正利用を防止するため、パスワードを設定のうえ、ご利用ください。また、テザリング用パスワードを他人に知られないようにお客様の責任において十分注意して管理してください。当社の故意または重過失によらずに、お客様以外の第三者にテザリング用パスワードが知られたことなどにより生じた損害については、お客様が負担するものとさせていただきます。</li>
+          <li>テザリング機能は、親機およびテザリング機能を利用して接続する外部機器双方ともお客様ご自身が利用されている製品でご利用ください。</li>
+          <li>テザリング機能を利用して接続した外部機器から、お客様が親機でご利用中のサービスに関する情報の閲覧、利用が可能となる場合があるほか、当該外部機器から親機のご契約回線に関する手続きなどが可能となる場合があります。この場合、当該外部機器からなされた手続きなどもすべてお客様によりなされたものとみなします。また、外部機器側においても、テザリング中の操作により親機側の設定が反映される場合がありますので、テザリングご利用後は外部機器で各サービスに再度ログインし直してください。</li>
+          <li>Wi-Fiテザリングをご利用される場合は、スマートフォンのWi-Fi通信規格（IEEE802.11bなど）が外部機器で対応している必要があります。スマートフォンのWi-Fi通信規格の詳細は製品ページのスペック欄でご確認ください。</li>
+          <li>テザリングを利用してインターネットに接続した場合、ご利用の環境によっては外部機器においてアプリケーション（ブラウジング・ゲームなど）が正常に動作しない場合があります。</li>
+          <li>他社のSIMカードを挿入してテザリングをご利用いただく場合については、動作確認などを実施しておらず、一切の動作保証を行っておりません。</li>
+          <li>テザリングを利用する際はデータ通信が行われ、データ利用量が消費されます。</li>
+          <li>地域により楽天モバイルおよびKDDI株式会社の通信網のいずれかにてサービスを提供しているため、通信網を跨ぐ場合に数秒から数分程度通信が途切れる場合があります。</li>
+    </ul>
+    <div id="anc-3">
+      <%- include('/include/guide/_faq') %>
+    </div>
+
+    <div class="u-Adjust_Pt-40">
+      <div class="u-Adjust_Align-center">
+        <a href="<%= sitepath %>support/" class="c-Btn_Regular-large"><span>お客様サポートトップにもどる</span></a>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <a href="<%= rootpath %>" class="c-Btn_Regular-large"><span>楽天モバイルトップへ</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<script defer>
+  const hash = location.hash;
+  const tabMenu1 = document.getElementById('tab-menu1');
+  const tabMenu2 = document.getElementById('tab-menu2');
+  const tabContent1 = document.getElementById('tab-content1');
+  const tabContent2 = document.getElementById('tab-content2');
+
+  const setTabMenu2 = () => {
+    tabMenu1.setAttribute('aria-selected', false);
+    tabMenu2.setAttribute('aria-selected', true);
+    tabContent1.setAttribute('aria-hidden', true);
+    tabContent2.setAttribute('aria-hidden', false);
+  }
+
+  if (hash.includes('tab-menu2')) setTabMenu2();
+</script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

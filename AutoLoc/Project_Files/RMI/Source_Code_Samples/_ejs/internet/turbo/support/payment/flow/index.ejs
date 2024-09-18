@@ -1,0 +1,205 @@
+<% const pagetitle = "Rakuten Turboの請求金額の確定とお支払いまでの流れ" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/payment/", label:"請求・お支払い方法"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    ancList: [
+      {
+        path: '#anc01',
+        name: '請求金額の確定と請求スケジュールについて'
+      },
+      {
+        path: '#anc02',
+        name: '利用料金・利用明細を確認する',
+      }
+    ],
+    isUserCategory: true
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboの毎月のご請求金額の確定・請求スケジュールや、my 楽天モバイル（アプリ・Web）で確かめる方法をご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <section class="u-Adjust_Mt-32">
+      <div class="l-System_Container">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">Rakuten Turboの毎月のご請求金額の確定・請求タイミングや確認方法をご案内いたします。 ご請求金額はmy 楽天モバイルよりご確認いただけます。</p>
+      </div>
+      <div class="l-System c-Theme-Light u-Adjust_Mt-32 <%= namespace %>-Anchor">
+        <div class="l-System_Container">
+          <ul class="<%= namespace %>-Anchor_Area">
+            <% pageInfo.ancList.forEach(function(item) { -%>
+            <li>
+              <a href="<%= item.path %>" class="js-scroll c-Link_Txt-icon-front" data-auto-rat="anchor"><span class="c-Icon_Arrow-down-l"></span><%= item.name %></a>
+            </li>
+            <% }); -%>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="l-System_Container">
+      <section id="anc01" class="u-Adjust_Mt-48">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">請求金額の確定と請求スケジュールについて</h2>
+        <p class="u-Adjust_Mt-24">毎月1日から月末までのご利用料金を翌月にご請求いたします。お支払い方法によってご請求のタイミングは異なります。</p>
+        <p class="c-Txt_Emp-01 u-Adjust_Mt-8">例：8月ご利用分の請求の場合</p>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+          <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/flow/img-01.png" width="1032" height="530" alt="請求金額の確定と請求スケジュールについて　例：8月ご利用分の請求の場合" class="<%= namespace %>-Utility_Disp-pc">
+          <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/flow/img-01-sp.png" width="343" height="587" alt="請求金額の確定と請求スケジュールについて　例：8月ご利用分の請求の場合" class="<%= namespace %>-Utility_Disp-tab">
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">
+          ※1 クレジットカードをご利用の場合、楽天ポイント利用分は未反映となります。<br>
+          ※2 毎月7日ごろにダウンロードできる利用明細（PDF）は楽天ポイント利用分が未反映のものとなります。ご注意ください。<br>
+          ※3 楽天ポイント利用の設定額を超えた請求金額は、クレジットカードでのお支払いとなり、11日ごろにクレジットカード会社に請求いたします。<br>
+          ※4 支払い証明書が発行されていない場合、未払いになっている可能性があります。<a href="<%= sitepath %>guide/payment/invoice/flow/">未払い料金のお支払い方法</a>をご確認のうえ、お支払いをお願いいたします。<br>
+          ※5 支払い期日が土日祝の場合は翌営業日が期日となります。
+        </p>
+        <h3 class="c-Heading_Lv3 u-Adjust_Mt-48 <%= namespace %>-Utility_Heading_Lv3">お支払い状況の詳細</h3>
+        <div class="l-Media_Grid-reverse u-Adjust_Mt-24">
+          <div>
+            <p>毎月の請求金額の確定からお支払い完了までの状況をmy 楽天モバイルの「利用料金」でご確認いただけます。お支払い方法により、表示される内容が異なります。</p>
+          </div>
+          <div class="l-Media_Image c-Flow_Image">
+            <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/flow/img-02.png" width="328" height="374" alt="お支払い状況の詳細">
+          </div>
+        </div>
+        <div class="c-Accordion u-Adjust_Mt-48">
+          <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>クレジットカード／デビットカードの場合</button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+            <div>
+              <dl class="c-Dl_Origin">
+                <div>
+                  <dt>毎月7日ごろ</dt>
+                  <dd>
+                    請求金額の案内
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #FFAE00;">未確定</span></p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>毎月11日ごろ</dt>
+                  <dd>
+                    請求金額（確定分）の案内
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #27AE60;">確定</span></p>
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #e40404;">未払い</span>
+                      <span class="c-Txt_Cap">※</span>
+                    </p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      ※正しく処理が完了しなかった場合、当該月の未払い料金はお支払い完了まで「未払い」と表示されます。
+                    </p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>毎月12日ごろ</dt>
+                  <dd>
+                    支払い証明書の発行
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #27AE60;">確定</span></p>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2" data-auto-rat="accordion"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>口座振替の場合</button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+            <div>
+              <dl class="c-Dl_Origin">
+                <div>
+                  <dt>毎月7日ごろ</dt>
+                  <dd>
+                    請求金額の案内
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #FFAE00;">未確定</span></p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>毎月11日ごろ</dt>
+                  <dd>
+                    請求金額（確定分）の案内
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #FFAE00;">未確定</span></p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>毎月27日ごろ</dt>
+                  <dd>
+                    口座振替支払い期日
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #FFAE00;">未確定</span></p>
+                  </dd>
+                </div>
+                <div>
+                  <dt>毎月1日ごろ</dt>
+                  <dd>
+                    支払い証明書の発行
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #27AE60;">確定</span></p>
+                    <p class="u-Adjust_Mt-8"><span class="c-Label_Emp <%= namespace %>-Utility_Flow_Label" style="background: #e40404;">未払い</span><span class="c-Txt_Cap">※</span></p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※正しく処理が完了しなかった場合、当該月の未払い料金はお支払い完了まで「未払い」と表示されます。</p>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <h3 class="c-Heading_Lv3 u-Adjust_Mt-40 <%= namespace %>-Utility_Heading_Lv3">クレジットカード会社からの請求と明細について</h3>
+        <p class="u-Adjust_Mt-16">クレジットカード会社からお客様へのご請求日は各クレジットカード会社のスケジュールによります。</p>
+        <p class="u-Adjust_Mt-16">
+          当月利用分を翌月にクレジットカード会社へ請求しているため、カード明細に記載された料金は前月分のご利用分となります。<br>
+          例：8月利用分の場合、明細は9月と表記されます。
+        </p>
+      </section>
+
+      <section id="anc02" class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">利用料金・利用明細を確認する</h2>
+        <p class="u-Adjust_Mt-16">毎月のご利用料金は翌月7日ごろから順次my 楽天モバイルにてご確認いただけます。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">
+          ※2021年11月以降の利用明細には、楽天ポイント利用分は記載されておりません。楽天ポイント利用後のお支払い料金は、お支払い後に表示される「支払い証明書」でご確認ください。
+        </p>
+        <p class="u-Adjust_Mt-16">
+          <a href="<%= sitepath %>internet/turbo/support/payment/certificate/" class="c-Link_Txt-inline">利用明細と各種明細の確認方法を見る<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/internet/turbo/support/_smallcategory-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

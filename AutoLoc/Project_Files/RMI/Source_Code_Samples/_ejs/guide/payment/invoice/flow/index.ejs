@@ -1,0 +1,640 @@
+<% const pagetitle = "未払い料金のお支払い方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/payment/invoice/", label:"未払い料金のお支払い"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'ご指定の支払い方法でご利用料金のお支払いが確認できなかった場合の各種お支払い方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/payment/invoice/flow/flow.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container u-Adjust_Pt-8">
+  <p class="c-Txt_Cap u-Adjust_Align-right">※表記の金額はすべて税込です。</p>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1">未払い料金のお支払い方法</h1>
+    <p class="u-Adjust_Mt-24">ご登録のクレジットカードやデビットカード、銀行口座の引き落としが確認できなかった場合、楽天モバイルよりお客様宛に、お支払いに関するご連絡をさせていただきます。以下よりお支払い方法をご確認ください。<br>
+      未払い料金の発生原因の詳細や発生後のご利用停止・契約解除までの流れ、およびコンビニ払込票（ハガキ）の送付タイミングは「<a href="<%= sitepath %>guide/payment/invoice/unpaid/?l-id=guide_payment_invoice_flow_guide_payment_invoice_unpaid#anc03" class="c-Link_Txt-inline">未払い料金の発生からご利用停止・契約解除まで</a>」をご確認ください。
+    </p>
+  </div>
+
+  <div class="l-System c-Theme-Light u-Adjust_Mt-40 flow-Anchor-Area_Container">
+    <div class="l-System_Container">
+      <div class="flow-Anchor-Area">
+        <a href="#anc01" class="js-scroll flow-Anchor-Area-Btn c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>クレジットカード・デビットカードの場合</a>
+        <a href="#anc02" class="js-scroll flow-Anchor-Area-Btn c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天ポイントを利用する場合</a>
+        <a href="#anc03" class="js-scroll flow-Anchor-Area-Btn c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>コンビニ払込票（ハガキ）の場合</a>
+        <a href="#anc04" class="js-scroll flow-Anchor-Area-Btn c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>注意事項</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="l-System_Container">
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="anc01">クレジットカード・デビットカードの場合</h2>
+    <div class="l-Media_Grid u-Adjust_Mt-16">
+      <div class="l-Media_Image c-Flow_Image">
+        <img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-01.png" width="" alt="">
+      </div>
+      <div>
+        <p>楽天モバイルのお支払いに設定していたクレジットカード・デビットカードとは別のカードの登録や、有効期限が更新されたカードを再度登録することで、未払い料金をお支払いいただけます。<br>
+          詳細は「<a href="#accordion-1" class="accordion-1_opan c-Link_Txt js-scroll">お支払い手順</a>」をご確認ください。
+        </p>
+        <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※新しいクレジットカード・デビットカードの登録だけでは支払いは完了しません。必ず、お支払い手続きを行ってください。</p>
+      </div>
+    </div>
+
+    <div class="u-Adjust_Mt-16" id="anc05">
+      <h3 class="c-Heading_Lv3">ご利用可能なクレジットカード・デビットカード</h3>
+      <p class="u-Adjust_Mt-16">
+        未払い料金のお支払いに楽天ポイントをご利用いただけます。ポイントのご利用に際し、有効なクレジットカード・デビットカードの登録が必要です。お手続き完了後、すぐに決済が行われます。
+      </p>
+      <p class="u-Adjust_Mt-16">ご利用いただけるクレジットカード・デビットカードは以下の通りです。</p>
+
+      <dl class="u-Adjust_Mt-24">
+        <div>
+          <dt class="c-Heading_Lv4">ご利用可能なクレジットカード</dt>
+          <dd class="u-Adjust_Mt-16">
+            <ul class="c-List_Text-disc">
+              <li>楽天カード</li>
+              <li>VISAカード</li>
+              <li>Masterカード</li>
+              <li>American Expressカード</li>
+              <li>JCBカード</li>
+              <li>Diners Clubカード</li>
+            </ul>
+          </dd>
+        </div>
+        <div class="u-Adjust_Mt-24">
+          <dt class="c-Heading_Lv4">ご利用可能なデビットカード</dt>
+          <dd class="u-Adjust_Mt-16">
+            <ul class="c-List_Text-disc">
+              <li>楽天銀行デビットカード</li>
+              <li>他社発行のデビットカード（一部<sup>※</sup>）</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+      <p class="u-Adjust_Mt-8 c-Txt_Cap">
+        ※ お支払いの登録ができても、ご請求時に何らかの理由でお手続きが出来ない場合がございます。
+        ご利用可否は各カード発行会社の判断によります。詳細は各カード発行会社へお問い合わせください。
+      </p>
+      <p class="u-Adjust_Mt-16">
+        クレジットカード・デビットカードでお支払いできる項目など、詳細は<a href="<%= sitepath %>guide/payment/card/"
+          class="c-Link_Txt-inline">こちら</a>をご確認ください。
+      </p>
+    </div>
+
+    <div class="c-Accordion u-Adjust_Mt-24">
+      <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お支払い手順</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+        <p class="c-Txt_Cap c-Txt_Emp-02">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webでお手続き</li>
+            <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリでお手続き</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Heading_Lv3">1. my 楽天モバイル「利用料金」画面を開く</h3>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※「利用料金へ進む」をタップしてログインすると手順2の画面が表示されます。<br>
+                  ※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/">[my 楽天モバイル]ログインできません</a>」をご確認ください。
+                </p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <a href="https://portal.mobile.rakuten.co.jp/dashboard#billing" data-ratId="guide_ecare_billing" data-ratEvent="click" data-ratParam="all" class="c-Btn_Secondly-large"><span>利用料金へ進む</span></a>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2.利用料金画面に表示されている「未払い料金を支払う」をタップする</h3>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-01-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3" id="anc07">3.お支払い方法を選択する</h3>
+                <p class="u-Adjust_Mt-16">未払い料金が発生している月を選択してください。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※未払い料金が発生している月を複数まとめてお支払いすることはできません。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-02-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  登録している有効なクレジットカード・デビットカードを選択、または「新しいカードを追加」を選択し、情報を入力・登録を行ってください。有効期限切れのカードの場合でも、新たにカード情報の入力・登録が必要です。<br>
+                  情報を入力後、新しく登録したクレジットカード・デビットカードを選択して「この内容で支払う」をタップしてください。
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※他の楽天サービスで利用しているクレジットカード・デビットカード情報を利用する場合「クレジットカード情報を最新の状態に更新する」をタップしてください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-03-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  楽天ポイントもご利用になる場合は、楽天ポイントの選択・入力を行い、「この内容で支払う」をタップしてください
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※楽天ポイント利用は、有効なクレジットカード・デビットカードを設定いただく必要があります。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-04-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">4.お支払い完了を確認する</h3>
+                <p class="u-Adjust_Mt-16">以上で未払い料金の支払いは完了です。「ホームへ戻る」をタップしてください。</p>
+                <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-05-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">他の月にも未払い料金が残っている場合は「続けて残りの未払い分を支払う」をタップし、「<a href="#anc07">3.お支払い方法を選択する</a>」の手順でお支払いいただけます。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-06-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">「お支払いができませんでした」 とポップアップが表示される場合、クレジットカード・デビットカードが有効かご確認のうえ、「<a href="#anc07">3.お支払い方法を選択する</a>」の手順へ戻っていただき、再度情報の入力をお願いいたします。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-07-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">5.利用料金画面を確認する</h3>
+                <p class="u-Adjust_Mt-16">お支払いいただいた該当月を選択した際に、「確定」と表示されているとお手続きが完了しています。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-08-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+            </ol>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+                <div class="c-Box_App u-Adjust_Mt-16">
+                  <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+                  <div class="c-Box_App-txt">
+                    <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                    <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                    <ul class="c-Box_App-link u-Adjust_Mt-16">
+                      <li class="<%= nameSpace %>-App_Btn-store">
+                        <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                        <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                      </li>
+                      <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">my 楽天モバイルとは</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. 画面下の「利用料金」をタップする</h3>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-09-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3.利用料金画面に表示されている「未払い料金を支払う」をタップする</h3>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-01-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3" id="anc08">4.お支払い方法を選択する</h3>
+                <p class="u-Adjust_Mt-16">未払い料金が発生している月を選択してください。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※未払い料金が発生している月を複数まとめてお支払いすることはできません。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-02-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  登録している有効なクレジットカード・デビットカードを選択、または「新しいカードを追加」を選択し、情報を入力・登録を行ってください。有効期限切れのカードの場合でも、新たにカード情報の入力・登録が必要です。<br>
+                  情報を入力後、新しく登録したクレジットカード・デビットカードを選択して「この内容で支払う」をタップしてください。
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※他の楽天サービスで利用しているクレジットカード・デビットカード情報を利用する場合「クレジットカード情報を最新の状態に更新する」をタップしてください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-03-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  楽天ポイントもご利用になる場合は、楽天ポイントの選択・入力を行い、「この内容で支払う」をタップしてください
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※楽天ポイント利用は、有効なクレジットカード・デビットカードを設定いただく必要があります。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-04-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">5.お支払い完了を確認する</h3>
+                <p class="u-Adjust_Mt-16">以上で未払い料金の支払いは完了です。「ホームへ戻る」をタップしてください。</p>
+                <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-05-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">他の月にも未払い料金が残っている場合は「続けて残りの未払い分を支払う」をタップし、「<a href="#anc08">4.お支払い方法を選択する</a>」の手順でお支払いいただけます。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-06-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">「お支払いができませんでした」 とポップアップが表示される場合、クレジットカード・デビットカードが有効かご確認のうえ、「<a href="#anc08">4.お支払い方法を選択する</a>」の手順へ戻っていただき、再度情報の入力をお願いいたします。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-07-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">6.利用料金画面を確認する</h3>
+                <p class="u-Adjust_Mt-16">お支払いいただいた該当月を選択した際に、「確定」と表示されているとお手続きが完了しています。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-08-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <p class="u-Adjust_Mt-32">以上でお手続きは完了です。</p>
+      </div>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc02">楽天ポイントを利用する場合</h2>
+    <div class="l-Media_Grid u-Adjust_Mt-16">
+      <div class="l-Media_Image c-Flow_Image">
+        <img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-02.png?210716" width="" alt="">
+      </div>
+      <div>
+        <p>未払い料金のお支払いに楽天ポイントをご利用いただけます。ポイントのご利用に際し、有効なクレジットカード・デビットカードの登録が必要です。お手続き完了後、すぐに決済が行われます。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※クレジットカード・デビットカードの変更、情報の更新でのお支払いと併用が可能です。<a href="#anc05">ご利用可能なクレジットカード・デビットカードはこちら</a>。</p>
+        <p class="c-Txt_Cap">※月々のお支払いに口座振替をご指定の場合は、楽天ポイントをご利用いただけません。</p>
+        <p class="c-Txt_Cap">※一度に利用できるポイント数は1～30,000（ダイヤモンド会員の方は～500,000）ポイントです。</p>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/point/?l-id=guide_payment-invoice-flow_guide_point-return" class="c-Link_Txt-inline">製品や月々の支払いに使える 楽天ポイントの詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+
+      </div>
+    </div>
+
+    <div class="c-Accordion u-Adjust_Mt-24" style="border-top: 1px solid #8f8f8f;">
+      <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お支払い手順</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+        <p class="c-Txt_Cap c-Txt_Emp-02">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+        <div class="c-Tab js-Tab u-Adjust_Mt-24">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="true" aria-controls="tab-content3">Webでお手続き</li>
+            <li class="c-Tab_Item" id="tab-menu4" role="tab" aria-selected="false" aria-controls="tab-content4">アプリでお手続き</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu3">
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Heading_Lv3">1. my 楽天モバイル「利用料金」画面を開く</h3>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※「利用料金へ進む」をタップしてログインすると手順2の画面が表示されます。<br>
+                  ※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/">[my 楽天モバイル]ログインできません</a>」をご確認ください。
+                </p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <a href="https://portal.mobile.rakuten.co.jp/dashboard#billing" data-ratId="guide_ecare_billing" data-ratEvent="click" data-ratParam="all" class="c-Btn_Secondly-large"><span>利用料金へ進む</span></a>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2.利用料金画面に表示されている「未払い料金を支払う」をタップする</h3>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-01-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3" id="anc09">3.お支払い方法を選択する</h3>
+                <p class="u-Adjust_Mt-16">未払い料金が発生している月を選択してください。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※未払い料金が発生している月を複数まとめてお支払いすることはできません。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-02-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  登録している有効なクレジットカード・デビットカードを選択、または「新しいカードを追加」を選択し、情報を入力・登録を行ってください。有効期限切れのカードの場合でも、新たにカード情報の入力・登録が必要です。<br>
+                  情報を入力後、新しく登録したクレジットカード・デビットカードを選択して「この内容で支払う」をタップしてください。
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※他の楽天サービスで利用しているクレジットカード・デビットカード情報を利用する場合「クレジットカード情報を最新の状態に更新する」をタップしてください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-03-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  楽天ポイントもご利用になる場合は、楽天ポイントの選択・入力を行い、「この内容で支払う」をタップしてください
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※楽天ポイント利用は、有効なクレジットカード・デビットカードを設定いただく必要があります。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-04-pay-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">4.お支払い完了を確認する</h3>
+                <p class="u-Adjust_Mt-16">以上で未払い料金の支払いは完了です。「ホームへ戻る」をタップしてください。</p>
+                <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-05-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">他の月にも未払い料金が残っている場合は「続けて残りの未払い分を支払う」をタップし、「<a href="#anc09">3.お支払い方法を選択する</a>」の手順でお支払いいただけます。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-06-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">「お支払いができませんでした」 とポップアップが表示される場合、クレジットカード・デビットカードが有効かご確認のうえ、「<a href="#anc09">3.お支払い方法を選択する</a>」の手順へ戻っていただき、再度情報の入力をお願いいたします。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-07-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">5.利用料金画面を確認する</h3>
+                <p class="u-Adjust_Mt-16">お支払いいただいた該当月を選択した際に、「確定」と表示されているとお手続きが完了しています。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-08-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+            </ol>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu4">
+            <ol class="c-Flow u-Adjust_Mt-24">
+              <li>
+                <h3 class="c-Heading_Lv3">1. my 楽天モバイルを起動する</h3>
+                <div class="c-Box_App u-Adjust_Mt-16">
+                  <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+                  <div class="c-Box_App-txt">
+                    <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                    <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                    <ul class="c-Box_App-link u-Adjust_Mt-16">
+                      <li class="<%= nameSpace %>-App_Btn-store">
+                        <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                        <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                      </li>
+                      <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">my 楽天モバイルとは</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. 画面下の「利用料金」をタップする</h3>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-09-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3.利用料金画面に表示されている「未払い料金を支払う」をタップする</h3>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-01-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3" id="anc10">4.お支払い方法を選択する</h3>
+                <p class="u-Adjust_Mt-16">未払い料金が発生している月を選択してください。</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※未払い料金が発生している月を複数まとめてお支払いすることはできません。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-02-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  登録している有効なクレジットカード・デビットカードを選択、または「新しいカードを追加」を選択し、情報を入力・登録を行ってください。有効期限切れのカードの場合でも、新たにカード情報の入力・登録が必要です。<br>
+                  情報を入力後、新しく登録したクレジットカード・デビットカードを選択して「この内容で支払う」をタップしてください。
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">※他の楽天サービスで利用しているクレジットカード・デビットカード情報を利用する場合「クレジットカード情報を最新の状態に更新する」をタップしてください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-03-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">
+                  楽天ポイントもご利用になる場合は、楽天ポイントの選択・入力を行い、「この内容で支払う」をタップしてください
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※楽天ポイント利用は、有効なクレジットカード・デビットカードを設定いただく必要があります。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-04-pay-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">5.お支払い完了を確認する</h3>
+                <p class="u-Adjust_Mt-16">以上で未払い料金の支払いは完了です。「ホームへ戻る」をタップしてください。</p>
+                <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-05-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">他の月にも未払い料金が残っている場合は「続けて残りの未払い分を支払う」をタップし、「<a href="#anc10">4.お支払い方法を選択する</a>」の手順でお支払いいただけます。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-06-230320.png" alt="" class="c-Img_Capture"></p>
+                <p class="u-Adjust_Mt-32">「お支払いができませんでした」 とポップアップが表示される場合、クレジットカード・デビットカードが有効かご確認のうえ、「<a href="#anc10">4.お支払い方法を選択する</a>」の手順へ戻っていただき、再度情報の入力をお願いいたします。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-07-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">6.利用料金画面を確認する</h3>
+                <p class="u-Adjust_Mt-16">お支払いいただいた該当月を選択した際に、「確定」と表示されているとお手続きが完了しています。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-08-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <p class="u-Adjust_Mt-32">以上でお手続きは完了です。</p>
+      </div>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc03">コンビニ払込票（ハガキ）の場合</h2>
+    <div class="l-Media_Grid u-Adjust_Mt-16">
+      <div class="l-Media_Image c-Flow_Image">
+        <img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-03.png" width="" alt="">
+      </div>
+      <div>
+        <p>ご登録の請求先住所にお送りしたコンビニ払込票（ハガキ）にて、対象のコンビニエンスストアまたは電子決済サービスで支払い期日内にお支払いください。</p>
+        <div class="u-Adjust_Mt-16">
+          <p><a href="#anc-payment" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>コンビニエンスストアでのお支払いについて</a></p>
+          <p><a href="#anc-e-payment" class="c-Link_Txt-icon-front u-Adjust_Mt-8"><span class="c-Icon_Arrow-down-l"></span>電子決済サービスでのお支払いについて</a></p>
+          <p><a href="#anc-flow" class="c-Link_Txt-icon-front u-Adjust_Mt-8"><span class="c-Icon_Arrow-down-l"></span>お支払い完了までの手順</a></p>
+          <p><a href="#anc-solutions" class="c-Link_Txt-icon-front u-Adjust_Mt-8"><span class="c-Icon_Arrow-down-l"></span>コンビニ払込票（ハガキ）が届かない・紛失した場合</a></p>
+        </div>
+
+      </div>
+    </div>
+    <h3 class="u-Adjust_Mt-24 c-Heading_Lv3" id="anc-payment">コンビニエンスストアでのお支払いについて</h3>
+    <p class="u-Adjust_Mt-8">
+      ご請求金額・ご利用のコンビニエンスストアにより、<span class="c-Txt_Emp-02">下記手数料がご請求金額に加算されます。</span>
+    </p>
+
+    <p class="u-Adjust_Mt-24">コンビニ支払い手数料一覧（税込）</p>
+    <div class="c-Table_Wrap u-Adjust_Mt-16">
+      <table class="c-Table_Container">
+        <colgroup><col style="width:34%;"><col style="width:22%;"><col style="width:22%;"><col style="width:22%;"></colgroup>
+        <thead>
+            <tr><th scope="col">ご請求金額</th><th scope="col">対象コンビニ1</th><th scope="col">対象コンビニ2</th><th scope="col">対象コンビニ３</th> </tr>
+        </thead>
+        <tbody>
+          <tr><td>～10,000円未満</td><td class="u-Adjust_Align-right">110円</td><td class="u-Adjust_Align-right">110円</td><td class="u-Adjust_Align-right">66円</td></tr>
+          <tr><td>～50,000円未満</td><td class="u-Adjust_Align-right">220円</td><td class="u-Adjust_Align-right">220円</td><td class="u-Adjust_Align-right">110円</td></tr>
+          <tr><td>50,000円以上</td><td class="u-Adjust_Align-right">440円</td><td class="u-Adjust_Align-right">550円</td><td class="u-Adjust_Align-right">330円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="u-Adjust_Mt-8 c-Txt_Cap">対象コンビニ1：セブン-イレブン</p>
+    <p class="u-Adjust_Mt-8 c-Txt_Cap">対象コンビニ2：ローソン、ファミリーマート、セイコーマート（北海道・関東のみ）<br>
+    デイリーヤマザキ、ヤマザキデイリーストア、ニューヤマザキデイリーストア<br>
+    ヤマザキスペシャルパートナーシップ、ハマナスクラブ（北海道のみ）、ミニストップ</p>
+    <p class="u-Adjust_Mt-8 c-Txt_Cap">対象コンビニ3：ポプラ、生活彩家、くらしハウス、スリーエイト、マルチメディアキオスク（MMK）</p>
+    <p class="u-Adjust_Mt-8 c-Txt_Cap">
+      2021年12月9日更新<br>
+      ※ミニストップの手数料は12月1日 0:00より対象コンビニ3から対象コンビニ2の料金に変更となりました。<br>
+      ※コミュニティ・ストアは2021年11月末でコンビニ事業撤退のため、対象コンビニより除外しました。<br>
+      ※電子決済サービスでお支払いする場合、上記手数料は発生しません。
+    </p>
+
+
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64" id="anc-e-payment">電子決済サービスでのお支払いについて</h3>
+    <div class="u-Adjust_Mt-16">
+      <p>コンビニ払込票（ハガキ）は、以下の電子決済サービスでもお支払いいただけます。</p>
+      <ul class="c-List_Text-disc u-Adjust_Pt-16">
+        <li>ファミペイ請求書支払い
+          <div class="u-Adjust_Pl-16">
+            <p class="c-Txt_Cap">※お支払い金額が50,000円（税込）未満のみご利用可能です。</p>
+            <p class="u-Adjust_Mt-8"><a href="https://www.family.co.jp/famipay/payment.html" class="c-Link_Txt-inline" target="_blank">お支払い方法<span class="c-Icon_New-window-l"></span></a></p>
+            <p class="u-Adjust_Mt-8"><a href="https://qa.family.co.jp/famipay/s/article/000003962" class="c-Link_Txt-inline" target="_blank">手数料<span class="c-Icon_New-window-l"></span></a></p>
+          </div>
+        </li>
+        <li>楽天銀行コンビニ支払サービス（アプリで払込票支払）
+          <div class="u-Adjust_Pl-16">
+            <p class="u-Adjust_Mt-8"><a href="https://www.rakuten-bank.co.jp/transfer/cvs-payment/" class="c-Link_Txt-inline" target="_blank">お支払い方法と手数料<span class="c-Icon_New-window-l"></span></a></p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="c-Txt_Cap u-Adjust_Mt-24">※ご利用の電子決済サービスアプリをインストールする必要があります。</p>
+      <p class="c-Txt_Cap">※コンビニエンスストア店頭では、コード決済などアプリを利用したお支払いはできません。</p>
+      <p class="c-Txt_Cap">※各電子決済サービスは<span class="c-Txt_Emp-02">ご請求金額に手数料が加算されます。</span>各サービスの詳細ページでご確認ください。</p>
+    </div>
+
+    <div class="c-Accordion u-Adjust_Mt-24" id="anc-flow" style="border-top: 1px solid #8f8f8f;">
+      <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お支払い完了までの手順</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+        <div class="c-Tab js-Tab">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-menu5" role="tab" aria-selected="true" aria-controls="tab-content5">Webでお手続き</li>
+            <li class="c-Tab_Item" id="tab-menu6" role="tab" aria-selected="false" aria-controls="tab-content6">アプリでお手続き</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-content5" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu5">
+            <ol class="c-Flow u-Adjust_Mt-40">
+              <li>
+                <h3 class="c-Heading_Lv3">1.対象のコンビニエンスストアまたは電子決済サービスでお支払いをする</h3>
+                <div class="l-Media_Grid u-Adjust_Mt-16">
+                  <div class="l-Media_Image c-Flow_Image">
+                    <img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-03.png" width="" alt="">
+                  </div>
+                  <div>
+                    <p>ご登録の請求先住所にお送りしたコンビニ払込票（ハガキ）にて、支払い期日内にお支払いください。</p>
+                    <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+                    <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>faq/detail/00000892/?l-id=guide_payment-invoice-flow_faq_892-4#sec4" class="c-Link_Txt-inline" target="_blank">支払い期日内にお支払いができなかった場合<span class="c-Icon_New-window-l"></span></a></p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-16">※お支払い期日は払込票内に記載されています。</p>
+                    <p class="c-Txt_Cap">※お支払い時に発生する所定の手数料は、お客様負担となります。</p>
+                    <p class="c-Txt_Cap">※お支払い後のコンビニ払込票（ハガキ）の控えが領収書となります。</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. my 楽天モバイル「利用料金」画面を開く</h3>
+                <p class="c-Txt_Cap u-Adjust_Mt-16">
+                  ※「利用料金へ進む」をタップしてログインすると手順2の画面が表示されます。<br>
+                  ※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/">[my 楽天モバイル]ログインできません</a>」をご確認ください。
+                </p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                  <a href="https://portal.mobile.rakuten.co.jp/dashboard#billing" data-ratId="guide_ecare_billing" data-ratEvent="click" data-ratParam="all" class="c-Btn_Secondly-large"><span>利用料金へ進む</span></a>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3.お支払い完了を確認する</h3>
+                <p class="u-Adjust_Mt-16">お支払いいただいた該当月を選択した際に、「確定」と表示されているとお手続きが完了しています。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-08-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+            </ol>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content6" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu6">
+            <ol class="c-Flow u-Adjust_Mt-40">
+              <li>
+                <h3 class="c-Heading_Lv3">1.対象のコンビニエンスストアまたは電子決済サービスでお支払いをする</h3>
+                <div class="l-Media_Grid u-Adjust_Mt-16">
+                  <div class="l-Media_Image c-Flow_Image">
+                    <img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-03.png" width="" alt="">
+                  </div>
+                  <div>
+                    <p>ご登録の請求先住所にお送りしたコンビニ払込票（ハガキ）にて、支払い期日内にお支払いください。</p>
+                    <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）と重複してお支払いを行わないよう、ご注意ください。</p>
+                    <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>faq/detail/00000892/?l-id=guide_payment-invoice-flow_faq_892-4#sec4" class="c-Link_Txt-inline" target="_blank">支払い期日内にお支払いができなかった場合<span class="c-Icon_New-window-l"></span></a></p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-16">※お支払い期日は払込票内に記載されています。</p>
+                    <p class="c-Txt_Cap">※お支払い時に発生する所定の手数料は、お客様負担となります。</p>
+                    <p class="c-Txt_Cap">※お支払い後のコンビニ払込票（ハガキ）の控えが領収書となります。</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">2. my 楽天モバイルを起動する</h3>
+                <div class="c-Box_App u-Adjust_Mt-16">
+                  <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt=""></div>
+                  <div class="c-Box_App-txt">
+                    <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                    <p class="u-Adjust_Mt-16">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                    <ul class="c-Box_App-link u-Adjust_Mt-16">
+                      <li class="<%= nameSpace %>-App_Btn-store">
+                        <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                        <div class="<%= nameSpace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                      </li>
+                      <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">3. 画面下の「利用料金」をタップする</h3>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-09-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+              <li>
+                <h3 class="c-Heading_Lv3">4. お支払い完了を確認する</h3>
+                <p class="u-Adjust_Mt-16">お支払いいただいた該当月を選択した際に、「確定」と表示されているとお手続きが完了しています。</p>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/payment/invoice/flow/img-flow-01-08-230320.png" alt="" class="c-Img_Capture"></p>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+
+        <p class="u-Adjust_Mt-32">以上でお手続きは完了です。</p>
+      </div>
+    </div>
+
+    <h3 class="u-Adjust_Mt-24 c-Heading_Lv3" id="anc-solutions">コンビニ払込票（ハガキ）が届かない・紛失した場合</h3>
+    <p class="u-Adjust_Mt-16">該当する請求月のコンビニ払込票（ハガキ）の再発行可能期間を以下のページでご確認のうえ、再発行を申請してください。</p>
+    <p class="c-Txt_Cap">※コンビニ払込票（ハガキ）の送付タイミングは<a href="<%= sitepath %>guide/payment/invoice/unpaid/?l-id=guide_payment_invoice_flow_guide_payment_invoice_unpaid_02#anc03" class="c-Link_Txt-inline">こちら</a>からご確認ください</p>
+    <p class="c-Txt_Cap">※ 契約解除されたお客様は、コンビニ払込票（ハガキ）を再発行申請できません。画面下部の「解決できない場合はお問い合わせ」より、楽天モバイルコミュニケーションセンターへお問い合わせください。</p>
+    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>faq/detail/10000649/" class="c-Link_Txt-inline" target="_blank">コンビニ払込票（ハガキ）の再発行はいつできますか？<span class="c-Icon_New-window-l"></span></a></p>
+
+    <p class="u-Adjust_Mt-24">未払い料金は、コンビニ払込票（ハガキ）がなくても、クレジットカードやデビットカードを利用して「my 楽天モバイル」でお支払いいただけます。</p>
+    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/invoice/flow/#accordion-1" class="c-Link_Txt-inline" target="_blank">未払い料金をmy 楽天モバイルで支払う<span class="c-Icon_New-window-l"></span></a></p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc04">注意事項</h2>
+    <ul class="c-List_Text-disc u-Adjust_Pt-16">
+      <li>クレジットカード・デビットカードでのお支払いと楽天ポイント利用を両方設定した場合、楽天ポイント利用が優先されます。</li>
+      <li>コンビニ払込票（ハガキ）と他のお支払い方法（クレジットカード・デビットカードの変更、情報の更新の場合、または楽天ポイントを利用する場合）を重複してお支払いいただいた場合には翌月のお支払いへ充当いたします。</li>
+      <li>お支払い時に発生する所定の手数料は、お客様負担となります。</li>
+      <li>コンビニ払込票（ハガキ）発送まで未払い料金のお支払いが確認できない場合、<span class="c-Txt_Emp-02">請求書発行手数料200円（税込220円）</span>が発生します。請求書発行手数料は未払い月ごと発生し、ご請求金額に加算されています。</li>
+      <li>コンビニ払込票（ハガキ）が発送された場合、お支払い期日は払込票内に記載されています。</li>
+      <li>コンビニ払込票（ハガキ）でお支払いされた場合、お支払い後のコンビニ払込票（ハガキ）の控えが領収書となります。</li>
+    </ul>
+
+    <%- include('/include/guide/_faq') %>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+<script>
+  (function($){
+      $(function(){
+          $('.accordion-1_opan').on('click', function(){
+            $('#accordion-1').attr('aria-expanded', 'true');
+            $('#accordion-content-1').attr('aria-hidden', 'false');
+            $('#accordion-content-1').slideDown(200);
+          });
+      });
+  })(jQuery);
+</script>
+
+
+
+</body>
+</html>

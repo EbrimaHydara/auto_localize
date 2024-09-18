@@ -1,0 +1,206 @@
+<% const pagetitle = "メールの作成／送信（楽メール）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/rakumail/", label:"楽メール（ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイル「楽メール」のメール作成方法や送信方法、返信・転送方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <ul class="<%= nameSpace %>-Layout_Anchorlink">
+      <li><a href="#setting01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>メールを作成・送信する（ファイルの添付）</a></li>
+      <li><a href="#setting02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>メールを返信・転送する</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="setting01">メールを作成・送信する（ファイルの添付）</h2>
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li>
+        <h4 class="c-Heading_Lv4">
+          1.メイン画面で右下の「+」アイコンをタップする
+        </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-1-step1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          2.メール作成画面が表示される
+        </h4>
+        <p class="u-Adjust_Mt-24">
+          宛先、件名、本文を入力してください。
+        </p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">
+          ※一度入力した宛先は次回から、入力候補として表示されます。
+        </p>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-1-step2-1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+        <p class="u-Adjust_Mt-24">
+          ファイルを添付する場合は、「ファイル添付」アイコンをタップしてください。
+        </p>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-1-step2-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          3.「送信」アイコンをタップするとメールが送信される
+        </h4>
+        <p class="u-Adjust_Mt-24">
+          送信完了は、「送信済み」フォルダーからご確認ください。
+        </p>
+
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-1-step3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+    </ul>
+    <p class="u-Adjust_Mt-24">
+      以上で完了です。
+    </p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="setting02">メールを返信・転送する</h2>
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li>
+        <h4 class="c-Heading_Lv4">
+          1.メイン画面から返信・転送するメールを選択する
+        </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-2-step1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          2.返信／全員に返信／転送を選択する
+        </h4>
+        <p class="u-Adjust_Mt-24">
+          a：「左矢印」アイコンをタップすると返信<br>
+          b：「左複数矢印」アイコンをタップすると全員に返信<br>
+          c：「右矢印」アイコンをタップすると転送
+        </p>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-2-step2-230808.png" width="300" height="528" alt="" class="c-Img_Capture" loading="lazy"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          3.宛先、件名、本文を入力する
+        </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-2-step3-1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+        <p class="u-Adjust_Mt-24">
+          返信／全員に返信／転送を選択いただけます。
+        </p>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-2-step3-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+      <li>
+        <h4 class="c-Heading_Lv4">
+          4.「送信」アイコンをタップするとメールが送信される
+        </h4>
+        <p class="u-Adjust_Mt-24">
+          送信完了は、「送信済み」フォルダーからご確認ください。
+        </p>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/rakumail/send/4-2-step4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+    </ul>
+
+
+        <p class="u-Adjust_Mt-24">
+          以上で完了です。
+        </p>
+
+    <div class="u-Adjust_Mt-64">
+      <ul>
+        <li><a href="<%= sitepath %>service/rakumail/" class="c-Btn_Regular"><span>特長・サービス内容を見る</span></a></li>
+      </ul>
+      <ul class="u-Adjust_Mt-32">
+        <li><a href="<%= sitepath %>guide/rakumail/" class="c-Btn_Regular"><span>ご利用方法一覧へ戻る</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<%- include('/include/guide/_review') %>
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%- include('/include/footer/related/_related-service-v2.ejs') %>
+
+  </div>
+  <%- include('/include/guide/_inquiry') %>
+  <div class="l-System_Container">
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

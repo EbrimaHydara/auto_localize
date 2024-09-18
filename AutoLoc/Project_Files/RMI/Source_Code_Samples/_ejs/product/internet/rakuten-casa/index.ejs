@@ -1,0 +1,578 @@
+<% const pagetitle = "Rakuten Casa（楽天カーサ）" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/internet/", label:"Wi-Fiルーター／周辺機器"}] -%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_aterm-mp02ln_cpn_02" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "楽天モバイルのオリジナル・ホームアンテナ、 Rakuten Casa（楽天カーサ）。インターネット回線に接続して小さな楽天回線エリアを作り出す、屋内専用の小型基地局です。",
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<% const directory = "rakuten-casa" -%>
+<%# const theme = "Dark" -%>
+<% const theme = "Light" -%>
+<%# const customtheme = "Rakuten-1" -%>
+<%# const pointModel = 1 -%>
+<% const point = 3000 -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+<% const priceDetailConfig = {
+  theme: theme,
+  // addAnnotation: '※1',
+  price: 0,
+  // priceBefore: 0,
+  // pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  // pointModelText: `<span>アンケートご回答で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント還元<sub>※1</sub></span>`,
+  pointBackText: `<span><span class="product-detail-Price_Pointback-num">${point.toLocaleString()}</span>円相当のポイント還元<sub>※1</sub></span>`,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 575,
+  // division24Before: ,
+  division48: 287,
+  // division48Before: ,
+  // tradeinProductName: 'OPPO AX7',
+  optionPattern: 'special-a',
+  lid: directory,
+  // capacity: 64,
+  // maxTradeinPrice: 2225,
+  pointAppealBtnCapNo: 2,
+}
+-%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/internet/detail/internet-detail.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+*/
+const bundleFlag = 'soldout';
+const modalInfo = [
+  {
+    question: {
+      title: '色を選択',
+      warning: '購入する製品の色を選択してください。',
+      type: 'color',
+      value: 'color',
+      select: [
+        {
+          'id': 'red',
+          'name': 'ホワイト',
+          'sub': '',
+          'color': '#fff',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'silver',
+          'name': 'ブラック',
+          'sub': '',
+          'color': '#000',
+          'checked': false,
+          'disabled': false,
+        }
+      ],
+      upperhtml: ``,
+      rowerhtml: ``
+    },
+  },
+  {
+    question: {
+      title: 'プランを選択',
+      warning: 'プランを選択してください。',
+      type: 'radio',
+      value: 'plan',
+      select: [
+        {
+          'id': 'sim',
+          'name': `Rakuten UN-LIMIT VI
+          と同時に申し込む`,
+          'sub': '',
+          'checked': true,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nosim',
+          'name': `Rakuten UN-LIMIT VI
+          を申し込まない`,
+          'sub': '製品のみ購入の方はこちら',
+          'checked': false,
+          'disabled': true,
+          'soldout' : '',
+        },
+      ],
+      upperhtml: ``,
+      rowerhtml: ``
+    }
+  }
+]
+%>
+<%_ if (bundleFlag === 'stock') { _%>
+<script>
+const urlList = {
+  'red_sim': '/guide/application/?ref=product',
+  'red_nosim': '/guide/application/?ref=product',
+  'silver_sim': '/guide/application/?ref=product',
+  'silver_nosim': '/guide/application/?ref=product',
+}
+</script>
+<%- include('/include/product/_purchase-modal', { modalInfo: modalInfo }) %>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="internet-detail-Layout">
+  <div class="internet-detail-Layout_Hero">
+    <div class="l-System_Container">
+      <section class="internet-detail-Hero">
+        <div class="internet-detail-Hero_Data">
+          <div>
+            <h1 class="co-Heading_Lv1 internet-detail-Hero_Name"><img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/logo.svg" alt="<%= pagetitle %>"></h1>
+            <p class="internet-detail-Hero_Maker">楽天モバイル</p>
+            <p class="internet-detail-Hero_Copy u-Adjust_Align-left">ご自宅のインターネット回線に接続して小さな楽天回線エリアを作り出す、屋内専用の小型基地局です。屋内の電波状況を改善し、楽天回線につながりやすくなります。</p>
+            <div class="internet-detail-Hero_Main internet-detail-Utility_Sp u-Adjust_Mt-0">
+              <ul class="internet-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-00.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-01.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-04.png" alt=""></li>
+              </ul>
+              <!-- <ul class="internet-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+              </ul> -->
+
+              <ul class="internet-detail-Hero_Main-color" style="display:none">
+                <li class="js-color js-color1" aria-current="true"><span style="background:#FFF"></span></li>
+                <li class="js-color js-color2" aria-current="false"><span style="background:#000"></span></li>
+              </ul>
+
+              <ul class="internet-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-00.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-01.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-04.png" alt=""></li>
+              </ul>
+              <!-- <ul class="internet-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+                <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+              </ul> -->
+            </div>
+            <div class="internet-detail-Layout_Application c-Theme-Light u-Adjust_Mt-24">
+              <p class="u-Adjust_Mt-8 u-Adjust_Mb-16 c-Txt_Emp-02 u-Adjust_Align-center">お申し込み前に、必ず<br class="internet-detail-Utility_Sp">「 <a href="<%= sitepath %>area/rakuten-casa/#application" class="c-Link_Txt-inline-icon" target="_blank">お申し込み条件<span class="c-Icon_New-window-l"></span></a>」を<br class="internet-detail-Utility_Pc">ご確認ください。</p>
+              <!-- <div class="l-Media_List-2">
+                <div>
+                  <a href="<%= sitepath %>area/rakuten-casa/checklist-private/?l-id=casa_apply_onboarding" class="c-Btn_Primary"><span>個人のお客様</span></a>
+                  <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><a href="<%= sitepath %>guide/flow/rakuten-casa/#condition" class="c-Link_Txt-inline-icon">申し込み手順はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+                </div>
+                <div><a href="<%= sitepath %>area/rakuten-casa/business-application-conditions/?l-id=casa_apply_input" class="c-Btn_Primary"><span>法人のお客様</span></a>
+              </div> -->
+              <div class="u-Adjust_Align-center internet-detail-Btn_Simple_btn-small">
+                <a href="<%= sitepath %>area/rakuten-casa/checklist-private/?l-id=casa_apply_onboarding" class="c-Btn_Primary" aria-disabled="false"><span>Rakuten Casaを申し込む</span></a>
+                <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/flow/rakuten-casa/#condition" class="c-Link_Txt-inline-icon">申し込み手順はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+              </div>
+            </div>
+            <ul class="u-Adjust_Mt-16 c-Txt_Cap">
+              <li>※ Rakuten Casa 6のルーター機能は、一部のインターネット回線のみ（楽天ひかりのみ）対応しています（2022年4月末日時点）。</li>
+              <li>※ Rakuten Casaは5G通信サービスには対応しておりません。</li>
+              <li>※ インターネットの速度については、LTE／Wi-FiともにRakuten Casaが接続しているインターネット回線の速度に依存します。</li>
+              <li>※ LTEは欧州電気通信標準協会（ETSI）の登録商標です。</li>
+              <li>※ Rakuten Casaを設置した建物の構造や遮蔽物の存在によっては、同一建物内であっても電波が届かず、ご利用できない場合があります。</li>
+              <li>※ Rakuten Casaは仕様上一定期間電源供給が遮断された場合、設定が初期化されるケースがあります。Wi-Fiの設定をされているお客様につきましては、電源復帰後に設定の確認をお願いいたします。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="internet-detail-Hero_Main internet-detail-Utility_Pc">
+          <ul class="internet-detail-Hero_Main-device c-Carousel js-main1 js-device" aria-hidden="false">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-04.png" alt=""></li>
+          </ul>
+          <!-- <ul class="internet-detail-Hero_Main-device c-Carousel js-main2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+          </ul> -->
+
+          <ul class="internet-detail-Hero_Main-color" style="display:none">
+            <li class="js-color js-color1" aria-current="true"><span style="background:#FFF"></span></li>
+            <li class="js-color js-color2" aria-current="false"><span style="background:#000"></span></li>
+          </ul>
+
+          <ul class="internet-detail-Hero_Main-thumbnail c-Carousel js-thumbnail1 js-device" aria-hidden="false">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-00.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-01.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-04.png" alt=""></li>
+          </ul>
+          <!-- <ul class="internet-detail-Hero_Main-thumbnail c-Carousel js-thumbnail2 js-device" aria-hidden="true">
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-02.png" alt=""></li>
+            <li><img data-lazy="<%= sitepath %>assets/img/product/internet/<%= directory %>/pht-device-03.png" alt=""></li>
+          </ul> -->
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="internet-detail-Layout_Main internet-detail-Layout_Main-casa">
+    <div class="l-System_Container">
+      <div class="product-detail-Layout_Price">
+        <h2 class="c-Heading_Lv2">料金</h2>
+        <div class="product-detail-Price product-detail-Theme_<%= theme %>-price internet-detail-Price_Rakuten-casa">
+          <div class="product-detail-Price_Rakuten-casa">
+            <p class="u-Adjust_Align-right c-Txt_Cap u-Adjust_Mb-8">※表記の金額はすべて税込です。</p>
+            <div class="product-detail-Price_Method-detail-primary internet-detail-Price_Method-detail">
+              <div>
+                <div>製品本体レンタル代</div>
+                <div class="product-detail-Price_Pay"><span class="product-detail-Price_Num">0</span>円</div>
+              </div>
+              <div>
+                <div>月額利用料</div>
+                <div class="product-detail-Price_Pay"><span class="product-detail-Price_Num">0</span>円</div>
+              </div>
+              <div class="internet-detail-Utility_Border-bottom">
+                <div>事務手数料<span class="c-Txt_Cap">※1</span></div>
+                <div class="product-detail-Price_Pay"><span class="product-detail-Price_Num">0</span>円</div>
+              </div>
+              <div>
+                <div>合計<span class="c-Txt_Cap">※2</span></div>
+                <div class="c-Txt_Emp-02"><span class="product-detail-Price_Rakuten-casa-normal internet-detail-Price_Num-total">0</span>円</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="c-Txt_Cap">
+          <li>※1 2023年3月24日 9:00お申し込み分より、事務手数料が無料になりました。</li>
+          <li>※2 楽天モバイル通信サービスの利用料金、指定接続回線の利用料金、電気料金に関しては設置契約者にご負担いただきます。詳しくは、<a href="<%= sitepath %>terms/pdf/rakuten_casa.pdf" class="c-Link_Txt-inline-icon" target="_blank">設置規約（個人のお客様）<span class="c-Icon_New-window-l"></span></a>及び<a href="<%= sitepath %>terms/pdf/rakuten_casa_important_explanation.pdf?20230324" class="c-Link_Txt-inline-icon" target="_blank">重要事項説明書（個人のお客様）<span class="c-Icon_New-window-l"></span></a>をご参照ください。</li>
+        </ul>
+        <div class="u-Adjust_Align-center c-Txt_Normal-m c-Txt_Emp-01 u-Adjust_Mt-32">【レンタル・返却について】</div>
+        <div class="u-Adjust_Mt-8">
+          <ul class="c-List_Text-disc">
+            <li class="u-Adjust_Mt-8">本体はレンタルとなります。</li>
+            <li class="u-Adjust_Mt-8">契約解除料はかかりません。契約終了後は速やかに本体の返送をお願いいたします。</li>
+            <li class="u-Adjust_Mt-8">Rakuten Casaを紛失した場合・契約終了後相当期間経過後も返却しなかった場合は、<span class="c-Txt_Emp-02">違約金として20,000円（非課税）を請求</span>することがあります。</li>
+          </ul>
+        </div>
+        <div class="internet-detail-Layout_Application c-Theme-Light u-Adjust_Mt-32">
+            <p class="u-Adjust_Mt-8 u-Adjust_Mb-16 c-Txt_Emp-02 u-Adjust_Align-center">お申し込み前に、必ず<br class="internet-detail-Utility_Sp">「 <a href="<%= sitepath %>area/rakuten-casa/#application" class="c-Link_Txt-inline-icon" target="_blank">お申し込み条件<span class="c-Icon_New-window-l"></span></a>」をご確認ください。</p>
+            <div class="u-Adjust_Align-center">
+              <a href="<%= sitepath %>area/rakuten-casa/checklist-private/?l-id=casa_apply_onboarding" class="c-Btn_Primary-large" aria-disabled="false"><span>Rakuten Casaを申し込む</span></a>
+              <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><a href="<%= sitepath %>guide/flow/rakuten-casa/#condition" class="c-Link_Txt-inline-icon">申し込み手順はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+            </div>
+            <!-- <div class="l-Media_List-2">
+              <div>
+                <a href="<%= sitepath %>area/rakuten-casa/checklist-private/?l-id=casa_apply_onboarding" class="c-Btn_Primary"><span>個人のお客様</span></a>
+                <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><a href="<%= sitepath %>guide/flow/rakuten-casa/" class="c-Link_Txt-inline-icon">申し込み手順はこちら<span class="c-Icon_Chevron-right"></span></a></p>
+              </div>
+              <div>
+                <a href="<%= sitepath %>area/rakuten-casa/business-application-conditions/?l-id=casa_apply_input" class="c-Btn_Primary"><span>法人のお客様</span></a>
+            </div> -->
+        </div>
+        <div class="c-Link_List-horizontal-simple u-Adjust_Mt-32 internet-detail-Utility_Link-list">
+          <a href="<%= sitepath %>area/rakuten-casa/#feature" class="c-Link_Txt-inline-icon">Rakuten Casaの特長<span class="c-Icon_Chevron-right"></span></a>
+          <a href="<%= sitepath %>area/rakuten-casa/#environment" class="c-Link_Txt-inline-icon">Rakuten Casaを利用するための動作環境<span class="c-Icon_Chevron-right"></span></a>
+          <a href="<%= sitepath %>area/rakuten-casa/#faq" class="c-Link_Txt-inline-icon">よくあるご質問<span class="c-Icon_Chevron-right"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="internet-detail-Layout_Other-casa u-Adjust_Mt-64">
+    <div class="l-System_Container">
+      <section class="internet-detail-Layout_Section u-Adjust_Mt-0" id="spec">
+        <h2 class="c-Heading_Lv2">製品仕様</h2>
+        <ul class="c-Txt_Cap u-Adjust_Mt-16">
+          <li>※Rakuten Casaには、ルーター機能がないRakuten Casa（初代）とルーター機能を搭載したRakuten Casa 6があります。お届けするのがどちらになるか、お選びいただくことはできません。</li>
+        </ul>
+        <div class="internet-detail-Feature_Box u-Adjust_Mt-32">
+          <h3 class="c-Heading_Lv3 internet-detail-Feature_Box-title">Rakuten Casa 6</h3>
+          <div class="internet-detail-Feature_Box-pc u-Adjust_Mt-16">
+            <div>
+              <picture>
+                <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_07-pc.png" width="343" height="232" alt="" loading="lazy">
+              </picture>
+            </div>
+            <div>
+              <picture>
+                <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_08-pc.png" width="343" height="232" alt="" loading="lazy">
+              </picture>
+            </div>
+            <div>
+              <picture>
+                <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_09-pc.png" width="343" height="232" alt="" loading="lazy">
+              </picture>
+            </div>
+          </div>
+
+          <div class="internet-detail-Feature_Box-sp u-Adjust_Mt-16">
+            <div class="c-Carousel js-Carousel-single">
+              <div>
+                <picture>
+                  <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_07-pc.png" width="686" height="464" alt="" loading="lazy">
+                </picture>
+              </div>
+              <div>
+                <picture>
+                  <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_08-pc.png" width="686" height="464" alt="" loading="lazy">
+                </picture>
+              </div>
+              <div>
+                <picture>
+                  <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_09-pc.png" width="686" height="464" alt="" loading="lazy">
+                </picture>
+              </div>
+            </div>
+            <div class="c-Carousel_Nav-v2-wrap">
+              <div class="c-Carousel_Nav-v2"></div>
+              <div class="c-Carousel_Nav-v2-bar"></div>
+            </div>
+          </div>
+        </div>
+        <div class="internet-detail-Feature_Box u-Adjust_Mt-32">
+          <h3 class="c-Heading_Lv3 internet-detail-Feature_Box-title">Rakuten Casa</h3>
+          <div class="internet-detail-Feature_Box-pc u-Adjust_Mt-16">
+            <div>
+              <picture>
+                <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_04-pc.png" width="343" height="232" alt="" loading="lazy">
+              </picture>
+            </div>
+            <div>
+              <picture>
+                <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_05-pc.png" width="343" height="232" alt="" loading="lazy">
+              </picture>
+            </div>
+            <div>
+              <picture>
+                <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_06-pc.png" width="343" height="232" alt="" loading="lazy">
+              </picture>
+            </div>
+          </div>
+
+          <div class="internet-detail-Feature_Box-sp u-Adjust_Mt-16">
+            <div class="c-Carousel js-Carousel-single">
+              <div>
+                <picture>
+                  <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_04-pc.png" width="686" height="464" alt="" loading="lazy">
+                </picture>
+              </div>
+              <div>
+                <picture>
+                  <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_05-pc.png" width="686" height="464" alt="" loading="lazy">
+                </picture>
+              </div>
+              <div>
+                <picture>
+                  <img src="<%= sitepath %>assets/img/product/internet/<%= directory %>/img_06-pc.png" width="686" height="464" alt="" loading="lazy">
+                </picture>
+              </div>
+            </div>
+            <div class="c-Carousel_Nav-v2-wrap">
+              <div class="c-Carousel_Nav-v2"></div>
+              <div class="c-Carousel_Nav-v2-bar"></div>
+            </div>
+          </div>
+        </div>
+        <div class="internet-detail-Utility_Mt-32-64">
+          <h3 class="c-Heading_Lv3">基本スペック</h3>
+          <div class="c-Table">
+            <table class="c-Table_Container internet-detail-Feature_Table u-Adjust_Mt-16">
+              <tr class="internet-detail-Feature_Table-head">
+                <th></th>
+                <th>Rakuten Casa 6</th>
+                <th>Rakuten Casa</th>
+              </tr>
+              <tr>
+                <th>幅</th>
+                <td>約 22.8cm</td>
+                <td>約 28.6cm</td>
+              </tr>
+              <tr>
+                <th>奥行</th>
+                <td>約 9.0cm</td>
+                <td>約 7.0cm</td>
+              </tr>
+              <tr>
+                <th>高さ</th>
+                <td>約 19.5cm</td>
+                <td>約 18.7cm</td>
+              </tr>
+              <tr>
+                <th>重量</th>
+                <td>1,000g以下</td>
+                <td>1,200g以下</td>
+              </tr>
+              <tr>
+                <th>消費電力</th>
+                <td>35W以下</td>
+                <td>22W以下</td>
+              </tr>
+              <tr>
+                <th>色</th>
+                <td>ホワイト</td>
+                <td>ホワイト</td>
+              </tr>
+              <tr>
+                <th>最大同時接続数</th>
+                <td>LTE <span class="c-Txt_Cap">※1</span>：16台 Wi-Fi：30台</td>
+                <td>LTE <span class="c-Txt_Cap">※1</span>：16台 Wi-Fi：30台</td>
+              </tr>
+              <tr>
+                <th>Wi-Fi規格</th>
+                <td>2.4GHz (11b/g/n/ax) 、5GHz (11a/n/ac/ax)</td>
+                <td>2.4GHz (11b/g/n) 、5GHz (11a/n/ac)</td>
+              </tr>
+              <tr>
+                <th>Wi-Fi最大通信速度<span class="c-Txt_Cap">※2</span></th>
+                <td>送受信最大<br>5GHz：2400Mbps / 2.4GHz：1148Mbps</td>
+                <td>送受信最大<br>5GHz：867Mbps / 2.4GHz：300Mbps</td>
+              </tr>
+              <tr>
+                <th>WPS機能</th>
+                <td>対応<br><a href="<%= sitepath %>guide/rakuten-casa/wps/" class="c-Link-Txt">WPS機能のご利用方法</a></td>
+                <td>非対応</td>
+              </tr>
+            </table>
+          </div>
+
+          <ul class="c-Txt_Cap u-Adjust_Mt-16">
+            <li>※1 LTEは欧州電気通信標準協会（ETSI）の登録商標です。</li>
+            <li>※2 通信速度はベストエフォート（規格上の最大速度）であり、実効速度は通信環境・状況により変動します。</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="internet-detail-Layout_Other">
+    <div class="l-System_Container">
+      <section class="internet-detail-Layout_Section">
+        <h2 id="attention" class="c-Heading_Lv2">注意事項</h2>
+        <p>Rakuten Casaを利用する場合は、設置規約および重要事項説明書を必ずご確認いただき、内容にご同意のうえご使用ください。</p>
+        <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+          <li><a href="<%= sitepath %>area/rakuten-casa/attention/" class="c-Link_Txt-inline-icon js-scroll" target="_blank">注意事項<span class="c-Icon_Chevron-right"></span></a></li>
+          <li><a href="<%= sitepath %>terms/pdf/rakuten_casa.pdf" class="c-Link_Txt-inline-icon js-scroll" target="_blank">設置規約（個人のお客様）<span class="c-Icon_Pdf-l"></span></a></li>
+          <li><a href="<%= sitepath %>terms/pdf/rakuten_casa_important_explanation.pdf?20230324" class="c-Link_Txt-inline-icon js-scroll" target="_blank">重要事項説明書（個人のお客様）<span class="c-Icon_Pdf-l"></span></a></li>
+        </ul>
+      </section>
+      <section class="internet-detail-Layout_Section" id="support">
+        <h2 class="c-Heading_Lv2">設定・サポート</h2>
+        <div class="internet-detail-Layout_Btnlist">
+          <p><a href="<%= sitepath %>guide/rakuten-casa/flow/" class="c-Btn_Regular"><span>ご利用方法・設置方法を見る</span></a></p>
+          <p><a href="<%= sitepath%>area/rakuten-casa/#faq" class="c-Btn_Regular"><span>よくあるご質問を見る</span></a></p>
+        </div>
+      </section>
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">楽天ひかりを詳しく見る</h2>
+        <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+          <a href="<%= sitepath %>hikari/campaign/six-month-free/?l-id=product_internet_rakuten-casa_hikari_campaign_six-month-free" class="c-Banner_Hover-act">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/img-bnr-hikari-343-108-240306.png" width="100%">
+              <img src="<%= sitepath %>assets/img/bnr/img-bnr-hikari-1032-160-240306.png" width="2880" height="480" alt="初めてお申し込み＆楽天モバイルご利用で月額基本料6カ月0円">
+            </picture>
+          </a>
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">
+          ※楽天会員1倍、楽天ひかりご契約中＋2倍 、楽天モバイルご利用で＋4倍（スーパーホーダイ、組み合わせプラン、コミコミプランはSPUの対象外）※楽天ひかりはプロバイダーとして楽天ブロードバンドのみ契約されている場合は特典対象外 ※毎月の獲得上限ポイントは楽天ひかりが1,000ポイント、楽天モバイルが2,000ポイント。いずれも期間限定ポイントでの進呈 ※ポイント未利用時の倍率 <a href="<%= sitepath %>hikari/campaign/six-month-free/?l-id=product_internet_rakuten-casa_hikari_campaign_six-month-free"  class="c-Link_Txt-inline-icon" target="_blank">SPUの詳細はこちら<span class="c-Icon_New-window-l"></span></a>
+        </p>
+      </section>
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <div class="g-Footer_Related">
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2">続けてこちらをチェック</h2>
+        <ul class="l-System_Grid">
+          <li class="g-Footer_Related-accessory-v2">
+            <a href="<%= sitepath %>product/accessory/?l-id=footer_accessory">
+              <span class="g-Footer_Related-hdg">アクセサリ</span>
+              <span class="g-Footer_Related-txt">スマートフォンと同時購入で送料無料</span>
+            </a>
+          </li>
+          <li class="g-Footer_Related-plan-v2">
+            <a href="<%= sitepath %>fee/saikyo-plan/?l-id=footer_fee_saikyo">
+              <span class="g-Footer_Related-hdg">料金プラン</span>
+              <span class="g-Footer_Related-txt">Rakuten最強プランの詳細、お申し込みはこちらから</span>
+            </a>
+          </li>
+          <li class="g-Footer_Related-shop-v2">
+            <a href="<%= sitepath %>shop/?l-id=footer_shop">
+              <span class="g-Footer_Related-hdg">ショップ</span>
+              <span class="g-Footer_Related-txt">お近くの楽天モバイルショップ検索はこちらから</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-product.ejs') %>
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<%- include('/include/_append-body') %>
+<script src="<%= sitepath %>assets/js/product.purchase-modal.bundle.js?20240521"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<% const pagetitle = "楽天モバイルショップ 新規オープン・リニューアル情報" -%>
+<% const directories = [{path:"shop/", label:"ショップ"}] -%>
+<% const namespace = "open-renewal-info" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '各楽天モバイルショップの年末年始の営業時間です。こちらでご確認いただき、ご来店ください。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/shop/open-renewal-info/open-renewal-info.css?20240424">
+<%- include('/include/_append-head') %>
+
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System" id="js-result-top">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="open-renewal-info-Search_Layout">
+
+  <div class="<%= namespace %>-Hero_Return">
+    <div class="<%= namespace %>-Hero_Container">
+      <div class="<%= namespace %>-Hero_Main">
+        <h1>
+          <img src="<%= sitepath %>assets/img/shop/open-renewal-info/img-heading-pc.png" alt="全国出店拡大中！楽天モバイルショップ新規オープン・リニューアル情報" class="<%= namespace %>-Utility_Img-pc">
+          <img src="<%= sitepath %>assets/img/shop/open-renewal-info/img-heading-sp.png" alt="全国出店拡大中！楽天モバイルショップ新規オープン・リニューアル情報" class="<%= namespace %>-Utility_Img-sp">
+        </h1>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="l-System_Container">
+
+    <p class="u-Adjust_Mt-16">ご来店の際は、便利な「来店予約」をご利用ください。<br>
+    各ショップページの「Webで予約する」ボタンよりご予約いただけます。</p>
+
+    <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+      <li><a href="#anc_Open" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>新規オープン・リニューアル一覧</a></li>
+      <li><a href="#anc_Plan" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>近日オープン・リニューアル予定一覧</a></li>
+    </ul>
+
+    <div id="open-renewal-info"></div>
+
+
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-shop-v2.ejs') %>
+
+    <%#- include('/include/footer/bnr/bnr-shop.ejs') %>
+
+    <%#- include('/faq/include/related-shop.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+</div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmiYC8QLzg9uN_RVQ2jkWNR5YRf1z7dfo&libraries=places,geometry" async defer></script>
+
+<script src="<%= sitepath %>assets/js/shop.open-renewal-info.bundle.js?20240521"></script>
+
+<%- include('/include/_append-body') %>
+</body>
+</html>

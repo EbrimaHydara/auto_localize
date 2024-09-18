@@ -1,0 +1,264 @@
+<% const pagetitle = "未払い料金の発生からご利用停止・契約解除まで" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"},{path:"support/payment/invoice/", label:"未払い料金のお支払い"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '未払い時にサービスがいつ利用停止になるのか、契約が解除されるのか、未払い料金発生からお支払い後の流れをご説明します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "unpaid" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/payment/invoice/unpaid/unpaid.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1 u-Adjust_Mt-24">未払い料金の発生からご利用停止・契約解除まで</h1>
+    <p class="u-Adjust_Mt-24">毎月のご利用料金のお支払いが、お客様指定のお支払い方法で確認できなかった場合は「未払い料金」となります。<br></p>
+    <p class="c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Mb-16">※指定クレジット／デビットカード情報の不備、または有効期限切れ、 指定銀行口座の残高不足などのケースで未払い料金が発生します。<br></p>
+    <p>期日までに未払い料金をお支払いいただけない場合、契約回線の利用停止や契約を解除する場合がございますのでご注意ください。</p>
+  </div>
+
+  <div class="<%= nameSpace %>-Nav">
+    <div class="l-System_Container">
+      <div class="<%= nameSpace %>-Nav_Btn-wrap">
+        <div class="<%= nameSpace %>-Nav_Btn-item">
+          <a href="#anc02" class="js-scroll c-Link_Txt-inline-icon"><span class="c-Icon_Arrow-down-l"></span>未払い料金のお支払いが確認できない場合について</a>
+        </div>
+        <div class="<%= nameSpace %>-Nav_Btn-item">
+          <a href="#anc03" class="js-scroll c-Link_Txt-inline-icon"><span class="c-Icon_Arrow-down-l"></span>未払い料金発生～契約解除までの流れ</a>
+        </div>
+        <div class="<%= nameSpace %>-Nav_Btn-item">
+          <a href="#anc04" class="js-scroll c-Link_Txt-inline-icon"><span class="c-Icon_Arrow-down-l"></span>未払い料金のお支払い方法</a>
+        </div>
+        <div class="<%= nameSpace %>-Nav_Btn-item">
+          <a href="#anc05" class="js-scroll c-Link_Txt-inline-icon"><span class="c-Icon_Arrow-down-l"></span>未払い料金のお支払い後の流れ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc02">未払い料金のお支払いが確認できない場合について</h2>
+    <p class="u-Adjust_Mt-16">指定の支払い期日までにお支払いが確認できない場合は、利用停止の後に契約解除いたします。<br>具体的な期間は下記、「<a href="#anc03" class="c-Link_Txt">未払い料金発生後の流れについて</a>」をご参考ください。</p>
+    <p class="c-Txt_Emp-02 u-Adjust_Mt-16">※利用停止・契約解除予定日は変更できません。</p>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">利用停止</h3>
+    <p class="u-Adjust_Mt-16">当該回線のご利用を停止いたします。<br>コンビニ払込票（ハガキ）または「【通告】楽天モバイル ご利用停止について」メールに記載の「ご利用停止予定日」までにお支払いください。</p>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">契約解除</h3>
+    <p class="u-Adjust_Mt-16">当該回線の利用停止後も未払い料金をお支払いいただけなかった場合、契約を強制解除いたします。<br>契約解除後、該当のお客様へ「【通告】楽天モバイル ご利用料金未払いによる契約解除」メールをお送りいたします。</p>
+    <p><span class="c-Txt_Emp-02">契約解除の取り消しはできません。</span><br>また、契約解除後は以下の点をご留意ください。</p>
+    <ul class="c-List_Text-disc u-Adjust_Pt-16">
+      <li>未払い料金をお支払いいただいても、ご利用していた<span class="c-Txt_Emp-02">電話番号は再利用できません。</span></li>
+      <li>特定の電気通信事業者との間でお客様情報を相互に交換するため、楽天モバイル、及び他通信事業者との<span class="c-Txt_Emp-02">新規回線契約ができない場合があります。</span></li>
+      <li>利用料金の<span class="c-Txt_Emp-02">お支払い義務は継続いたします。</span></li>
+      <li>契約解除後も未払い料金をお支払いいただけないと、<span class="c-Txt_Emp-02">法的措置を講じる場合があります。</span></li>
+    </ul>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc03">未払い料金発生～契約解除までの流れ</h2>
+    <p class="u-Adjust_Mt-16">未払い料金発生後、複数回にわたり、お支払いに関するご連絡をお送りします。</p>
+    <p class="u-Adjust_Mt-16">指定の各お支払い期日までにお支払いが確認できない場合、未払い発生の翌月下旬ごろに利用停止、翌々月下旬ごろに契約解除となります。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※「下旬ごろ」とは25日から31日の間を指し、月によって異なります。</p>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-16">
+      <ul class="c-Tab_Items" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">カードでお支払いの場合</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">口座振替でお支払いの場合</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <div class="c-Txt_Emp-01">
+          <p class="u-Adjust_Mt-16">例：8月利用分の未払いから契約解除まで</p>
+            <p class="u-Adjust_Mt-16">アイコンの見方</p>
+            <div class="<%= nameSpace %>-Flow_Icon">
+            <p class="u-Adjust_Mt-8"><img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/mail_con.svg" alt="">送られたメールのタイトル</p>
+            <p class="u-Adjust_Mt-8"><img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/payment_slip_icon.svg" alt="">コンビニ払込票（ハガキ）</p>
+          </div>
+        </div>
+        <div>
+          <div class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/card-payment-pc.png?240401" class="<%= nameSpace %>-Utility-Utility_Img-pc" alt="">
+            <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/card-payment-sp.png?240401" class="<%= nameSpace %>-Utility-Utility_Img-sp" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <div class="c-Txt_Emp-01">
+          <p class="u-Adjust_Mt-16">例：8月利用分の未払いから契約解除まで</p>
+          <p class="u-Adjust_Mt-16">アイコンの見方</p>
+          <div class="<%= nameSpace %>-Flow_Icon">
+            <p class="u-Adjust_Mt-8"><img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/mail_con.svg" alt="">送られたメールのタイトル</p>
+            <p class="u-Adjust_Mt-8"><img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/payment_slip_icon.svg" alt="">コンビニ払込票（ハガキ）</p>
+          </div>
+        </div>
+        <div>
+          <div class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/account-transfer-pc.png?240401" class="<%= nameSpace %>-Utility-Utility_Img-pc" alt="">
+            <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/account-transfer-sp.png?240401" class="<%= nameSpace %>-Utility-Utility_Img-sp" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">
+      ※1 督促状兼コンビニ払込票（ハガキ）をお送りします。<br>
+      ※2 利用停止の約1週間前に利用停止に関するメールを現在登録されているメールアドレスにお送りいたします。契約解除に関するメールはお送りいたしません。</p>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">お送りするメールについて</h3>
+    <p class="u-Adjust_Mt-16">現在登録されているメールアドレスにお送りいたします。メールが届かない場合、登録メールアドレスの確認・修正をお願いいたします。</p>
+    <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/change-email/" class="c-Link_Txt-inline">契約時に登録したメールアドレスの確認・変更方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">お送りするコンビニ払込票（ハガキ）について</h3>
+    <p class="u-Adjust_Mt-16">
+      現在登録されている請求先住所へ発送され、<span class="c-Txt_Emp-02">約4～7日で到着いたします。</span><br><br>
+      引っ越しなどにより住所が未更新の場合、住所の修正をお願いいたします。<br>
+      毎月7日までに変更いただいた場合、当月分のコンビニ払込票（ハガキ）を更新した住所へお届けします。
+    </p>
+    <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/change-billing-address/" class="c-Link_Txt-inline">請求先住所の変更方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">※ 記載のお支払い期日を過ぎたコンビニ払込票（ハガキ）はご利用いただけません。</p>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">コンビニ払込票（ハガキ）の形状について</h3>
+    <p class="u-Adjust_Mt-16">コンビニ払込票（ハガキ）は、三つ折りの圧着ハガキでお送りします。<br>必ず中面をひらいて、支払い期日などご確認ください。</p>
+    <div class="<%= nameSpace %>-Layout_PostcardForm u-Adjust_Mt-16">
+      <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/img-01-230126.png" width="343" height="171" alt="">
+      <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/img-02-230126.png" width="343" height="161" alt="">
+      <p class="c-Txt_Cap">※サンプルは2021年9月時点のものです。送付時期によって内容が異なる場合があります。</p>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">コンビニ払込票（ハガキ）が届かない・紛失した場合</h2>
+    <p class="u-Adjust_Mt-16">該当する請求月のコンビニ払込票（ハガキ）の再発行可能期間を以下のページでご確認のうえ、再発行を申請してください。</p>
+    <p class="c-Txt_Cap">※ 契約解除されたお客様は、コンビニ払込票（ハガキ）を再発行申請できません。画面下部の「解決できない場合はお問い合わせ」より、楽天モバイルコミュニケーションセンターへお問い合わせください。</p>
+    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>faq/detail/10000649/" class="c-Link_Txt-inline" target="_blank">コンビニ払込票（ハガキ）の再発行はいつできますか？<span class="c-Icon_New-window-l"></span></a></p>
+
+    <p class="u-Adjust_Mt-24">未払い料金は、コンビニ払込票（ハガキ）がなくても、クレジットカードやデビットカードを利用して「my 楽天モバイル」でお支払いいただけます。</p>
+    <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/invoice/flow/#accordion-1" class="c-Link_Txt-inline" target="_blank">未払い料金をmy 楽天モバイルで支払う<span class="c-Icon_New-window-l"></span></a></p>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc04">未払い料金のお支払い方法</h2>
+    <p class="u-Adjust_Mt-16">未払い料金は、以下の方法でお支払いただけます。</p>
+    <p class="c-Txt_Emp-02">※未払い料金は一括払いのみとなります。分割払いはできません。</p>
+    <ul class="c-List_Text-disc u-Adjust_Pt-16">
+      <li>
+        <a href="<%= sitepath %>guide/payment/invoice/flow/#anc01" class="c-Link_Txt">クレジットカード・デビットカード</a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>guide/payment/invoice/flow/#anc03" class="c-Link_Txt">コンビニ払込票（ハガキ）</a>
+      </li>
+    </ul>
+    <p class="u-Adjust_Mt-16">その他、未払い料金に楽天ポイントを利用できます。</p>
+    <ul class="c-List_Text-disc u-Adjust_Pt-16">
+      <li>
+        <a href="<%= sitepath %>guide/payment/invoice/flow/#anc02" class="c-Link_Txt">楽天ポイント</a>
+      </li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="anc05">未払い料金のお支払い後の流れ</h2>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-24">未払い料金の支払い状況の確認について</h3>
+    <p class="u-Adjust_Mt-16">未払い料金の支払いが完了するとmy 楽天モバイルの「利用料金」画面で、請求ステータスが「未払い」から「確定」に変わります。</p>
+    <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/img-03-230126.png" class="<%= nameSpace %>-Layout_UnpaidFlow" width="300" height="388" alt="">
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>請求ステータスの確認手順</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+        <ol class="c-Flow u-Adjust_Mt-32">
+          <li>
+            <h4 class="c-Heading_Lv4">1. my 楽天モバイル「利用料金」画面を開く</h4>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt-inline">[my 楽天モバイル]ログインできません</a>」をご確認ください。</p>
+            <a href="https://portal.mobile.rakuten.co.jp/dashboard#billing" class="c-Btn_Secondly-large u-Adjust_Mt-16" target="_blank" rel="noopener" data-ratId="guide_ecare_billing" data-ratEvent="click" data-ratParam="all"><span>利用料金へ進む</span></a>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">2. 「利用料金」画面上部から、確認したい利用月を選択し、請求ステータスを確認する</h4>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">※左右の矢印ボタンをタップすることで、表示する利用月を変更できます。</p>
+            <p class="u-Adjust_Mt-16">お支払いが完了した月は請求ステータスが「確定」となります。</p>
+            <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/img-04-230126.png" class="<%= nameSpace %>-Layout_UnpaidFlow" width="300" height="388" alt="">
+            <p class="u-Adjust_Mt-16">未払い料金が残っている月は、請求ステータスが「未払い」と表示されます。<br>以下のページを参考にお支払いください。</p>
+            <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/invoice/flow/" class="c-Link_Txt-inline-icon">未払い料金のお支払い方法<span class="c-Icon_Chevron-right"></span></a></p>
+            <img src="<%= sitepath %>assets/img/guide/payment/invoice/unpaid/img-05-230126.png" class="<%= nameSpace %>-Layout_UnpaidFlow" width="300" height="292" alt="">
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-24">支払い完了後のご利用について</h3>
+    <p class="c-Txt_Emp-01 u-Adjust_Mt-16">利用停止中の場合</p>
+    <p>お支払いから30分程度で利用を再開できます。状況により、時間が前後する場合があります。</p>
+    <p class="c-Txt_Cap">※時間が経過しても利用再開ができない場合、製品を再起動してください。</p>
+    <p class="c-Txt_Emp-01 u-Adjust_Mt-16">契約解除の場合</p>
+    <p>お支払いいただいても、ご利用は再開できません。また、ご利用していた電話番号は再利用できません。</p>
+
+    <%- include('/include/guide/_faq') %>
+
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

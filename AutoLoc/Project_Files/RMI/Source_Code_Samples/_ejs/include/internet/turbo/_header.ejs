@@ -1,0 +1,489 @@
+<%_
+ /*
+  * @param {'default' | 'simple' | 'ecare' | 'static'} [headerType]
+  * @param {string} [currentpage]
+  * @param {string} [customApplyBtnCpnID]
+  * @param {boolean} [breadcrumbs]
+  * @param {boolean} [tax]
+  * @param {boolean} [headerApplyBtnHidden]
+  * ↓breadcrumbs param
+  * @param {string} pagetitle
+  * @param {string} [customtitle]
+  * @param {Array<object>} [directories]
+  * @param {string} directories[].path
+  * @param {string} directories[].label
+ */
+  const type = (typeof headerType === 'undefined') ? 'default' : headerType;
+  const currentPage = (typeof currentpage !== 'undefined') ? currentpage : '';
+  const applyBtnCpnID = (typeof customApplyBtnCpnID !== 'undefined') ? customApplyBtnCpnID : 'mnocampaign';
+  const isBreadcrumbs = (typeof breadcrumbs === 'undefined') ? true : breadcrumbs;
+  const isTax = (typeof tax === 'undefined') ? true : tax;
+  const isHeaderApplyBtnHidden = (typeof headerApplyBtnHidden === 'undefined') ? false : headerApplyBtnHidden;
+  const isSpuCampaign = (typeof spuCampaign === 'undefined') ? false : spuCampaign;
+  const isFixedNaviDisabled = (typeof fixedNaviDisabled === 'undefined') ? false : fixedNaviDisabled;
+  const isstart1000Breadcrumbs = (typeof start1000Breadcrumbs === 'undefined') ? false : start1000Breadcrumbs;
+_%>
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+
+<% if (type === 'default') { %>
+  <header class="turbo-Header">
+    <div class="turbo-Header_Logo-wrapper js-header-global">
+      <div class="turbo-Header_Container-other">
+        <a href="<%= sitepath %>" class="turbo-Header_Logo-1" data-lid_parts="header" data-lid_no="01">
+          <img src="<%= sitepath %>assets/img/common/logo-rmobile-pink-1line_2.svg" alt="Rakuten Mobile">
+        </a>
+        <div>
+          <a href="<%= sitepath %>" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header" data-lid_no="02">楽天モバイル</a>
+          <span class="turbo-Header_Global-link-txt c-Txt_Normal-s u-Adjust_Ml-8 u-Adjust_Mr-8">|</span>
+          <a href="<%= sitepath %>hikari/" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header">楽天ひかり</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="turbo-Header_Fixed-wrap js-fixed-header-wrap" data-fixed-header>
+      <%_ if (isFixedNaviDisabled) { _%>
+      <div class="turbo-Header_Container">
+      <%_ } else { _%>
+      <div class="turbo-Header_Container turbo-Header_Fixed js-fixed-header">
+      <%_ } _%>
+        <div class="turbo-Header_Container-inner">
+          <a href="<%= sitepath %>internet/turbo/" class="js-logo turbo-Header_Logo-2" data-lid_parts="gheader">
+            <img src="<%= sitepath %>assets/img/internet/turbo/common/logo.svg" alt="Rakuten Turbo">
+          </a>
+          <div>
+            <nav class="turbo-Header_Nav-sub">
+              <div class="turbo-Header_Nav-sub-container">
+                <ul class="turbo-Header_Nav-sub-inner1 js-dropdown-parent" id="js-dropdown-v2-parent">
+                  <li class="turbo-Header_Nav-sub-dropdown-container">
+                    <a href="<%= sitepath %>internet/turbo/fee/" id="nav-fee" class="c-Link_Txt-icon" aria-current="<%- (currentPage === '料金プラン') ? 'page' : 'false' %>" data-lid_parts="gheader">料金プラン</a>
+                  </li>
+                  <li class="turbo-Header_Nav-sub-dropdown-container">
+                    <a href="<%= sitepath %>internet/turbo/product/" id="nav-product" class="c-Link_Txt-icon" aria-current="<%- (currentPage === '製品') ? 'page' : 'false' %>" data-lid_parts="gheader">製品</a>
+                  </li>
+                  <li class="turbo-Header_Nav-sub-dropdown-container">
+                    <a href="<%= sitepath %>internet/turbo/area/" id="nav-area" class="c-Link_Txt-icon" aria-current="<%- (currentPage === '通信・エリア') ? 'page' : 'false' %>" data-lid_parts="gheader">通信・エリア</a>
+                  </li>
+                  <li class="turbo-Header_Nav-sub-dropdown-container">
+                    <a href="<%= sitepath %>internet/turbo/campaign/" id="nav-campaign" class="c-Link_Txt-icon" aria-current="<%- (currentPage === 'キャンペーン') ? 'page' : 'false' %>" data-lid_parts="gheader">キャンペーン</a>
+                  </li>
+                  <li class="turbo-Header_Nav-sub-dropdown-container">
+
+                    <button class="js-dropdown-v2 g-HeaderV2_Dropdown turbo-Header_Nav-sub-dropdown-button" aria-controls="header-support" aria-current="false" aria-expanded="false">
+                      お知らせ・サポート<span class="c-Icon_Chevron-right g-HeaderV2_Dropdown-icon"></span>
+                    </button>
+                    <div class="g-HeaderV2_SubContainer js-dropdown-v2-child turbo-Header_Nav-sub-dropdown-content">
+                      <div id="header-support">
+                        <ul class="turbo-Header_Nav-sub-dropdown-overview js-dropdown-container">
+                          <li>
+                            <a href="<%= sitepath %>internet/turbo/information/" class="c-Link_Txt-icon" data-lid_parts="gheader">お知らせ</a>
+                          </li>
+                          <li>
+                            <a href="<%= sitepath %>internet/turbo/support/" class="c-Link_Txt-icon" data-lid_parts="gheader">お客様サポート</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+          <div class="turbo-Header_Item-wrapper">
+            <div class="turbo-Header_Item">
+              <%_ if (!isHeaderApplyBtnHidden) { _%>
+              <div class="turbo-Header_Apply"><a href="<%= sitepath %>internet/turbo/application/" class="turbo-Header_Apply-btn js-apply-btn" data-lid_parts="gheader">お申し込み</a></div>
+              <%_ } _%>
+              <%_ if (isSpuCampaign) { _%>
+                <div class="turbo-Header_Apply"><a href="#tabArea" id="js-spu-apply" class="turbo-Header_Apply-btn js-scroll" data-lid_parts="gheader">お申し込み</a></div>
+              <%_ } _%>
+              <div class="turbo-Header_Drawer-icon js-nav" aria-controls="js-drawer" data-ratid="rmt_header_hamburger" data-ratevent="click" data-ratparam="all"><span class="js-drawer-icon c-Icon_Menu"></span><span class="turbo-Header_Drawer-text">メニュー</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%_ if (isBreadcrumbs) { _%>
+      <%- include('/include/internet/turbo/_breadcrumbs', {
+        type: 'header',
+        pagetitle,
+        customroot: {path: `${rootpath}internet/turbo/`, label: 'Rakuten Turbo'},
+        ...((typeof customtitle !== 'undefined') && customtitle),
+        ...((typeof directories !== 'undefined') && directories),
+      }) %>
+    <%_ } _%>
+
+
+    <%_ if (isTax) { _%>
+      <div class="turbo-Header_Note">
+        <p class="c-Txt_Cap">※ 表記の金額は特に記載のある場合を除きすべて税込です。</p>
+      </div>
+    <%_ } _%>
+  </header>
+<% } else if (type === 'ecare') { %>
+  <header class="turbo-Header">
+    <div class="turbo-Header_Logo-wrapper">
+      <div class="turbo-Header_Container-other">
+        <a href="<%= sitepath %>" class="turbo-Header_Logo-1" data-lid_parts="header">
+          <img src="<%= sitepath %>assets/img/common/logo-rmobile-pink-1line_2.svg" alt="Rakuten Mobile">
+        </a>
+        <div>
+          <a href="<%= sitepath %>" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header" data-lid_no="02">楽天モバイル</a>
+          <span class="turbo-Header_Global-link-txt c-Txt_Normal-s u-Adjust_Ml-8 u-Adjust_Mr-8">|</span>
+          <a href="<%= sitepath %>hikari/" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header">楽天ひかり</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="turbo-Header_Container">
+      <div class="turbo-Header_Container-inner">
+        <a href="<%= sitepath %>internet/turbo/" class="turbo-Header_Logo-2" data-lid_parts="header">
+          <img src="<%= sitepath %>assets/img/internet/turbo/common/logo.svg" alt="Rakuten Turbo">
+        </a>
+        <div class="turbo-Header_Item-wrapper">
+          <div class="turbo-Header_Item" style="justify-content: flex-end;">
+            <div class="turbo-Header_Drawer-icon js-nav" aria-controls="js-drawer" data-ratid="rmt_header_hamburger" data-ratevent="click" data-ratparam="all">
+              <span class="c-Icon_Menu"></span><span class="turbo-Header_Drawer-text">メニュー</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%_ if (isTax) { _%>
+      <div class="turbo-Header_Note">
+        <p class="c-Txt_Cap">※ 表記の金額は特に記載のある場合を除きすべて税込です。</p>
+      </div>
+    <%_ } _%>
+  </header>
+<% } else if (type === 'simple') { %>
+  <header class="turbo-Header">
+    <div class="turbo-Header_Container">
+      <div class="turbo-Header_Container-inner turbo-Header_Container-inner-simple">
+        <a href="<%= sitepath %>internet/turbo/" class="turbo-Header_Logo-2" data-lid_parts="header">
+          <img src="<%= sitepath %>assets/img/internet/turbo/common/logo.svg" alt="Rakuten Turbo">
+        </a>
+      </div>
+    </div>
+  </header>
+  <%_ if (isTax) { _%>
+    <div class="turbo-Header_Note">
+      <p class="c-Txt_Cap">※ 表記の金額は特に記載のある場合を除きすべて税込です。</p>
+    </div>
+  <%_ } _%>
+<% } else if (type === 'static') { %>
+  <header class="turbo-Header">
+    <div class="turbo-Header_Logo-wrapper js-header-global">
+      <div class="turbo-Header_Container-other">
+        <a href="<%= sitepath %>" class="turbo-Header_Logo-1" data-lid_parts="header" data-lid_no="01">
+          <img src="<%= sitepath %>assets/img/common/logo-rmobile-pink-1line_2.svg" alt="Rakuten Mobile">
+        </a>
+        <div>
+          <a href="<%= sitepath %>" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header" data-lid_no="02">楽天モバイル</a>
+          <span class="turbo-Header_Global-link-txt c-Txt_Normal-s u-Adjust_Ml-8 u-Adjust_Mr-8">|</span>
+          <a href="<%= sitepath %>hikari/" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header">楽天ひかり</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="turbo-Header_Container">
+      <div class="turbo-Header_Container-inner">
+        <a href="<%= sitepath %>internet/turbo/" class="js-logo turbo-Header_Logo-2" data-lid_parts="gheader">
+          <img src="<%= sitepath %>assets/img/internet/turbo/common/logo.svg" alt="Rakuten Turbo">
+        </a>
+        <div>
+          <nav class="turbo-Header_Nav-sub">
+            <div class="turbo-Header_Nav-sub-container">
+              <ul class="turbo-Header_Nav-sub-inner1 js-dropdown-parent" id="js-dropdown-v2-parent">
+                <li class="turbo-Header_Nav-sub-dropdown-container">
+                  <a href="<%= sitepath %>internet/turbo/fee/" id="nav-fee" class="c-Link_Txt-icon" aria-current="<%- (currentPage === '料金プラン') ? 'page' : 'false' %>" data-lid_parts="gheader">料金プラン</a>
+                </li>
+                <li class="turbo-Header_Nav-sub-dropdown-container">
+                  <a href="<%= sitepath %>internet/turbo/product/" id="nav-product" class="c-Link_Txt-icon" aria-current="<%- (currentPage === '製品') ? 'page' : 'false' %>" data-lid_parts="gheader">製品</a>
+                </li>
+                <li class="turbo-Header_Nav-sub-dropdown-container">
+                  <a href="<%= sitepath %>internet/turbo/area/" id="nav-area" class="c-Link_Txt-icon" aria-current="<%- (currentPage === '通信・エリア') ? 'page' : 'false' %>" data-lid_parts="gheader">通信・エリア</a>
+                </li>
+                <li class="turbo-Header_Nav-sub-dropdown-container">
+                  <a href="<%= sitepath %>internet/turbo/campaign/" id="nav-campaign" class="c-Link_Txt-icon" aria-current="<%- (currentPage === 'キャンペーン') ? 'page' : 'false' %>" data-lid_parts="gheader">キャンペーン</a>
+                </li>
+                <li class="turbo-Header_Nav-sub-dropdown-container">
+                  <button class="js-dropdown-v2 g-HeaderV2_Dropdown turbo-Header_Nav-sub-dropdown-button" aria-controls="header-support" aria-current="false" aria-expanded="false">
+                    お知らせ・サポート<span class="c-Icon_Chevron-right g-HeaderV2_Dropdown-icon"></span>
+                  </button>
+                  <div class="g-HeaderV2_SubContainer js-dropdown-v2-child turbo-Header_Nav-sub-dropdown-content">
+                    <div id="header-support">
+                      <ul class="turbo-Header_Nav-sub-dropdown-overview js-dropdown-container">
+                        <li>
+                          <a href="<%= sitepath %>internet/turbo/information/" class="c-Link_Txt-icon" data-lid_parts="gheader">お知らせ</a>
+                        </li>
+                        <li>
+                          <a href="<%= sitepath %>internet/turbo/support/" class="c-Link_Txt-icon" data-lid_parts="gheader">お客様サポート</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="turbo-Header_Item-wrapper">
+          <div class="turbo-Header_Item">
+            <div class="turbo-Header_Apply"><a href="<%= sitepath %>internet/turbo/application/" class="turbo-Header_Apply-btn js-apply-btn" data-lid_parts="gheader">お申し込み</a></div>
+            <div class="turbo-Header_Drawer-icon js-nav" aria-controls="js-drawer" data-ratid="rmt_header_hamburger" data-ratevent="click" data-ratparam="all"><span class="js-drawer-icon c-Icon_Menu"></span><span class="turbo-Header_Drawer-text">メニュー</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%_ if (isBreadcrumbs) { _%>
+      <%- include('/include/internet/turbo/_breadcrumbs', {
+        type: 'header',
+        pagetitle,
+        customroot: {path: `${rootpath}internet/turbo/`, label: 'Rakuten Turbo'},
+        ...((typeof customtitle !== 'undefined') && customtitle),
+        ...((typeof directories !== 'undefined') && directories),
+      }) %>
+      <%_ if (isstart1000Breadcrumbs) { _%>
+        <%- include('/include/internet/turbo/_breadcrumbs', {
+          type: 'header',
+          start1000Breadcrumbs:true,
+          pagetitle,
+          customroot: {path: `${rootpath}internet/turbo/`, label: 'Rakuten Turbo'},
+          ...((typeof customtitle !== 'undefined') && customtitle),
+          ...((typeof directories !== 'undefined') && directories),
+        }) %>
+      <%_ } _%>
+    <%_ } _%>
+
+
+    <%_ if (isTax) { _%>
+      <div class="turbo-Header_Note">
+        <p class="c-Txt_Cap">※ 表記の金額は特に記載のある場合を除きすべて税込です。</p>
+      </div>
+    <%_ } _%>
+  </header>
+<% } %>
+<% if (type === 'campaign') { %>
+  <header class="turbo-Header">
+    <div class="turbo-Header_Logo-wrapper js-header-global">
+      <div class="turbo-Header_Container-other">
+        <a href="<%= sitepath %>" class="turbo-Header_Logo-1" data-lid_parts="header" data-lid_no="01">
+          <img src="<%= sitepath %>assets/img/common/logo-rmobile-pink-1line_2.svg" alt="Rakuten Mobile">
+        </a>
+        <div>
+          <a href="<%= sitepath %>" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header" data-lid_no="02">楽天モバイル</a>
+          <span class="turbo-Header_Global-link-txt c-Txt_Normal-s u-Adjust_Ml-8 u-Adjust_Mr-8">|</span>
+          <a href="<%= sitepath %>hikari/" class="c-Link_Txt-inline c-Txt_Normal-s" data-lid_parts="header">楽天ひかり</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="turbo-Header_Fixed-wrap js-fixed-header-wrap" data-fixed-header>
+      <%_ if (isFixedNaviDisabled) { _%>
+        <div class="turbo-Header_Container">
+      <%_ } else { _%>
+      <div class="turbo-Header_Container turbo-Header_Fixed js-fixed-header">
+      <%_ } _%>
+        <div class="turbo-Header_Container-inner turbo-Header_Container-inner-simple">
+          <a href="<%= sitepath %>internet/turbo/" class="js-logo turbo-Header_Logo-2" data-lid_parts="gheader">
+            <img src="<%= sitepath %>assets/img/internet/turbo/common/logo.svg" alt="Rakuten Turbo">
+          </a>
+          <div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%_ if (isBreadcrumbs) { _%>
+      <%- include('/include/internet/turbo/_breadcrumbs', {
+        type: 'header',
+        pagetitle,
+        customroot: {path: `${rootpath}`, label: 'トップ'},
+        directories:[{path:"campaign/", label:"キャンペーン・特典"}],
+        ...((typeof customtitle !== 'undefined') && customtitle),
+        ...((typeof directories !== 'undefined') && directories),
+      }) %>
+    <%_ } _%>
+
+
+    <%_ if (isTax) { _%>
+      <div class="turbo-Header_Note">
+        <p class="c-Txt_Cap">※ 表記の金額は特に記載のある場合を除きすべて税込です。</p>
+      </div>
+    <%_ } _%>
+  </header>
+<% } %>
+<% if (type === 'default' || type === 'ecare' || type === 'static') { %>
+  <nav class="turbo-Header_Drawer js-drawer" id="js-drawer" aria-expanded="false">
+    <div class="turbo-Header_Drawer-close js-nav" aria-controls="js-drawer"><span class="c-Icon_X"></span></div>
+
+    <div class="turbo-Header_Drawer-content">
+      <div class="turbo-Header_Drawer-buttons">
+        <%_ if (!isHeaderApplyBtnHidden) { _%>
+        <div class="turbo-Header_Link">
+          <a href="<%= sitepath %>internet/turbo/application/" data-lid_parts="gmenu" class="c-Btn_Primary">お申し込み</a>
+        </div>
+        <%_ } _%>
+        <%_ if (isSpuCampaign) { _%>
+          <div class="turbo-Header_Link">
+            <a href="#tabArea" id="js-spu-apply-sp" data-lid_parts="gmenu" class="c-Btn_Primary js-scroll">お申し込み</a>
+          </div>
+        <%_ } _%>
+        <div class="turbo-Header_Link">
+          <a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/" class="c-Btn_Secondly">my 楽天モバイル</a>
+        </div>
+      </div>
+      <div class="turbo-Header_Drawer-list">
+        <ul class="turbo-Header_Drawer-main">
+          <li>
+            <a href="<%= sitepath %>internet/turbo/fee/" data-lid_parts="gmenu" class="c-Link_Txt-icon" aria-current="false">料金プラン</a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>internet/turbo/product/" data-lid_parts="gmenu" class="c-Link_Txt-icon" aria-current="false">製品</a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>internet/turbo/campaign/" data-lid_parts="gmenu" class="c-Link_Txt-icon" aria-current="false">キャンペーン</a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>internet/turbo/area/" data-lid_parts="gmenu" class="c-Link_Txt-icon" aria-current="false">通信・エリア</a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>internet/turbo/information/" data-lid_parts="gmenu">お知らせ</a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>internet/turbo/support/" data-lid_parts="gmenu" class="c-Link_Txt-icon" aria-current="false">お客様サポート</a>
+          </li>
+        </ul>
+      </div>
+      <div class="turbo-Header_Drawer-tail">
+        <div class="u-Adjust_Mt-32">
+          <p class="turbo-Header_Drawer-tail-item">
+            <a href="<%= sitepath %>terms/" data-lid_parts="gmenu" class="c-Link_Txt-inline-icon" target="_blank">重要事項・利用規約<span class="c-Icon_New-window-l"></span></a>
+          </p>
+          <p class="turbo-Header_Drawer-tail-item u-Adjust_Mt-32">
+            <a href="<%= sitepath %>hikari/" data-lid_parts="gmenu" class="c-Link_Txt-inline-icon">楽天ひかり（光回線）<span class="c-Icon_Chevron-right"></span></a>
+          </p>
+          <p class="turbo-Header_Drawer-tail-item">
+            <a href="<%= sitepath %>" data-lid_parts="gmenu" class="c-Link_Txt-inline-icon">楽天モバイル<span class="c-Icon_Chevron-right"></span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="turbo-Header_Overlay js-overlay" aria-hidden="true"></div>
+
+  <script>
+    const initFixedHeader = () => {
+      // const DEFAULT_PC_HEADER_PD_T = '0';
+      // const DEFAULT_PC_HEADER_PD_B = '0';
+      const DEFAULT_SP_HEADER_PD_Y = '9px';
+
+      const fixedHeader = document.querySelector('.js-fixed-header');
+      const globalHeader = document.querySelector('.js-header-global');
+      const applyBtn = document.querySelector('.js-apply-btn');
+      const fixedHeaderWrap = document.querySelector('.js-fixed-header-wrap');
+      const logo = document.querySelector('.js-logo');
+      const drawerIcon = document.querySelector('.js-drawer-icon');
+      const dropdownContainer = document.querySelector('.js-dropdown-container');
+      const dropdownItem = document.querySelector('.js-dropdown-v2');
+      const dropdownParent = document.querySelector('.js-dropdown-parent');
+
+      if (!fixedHeader || !fixedHeaderWrap || !globalHeader) {
+        return;
+      }
+
+      fixedHeaderWrap.style.height = `${fixedHeader.clientHeight}px`;
+
+      let sizePc;
+      const mediaQueryList = window.matchMedia('(min-width: 769px)');
+      const resize = (event) => {
+        if (event.matches) {
+          sizePc = true;
+          fixedHeaderWrap.style.height = `${fixedHeader.clientHeight}px`;
+        } else {
+          sizePc = false;
+          fixedHeaderWrap.style.height = `${fixedHeader.clientHeight}px`;
+        }
+      }
+      mediaQueryList.addEventListener('change', resize);
+      resize(mediaQueryList);
+
+      const options = {
+        threshold: [0, 1],
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio === 0) {
+            if(sizePc) {
+              if (fixedHeader) {
+                fixedHeaderWrap.style.height = `${fixedHeader.clientHeight}px`;
+                fixedHeader.style.position = 'fixed';
+                fixedHeader.style.top = '0';
+                fixedHeader.style.width = '100%';
+                // fixedHeader.style.padding = '0';
+                dropdownItem.style.paddingBottom = '12px';
+                // dropdownItem.style.marginTop = '12px';
+                dropdownParent.style.marginTop = '12px';
+              }
+              if (logo) {
+                logo.style.width = '179px';
+                logo.style.marginRight = '40px';
+              }
+            } else {
+              if (fixedHeader) {
+                fixedHeaderWrap.style.height = `${fixedHeader.clientHeight}px`;
+                fixedHeader.style.position = 'fixed';
+                fixedHeader.style.top = '0';
+                fixedHeader.style.width = '100%';
+                fixedHeader.style.padding = '7.5px 0';
+              }
+              if (applyBtn) {
+                applyBtn.style.padding = '8.5px 13px';
+              }
+              if (drawerIcon) {
+                drawerIcon.style.fontSize = '20px';
+              }
+            }
+          }
+          if (entry.intersectionRatio > 0) {
+            if(sizePc) {
+              if (fixedHeader) {
+                fixedHeaderWrap.style.height = 'auto';
+                fixedHeader.style.position = 'relative';
+                // fixedHeader.style.padding = `${DEFAULT_PC_HEADER_PD_T} 0 ${DEFAULT_PC_HEADER_PD_B}`;
+                dropdownItem.style.paddingBottom = '20px';
+                // dropdownItem.style.marginTop = '22px';
+                dropdownParent.style.marginTop = '20px';
+              }
+              if (logo) {
+                logo.style.width = '191px';
+                logo.style.marginRight = '40px';
+              }
+            } else {
+              if (fixedHeader) {
+                fixedHeaderWrap.style.height = 'atuo';
+                fixedHeader.style.position = 'relative';
+                fixedHeader.style.padding = `${DEFAULT_SP_HEADER_PD_Y} 0`;
+              }
+              if (applyBtn) {
+                applyBtn.style.padding = "11px 13px";
+              }
+              if (drawerIcon) {
+                drawerIcon.style.fontSize = '24px';
+              }
+            }
+          }
+        });
+
+      }, options);
+      observer.observe(globalHeader);
+    }
+
+    initFixedHeader();
+  </script>
+<%_ } _%>

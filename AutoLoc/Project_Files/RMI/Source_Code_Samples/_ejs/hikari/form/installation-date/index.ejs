@@ -1,0 +1,273 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "開通工事 希望日予約" -%>
+<% const directories = [] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    <!-- directories: directories, -->
+    description: '',
+    noindex: true,
+    pathname: filepath,
+    ishikari: true
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/form/installation-date/installation-date.css?20240424">
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+
+  <%- include('/hikari/include/_header', { headerType: 'logo', pagetitle: pagetitle, directories: directories, tax: false }) %>
+
+  <div class="l-hikari-Section_Main">
+    <div class="l-hikari-Section_Main-logo"><a href="/hikari/" data-lid_parts="logo"><img src="<%= sitepath %>assets/img/hikari/common/logo-hikari-s.svg" width="100" alt="楽天ひかり"></a></div>
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+      <div class="l-hikari-Section_Main-lead">
+        <p>この度は楽天ひかりにお申し込みいただきありがとうございます。<br>
+          必要事項、工事希望日を選択のうえ、送信してください。</p>
+      </div>
+
+      <div class="l-hikari-Section_Sub-short hikari-installation-date-Layout">
+        <form id="js-hikari-installation-date_Form" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+          <input type="hidden" name="oid" value="00D2v000001WJL6">
+          <input type="hidden" name="recordType" value="0122v000001QuQj">
+          <input type="hidden" name="lead_source" value="工事希望日の入力">
+          <input type="hidden" name="company" value="楽天ひかり">
+          <input type="hidden" name="last_name" value="入力">
+          <input type="hidden" name="00N2u0000015cmC" value="">
+          <input type="hidden" name="retURL" value="https://network.mobile.rakuten.co.jp/hikari/form/installation-date/completion/">
+          <!-- 差込口有無 -->
+          <input type="hidden" maxlength="255" name="00N2u0000015xu7" size="20" value="">
+          <!-- 希望加入オプション -->
+          <input type="hidden" maxlength="255" name="00N2u0000015xuC" size="20" value="">
+          <dl class="c-Form_List">
+            <div>
+              <dt>楽天ひかり機器発送先住所<span class="c-Form_List-required">必須</span></dt>
+              <dd id="js-hikari-Adress_List">
+                <div class="hikari-installation-date-Layout_Adress-radio-wrap">
+                  <label class="c-Form_Radioblock hikari-installation-date-Layout_Adress-radio">
+                    <input class="hikari-installation-date-Form" type="radio" name="00N2u0000015xtx" value="楽天ひかりを利用する住所と同じ">
+                    <span class="c-Form_Radioblock-wrap hikari-installation-date-Form_Adjust-width">
+                      <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">楽天ひかりを利用する住所と同じ</span>
+                    </span>
+                  </label>
+                  <label class="c-Form_Radioblock hikari-installation-date-Layout_Adress-radio">
+                    <input class="hikari-installation-date-Form" type="radio" name="00N2u0000015xtx" value="楽天ひかりを利用する住所と異なる">
+                    <span class="c-Form_Radioblock-wrap hikari-installation-date-Form_Adjust-width">
+                      <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">楽天ひかりを利用する住所と異なる</span>
+                    </span>
+                  </label>
+                </div>
+              </dd>
+
+            </div>
+
+            <div>
+              <dt>現在利用している光回線<span class="c-Form_List-required">必須</span></dt>
+              <dd id="js-hikari-line_selector_List">
+                <label class="c-Form_Radioblock u-Adjust_Mb-16">
+                  <input class="hikari-installation-date-Form" type="radio" name="00N2u0000015xu2" value="フレッツ光">
+                  <span class="c-Form_Radioblock-wrap hikari-installation-date-Form_Adjust-width">
+                    <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">フレッツ光</span>
+                  </span>
+                </label>
+                <label class="c-Form_Radioblock u-Adjust_Mb-16">
+                  <input class="hikari-installation-date-Form" type="radio" name="00N2u0000015xu2" value="光コラボ">
+                  <span class="c-Form_Radioblock-wrap hikari-installation-date-Form_Adjust-width">
+                    <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label hikari-installation-date-Form_Radioblock-label">光コラボ<span>ドコモ光、SoftBank 光、OCN 光、ビッグローブ光、So-net 光 プラス、ぷらら光、＠nifty光、エキサイト光 等</span></span>
+                  </span>
+                </label>
+                <label class="c-Form_Radioblock u-Adjust_Mb-16">
+                  <input class="hikari-installation-date-Form" type="radio" name="00N2u0000015xu2" value="その他の光回線">
+                  <span class="c-Form_Radioblock-wrap hikari-installation-date-Form_Adjust-width">
+                    <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label hikari-installation-date-Form_Radioblock-label">その他の光回線<span>auひかり、NURO 光、J:COM光、eo光、コミュファ光 、ケーブルテレビインターネット、電力系光回線 等</span></span>
+                  </span>
+                </label>
+                <label class="c-Form_Radioblock">
+                  <input class="hikari-installation-date-Form" type="radio" name="00N2u0000015xu2" value="光回線を利用していない">
+                  <span class="c-Form_Radioblock-wrap hikari-installation-date-Form_Adjust-width">
+                    <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label hikari-installation-date-Form_Radioblock-label">光回線を利用していない<span>インターネット回線を利用していない、もしくは、ポケットWi-Fi、テザリング、SoftBank Air、ADSL回線等を利用している</span></span>
+                  </span>
+                </label>
+              </dd>
+            </div>
+
+            <div class="hikari-installation-date-Form_Type_consent">
+              <dt>ご利用場所の光コンセントの種類（複数選択可）<span class="c-Form_List-required">必須</span></dt>
+              <dd>
+                <p>工事に際してご利用状況を把握する必要があるため、楽天ひかりを利用する建物の光コンセントをすべて選んでください。</p>
+                <p class="c-Txt_Emp u-Adjust_Mt-16">光コンセントを設置している場所の一例</p>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-8">
+                    <li>リビング等、メインになるお部屋のコンセントと一緒に設置</li>
+                    <li class="u-Adjust_Mt-0">エアコン付近に設置</li>
+                    <li class="u-Adjust_Mt-0">テレビアンテナ付近に設置</li>
+                  </ul>
+                <dl id="js-hikari-type-consent_List">
+                  <dd>
+                    <div class="hikari-installation-date-Layout_Consent-checkbox-wrap hikari-installation-date-Layout">
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Consent-checkbox type_consent">
+                        <input name="type_consent" type="checkbox" value="" class="js-hikari-type-consent hikari-installation-date-Form" data-type-consent="光コンセント一体型" data-type-consent-img="01">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Layout_Consent-checkbox-adjust">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">光コンセント一体型</span>
+                        <span class="u-Adjust_Mt-8 hikari-installation-date-Layout_Consent-checkbox-txt">左下に「光」の文字があります</span>
+                        <img src="<%= sitepath %>assets/img/hikari/installation-date/img-01.png?210915" alt="" class="u-Adjust_Mt-8">
+                        </span>
+                      </label>
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Consent-checkbox type_consent">
+                        <input name="type_consent" type="checkbox" value="" class="js-hikari-type-consent hikari-installation-date-Form" data-type-consent="光コンセント分離型" data-type-consent-img="02">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Layout_Consent-checkbox-adjust">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">光コンセント分離型</span>
+                        <span class="u-Adjust_Mt-8 hikari-installation-date-Layout_Consent-checkbox-txt">左下に「光」の文字があります</span>
+                        <img src="<%= sitepath %>assets/img/hikari/installation-date/img-02.png?210915" alt="" class="u-Adjust_Mt-8">
+                        </span>
+                      </label>
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Consent-checkbox type_consent">
+                        <input name="type_consent" type="checkbox" value="" class="js-hikari-type-consent hikari-installation-date-Form" data-type-consent="VDSLモジュラージャック" data-type-consent-img="03">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Layout_Consent-checkbox-adjust">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">VDSLモジュラージャック</span>
+                        <span class="u-Adjust_Mt-8 hikari-installation-date-Layout_Consent-checkbox-txt">中央にうすく「<img src="<%= sitepath %>assets/img/hikari/flow/construction/icon-phone.png" alt="電話マーク" width="16" class="hikari-installation-date-Layout_Consent-checkbox-icon"> TEL」の文字があります</span>
+                        <img src="<%= sitepath %>assets/img/hikari/installation-date/img-03.png?210915" alt="" class="u-Adjust_Mt-8">
+                        </span>
+                      </label>
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Consent-checkbox type_consent">
+                        <input name="type_consent" type="checkbox" value="" class="js-hikari-type-consent hikari-installation-date-Form" data-type-consent="LANジャック" data-type-consent-img="04">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Layout_Consent-checkbox-adjust">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">LANジャック</span>
+                        <span class="u-Adjust_Mt-8 hikari-installation-date-Layout_Consent-checkbox-txt">中央に「LAN」の文字があります</span>
+                        <img src="<%= sitepath %>assets/img/hikari/installation-date/img-04.png?210915" alt="" class="u-Adjust_Mt-8">
+                        </span>
+                      </label>
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Consent-checkbox" aria-hidden="true" id="type_consent_none">
+                        <input name="type_consent_none" type="checkbox" value="" class="js-hikari-type-consent hikari-installation-date-Form" data-type-consent="光コンセントはない" id="type_consent_none_check">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Form_Adjust-width">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">光コンセントはない</span>
+                        </span>
+                      </label>
+                    </div>
+                  </dd>
+                </dl>
+              </dd>
+            </div>
+            <div>
+              <dt>追加で希望するサービス（複数選択可）</dt>
+              <dd>
+                <p class="u-Adjust_Mb-8">以下サービスの追加を希望する場合はチェックをつけてください。</p>
+                <dl id="js-hikari-add-service-list">
+                  <dd>
+                    <div class="hikari-installation-date-Layout_Add-service-checkbox-wrap">
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Add-service-checkbox">
+                        <input name="add-service" type="checkbox" value="ひかり電話" class="js-hikari-add-service" data-add-service="ひかり電話">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Form_Adjust-width">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">ひかり電話</span>
+                        </span>
+                      </label>
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Add-service-checkbox">
+                        <input name="add-service" type="checkbox" value="フレッツ・テレビ" class="js-hikari-add-service" data-add-service="フレッツ・テレビ">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Form_Adjust-width">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">フレッツ・テレビ</span>
+                        </span>
+                      </label>
+                      <label class="c-Form_Checkboxblock hikari-installation-date-Layout_Add-service-checkbox">
+                        <input name="add-service" type="checkbox" value="リモートサポート" class="js-hikari-add-service" data-add-service="リモートサポート">
+                        <span class="c-Form_Checkboxblock-wrap hikari-installation-date-Form_Adjust-width">
+                        <span class="c-Icon_Check"></span>
+                        <span class="c-Form_Checkbox-label">リモートサポート<br><small>（税込550円／月）</small></span>
+                        </span>
+                      </label>
+                    </div>
+                  </dd>
+                </dl>
+                <p class="u-Adjust_Mt-24 c-Txt_Cap">※ひかり電話、フレッツ・テレビは、楽天ひかりとのご契約ではなく、NTT東日本・NTT西日本とのご契約となります。このフォームでのお申し込み後3〜7日後に、NTT東日本・NTT西日本からお電話にて契約確認のご連絡をいたします。</p>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap">※上記サービスは有料です。詳しくはオプションページよりご確認をお願いいたします。</p>
+                <p class="u-Adjust_Mt-8"><a href="<%= sitepath %><%= hikariroot.path %>fee/option/" target="_blank" class="c-Link_Txt-inline">オプションサービスを見る<span class="c-Icon_New-window-l u-Adjust_Ml-8"></span></a></p>
+              </dd>
+            </div>
+
+            <div class="hikari-installation-date-Form_Item-area js-rakutenlink_Item-area">
+              <dt>工事希望日<span class="c-Form_List-required">必須</span></dt>
+              <dd id="js-hikari-calender-list">
+                <p class="c-Txt_Emp-warning">ここで希望した日程は確定ではございません。</p>
+                <p class="u-Adjust_Mt-8 u-Adjust_Mb-16">希望日で確定する場合は、メールにてご連絡いたします。確定しなかった場合は、電話にて日程調整のご連絡をいたします。</p>
+                <!-- <div class="c-Infobox_Standing-warning u-Adjust_Mt-24 u-Adjust_Mb-24">
+                  <p class="hikari-installation-date-Layout_Warningtext"><span class="c-Icon_Sign-warning-l"></span>ご注意ください</p>
+                  <p class="u-Adjust_Mt-8">楽天ひかりに申し込みをした当月に、楽天ひかりを開通した場合、<a href="/hikari/campaign/one-year-free/" target="_blank"　 class="c-Link_Txt-inline">冬の工事費無料キャンペーン<span class="c-Icon_New-window-l"></span></a> の<em class="hikari-installation-date-Layout_Warningtext">特典適用対象外</em>となります。</p>
+                  <p class="u-Adjust_Mt-16">
+                    例えば、お申し込み月が12月の場合、工事日は<em class="hikari-installation-date-Layout_Warningtext">1月以降を選択</em>いただくと冬の工事費無料キャンペーンの<em class="hikari-installation-date-Layout_Warningtext">特典適用対象</em>となります。</p>
+                </div> -->
+                <div class="hikari-installation-date-Form_Datepicker-container">
+                  <input id="00N2u0000015xuH" name="00N2u0000015xuH" class="c-Form_Input js-Datepicker" maxlength="" size="" type="text" placeholder="選択してください" value="" aria-required="true" data-validate="required" readonly>
+                  <span class="c-Icon_Calendar-l hikari-installation-date-Form_Datepicker-icon js-Datepicker_Btn"></span>
+                </div>
+              </dd>
+            </div>
+          </dl>
+
+          <div class="c-Infobox_Standing-border hikari-installation-date-Layout_Attention-box">
+            <h2 class="c-Heading_Lv3">注意事項</h2>
+            <p class="u-Adjust_Mt-16">
+              以下の注意事項をご確認いただき、「注意事項の内容を確認した」にチェックをつけてください。
+            </p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-24">
+              <li>工事の内容によっては工事費用が変更となる場合もあります。
+                <p class="u-Adjust_Mt-8 u-Adjust_Ml-16">
+                  <a href="<%= sitepath %><%= hikariroot.path %>fee/pricelist/" target="_blank" class="c-Link_Txt-inline">料金表を見る<span class="c-Icon_New-window-l u-Adjust_Ml-8"></span></a>
+                </p>
+              </li>
+              <li>設置する建物の配線方式がVDSL方式、LAN配線方式の場合は最大速度が100Mbpsとなり、最大速度1Gbpsでご利用になれません。<br>
+                また、VDSL方式、LAN配線方式の場合、工事日以降のキャンセルはできません。<p class="u-Adjust_Mt-8 u-Adjust_Ml-16 c-Txt_Cap">
+                ※本サービスはベストエフォート方式。高速性、常時接続性に関し保証するものではなく、機器や回線混雑状況等により変動。
+              </p></li>
+              <li>ひかり電話、フレッツ・テレビ、リモートサポートをお申し込みいただくと、3〜7日後にNTT東日本・NTT西日本からお電話にて契約確認の連絡があるのでご対応をお願いします。電話にご対応いただけない場合、工事日の調整が必要になる場合があります。</li>
+              <li>開通工事日が決まりましたら、ご契約の住所に回線情報などを記載した「ご契約内容のお知らせ」と、楽天ひかりをご利用いただくための「アカウントのお知らせ」を郵送いたします。楽天ひかりご利用場所（設置場所）とご契約の住所が異なる場合も、ご契約住所に郵送になります。</li>
+              <li>開通前にご契約住所の変更がある場合は、楽天ひかり工事受付センターにお電話ください。<br>
+                楽天ひかり工事受付センター：<span class="hikari-installation-date-Utility_Show-pc">0120-987-899</span><span class="hikari-installation-date-Utility_Show-sp"><a href="tel:0120987899">0120-987-899</a></span><br>
+                受付時間：10:00～19:00 年中無休</li>
+            </ul>
+            <label class="c-Form_Checkbox u-Adjust_Mt-24 u-Adjust_Mb-8">
+              <input type="checkbox" name="agree" id="" value="">
+              <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">注意事項の内容を確認した</span>
+            </label>
+          </div>
+
+          <p class="u-Adjust_Align-center u-Adjust_Mt-40">
+            <button id="js-hikari-installation-date_Confirm" disabled type="button" aria-disabled="true" class="c-Btn_Secondly-large"><span><span>入力内容を確認する</span></span></button>
+          </p>
+
+          <div id="modal-confirm" style="display:none;">
+            <h2 class="c-Heading_Lv3 u-Adjust_Mb-32 hikari-installation-date-Layout_Confirm">入力内容の確認</h2>
+            <dl id="js-hikari-installation-date_Confirm-content" class="c-Form_List-confirm hikari-installation-date-Layout_Confirm"></dl>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+              <button type="button" id="js-hikari-installation-date_Submit" class="c-Btn_Primary-large"><span><span>この内容で送信する</span></span></button>
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <button type="button" id="js-hikari-installation-date_Confirm-close" class="c-Btn_Secondly-large"><span><span>戻る</span></span></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="g-Footer u-Adjust_Mt-64">
+    <%- include('/include/_footer-simple') %>
+  </footer>
+
+</div>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script src="<%= sitepath %>assets/js/common.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/vendor.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/hikari/form.installation-date.index.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

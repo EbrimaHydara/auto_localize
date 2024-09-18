@@ -1,0 +1,136 @@
+<% const pagetitle = "製品受け取り前キャンセルのお手続き" -%>
+<% const directories = [{path:"faq/", label:"お問い合わせ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/faq/cancel/faq-cancel.css?20240424">
+<%- include('/include/_append-head', {messaging: true}) %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="faq-cancel-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">入力内容をご確認ください。</p>
+
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
+    <input type="hidden" name="orgid" value="00D28000000cT0x">
+    <input type="hidden" name="retURL" value="http://">
+
+    <input type="hidden" name="recordType" value="0120I000001Dmn0">
+    <input type="hidden" name="00N2800000C8tB3" value="楽天回線お問い合せご要望">
+    <input type="hidden" name="subject" value="MNOキャンセルフォーム">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  注意: これらの項目は、省略可能なデバッグ用要素です。デバッグモードでテストを行う場合は、これらの行をコメント解除してください。-->
+<!--  <input type="hidden" name="debug" value=1>                              -->
+<!--  <input type="hidden" name="debugEmail"                                  -->
+<!--  value="yuri.kunimoto@rakuten.com">                                      -->
+<!--  ----------------------------------------------------------------------  -->
+
+      <dl class="c-Form_List u-Adjust_Mt-24">
+        <div>
+          <dt>ご契約者氏名</dt>
+          <dd>楽天　太郎</dd>
+        </div>
+        <div>
+          <dt>ご契約者生年月日</dt>
+          <dd>1980/01/01</dd>
+        </div>
+        <div class="faq-cancel-Form_Item-area">
+          <dt>ご契約者住所</dt>
+          <dd>東京都世田谷区玉川一丁目14番1号 楽天クリムゾンハウス</dd>
+        </div>
+        <div>
+          <dt>キャンセルしたい「お申し込み回線（電話番号） 」</dt>
+          <dd>090XXXXXXXX</dd>
+        </div>
+        <div>
+          <dt>キャンセルしたい製品（端末）の「申込番号」</dt>
+          <dd>#123456789</dd>
+        </div>
+        <div>
+          <dt>キャンセル処理完了メールの受け取りメールアドレス</dt>
+          <dd>example@example.com</dd>
+        </div>
+      </dl>
+      <p class="u-Adjust_Align-center u-Adjust_Mt-40">
+        <input type="hidden" id="external" name="external" value="1" />
+        <input class="c-Btn_Primary-half" type="submit" name="submit" value="この内容で送信する">
+      </p>
+      <p class="u-Adjust_Align-center u-Adjust_Mt-40">
+        <input class="c-Btn_Regular-half" type="button" name="modify" value="修正する">
+      </p>
+    </form>
+ </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/cancel/_input') %>
+
+</body>
+</html>

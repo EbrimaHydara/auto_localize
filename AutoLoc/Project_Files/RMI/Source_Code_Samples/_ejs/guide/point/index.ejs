@@ -1,0 +1,329 @@
+<% const pagetitle = "楽天ポイント" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/payment/payment/", label:"支払い方法の確認・変更"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルのご利用料金100円につき1ポイントが貯まる楽天ポイント。貯まったポイントは月々のお支払いに使えて便利でおトク。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true">製品や月々の支払いに使える 楽天ポイント</li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Hero_Point">
+  <div class="<%= nameSpace %>-Hero_Point-wrap">
+    <div class="<%= nameSpace %>-Hero_Point-ttl">
+      <div class="<%= nameSpace %>-Hero_Point-logo"><img src="<%= sitepath %>assets/img/guide/point/hero-logo.png?211020" alt="Rakuten POINT" width="120"></div>
+      <h1 class="c-Heading_Lv1">楽天ポイント</h1>
+      <p>スマホ本体代や<br class="guide-Utility_Show-sp">月々のお支払いにも使える!</p>
+    </div>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container <%= nameSpace %>-Layout_Container-yellow">
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-8 u-Adjust_Align-center">楽天ポイント利用で<br class="guide-Utility_Show-sp">ずっとおトクが続く！</h2>
+    <p class="u-Adjust_Mt-8 u-Adjust_Align-center guide-Utility_Sp-left">楽天ポイントは1ポイント＝1円として、製品の購入や月々のお支払いにご利用いただけます。</p>
+    <div class="l-Media_Grid-half u-Adjust_Mt-48">
+      <div class="<%= nameSpace %>-Layout_Bg-Wt u-Adjust_Align-center guide-Info_border u-Adjust_Pb-32">
+        <p class="u-Adjust_Mt-8 u-Adjust_Pb-8 c-Txt_Emp-02 c-Txt_Normal-s">お申し込み時</p>
+        <h3>スマホ本体代のお支払いに使える！</h3>
+        <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-01.png?211020" alt="" class="u-Adjust_Mt-16">
+        <p class="c-Txt_Emp-01 u-Adjust_Mt-16">初回のお支払いがおトク！</p>
+        <p class="u-Adjust_Mt-8 u-Adjust_Align-left">スマホを新しく買いたいけれど、なるべく支出を減らしたい…そんなときに、楽天ポイントが便利です。あらかじめ貯まっているポイントがあれば、製品のお支払いにご利用いただけます。</p>
+        <a href="<%= sitepath %>guide/point-payment/?tab-list=tab-menu1" class="c-Btn_Regular-large u-Adjust_Mt-16"><span><span class="c-Txt_Normal-s c-Btn_Text-sub">製品のお支払いに</span>ポイントを使う方法を見る</span></a>
+      </div>
+      <div class="<%= nameSpace %>-Layout_Bg-Wt u-Adjust_Align-center guide-Info_border u-Adjust_Pb-32">
+        <p class="u-Adjust_Mt-8 u-Adjust_Pb-8 c-Txt_Emp-02 c-Txt_Normal-s">ご契約期間中</p>
+        <h3>月々のお支払いにも使える！</h3>
+        <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-02.png?211020" alt="" class="u-Adjust_Mt-16">
+        <p class="c-Txt_Emp-01 u-Adjust_Mt-16">月々のお支払いがおトク！</p>
+        <p class="u-Adjust_Mt-8 u-Adjust_Align-left">楽天ポイントは、楽天モバイルの月々のお支払いにご利用いただけます。プラン料金などの固定費のお支払いに役立ち、お財布の心づよい味方になります。&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;</p>
+        <a href="<%= sitepath %>guide/point-payment/?tab-list=tab-menu2" class="c-Btn_Regular-large u-Adjust_Mt-16"><span><span class="c-Txt_Normal-s c-Btn_Text-sub">月々のお支払いに</span>ポイントを使う方法を見る</span></a>
+      </div>
+    </div>
+    <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-16">
+      <li><span>※</span>製品（スマートフォンおよびアクセサリー）代金をクレジットカードまたはデビットカードにて一括でお支払いいただく場合、ポイントがご利用いただけます。</li>
+      <li class="u-Adjust_Mt-0"><span>※</span>製品を分割でお支払いいただく場合、初回のみポイントがご利用いただけます。分割払いの2回目以降はポイントをご利用になれません。</li>
+      <li class="u-Adjust_Mt-0"><span>※</span>一度にご利用できるポイント数は1～30,000 (ダイヤモンド会員の方は～500,000) ポイントです。</li>
+    </ul>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Mb-16">
+      <a href="<%= sitepath %>guide/payment/point/" class="c-Btn_Secondly-large"><span>楽天ポイント利用の詳細を見る</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-8 u-Adjust_Align-center">楽天ポイントはおトクで<br class="guide-Utility_Show-sp">手間いらず！</h2>
+    <div class="l-Media_Grid-half u-Adjust_Mt-48">
+      <div class="u-Adjust_Align-center u-Adjust_Pl-16 u-Adjust_Pr-16 u-Adjust_Pb-16">
+        <h3 class="c-Heading_Lv3">簡単な設定で<br class="guide-Utility_Show-sp">自動的にポイント利用</h3>
+        <p class="u-Adjust_Mt-16 u-Adjust_Align-left">あらかじめポイントを利用する額を設定しておけるので、毎月自動的に現金の支出額を減らせます。</p>
+        <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-03.png?211020" alt="" class="u-Adjust_Mt-16">
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Pl-16 u-Adjust_Pr-16 u-Adjust_Pb-16">
+        <h3 class="c-Heading_Lv3">期間限定ポイントを<br class="guide-Utility_Show-sp">サクサク使える</h3>
+        <p class="u-Adjust_Mt-16 u-Adjust_Align-left">期間限定ポイントから優先的に使われるので、ポイントを使い忘れる心配なし！</p>
+        <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-04.png?211020" alt="" class="u-Adjust_Mt-16">
+      </div>
+    </div>
+    <ul class="c-List_Cap c-Txt_Cap">
+      <li><span>※</span>期間限定ポイントをご利用の場合、ご利用料金請求時（毎月11日ごろ） に有効期限を過ぎているポイントは失効となり、ご利用いただけません。</li>
+    </ul>
+    <div class="guide-Info_border u-Adjust_Mt-32 u-Adjust_Mb-16">
+      <h3 class="c-Heading_Lv3 u-Adjust_Align-center">さらに！楽天だけでなく様々なサービスで使える</h3>
+      <div class="l-Media_Grid-reverse u-Adjust_Mt-16">
+
+        <div>
+          <p>楽天市場や楽天トラベルなど、楽天グループのサービスのほか、街でのお買い物でもご利用いただけます。</p>
+          <a href="https://point.rakuten.co.jp/use/" class="c-Btn_Regular u-Adjust_Mt-16"><span>ポイントが使えるサービスを見る</span></a>
+        </div>
+        <div class="l-Media_Image">
+          <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-05.png?211020" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container <%= nameSpace %>-Layout_Container-yellow">
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-8 u-Adjust_Align-center">楽天ポイントのおトクな<br class="guide-Utility_Show-sp">ご利用イメージ</h2>
+    <p class="u-Adjust_Mt-8 u-Adjust_Align-center guide-Utility_Sp-left">貯まった楽天ポイントで毎月のスマホ代を「0円」にすることも！</p>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-48">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-17.png" alt="Rakuten最強プラン" class="guide-Utility_Img-pc">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-17-sp.png" alt="Rakuten最強プラン" class="guide-Utility_Img-sp">
+    </div>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">
+      ※1 <a href="<%= sitepath %>campaign/spu/" class="c-Link_Txt">SPU（スーパーポイントアッププログラム）</a>を利用してポイント還元率7倍の場合〈通常のお買い物で1倍、楽天カード通常分で＋1倍、楽天カード特典分で＋1倍、楽天モバイルご利用で＋4倍〉ポイント未利用時の倍率です<br>
+      ※2 楽天カード通常分については税込100円につき1ポイント、その他は税別100円につき1ポイントで算出。<br>
+      ※3 楽天カードの一部ポイント還元率が異なる利用先があります。詳細は<a href="https://www.rakuten-card.co.jp/point/pointrate/" target="_blank">こちら</a>。<br>
+      ※ ポイント利用例で表記している金額は特に記載のない限り税別です。また、消費税率は、すべて10％で計算しています。
+    </p>
+
+    <div class="u-Adjust_Align-center">
+    <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-06-sp.png?211020" alt="" class="guide-Utility_Img-sp u-Adjust_Mt-16"  width="246">
+  </div>
+  </div>
+</div>
+
+<div class="l-System_Container <%= nameSpace %>-Layout_Container u-Adjust_Pt-48">
+  <div>
+      <h2 class="c-Heading_Lv2 u-Adjust_Align-center">楽天市場のお買い物で<br class="guide-Utility_Show-sp"><span class="c-Txt_Emp-02">ポイントが貯まる</span></h2>
+
+      <div class="<%= nameSpace %>-Layout_Container <%= nameSpace %>-Layout_Container-pink">
+        <div class="<%= nameSpace %>-Layout_Spu u-Adjust_Mt-0">
+          <div style="align-items: center;">
+            <div class="<%= nameSpace %>-Layout_Spu-group" style="gap: 27px;">
+              <img src="<%= sitepath %>assets/img/guide/point/logo-spu.png" alt="SPU" width="161" class="<%= nameSpace %>-Layout_Spu-img <%= nameSpace %>-Flow_List-image">
+              <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-07-231201.png" alt="" class="guide-Utility_Img-pc u-Adjust_Ml-0" width="72%">
+              <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-07-sp-231201.png" alt="" class="guide-Utility_Img-sp">
+            </div>
+            <p class="c-Txt_Cap">※月間上限2,000ポイント</p>
+          </div>
+        </div>
+        <div class="<%= nameSpace %>-Layout_Spu u-Adjust_Mb-0">
+          <div class="u-Adjust_Align-center">
+            <div>
+              <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-15-231201.png" alt="" class="guide-Utility_Img-pc" width="647">
+              <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-15-sp-231201.png" alt="" class="guide-Utility_Img-sp">
+            </div>
+            <p class="c-Txt_Cap">※4 楽天モバイルキャリア決済（androidのみ）を月間合計2,000円（税込）以上ご利用の場合に適用。月間上限1,000ポイント</p>
+          </div>
+        </div>
+    </div>
+    <p class="c-Txt_Cap u-Adjust_Mt-24 u-Adjust_Mr-16 u-Adjust_Ml-16">
+      ※期間限定ポイントでの付与となります。
+    </p>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-48">
+        <a href="<%= sitepath %>campaign/spu/?l-id=guide_point_campaign_spu" class="c-Banner_Hover-act">
+          <img src="<%= sitepath %>assets/img/campaign/payment-google/img-spu-1032-160-20240401.png" class="guide-Utility_Img-pc" alt="SPU（スーパーポイントアップ）楽天市場のお買い物がポイント最大17倍※条件あり 楽天モバイルキャリア決済ご利用でポイント＋2倍" width="1032">
+          <img src="<%= sitepath %>assets/img/campaign/payment-google/img-spu-343-108-20240401.png" class="guide-Utility_Img-sp-1" alt="SPU（スーパーポイントアップ）楽天市場のお買い物がポイント最大17倍※条件あり 楽天モバイルキャリア決済ご利用でポイント＋2倍">
+        </a>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+        <a href="<%= sitepath %>campaign/payment-google/?l-id=guide_point_campaign_payment-google">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-payment-google-1032-160-240201.png" class="guide-Utility_Img-pc" alt="Android™でのアプリ購入やアプリ内課金が楽天モバイルキャリア決済利用で最大2%ポイント還元" width="1032">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-payment-google-343-108-240201.png" class="guide-Utility_Img-sp-1" alt="Android™でのアプリ購入やアプリ内課金が楽天モバイルキャリア決済利用で最大2%ポイント還元">
+        </a>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+        <a href="<%= sitepath %>tips/gservice/?l-id=campaign_spu_tips_gservice">
+          <img src="<%= sitepath %>assets/img/tips/gservice/bnr-gservice-1032-160.png" width="1032" alt="70以上のサービスの中から楽天モバイルご契約者様向けに厳選！楽天のおトクなサービス" class="guide-Utility_Img-pc">
+          <img src="<%= sitepath %>assets/img/tips/gservice/bnr-gservice-328-185.png" width="1032" alt="70以上のサービスの中から楽天モバイルご契約者様向けに厳選！楽天のおトクなサービス" class="guide-Utility_Img-sp-1">
+        </a>
+      </div>
+  </div>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container <%= nameSpace %>-Layout_Container-yellow">
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-8 u-Adjust_Align-center">お客様満足度No.1の<br class="guide-Utility_Show-sp">楽天ポイント</h2>
+    <div class="l-Media_Grid-half u-Adjust_Mt-32">
+      <div class="u-Adjust_Align-center u-Adjust_Pl-8 u-Adjust_Pr-8 u-Adjust_Pb-16">
+        <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-16.png" alt="" width="400">
+      </div>
+      <div class="u-Adjust_Pl-8 u-Adjust_Pr-8 u-Adjust_Pb-16">
+        <p>楽天ポイントは、世の中の数あるポイントの中で、お客様が選ぶ「ポイント総合満足度」No.１のポイントです。</p>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li>「昨年もっとも貯まったポイント」No.1</li>
+          <li>「ポイント総合満足度」No.1</li>
+          <li>「もらってうれしいポイント」No.1</li>
+        </ul>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">
+          ※情報元：「<a href="https://event.rakuten.co.jp/okaimonopanda/pointzukan/" class="c-Link_Txt-inline-icon" target="_blank">楽天ポイント お楽しみ図鑑<span class="c-Icon_New-window-l"></span></a>」（ポイントに関する調査、有効回答＝1,000、インターネット調査、2022年11月、実施機関：マイボイスコム）
+        </p>
+       </div>
+      </div>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-24 u-Adjust_Align-center">楽天モバイルにするだけで<br class="guide-Utility_Show-sp">おトクが弾む！</h3>
+    <h3 class="guide-Utility_Show-pc-1 c-Heading_Lv3 u-Adjust_Mt-48">＼ザクザク貯まる！／<span class="guide-Utility_Show-sp-1">＼便利に使える！／</span></h3>
+    <div class="guide-Utility_Show-pc-2 u-Adjust_Mt-16">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-11-0826.png" alt="" class="guide-Utility_Img-pc">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-12-231201.png" alt="" class="guide-Utility_Img-pc">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-13-0826.png" alt="" class="guide-Utility_Img-pc">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-14-0826.png" alt="" class="guide-Utility_Img-pc">
+    </div>
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-11-0826-sp.png" alt="" class="guide-Utility_Img-sp u-Adjust_Mt-16">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-12-231201-sp.png" alt="" class="guide-Utility_Img-sp u-Adjust_Mt-16">
+      <h4 class="c-Heading_Lv3 guide-Utility_Show-sp u-Adjust_Mt-8 u-Adjust_Align-center">＼便利に使える！／</h4>
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-13-0826-sp.png" alt="" class="guide-Utility_Img-sp u-Adjust_Mt-16">
+      <img src="<%= sitepath %>assets/img/guide/point/img-guide-point-14-0826-sp.png" alt="" class="guide-Utility_Img-sp u-Adjust_Mt-16">
+    </div>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-48 u-Adjust_Mb-16 u-Adjust_Align-center">お申し込みはこちらから</h3>
+    <div class="<%= nameSpace %>-Layout_Box l-Media_Grid-half u-Adjust_Mt-8 u-Adjust_Align-center">
+      <div class="xu-Adjust_Align-center u-Adjust_Pl-0 u-Adjust_Pr-0 u-Adjust_Mt-16">
+        <a href="<%= sitepath %>guide/application/?lid-r=guide_point_guide_application" class="c-Btn_Primary-large"><span><span class="c-Txt_Normal-s c-Btn_Text-sub">製品や月々のお支払いにポイントが使える！</span>新規／乗り換え（MNP）お申し込み</span></a>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Pl-0 u-Adjust_Pr-0 u-Adjust_Mt-16">
+        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=top_button_ms&mno_migration=1" class="c-Btn_Secondly-large"><span><span class="c-Txt_Normal-s c-Btn_Text-sub">以前からご利用中の楽天モバイルからの</span>プラン変更（移行）お申し込み</span></a>
+      </div>
+    </div>
+
+</div>
+
+
+<div class="<%= nameSpace %>-Layout_Container u-Adjust_Pt-0">
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64 u-Adjust_Align-center <%= nameSpace %>-Sp_Mt-48" id="point01">楽天モバイルご利用による楽天ポイント付与条件</h2>
+    <dl class="c-Dl_Origin u-Adjust_Mt-48">
+      <div>
+        <dt>付与条件</dt>
+        <dd>楽天ポイントは、楽天モバイルの対象サービスのご利用代金100円(税別)につき1ポイントが貯まります。<br>
+          ポイントを利用したお支払い分も含めて付与されるため、ご利用代金すべてをポイントでお支払いいただいた場合にも、ポイントは付与されます。<br>
+          ポイントの利用については、<a href="<%= sitepath %>guide/payment/point/ ">こちら</a>を参照ください。
+          <p class="u-Adjust_Mt-8">付与されるポイントについて</p>
+            <ul class="u-Adjust_Mt-8">
+              <li>・付与されるポイントは通常ポイントで付与されます。</li>
+              <li>・一カ月の付与上限ポイントはございません。</li>
+            </ul>
+          </dd>
+      </div>
+      <div>
+        <dt>付与タイミング</dt>
+        <dd>サービス開始月の翌々月から毎月25日に付与されます。</dd>
+      </div>
+      <div>
+        <dt>対象サービス</dt>
+        <dd>ポイント付与対象サービスは、プラン料金、ユニバーサルサービス料、電話リレーサービス料、通話料（15分（標準）通話かけ放題、国際通話、国際通話かけ放題含む）、電話番号シェアサービス、SMS送受信料、マカフィー® モバイル セキュリティ Android版、楽天モバイルWiFi by エコネクト、スマホ操作遠隔サポート、あんしん操作サポート、あんしんコントロール by i-フィルター、スマホ交換保証プラス、ノートン™ モバイル セキュリティ、持ち込みスマホあんしん保証、故障紛失保証 with AppleCare Services、故障紛失保証 with AppleCare Services & iCloud+、あんしん保証with AppleCare Services for Apple Watch、データチャージ、楽メール持ち運びです。その他のサービスの費用は、ポイント付与対象外です。
+        </dd>
+      </div>
+      <div>
+        <dt>その他注意事項</dt>
+        <dd>
+          <ul>
+            <li>・ご契約者とお支払い名義人が異なる場合、ご契約者の楽天ID（楽天ポイント口座）に楽天ポイントが付与されます。</li>
+            <li>・以下の条件に当てはまる場合は、ポイント付与対象外となります。</li>
+            <li>※ポイント付与時に登録された楽天ID（楽天ポイント口座）を削除された場合</li>
+            <li>※楽天モバイルに楽天ID（楽天ポイント口座）が登録されていない場合</li>
+            <li>※楽天モバイルにご登録の楽天ID（楽天ポイント口座）を削除された場合</li>
+            <li>※当社の提供するサービスなどの料金のお支払いを、お支払期限までに行わなかった場合</li>
+            <li>※当社が定める規約などに違反した場合</li>
+            <li>※そのほか、当社が会員として不適格であると判断した場合</li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+    <li aria-current="true">製品や月々の支払いに使える 楽天ポイント</li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/poikaku-lp-bnr/_js') %>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

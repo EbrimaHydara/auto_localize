@@ -1,0 +1,311 @@
+<% const pagetitle = "Rakuten最強プラン（データタイプ）のお申し込み方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/application/flow/", label:"お申し込み方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Webページから「Rakuten最強プラン（データタイプ）」をお申し込みいただく際の手順をご案内いたします。',
+    noindex: false,
+    pathname: filepath,
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/flow/application/data-type/data-type.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container u-Adjust_Pt-32">
+  <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-32">Webページから「Rakuten最強プラン（データタイプ）」をお申し込みいただく際の手順をご案内いたします。</p>
+
+  <section class="u-Adjust_Mt-64">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-48">お申し込み前にご確認ください</h2>
+    <ul class="data-type-List_Text-disc u-Adjust_Mt-16">
+      <li>
+        <p>楽天会員ログイン用のユーザーID、パスワードをご用意ください。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※楽天会員情報に「お支払い方法（ご本人名義の楽天カード）」「生年月日」「住所」「電話番号」「メールアドレス」「性別」が正しく登録されている必要があります。</p>
+        <p class="u-Adjust_Mt-8"><a href="https://member.id.rakuten.co.jp/rms/nid/registfwdi" class="c-Link_Txt-inline-icon" target="_blank">楽天の会員登録（無料）をする<span class="c-Icon_New-window-l"></span></a></p>
+      </li>
+      <li class="u-Adjust_Mt-16">18歳未満のお客様は、Webでのお申し込みは出来ません。<a href="<%= sitepath %>guide/flow/application/data-type/for-minors/" class="c-Link_Txt">詳しくはこちら</a>をご確認ください。</li>
+      <li class="u-Adjust_Mt-16">
+        <p>お申し込み時にeSIMを選択した場合は、そのまま即開通が可能※です。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※審査状況により変動します。</p>
+        <p class="u-Adjust_Mt-8">eSIMのご利用には楽天モバイル対応のeSIM対応製品が必要です。<a href="<%= sitepath %>product/byod/" class="c-Link_Txt">ご利用製品の対応状況はこちら</a>をご確認ください。</p>
+      </li>
+    </ul>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">お申し込み方法</h2>
+    <ol class="c-Flow u-Adjust_Mt-32">
+
+      <li>
+        <h3 class="c-Heading_Lv3">1. 以下の「申し込む」ボタンをタップする</h3>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※Rakuten最強プラン（データタイプ）のお申し込み画面へ移動します</p>
+        <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※楽天グループの対象アプリをお持ちの場合、お申し込み画面はアプリ経由で表示されます。</p>
+        <p class="u-Adjust_Mt-16">
+          <a href="<%= sitepath %>onboarding/fast/" class="c-Btn_Primary data-type-Btn_Primary-normal" data-ratid="guide_flow_application_data-type_datasimoneclick" data-ratevent="click" data-ratparam="all">
+            <span>申し込む</span>
+          </a>
+        </p>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">2. 「プランのみお申し込み」を選択する</h3>
+        <p class="l-Media_Image u-Adjust_Mt-16">
+          <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow01-231109.png" class="c-Img_Capture" alt="">
+        </p>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">3. 「Rakuten最強プラン（データタイプ）」を選択する</h3>
+        <p class="l-Media_Image u-Adjust_Mt-16">
+          <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow02-231109.png" class="c-Img_Capture" alt="">
+        </p>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">4. SIMタイプを選択し、重要事項説明などを確認する</h3>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">SIMタイプ</h4>
+          <p class="u-Adjust_Mt-16">ご利用したい製品にあわせてSIMタイプを選択してください。</p>
+          <ul class="u-Adjust_Mt-16">
+            <li class="c-Txt_Cap">※お申し込みの際は、「<a href="<%= sitepath %>product/certified-products/" class="c-Link_Txt">楽天回線対応製品</a>」を必ずご確認ください。</li>
+            <li class="c-Txt_Cap u-Adjust_Mt-8">※eSIMについては「<a href="<%= sitepath %>product/sim/esim/" class="c-Link_Txt">eSIMとは？</a>」をご確認ください。</li>
+          </ul>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow03-231109.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">重要事項説明などの確認</h4>
+          <p class="u-Adjust_Mt-16">重要事項説明などを確認し、「同意しました」にチェックを入れてください。</p>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow04-231109.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">申し込み内容の確認へ進む</h4>
+          <p class="u-Adjust_Mt-16">SIMタイプと重要事項説明などを確認し、「次へ進む」をタップしてください。</p>
+          <p class="u-Adjust_Mt-16 c-Txt_Cap">※以降の画面では、申し込み内容の変更は原則できませんのでご注意ください。</p>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow05-231109.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">5. 楽天モバイルにログインする</h3>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※楽天会員に登録されていない方は新規登録を行ってください。</p>
+        <p class="l-Media_Image u-Adjust_Mt-16">
+          <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow01.png" class="c-Img_Capture" alt="">
+        </p>
+        <div class="c-Accordion u-Adjust_Mt-16">
+          <button id="Accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="Accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ログイン時にエラーが出る場合</button>
+          <div id="Accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="Accordion-1" aria-hidden="true">
+            <p class="u-Adjust_Mt-16">以下の場合、ログイン時にエラーメッセージが表示されます。</p>
+            <ul class="data-type-List_Text-disc">
+              <li>
+                <p>楽天会員情報に不足がある場合</p>
+                <p class="u-Adjust_Mt-8">楽天会員情報編集画面より必要な情報を追加のうえ、再度お申し込みください。</p>
+              </li>
+              <li>
+                <p>楽天会員情報に登録されている年齢が18歳未満の場合</p>
+                <p class="u-Adjust_Mt-8">18歳未満のお客様はWebよりRakuten最強プラン（データタイプ）に申し込むことは出来ません。<a href="<%= sitepath %>guide/flow/application/data-type/for-minors/" class="c-Link_Txt">詳細はこちら</a>をご確認ください。</p>
+              </li>
+            </ul>
+            <p class="l-Media_Image u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow01-2-230718.png" class="c-Img_Capture" alt="">
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">6. お申し込み内容を確認し、申し込みを完了させる</h3>
+        <!-- <p class="u-Adjust_Mt-16">表示される画面の案内にしたがって、お申し込み内容を登録してください。</p> -->
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">SIMタイプ</h4>
+          <p class="u-Adjust_Mt-16">手順4で選択したSIMタイプが設定されていることをご確認ください。</p>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow05-230718.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">電話番号</h4>
+          <p class="u-Adjust_Mt-16">Rakuten最強プラン（データタイプ）でSMSを利用する際の電話番号です。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">※選べる電話番号サービスは利用できません。</p>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow06-230718.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">お支払い方法</h4>
+          <p class="u-Adjust_Mt-16">楽天会員情報に登録されているお支払い方法が選択されます。</p>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow04-231030.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">楽天ポイント利用設定</h4>
+          <p class="u-Adjust_Mt-16">利用する楽天ポイントを設定できます。</p>
+          <p class="u-Adjust_Mt-16">毎月のお支払いにあらかじめ設定した数のポイントを使いたい場合、「<a href="<%= sitepath %>guide/point-payment/" class="c-Link_Txt">楽天ポイントの利用設定</a>」をご確認のうえ、お申し込み完了後に設定してください。</p>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow08-230718.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">契約者情報</h4>
+          <p class="u-Adjust_Mt-16">表示されている契約者情報が正しいかご確認ください。</p>
+          <ul class="u-Adjust_Mt-16">
+            <li class="c-Txt_Cap">※変更が必要な場合は契約者情報から変更できます。変更後に再度お申し込みをしてください。</li>
+            <li class="c-Txt_Cap u-Adjust_Mt-8">※既にご契約済みの回線がある場合、氏名の変更には改姓手続きが必要になります。<a href="<%= sitepath %>guide/contractor-name-change/" class="c-Link_Txt">詳しくはこちら</a>をご確認ください。</li>
+          </ul>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow09-230718.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+        <div class="u-Adjust_Mt-32">
+          <h4 class="c-Heading_Lv4">申し込みを完了させる</h4>
+          <p class="u-Adjust_Mt-16">お申し込み内容の確認が完了したら、「この内容で申し込む」をタップしてください。</p>
+          <p class="u-Adjust_Mt-16 c-Txt_Cap">※契約書の郵送をご希望の場合は「my楽天モバイルで契約内容を確認する」のチェックを外してください。</p>
+          <p class="l-Media_Image u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow10-230718.png" class="c-Img_Capture" alt="">
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">7. お申し込み完了</h3>
+        <p class="u-Adjust_Mt-16">お申し込み内容の確認などは、「<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile/" class="c-Link_Txt-inline-icon" target="_blank">my 楽天モバイル<span class="c-Icon_New-window-l"></span></a>」でご確認いただけます。</p>
+        <p class="l-Media_Image u-Adjust_Mt-16">
+          <img src="<%= sitepath %>assets/img/guide/flow/application/data-type/img-flow11-230731.png" class="c-Img_Capture" alt="">
+        </p>
+      </li>
+
+      <li>
+        <h3 class="c-Heading_Lv3">8. 開通手続きへ進む</h3>
+        <p class="u-Adjust_Mt-16">ご利用中の製品がeSIM対応製品の場合、楽天グループの対象アプリからeSIMをお申し込みいただくと、お申し込み完了画面からそのまま開通手続きを行うことができます。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※使用するアプリが最新バージョンである必要があります。</p>
+        <p class="u-Adjust_Mt-16">後からeSIMのダウンロードを行う場合や、SIMカードをお申し込みの場合の開通手続き方法については、以下をご確認ください。</p>
+        <p class="u-Adjust_Mt-16">
+          <a href="<%= sitepath %>guide/setting/data-type-esim/?l-id=guide_flow_application_data-type_guide_setting_data-type-esim" class="c-Btn_Secondly data-type-Btn_Secondly-normal">eSIMの開通手続きへ進む</a>
+        </p>
+        <p class="u-Adjust_Mt-16">
+          <a href="<%= sitepath %>guide/setting/data-type-sim/?l-id=guide_flow_application_data-type_guide_setting_data-type-sim" class="c-Btn_Secondly data-type-Btn_Secondly-normal">SIMカードの開通手続きへ進む</a>
+        </p>
+      </li>
+
+    </ol>
+  </section>
+
+  <section>
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">注意事項</h2>
+    <ul class="data-type-List_Text-disc u-Adjust_Mt-24">
+      <li>Rakuten最強プラン（データタイプ）は、製品やアクセサリーと同時にお申し込みいただくことは出来ません。別々でお申し込みください。</li>
+      <li class="u-Adjust_Mt-16">
+        <p>お申し込み画面の途中でオプションを追加することは出来ません。</p>
+        <p>my 楽天モバイルから追加でお申し込みください。</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="u-Adjust_Mt-64 u-Adjust_Mb-40">
+    <h2 class="c-Heading_Lv2">よく見られているご質問</h2>
+    <p class="u-Adjust_Mt-16">よく見られているご質問をご案内します。お困りごとが解決しない場合は、各ページからチャットやお電話でお問い合わせいただけます。</p>
+    <ul class="c-Link_List u-Adjust_Mt-24">
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000812/">「Rakuten最強プラン」と「Rakuten最強プラン（データタイプ）」の違いは何ですか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000809/">「Rakuten最強プラン（データタイプ）」から「Rakuten最強プラン」への変更はできますか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000808/">「Rakuten最強プラン」から「Rakuten最強プラン（データタイプ）」への変更はできますか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000810/">「Rakuten最強プラン」か「Rakuten最強プラン（データタイプ）」のどちらを申し込んだか確認する方法はありますか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000811/">「Rakuten 最強プラン（データタイプ）」で、キャリア決済の月額利用可能額が設定できないのはなぜですか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+    </ul>
+  </section>
+
+  <div class="u-Adjust_Align-center">
+    <div class="u-Adjust_Mt-32"><a href="<%= sitepath %>support/" class="c-Btn_Regular data-type-Btn_Regular-normal"><span>お客様サポートトップに戻る</span></a></div>
+    <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular data-type-Btn_Regular-normal"><span>楽天モバイルトップへ</span></a></div>
+  </div>
+
+  <div class="u-Adjust_Mt-16 guide-Btn_Bot" id="openchatbot">
+    <a href="#openchatbot" data-ratId="floating-ai_chat_support" data-ratEvent="click" data-ratParam="all"><img src="<%= sitepath %>assets/img/common/img-aichat-bot.png" width="124" alt="Open chat Bot"></a>
+    <div class="u-Adjust_Mt-16 guide-Btn_Bot-close">
+      <div role="button" tabindex="0" id="closechatbot" class="guide-Btn_Bot-close-btn" aria-label="チャットボットを閉じる"><img src="<%= sitepath %>assets/img/common/img-aichat-close.png" width="20" alt=""></div>
+    </div>
+  </div>
+
+
+  <%- include('/include/guide/_inquiry') %>
+  <%- include('/include/guide/_review') %>
+</div>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

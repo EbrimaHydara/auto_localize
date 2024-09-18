@@ -1,0 +1,242 @@
+<% const pagetitle = "通話サービスの追加・解約（一時停止）・設定方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/plan/internal-voice/", label:" 通話/通信サービス（国内）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '通話サービスの追加・解約（一時停止）・設定方法をご案内します。my 楽天モバイル（アプリ・Web）からかんたんに変更のお手続きが可能です',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-40">以下の通話サービスは、「my 楽天モバイル」で追加・解約（一時停止）・設定のお手続きができます。</p>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-24">プランに含まれるオプションサービス</h3>
+    <dl class="c-Dl_Origin u-Adjust_Mt-24">
+      <div>
+        <dt>国内</dt>
+        <dd>
+          <ul class="<%= nameSpace %>-Layout_list">
+            <li>留守番電話<sup class="c-Txt_Cap">※1</sup></li>
+            <li>着信転送<sup class="c-Txt_Cap">※1</sup></li>
+            <li>割込通話／通話保留</li>
+            <li>発信者番号非通知</li>
+          </ul>
+           <span class="c-Txt_Cap">※1 Rakuten Linkアプリで留守番電話・着信転送をご利用される場合、<a href="https://network.mobile.rakuten.co.jp/faq/detail/10000362/">設定や料金に関する注意事項</a>がございます。事前にご確認ください。</span>
+        </dd>
+      </div>
+      <div>
+        <dt>国際</dt>
+        <dd>
+          <ul class="<%= nameSpace %>-Layout_list">
+            <li>国際通話・国際SMS</li>
+            <li>海外ローミング（データ通信）</li>
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-40">お手続き方法</h2>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-40">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Webでお手続き</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">アプリでお手続き</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. my 楽天モバイル「契約プラン」の「プランに含まれるオプションサービス」画面を開く
+            </h4>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">※「プランに含まれるオプションサービスへ進む」をタップしてログインすると、手順２の画面が表示されます。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">※ログインが行えない場合は「<a href="<%= sitepath %>faq/detail/00001207/" class="c-Link_Txt">[my
+                楽天モバイル]ログインできません</a>」をご確認ください。</p>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a href="https://portal.mobile.rakuten.co.jp/dashboard?scrollTo=domesticServices#plans" target="_blank"
+                class="c-Btn_Secondly-large" data-ratId="guide_ecare_plans_domesticServices" data-ratEvent="click"
+                data-ratParam="all">プランに含まれる<br>オプションサービスへ進む</a>
+            </p>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2.追加・解約・設定をしたい通話サービスのオン・オフを切り替える
+            </h4>
+            <p class="u-Adjust_Mt-16">オンになれば、対象の通話サービスは有効となります。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※オン・オフを切り替えた際に「設定内容を変更しますか？」と表示された場合は、「変更する」をタップしてください。<br>
+              ※「留守番電話」、「着信転送」はオンを選択した際に応答時間などの設定も行います。設定を終えたら「変更する」をタップすることで有効となります。<br>
+              ※着信転送を有効にすると留守番電話は停止されます。
+            </p>
+            <div class="c-Accordion u-Adjust_Mt-16">
+              <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルを2回線以上ご契約中の場合</button>
+              <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+                <p class="u-Adjust_Mt-8">楽天モバイルを2回線以上契約されている場合は、以下の手順で表示する電話番号を切り替えることができます。</p>
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-24">1. 画面で表示されている電話番号をタップする</h5>
+                <div class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-01-230623.png" alt="" width="298" height="139" loading="lazy" class="c-Img_Capture"></div>
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">2. 回線を表示したい電話番号をタップする</h5>
+                <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>チェックがついている電話番号が、現在表示されている回線です。</p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-02-230623.png" alt="" width="298" height="243" loading="lazy" class="c-Img_Capture"></div>
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">3. 表示されている電話番号が切り替わっていることを確認する</h5>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-03-230623.png" alt="" width="298" height="222" loading="lazy" class="c-Img_Capture"></div>
+              </div>
+            </div>
+            <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/call-service-settings/img-08-230510.png" width="311" height="584" loading="lazy" alt="" class="c-Img_Capture">
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. my 楽天モバイルを起動する
+            </h4>
+            <div class="u-Adjust_Mt-24">
+              <div class="c-Box_App">
+                <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+                <div class="c-Box_App-txt">
+                  <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                  <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                  <ul class="c-Box_App-link u-Adjust_Mt-16">
+                    <li><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank"><img
+                          src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" height="44" alt=""></a></li>
+                    <li><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank"><img
+                          src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></li>
+                    <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular">詳細を見る</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              2. 画面下の「契約プラン」をタップする
+            </h4>
+            <div>
+              <p class="u-Adjust_Mt-16">現在の通話サービスやオプションサービスのご契約状況をご確認いただけます。</p>
+              <div class="l-Media_Image">
+                <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img
+                    src="<%= sitepath %>assets/img/guide/call-service-settings/img-01.png" width="300" height="" alt=""
+                    class="c-Img_Capture"></figure>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4 class="c-Heading_Lv4">
+              3.追加・解約・設定をしたい通話サービスのオン・オフを切り替える
+            </h4>
+            <p class="u-Adjust_Mt-16">オンになれば、対象の通話サービスは有効となります。</p>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※オン・オフを切り替えた際に「設定内容を変更しますか？」と表示された場合は、「変更する」をタップしてください。<br>
+              ※「留守番電話」、「着信転送」はオンを選択した際に応答時間などの設定も行います。設定を終えたら「変更する」をタップすることで有効となります。<br>
+              ※着信転送を有効にすると留守番電話は停止されます。
+            </p>
+            <div class="c-Accordion u-Adjust_Mt-16">
+              <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルを2回線以上ご契約中の場合</button>
+              <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+                <p class="u-Adjust_Mt-8">楽天モバイルを2回線以上契約されている場合は、以下の手順で表示する電話番号を切り替えることができます。</p>
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-24">1. 画面で表示されている電話番号をタップする</h5>
+                <div class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-01-230623.png" alt="" width="298" height="139" loading="lazy" class="c-Img_Capture"></div>
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">2. 回線を表示したい電話番号をタップする</h5>
+                <p class="c-Txt_Cap u-Adjust_Mt-16"><span>※</span>チェックがついている電話番号が、現在表示されている回線です。</p>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-04-230623.png" alt="" width="298" height="243" loading="lazy" class="c-Img_Capture"></div>
+                <h5 class="c-Heading_Lv5 u-Adjust_Mt-16">3. 表示されている電話番号が切り替わっていることを確認する</h5>
+                <div class="u-Adjust_Mt-16 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/common/change-2over-flow-03-230623.png" alt="" width="298" height="222" loading="lazy" class="c-Img_Capture"></div>
+              </div>
+            </div>
+            <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/call-service-settings/img-09-230510.png" width="311" height="529" loading="lazy" alt="" class="c-Img_Capture">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="u-Adjust_Mt-32">以上で完了です。</p>
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

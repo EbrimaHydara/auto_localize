@@ -1,0 +1,221 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "新規お申し込みに関するお問い合わせ" -%>
+<% const directories = [{path: hikariroot.path + "inquiry/", label:"お問い合わせ"}] -%>
+<%-
+	include('/_header', {
+	pagetitle: pagetitle,
+	directories: directories,
+	description: '楽天ひかりへの新規お申し込みに関するお問い合わせフォームはこちらです。',
+	noindex: false,
+	pathname: filepath,
+  ishikari: true,
+  canonical_custom: 'https://network.mobile.rakuten.co.jp/hikari/inquiry/form/consult/',
+	});
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<%- include('/include/hikari/_common-v2-hikari-css-only-hf') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/inquiry/form/consult/consult.css?20240424">
+
+
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+	<%- include('/hikari/include/_header', { headerType: 'normal', pagetitle: pagetitle, directories: directories, tax: false }) %>
+
+		<div class="l-hikari-Section_Main">
+			<div class="l-System_Container">
+			<h1 class="c-Heading_Lv1">新規お申し込みに関するお問い合わせ</h1>
+			<p class="l-hikari-Section_Main-lead">
+				既に楽天ひかりをご契約中のお客様は<a href="<%= sitepath %><%= hikariroot.path %>support/" target="_blank" class="c-Link_Txt-inline">お客様サポート<span class="c-Icon_New-window-l"></span></a>をご覧ください。
+			</p>
+
+			<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="toiawase_form">
+				<input type=hidden name="oid" value="00D2v000001WJL6">
+				<input type=hidden name="recordType" value="0122v000001QuQj">
+				<input type=hidden name="lead_source" value="楽天ひかり（申込に関するお問い合わせ）">
+				<input type=hidden name="company" value="楽天ひかり">
+				<input type=hidden name="retURL" value="https://network.mobile.rakuten.co.jp/hikari/inquiry/form/consult/completion/">
+
+				<div id="js-error-first"></div>
+
+				<dl class="c-Dl_Origin u-Adjust_Mt-32 hf-support-chat-dl">
+					<div>
+						<dt>氏名<span class="c-Form_List-required">必須</span></dt>
+						<dd>
+							<ul class="hikari-form-List-2col-short">
+								<li>
+									<input name="last_name" id="last_name" type="text" class="c-Form_Input js-required" aria-required="true" aria-invalid="false" placeholder="例：楽天" maxlength="40">
+								</li>
+								<li>
+									<input name="first_name" id="first_name" type="text" class="c-Form_Input js-required" aria-required="true" aria-invalid="false" placeholder="例：太郎" maxlength="40">
+								</li>
+							</ul>
+						</dd>
+					</div>
+					<div>
+						<dt>メールアドレス<span class="c-Form_List-required">必須</span></dt>
+						<dd>
+							<input name="email" id="email" type="text" class="c-Form_Input js-mail-check js-required" aria-required="true" aria-invalid="false" placeholder="例：info@rakuten.com"　size="20" maxlength="80" />
+						</dd>
+					</div>
+					<div>
+						<dt>連絡先電話番号<span class="c-Form_List-required">必須</span></dt>
+						<dd>
+							<input name="phone" id="phone" type="text" class="c-Form_Input js-tel-check js-required" aria-required="true" aria-invalid="false" placeholder="例：03XXXXYYYY"　maxlength="20"/>
+						</dd>
+					</div>
+					<div>
+						<dt>現在使用中のインターネット回線（複数選択可）</dt>
+						<dd>
+							<ul class="hikari-form-List-2col">
+								<li>
+									<label class="c-Form_Checkboxblock">
+										<input type="checkbox" id="光回線" name="00N2v00000JLlDE" class="js-any1" value="1">
+										<span class="c-Form_Checkboxblock-wrap hikari-inquiry-form-consult_Checkbox-wrap">
+											<span class="c-Icon_Check"></span>
+											<span class="c-Form_Checkboxblock-label">光回線</span>
+										</span>
+									</label>
+								</li>
+								<li>
+									<label class="c-Form_Checkboxblock">
+										<input type="checkbox" id="ADSL回線" name="00N2v00000JLlDA" class="js-any1" value="1">
+										<span class="c-Form_Checkboxblock-wrap hikari-inquiry-form-consult_Checkbox-wrap">
+											<span class="c-Icon_Check"></span>
+											<span class="c-Form_Checkboxblock-label">ADSL回線</span>
+										</span>
+									</label>
+								</li>
+								<li>
+									<label class="c-Form_Checkboxblock">
+										<input type="checkbox" id="モバイル回線" name="00N2v00000JLlDC" class="js-any1" value="1">
+										<span class="c-Form_Checkboxblock-wrap hikari-inquiry-form-consult_Checkbox-wrap">
+											<span class="c-Icon_Check"></span>
+											<span class="c-Form_Checkboxblock-label">モバイル回線</span>
+										</span>
+									</label>
+								</li>
+								<li>
+									<label class="c-Form_Checkboxblock">
+										<input type="checkbox" id="その他" name="00N2v00000JLlDF" class="js-any1" value="1">
+										<span class="c-Form_Checkboxblock-wrap hikari-inquiry-form-consult_Checkbox-wrap">
+											<span class="c-Icon_Check"></span>
+											<span class="c-Form_Checkboxblock-label">その他</span>
+										</span>
+									</label>
+								</li>
+								<li>
+									<label class="c-Form_Checkboxblock">
+										<input type="checkbox" id="現在使用していない" name="00N2v00000JLlDD" class="js-any1" value="1">
+										<span class="c-Form_Checkboxblock-wrap hikari-inquiry-form-consult_Checkbox-wrap">
+											<span class="c-Icon_Check"></span>
+											<span class="c-Form_Checkboxblock-label">現在使用していない</span>
+										</span>
+									</label>
+								</li>
+							</ul>
+						</dd>
+					</div>
+					<div>
+						<dt>返信希望</dt>
+						<dd>
+							<ul class="hikari-form-List-2col">
+								<li>
+									<label class="c-Form_Checkboxblock">
+										<input type="checkbox" id="Eメール" name="00N2v00000JLlD2" class="js-any2" value="1">
+										<span class="c-Form_Checkboxblock-wrap hikari-inquiry-form-consult_Checkbox-wrap">
+											<span class="c-Icon_Check"></span>
+											<span class="c-Form_Checkboxblock-label">Eメール</span>
+										</span>
+									</label>
+								</li>
+								<li>
+									<label class="c-Form_Checkboxblock">
+										<input type="checkbox" id="電話" name="00N2v00000JLlD4" class="js-any2" value="1">
+										<span class="c-Form_Checkboxblock-wrap hikari-inquiry-form-consult_Checkbox-wrap">
+											<span class="c-Icon_Check"></span>
+											<span class="c-Form_Checkboxblock-label">電話</span>
+										</span>
+									</label>
+								</li>
+							</ul>
+							<p class="c-Txt_Cap u-Adjust_Mt-8">※ ご希望の日時があれば、お問合せ内容欄に記入ください。</p>
+						</dd>
+					</div>
+					<div>
+						<dt>お問い合わせ内容<span class="c-Form_List-required">必須</span></dt>
+						<dd>
+							<textarea id="description" name="description" class="c-Form_Input js-required" aria-required="true" aria-invalid="false"></textarea>
+						</dd>
+					</div>
+				</dl>
+
+				<div class="l-hikari-Section_Sub-short">
+					<h2 class="c-Heading_Lv2">個人情報の取扱いについて</h2>
+					<div class="l-hikari-Section_Sub-content-short">
+						<p>「<a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" target="_blank" class="c-Link_Txt-inline">個人情報の取扱いについて<span class="c-Icon_New-window-l"></span></a>」をご確認いただき、同意される場合は「同意して確認」を選択してお進みください。</p>
+					</div>
+
+					<div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+            <span class="c-Btn_Primary js-confirm"><span><span>同意して確認</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></span>
+					</div>
+
+				</div>
+
+				<div id="js-modal-confirm" style="display:none;">
+					<h2 class="c-Heading_Lv3">入力内容の確認</h2>
+					<p class="u-Adjust_Mt-24">以下の内容に問題がなければ「送信する」を選択してください。</p>
+					<dl class="c-Form_List-confirm u-Adjust_Mt-24">
+						<div>
+							<dt>氏名</dt>
+							<dd><span id="js-last_name"></span><span id="js-first_name"></span></dd>
+						</div>
+						<div>
+							<dt>メールアドレス</dt>
+							<dd id="js-email"></dd>
+						</div>
+						<div>
+							<dt>連絡先電話番号</dt>
+							<dd id="js-phone"></dd>
+						</div>
+						<div>
+							<dt>現在使用中のインターネット回線（複数選択可）</dt>
+							<dd id="js-any1"></dd>
+						</div>
+						<div>
+							<dt>返信希望</dt>
+							<dd id="js-any2"></dd>
+						</div>
+						<div>
+							<dt>お問い合わせ内容</dt>
+							<dd id="js-description"></dd>
+						</div>
+					</dl>
+					<div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+						<div>
+              <span class="c-Btn_Primary hikari-form-Btn_Inquiry js-submit"><span><span>送信</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></span>
+						</div>
+						<div class="u-Adjust_Mt-24">
+              <span class="c-Btn_Secondly hikari-form-Btn_Inquiry js-modal-confirm-close"><span><span>戻る</span><span class="c-Icon_Arrow-right-l c-Btn_Icon-end"></span></span></span>
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+
+  <footer class="g-Footer">
+    <%- include('/hikari/include/_footer', { pagetitle: pagetitle, directories: directories, hiddenFooterCta: true, hiddenCta: true, hiddenMenu: true, hiddenPopask: true, hiddenBacktop: true }) %>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<script src="<%= sitepath %>assets/js/hikari/inquiry.form.consult.bundle.js?20240521"></script>
+</body>
+</html>

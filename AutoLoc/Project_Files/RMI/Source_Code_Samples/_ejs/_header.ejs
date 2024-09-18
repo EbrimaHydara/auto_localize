@@ -1,0 +1,240 @@
+<%_
+  sitename = "楽天モバイル";
+  sitetitle = "トップ";
+  sitedomain = "https://network.mobile.rakuten.co.jp";
+  rootpath = "/";
+  sitepath = "/";
+  onboardingpath = "https://onboarding.mobile.rakuten.co.jp/";
+  onboardingpath2 = "https://onboarding.mobile.rakuten.co.jp/";
+  ecarepath = "https://portal.mobile.rakuten.co.jp/";
+  themeGlb = {
+    min: {
+    	s: '320px',
+    	m: '431px',
+    	l: '835px',
+    },
+    max: {
+    	s: '430px',
+    	m: '834px',
+    	l: '1064px',
+    }
+  };
+  common_v1_param = "?20240508";
+  // common_v2関連ここから
+  common_v2_param = "?20240510-02";
+  common_v2_top_param = "?20240521-03";
+  common_v2_fee_param = "?20240521-03";
+  // common_v2関連ここまで
+  hikari_common_v2_param = "?20240424";_%>
+<!DOCTYPE html>
+<%_ if (typeof isEnglish !== 'undefined' && isEnglish === true) { _%>
+<html lang="en">
+<%_ } else { _%>
+<html lang="ja">
+<%_ } _%>
+<%_ if (typeof redirect !== 'undefined') { _%>
+<head>
+<%_ } else if (typeof top !== 'undefined') { _%>
+<head prefix= "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">
+<%_ } else { _%>
+<head prefix= "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+<%_ } _%>
+<meta charset="utf-8">
+<%_ if (typeof browseragent !== 'undefined' && browseragent === true) { _%>
+  <%- include('/include/_browser-agent') %>
+<%_ } _%>
+<%_ if (typeof redirect === 'undefined') { _%>
+<meta name="viewport" content="width=device-width">
+<%_ } _%>
+<%_ if (typeof ishikari !== 'undefined' && ishikari === true) { _%>
+<%_ sitename = "楽天ひかり"; _%>
+<%_ } _%>
+<%_ if (typeof isTurbo !== 'undefined' && isTurbo === true) { _%>
+<%_ sitename = "ホームルーターRakuten Turbo（ラクテン ターボ）"; _%>
+<%_ } _%>
+<%_ if (typeof isEnglish !== 'undefined' && isEnglish === true) { _%>
+<%_ sitename = "Rakuten Mobile"; _%>
+<%_ } _%>
+<%_ if (typeof top !== 'undefined') { _%>
+<title><%= sitename %></title>
+<%_ } else if (typeof directories !== 'undefined') { _%>
+<%_ let dirs = []; _%>
+<%_ directories.forEach(function (dir) { _%>
+<%_ if (dir.label !== '光回線の通信速度改善') { _%>
+<%_ dirs.push(dir.label); _%>
+<%_ } _%>
+<%_ }) _%>
+<%_ var dirlist = dirs.reverse().join(' | ') _%>
+<title><%= pagetitle %> | <%= dirlist %> | <%= sitename %></title>
+<%_ } else if(typeof hikaritop !== 'undefined') { _%>
+<%_ if(typeof testtype !== 'undefined' && testtype === 'B') { _%>
+<title><%= pagetitle %> | 楽天ひかり</title>
+<%_ } else { _%>
+<title><%= pagetitle %> | IPv6対応</title>
+<%_ } _%>
+<%_ } else if(typeof turbotop !== 'undefined') { _%>
+<title><%= pagetitle %></title>
+<%_ } else { _%>
+<title><%= pagetitle %> | <%= sitename %></title>
+<%_ } _%>
+<%_ if (typeof redirect === 'undefined') { _%>
+<meta name="description" content="<%= description %>">
+<meta name="author" content="楽天モバイル">
+<%_ if (typeof hasHreflang !== 'undefined') { _%>
+<%_
+/* TODO: 既存分を含めてfalseでも動くif文をすべて直す */
+let jpPageUrl = `${sitedomain}/${filepath}`
+if (typeof isEnglish !== 'undefined') {
+  jpPageUrl = jpPageUrl.replace(/en(\/)?$/, '')
+}
+_%>
+<link rel="alternate" hreflang="ja" href="<%= jpPageUrl %>">
+<link rel="alternate" hreflang="en" href="<%= jpPageUrl %>en/">
+<%_ } _%>
+<%_ } _%>
+<%_ if (noindex === true || typeof redirect !== 'undefined' && redirect.isIndex !== true) { _%><meta name="robots" content="noindex, nofollow, noarchive">
+<%_ } else { _%><meta name="robots" content="noodp, noydir"><% } %>
+<%_ if (typeof redirect === 'undefined') { _%>
+<meta name="format-detection" content="telephone=no">
+<%_ } _%>
+<%_ if (typeof redirect !== 'undefined') { _%>
+<%_ } else if (typeof top !== 'undefined') { _%>
+<meta property="og:title" content="<%= sitename %>">
+<%_ } else if (typeof directories !== 'undefined') { _%>
+<%_ let dirs = []; _%>
+<%_ directories.forEach(function (dir) { _%>
+<%_ if (dir.label !== '光回線の通信速度改善') { _%>
+<%_ dirs.push(dir.label); _%>
+<%_ } _%>
+<%_ }) _%>
+<%_ var dirlist = dirs.reverse().join(' | ') _%>
+<meta property="og:title" content="<%= pagetitle %> | <%= dirlist %> | <%= sitename %>">
+<%_ } else if(typeof hikaritop !== 'undefined') { _%>
+<%_ if(typeof testtype !== 'undefined' && testtype === 'B') { _%>
+<meta property="og:title" content="<%= pagetitle %> | 楽天ひかり">
+<%_ } else { _%>
+<meta property="og:title" content="<%= pagetitle %> | IPv6対応">
+<%_ } _%>
+<%_ } else if(typeof turbotop !== 'undefined') { _%>
+<meta property="og:title" content="<%= pagetitle %>">
+<%_ } else { _%>
+<meta property="og:title" content="<%= pagetitle %> | <%= sitename %>">
+<%_ } _%>
+<%_ if (typeof redirect === 'undefined') { _%>
+<meta property="og:description" content="<%= description %>">
+<%_ } _%>
+<%_ if (typeof redirect !== 'undefined') { _%>
+<%_ } else if (typeof top !== 'undefined') { _%>
+<meta property="og:type" content="website">
+<%_ } else { _%>
+<meta property="og:type" content="article">
+<%_ } _%>
+<%_ if (typeof redirect !== 'undefined') { _%>
+<%_ } else if (typeof top !== 'undefined') { _%>
+<meta property="og:url" content="<%= sitedomain %><%= pathname %>">
+<%_ } else if (typeof canonical_custom !== 'undefined') { _%>
+<meta property="og:url" content="<%= canonical_custom %>">
+<%_ } else { _%>
+<meta property="og:url" content="<%= sitedomain %><%= sitepath %><%= pathname %>">
+<%_ } _%>
+<%_ if (typeof redirect !== 'undefined') { _%>
+<%_ } else if (typeof ogp_img === 'undefined') { _%>
+<%_ if (typeof ishikari !== 'undefined' && ishikari === true) { _%>
+<meta property="og:image" content="<%= sitedomain %><%= sitepath %>assets/img/hikari/common/ogp-240122.png">
+<%_ } else if (typeof isTurbo !== 'undefined' && isTurbo === true) { _%>
+<meta property="og:image" content="<%= sitedomain %><%= sitepath %>assets/img/internet/turbo/common/ogp-221216.png">
+<%_ } else { _%>
+<meta property="og:image" content="<%= sitedomain %><%= sitepath %>assets/img/common/ogp.png">
+<%_ } _%>
+<%_ } else { _%>
+<meta property="og:image" content="<%= ogp_img %>">
+<%_ } _%>
+<% if (noindex === false) { %><%_ if (typeof redirect !== 'undefined' && redirect.isIndex !== true) { _%>
+<%_ } else  if (typeof top !== 'undefined') { _%><link rel="canonical" href="<%= sitedomain %><%= pathname %>">
+<%_ } else if (typeof canonical_custom !== 'undefined') { _%><link rel="canonical" href="<%= canonical_custom %>">
+<%_ } else { _%><link rel="canonical" href="<%= sitedomain %><%= sitepath %><%= pathname %>">
+<%_ } _%>
+<%_ } else if (typeof canonical_custom !== 'undefined') { _%><link rel="canonical" href="<%= canonical_custom %>">
+<%_ } _%>
+<%_ if (typeof redirect === 'undefined') { _%>
+<%_ if (typeof ishikari !== 'undefined' && ishikari === true) { _%>
+<%- include('/include/_favicon-hikari') %>
+<%_ } else { _%>
+<%- include('/include/_favicon') %>
+<%_ } _%>
+<%_ if (typeof isdivide === 'undefined' || isdivide === false) { _%>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com/">
+<%_ } else { _%>
+<%_ } _%>
+<%_ if (typeof ishikari === 'undefined' || ishikari === false) { _%>
+<%_ if (typeof noindex === 'undefined' || noindex === false) { _%>
+<%_ let count = 1; _%>
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "BreadcrumbList",
+"itemListElement": [
+{
+"@type": "ListItem",
+"position": 1,
+"item":
+{
+"@id": "<%= sitedomain %>",
+"name": "トップ"
+}
+}<%_ if (typeof top === 'undefined') { _%>,
+<%_ if (typeof breadcrumbs !== 'undefined') { _%>
+<%_ breadcrumbs.forEach(function (dir, index) { _%>
+<%_ if (dir.path !== "") { _%>
+{
+"@type": "ListItem",
+"position": <%= ++count %>,
+"item":
+{
+"@id": "<%= sitedomain %><%= sitepath %><%= dir.path %>",
+"name": "<%= dir.label %>"
+}
+},
+<%_ } _%>
+<%_ }) _%>
+<%_ } else if (typeof directories !== 'undefined') { _%>
+<%_ directories.forEach(function (dir, index) { _%>
+<%_ if (dir.path !== "") { _%>
+{
+"@type": "ListItem",
+"position": <%= ++count %>,
+"item":
+{
+"@id": "<%= sitedomain %><%= sitepath %><%= dir.path %>",
+"name": "<%= dir.label %>"
+}
+},
+<%_ } _%>
+<%_ }) _%>
+<%_ } _%>
+{
+"@type": "ListItem",
+"position": <%= ++count %>,
+"item":
+{
+"@id": "<%= sitedomain %><%= sitepath %><%= pathname %>",
+"name": "<%= pagetitle %>"
+}
+}
+<%_ } _%>
+]
+}
+</script>
+<%_ } _%>
+<%_ } _%>
+<%_ } _%>
+<%_ if (typeof redirect !== 'undefined') { _%>
+<%_ if (typeof ishikari !== 'undefined' && ishikari === true) { _%>
+<%_ } else { _%>
+<%- include('/include/_append-head') %>
+<%_ } _%>
+<meta http-equiv="refresh" content="<%- redirect.delay ? redirect.delay : 0 %>;URL=<%- redirect.url.indexOf('http') === -1 ? `${sitepath}${redirect.url}` : redirect.url %>">
+<%_ } _%>

@@ -1,0 +1,456 @@
+<% const pagetitle = "【楽天イーグルス感謝祭キャンペーン】" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "eagles-member" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: 'Rakuten最強プラン ご契約者様限定エントリー& 20GB超のデータ利用で 選手直筆サイン入りグッズやポイントプレゼント！',
+  keywords: '',
+  noindex: false,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/eagles/member2023/eagles-member.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+  function isChecked(el) {
+    if (el.length) {
+      for (var i = 0; i < el.length; i++) {
+        if (el[i].checked) {
+          return true;
+        }
+      }
+    } else {
+      if (el.checked) {
+        return true;
+      }
+    }
+    return false;
+  }
+  function checkForm() {
+    var el;
+    var obj = document.enenForm;
+    el = obj.elements['answers[39855_271731]'];
+    if (!isChecked(el)) {
+      alert("「希望景品」を選択してください。");
+      return false;
+    }
+  }
+</script>
+
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+
+    <div class="l-System_Container">
+      <ul class="c-Label_List <%= namespace %>-Hero_Label-list">
+        <li class="c-Label_Normal">ご契約者様限定</li>
+        <li class="<%= namespace %>-Hero_Label-list-nolabel">ポイント：付与日を含めて6カ月の期間限定ポイント</li>
+      </ul>
+    </div>
+
+    <div class="<%= namespace %>-Hero">
+      <div class="<%= namespace %>-Hero_Title u-Adjust_Align-center">
+        <a href="https://event.rakuten.co.jp/group/eagles/thankscampaign/2023/?scid=wi_egl_cpn2023_rmi_00">
+          <h1>
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-logo-sp-231110.png">
+              <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-logo-231110.png" alt="楽天イーグルス感謝祭" width="1007" height="85">
+            </picture>
+          </h1>
+        </a>
+      </div>
+      <div class="<%= namespace %>-Hero_Container u-Adjust_Pt-16">
+        <div class="<%= namespace %>-Hero_Main">
+          <p>
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-label-sp-231110.png">
+              <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-label-231110.png" alt="Rakuten 最強プラン ご契約者様限定" width="289" height="27">
+            </picture>
+          </p>
+          <p>
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-catch-sp-231110.png">
+              <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-catch-231110.png" alt="エントリー＆20GB超のデータ利用で 楽天イーグルス選手直筆サイン入りグッズやポイントプレゼント" width="960" height="101">
+            </picture>
+          </p>
+          <div class="u-Adjust_Mt-16">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-card-sp-231110.png">
+              <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hero-card-231110.png" alt="楽天イーグルス選手直筆サイン入りユニフォーム ２名様 楽天イーグルス選手直筆サイン入りボール ２名様 楽天ポイント1000ポイント（期間限定） 300名様 さらにハズレてもWチャンス 抽選で250名様にチケットホルダーが当たる！Wチャンスは3GB超のデータ利用のお客様も抽選対象です" width="950" height="220">
+            </picture>
+          </div>
+          <p class="<%= namespace %>-Hero_Txt-cap u-Color_White">
+            ※景品画像はイメージです ※サインを入れる選手は指定できません<br class="<%= namespace %>-Utility_Br-sp">※各種条件あり
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="js-sticky-start" class="l-System_Container u-Adjust_Mt-24">
+      <p class="<%= namespace %>-Utility_Left-sp">
+        <span class="c-Txt_Emp-01">【エントリー期間】</span>2023年11月10日（金）10:00～11月17日（金）23:59
+      </p>
+      <p class="<%= namespace %>-Utility_Left-sp">
+        <span class="c-Txt_Emp-01">【データ利用量の集計期間】</span>2023年11月または12月の月間利用量
+      </p>
+
+      <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-24 u-Adjust_Align-center">
+        本キャンペーンは2023年11月17日（金）23：59をもちまして終了いたしました。<br>
+        このページに掲載されている情報は、キャンペーン終了時点のものです。
+      </p>
+
+      <p class="u-Adjust_Mt-16 eagles-member-Utility_Flex-center">
+        <a href="#campaign-rule2048" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a>
+      </p>
+    </div>
+
+    <h2 id="chance1" class="<%= namespace %>-Heading_L u-Adjust_Mt-24">
+      <span>
+        ご応募はこちらから！
+      </span>
+    </h2>
+
+  <div class="l-System_Container u-Adjust_Mt-24">
+    <div class="c-Theme-Borderbox">
+      <form action="https://form.rakuten.co.jp/ans/apply/39855" name="enenForm" method="POST" onsubmit="return checkForm()">
+        <div class="l-Media_List-3">
+          <div class="<%= namespace %>-Lightbox">
+            <label for="a753500" class="c-Form_Radio <%= namespace %>-Utility_Block">
+              <input type=radio name="answers[39855_271731]" id="a753500" value="753500">
+              <span class="c-Form_Radio-icon <%= namespace %>-Utility_Block"></span>
+              <span class="u-Adjust_Align-center <%= namespace %>-Lightbox_Img-wrap">
+                <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-member-item01-231110.png" alt="" width="130" class="<%= namespace %>-Lightbox_Img">
+                <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-member-item01txt-231110.png" alt="" width="228" class="<%= namespace %>-Lightbox_Img u-Adjust_Mt-8">
+              </span>
+            </label>
+          </div>
+          <div class="<%= namespace %>-Lightbox">
+            <label for="a753501" class="c-Form_Radio <%= namespace %>-Utility_Block">
+              <input type=radio name="answers[39855_271731]" id="a753501" value="753501">
+              <span class="c-Form_Radio-icon <%= namespace %>-Utility_Block"></span>
+              <span class="u-Adjust_Align-center <%= namespace %>-Lightbox_Img-wrap">
+                <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-member-item02-231110.png" alt="" width="130" class="<%= namespace %>-Lightbox_Img">
+                <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-member-item02txt-231110.png" alt="" width="228" class="<%= namespace %>-Lightbox_Img u-Adjust_Mt-8">
+              </span>
+            </label>
+          </div>
+          <div class="<%= namespace %>-Lightbox">
+            <label for="a753502" class="c-Form_Radio <%= namespace %>-Utility_Block">
+              <input type=radio name="answers[39855_271731]" id="a753502" value="753502">
+              <span class="c-Form_Radio-icon <%= namespace %>-Utility_Block"></span>
+              <span class="u-Adjust_Align-center <%= namespace %>-Lightbox_Img-wrap">
+                <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-member-item03-231110.png" alt="" width="130" class="<%= namespace %>-Lightbox_Img">
+                <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-member-item03txt-231110.png" alt="" width="228" class="<%= namespace %>-Lightbox_Img u-Adjust_Mt-8">
+              </span>
+            </label>
+          </div>
+        </div>
+        <p class="u-Adjust_Mt-24 u-Adjust_Align-center c-Txt_Emp-02">
+          ※ご応募は上記のいずれか1点、おひとり様1回限り<br>
+          キャンペーンの開始時点で楽天回線ご利用中、かつ、11月または12月分<br class="u-Show_Xoo">のデータ利用量が20GBを超えた方が抽選対象<br>
+          ※景品画像はイメージです ※サインを入れる選手の指定はできません
+        </p>
+        <input type="hidden" name="c" value="楽天">
+        <input type="hidden" name="l" value="ja">
+
+        <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+          <button class="c-Btn_Primary-large" aria-disabled="true" disabled><span>1つ選んで応募する</span></button>
+        </div>
+
+        <p class="u-Adjust_Mt-16 <%= namespace %>-Utility_Left-sp">
+          <span class="c-Txt_Emp-01">【エントリー期間】</span>2023年11月10日（金）10:00～11月17日（金）23:59
+        </p>
+
+        <p class="u-Adjust_Mt-24 eagles-member-Utility_Flex-center">
+          <a href="#campaign-rule2048" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a>
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+  <h2 class="<%= namespace %>-Heading_L u-Adjust_Mt-80">
+    <span>
+      キャンペーンの流れ
+    </span>
+  </h2>
+
+  <div class="l-System_Container u-Adjust_Mt-32">
+    <div class="u-Adjust_Mt-32 c-Theme-Borderbox">
+      <h3 id="anc01" class="c-Heading_Lv2 u-Adjust_Align-center">キャンペーンの<span class="txt_nl">達成条件</span></h3>
+      <p class="u-Adjust_Mt-16 <%= namespace %>-Utility_Left-sp">本キャンペーンには達成条件が設定されています。詳細は<a class="accordion9_opan" href="#campaign-rule2048">キャンペーンルール</a>をご確認ください。</p>
+
+      <ul class="<%= namespace %>-Campaign_Conditions-list u-Adjust_Mt-16">
+        <li class="c-Theme-Light <%= namespace %>-Campaign_Conditions_Item <%= namespace %>-Campaign_Conditions-grid">
+          <div class="<%= namespace %>-Campaign_Conditions-grid-image">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-01-sp.png">
+              <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-01.png" alt="" width="120" height="120">
+            </picture>
+          </div>
+          <h4 class="c-Heading_Lv4 <%= namespace %>-Campaign_Conditions-grid-title">プレゼントに応募する</h4>
+          <p class="u-Adjust_Mt-8 <%= namespace %>-Campaign_Conditions-grid-txt">
+            <a href="#chance1" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-up-l"></span>応募はこちら</a>
+          </p>
+        </li>
+        <li class="c-Theme-Light <%= namespace %>-Campaign_Conditions_Item <%= namespace %>-Campaign_Conditions-grid">
+          <div class="<%= namespace %>-Campaign_Conditions-grid-image">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-02-sp.png">
+              <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-02.png" alt="" width="120" height="120">
+            </picture>
+          </div>
+          <h4 class="c-Heading_Lv4 <%= namespace %>-Campaign_Conditions-grid-title">11月または12月に20GB超のデータ利用量を達成</h4>
+          <div class="<%= namespace %>-Campaign_Conditions-grid-txt">
+            <p class="u-Adjust_Mt-8">
+              <a href="<%= sitepath %>guide/data-traffic/?l-id=campaign_eagles_guide_data-traffic" class="c-Link_Txt-inline">データ利用量の確認方法はこちら<span class="c-Icon_Chevron-right"></span></a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="u-Adjust_Mt-56 c-Theme-Borderbox <%= namespace %>-Flow_Arrow-to">
+      <div class="l-Media_Grid">
+        <div class="l-Media_Image">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-03-sp.png">
+            <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-03.png" alt="" width="304" height="156">
+          </picture>
+        </div>
+        <div>
+          <h4 class="<%= namespace %>-Heading_Lv4 c-Txt_Emp-02">抽選で豪華景品プレゼント</h4>
+          <p class="u-Adjust_Mt-8">当選者には2024年3月末日ごろに景品の発送、または期間限定ポイントの付与をもってお知らせとなります。景品は楽天モバイルにご登録の氏名・契約住所に発送しますので、ご登録情報にお間違いがないかご確認ください。</p>
+          <p class="u-Adjust_Mt-8">
+            <a href="<%= sitepath %>guide/change-address/?l-id=campaign_eagles_guide_change-address" class="c-Link_Txt-inline">契約住所の確認はこちら<span class="c-Icon_Chevron-right"></span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="l-Media_Grid u-Adjust_Mt-16 c-Theme-Light">
+      <div class="l-Media_Image">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-06.png">
+          <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-06.png" alt="" width="304" height="156">
+        </picture>
+      </div>
+      <div>
+        <h4 class="<%= namespace %>-Heading_Lv4 c-Txt_Emp-02">ハズレてもWチャンス！</h4>
+        <p class="u-Adjust_Mt-8">当選されなかった方や20GB超のデータ利用に満たなかった方（3GB超の利用は必要）の中から抽選で250名様にチケットホルダーが当たります！</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="<%= namespace %>-Heading_L u-Adjust_Mt-80">
+    <span>
+      動画コンテンツを楽しんでキャンペーン条件を達成しよう！
+    </span>
+  </h2>
+
+  <div class="l-System_Container u-Adjust_Mt-32">
+    <div class="u-Adjust_Align-center">
+      <a href="<%= sitepath %>campaign/youtubepremium/?l-id=campaign_eagles_campaign_youtubepremium" class="c-Banner_Hover-act">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-youtube-343-108-231110.png" width="686" height="352">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-youtube-1032-160-231110.png" width="1032" height="160" alt="" loading="lazy">
+        </picture>
+      </a>
+    </div>
+    <div class="u-Adjust_Mt-48 c-Theme-Emphasis2 <%= namespace %>-Utility_Pos-relative">
+      <div class="l-Media_Grid <%= namespace %>-Layout_Grid-adjust">
+        <div class="l-Media_Image <%= namespace %>-Layout_Grid-adjust-img">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-04-sp.png">
+            <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-illust-04.png" alt="" width="304" height="156">
+          </picture>
+        </div>
+        <div>
+          <dl class="<%= namespace %>-Layout_Grid-adjust-txt">
+            <dt>
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hukidashi-01-sp.png">
+                <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-hukidashi-01.png" alt="人気サービスのデータ利用量はこのくらい" width="360" height="56">
+              </picture>
+            </dt>
+            <dd>
+              <span>例えば、</span>
+              <ul class="c-List_Text-disc">
+                <li class="u-Adjust_Mt-0">2.5時間の映画をNetflixで1作品見ると、<span class="c-Txt_Emp-02">約2.5GB</span></li>
+                <li class="u-Adjust_Mt-0">通学・通勤時間に約1時間YouTubeを見ると、<span class="c-Txt_Emp-02">約0.7GB</span></li>
+                <li class="u-Adjust_Mt-0">1カ月に映画を3本、YouTubeを1日1時間（20日間）視聴した場合、<span class="c-Txt_Emp-02">約21.5GB</span></li>
+              </ul>
+              <p class="u-Adjust_Mt-16">スキマ時間に動画を楽しんで応募条件を達成できます！</p>
+              <p class="u-Adjust_Mt-8">
+                <a href="<%= sitepath %>guide/data-traffic/?l-id=campaign_eagles_guide_data-traffic" class="c-Link_Txt-inline">データ利用量の確認方法<span class="c-Icon_Chevron-right"></span></a>
+              </p>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/img-bnr-01-sp-231110.png">
+          <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/img-bnr-01-231110.png" alt="Rakuten最強プランなら20GBを超えても2,980円/月（税込3,278円）※通話料等別" width="734" height="74">
+        </picture>
+      </p>
+    </div>
+  </div>
+
+  <h2 id="chance2" class="<%= namespace %>-Heading_L u-Adjust_Mt-80">
+      <span class="c-Txt_Normal-l">来シーズンも楽天イーグルスを応援しよう！
+    </span>
+  </h2>
+
+  <div class="l-System_Container u-Adjust_Mt-32">
+    <div class="u-Adjust_Align-center">
+      <a href="https://tv.rakuten.co.jp/static/pacificleague/lp/mobile_cpn/?scid=wi_202311_plg_lp_egs_thanks&utm_source=plg_lp&utm_medium=rmi&utm_campaign=mno_egl_thanks&argument=OKzUTvnU&dmai=a651d34e27f2be" class="c-Banner_Hover-act">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-pa-league-343-108-231110.png" width="686" height="352">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-pa-league-1032-160-231110.png" width="1032" height="160" alt="" loading="lazy">
+        </picture>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="l-System_Container">
+    <h2 id="anc04" class="c-Heading_Lv2 u-Adjust_Mt-56 u-Adjust_Mb-16 u-Adjust_Align-center">よくあるご質問</h2>
+
+    <p class="c-Txt_Emp-01 u-Adjust_Mt-24">■【楽天イーグルス感謝祭】楽天モバイル20GBまたは3GB超過で豪華景品が当たる！</p>
+    <div class="u-Adjust_Mt-16">
+      <div class="c-Accordion">
+        <button id="accordion-faq1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq1">
+          <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ポイントの付与はいつごろになりますか？
+        </button>
+        <div id="accordion-content-faq1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq1" aria-hidden="true">
+          <p>2024年3月末日ごろです。</p>
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button id="accordion-faq2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq2">
+          <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>景品の発送はいつごろになりますか？
+        </button>
+        <div id="accordion-content-faq2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq2" aria-hidden="true">
+          <p>2024年3月末日ごろです。</p>
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button id="accordion-faq3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq3">
+          <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>どの景品に応募したか確認することはできますか？
+        </button>
+        <div id="accordion-content-faq3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq3" aria-hidden="true">
+          <p>申し訳ございませんが、確認することはできません。事前にお間違いがないかをご確認の上、ご応募ください。</p>
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button id="accordion-faq4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq4">
+          <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーン達成条件は、何月のデータ利用量で判定されますか？
+        </button>
+        <div id="accordion-content-faq4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq4" aria-hidden="true">
+          <p>2023年11月または12月のどちらかの月でデータ利用量が20GBを超えた方が条件達成となり、抽選対象になります。</p>
+        </div>
+      </div>
+      <div class="c-Accordion">
+        <button id="accordion-faq5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq5">
+          <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Wチャンスの対象条件はなんですか？
+        </button>
+        <div id="accordion-content-faq5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq5" aria-hidden="true">
+          <p>下記①または②どちらかに当てはまる方がWチャンスの対象となります。<br>
+            ①キャンペーン条件を達成した方のうち、サイン入りグッズや楽天ポイントの抽選に外れた方<br>
+            ②キャンペーン条件を達成しなかった方のうち、2023年11月または12月のどちらかの月でデータ利用量が3GBを超えた方</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Layout_Entry-Area u-Adjust_Mt-64 u-Adjust_Align-center">
+    <div>
+      <a href="https://event.rakuten.co.jp/group/eagles/thankscampaign/2023/?scid=wi_egl_cpn2023_rmi_00" class="c-Banner_Hover-act">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-bnr-1-sp-231110.png">
+          <img src="<%= sitepath %>assets/img/campaign/eagles/member2023/eagles-bnr-1-231110.png" alt="" width="700px">
+        </picture>
+      </a>
+    </div>
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mt-64 u-Adjust_Align-center">
+    <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+  </div>
+
+  <div class="l-System_Container">
+    <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2048', level: 'h2', year: '2023', class: 'u-Adjust_Mt-64', comments: '<p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは2023年11月17日（金）23：59をもちまして終了いたしました。<br>このページに掲載されている情報は、キャンペーン終了時点のものです。</p>'  }}) %>
+
+  </div>
+
+    <footer class="g-Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <script src="<%= sitepath %>assets/js/campaign.eagles-member.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+
+<!-- ReX Campaign Entry Button: Configuration -->
+<script>
+var rexButtons = [{"wide":false,"showCelebration":false,"theme":"red","code":"/rmobile/freecall/campaign/eagleswin","ids":["rex-ceb-01", "rex-ceb-02"]}]
+</script>
+<!-- ReX Campaign Entry Button: Script -->
+<script src="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.4.0/static/js/main.js" defer></script>
+
+
+<script>
+  setTimeout(function() {
+		$(".RexButton-message").text("プレゼントに応募する")
+	}, 1000);
+</script>
+
+</body>
+</html>

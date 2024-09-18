@@ -1,0 +1,562 @@
+<%_
+const leng = Object.keys(jData).length;
+for ( let i = 0; i < leng; i++ ) {
+   jData[Object.keys(jData)[i]] = jData[Object.keys(jData)[i]].normalize("NFC").replace(/\r?\n/g, '<br>');
+}
+let update = '';
+if(jData.update !== '' ) {
+  update = jData.update.split('/').join('');
+}
+const delimiter = (number) => {
+  return String(number).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+}
+const zeroPadding = (num, len) => {
+	return ( Array(len).join('0') + num ).slice( -len );
+}
+const createLink = (string) => {
+  const linkArray = string.split(']/');
+  let text = '';
+  let link = '';
+  let linkhtml = '';
+  let textlink = [];
+  for ( let i = 0; i < linkArray.length; i++ ) {
+    text = linkArray[i].split('[')[0];
+    link = linkArray[i].split('[')[1].replace(/]/g, '');
+    textlink.push(`<a href="${link}">${text}</a>`);
+    linkhtml = textlink.join(' / ');
+  }
+  return linkhtml;
+}
+const createComment = (string) => {
+  const commentArray = string.split('★');
+  let commentList = [];
+  let text = '';
+  for ( let i = 1; i < commentArray.length; i++ ) {
+    text = commentArray[i];
+    commentList.push(`<li><span>※</span>${text}</li>`);
+  }
+  listhtml = commentList.join('');
+  return listhtml;
+}
+const bookslink = (string) => {
+  const result = string.indexOf('http');
+  let link = '';
+  if( result !== -1 ) {
+    link = string;
+  } else {
+    const encodeWord = encodeURI(string);
+    link = 'https://books.rakuten.co.jp/search?sitem=' + encodeWord;
+  }
+  return link;
+}
+_%>
+<%-
+  include('/_header', {
+    pagetitle: jData.product,
+    directories: [{path:"product/", label:"製品"}, {path:"product/accessory/", label:"アクセサリー"}],
+    description: jData.description ? jData.description : 'スマホアクセサリー「' + jData.product + '」の製品ご購入はこちら。価格・スペック情報・特長ほか',
+    noindex: false,
+    pathname: 'product/accessory/' + jData.url + '/'
+  });
+_%>
+<%_
+const isAppleRelated = jData.product && (/iPhone/).test(jData.product);
+const isAppleRelatedCase = isAppleRelated && jData.category && (/ケース/).test(jData.category);
+const ichibaBannerDir = isAppleRelated ? '0000000177' : '0000000148';
+_%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/accessory/accessory-common.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/accessory/detail/accessory-detail.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/iphone/iphone-top.css?20240424">
+
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <li><a href="<%= sitepath %>product/">製品</a><span class="c-Icon_Chevron-right"></span></li>
+    <li><a href="<%= sitepath %>product/accessory/">アクセサリ</a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (isAppleRelated) { _%>
+    <li><a href="<%= sitepath %>product/accessory/apple-related/">Apple関連アクセサリ</a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ } else { _%>
+    <li><a href="<%= sitepath %>product/accessory/smartphone-related/">スマートフォン関連アクセサリ</a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ } _%>
+    <li aria-current="true"><%= jData.product %></li>
+  </ul>
+</div>
+
+<div class="accessory-detail-Layout_Hero">
+  <div class="l-System_Container">
+    <a href="https://www.rakuten.ne.jp/gold/rakutenmobile-store/product/accessory/apple/case/?scid=wi_ich_accy_0022cpn2109">
+      <figure>
+        <img class="accessory-detail-Layout_PC" src="<%= sitepath %>assets/img/accessory/bnr/bnr-detail-1032-160-221222.png" alt="楽天モバイル公式 楽天市場店ならいつでもアクセサリ全品送料無料！">
+        <img class="accessory-detail-Layout_SP" src="<%= sitepath %>assets/img/accessory/bnr/bnr-detail-382-120-221222.png" alt="楽天モバイル公式 楽天市場店ならいつでもアクセサリ全品送料無料！">
+      </figure>
+    </a>
+    <p class="c-Txt_Cap u-Adjust_Align-right u-Adjust_Mt-64">※表記の金額はすべて税込です。</p>
+    <section class="accessory-detail-Hero">
+      <div class="accessory-detail-Hero_Data">
+        <div>
+          <%_ if( jData.rselect !== 'FALSE' ) { _%>
+            <span><img src="<%= sitepath %>assets/img/common/logo-rselect.png?220408" width="89" alt="R SELECT"></span>
+          <%_ } _%>
+
+          <h1 class="c-Heading_Lv1 accessory-detail-Hero_Name"><%- jData.product %></h1>
+          <%_
+            const makerText = jData.maker.match(/^\s/);
+            if( !makerText ) {
+          _%>
+            <p class="accessory-detail-Hero_Maker"><%- jData.maker %></p>
+          <%_ } _%>
+
+          <%_ if( jData.topbuttontext ) { _%>
+            <p class="accessory-detail-Layout_PC c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Align-center"><%= jData.topbuttontext %></p>
+          <%_ } _%>
+          <%_ if( jData.topbuttonnote ) { _%>
+            <p class="accessory-detail-Layout_PC c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-center"><%= jData.topbuttonnote %></p>
+          <%_ } _%>
+          <%_ const applyBtnTopMargin = jData.topbuttontext || jData.topbuttonnote ? 16 : 48; _%>
+
+          <div class="accessory-detail-Layout_PC u-Adjust_Mt-<%= applyBtnTopMargin %>">
+            <div class="js-btn-before"></div>
+            <div class="js-cta">
+              <ul class="accessory-detail-Hero_Cta">
+                <%_
+                  const bssBtnText = jData.bssbtntext ? jData.bssbtntext.trim() : 'my 楽天モバイルで購入する';
+                  const bssBtnNote = jData.bssbtnnote ? jData.bssbtnnote.trim() : '';
+                  const bssBtnNoteMode = jData.bssbtn !== 'disable' ? 'c-Txt_Emp-02 c-Txt_Weight-normal' : 'c-Txt_Cap';
+                  const ichibaBtnText = jData.ichibabtntext ? jData.ichibabtntext.trim() : '楽天市場で購入する';
+                  const ichibaBtnNote = jData.ichibabtnnote ? jData.ichibabtnnote.trim() : '';
+                  const additionalText = jData.additionaltext ? jData.additionaltext.trim() : '';
+                  const additionalLinkText = jData.additionallinktext ? jData.additionallinktext.trim() : '';
+                  const additionalLink = jData.additionallink ? jData.additionallink.trim() : '';
+                  const externalLink = (jData.additionallink && jData.additionallink.includes('network.mobile.rakuten.co.jp')) ? '' :' target="_blank" rel="noopener noreferrer"';
+                  const linkIconClassName = (jData.additionallink && jData.additionallink.includes('network.mobile.rakuten.co.jp')) ? 'c-Icon_Chevron-right' : 'c-Icon_New-window-l';
+                  const legalLine = jData.legalline ? jData.legalline.trim() : '';
+                  const isPriceOldPeriod = jData.price_old_period !== '' && typeof jData.price_old_period !== 'undefined' ? true : false;
+                  const addBSSLid = jData.urlbssbtn.indexOf('https://network.mobile.rakuten.co.jp/shop/') === -1 ? '&selectAvailable=true&l-id=accessory_detail-page_order-button_bss' : '';
+                _%>
+                <%_ if( jData.bssbtn !== 'none' ) { _%>
+                  <li class="js-apply-btn">
+                    <%_ if( jData.bssbtn === 'disable' ) { _%>
+                        <a href="" class="c-Btn_Primary" aria-disabled="true" style="pointer-events: none;"><%= bssBtnText %></a>
+                    <%_ } else { _%>
+                        <a href="<%= jData.urlbssbtn %><%= addBSSLid %>" class="c-Btn_Primary"><%= bssBtnText %></a>
+                    <%_ } _%>
+                    <p class="<%= bssBtnNoteMode %>"><%- bssBtnNote %></p>
+                  </li>
+                <%_ } _%>
+                <%_ if( jData.ichibabtn !== 'none' ) { _%>
+                  <li>
+                    <%_ if( jData.ichibabtn === 'disable' ) { _%>
+                      <a href="" class="c-Btn_Primary" aria-disabled="true" style="pointer-events: none;"><%= ichibaBtnText %></a>
+                    <%_ } else { _%>
+                      <a href="<%- jData.urlichiba %>?scid=wi_ich_accy_<%- jData.url %>" data-ratid="accessory_detail-page_order-button_ichiba" data-ratevent="click" class="c-Btn_Primary"><%= ichibaBtnText %></a>
+                    <%_ } _%>
+                    <p><%= ichibaBtnNote %></p>
+                  </li>
+                <%_ } else if( jData.books !== '' ) { _%>
+                  <li>
+                    <a href="<%- bookslink(jData.books) %>" class="c-Btn_Primary">楽天ブックスで購入する</a>
+                    <p>※送料無料</p>
+                  </li>
+                <%_ } _%>
+              </ul>
+            </div>
+            <div class="js-btn-after"></div>
+            <%_ if(additionalText || legalLine) { _%>
+              <div class="u-Adjust_Mt-24">
+                <%_ if( legalLine ) { _%>
+                  <p><%- legalLine %></p>
+                <%_ } _%>
+                <%_ if( additionalText ) { _%>
+                  <p class="c-Txt_Emp-02<%- legalLine !== '' ? ' u-Adjust_Mt-24' : ''; %>"><%- additionalText %></p>
+                <%_ } _%>
+                <%_ if( additionalLinkText ) { _%>
+                  <p class="u-Adjust_Mt-8"><a href="<%- additionalLink %>" class="c-Link_Txt-inline"<%- externalLink %>><%- additionalLinkText %><span class="<%- linkIconClassName %>"></span></a></p>
+                <%_ } _%>
+              </div>
+            <%_ } _%>
+          </div>
+        </div>
+      </div>
+      <div class="accessory-detail-Hero_Main">
+        <ul class="accessory-detail-Hero_Main-accessory c-Carousel js-accessories-main">
+        <%_ const length = jData.thumbnail;
+        for ( let i = 0; i < length; i++ ) { _%>
+          <li><span><img data-lazy="<%= sitepath %>assets/img/accessory/<%- jData.url %>/pht-accessory-<%- zeroPadding(i, 2) %>.png?<%- update %>" alt=""></span></li>
+        <%_ } _%>
+        </ul>
+
+        <ul class="accessory-detail-Hero_Main-thumbnail c-Carousel js-accessories-thumbnail">
+          <%_ for ( let i = 0; i < length; i++ ) { _%>
+          <li><span><img data-lazy="<%= sitepath %>assets/img/accessory/<%- jData.url %>/pht-accessory-<%- zeroPadding(i, 2) %>.png?<%- update %>" alt=""></span></li>
+        <%_ } _%>
+        </ul>
+
+        <div class="c-Carousel_Nav"></div>
+      </div>
+
+      <%_ if( jData.topbuttontext ) { _%>
+        <p class="accessory-detail-Layout_SP c-Txt_Emp-02 u-Adjust_Mt-16 u-Adjust_Align-center"><%= jData.topbuttontext %></p>
+      <%_ } _%>
+      <%_ if( jData.topbuttonnote ) { _%>
+        <p class="accessory-detail-Layout_SP c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-center"><%= jData.topbuttonnote %></p>
+      <%_ } _%>
+      <div class="accessory-detail-Layout_SP u-Adjust_Mt-<%= applyBtnTopMargin %>">
+        <div class="accessory-detail-Hero_Data">
+          <div class="js-btn-before"></div>
+          <div class="js-cta">
+            <ul class="accessory-detail-Hero_Cta">
+              <%_ if( jData.bssbtn !== 'none' ) { _%>
+                <li class="js-apply-btn">
+                  <%_ if( jData.bssbtn === 'disable' ) { _%>
+                      <a href="" class="c-Btn_Primary" aria-disabled="true" style="pointer-events: none;"><%= bssBtnText %></a>
+                  <%_ } else { _%>
+                      <a href="<%= jData.urlbssbtn %><%= addBSSLid %>"  class="c-Btn_Primary"><%= bssBtnText %></a>
+                  <%_ } _%>
+                  <p class="<%= bssBtnNoteMode %>"><%- bssBtnNote %></p>
+                </li>
+              <%_ } _%>
+              <%_ if( jData.ichibabtn !== 'none' ) { _%>
+                <li>
+                  <%_ if( jData.ichibabtn === 'disable' ) { _%>
+                    <a href="" class="c-Btn_Primary" aria-disabled="true" style="pointer-events: none;"><%= ichibaBtnText %></a>
+                  <%_ } else { _%>
+                    <a href="<%- jData.urlichiba %>?scid=wi_ich_accy_<%- jData.url %>" data-ratid="accessory_detail-page_order-button_ichiba" data-ratevent="click" class="c-Btn_Primary"><%= ichibaBtnText %></a>
+                  <%_ } _%>
+                  <p><%= ichibaBtnNote %></p>
+                </li>
+              <%_ } else if( jData.books !== '' ) { _%>
+                <li>
+                  <a href="<%- bookslink(jData.books) %>" class="c-Btn_Primary">楽天ブックスで購入する</a>
+                  <p>※送料無料</p>
+                </li>
+              <%_ } _%>
+            </ul>
+          </div>
+          <div class="js-btn-after"></div>
+          <%_ if(additionalText || legalLine) { _%>
+            <div class="u-Adjust_Mt-24">
+              <%_ if( legalLine ) { _%>
+                <p><%- legalLine %></p>
+              <%_ } _%>
+              <%_ if( additionalText ) { _%>
+                <p class="c-Txt_Emp-02<%- legalLine !== '' ? ' u-Adjust_Mt-24' : ''; %>"><%- additionalText %></p>
+              <%_ } _%>
+              <%_ if( additionalLinkText ) { _%>
+                <p class="u-Adjust_Mt-8"><a href="<%- additionalLink %>" class="c-Link_Txt-inline"<%- externalLink %>><%- additionalLinkText %><span class="<%- linkIconClassName %>"></span></a></p>
+              <%_ } _%>
+            </div>
+          <%_ } _%>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="accessory-detail-Layout_Main">
+  <div class="l-System_Container">
+    <div class="js-price-area">
+
+      <%_ if( jData.splitprice1 ) { _%>
+        <div class="l-Media_Grid-small u-Adjust_Mt-16 accessory-detail-Price_Grid">
+          <div class="accessory-detail-Price_Method accessory-detail-Price_Light-method">一括払い</div>
+          <div class="accessory-detail-Price_Practically-content">
+            <div class="c-Txt_Normal-m u-Adjust_Align-right accessory-detail-Price_Font-bold">
+              <%_ if( jData.price_old > 0 ) { _%>
+                <span class="accessory-detail-Price_Practically-txt">価格</span><span class="c-Txt_Alphanumeric-l accessory-detail-Price-borderdouble"><%- delimiter(jData.price_old) %></span><span class="c-Txt_Normal-ss accessory-detail-Price-yen" style="display: inline-block">円<%_ if( isPriceOldPeriod ){ _%><span class="c-Txt_Cap">※1</span><%_ } _%></span><span class="accessory-detail-Price-arrow">→</span><span class="c-Txt_Alphanumeric-l js-price"><%- delimiter(jData.price) %></span><span class="c-Txt_Normal-ss accessory-detail-Price-yen">円</span>
+              <%_ } else { _%>
+                <span class="accessory-detail-Price_Practically-txt">価格</span><span class="accessory-detail-Price_Practically-num accessory-detail-Price_Font-normal js-price"><%- delimiter(jData.price) %></span><span class="c-Txt_Normal-ss accessory-detail-Price-yen">円</span>
+              <%_ } _%>
+            </div>
+            <div class="accessory-detail-Price_Method-detail-primary accessory-detail-Price_Light-border-bottom accessory-detail-Price_Grid-line"></div>
+          </div>
+        </div>
+        <div class="l-Media_Grid-small accessory-detail-Price_Grid">
+          <div class="accessory-detail-Price_Method accessory-detail-Price_Light-method">
+            <p>分割払い<br class="accessory-detail-Layout_PC">
+              <span>（my 楽天モバイルで購入時の分割価格）</span></p>
+          </div>
+          <div>
+            <div class="accessory-detail-Price_Method-detail-secondary accessory-detail-Price_Grid-split">
+            <div class="accessory-detail-Price_Method-detail-secondary-inner">
+              <div class="accessory-detail-Price_Method-detail-secondary-item">
+                <div>24回払い<sub>※</sub></div>
+                <div>
+                  <span class="accessory-detail-Price_Num"><%- delimiter(jData.splitprice1) %></span>円/月
+                </div>
+              </div>
+              <div class="accessory-detail-Price_Method-detail-secondary-item">
+                <div>48回払い<sub>※</sub> （楽天カードのみ）</div>
+                <div>
+                  <span class="accessory-detail-Price_Num"><%- delimiter(jData.splitprice2) %></span>円/月
+                </div>
+              </div>
+            </div>
+            <p class="accessory-detail-Price_Recomend accessory-detail-Price_Light-recomend u-Adjust_Mt-8">
+              <span>ご購入は楽天カードがオススメ！</span>楽天カードなら分割手数料0円！</p>
+          </div>
+          </div>
+        </div>
+      <%_ } else { _%>
+        <div id="price" class="accessory-detail-Price">
+          <%_ if( jData.price_old > 0 ) { _%>
+          <span>価格</span><span class="c-Txt_Alphanumeric-l accessory-detail-Price-borderdouble"><%- delimiter(jData.price_old) %></span><span class="c-Txt_Normal-ss" style="display: inline-block">円<%_ if( isPriceOldPeriod ){ _%><span class="c-Txt_Cap">※1</span><%_ } _%></span>→<span class="c-Txt_Alphanumeric-l js-price"><%- delimiter(jData.price) %></span><span class="c-Txt_Normal-ss">円</span>
+          <%_ } else { _%>
+          <span>価格</span><span class="c-Txt_Alphanumeric-l js-price"><%- delimiter(jData.price) %></span><span class="c-Txt_Normal-ss">円</span>
+          <%_ } _%>
+        </div>
+      <%_ } _%>
+    </div>
+    <div class="accessory-detail-Price_Grid-note">
+      <a href="/guide/payment/point/?l-id=<%- jData.url %>_pointpayment" class="accessory-detail-Price_Btn-point-appeal u-Adjust_Mt-16">
+        <span class="accessory-detail-Price_Btn-point-appeal-text">期間限定ポイントもOK！<br class="accessory-detail-Layout_SP">製品の購入に楽天ポイントが使えます<%- isPriceOldPeriod ? '※2' : '※1' %></span>
+      </a>
+      <p class="c-Txt_Cap">
+        <%_ if( isPriceOldPeriod ) { _%>
+          ※1 <%= jData.price_old_period %><br>
+        <%_ } _%>
+        <%- isPriceOldPeriod ? '※2' : '※1' %>&nbsp;一度に利用できるポイント数は1～30,000 (ダイヤモンド会員の方は～500,000) ポイントです。製品を分割払いでご購入の場合、2回目以降のお支払いにはご利用いただけません。<br>
+        <span class="c-Txt_Emp-02">
+          ※記載の価格は、my 楽天モバイルから購入した場合となります。楽天モバイル公式 楽天市場店と価格が異なる場合がございます。<br>
+          ※楽天カード以外のクレジットカードで24回払いを選択した場合、分割手数料が発生します。
+        </span>
+        <br>
+        ※割り切れない端数は初回のご請求に含まれます。正式なご請求金額はmy 楽天モバイルでご確認ください。<br>
+        ※一度のお申し込みで、お申し込みする製品ごとにお支払い回数を設定することはできません。
+      </p>
+    </div>
+
+    <section id="feature" class="accessory-detail-Layout_Section">
+      <%_ if( jData.featurelist > 0 ) { _%>
+      <h2 class="c-Heading_Lv2">特長</h2>
+      <div class="accessory-detail-Catch">
+        <ul class="c-List_Text-disc">
+          <%_ const featureList = [
+            jData.feature1, jData.feature2, jData.feature3, jData.feature4, jData.feature5
+          ];
+          for ( let i = 0; i < jData.featurelist; i++ ) { _%>
+            <li><%- featureList[i] %></li>
+          <%_ } _%>
+        </ul>
+
+        <div id="js-contact-link01"></div>
+
+      </div>
+      <%_ } _%>
+
+
+      <%_ if( jData.featureimg > 0 ) {
+        const featureImg = [
+          { title: jData.title1, text: jData.text1, img: jData.img1 },
+          { title: jData.title2, text: jData.text2, img: jData.img2 },
+          { title: jData.title3, text: jData.text3, img: jData.img3 },
+          { title: jData.title4, text: jData.text4, img: jData.img4 },
+          { title: jData.title5, text: jData.text5, img: jData.img5 },
+          { title: jData.title6, text: jData.text6, img: jData.img6 },
+          { title: jData.title7, text: jData.text7, img: jData.img7 },
+          { title: jData.title8, text: jData.text8, img: jData.img8 },
+          { title: jData.title9, text: jData.text9, img: jData.img9 },
+          { title: jData.title10, text: jData.text10, img: jData.img10 }
+        ];
+
+        for ( let i = 0; i < jData.featureimg; i++ ) { _%>
+
+          <%_ if( jData.rich === 'FALSE' ) { _%>
+            <%# nomral %>
+            <section class="accessory-detail-Feature">
+              <figure class="accessory-detail-Feature_Img"><img class="js-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<%= sitepath %>assets/img/accessory/<%- jData.url %>/<%- featureImg[i].img %>?<%- update %>" alt=""></figure>
+              <div class="accessory-detail-Feature_Group">
+                <h3 class="c-Heading_Lv3"><%- featureImg[i].title %></h3>
+
+                <p class="accessory-detail-Feature_Txt"><%- featureImg[i].text %></p>
+
+                <%_ if(i === jData.featureimg - 1) { _%>
+                  <div id="js-contact-link02"></div>
+                <%_ } else if (i === jData.featureimg - 2 && jData.product === 'Galaxy S23 平面ガラスフィルム 高光沢') { _%>
+                  <div id="js-external-link"></div>
+                <%_ } else if (i === jData.featureimg - 2 && jData.product === 'Xperia 10 V 平面ガラスフィルム ブルーライトカット') { _%>
+                  <div id="js-external-link"></div>
+                <%_ } else if (i === jData.featureimg - 2 && jData.product === 'Xperia 10 V 平面ガラスフィルム 高光沢') { _%>
+                  <div id="js-external-link"></div>
+                <%_ } _%>
+              </div>
+            </section>
+          <%_ } else { _%>
+            <%# rich %>
+            <section class="accessory-detail-Feature_Rich">
+              <figure class="accessory-detail-Feature_Rich-img">
+                <img class="js-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<%= sitepath %>assets/img/accessory/<%- jData.url %>/<%- featureImg[i].img %>?<%- update %>" alt="">
+              </figure>
+              <%_ if( featureImg[i].text !== '' ) { _%>
+              <p class="accessory-detail-Feature_Rich-txt"><%- featureImg[i].text %>
+                <%_ if(i === jData.featureimg - 1) { _%>
+                  <span id="js-contact-link03"></span>
+                <%_ } _%>
+              </p>
+
+              <%_ } _%>
+            </section>
+        <%_ }
+
+        } _%>
+
+      <%_ } _%>
+    </section>
+
+    <section class="accessory-detail-Layout_Section" id="spec">
+      <h2 class="c-Heading_Lv2">スペック</h2>
+      <%_ if( jData.spec > 0 ) {
+        const item = [
+          jData.item1, jData.item2, jData.item3, jData.item4, jData.item5, jData.item6, jData.item7, jData.item8, jData.item9, jData.item10, jData.item11, jData.item12
+        ];
+        const value = [
+          jData.value1, jData.value2, jData.value3, jData.value4, jData.value5, jData.value6, jData.value7, jData.value8, jData.value9, jData.value10, jData.value11, jData.value12
+        ];
+      _%>
+      <dl class="c-Dl">
+       <%_ for( let i = 0; i < jData.spec; i++ ) { _%>
+        <div>
+          <dt><%- item[i] %></dt>
+          <%_ if (item[i] === '色') { _%>
+          <dd class="u-Adjust_Txt-break js-spec-color"><%- value[i] %></dd>
+          <%_ } else { _%>
+          <dd class="u-Adjust_Txt-break"><%- value[i] %></dd>
+          <%_ } _%>
+        </div>
+      <%_ } _%>
+      </dl>
+      <%_ } _%>
+
+    </section>
+
+    <%_ if( jData.support1 !== '' || jData.support2 !== '' || jData.link !== '' || jData.link2 !== '' ) { _%>
+    <section class="accessory-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">対応製品</h2>
+      <%_ if( jData.support1 !== '' ) { _%>
+      <div class="u-Adjust_Txt-break"><%- createLink(jData.support1) %></div>
+      <%_ } _%>
+      <%_ if( jData.support2 !== '' ) { _%>
+      <div class="u-Adjust_Txt-break"><%- jData.support2 %></div>
+      <%_ } _%>
+      <%_ if( jData.link !== '' ) { _%>
+      <p class="u-Adjust_Mt-16">
+        <a href="<%- jData.link %>" target="_blank" class="c-Link_Txt-icon">
+          対応製品一覧はこちら<span class="c-Icon_New-window-l"></span>
+        </a>
+      </p>
+      <%_ } _%>
+      <%_ if( jData.link2 !== '' ) { _%>
+        <p class="u-Adjust_Mt-16">
+          Rakuten Mobile SELECTの対応製品一覧は<a href="<%- jData.link2 %>" target="_blank" class="c-Link_Txt-icon">
+          こちら<span class="c-Icon_New-window-l"></span></a>
+        </p>
+      <%_ } _%>
+    </section>
+    <%_ } _%>
+
+    <%_ if( jData.other && jData.other !== '' ) { _%>
+      <section class="accessory-detail-Layout_Section">
+
+        <h2 class="c-Heading_Lv2">
+          <%_ if( jData.device !== '' ) { _%>
+          その他の<%- jData.device %>専用アクセサリー
+          <%_ } else { _%>
+          その他の専用アクセサリー
+          <%_ } _%>
+        </h2>
+
+        <div class="c-Carousel js-Carousel-multi">
+          <%_ const otherArray = jData.other.split('/'); _%>
+          <%_ for ( let i = 0; i < otherArray.length; i++ ) { _%>
+            <div><a href="<%= sitepath %>product/accessory/<%- otherArray[i] %>/?l-id=product_accessory_<%- jData.url %>_<%- otherArray[i] %>"><img data-lazy="<%= sitepath %>assets/img/accessory/<%- otherArray[i] %>/pht-accessory-00.png?<%- update %>" alt=""></a></div>
+          <%_ } _%>
+        </div>
+        <div class="c-Carousel_Nav-v2-wrap">
+          <div class="c-Carousel_Nav-v2"></div>
+          <div class="c-Carousel_Nav-v2-bar"></div>
+        </div>
+      </section>
+    <%_ } _%>
+
+
+    <%_ if( jData.manufacturer !== '' || jData.contact !== '' ) { _%>
+    <section id="contact" class="accessory-detail-Layout_Section">
+      <h2 class="c-Heading_Lv2">お問い合わせ</h2>
+       <div class="u-Adjust_Txt-break js-support-link">
+       <%- jData.manufacturer %><br>
+       <%- jData.contact %>
+       </div>
+    </section>
+     <%_ } _%>
+
+     <%_ if( jData.comment !== '' ) { _%>
+      <section class="accessory-detail-Layout_Section">
+        <h2 class="c-Heading_Lv2">注意事項</h2>
+         <div>
+          <ul class="c-Txt_Cap u-Adjust_Mt-32">
+            <%- createComment(jData.comment) %>
+          </ul>
+         </div>
+      </section>
+      <%_ } _%>
+
+      <%_ if (isAppleRelated) { _%>
+      <%- include('/include/accessory/_recommend-option-iphone.ejs', { l_id: jData.url }) %>
+      <%_ } else { _%>
+        <div class="js-shoplist-sony-xqzcbbt">
+
+        </div>
+      <%- include('/include/accessory/_recommend-option-v2.ejs') %>
+      <%_ } _%>
+      <%- include('/include/accessory/_bnr-panel.ejs') %>
+
+  </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/related/_related-product-top-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-product.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <li><a href="<%= sitepath %>product/">製品</a><span class="c-Icon_Chevron-right"></span></li>
+      <li><a href="<%= sitepath %>product/accessory/">アクセサリ</a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (isAppleRelated) { _%>
+      <li><a href="<%= sitepath %>product/accessory/apple-related/">Apple関連アクセサリ</a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+      <li><a href="<%= sitepath %>product/accessory/smartphone-related//">スマートフォン関連アクセサリ</a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+      <li aria-current="true"><%= jData.product %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<script src="<%= sitepath %>assets/js/accessory.history.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/product.accessory.detail.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

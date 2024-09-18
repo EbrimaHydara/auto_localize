@@ -1,0 +1,153 @@
+<% const pagetitle = "迷惑メールを申告する方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/plan/sms/", label:"メール・SMSサービス"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'お客様が受信された迷惑メールを窓口へ申告する方法をご案内します。迷惑メール対策のひとつとして、迷惑メールの申告窓口を設けています。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-16">お客様が受信された迷惑メールを窓口へ申告する方法をご案内します。</p>
+    <p class="u-Adjust_Mt-16">迷惑メール対策のひとつとして、迷惑メールの申告窓口を設けています。<br>
+      お寄せいただいた情報をもとに、迷惑メール送信が確認された契約者に対しては、厳しい処置を実施しています。</p>
+
+    <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-40">
+      <li><a href="#rakuten" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>楽天モバイルをご利用の方</a></li>
+      <li><a href="#mobile" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>他社携帯電話会社をご利用の方</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="rakuten">楽天モバイルをご利用の方</h2>
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-24">SMSの申告方法</h3>
+    <p class="u-Adjust_Mt-16">電話番号メール（SMS、MMS）へ届いた迷惑メールを申告窓口へ申告する方法をご案内します。</p>
+    <h4 class="c-Heading_Lv4 u-Adjust_Mt-40">手順</h4>
+    <ol class="c-List_Ordered u-Adjust_Mt-16">
+      <li>お客様が受信されたSMS（ショートメッセージサービス）の「受信日時」「受信電話番号」「送信元の電話番号または送信元のアドレス」をメモします。</li>
+      <li>SMSの本文をコピーし、以下のフォームより申告してください。</li>
+    </ol>
+    <div class="u-Adjust_Mt-16">
+      <a class="c-Btn_Regular" href="<%= sitepath %>guide/anti-spam/input.html?l-id=guide_anti-spam_guide_anti-spam_input.html#sms"><span>迷惑メール・SMS申告フォーム</span></a>
+    </div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-56">Eメールの申告方法</h3>
+    <p class="u-Adjust_Mt-16">お客様に届いた迷惑メールを申告窓口へ申告する方法をご案内します。</p>
+    <h4 class="c-Heading_Lv4 u-Adjust_Mt-40">手順</h4>
+    <ol class="c-List_Ordered u-Adjust_Mt-16">
+      <li>受信した迷惑メールの「受信日時」「送信元のアドレス」をメモします。</li>
+      <li>以下のフォームより申告してください。</li>
+    </ol>
+    <div class="u-Adjust_Mt-16">
+      <a class="c-Btn_Regular" href="<%= sitepath %>guide/anti-spam/input.html?l-id=guide_anti-spam_guide_anti-spam_input.html2#mail"><span>迷惑メール・SMS申告フォーム</span></a>
+    </div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="mobile">他社携帯電話会社をご利用の方</h2>
+    <p class="u-Adjust_Mt-16">他の携帯電話会社をご利用で、楽天モバイルが提供しているドメイン（<span class="<%= nameSpace %>-Txt_Domain">rakumail.jp</span>）から届いた迷惑メールを申告窓口へ申告する方法をご案内します。</p>
+    <h4 class="c-Heading_Lv4 u-Adjust_Mt-40">手順</h4>
+    <ol class="c-List_Ordered u-Adjust_Mt-16">
+      <li>受信した迷惑メールの「受信日時」「送信元のアドレス」をメモします。</li>
+      <li>以下のフォームより申告してください。</li>
+    </ol>
+    <div class="u-Adjust_Mt-16">
+      <a class="c-Btn_Regular" href="<%= sitepath %>guide/anti-spam/input.html?l-id=guide_anti-spam_guide_anti-spam_input.html3"><span>迷惑メール・SMS申告フォーム</span></a>
+    </div>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">※お寄せいただいた個々の申告に対して、弊社からの連絡はしておりません。また、お問い合わせいただきましても個別の照会には応じかねますので、あらかじめご了承のほどお願いいたします。</p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">注意事項</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>申告いただいた情報（メールの内容、および申告いただいた方のメールアドレス等も含みます）は、法令に基づく措置を実施するために、総務省および経済産業省ならびにその他の関係機関に開示させていただく場合がございます。また、迷惑メール・SMSへの対策を目的とした情報共有のために、ほかの携帯電話・PHS事業者およびURLフィルタリング関連会社などの第三者に開示させていただく場合がありますので、あらかじめご了承願います。これらのような情報開示を望まれない場合は、当窓口への申告をお控えください。</li>
+      <li>楽天モバイルでは、お客様からお寄せいただいた情報により、楽天モバイルサービスからの迷惑メール・SMS送信が確認された契約者に対し、約款に基づき、警告ならびに利用停止などの厳しい措置を実施しています。</li>
+      <li>お寄せいただいた個々の申告に対して、弊社からの連絡はできかねますのであらかじめご了承ください。</li>
+      <li>楽天モバイル（rakumail.jp）のドメイン以外からの迷惑メールについては、各携帯電話会社の窓口へご相談ください。</li>
+      <li>各携帯電話事業者が提供するドメインから送信されたメール以外の申告は現在受け付けておりません。</li>
+      <li>プライバシー情報を含むメールは送信しないでください。</li>
+      <li>間違いメールや個人に対する誹謗中傷メール、受信を希望して登録したメールマガジンなどの情報は受け付しておりませんのでご了承ください。</li>
+    </ul>
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>guide/security/?l-id=guide_anti-spam_guide_security" class="c-Btn_Regular-semiauto"><span>楽天モバイルの情報セキュリティについて</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js', { jquery: '3.6.0' }) %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.international-call.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

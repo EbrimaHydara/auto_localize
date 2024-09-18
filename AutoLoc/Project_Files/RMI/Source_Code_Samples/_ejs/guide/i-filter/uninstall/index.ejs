@@ -1,0 +1,452 @@
+<% const pagetitle = "あんしんコントロール by i-フィルター（停止・アンインストール方法）" -%>
+<% const directories = [{path:"service/", label:"オプションサービス"}, {path:"guide/i-filter/", label:"あんしんコントロール by i-フィルター"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '安心・便利なフィルタリングサービス「あんしんコントロール by i-フィルター(楽天モバイル)」の停止・アンインストール方法をご案内します',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true">停止・アンインストール方法</li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-24">
+      18歳未満のお客様はフィルタリングサービスのご利用が必須ですが、保護者（親権者）の不要申出書の提出により、解約可能になります。その際のアンインストール手順の案内ページです。
+    </p>
+
+    <ul class="c-List_Cap u-Adjust_Mt-16">
+      <li class="c-Txt_Emp-02"><span>※</span>お子さまの製品でアンインストールを行っても、本サービスの解約とはなりません。解約の際は、不要申出書の提出をお願いいたします。</li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">事前準備</h2>
+    <p class="u-Adjust_Mt-24">
+      保護者（親権者）にて、不要申出書にフィルタリングサービスを利用されない理由をご記入のうえ、申出書に記載のある住所までご提出をお願いいたします。
+    </p>
+    <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>pdf/terms/application_for_non-use_of_filtering_service.pdf" class="c-Link_Txt-icon">フィルタリングサービスを利用しない旨の申出書（フィルタリング・サービス不要申出書）<span class="c-Icon_Pdf-l"></span></a></p>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64">ご用意いただくもの</h2>
+    <ul class="c-List_Text-disc u-Adjust_Mt-16">
+      <li>保護者（親権者）のメールアドレス</li>
+      <li>管理パスワード</li>
+    </ul>
+
+    <ul class="<%= nameSpace %>-Layout_Anchorlink">
+      <li><a href="#howto-apply" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>STEP1：保護者（親権者）による管理画面での操作</a></li>
+      <li><a href="#howto-use" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>STEP2：お子さまの製品での操作</a></li>
+    </ul>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto-apply">STEP1：保護者（親権者）による管理画面での操作</h2>
+    <p class="u-Adjust_Mt-24">
+      まず、保護者（親権者）にて管理画面の設定を変更いただきます。
+    </p>
+
+    <ul class="u-Adjust_Mt-16 <%= nameSpace %>-Flow_List">
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        1. 管理画面を開く
+    </h4>
+
+    <p class="u-Adjust_Mt-24">
+      あんしんコントロール by i-フィルターの管理画面にアクセスしてください。
+    </p>
+    <p class="u-Adjust_Mt-24"><a href="https://i-filter.jp/login/" class="c-Link_Txt-icon" target="_blank">管理画面に進む<span class="c-Icon_New-window-l"></span></a></p>
+    <p class="u-Adjust_Mt-48">
+      スマートフォンでお手続きされる場合は、こちらのQRコードを読み取り、管理画面に進んでいただくこともできます。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step1/setup01.png" width="166" height="" alt=""></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        2. ログイン
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      保護者（親権者）のメールアドレスと管理パスワードを入力し、ログインボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step1/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        3. サービスの選択
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      利用するサービスの一覧から、「フィルタリングを設定する」ボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step1/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        4. システム設定に進む
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      設定画面のトップページから、「システム設定」ボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step1/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        5. システム設定の保護に進む
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      システム設定画面から、「システム設定の保護」ボタンを押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step1/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        6. 設定を解除する
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      	「システム設定の保護をする」と「デバイス管理者機能の保護をする」に入っているチェックを押して解除し、「設定保存」を押してください。
+    </p>
+    <ul class="c-List_Cap u-Adjust_Mt-8">
+      <li><span>※</span>下図のように、レ点が両方とも入っていない状態にしてください。</li>
+    </ul>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step1/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li class="c-Infobox_Standing-border">
+      <h4 class="c-Heading_Lv4">
+        7. 設定の保存
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      確認のメッセージが表示されたらい、「OK」を押してください。
+    </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step1/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+  </ul>
+
+  <p class="u-Adjust_Mt-32">
+      以上で保護者（親権者）による管理画面での操作は完了です。続いて、お子さまの製品での操作に進んでください。
+  </p>
+  <ul class="c-List_Cap u-Adjust_Mt-8">
+    <li><span>※</span>このあとの操作も、必ず保護者（親権者）が行ってください。</li>
+  </ul>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="howto-use">STEP2：お子さまの製品での操作</h2>
+
+    <p class="u-Adjust_Mt-24">
+      ここからは、お子さまの製品を操作してください。
+    </p>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+  <ul class="c-Tab_Items" role="tablist">
+    <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">Android</li>
+    <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">iOS</li>
+  </ul>
+
+  <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+
+    <ul class="c-List_Cap u-Adjust_Mt-8">
+      <li><span>※</span>これより先は、Android OS 9.0でキャプチャしたものです。 OSのバージョンによってスクリーンが異なる場合があります。</li>
+    </ul>
+    <ul class="u-Adjust_Mt-16 <%= nameSpace %>-Flow_List">
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      1. アプリ設定に進む
+    </h4>
+    <p class="u-Adjust_Mt-24">
+      「i-フィルター」ブラウザを起動し、メニューボタンから「アプリ設定」をタップしてください。
+    </p>
+    <div>
+      <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup01.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      <div>
+      </div>
+    </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      2. 禁止アプリリストの更新
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    「その他」の中から「禁止アプリリスト更新」をタップしてください。<br>
+<br>
+続いて、「アプリリストの更新を行いますか？」の確認メッセージが表示されますので、「OK」をタップしてください。
+  </p>
+
+  <ul class="c-List_Cap u-Adjust_Mt-8">
+    <li><span>※</span>「OK」をタップした後、「i-フィルター」の設定変更の反映には若干のずれが発生する可能性があります。設定が反映されていない場合は時間をおいて再度実行してください。</li>
+  </ul>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    <div>
+    </div>
+  </div>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup02-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    <div>
+    </div>
+  </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      3. 設定アプリを起動
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    製品のホーム画面より「設定」をタップしてください。
+  </p>
+    <div>
+      <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      <div>
+      </div>
+    </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      4. 端末管理アプリ画面に進む
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    「セキュリティと現在地情報」をタップし、続いて「端末管理アプリ」をタップしてください。
+  </p>
+
+  <ul class="c-List_Cap u-Adjust_Mt-8">
+    <li><span>※</span>「設定」に表示される項目はご利用の製品によって異なる場合があります。ご利用の製品の設定について、詳しくは製品の取扱説明書をご覧ください。</li>
+  </ul>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    <div>
+    </div>
+  </div>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup04-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    <div>
+    </div>
+  </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      5. i-フィルターを選択
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    「端末管理アプリ」画面より「i-フィルター」をタップしてください。
+  </p>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    <div>
+    </div>
+  </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      6. i-フィルターを無効化
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    「この端末管理アプリを無効にする」をタップしてください。
+  </p>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    <div>
+    </div>
+  </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      7. i-フィルターを無効化
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    確認のメッセージが表示されたらい、「OK」をタップしてください。
+  </p>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/android/setup07.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    <div>
+    </div>
+  </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      8. i-フィルターのアンインストール
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    お子さまの製品にて、「i-フィルター for Android」のアンインストールを行ってください。
+  </p>
+      <p class="u-Adjust_Mt-24"><a href="https://support.google.com/googleplay/answer/2521768?hl=ja" class="c-Link_Txt-icon" target="_blank">アンインストールの方法を見る（Android）<span class="c-Icon_New-window-l"></span></a></p>
+  </li>
+</ul>
+</div>
+<div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+
+  <ul class="c-List_Cap u-Adjust_Mt-8">
+    <li><span>※</span>これより先は、iOS 14.4でキャプチャしたものです。 OSのバージョンによってスクリーンが異なる場合があります。</li>
+  </ul>
+  <ul class="u-Adjust_Mt-16 <%= nameSpace %>-Flow_List">
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      1. 設定アプリを起動
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    製品のホーム画面より「設定」をタップしてください。
+  </p>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      2. スクリーンタイムに進む
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    設定から「スクリーンタイム」をタップしてください。
+  </p>
+  <ul class="c-List_Cap u-Adjust_Mt-8">
+    <li><span>※</span>「設定」に表示される項目はご利用の製品によって異なる場合があります。ご利用の製品の設定について、詳しくは製品の取扱説明書をご覧ください。</li>
+  </ul>
+    <div>
+      <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/ios/setup02.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      3. コンテンツとプライバシーの制限に進む
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    「コンテンツとプライバシーの制限」をタップしてください。
+  </p>
+    <div>
+      <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/ios/setup03.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    </div>
+  </li>
+  <li class="c-Infobox_Standing-border">
+    <h4 class="c-Heading_Lv4">
+      4. 対象の選択
+  </h4>
+  <p class="u-Adjust_Mt-24">
+    「iTunesおよびApp Storeでの購入」をタップしてください。
+  </p>
+    <div>
+      <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/ios/setup04.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+    </div>
+  </li>
+<li class="c-Infobox_Standing-border">
+  <h4 class="c-Heading_Lv4">
+    5. Appの削除を選択
+</h4>
+<p class="u-Adjust_Mt-24">
+  「Appの削除」をタップしてください。
+</p>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/ios/setup05.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+  </div>
+</li>
+<li class="c-Infobox_Standing-border">
+  <h4 class="c-Heading_Lv4">
+    6. 確認
+</h4>
+<p class="u-Adjust_Mt-24">
+  「許可」が選択されていることを確認してください。<br>
+<br>
+選択されていない場合は、「許可」を選択してください。
+</p>
+  <div>
+    <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/i-filter/uninstall/step2/ios/setup06.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+  </div>
+</li>
+<li class="c-Infobox_Standing-border">
+  <h4 class="c-Heading_Lv4">
+    7. i-フィルターのアンインストール
+</h4>
+<p class="u-Adjust_Mt-24">
+  お子さまの製品にて、「i-フィルター for iOS」のアンインストールを行ってください。
+</p>
+      <p class="u-Adjust_Mt-24"><a href="https://support.apple.com/ja-jp/HT207618" class="c-Link_Txt-icon" target="_blank">アンインストールの方法を見る（iOS）<span class="c-Icon_New-window-l"></span></a></p>
+</li>
+</ul>
+  </div>
+</div>
+<p class="u-Adjust_Mt-32">以上で「あんしんコントロール by i-フィルター」停止・アンインストールの手順は完了です。</p>
+
+
+    <div class="u-Adjust_Pt-40">
+      <div><a href="<%= sitepath %>support/" class="c-Btn_Regular-semiauto"><span>お客様サポートトップにもどる</span></a></div>
+      <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular-semiauto"><span>楽天モバイルトップへ</span></a></div>
+    </div>
+  </div>
+</div>
+
+<%- include('/include/guide/_review') %>
+<%- include('/include/guide/_inquiry') %>
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true">停止・アンインストール方法</li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<% const namespace = "area-city" -%>
+<% const imgPath = "/assets/img/area/city/" -%>
+
+<section class="<%= namespace %>-Layout_Bg-pink u-Adjust_Pb-48">
+  <%_ if( jData.directory2 ) { _%>
+    <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="city_price" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } else { _%>
+    <div class="<%= namespace %>-Layout_Data u-Rat_Appear-height" data-ratid="prefecture_price" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } _%>
+  <div class="<%= namespace %>-Layout_Arrow u-Adjust_Pt-16 u-Adjust_Pb-16" id="city_price">
+    <div class="l-System_Container u-Adjust_Align-center">
+      <img src="<%= imgPath %>plan/Plan-title-icon.png" class="<%= namespace %>-Layout_Icon" alt="Rakuten最強プラン">
+      <span class="<%= namespace %>-Layout_Title">Rakuten最強プラン</span>
+    </div>
+  </div>
+  <div class="<%= namespace %>-Plan_Wrapper l-System_Container u-Adjust_Align-center">
+    <picture>
+      <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>plan/Plan-saikyo-1-sp.png" width="343" height="758">
+      <img src="<%= imgPath %>plan/Plan-saikyo-1-pc.png" loading="lazy" width="1032" height="194" alt="全通信キャリアのデータ無制限プランで">
+    </picture>
+    <div class="u-Adjust_Mt-24 u-Adjust_Mt-pc-32">
+      <span class="<%= namespace %>-Plan_Txt-pink c-Txt_Emp-02">3人家族で利用</span><span class="<%= namespace %>-Plan_Txt-big">しても<br class="u-Show_Oox">他社よりおトク！</span>
+    </div>
+    <%# plan main img %>
+    <div class="u-Adjust_Mt-16">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>plan/Plan-saikyo-2-sp.png" width="500" height="758">
+        <img src="<%= imgPath %>plan/Plan-saikyo-2-pc.png" width="856" height="671" loading="lazy" alt="3人家族で利用しても他社よりおトク！">
+      </picture>
+      <div class="<%= namespace %>-Plan_Arrow u-Adjust_Mt-24">
+        <img src="/assets/img/fee/simulation/arrow-pc.png" width="86" height="20" alt="現在のご利用状況から他社プラント比較ができます。">
+      </div>
+      <h3 class="<%= namespace %>-Plan_A-Txt-normal">現在のご利用状況から<br class="u-Show_Oox">他社プランと比較ができます</h3>
+    </div>
+
+    <%# 料金シミュレーション bnr %>
+    <div class="u-Adjust_Mt-pc-16 u-Adjust_Mt-8">
+      <a class="c-Banner_Hover-act" href="<%= sitepath %>fee/simulation/?l-id=area_
+        <%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_fee_simulation">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-fee-simulation-343-108-230905.png" width="500">
+          <img src="<%= sitepath %>assets/img/bnr/bnr-fee-simulation-1032-160-230905.png" width="1032" height="160" loading="lazy" alt="他社プランと比較もできる！かんたん料金シミュレーション">
+        </picture>
+      </a>
+    </div>
+    <%# 乗り換えバナー bnr %>
+    <div class="<%= namespace %>-Plan_A">
+      <div class="<%= namespace %>-Plan_A-Mt-48">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>plan/Plan-transfer-1-sp.png" width="260" height="60">
+          <img src="<%= imgPath %>plan/Plan-transfer-1-pc.png" width="588" height="39" loading="lazy" alt="3人家族で利用しても他社よりおトク！">
+        </picture>
+      </div>
+      <div class="<%= namespace %>-Plan_A-Mt-8 c-Banner_Hover-act">
+        <a href="<%= sitepath %>fee/saikyo-plan/data-type/?l-id=area_<%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_fee_saikyo_data">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>plan/Plan-transfer-2-sp.png" width="500">
+            <img src="<%= imgPath %>plan/Plan-transfer-2-pc.png" width="1032" height="160" loading="lazy" alt="無料でお試し">
+          </picture>
+        </a>
+        <p class="c-Txt_Emp-02 c-Txt_Cap u-Adjust_Mt-8">※「実質価格」とは、キャンペーンの条件達成により後日付与されるポイントを加味した価格であり、実際のお支払い金額とは異なります。詳しくは<a href="<%= sitepath %>fee/saikyo-plan/data-type/#campaign-rule" class="c-Link_Txt-inline">キャンペーンルール</a>をご確認ください。</p>
+      </div>
+    </div>
+    <%# プラン詳細 btn %>
+    <div class="<%= namespace %>-Plan_A-Mt-48">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>plan/Plan-saikyo-3-sp.png" width="271" height="34">
+        <img src="<%= imgPath %>plan/Plan-saikyo-3-pc.png" width="339" height="44" loading="lazy" alt="もっと納得できる最強の理由。">
+      </picture>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>fee/saikyo-plan/?l-id=area_<%_ if( jData.directory2 ) { _%>city_<%= jData.directory1 %>_<%= jData.directory2 %><%_ } else { _%>prefecture_<%= jData.directory1 %><%_ } _%>_fee_saikyo-plan_detail" class="c-Btn_Regular-large">料金プランの詳細を見る</a>
+      </div>
+      <div class="<%= namespace %>-Plan_Txt-info c-Txt_Cap u-Adjust_Mt-32">
+        <p>※1「価格が最強」とは4キャリアの大容量プランで比較した場合。2023年7月時点</p>
+        <p>※2 シミュレーション結果（データ量）を月額料金（1カ月：30日）で比較した料金プラン。実際のご利用状況により異なる場合あり。記載された情報は2023年7月3日時点の情報 </p>
+        <p>※3 通話料等別 </p>
+        <p>※4 一部対象外番号あり。アプリ未使用時30秒22円</p>
+        <p class="c-Txt_Emp-02">※5 その他、各種キャンペーンによって、割引が適用される場合あり</p>
+        <p>※6 その他条件の詳細は<a href="#cautions" class="c-Link_Txt js-scroll">こちら</a></p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,188 @@
+<% const pagetitle = "5G通信の設定方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/setting/", label:"各種製品の初期設定"}] -%>
+<% const namespace = "area-5g" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'ご利用中の製品で5G通信の設定を行う方法をご案内いたします。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div id="setting" class="u-Adjust_Pt-32">
+    <div class="l-System_Container">
+      <h2 class="c-Heading_Lv2">5G通信の設定手順</h2>
+      <p class="u-Adjust_Mt-24">ご利用中の製品で5G通信の設定を行う方法をご案内いたします。</p>
+      <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>area/5g/" class="c-Link_Txt-inline">5G（ファイブジー）とは<span class="c-Icon_Chevron-right"></span></a></p>
+
+      <!--  -->
+      <div class="c-Tab js-Tab">
+      <ul class="c-Tab_Items-bg u-Adjust_Mt-16" role="tablist">
+          <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">iPhoneの場合</li>
+          <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">Androidの場合</li>
+      </ul>
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※「iPhone15（iOS 17）」の例。</p>
+
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 「設定」を開く</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-01-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 「モバイル通信」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-02-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「通信のオプション」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-03-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. 「音声通話とデータ」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-04-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. 「5Gオート」または「5Gオン」を選択する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-iphone-05-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">以上で5G通信の設定は完了です。</p>
+      </div>
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※「AQUOS sense7」の例。</p>
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 「設定」を開く</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-01-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 「ネットワークとインターネット」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-02-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 「Wi-Fiとモバイルネットワーク」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-03-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. ネットワーク名部分にある設定アイコンをタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-04-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. 「優先ネットワークの種類」をタップする</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-05-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">6. 「5G（推奨）」を選択する</h3>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/area/5g/img-android-06-231006.png" class="c-Img_Capture" alt="">
+            </div>
+          </li>
+        </ol>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap">以上で5G通信の設定は完了です。</p>
+      </div>
+    </div>
+    <div class="u-Adjust_Align-center">
+      <div class="u-Adjust_Mt-48">
+        <a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップに戻る</span></a>
+      </div>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

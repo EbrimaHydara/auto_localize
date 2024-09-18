@@ -1,0 +1,123 @@
+<% const nameSpace = "input-corporation-information" -%>
+<section id="step4" class="js-step" aria-hidden="true">
+  <h2 id="js-observe-4" class="c-Heading_Lv1 js-show-business-type" aria-hidden="true">Rakuten Casaお申し込み情報のご入力 - <span class="js-business-type"></span>のお客様用</h2>
+  <nav id="js-nav-4" class="<%= nameSpace %>-Progress">
+    <div id="js-observe-sp-4">
+      <ul class="<%= nameSpace %>-Progress_Bar js-progressbar">
+        <li class="<%= nameSpace %>-Progress_Bar-checked"><span>店舗</span></li>
+        <li class="<%= nameSpace %>-Progress_Bar-checked"><span>契約者<br><span class="<%= nameSpace %>-Util_Pc">店舗管理者</span></span></li>
+        <li class="<%= nameSpace %>-Progress_Bar-checked"><span>口座</span></li>
+        <li class="<%= nameSpace %>-Progress_Bar-current" aria-current="step"><span>ご連絡先</span></li>
+        <li><span>確認</span></li>
+      </ul>
+    </div>
+    <div id="js-heading-sp-4">
+      <h2 class="c-Heading_Lv2">つながりやすいご連絡先</h2>
+    </div>
+  </nav>
+  <dl class="c-Form_List u-Adjust_Mt-32">
+    <div>
+      <dt>ご担当者様</dt>
+      <dd>
+        <div class="c-Form_Select u-Adjust_W-280">
+          <select name="WebForm_OwnerInfoCheck_KadenPIC__c_dummy" value="" aria-required="false" data-validate="">
+            <option value="">選択してください</option>
+            <option value="店舗管理者">店舗管理者</option>
+            <option value="契約者">契約者</option>
+            <option value="その他">その他</option>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+        <input type="hidden" name="WebForm_OwnerInfoCheck_KadenPIC__c" value="" autocomplete="off">
+      </dd>
+    </div>
+    <div>
+      <dt>ご担当者様氏名</dt>
+      <dd>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※「セイ」は全角カタカナ50文字以内で入力してください</p>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※「メイ」は全角カタカナ50文字以内で入力してください</p>
+        <p id="err-full-kana_WebForm_OwnerInfoCheck_KadenPICFirstName__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">「セイ」は全角カタカナで入力してください</p>
+        <p id="err-full-kana_WebForm_OwnerInfoCheck_KadenPICName__c" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">「メイ」は全角カタカナで入力してください</p>
+        <dl class="c-Form_List-sub">
+          <div>
+            <dt>セイ</dt>
+            <dd><input type="text" class="c-Form_Input u-Adjust_W-160 js-input-step4" maxlength="50" name="WebForm_OwnerInfoCheck_KadenPICFirstName__c" placeholder="例）ラクテン" aria-required="false" data-validate="full-kana" autocomplete="off"></dd>
+          </div>
+          <div>
+            <dt>メイ</dt>
+            <dd><input type="text" class="c-Form_Input u-Adjust_W-160 js-input-step4" maxlength="50" name="WebForm_OwnerInfoCheck_KadenPICName__c" placeholder="例）タロウ" aria-required="false" data-validate="full-kana" autocomplete="off"></dd>
+          </div>
+        </dl>
+      </dd>
+    </div>
+    <div>
+      <dt>電話番号</dt>
+      <dd>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※半角数字10～11桁で入力してください</p>
+        <p id="err-tel_WebForm_OwnerInfoCheck_KadenTelNum__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+        <p id="err-allentered_WebForm_OwnerInfoCheck_KadenTelNum__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">3つの枠すべて入力してください</p>
+        <p id="err-telsize_WebForm_OwnerInfoCheck_KadenTelNum__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">10～11桁で入力してください</p>
+
+        <div class="<%= nameSpace %>-Layout_Tel">
+          <input type="text" class="c-Form_Input js-input-step-tel-4 js-tel" value="" name="WebForm_OwnerInfoCheck_KadenTelNum__c_tel" minlength="2" maxlength="5" placeholder="例）03" aria-required="false" data-validate="tel all-entered" data-validate-group="tel-kaden" autocomplete="off">
+          <span>-</span>
+          <input type="text" class="c-Form_Input js-input-step-tel-4 js-tel" value="" name="WebForm_OwnerInfoCheck_KadenTelNum__c_tel" minlength="4" maxlength="4" placeholder="例）1234" aria-required="false" data-validate="tel all-entered" data-validate-group="tel-kaden" autocomplete="off">
+          <span>-</span>
+          <input type="text" class="c-Form_Input js-input-step-tel-4 js-tel" value="" name="WebForm_OwnerInfoCheck_KadenTelNum__c_tel" minlength="4" maxlength="4" placeholder="例）5678" aria-required="false" data-validate="tel all-entered" data-validate-group="tel-kaden" autocomplete="off">
+          <input type="hidden" value="" name="WebForm_OwnerInfoCheck_KadenTelNum__c" maxlength="" placeholder="" data-validate="" aria-required="false">
+        </div>
+      </dd>
+    </div>
+    <div>
+      <dt>電話番号2</dt>
+      <dd>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※ご連絡先が複数ある場合にはこちらにご入力ください。</p>
+        <p class="c-Txt_Cap u-Adjust_Mb-8">※半角数字10～11桁で入力してください</p>
+        <p id="err-tel_WebForm_OwnerInfoCheck_KadenTelNum2__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+        <p id="err-allentered_WebForm_OwnerInfoCheck_KadenTelNum2__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">3つの枠すべて入力してください</p>
+        <p id="err-telsize_WebForm_OwnerInfoCheck_KadenTelNum2__c_tel" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">10～11桁で入力してください</p>
+
+        <div class="<%= nameSpace %>-Layout_Tel">
+          <input type="text" class="c-Form_Input js-input-step-tel-6 js-tel" value="" name="WebForm_OwnerInfoCheck_KadenTelNum2__c_tel" minlength="2" maxlength="5" placeholder="例）03" aria-required="false" data-validate="tel all-entered" data-validate-group="tel-kaden2" autocomplete="off">
+          <span>-</span>
+          <input type="text" class="c-Form_Input js-input-step-tel-6 js-tel" value="" name="WebForm_OwnerInfoCheck_KadenTelNum2__c_tel" minlength="4" maxlength="4" placeholder="例）1234" aria-required="false" data-validate="tel all-entered" data-validate-group="tel-kaden2" autocomplete="off">
+          <span>-</span>
+          <input type="text" class="c-Form_Input js-input-step-tel-6 js-tel" value="" name="WebForm_OwnerInfoCheck_KadenTelNum2__c_tel" minlength="4" maxlength="4" placeholder="例）5678" aria-required="false" data-validate="tel all-entered" data-validate-group="tel-kaden2" autocomplete="off">
+          <input id="tel_WebForm_OwnerInfoCheck_KadenTelNum2__c_value" type="hidden" value="" name="WebForm_OwnerInfoCheck_KadenTelNum2__c" maxlength="" placeholder="" data-validate="" aria-required="false">
+        </div>
+      </dd>
+    </div>
+
+    <div>
+      <dt>つながりやすい時間</dt>
+      <dd>
+        <div class="c-Form_Select u-Adjust_W-280">
+          <select name="WebForm_OwnerInfoCheck_EasyTime__c_select1" aria-required="false" data-validate="">
+            <option value="">選択してください</option>
+            <option value="8:30-11:00">8:30-11:00</option>
+            <option value="11:00-13:00">11:00-13:00</option>
+            <option value="13:00-15:00">13:00-15:00</option>
+            <option value="15:00-17:00">15:00-17:00</option>
+            <option value="17:00-19:00">17:00-19:00</option>
+            <option value="19:00-21:00">19:00-21:00</option>
+            <option value="その他">その他</option>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+        <div id="js-ownerInfoCheckEasyTime-other" aria-hidden="true">
+          <p class="c-Txt_Cap u-Adjust_Mb-8 u-Adjust_Mt-24">※255文字以内で入力してください</p>
+          <textarea class="c-Form_Input js-input-step4" value="-" name="WebForm_OwnerInfoCheck_EasyTime__c_select2" maxlength="255" placeholder="例）16時前後" data-validate="" aria-required="false"></textarea>
+        </div>
+        <input type="hidden" name="WebForm_OwnerInfoCheck_EasyTime__c" data-validate="" value="">
+      </dd>
+    </div>
+  </dl>
+
+  <div class="u-Adjust_Align-center u-Adjust_Mt-48">
+    <button type="button" class="c-Btn_Primary-large js-goto-next-step" id="js-next-step5"><span>次に進む</span></button>
+    <div class="u-Adjust_Mt-24">
+      <button type="button" class="<%= nameSpace %>-Form_Back js-backto-prev-step" id="js-prev-step3"><span class="c-Icon_Chevron-left"></span><span>前に戻る</span></button>
+    </div>
+  </div>
+
+</section>

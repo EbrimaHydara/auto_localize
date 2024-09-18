@@ -1,0 +1,202 @@
+<% const pagetitle = "持ち込みスマホあんしん保証（お申し込み方法）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/replacement-warranty-sim/", label:"持ち込みスマホあんしん保証（ご利用方法）"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルの「持ち込みスマホあんしん保証」サービスのお申し込み方法の案内になります。オプションサービスの申し込み方法を詳しくご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const namespace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= namespace %>/<%= namespace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<section class="l-System_Container u-Adjust_Pt-32 u-Adjust_Pb-32">
+  <h1 class="c-Heading_Lv1">持ち込みスマホあんしん保証（お申し込み方法）</h1>
+  <p class="u-Adjust_Mt-32">「持ち込みスマホあんしん保証」はSIMのみでプランお申し込み時、もしくは楽天モバイルの開通日から30日以内にお申し込みが可能です。</p>
+  <p class="u-Adjust_Mt-16 c-Txt_Cap c-Txt_Emp-02">※製品の交換保証を受けるには、本サービスのお申し込み後に「製品登録」を行う必要があります。</p>
+  <p class="c-Txt_Cap c-Txt_Emp-02">※月額利用料は、オプションのお申し込み当日より発生します。</p>
+
+  <div class="c-Infobox_Standing-warning u-Adjust_Mt-16">
+    <p class="<%= namespace %>-Txt_Attention">お申し込み前に、本サービスの対象製品か必ずご確認をお願いいたします。</p>
+    <ul class="u-Adjust_Mt-16">
+      <li><span class="c-Txt_Emp-01"><a href="<%= sitepath %>service/replacement-warranty-sim/price-list/" class="c-Link_Txt-inline">保証対象製品一覧<span class="c-Icon_Chevron-right"></span></a></span></li>
+      <li class="u-Adjust_Mt-16 c-Txt_Cap c-Txt_Emp-02">※Xperia Ace（NTTドコモ）、HUAWEI P30 lite Premium（au）など一部のキャリア製品や製品購入場所により保証対象外となる場合があります。
+      <li class="c-Txt_Cap c-Txt_Emp-02">※サービスお申し込み時に購入場所を誤って選択した場合、加入はできますが、保証対象外となりますのでご注意ください。</li>
+    </ul>
+  </div>
+
+  <section id="inquire" class="u-Adjust_Pt-32">
+    <h2 class="c-Heading_Lv2">お申し込み方法</h2>
+
+    <div class="c-Tab js-Tab u-Adjust_Mt-16">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">新規で楽天モバイルにお申し込みの場合</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">すでに楽天モバイルをご利用中の場合</li>
+      </ul>
+
+      <!--TAB1-->
+      <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1. お申し込み画面で「プランを選択する」をタップする</h3>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-01-230623.png" alt="" width="300" class="c-Img_Capture"></div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. オプションサービスの選択画面で、「持ち込みスマホあんしん保証」を選択する</h3>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-02-221122.png" alt="" width="300" class="c-Img_Capture"></div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. 保証対象とする製品を選び、「製品を選択して料金を確認する」をタップする</h3>
+            <p class="u-Adjust_Mt-32">選択された製品によって、715円～1,309円（税込）の範囲で月額利用料が確定いたします。</p>
+            <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※月額利用料は、オプションのお申し込み当日より発生します。</p>
+            <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">
+              ※<a href="<%= sitepath %>service/replacement-warranty-sim/price-list/">保証対象製品</a>であっても、製品購入場所により保証対象外となる場合があります。購入場所を誤って選択した場合、加入はできますが、保証対象外となりますのでご注意ください。
+            </p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Layout_Flow-img-column">
+              <img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-03-221122.png" alt="" width="300" class="c-Img_Capture">
+              <img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-03-02-221122.png" alt="" width="300" class="c-Img_Capture" style="vertical-align: bottom;">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. お申し込みを完了する</h3>
+            <p>画面の案内に沿って、お申し込みを完了してください。</p>
+          </li>
+        </ol>
+      </div>
+
+      <!--TAB2-->
+      <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <ol class="c-Flow u-Adjust_Mt-24">
+          <li>
+            <h3 class="c-Heading_Lv3">1. 「my 楽天モバイル」を立ち上げる</h3>
+            <div class="c-Box_App inquiry-Layout_Btn u-Adjust_Mt-16">
+              <div class="c-Box_App-icon"><img src="<%= sitepath %>assets/img/common/icon-rmb-app.png" alt="my 楽天モバイル"></div>
+              <div class="c-Box_App-txt">
+                <p class="c-Box_App-ttl">my 楽天モバイル</p>
+                <p class="u-Adjust_Mt-8">各種お手続き、料金やデータ容量など、手軽に確認できる公式アプリです。</p>
+                <ul class="c-Box_App-link u-Adjust_Mt-8" style="row-gap: 16px;">
+                  <li class="<%= namespace %>-App_Btn-store">
+                    <div class="<%= namespace %>-App_Btn-store-item"><a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" rel="noopener"><img src="<%= sitepath %>assets/img/common/btn-googleplay.png" width="149" alt="Google Play"></a></div>
+                    <div class="<%= namespace %>-App_Btn-store-item"><a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank" rel="noopener"><img src="<%= sitepath %>assets/img/common/btn-appstore.png" width="149" alt="Apple Store"></a></div>
+                  </li>
+                  <li><a href="<%= sitepath %>guide/my-rakuten-mobile/" class="<%= namespace %>-Btn_Application_Regular">my 楽天モバイルとは</a></li>
+                  <li><a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile" class="c-Link_Txt-inline">Webで「my 楽天モバイル」を使う<span class="c-Icon_Chevron-right"></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">2. 「契約プラン」を選択し、下部の「オプションサービスの追加・解約」をタップする</h3>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-04-230623.png" alt="" width="300" class="c-Img_Capture"></div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">3. オプションサービスの選択画面で、「持ち込みスマホあんしん保証」を選択する</h3>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-02-221122.png" alt="" width="300" class="c-Img_Capture"></div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">4. 保証対象とする製品を選び、「製品を選択して料金を確認する」をタップする</h3>
+            <p class="u-Adjust_Mt-16">選択された製品によって、715円～1,309円（税込）の範囲で月額利用料が確定いたします。</p>
+            <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">※月額利用料は、オプションのお申し込み当日より発生します。</p>
+            <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">
+              ※<a href="<%= sitepath %>service/replacement-warranty-sim/price-list/">保証対象製品</a>であっても、製品購入場所により保証対象外となる場合があります。購入場所を誤って選択した場合、加入はできますが、保証対象外となりますのでご注意ください。
+            </p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Layout_Flow-img-column">
+              <img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-03-221122.png" alt="" width="300" class="c-Img_Capture">
+              <img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-03-02-221122.png" alt="" width="300" class="c-Img_Capture" style="vertical-align: bottom;">
+            </div>
+          </li>
+          <li>
+            <h3 class="c-Heading_Lv3">5. 画面下部の「変更する」をタップする</h3>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16"><img src="<%= sitepath %>assets/img/guide/replacement-warranty-sim/application/img-05-230623.png" alt="" width="300" class="c-Img_Capture"></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+
+    <p class="u-Adjust_Mt-32">以上でお申し込みは完了です。<br>
+      別途申し込み完了メールが届くのでご確認ください。</p>
+    <p class="u-Adjust_Mt-8">続いて保証対象とする製品の登録を行ってください。</p>
+    <div class="u-Adjust_Mt-16">
+      <a href="<%= sitepath %>guide/replacement-warranty-sim/device-resistration/" class="c-Btn_Regular"><span>保証製品の登録方法の詳細を見る</span></a>
+    </div>
+  </section>
+
+  <div class="u-Adjust_Mt-64">
+    <a href="<%= sitepath %>support/" class="c-Btn_Regular"><span>お客様サポートトップにもどる</span></a>
+  </div>
+  <div class="u-Adjust_Mt-8">
+    <a href="<%= sitepath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a>
+  </div>
+
+</section>
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

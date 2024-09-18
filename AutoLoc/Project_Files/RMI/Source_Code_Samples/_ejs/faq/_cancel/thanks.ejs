@@ -1,0 +1,122 @@
+<% const pagetitle = "製品受け取り前キャンセルのお手続き" -%>
+<% const directories = [{path:"faq/", label:"お問い合わせ"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/faq/cancel/faq-cancel.css?20240424">
+<%- include('/include/_append-head', {messaging: true}) %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="faq-cancel-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">楽天モバイル製品受け取り前キャンセルを承りました。<br>お手続きに際して、下記を必ずご確認ください。</p>
+
+    <div class="c-Accordion u-Adjust_Mt-40">
+      <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="true" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンセルの流れ</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false">
+        <ol class="c-List_Ordered">
+          <li>本フォームの送信（お客様）</li>
+          <li>送信内容の確認（弊社）
+            <p class="c-Txt_Cap u-Adjust_Mb-8">※本人確認の内容と契約者情報の確認を実施</p>
+          </li>
+          <li>2日以内にキャンセル処理完了のご連絡
+            <p class="c-Txt_Cap u-Adjust_Mb-8">※4日以上ご連絡のない場合は「<a href="<%= sitepath %>guide/my-rakuten-mobile/">my 楽天モバイル</a>」アプリよりチャットでお問い合わせください</p>
+          </li>
+        </ol>
+      </div>
+      </div>
+      <div class="c-Accordion">
+      <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="true" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>配達員が訪問した場合、または宅配BOXに届いた場合</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false">
+        <ul class="c-List_Text-disc">
+          <li>受け取り拒否の意思表示を配達員に示してください。</li>
+          <li>宅配BOX含めてお受け取りになられた場合は、「<a href="<%= sitepath %>guide/my-rakuten-mobile/">my 楽天モバイル</a>」アプリよりチャットでお問い合わせください。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="true" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>送信いただいた情報に相違があった場合</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="false">
+        <ul class="c-List_Text-disc">
+          <li>入力情報と契約者情報に相違があった場合はキャンセルの受付ができません。</li>
+          <li>「<a href="<%= sitepath %>guide/my-rakuten-mobile/">my 楽天モバイル</a>」アプリよりチャットでお問い合わせください。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="u-Adjust_Mt-48 u-Adjust_Align-center">
+    <a href="<%= sitepath %>" class="c-Btn_Regular-half"><span>楽天モバイルトップへ</span></a>
+    </div>
+ </div>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/cancel/_input') %>
+
+</body>
+</html>

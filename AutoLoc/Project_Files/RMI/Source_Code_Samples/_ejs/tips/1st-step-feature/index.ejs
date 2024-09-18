@@ -1,0 +1,1144 @@
+<% const pagetitle = "はじめてのユーザーガイド 楽天モバイル活用術「かんたん！便利な機能を使いこなす編」" -%>
+<% const pagetitleBread = "Rakuten最強プランユーザー向け：はじめてのユーザーガイド 楽天モバイル活用術「かんたん！便利な機能を使いこなす編」" -%>
+<% const directories = [] -%>
+<% const namespace = "tips" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  // directories: directories,
+  description: 'Rakuten最強プランご契約者だけの便利な情報。楽天モバイルご契約後に抑えておきたい使いこなすべきサービスをご紹介します。まだ使っていない便利なアプリや機能をお見逃しなく。',
+  keywords: '',
+  noindex: false,
+  pathname: filepath,
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/tips/1st-step-feature/tips.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+
+
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitleBread %></li>
+      </ul>
+    </div>
+
+    <section class="<%= namespace %>-Hero">
+      <div class="<%= namespace %>-Hero_Container">
+        <h1>
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-hero-sp.png">
+            <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-hero.png" alt="はじめてのユーザーガイド楽天モバイル活用術かんたん！便利な機能を使いこなす編" width="706" height="234">
+          </picture>
+        </h1>
+      </div>
+    </section>
+
+    <div class="<%= namespace %>-Layout_Main">
+      <nav class="<%= namespace %>-Layout_Nav">
+        <ul class="l-System_Container <%= namespace %>-Layout_Nav-list">
+          <li>
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-1-sp.png">
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-1.png" width="504" alt="かんたん！便利な機能を使いこなす編">
+            </picture>
+          </li>
+          <li>
+            <a href="<%= sitepath %>tips/1st-step-point/" class="c-Banner_Hover-act">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-2-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-2.png" width="504" alt="もっと！楽天ポイントをもらう編はこちら">
+              </picture>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+      <section id="good-deal" class="<%= namespace %>-Layout_Section-pink">
+        <%# スクロール計測 _%>
+        <div class="u-Rat_Appear-height" data-ratid="1st-step-feature_scroll-01_lead" data-ratevent="appear">&nbsp;</div>
+
+        <div class="l-System_Container">
+          <h2 class="<%= namespace %>-Gooddeal_Heading">
+            <small>
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-title-1.png" alt="まだ使ってない新機能 知りたい情報" width="256" height="78">
+            </small>
+            <span>Rakuten最強プラン <span class="<%= namespace %>-Txt_Inline-block">ご契約者だけの</span><span class="c-Txt_Emp-02 <%= namespace %>-Txt_Inline-block">おトクな情報！</span></span>
+          </h2>
+          <p class="u-Adjust_Mt-16 <%= namespace %>-Txt_Left-center">
+            ご契約中もずっとおトクに。本編では、<strong class="<%= namespace %>-Txt_Marker">楽天モバイルご契約後におさえておきたいサービス</strong>をご紹介します。<br>
+            まだ使っていない便利なアプリや機能をお見逃しなく。
+          </p>
+
+          <h3 class="<%= namespace %>-Gooddeal_Heading-sub"><span>知らないと損？</span>楽天モバイルの便利な機能</h3>
+          <nav class="<%= namespace %>-Gooddeal_Nav">
+            <ul>
+              <li>
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-mobile.svg" alt="" width="56" height="56">
+                <p class="c-Txt_Normal-s">ご契約後の情報確認・<br class="<%= namespace %>-Util_Sp">変更も<br class="<%= namespace %>-Util_Pc">サクッと</p>
+                <p><a href="#my" class="c-Link_Txt-icon-front <%= namespace %>-Gooddeal_Nav-link js-scroll"><span class="c-Icon_Arrow-down-l js-scroll"></span>my 楽天モバイル</a></p>
+              </li>
+              <li>
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-link.svg" alt="" width="56" height="56">
+                <p class="c-Txt_Normal-s">無料通話もポイント獲得<br class="<%= namespace %>-Util_Pc">ミッションも</p>
+                <p><a href="#rakuten-link" class="c-Link_Txt-icon-front <%= namespace %>-Gooddeal_Nav-link js-scroll"><span class="c-Icon_Arrow-down-l js-scroll"></span>Rakuten Link</a></p>
+              </li>
+              <li>
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-mail.svg" alt="" width="56" height="56">
+                <p class="c-Txt_Normal-s">楽天のキャリアメール</p>
+                <p><a href="#mail" class="c-Link_Txt-icon-front <%= namespace %>-Gooddeal_Nav-link js-scroll"><span class="c-Icon_Arrow-down-l js-scroll"></span>楽メール</a></p>
+              </li>
+              <li>
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-option.svg" alt="" width="56" height="56">
+                <p class="c-Txt_Normal-s">初回無料・おトクに<br class="<%= namespace %>-Util_Sp">始める</p>
+                <p><a href="#option" class="c-Link_Txt-icon-front <%= namespace %>-Gooddeal_Nav-link-adjust-txt js-scroll"><span class="c-Icon_Arrow-down-l js-scroll"></span>オプション・サービス</a></p>
+              </li>
+              <li class="<%= namespace %>-Gooddeal_Nav-list-simple">
+                <p><a href="#accessory" class="c-Link_Txt-icon-front <%= namespace %>-Gooddeal_Nav-link js-scroll"><span class="c-Icon_Arrow-down-l js-scroll"></span>機種変更・アクセサリ購入</a></p>
+              </li>
+              <li class="<%= namespace %>-Gooddeal_Nav-list-simple">
+                <p><a href="#trade-in" class="c-Link_Txt-icon-front <%= namespace %>-Gooddeal_Nav-link js-scroll"><span class="c-Icon_Arrow-down-l js-scroll"></span>スマホ下取りサービス</a></p>
+              </li>
+              <li class="<%= namespace %>-Gooddeal_Nav-list-simple">
+                <p><a href="#point" class="c-Link_Txt-icon-front <%= namespace %>-Gooddeal_Nav-link js-scroll"><span class="c-Icon_Arrow-down-l js-scroll"></span>お支払いにポイント利用</a></p>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+
+      <section id="my" class="<%= namespace %>-Layout_Section">
+        <%# スクロール計測 _%>
+        <div class="u-Rat_Appear-height" data-ratid="1st-step-feature_scroll-02_my-rakuten-mobile" data-ratevent="appear">&nbsp;</div>
+
+        <div class="l-System_Container">
+          <h2 class="<%= namespace %>-Heading">
+            <small class="c-Txt_Emp-02">＼ ご契約後の情報確認・変更もサクッと ／</small>
+            <span>
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-mobile.svg" alt="" width="48" height="48">
+              my 楽天モバイル
+            </span>
+          </h2>
+
+          <p class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Txt_Left-center">データ利用状況、ご利用料金、接続中の回線（楽天／パートナー）エリア、登録内容・契約内容など、<br class="<%= namespace %>-Util_Pc">ご契約後の気になる情報の確認・変更は、全部my 楽天モバイルでサクサク行えます。</p>
+
+          <ul class="<%= namespace %>-List_Btns u-Adjust_Mt-24">
+            <li>
+              <a href="https://apps.apple.com/jp/app/myrakutenmobile/id1473535769" target="_blank" rel="noopenner noreferrer" class="c-Banner_Hover-act">
+                <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="160" height="46">
+              </a>
+            </li>
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.ecare" target="_blank" rel="noopenner noreferrer" class="c-Banner_Hover-act">
+                <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162" height="48">
+              </a>
+            </li>
+            <li class="<%= namespace %>-List_Btns-item">
+              <a href="<%= sitepath %>guide/my-rakuten-mobile/" class="c-Btn_Regular"><span>Webで確認する</span></a>
+            </li>
+          </ul>
+
+          <h3 class="<%= namespace %>-Heading_Sub c-Txt_Emp-02">my 楽天モバイルで<br class="<%= namespace %>-Util_Sp">できる主なこと</h3>
+          <ul class="<%= namespace %>-List_Card-4 u-Adjust_Mt-24">
+            <li class="<%= namespace %>-List_Card-divide">
+              <div class="<%= namespace %>-List_Card-divide-header">
+                <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">データ利用状況の確認</h4>
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-01-sp.png">
+                  <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-01.png" alt="" width="208" height="164" class="u-Adjust_Mt-8">
+                </picture>
+                <p class="<%= namespace %>-Util_Sp u-Adjust_Mt-8 u-Adjust_Align-left">データ利用量の確認やデータ高速モードなどの確認・変更ができます。</p>
+              </div>
+              <div class="<%= namespace %>-List_Card-divide-body">
+                <p><a href="<%= sitepath %>guide/data-traffic/?l-id=tips_1st-step-feature_guide_data-traffic" class="c-Link_Txt-inline">データ利用量の確認<span class="c-Icon_Chevron-right"></span></a></p>
+              </div>
+            </li>
+            <li class="<%= namespace %>-List_Card-divide">
+              <div class="<%= namespace %>-List_Card-divide-header">
+                <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">ご利用料金の確認</h4>
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-02-sp.png">
+                  <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-02.png" alt="" width="208" height="164" class="u-Adjust_Mt-8">
+                </picture>
+                <p class="<%= namespace %>-Util_Sp u-Adjust_Mt-8 u-Adjust_Align-left">ご利用料金の確認や、お支払い方法の確認・変更などができます。</p>
+              </div>
+              <div class="<%= namespace %>-List_Card-divide-body">
+                <p><a href="<%= sitepath %>guide/payment/flow/?l-id=tips_1st-step-feature_guide_payment_flow" class="c-Link_Txt-inline">請求金額の確認・お支払いまでの流れ<span class="c-Icon_Chevron-right"></span></a></p>
+                <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/change/?l-id=tips_1st-step-feature_guide_payment_change" class="c-Link_Txt-inline">お支払い方法の確認・変更方法<span class="c-Icon_Chevron-right"></span></a></p>
+                <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/point/?l-id=tips_1st-step-feature_guide_payment_point" class="c-Link_Txt-inline">楽天ポイントの利用（お支払い方法）<span class="c-Icon_Chevron-right"></span></a></p>
+              </div>
+            </li>
+            <li class="<%= namespace %>-List_Card-divide">
+              <div class="<%= namespace %>-List_Card-divide-header">
+                <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">接続中の<br class="<%= namespace %>-Util_Pc">回線エリアの確認</h4>
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-03-sp.png">
+                  <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-03.png" alt="" width="208" height="164" class="u-Adjust_Mt-8">
+                </picture>
+                <p class="<%= namespace %>-Util_Sp u-Adjust_Mt-8 u-Adjust_Align-left">楽天モバイルご利用製品で接続している回線エリアの確認ができます。</p>
+              </div>
+              <div class="<%= namespace %>-List_Card-divide-body">
+                <p><a href="<%= sitepath %>guide/area-confirmation/?l-id=tips_1st-step-feature_guide_area-confirmation" class="c-Link_Txt-inline">楽天モバイルで接続中の回線エリア確認方法<span class="c-Icon_Chevron-right"></span></a></p>
+              </div>
+            </li>
+            <li class="<%= namespace %>-List_Card-divide">
+              <div class="<%= namespace %>-List_Card-divide-header">
+                <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">契約内容の確認・変更</h4>
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-04-sp.png">
+                  <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-my-04.png" alt="" width="208" height="164" class="u-Adjust_Mt-8">
+                </picture>
+                <p class="<%= namespace %>-Util_Sp u-Adjust_Mt-8 u-Adjust_Align-left">ご登録された情報の確認や変更、オプションサービスの追加・解約ができます。</p>
+              </div>
+              <div class="<%= namespace %>-List_Card-divide-body">
+                <p><a href="<%= sitepath %>guide/users-information/?l-id=tips_1st-step-feature_guide_users-information" class="c-Link_Txt-inline">登録内容・契約内容の確認・変更<span class="c-Icon_Chevron-right"></span></a></p>
+                <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/change-options/?l-id=tips_1st-step-feature_guide_change-options" class="c-Link_Txt-inline">オプションサービスの追加・解約<span class="c-Icon_Chevron-right"></span></a></p>
+                <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>faq/detail/00001406/?l-id=tips_1st-step-feature_faq_detail-00001406" class="c-Link_Txt-inline">SIMの交換・再発行<span class="c-Icon_Chevron-right"></span></a></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+
+      <div id="js-trigger-nav"></div>
+      <nav class="<%= namespace %>-Description_Follow" id="js-fixed-nav" aria-expanded="false">
+        <div class="<%= namespace %>-Description_Follow-inner">
+          <ul class="<%= namespace %>-Description_List">
+            <li class="<%= namespace %>-Description_Follow-List">
+              <a href="#my" class="c-Link_Txt-icon-front js-scroll">
+                <span class="c-Icon_Arrow-down-l"></span>
+                <div>
+                  <p>my 楽天<br class="<%= namespace %>-Util_Sp">モバイル</p>
+                </div>
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-mobile.svg" alt="">
+              </a>
+            </li>
+            <li class="<%= namespace %>-Description_Follow-List">
+              <a href="#rakuten-link" class="c-Link_Txt-icon-front js-scroll">
+                <span class="c-Icon_Arrow-down-l"></span>
+                <div>
+                  <p>Rakuten <br class="<%= namespace %>-Util_Sp">Link</p>
+                </div>
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-link.svg" alt="">
+              </a>
+            </li>
+            <li class="<%= namespace %>-Description_Follow-List">
+              <a href="#mail" class="c-Link_Txt-icon-front js-scroll">
+                <span class="c-Icon_Arrow-down-l"></span>
+                <div>
+                  <p>楽メール</p>
+                </div>
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-mail.svg" alt="">
+              </a>
+            </li>
+            <li class="<%= namespace %>-Description_Follow-List">
+              <a href="#good-deal" class="c-Link_Txt-icon-front js-scroll <%= namespace %>-Description_Back">
+                <span class="c-Icon_Arrow-up-l"></span>
+                <div>
+                  <p>メニューへ<br class="<%= namespace %>-Util_Sp">戻る</p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+
+      <section id="rakuten-link" class="<%= namespace %>-Layout_Section-gray">
+        <%# スクロール計測 _%>
+        <div class="u-Rat_Appear-height" data-ratid="1st-step-feature_scroll-03_rakuten-link" data-ratevent="appear">&nbsp;</div>
+
+        <div class="l-System_Container">
+          <h2 class="<%= namespace %>-Heading">
+            <small class="c-Txt_Emp-02">＼ 無料通話もポイント獲得ミッションも ／</small>
+            <span>
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-link.svg" alt="" width="48" height="48">
+              Rakuten Link
+            </span>
+          </h2>
+
+          <p class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Txt_Left-center">
+            Rakuten Link（アプリ）は、通話とメッセージができるだけのアプリではありません。<br>
+            <span class="c-Txt_Emp-01">相手がRakuten Linkを使っていなくても、固定電話でも！アプリから国内通話が無料でかけ放題<span class="c-Txt_Cap" style="font-weight: 400;">※1</span>。<br class="<%= namespace %>-Util_Pc">ミッション達成でポイントももらえます！</span>
+          </p>
+
+          <h3 class="<%= namespace %>-Heading_Sub-2 c-Txt_Emp-02">Rakuten Linkの機能</h3>
+          <ul class="<%= namespace %>-List_Card-3 u-Adjust_Mt-24">
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m">通話</h4>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-link-01-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-link-01.png" alt="" width="280" height="156" class="u-Adjust_Mt-16">
+              </picture>
+              <p class="u-Adjust_Align-left <%= namespace %>-List_Card-txt">Rakuten Linkを使って相手の電話番号にかけるだけ。今お使いの番号そのままで、ほかの携帯電話会社ケータイ、固定電話を含む国内通話が無料でかけられます<span class="c-Txt_Cap">※1</span>。データ低速モード時でも通話が可能です。</p>
+
+              <div class="u-Adjust_Mt-16">
+                <a href="https://service.link.link/feature.html?scid=mno_tips_1st-step-feature_link_feature-talk#feature-talk" class="c-Btn_Regular <%= namespace %>-List_Card-btn" target="_blank" rel="noopener"><span>通話機能を詳しく見る<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+              </div>
+              <p class="u-Adjust_Mt-16">
+                <a href="https://service.link.link/guide/call/voicecall_number.html?scid=mno_tips_1st-step-feature_link_guide_call_voicecall_number" class="c-Link_Txt-inline" target="_blank" rel="noopener">音声通話の使い方<span class="c-Icon_New-window-l"></span></a>
+              </p>
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m">探す</h4>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-link-02-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-link-02.png" alt="" width="280" height="156" class="u-Adjust_Mt-16">
+              </picture>
+              <p class="u-Adjust_Align-left <%= namespace %>-List_Card-txt">
+                楽天のサービス、街でポイントが貯まる・使えるお店の情報や、おトクなクーポンへと簡単にアクセスできる機能です。<br>
+                よく利用するサービスをお気に入り登録したり、新しいサービスを発見できます。
+              </p>
+
+              <div class="u-Adjust_Mt-16">
+                <a href="https://service.link.link/feature/discovery_introduction.html?scid=mno_tips_1st-step-feature_link_feature_discovery_introduction" class="c-Btn_Regular <%= namespace %>-List_Card-btn" target="_blank" rel="noopener"><span>探す機能を詳しく見る<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+              </div>
+              <p class="u-Adjust_Mt-16">
+                <a href="https://service.link.link/guide/discovery/screen.html?scid=mno_tips_1st-step-feature_link_guide_send_screen" class="c-Link_Txt-inline" target="_blank" rel="noopener">探す機能の使い方<span class="c-Icon_New-window-l"></span></a>
+              </p>
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m">ミッション</h4>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-link-03-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-link-03.png" alt="" width="280" height="156" class="u-Adjust_Mt-16">
+              </picture>
+              <p class="u-Adjust_Align-left <%= namespace %>-List_Card-txt">
+                Rakuten Link内の対象ミッションを達成すると、楽天ポイントが貯まるサービスです。<br>
+                「メニュー（もしくはナビゲーションメニュー）」から「ミッション」をタップしてご利用いただけます。
+              </p>
+
+              <div class="u-Adjust_Mt-16">
+                <a href="https://service.link.link/feature/mission_introduction.html?scid=mno_tips_1st-step-feature_link_feature_mission_introduction" class="c-Btn_Regular <%= namespace %>-List_Card-btn" target="_blank" rel="noopener"><span>ミッション機能を詳しく見る<span class="c-Icon_New-window-l c-Btn_Icon-end"></span></span></a>
+              </div>
+              <p class="u-Adjust_Mt-16">
+                <a href="https://service.link.link/guide/mission/pointget.html?scid=mno_tips_1st-step-feature_link_guide_mission_pointget" class="c-Link_Txt-inline" target="_blank" rel="noopener">楽天ポイント獲得方法<span class="c-Icon_New-window-l"></span></a>
+              </p>
+            </li>
+          </ul>
+
+          <div class="<%= namespace %>-Card u-Adjust_Mt-40" id="anc01">
+            <div class="<%= namespace %>-Card_Head">
+              <h3 class="<%= namespace %>-Card_Head-title">楽天モバイルご契約時の<strong>キャンペーン条件</strong>を達成しよう！</h3>
+            </div>
+            <div class="<%= namespace %>-Card_Body">
+              <div class="l-Media_Grid-small">
+                <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-link-04.png" alt="" width="240" height="124">
+                </div>
+                <div class="">
+                  <p>
+                    楽天モバイルには、キャンペーン達成条件に「Rakuten Linkで10秒以上の通話」が必要な場合があります。<br>
+                    <span class="c-Txt_Emp-01"><a href="<%= sitepath %>campaign/?l-id=tips_1st-step-feature_campaign" class="c-Link_Txt">キャンペーンページ</a>に記載の期日まで</span>に、<span class="c-Txt_Emp-02">Rakuten Linkアプリから、Rakuten  Linkアプリを利用していない相手への10秒以上の通話</span>をして、キャンペーンポイントを忘れずに獲得しましょう！
+                  </p>
+                  <p class="u-Adjust_Mt-16 c-Txt_Cap">※電話の発信時、（0570）などから始まる他社接続サービス、一部特番（188）への通話については特典対象外。</p>
+                </div>
+              </div>
+
+              <div class="c-Accordion u-Adjust_Mt-32">
+                <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>達成状況の確認方法</button>
+                <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+                  <ol class="<%= namespace %>-List_Step">
+                    <li>
+                      <p class="c-Txt_Emp-01">1. 「my 楽天モバイル」にアクセス</p>
+                    </li>
+                    <li>
+                      <p class="c-Txt_Emp-01">2. 右上のメニューから「利用状況」を選択</p>
+                      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-cap-01-230701.png" alt="" width="300" height="296">
+                      </div>
+                    </li>
+                    <li>
+                      <p class="c-Txt_Emp-01">3. 「通話」タブを選択して<span class="c-Txt_Emp-02">Rakuten Linkでの10秒以上の発信通話履歴</span>があることをご確認ください</p>
+                      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-cap-02.png" alt="" width="300" height="320">
+                      </div>
+                    </li>
+                  </ol>
+                  <p class="u-Adjust_Mt-24"><span class="c-Txt_Emp-02">ポイント付与日</span>は各キャンペーンルールをご確認ください</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <h3 class="<%= namespace %>-Heading_Sub-3 u-Adjust_Align-center u-Adjust_Mt-40">無料通話・お支払い・ポイント獲得。<br class="<%= namespace %>-Util_Sp">必要な機能を1つのアプリで</h3>
+          <ul class="<%= namespace %>-List_Btns u-Adjust_Mt-24">
+            <li>
+              <a href="https://apps.apple.com/jp/app/id1498877539" target="_blank" rel="noopenner noreferrer" class="c-Banner_Hover-act">
+                <img src="<%= sitepath %>assets/img/common/btn-appstore.png" alt="App Storeからダウンロード" width="160" height="46">
+              </a>
+              <p class="c-Txt_Normal-s u-Adjust_Mt-8 u-Adjust_Align-center">iPhoneのみ対応<span class="c-Txt_Cap">※2</span></p>
+            </li>
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=jp.co.rakuten.mobile.rcs" target="_blank" rel="noopenner noreferrer" class="c-Banner_Hover-act">
+                <img src="<%= sitepath %>assets/img/common/btn-googleplay.png" alt="Google Playで手に入れよう" width="162" height="48">
+              </a>
+            </li>
+          </ul>
+          <p class="u-Adjust_Mt-24 c-Txt_Cap">
+            ※1（0570）などから始まる他社接続サービス、一部特番（188）への通話については、無料通話の対象外となります。<a href="<%= sitepath %>faq/detail/00001887/?l-id=tips_1st-step-feature_faq_detail-00001887" class="c-Link_Txt">対象外番号一覧</a>をご確認ください。アプリ未使用時30秒22円 ※2 iPad、iPod touchには対応していません<br>
+            ※<a href="#notes" class="c-Link_Txt js-scroll">その他条件の詳細はこちら</a>
+          </p>
+        </div>
+      </section>
+
+
+      <section id="mail" class="<%= namespace %>-Layout_Section">
+        <%# スクロール計測 _%>
+        <div class="u-Rat_Appear-height" data-ratid="1st-step-feature_scroll-04_raku-mail" data-ratevent="appear">&nbsp;</div>
+
+        <div class="l-System_Container">
+          <h2 class="<%= namespace %>-Heading">
+            <small class="c-Txt_Emp-02">＼ 楽天のキャリアメール ／</small>
+            <span>
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-mail.svg" alt="" width="48" height="48">
+              楽メール
+            </span>
+          </h2>
+
+          <p class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Txt_Left-center">
+            楽天モバイル公式メールサービスです。<br>
+            楽天モバイルのドメイン（@rakumail.jp）でメールアドレスを設定いただくことで、メールサービスがご利用いただけます。
+          </p>
+
+          <h3 class="<%= namespace %>-Heading_Sub c-Txt_Emp-02">楽メールの特長</h3>
+          <ul class="<%= namespace %>-List_Card-3 u-Adjust_Mt-24">
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">あんしんの<br class="<%= namespace %>-Util_Pc">セキュリティ対策</h4>
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-mail-01.png" alt="" width="294" class="u-Adjust_Mt-16 <%= namespace %>-Img_Mail">
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">大きな容量の<br>メール送受信も可能</h4>
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-mail-02.png" alt="" width="294" class="u-Adjust_Mt-16 <%= namespace %>-Img_Mail">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-mail-02-sp.png">
+              </picture>
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">Rakuten Linkアプリで<br>一括管理できて便利</h4>
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-mail-03.png" alt="" width="294" class="u-Adjust_Mt-16 <%= namespace %>-Img_Mail">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-mail-03-sp.png">
+              </picture>
+            </li>
+          </ul>
+
+          <div class="c-Theme-Light u-Adjust_Mt-40">
+            <h3 class="<%= namespace %>-Heading_Mail u-Adjust_Align-center">ご利用までは簡単2ステップ</h3>
+            <div class="l-Media_Grid-half u-Adjust_Mt-16">
+              <div class="l-Media_Image">
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-mail-04-sp.png">
+                  <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-mail-04.png" alt="メールアドレスを決める→Rakuten Linkアプリ内で利用開始" width="480" height="80">
+                </picture>
+              </div>
+              <div>
+                <p>難しいメール設定は不要。メールアドレスを設定後、すぐにご利用いただけます。</p>
+                <p class="u-Adjust_Mt-8">
+                  <a href="<%= sitepath %>guide/rakumail/initial-setting/?l-id=tips_1st-step-feature_guide_rakumail_initial-setting#setting01" class="c-Link_Txt-inline">メールアドレス設定方法<span class="c-Icon_Chevron-right"></span></a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+            <a href="<%= sitepath %>service/rakumail/?l-id=tips_1st-step-feature_service_rakumail" class="c-Btn_Primary-large"><span>楽メールの詳細を見る</span></a>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="option" class="<%= namespace %>-Layout_Section-gray">
+        <%# スクロール計測 _%>
+        <div class="u-Rat_Appear-height" data-ratid="1st-step-feature_scroll-05_option-service" data-ratevent="appear">&nbsp;</div>
+
+        <div class="l-System_Container">
+          <h2 class="<%= namespace %>-Heading">
+            <small class="c-Txt_Emp-02">＼ 初回無料・おトクに始める ／</small>
+            <span class="<%= namespace %>-Heading_Adjust">
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/icon-option.svg" alt="" width="48" height="48">
+              オプション・サービス
+            </span>
+          </h2>
+
+          <p class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Txt_Left-center">
+            <span class="c-Txt_Emp-01">安心してお使いいただくためのオプションから、今だけ無料の便利なサービス</span>まで、<br class="<%= namespace %>-Util_Pc">
+            楽天モバイルがお客様のスマホライフをサポートいたします！お申し込みはmy 楽天モバイルから。
+          </p>
+
+          <ul class="<%= namespace %>-List_Card-4 u-Adjust_Mt-40">
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">Rakuten Turbo</h4>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-05-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-05.png" alt="" width="160" height="84" class="u-Adjust_Mt-16">
+              </picture>
+              <p class="u-Adjust_Align-left <%= namespace %>-List_Card-txt-2">すぐに使えるおうちのWi-Fi。5G対応でリモートワークも快適、データ無制限<span class="c-Txt_Cap">※3</span></p>
+
+              <p class="u-Adjust_Mt-16">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-txt-02-1-230516.png" alt="4,840円／月4" width="206" height="46">
+              </p>
+
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>internet/turbo/?l-id=tips_1st-step-feature_internet_turbo" class="c-Btn_Regular <%= namespace %>-List_Card-btn"><span>詳しく見る</span></a>
+              </div>
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">15分（標準）通話<br class="<%= namespace %>-Util_Pc">かけ放題</h4>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-02-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-02.png" alt="" width="160" height="84" class="u-Adjust_Mt-16">
+              </picture>
+              <p class="u-Adjust_Align-left <%= namespace %>-List_Card-txt-2">OS標準アプリでの1回15分以内の国内通話がかけ放題、国内SMSの送受信が使い放題になるサービス</p>
+
+              <p class="u-Adjust_Mt-16">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-txt-02-2-230901.png" alt="1,100円／月→1カ月無料※4" width="208" height="46">
+              </p>
+
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>service/standard-free-call/?l-id=tips_1st-step-feature_service_standard-free-call" class="c-Btn_Regular <%= namespace %>-List_Card-btn"><span>詳しく見る</span></a>
+              </div>
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">楽天モバイルキャリア決済</h4>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-03-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-03.png" alt="" width="160" height="84" class="u-Adjust_Mt-16">
+              </picture>
+              <p class="u-Adjust_Align-left <%= namespace %>-List_Card-txt-2">Androidのアプリ内課金や、LINEコインなどの料金支払いを楽天モバイルのお支払いと同じ方法で決済</p>
+
+              <p class="u-Adjust_Mt-16">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-txt-03-2-sp-240201.png" width="100%">
+                  <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-txt-03-2-pc-240201.png" alt="キャリア決済利用で最大2％ポイント還元※5" width="208" height="46">
+                </picture>
+              </p>
+
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>campaign/payment-google/?l-id=tips_1st-step-feature_campaign_payment-google" class="c-Btn_Regular <%= namespace %>-List_Card-btn"><span>詳しく見る</span></a>
+              </div>
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h4 class="c-Txt_Normal-m <%= namespace %>-List_Card-title">ノートン™ モバイル<br class="<%= namespace %>-Util_Pc">セキュリティ</h4>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-04-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-04.png" alt="" width="160" height="84" class="u-Adjust_Mt-16">
+              </picture>
+              <p class="u-Adjust_Align-left <%= namespace %>-List_Card-txt-2">危険なWi-FiやWebサイト、急増するフィッシング詐欺など様々なリスクからあなたの安全を守ります</p>
+
+              <p class="u-Adjust_Mt-16">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-option-txt-04.png" alt="220円／月※お申し込み必要" width="208" height="46">
+              </p>
+
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>service/norton-mobile-security/?l-id=tips_1st-step-feature_service_norton-mobile-security" class="c-Btn_Regular <%= namespace %>-List_Card-btn"><span>詳しく見る</span></a>
+              </div>
+            </li>
+          </ul>
+
+          <p class="u-Adjust_Mt-24 c-Txt_Cap">
+            ※3 公平なサービス提供のため速度制限する場合あり。5Gは一部エリアのみ。ベストエフォート方式のため、お客様の通信環境により実際の通信速度は変化します。ご利用の集中する時間帯は、サービス安定提供にともなう速度制限のため、通信速度が低下する場合があります<br>
+            ※4 2022年5月13日（金）以降、初めて「10分（標準）通話かけ放題」をお申し込みの場合。一部対象外番号あり。条件あり<br>
+            ※5 楽天回線対応のAndroid製品をご利用のご契約者様が対象となります。ポイントは付与日を含めて6カ月の期間限定ポイントとなります。楽天カードご利用通常ポイント1%＋キャリア決済ご利用1%ポイント還元<br>
+            ※<a href="#notes" class="c-Link_Txt js-scroll">その他の詳細はこちら</a>
+          </p>
+
+          <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+            <a href="<%= sitepath %>service/?l-id=tips_1st-step-feature_service" class="c-Btn_Primary-large"><span>オプション・サービス一覧を見る</span></a>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="accessory" class="<%= namespace %>-Layout_Section">
+        <%# スクロール計測 _%>
+        <div class="u-Rat_Appear-height" data-ratid="1st-step-feature_scroll-06_product-accessory" data-ratevent="appear">&nbsp;</div>
+
+        <div class="l-System_Container">
+          <h2 class="<%= namespace %>-Heading_Lv2 u-Adjust_Align-center">
+            機種変更・アクセサリ購入
+          </h2>
+
+          <p class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Txt_Left-center">
+            <span class="c-Txt_Emp-01">最新のiPhoneやスマートフォン、純正アクセサリー、お買いものパンダグッズのご購入</span>は、<br>
+            my 楽天モバイル、楽天モバイル公式 楽天市場店、楽天モバイルショップで。
+          </p>
+
+          <nav class="u-Adjust_Mt-24">
+            <ul class="<%= namespace %>-List_Link-center">
+              <li>
+                <a href="#ｍodelーchange" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>機種変更方法</a>
+              </li>
+              <li>
+                <a href="#howto-buy" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>アクセサリ購入方法</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="u-Adjust_Align-center <%= namespace %>-Util_Mt-48-64">
+            <h3 id="ｍodelーchange" class="<%= namespace %>-Heading_Sub-4">機種変更方法</h3>
+            <p class="u-Adjust_Mt-8 <%= namespace %>-Txt_Left-center">ご契約後の製品の買い換えや2台目追加も、楽天モバイルならかんたん・おトクにご購入いただけます。</p>
+          </div>
+          <div class="c-Tab js-Tab u-Adjust_Mt-24">
+            <ul class="c-Tab_Items" role="tablist">
+                <li class="c-Tab_Item" id="model-change01" role="tab" aria-selected="true" aria-controls="model-change-content1">my 楽天モバイル（アプリ・Web）の場合</li>
+                <li class="c-Tab_Item" id="model-change02" role="tab" aria-selected="false" aria-controls="model-change-content2">楽天モバイルショップ（店舗）の場合</li>
+            </ul>
+            <div class="c-Tab_Panel" id="model-change-content1" role="tabpanel" aria-hidden="false" aria-labelledby="model-change01">
+              <ol class="c-Flow">
+                <li>
+                  <h4 class="c-Heading_Lv4">1. 機種変更希望の製品を選ぶ</h4>
+                  <ul class="<%= namespace %>-List_Card-normal u-Adjust_Mt-24">
+                    <li>
+                      <a href="<%= sitepath %>product/iphone/?l-id=tips_1st-step-feature_product_iphone" class="c-Card_Normal u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/product/top/thumb-iphone-230913.png" alt="" width="160" height="160">
+                        <p class="u-Adjust_Mt-16 c-Txt_Emp-01">iPhone</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<%= sitepath %>product/rakuten/?l-id=tips_1st-step-feature_product_rakuten" class="c-Card_Normal u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-model-02.png" alt="" width="160" height="160">
+                        <p class="u-Adjust_Mt-16 c-Txt_Emp-01">Rakuten<br class="<%= namespace %>-Util_Sp">オリジナル</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<%= sitepath %>product/smartphone/?l-id=tips_1st-step-feature_product_smartphone" class="c-Card_Normal u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-model-03.png" alt="" width="160" height="160">
+                        <p class="u-Adjust_Mt-16 c-Txt_Emp-01">Android</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4 class="c-Heading_Lv4">2. my 楽天モバイルから機種変更に進む</h4>
+                  <ul class="<%= namespace %>-List_Link-center-2 u-Adjust_Mt-24">
+                    <li>
+                      <a href="<%= sitepath %>guide/product/device-upgrade/?l-id=tips_1st-step-feature_product_device-upgrade#flow" class="c-Btn_Regular">アプリでの機種変更方法を見る</a>
+                    </li>
+                    <li>
+                      <a href="<%= sitepath %>guide/product/device-upgrade/?l-id=tips_1st-step-feature_product_device-upgrade&tab-list=tab-menu2#flow" class="c-Btn_Regular">Webでの機種変更方法を見る</a>
+                    </li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+            <div class="c-Tab_Panel" id="model-change-content2" role="tabpanel" aria-hidden="true" aria-labelledby="model-change02">
+              <ol class="c-Flow">
+                <li>
+                  <h4 class="c-Heading_Lv4">機種変更対応の楽天モバイルショップを探す</h4>
+                  <div class="l-Media_Grid-reverse u-Adjust_Mt-24">
+                    <div>
+                      <p>
+                        下記ページで都道府県、市区町村を選択し、<span class="c-Txt_Emp-01">「対応サービス・店舗条件で絞り込む」の「機種変更」</span>にチェックすると、機種変更対応のお近くの楽天モバイルショップを探すことができます。ご来店の際は来店予約がおすすめです。
+                      </p>
+                      <div class="u-Adjust_Mt-24">
+                        <a href="<%= sitepath %>shop/search/?l-id=tips_1st-step-feature_shop_search-product" class="c-Btn_Regular"><span>お近くの機種変更対応<br class="<%= namespace %>-Util_Sp">ショップを探す</span></a>
+                      </div>
+                    </div>
+                    <div class="l-Media_Image">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-model-04-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-model-04.png" alt="" width="320" height="296">
+                      </picture>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="u-Adjust_Align-center <%= namespace %>-Util_Mt-48-64">
+            <h3 id="howto-buy" class="<%= namespace %>-Heading_Sub-4">アクセサリ購入方法</h3>
+            <p class="u-Adjust_Mt-8 <%= namespace %>-Txt_Left-center">楽天モバイルでは、安心してご利用いただくためのケースや、ライフスタイルに合わせた充実のアクセサリを取り揃えています。</p>
+          </div>
+          <div class="c-Tab js-Tab u-Adjust_Mt-24">
+            <ul class="c-Tab_Items" role="tablist">
+                <li class="c-Tab_Item" id="howto-buy01" role="tab" aria-selected="true" aria-controls="howto-buy-content01">my 楽天モバイル（アプリ・Web）または<br>楽天モバイル公式 楽天市場店の場合</li>
+                <li class="c-Tab_Item" id="howto-buy02" role="tab" aria-selected="false" aria-controls="howto-buy-content02">楽天モバイルショップ（店舗）の場合</li>
+            </ul>
+            <div class="c-Tab_Panel" id="howto-buy-content01" role="tabpanel" aria-hidden="false" aria-labelledby="howto-buy01">
+              <ol class="c-Flow">
+                <li>
+                  <h4 class="c-Heading_Lv4">1. 購入希望のアクセサリを選ぶ</h4>
+                  <ul class="<%= namespace %>-List_Card-normal u-Adjust_Mt-24">
+                    <li>
+                      <a href="<%= sitepath %>product/accessory/apple/?l-id=tips_1st-step-feature_product_accessory_apple" class="c-Card_Normal u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/product/top/thumb-airpods-230922.png" alt="" width="160" height="160">
+                        <p class="u-Adjust_Mt-16 c-Txt_Emp-01">Apple純正<br class="<%= namespace %>-Util_Sp">アクセサリ</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<%= sitepath %>product/accessory/apple-related/?l-id=tips_1st-step-feature_product_accessory_apple-related" class="c-Card_Normal u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-howto-02.png" alt="" width="160" height="160">
+                        <p class="u-Adjust_Mt-16 c-Txt_Emp-01">Apple関連<br class="<%= namespace %>-Util_Sp">アクセサリ</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="<%= sitepath %>product/accessory/smartphone-related/?l-id=tips_1st-step-feature_product_accessory" class="c-Card_Normal u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-howto-03.png" alt="" width="160" height="160">
+                        <p class="u-Adjust_Mt-16 c-Txt_Emp-01">スマートフォン関連<br class="<%= namespace %>-Util_Pc">アクセサリ</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4 class="c-Heading_Lv4">2. my 楽天モバイルまたは楽天モバイル公式 楽天市場店で購入に進む</h4>
+                  <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                    <a href="https://www.rakuten.ne.jp/gold/rakutenmobile-store/?scid=wi_rmb_1st-step-feature_gold_rakutenmobile-store" class="c-Link_Txt-inline-icon c-Banner_Hover-act" target="_blank" rel="noopener">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-howto-lead-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-howto-lead.png" alt="ご要望にお応えして楽天モバイル公式 楽天市場店アクセサリ全品送料無料！ 楽天モバイル公式 楽天市場店を見る" width="984" height="160">
+                      </picture>
+                    </a>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="c-Tab_Panel" id="howto-buy-content02" role="tabpanel" aria-hidden="true" aria-labelledby="howto-buy02">
+              <ol class="c-Flow">
+                <li>
+                  <h4 class="c-Heading_Lv4">アクセサリ購入対応の楽天モバイルショップを探す</h4>
+                  <div class="l-Media_Grid-reverse u-Adjust_Mt-24">
+                    <div>
+                      <p>
+                        下記ページで都道府県、市区町村を選択し、<span class="c-Txt_Emp-01">「対応サービス・店舗条件で絞り込む」の「アクセサリ」</span>にチェックすると、アクセサリ購入対応のお近くの楽天モバイルショップを探すことができます。ご来店の際は来店予約がおすすめです。
+                      </p>
+                      <div class="u-Adjust_Mt-24">
+                        <a href="<%= sitepath %>shop/search/?l-id=tips_1st-step-feature_shop_search-accessory" class="c-Btn_Regular"><span>お近くのアクセサリ購入対応ショップを探す</span></a>
+                      </div>
+                    </div>
+                    <div class="l-Media_Image">
+                      <picture>
+                        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-howto-04-sp.png">
+                        <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-howto-04.png" alt="" width="320" height="296">
+                      </picture>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="trade-in" class="<%= namespace %>-Layout_Section-gray">
+        <div class="l-System_Container">
+          <h2 class="<%= namespace %>-Heading_Lv2 u-Adjust_Align-center">
+            スマホ下取りサービス
+          </h2>
+
+          <p class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Txt_Left-center">
+            今お使いのスマホを下取りに出して最新機種をおトクに入手できます。
+          </p>
+
+          <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-tradein-sp-240215.png">
+              <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-tradein-240215.png" alt="ステップ1.下取り希望製品の情報と引取り日時の入力※　ステップ2.製品の受け渡し　ステップ3.下取り金額のお受け取り ※本人確認書類をご用意ください。" width="784" height="237">
+            </picture>
+          </div>
+
+          <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+            <a href="<%= sitepath %>service/tradein/?l-id=tips_1st-step-feature_service_tradein" class="c-Btn_Primary-large"><span>スマホ下取りサービスの詳細を見る</span></a>
+          </div>
+        </div>
+      </section>
+
+
+      <div class="l-System_Container">
+        <section id="point" class="<%= namespace %>-Layout_Section">
+        <%# スクロール計測 _%>
+        <div class="u-Rat_Appear-height" data-ratid="1st-step-feature_scroll-07_point" data-ratevent="appear">&nbsp;</div>
+
+          <h2 class="<%= namespace %>-Heading">
+            <small class="c-Txt_Emp-02">＼ Rakuten最強プランのご利用で ／</small>
+            <span>
+              楽天ポイントが<br class="<%= namespace %>-Util_Sp">貯まる・使える
+            </span>
+          </h2>
+
+          <p class="<%= namespace %>-Util_Mt-16-24 <%= namespace %>-Txt_Left-center">
+            楽天モバイルの月額利用料金のお支払いでポイントがもらえる、スマホ本体代に楽天ポイントが使える！<span class="c-Txt_Cap">※6</span><br>
+            月々のお支払いにも1ポイント＝1円としてご利用いただけます<span class="c-Txt_Cap">※7</span>
+          </p>
+
+          <ul class="<%= namespace %>-List_Card-2 u-Adjust_Mt-40">
+            <li class="<%= namespace %>-List_Card">
+              <h3 class="c-Heading_Lv3 <%= namespace %>-Txt_Left-center">100円（税別）お支払いで<br>1ポイント貯まる</h3>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-01-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-01.png" alt="" width="384" height="138" class="<%= namespace %>-Util_Mt-8-24">
+              </picture>
+              <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+                楽天ポイントは、楽天モバイルの月々のお支払い100円（税別）につき1ポイントが貯まります。<br>
+                自動的に毎月ポイントがもらえておトク！
+              </p>
+
+              <h4 class="<%= namespace %>-Util_Mt-32-16">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-title.svg" alt="毎月貯まるポイント数" width="200" height="28">
+              </h4>
+              <ul class="<%= namespace %>-List_Point">
+                <li>
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-02-sp.png">
+                    <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-02.png" alt="〜3GB（税別980円）のご利用→9ポイント" width="440" height="41">
+                  </picture>
+                </li>
+                <li>
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-03-sp.png">
+                    <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-03.png" alt="〜20GB（税別1,980円）のご利用→19ポイント" width="440" height="41">
+                  </picture>
+                </li>
+                <li>
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-04-sp.png">
+                    <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-04.png" alt="20GB〜（税別2,980円）のご利用→29ポイント" width="440" height="41">
+                  </picture>
+                </li>
+              </ul>
+            </li>
+            <li class="<%= namespace %>-List_Card">
+              <h3 class="c-Heading_Lv3 <%= namespace %>-Txt_Left-center">ご契約期間中、月々のお支払いにも<br class="<%= namespace %>-Util_Pc">使える！</h3>
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-05-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-point-05.png" alt="" width="384" height="138" class="<%= namespace %>-Util_Mt-8-24">
+              </picture>
+              <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+                楽天ポイントは、楽天モバイルの月々のお支払いにご利用いただけます。プラン料金などの固定費のお支払いに役立ち、お財布の心づよい味方になります。
+              </p>
+
+              <div class="u-Adjust_Mt-24">
+                <a href="<%= sitepath %>guide/point-payment/?l-id=tips_1st-step-feature_guide_point-payment_fee&tab-list=tab-menu2" class="c-Btn_Regular <%= namespace %>-Btn_Half-box"><span>月々のお支払いに<br class="<%= namespace %>-Util_Sp">ポイントを使う方法</span></a>
+              </div>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/point-payment/?l-id=tips_1st-step-feature_guide_point-payment_product&tab-list=tab-menu1" class="c-Btn_Regular <%= namespace %>-Btn_Half-box"><span>製品のお支払いに<br class="<%= namespace %>-Util_Sp">ポイントを使う方法</span></a>
+              </div>
+            </li>
+          </ul>
+
+          <p class="u-Adjust_Mt-16 c-Txt_Cap">※6 スマホ本体代へのポイント利用は一括払いのみ。 月々のお支払いに口座振替をご指定の場合は、楽天ポイントをご利用いただけません。利用上限あり<br>※7 一度にご利用できるポイント数は1～30,000 (ダイヤモンド会員の方は～500,000) ポイントです</p>
+
+          <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+            <a href="<%= sitepath %>tips/1st-step-point/?l-id=tips_1st-step-feature-btn_1st-step-point" class="c-Btn_Primary-large"><span>楽天ポイントの詳細を見る</span></a>
+          </div>
+        </section>
+
+
+        <section class="<%= namespace %>-Layout_Bnr">
+          <div class="u-Adjust_Align-center">
+            <h3 class="c-Heading_Lv3 u-Adjust_Mb-16">ご利用中もおトク！ご契約者限定キャンペーン</h3>
+            <a href="<%= sitepath %>campaign/member/?l-id=tips_1st-step-feature_campaign_member" class="c-Banner_Hover-act">
+              <picture>
+                <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/bnr-01-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/bnr-01.png" width="1032" height="160" alt="限定特典もりだくさんご契約者様向けキャンペーン情報">
+              </picture>
+            </a>
+          </div>
+
+          <div class="u-Adjust_Mt-64 u-Adjust_Align-center">
+            <h3 class="c-Heading_Lv3 u-Adjust_Mb-16">広告なしの動画や１億曲以上の音楽が視聴できる！</h3>
+            <a href="<%= sitepath %>campaign/youtubepremium/?l-id=tips_1st-step-feature_campaign_youtubepremium" class="c-Banner_Hover-act">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/ytp-bnr-230822-sp.png">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/ytp-bnr-230822-pc.png" width="1032" height="160" alt="広告なしの動画や１億曲以上の音楽が視聴できる！">
+              </picture>
+            </a>
+          </div>
+
+          <nav class="u-Adjust_Mt-64">
+            <ul class="l-System_Container <%= namespace %>-Layout_Nav-list-bottom">
+              <li>
+                <picture>
+                  <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-3-sp.png">
+                  <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-3.png" width="504" alt="かんたん！便利な機能を使いこなす編">
+                </picture>
+              </li>
+              <li>
+                <a href="<%= sitepath %>tips/1st-step-point/?l-id=tips_1st-step-feature-footer_1st-step-point" class="c-Banner_Hover-act">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-2-sp.png">
+                    <img src="<%= sitepath %>assets/img/tips/1st-step-feature/img-nav-2.png" width="504" alt="もっと！楽天ポイントをもらう編はこちら">
+                  </picture>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <ul class="<%= namespace %>-List_Link-center-2 u-Adjust_Mt-64">
+            <li>
+              <a href="https://www.rakuten.ne.jp/gold/rakutenmobile-store/?scid=wi_rmb_1st-step-feature_gold_rakutenmobile-store" class="c-Banner_Hover-act">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/bnr-02.png" width="240" height="135" alt="ご要望にお応えして楽天モバイル公式 楽天市場店アクセサリ全品送料無料！">
+              </a>
+            </li>
+            <li>
+              <a href="<%= sitepath %>support/?l-id=tips_1st-step-feature_support" class="c-Banner_Hover-act">
+                <img src="<%= sitepath %>assets/img/tips/1st-step-feature/bnr-03.png" width="240" height="135" alt="お客様サポートお困りごとに合わせた最適な解決方法とお問い合わせ先をご案内">
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <%#-- ReX UX Survey: Mounting point for embedded components --%>
+        <div id="rexSurveyEmbedded" class="rexSurveyNamespace u-Adjust_Mt-48"></div>
+
+        <section id="notes" class="u-Adjust_Mt-56">
+          <h3 class="c-Heading_Lv2 u-Adjust_Align-center">注意事項</h3>
+          <div class="u-Adjust_Mt-16">
+            <h4>■Rakuten Linkについて</h4>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※1（0570）などから始まる他社接続サービス、一部特番（188）への通話については、無料通話の対象外となります。<a href="<%= sitepath %>faq/detail/00001887/?l-id=tips_1st-step-feature_faq_detail-00001887" class="c-Link_Txt">対象外番号一覧</a>をご確認ください。アプリ未使用時30秒22円<br>
+              ※2 iPad、iPod touchには対応していません<br>
+              ※定期的にRakuten Linkアプリの最新バージョンを公開しておりますので、常に最新バージョンへアップデートをお願いします。最新版につきましては、各ストアにてご確認ください<br>
+              ※一部の製品において、ご利用のRakuten Link Androidアプリが最新バージョンではない場合、製品ソフトウェアアップデートの影響で一部の機能がご利用いただけなくなる事象を確認しております<br>
+              ※Rakuten Link Androidアプリは、システム変更に伴いバージョン2.9.0以降にアップデートしていない場合、Rakuten Link アプリでの着信ができなくなり、Android標準の電話アプリに着信するようになります
+            </p>
+          </div>
+
+          <div class="u-Adjust_Mt-24">
+            <h4>■15分（標準）通話かけ放題について</h4>
+            <p class="u-Adjust_Mt-8 c-Txt_Cap">
+              ※ 15分（標準）通話かけ放題（オプションサービス）は、15分超過後は30秒22円。本オプションサービスは日割り対象外。 <a href="<%= sitepath %>terms/pdf/rakuten_mobile_exception_number_list.pdf" class="c-Link_Txt">一部対象外番号</a>あり<br>
+              ※4 2022年5月13日（金）以降、初めて「10分（標準）通話かけ放題」に加入した場合は、2022年7月1日（金）に「15分（標準）通話かけ放題」へ自動移行され、月額料金が3カ月無料となります。2023年9月1日（金）以降、初めてお申し込みされた方は1カ月無料となります。
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="g-Footer <%= namespace %>-Layout_Footer u-Adjust_Mt-64">
+      <div class="g-Footer_Aside">
+        <%#- include('/include/footer/related/_related-campaign-v2.ejs') %>
+
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitleBread %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/tips.1st-step-feature.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+
+<!-- ReX UX Survey: Config -->
+<script>
+  window.rexSurveyConfig = {
+    "language": "ja",
+    "surveyId": "40807",
+    "cId": {
+        "name": "answers[40807_277187]",
+        "value": ""
+    },
+    "embedded": true,
+    "url": {
+        "name": "answers[40807_277188]"
+    },
+    "triggerIdName": "trigger",
+    "reappearancePeriodWithRespond": "10",
+    "reappearancePeriodWithoutRespond": "10",
+    "enableDisplaySuppressionPerPage": true,
+    "enableFormAction": true,
+    "displayStartDate": "",
+    "displayEndDate": "",
+    "permission": {
+        "inquiryTxt": "キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)",
+        "yesBtnTxt": "協力する",
+        "noBtnTxt": "今は協力しない",
+        "available": true
+    },
+    "thanks": {
+        "txt0": "ご協力ありがとうございました",
+        "txt1": "いただいた情報は、サービス改善のために使用させていただきます。"
+    },
+    "nps": {
+        "available": true,
+        "question": {
+            "label": "このページの総合的な「わかりやすさ」について、どのように感じましたか？"
+        },
+        "options": [
+            {
+                "name": "answers[40807_277189]",
+                "value": "724785"
+            },
+            {
+                "name": "answers[40807_277189]",
+                "value": "724786"
+            },
+            {
+                "name": "answers[40807_277189]",
+                "value": "724787"
+            },
+            {
+                "name": "answers[40807_277189]",
+                "value": "724788"
+            },
+            {
+                "name": "answers[40807_277189]",
+                "value": "724789"
+            }
+        ],
+        "txt0": "わかりづらかった",
+        "txt1": "わかりやすかった",
+        "checked": 4
+    },
+    "inquiry": {
+        "available": true,
+        "checkList": {
+            "questionType": "multipleAnswer",
+            "available": true,
+            "question": "あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ",
+            "shuffleChoices": false,
+            "options": [
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724790",
+                    "label": "「my 楽天モバイル」がわからない"
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724791",
+                    "label": "「Rakuten Link」がわからない"
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724792",
+                    "label": "「楽メール」がわからない"
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724793",
+                    "label": "「オプション・サービス」がわからない"
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724794",
+                    "label": "「月々のお支払いにポイントを使う方法」がわからない"
+                },
+                {
+                    "name": "",
+                    "value": "",
+                    "label": ""
+                },
+                {
+                    "name": "",
+                    "value": "",
+                    "label": ""
+                }
+            ]
+        },
+        "freeInput": {
+            "available": true,
+            "name": "answers[40807_277191]",
+            "title": "ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"
+        },
+        "sendBtnTxt": "送信する",
+        "footerNote": {
+            "available": true,
+            "text": "お客様よりご提供いただく情報はサービス向上のため使用させていただきます。",
+            "link": "https://privacy.rakuten.co.jp/",
+            "htmlText": ""
+        }
+    },
+    "inquiryNegative": {
+        "checkList": {
+            "available": false,
+            "options": [
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724790",
+                    "label": ""
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724791",
+                    "label": ""
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724792",
+                    "label": ""
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724793",
+                    "label": ""
+                },
+                {
+                    "name": "answers[40807_277190][]",
+                    "value": "724794",
+                    "label": ""
+                },
+                {
+                    "name": "",
+                    "value": "",
+                    "label": ""
+                },
+                {
+                    "name": "",
+                    "value": "",
+                    "label": ""
+                }
+            ]
+        }
+    },
+    "ua": {
+        "name": "answers[40807_277192]"
+    },
+    "href": {
+        "name": "answers[40807_277193]"
+    },
+    "cookie": {
+        "available": false
+    },
+    "assetPaths": {
+        "closeButton": "",
+        "checkIcon": ""
+    }
+  }
+</script>
+  <!-- ReX UX Survey: Script -->
+  <script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/1.5.0/js/main.js" defer></script>
+</body>
+</html>

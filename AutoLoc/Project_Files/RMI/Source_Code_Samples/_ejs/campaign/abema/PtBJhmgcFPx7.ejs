@@ -1,0 +1,529 @@
+<% const pagetitle = "Rakuten UN-LIMIT VIIご契約者様限定！ABEMAプレミアムが実質3カ月無料！" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "abema" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '約30,000エピソードの作品が見放題！ABEMAプレミアムをおトクに楽しめる！楽天モバイルご契約でABEMAプレミアムが実質3カ月無料キャンペーン',
+  keywords: '',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/abema_test/abema.css?20240424">
+<%- include('/inc/_saikyo-css') %>
+<!-- ReX Campaign Button: stylesheet -->
+<link rel="stylesheet" href="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.4.0/static/css/main.css?20240424" />
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List">
+        <li class="c-Label_Normal">エントリー必要</li>
+        <li class="c-Label_Normal">ご契約者様対象</li>
+      </ul>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Kv-wrapper">
+      <div class="<%= namespace %>-Layout_Kv">
+        <div class="<%= namespace %>-Layout_Kv-inner">
+          <h1>
+            <picture>
+              <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/abema/kv-sp-220801.png">
+              <img src="<%= sitepath %>assets/img/campaign/abema/kv-pc-220801.png" alt="楽天モバイルご契約者様限定・要エントリー abema 人気の映画やドラマ・アニメなど万本以上の作品が見放題で楽しめる ※abemaストアの作品は対象外となり、別途課金となります。 通常2週間のところ31日間無料トライアル +さらにお申し込みから3カ月のabema継続契約で2,052相当分の楽天ポイントプレゼント!※本キャンペーンは楽天モバイルをご契約中かつabemaへ初めてご登録のお客様が対象です">
+            </picture>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><span class="c-Txt_Emp-01">【キャンペーン期間】</span><br class="<%= namespace %>-Utility_Br-sp">2022年8月1日(月) 9:00～2022年9月30日(金) 20:59</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-16">※「実質価格」とは、キャンペーンの条件達成（エントリー、ABEMAプレミアムに初めて登録＆3カ月継続契約など）により後日付与されるポイントを加味した価格であり、実際のお支払い金額とは異なります。詳しくは<a href="#sec5" class="js-scroll">キャンペーンルール</a>をご確認ください。</p>
+      <div class="<%= namespace %>-Layout_Nav-wrapper u-Adjust_Mt-32">
+        <ul class="<%= namespace %>-Layout_Nav">
+          <li><a href="#sec1" data-ratid="campaign_abema_index-explanation-abema" data-ratevent="click" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>ABEMAプレミアムとは</a></li>
+          <li><a href="#sec2" data-ratid="campaign_abema_index_participation-conditions" data-ratevent="click" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>キャンペーンの達成条件</a></li>
+          <li><a href="#sec3" data-ratid="campaign_abema_index-campaign-flow" data-ratevent="click" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>キャンペーンの流れ</a></li>
+          <li><a href="#sec4" data-ratid="campaign_abema_index-point-acquisition-time" data-ratevent="click" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>ポイント進呈時期</a></li>
+          <li><a href="#sec5" data-ratid="campaign_abema_index-rule-01" data-ratevent="click" class="js-scroll c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <%# スクロール計測 %>
+  <div class="u-Rat_Appear-height" data-ratid="campaign_abema_scroll-01_top_entry" data-ratevent="appear">&nbsp;</div>
+
+  <div class="l-System">
+    <div class="<%= namespace %>-Layout_Pink <%= namespace %>-Utility_Mt-24-40 u-Adjust_Align-center">
+      <h3 class="c-Heading_Lv3">今すぐキャンペーンに参加！</h3>
+      <div class="u-Adjust_Mt-16">
+        <!-- ReX Campaign Entry Button: Mounting points -->
+        <!-- mounting point for button 1 --><div id="rex-ceb-01" class="campaign-Rexoverwrite"></div>
+      </div>
+      <p class="c-Txt_Cap <%= namespace %>-Layout_Cta-note">
+        ※ エントリー対象条件は<a href="#sec5" data-ratid="campaign_abema_index-rule-02" data-ratevent="click" class="js-scroll c-Link_Txt">キャンペーンルール</a>をご確認ください<br>
+        ※ 楽天モバイル未契約の方は、期間内にお申し込みください
+      </p>
+    </div>
+
+    <%# スクロール計測 %>
+    <div class="u-Rat_Appear-height" id="sec1" data-ratid="campaign_abema_scroll-02_explanation-abema" data-ratevent="appear">&nbsp;</div>
+
+    <div class="<%= namespace %>-Layout_Detail">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/abema/whats_abema_prmium-sp-220801.png">
+        <img src="<%= sitepath %>assets/img/campaign/abema/whats_abema_prmium-pc-220801.png" width="1032" alt="">
+      </picture>
+    </div>
+  </div>
+
+  <%# スクロール計測 %>
+  <div class="u-Rat_Appear-height" id="sec2" data-ratid="campaign_abema_scroll-03_participation-conditions" data-ratevent="appear">&nbsp;</div>
+
+  <div class="l-System_Container">
+
+    <div class="<%= namespace %>-Layout_Head">
+      <h1>キャンペーンの達成条件</h1>
+    </div>
+
+    <div class="<%= namespace %>-List_Box u-Adjust_Mt-24">
+      <div class="<%= namespace %>-List_Box-item">
+        <h3 class="c-Heading_Lv3 c-Txt_Emp-02">STEP1</h3>
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-16">Rakuten UN-LIMIT VIIに<br>ご契約中または新規ご契約</h4>
+        <img src="<%= sitepath %>assets/img/campaign/abema/cart-220801.png" class="u-Adjust_Mt-16" alt="">
+        <p class="<%= namespace %>-List_Box-item-txt u-Adjust_Mt-16">これからお申し込みの方も、プランご利用開始後から対象となります。</p>
+        <p><a href="https://network.mobile.rakuten.co.jp/guide/application/?lid-r=campaign_abema_guide_application" class="c-Link_Txt-icon-front u-Adjust_Mt-16">お申し込みはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+      <div class="<%= namespace %>-List_Box-item">
+        <h3 class="c-Heading_Lv3 c-Txt_Emp-02">STEP2</h3>
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-16">キャンペーンにエントリー</h4>
+        <img src="<%= sitepath %>assets/img/campaign/abema/smartphone-220801.png" class="u-Adjust_Mt-16" alt="">
+        <p class="<%= namespace %>-List_Box-item-txt u-Adjust_Mt-16">このページからエントリーをしてください。</p>
+        <!-- ReX Campaign Entry Button: Mounting points -->
+        <!-- mounting point for button 2 --><div id="rex-ceb-02" class="campaign-Rexoverwrite"></div>
+        <p class="<%= namespace %>-List_Box-item-txt c-Txt_Cap u-Adjust_Mt-8">※ エントリー対象条件は<a href="#sec5" data-ratid="campaign_abema_index-rule-03" data-ratevent="click" class="js-scroll">キャンペーンルール</a>をご確認ください  ※ 楽天モバイル未契約の方は、期間内にお申し込みください</p>
+      </div>
+      <div class="<%= namespace %>-List_Box-item">
+        <h3 class="c-Heading_Lv3 c-Txt_Emp-02">STEP3</h3>
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-16">ABEMAプレミアムに登録＆<br>
+          3カ月継続契約</h4>
+        <img src="<%= sitepath %>assets/img/campaign/abema/abema_premium-220801.png" class="u-Adjust_Mt-16" alt="">
+        <p class="<%= namespace %>-List_Box-item-txt u-Adjust_Mt-16">ABEMAプレミアムに初めて登録するお客様が対象です。</p>
+        <a href="https://abema.tv/about/premium?utm_medium=ads&utm_source=rakutenmobile&utm_campaign=2022summer_ap_premium_genre_all&open_browser=true&scid=wi_rmb_abema_premium_register_01" class="c-Btn_Primary u-Adjust_Mt-16"><span>ご登録はこちら</span></a>
+        <p class="<%= namespace %>-List_Box-item-txt c-Txt_Cap u-Adjust_Mt-8"> ※ 登録メールアドレスは必ず<span class="c-Txt_Emp-02">my 楽天モバイルの連絡先メールアドレス</span>を入力してください<br>
+          ※ メールアドレスが合致しない場合は特典対象外となります  ※ 上記ページ以外からの登録は特典対象外です</p>
+      </div>
+    </div>
+  </div>
+
+  <%# スクロール計測 %>
+  <div class="u-Rat_Appear-height" id="sec3" data-ratid="campaign_abema_scroll-04_campaign-flow" data-ratevent="appear">&nbsp;</div>
+
+  <div class="l-System_Container u-Adjust_Mt-16">
+    <div class="<%= namespace %>-Layout_Head <%= namespace %>-Utility_Mt-80-64">
+      <h1>キャンペーンの流れ</h1>
+    </div>
+    <ol class="c-Flow <%= namespace %>-Layout_Flow u-Adjust_Mt-24">
+      <li>
+        <h3 class="c-Heading_Lv3">1) このページから<span class="<%= namespace %>-Layout_Br-sp"></span>エントリー</h3>
+        <div class="u-Adjust_Mt-16">
+          <!-- ReX Campaign Entry Button: Mounting points -->
+          <!-- mounting point for button 3 --><div id="rex-ceb-03" class="campaign-Rexoverwrite"></div>
+          <p class="<%= namespace %>-Utility_Center-pc c-Txt_Cap <%= namespace %>-Layout_Cta-note">
+            ※ エントリー対象条件は<a href="#sec5" data-ratid="campaign_abema_index-rule-04" data-ratevent="click" class="js-scroll c-Link_Txt">キャンペーンルール</a>をご確認ください<br>
+            ※ 楽天モバイル未契約の方は、期間内にお申し込みください
+          </p>
+        </div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">2) ABEMAプレミアムへ登録</h3>
+        <div class="u-Adjust_Align-center">
+          <a href="https://abema.tv/about/premium?utm_medium=ads&utm_source=rakutenmobile&utm_campaign=2022summer_ap_premium_genre_all&open_browser=true&scid=wi_rmb_abema_premium_register_02" target="_blank" class="c-Btn_Primary-large u-Adjust_Mt-16"><span>ABEMAプレミアム登録はこちら</span></a>
+        </div>
+        <p class="<%= namespace %>-Utility_Center-pc c-Txt_Cap <%= namespace %>-Layout_Cta-note">
+          ※ 登録メールアドレスは必ず<span class="c-Txt_Emp-02">my 楽天モバイルの連絡先情報のアドレス</span>を入力してください<br>
+          ※ メールアドレスが合致しない場合は特典対象外となります  ※ 上記ページ以外からの登録は特典対象外です
+        </p>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv3">3) 3カ月の継続契約で、<span class="<%= namespace %>-Layout_Br-sp"></span>キャンペーン条件達成！</h3>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= namespace %>-Layout_Flow-2-pic">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/abema/free-3month-sp-220801.png">
+            <img src="<%= sitepath %>assets/img/campaign/abema/free-3month-pc-220801.png" width="650" alt="">
+          </picture>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= namespace %>-Layout_Flow-2-pic">
+          <picture class="<%= namespace %>-Layout_Flow-2-pic-item">
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/abema/free_trial-sp-220801.png">
+            <img src="<%= sitepath %>assets/img/campaign/abema/free_trial-pc-220801.png" width="483" alt="">
+          </picture>
+          <picture class="<%= namespace %>-Layout_Flow-2-pic-item">
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/abema/point_2880-sp-220801.png">
+            <img src="<%= sitepath %>assets/img/campaign/abema/point_2880-pc-220801.png" width="483" alt="">
+          </picture>
+        </div>
+        <p class="c-Txt_Cap">※1 ABEMAプレミアムに登録し、解約せず3回の契約更新が条件となります<br>
+          ※2 キャンペーン条件達成が確認された月の翌々月末日ごろに、楽天モバイルより6カ月間の期間限定ポイントとして進呈いたします</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="l-System">
+    <div class="<%= namespace %>-Layout_Head <%= namespace %>-Utility_Mt-80-64">
+
+      <%# スクロール計測 %>
+      <div class="u-Rat_Appear-height" data-ratid="campaign_abema_scroll-05_abema" data-ratevent="appear">&nbsp;</div>
+
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/abema/feature-sp-220801.png">
+        <img src="<%= sitepath %>assets/img/campaign/abema/feature-pc-220801.png" width="1032" alt="">
+      </picture>
+    </div>
+
+    <div class="<%= namespace %>-Layout_Pink <%= namespace %>-Utility_Mt-32-0 u-Adjust_Align-center">
+
+      <%# スクロール計測 %>
+      <div class="u-Rat_Appear-height" data-ratid="campaign_abema_scroll-06_bottom_entry" data-ratevent="appear">&nbsp;</div>
+
+      <h3 class="c-Heading_Lv3">今すぐキャンペーンに<span class="<%= namespace %>-Layout_Br-sp"></span>参加しよう！</h3>
+      <div class="<%= namespace %>-Layout_Pink-2btn u-Adjust_Mt-24">
+        <div class="<%= namespace %>-Layout_Pink-2btn-w u-Adjust_Align-center">
+          <p class="c-Txt_Emp-02">＼ STEP 1 ／</p>
+          <div class="u-Adjust_Mt-8"></div>
+          <!-- ReX Campaign Entry Button: Mounting points -->
+          <!-- mounting point for button 4 --><div id="rex-ceb-04" class="campaign-Rexoverwrite"></div>
+        </div>
+        <div class="<%= namespace %>-Layout_Pink-2btn-w u-Adjust_Align-center">
+          <p class="c-Txt_Emp-02">＼ STEP 2 ／</p>
+          <div class="u-Adjust_Mt-8"></div>
+          <a href="https://abema.tv/about/premium?utm_medium=ads&utm_source=rakutenmobile&utm_campaign=2022summer_ap_premium_genre_all&open_browser=true&scid=wi_rmb_abema_premium_register_03" class="c-Btn_Primary-large"><span>ABEMAプレミアム登録</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="l-System_Container u-Adjust_Mt-32">
+
+    <%# スクロール計測 %>
+    <div class="u-Rat_Appear-height" id="sec4" data-ratid="campaign_abema_scroll-07_point-acquisition-time" data-ratevent="appear">&nbsp;</div>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Align-center">ポイント進呈時期の具体例</h3>
+    <p class="<%= namespace %>-Layout_Point c-Txt_Emp-01 u-Adjust_Mt-16">8月1日(月)にキャンペーンが適用された場合、以下の時期に特典が受けられます。</p>
+    <picture>
+      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/abema/point-example-sp-220801.png">
+      <img src="<%= sitepath %>assets/img/campaign/abema/point-example-pc-220801.png" width="1032" class="u-Adjust_Mt-16" alt="">
+    </picture>
+
+    <%# スクロール計測 %>
+    <div class="u-Rat_Appear-height" data-ratid="campaign_abema_scroll-08_faq" data-ratevent="appear">&nbsp;</div>
+
+    <h2 class="c-Txt_Normal-ll u-Adjust_Align-center u-Adjust_Mt-64">よくあるご質問</h2>
+    <div class="c-Accordion u-Adjust_Mt-24">
+      <button type="button" id="accordion-1" data-ratid="campaign_abema_faq-01" data-ratevent="click" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルに申し込み後、開通が終わっていない場合はキャンペーンの対象外ですか？</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+        対象外です。開通（アクティベーション）が完了している楽天モバイルご契約者さまが対象となります。
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button type="button" id="accordion-2" data-ratid="campaign_abema_faq-02" data-ratevent="click" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>このページ以外から、ABEMAプレミアムに申し込んだ場合は、このキャンペーンの対象になりますか？</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display: none;">
+        対象外です。本キャンペーンは、このページから申し込まれた楽天モバイルご契約者さまが対象となります。
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button type="button" id="accordion-3" data-ratid="campaign_abema_faq-03" data-ratevent="click" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンのエントリーと楽天モバイルの申し込みに順番はありますか？</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true" style="display: none;">
+        キャンペーン期間中にエントリーいただければ、楽天モバイルの申し込みが後になっても問題ございません。<br>
+        ただし、キャンペーン期間中に楽天モバイルのご利用を開始いただく必要がございます。
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button type="button" id="accordion-4" data-ratid="campaign_abema_faq-04" data-ratevent="click" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンのエントリーとABEMAプレミアムの申し込みに順番はありますか？</button>
+      <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true" style="display: none;">
+        ABEMAプレミアムに申し込みをいただく前に、キャンペーンにエントリーいただく必要がございます。<br>
+        ABEMAプレミアム申し込み後のキャンペーンエントリーは無効となりますので、ご注意ください。
+      </div>
+    </div>
+    <div class="c-Accordion">
+      <button type="button" id="accordion-5" data-ratid="campaign_abema_faq-05" data-ratevent="click" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ABEMAプレミアムの有効期限の確認や解約はどこでできますか？</button>
+      <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true" style="display: none;">
+        ABEMAの視聴プランページで有効期限の確認や解約手続きができます。
+        <p class="c-Txt_Cap">※ABEMAプレミアムの有効期限の24時間前までに解約してください。解約が遅れますと定期購入が更新されます。有効期限の24時間前の日時を解約期限として表示しています。</p>
+      </div>
+    </div>
+    <div class="u-Adjust_Mt-64">
+      <%- include('/inc/_saikyo') %>
+    </div>
+  </div>
+
+  <div class="l-System c-Theme-Light u-Adjust_Mt-48">
+    <div class="l-System_Container">
+      <div class="u-Rat_Appear-height" data-ratid="campaign_abema_scroll-06_rakuten" data-ratevent="appear">&nbsp;</div>
+      <h3 class="c-Heading_Lv2 u-Adjust_Align-center">楽天モバイルについて</h3>
+      <p class="u-Adjust_Align-center c-Txt_Emp-01 u-Adjust_Mt-8">詳細は以下の各リンク先にてご確認ください</p>
+      <div class="u-Adjust_Mt-24">
+        <ul class="<%= namespace %>-Card_About">
+          <li>
+            <a href="<%= sitepath %>fee/un-limit/?l-id=campaign_abema_fee_un-limit_b1" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-01.png?220801" alt="">
+              <p class="c-Txt_Emp-01">料金プラン</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>fee/zero/?l-id=campaign_abema_fee_zero" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-02.png?220801" alt="">
+              <p class="c-Txt_Emp-01">お申し込み手数料</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>area/?l-id=campaign_abema_area" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-03.png?220801" alt="">
+              <p class="c-Txt_Emp-01">サービスエリア</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>product/byod/?l-id=campaign_abema_product_byod" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-04.png?220801" alt="">
+              <p class="c-Txt_Emp-01">楽天回線対応製品</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>service/?l-id=campaign_abema_service" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-05.png?220801" alt="">
+              <p class="c-Txt_Emp-01">オプション<br>サービス</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>guide/point/?l-id=campaign_abema_guide_point" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-06.png?220801" alt="">
+              <p class="c-Txt_Emp-01">おトクな<br>楽天ポイント</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>service/rakuten-link/?l-id=campaign_abema_service_rakuten-link" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-07.png?220801" alt="">
+              <p class="c-Txt_Emp-01">Rakuten Link<br>アプリ</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>campaign/?l-id=campaign_abema_campaign" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-08.png?220801" alt="">
+              <p class="c-Txt_Emp-01">キャンペーン一覧</p>
+            </a>
+          </li>
+          <li>
+            <a href="<%= sitepath %>product/sim/?l-id=campaign_abema_product_sim" class="c-Card_Normal">
+              <img src="<%= sitepath %>assets/img/campaign/abema/icon-about-09.png?220801" alt="">
+              <p class="c-Txt_Emp-01">SIMの使い方</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="campaign-rule" class="l-System_Container u-Adjust_Mt-64">
+    <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+
+    <%# スクロール計測 %>
+    <h2 id="sec5" data-ratid="campaign_abema_scroll-09_rule" data-ratevent="appear" class="c-Txt_Normal-ll u-Adjust_Align-center u-Adjust_Mt-64">夏のABEMAプレミアム 実質3カ月無料キャンペーン</h2>
+    <dl class="c-Dl_Origin u-Adjust_Mt-24 <%= namespace %>-Layout_Rule">
+      <div>
+        <dt>キャンペーンコード</dt>
+        <dd>
+          1564
+          <p class="c-Txt_Cap">※ 本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</p>
+        </dd>
+      </div>
+      <div>
+        <dt>キャンペーン期間</dt>
+        <dd>
+          <span class="c-Txt_Emp-01">■ エントリー期間</span><br>
+          　　2022年8月1日（月）9:00～2022年9月30日（金）20:59<br>
+          <span class="c-Txt_Emp-01">■ ABEMAプレミアムのお申し込み期間</span><br>
+          　　2022年8月1日（月）9:00～2022年9月30日（金）20:59<br>
+          <span class="c-Txt_Emp-01">■ Rakuten UN-LIMIT VII」プラン利用開始期限</span><br>
+          　　プランのお申し込みの翌月末日23:59まで
+        </dd>
+      </div>
+      <div>
+        <dt>キャンペーン条件</dt>
+        <dd>
+          <p class="c-Txt_Emp-02">上記各項目の期間内に【1】、【2】、【3】、【4】の条件を順序通りにすべて満たした楽天会員の方</p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">【1】「Rakuten UN-LIMIT VII」プランご利用中である。または、キャンペーン期間中に「Rakuten UN-LIMIT VII」へのお申し込みを行うこと。</p>
+          <p class="u-Adjust_Mt-8">本キャンペーンへのエントリー時点で「Rakuten UN-LIMIT VII」をお申し込みされていない場合は、楽天モバイルのWebサイトまたは店頭から下記（1）-（3）いずれかの方法でのお申し込みが必要です。既にお申し込みされている場合は、新たなお手続きは不要となります。</p>
+          <p class="u-Adjust_Mt-8">(1) 新規お申し込み</p>
+          <p class="u-Adjust_Mt-8">(2) 他社からの乗り換え（MNP）でお申し込み</p>
+          <p class="u-Adjust_Mt-8">(3) 楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※　本キャンペーン開始前に楽天モバイル(Rakuten UN-LIMIT VII)をお申し込みされた方は、キャンペーン期間内のプラン利用開始が必要です。</p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">【2】キャンペーンへのエントリー</p>
+          <p class="u-Adjust_Mt-8">エントリー期間内に本キャンペーンページでエントリー</p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">【3】エントリー後、ABEMAプレミアムへ初めてご登録</p>
+          <p class="u-Adjust_Mt-8">ABEMAプレミアムへの登録を新規にお申し込みいただいたお客様が対象となります</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ my 楽天モバイルの連絡先メールアドレスと同じメールアドレスをABEMAプレミアムの会員登録時にご使用ください</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 本ページ以外からのご登録は特典対象外です</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ メールアドレスが合致しない場合は特典対象外となります</p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">【4】ABEMAプレミアム　3カ月継続契約</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ ABEMAプレミアムに登録し、解約せず3回の契約更新をもって条件達成となります。解約されない限り、更新は自動で行われますので、更新手続きは不要です</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 3カ月継続契約期間に、ABEMAプレミアム2週間無料トライアル期間を含みません</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ ABEMAプレミアム2週間無料トライアル期間終了日の翌日からABEMAプレミアムの有料期間が開始します</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">例）8月1日にお申し込みいただいた場合のABEMAプレミアムの有効期限は、初回が8月15日、2回目が9月15日、3回目が10月15日となり、10月15日をもって3カ月ご契約継続となり条件達成となります</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ABEMAの視聴プランページより有効期限をご確認ください</p>
+        </dd>
+      </div>
+      <div>
+        <dt>キャンペーン特典 （楽天ポイント）</dt>
+        <dd>
+          <p class="c-Txt_Emp-01">
+            ■特典内容
+          </p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-8">
+            ABEMAプレミアム2週間無料トライアルに加えて、ABEMAプレミアム3カ月の継続利用で、ABEMAプレミアム3カ月分に相当する2,880円相当の楽天ポイントをプレゼント
+          </p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 2,880ポイントはキャンペーン条件達成【1】～【4】を確認の上付与</p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-8">
+            ■ポイント付与日
+          </p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-8">キャンペーン条件【1】～【4】が確認された月の翌々月末日ごろに付与</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 例）10月にすべての条件を達成した場合には、その翌々月である12月末日ごろにポイント付与となります</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 楽天ポイントの付与は、楽天モバイルより行います</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 権利の譲渡はできません</p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-8">
+            ■ポイント有効期間
+          </p>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-8">
+            ポイント付与日を含めて6カ月
+          </p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ <a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 有効期限までにポイントを利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません</p>
+        </dd>
+      </div>
+      <div>
+        <dt>特典適用対象外</dt>
+        <dd>
+          <p class="c-Txt_Emp-01">以下の条件に当てはまる場合は、<span class="c-Txt_Emp-02">特典適用対象外</span>となります</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ エントリー後に、「Rakuten UN-LIMIT VII」の契約者変更（譲渡・承継）をした場合</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ ABEMAプレミアムの利用や無料お試しを過去に行ったことがある場合</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ my 楽天モバイルの連絡先メールアドレスとABEMAプレミアムの登録メールアドレスが一致しない場合</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 本ページ以外でABEMAプレミアム登録を行った場合（専用ページ遷移後、別ページに遷移して、その後に登録を行った場合も特典適応対象外となります）</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 当社の提供するサービス、ABEMAプレミアムなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ ポイント付与までに楽天会員から退会している場合</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 当社または楽天グループ株式会社が定める<span class="c-Txt_Emp-01">規約などに違反</span>した場合</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ そのほか、<span class="c-Txt_Emp-01">当社が会員として不適格である</span>と判断した場合</p>
+        </dd>
+      </div>
+      <div>
+        <dt>注意事項</dt>
+        <dd>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ ABEMAプレミアムを解約する場合、ABEMAプレミアムの有効期限の24時間前までに解約してください。解約が遅れますと定期購入が更新されます</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 本キャンペーンへのお申し込みは、お一人様1回のみとさせていただきます。複数回お申し込みいただいても無効となりますので予めご了承ください</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 本キャンペーンの運営に関連して取得した応募者の個人情報は、応募条件を満たしていることの確認およびポイント付与を目的として、株式会社Abema TVに取扱いを委託いたします</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</p>
+          <p class="u-Adjust_Mt-8 c-Txt_Cap">※ 記載の内容は2022年8月1日（月）時点の情報となります</p>
+        </dd>
+      </div>
+    </dl>
+
+    <p class="c-Txt_Cap u-Adjust_Mt-40">
+      © AbemaTV, Inc.　© テレビ朝日　© テレビ朝日　Abema News　© LIVE SPORTS MEDIA/(C)AbemaTV, Inc.　© FIFA　© Major League Baseball trademarks and copyrights are used with permission of Major League Baseball. Visit MLB.com　Photo by Getty Images　© M.LEAGUE　©  紙城境介・KADOKAWA／連れカノ製作委員会　© 秋本治・アトリエびーだま／集英社・ＡＤＫ　© 進行諸島・SBクリエイティブ／転生賢者の製作委員会　© VISUAL ARTS / Key / BAS・プリマドール製作委員会　© 衣笠彰梧・KADOKAWA刊／ようこそ実力至上主義の教室へ2製作委員会　© 臼井儀人／双葉社・シンエイ・テレビ朝日・ＡＤＫ 2021　©丸山くがね・KADOKAWA刊／オーバーロード4製作委員会　© 天那光汰・梅津葉子／SQUARE ENIX・「金装のヴェルメイユ」製作委員会　© 藤子プロ・小学館・テレビ朝日・シンエイ・ADK 1980　© 和久井健・講談社／アニメ「東京リベンジャーズ」製作委員会
+    </p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">
+      ※ABEMAおよびABEMAのロゴ・アプリアイコンは株式会社サイバーエージェントならびに株式会社AbemaTVの登録商標です。※当Webサイトに掲載の商品名称やサービス名称等は一般に各社の商標または登録商標です。
+    </p>
+  </div>
+  <div class="<%= namespace %>-Utility_Mt-32-16"></div>
+
+  <%# スクロール計測 %>
+  <div class="u-Rat_Appear-height" data-ratid="campaign_abema_scroll-10_popask" data-ratevent="appear">&nbsp;</div>
+  <!-- ReX UX Survey: Mounting point for embedded components -->
+  <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+  <footer class="g-Footer <%= namespace %>-Layout_Footer u-Adjust_Mt-64">
+    <div class="g-Footer_Aside">
+      <%- include('/include/footer/related/_related-news.ejs') %>
+      <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+    </div>
+    <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+    <%- include('/include/_footer') %>
+  </footer>
+
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+  <!-- ReX Campaign Entry Button: Configuration -->
+  <script>var rexButtons = [{"wide":false,"showCelebration":false,"theme":"red","code":"/rmobile/abema/summer2022","ids":["rex-ceb-01","rex-ceb-02","rex-ceb-03","rex-ceb-04"]}]</script>
+
+  <!-- ReX Campaign Entry Button: Script -->
+  <script src="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.4.0/static/js/main.js" defer></script>
+  <script>
+    var abemaCarousel = $('.js-abema-carousel');
+    abemaCarousel.each(function() {
+    var $self = $(this);
+    var carouselConfig = {
+        respondTo: 'min',
+        slidesToShow: 3,
+        arrows: true,
+        dots: true,
+        dotsClass: 'slick-dots c-Carousel_Dots',
+        infinite: true,
+        prevArrow: '<button class="c-Carousel_Nav-prev c-Icon_Chevron-left" aria-label="Previous" type="button">Previous</button>',
+        nextArrow: '<button class="c-Carousel_Nav-next c-Icon_Chevron-right" aria-label="Next" type="button">Next</button>',
+    };
+    console.log($self.next('.c-Carousel_Nav'));
+    $self.slick($.extend({}, carouselConfig, {
+        appendArrows: $self.next('.c-Carousel_Nav'),
+        appendDots: $self.next('.c-Carousel_Nav')
+    }));
+});
+  </script>
+
+  <!-- ReX UX Survey: Config -->
+  <script>
+  window.rexSurveyConfig = {"language":"ja","surveyId":"39499","cId":{"name":"answers[39499_269617]","value":""},"embedded":true,"url":{"name":"answers[39499_269618]"},"triggerIdName":"trigger","reappearancePeriodWithRespond":"10","reappearancePeriodWithoutRespond":"10","enableDisplaySuppressionPerPage":true,"enableFormAction":true,"displayStartDate":"","displayEndDate":"","permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":false},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。","thanksDisplaySeconds":3},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[39499_269619]","value":"746867"},{"name":"answers[39499_269619]","value":"746868"},{"name":"answers[39499_269619]","value":"746869"},{"name":"answers[39499_269619]","value":"746870"},{"name":"answers[39499_269619]","value":"746871"}],"txt0":"わかりづらかった","txt1":"わかりやすかった","checked":4},"inquiry":{"available":true,"checkList":{"questionType":"multipleAnswer","available":true,"question":"あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ","shuffleChoices":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":"ポイント獲得の条件や流れがわかりにくい"},{"name":"answers[39499_269620][]","value":"746873","label":"文字数や情報量が多すぎてわかりにくい"},{"name":"answers[39499_269620][]","value":"746874","label":"色や文字サイズ等のデザインが見にくい"},{"name":"answers[39499_269620][]","value":"746875","label":"楽天モバイルの申し込み方法がわかりにくい"},{"name":"answers[39499_269620][]","value":"746876","label":"キャンペーンに申し込むメリットを感じない"},{"name":"answers[39499_269620][]","value":"746877","label":"その他(次の設問でご記入ください)"},{"name":"answers[39499_269620][]","value":"746878","label":" 特に無い"}]},"freeInput":{"available":true,"name":"answers[39499_269621]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のため使用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":""},{"name":"answers[39499_269620][]","value":"746873","label":""},{"name":"answers[39499_269620][]","value":"746874","label":""},{"name":"answers[39499_269620][]","value":"746875","label":""},{"name":"answers[39499_269620][]","value":"746876","label":""},{"name":"answers[39499_269620][]","value":"746877","label":""},{"name":"answers[39499_269620][]","value":"746878","label":""}]}},"ua":{"name":"answers[39499_269622]"},"href":{"name":"answers[39499_269623]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+  </script>
+  <!-- ReX UX Survey: Script -->
+  <script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/2.1.0/js/main.js" defer></script>
+</body>
+</html>

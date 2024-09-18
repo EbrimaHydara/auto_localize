@@ -1,0 +1,107 @@
+<% const pagetitle = "【楽天従業員限定 Rakuten UN-LIMITご紹介キャンペーン】新規電話番号／他社から乗り換え（MNP）用クーポンコード入力フォーム" -%>
+<% const namespace = "rakuten-employee" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '',
+    keywords: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/rakuten-employee/rakuten-employee.css?20240424">
+<%- include('/include/_append-head') %>
+
+<script type="text/javascript">
+
+  function doTrim(el) {
+    el.value = el.value.replace(/^\s+|\s+$/g, '');
+  }
+
+  function isLength(el, len) {
+    if ("え".length == 2) {
+      len *= 2;
+    }
+    return el.value.length == len;
+  }
+
+  function zen2han(el) {
+    el.value = el.value.replace(/[０]/g, "0");
+    el.value = el.value.replace(/[１]/g, "1");
+    el.value = el.value.replace(/[２]/g, "2");
+    el.value = el.value.replace(/[３]/g, "3");
+    el.value = el.value.replace(/[４]/g, "4");
+    el.value = el.value.replace(/[５]/g, "5");
+    el.value = el.value.replace(/[６]/g, "6");
+    el.value = el.value.replace(/[７]/g, "7");
+    el.value = el.value.replace(/[８]/g, "8");
+    el.value = el.value.replace(/[９]/g, "9");
+  }
+
+  function checkForm() {
+    var el;
+    var obj = document.enenForm;
+
+    el = obj.elements['answers[34318_236017]'];
+    doTrim(el);
+    zen2han(el);
+    if (!isLength(el, 14)) {
+      alert("「楽天従業員から受け取った14ケタのクーポンコードをご入力ください。」は14文字で入力してください。");
+      return false;
+    }
+  }
+
+</script>
+
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <div class="l-System">
+    <header class="g-Header">
+      <div class="g-Header_Container">
+        <div class="g-Header_Logo"><a href="/">Rakuten Mobile</a></div>
+      </div>
+    </header>
+  </div>
+
+  <div class="u-Adjust_Pb-80">
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv2 u-Adjust_Mt-32"><%= pagetitle %></h1>
+
+      <p class="u-Adjust_Mt-24">※楽天モバイル（ドコモ回線・au回線）からの移行お申し込みの方の<a href="<%= sitepath %>campaign/rakuten-employee/coupon-code/">クーポンコード入力フォームはこちら</a></p>
+
+      <form class="u-Adjust_Mt-24" action="https://form.rakuten.co.jp/ans/apply/34318" name="enenForm" method="POST" onsubmit="return checkForm()">
+        <dl class="c-List_Dl-origin">
+          <div>
+            <dt>
+              楽天従業員から受け取った14ケタのクーポンコードをご入力ください。【半角英数14文字】<span class="c-Txt_Emp-02 c-Txt_Normal-ss">必須</span>
+            </dt>
+            <dd>
+              <input class="c-Form_Input" type="text" value="" name="answers[34318_236017]">
+            </dd>
+          </div>
+        </dl>
+
+        <p class="u-Adjust_Mt-24">
+          <span class="c-Txt_Emp-02">一度入力したクーポンコードの修正・変更はできません。</span>送信ボタンを押す前に、正しいクーポンコードが入力されているかを必ずご確認ください。
+        </p>
+
+        <div class="u-Adjust_Align-center u-Adjust_Mt-56">
+          <input type="hidden" name="c" value="楽天">
+          <input type="hidden" name="l" value="ja">
+          <button class="c-Btn_Primary-half" type="submit"><span>送信する</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<%- include('/include/_common-js') %>
+
+<%- include('/include/_append-body') %>
+</body>
+</html>

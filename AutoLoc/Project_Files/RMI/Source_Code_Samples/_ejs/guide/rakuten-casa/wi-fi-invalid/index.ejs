@@ -1,0 +1,172 @@
+<% const pagetitle = "Rakuten CasaのWi-Fiを無効化する方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"guide/rakuten-casa/", label:"Rakuten Casaアプリのご利用方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'Rakuten Casa（楽天カーサ）のWi-Fiを無効化する方法ををご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+    <p class="u-Adjust_Mt-32">Rakuten Casaアプリで登録したWi-Fiを無効化する方法についてご案内いたします。アプリを起動し以下の手順に沿って操作を行ってください。</p>
+
+    <ul class="c-Txt_Cap u-Adjust_Mt-16">
+      <li>※ Wi-Fi無効化を実行後、再度Wi-Fiに接続する場合は、手動で工場出荷時の状態に初期化したうえで、Rakuten Casaを再度ご登録する必要があります。<br>登録方法については「<a href="<%= sitepath %>guide/rakuten-casa/activation/">Rakuten Casaの登録方法</a>」をご確認ください。</li>
+      <li>※ Rakuten Casaは仕様上一定期間電源供給が遮断された場合、設定が初期化されるケースがあります。Wi-Fiの設定をされているお客様につきましては、電源復帰後に設定の確認をお願いいたします。</li>
+      <li>※ Rakuten Casa 6はホームゲイトウェイ接続する場合APモードでは利用できません。Rakuten Casa 6をルーターモードで利用してください。</li>
+    </ul>
+
+    <ol class="c-Flow u-Adjust_Mt-32">
+      <li>
+        <h2 class="c-Heading_Lv3">1. ホーム画面から「Casa設定」をタップする</h2>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step01.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+
+        <div class="l-Media_Image u-Adjust_Mt-24">
+          <div class="<%= nameSpace %>-Img_Capture">
+            <p class="c-Txt_Cap u-Adjust_Align-left">※ Rakuten Casa（初代）をご利用の場合は、以下の画像が表示されます。</p>
+            <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step-casa.png" alt="" class="u-Adjust_Mt-16">
+          </div>
+        </div>
+      </li>
+      <li>
+        <h2 class="c-Heading_Lv3">2. 「Casa設定」画面から「Wi-Fiの無効化」をタップする</h2>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step02.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+      <li>
+        <h2 class="c-Heading_Lv3">3. 「Wi-Fi無効化について確認し理解できました」にチェックを入れ、「管理者パスワードの入力へ」をタップする</h2>
+        <p class="u-Adjust_Mt-16">「進む前にご確認ください」をご一読いただき、確認した上でお進みください。</p>
+        <p class="u-Adjust_Mt-8 c-Txt_Cap">※ Casa（初代）をご利用のお客様は、表示される画面が異なります。手順は同様になりますので、チェックを入れてお進みください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step03.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+      <li>
+        <h2 class="c-Heading_Lv3">4. 「管理者パスワード」を入力し、「Wi-Fiを無効にする」をタップする</h2>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step04.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+      <li>
+        <h2 class="c-Heading_Lv3">5. 「Wi-Fiを無効にする」をタップする</h2>
+        <p class="u-Adjust_Mt-16">表示された注意事項をご一読いただき、確認した上でお進みください。</p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step05.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+      </li>
+      <li>
+        <h2 class="c-Heading_Lv3">6. Wi-Fi無効化完了</h2>
+        <p class="u-Adjust_Mt-16">
+          Wi-Fiの無効化が完了すると「Wi-Fiを無効にしました」というメッセージが表示されます。<br>
+          Rakuten Casa本体のWi-Fi点灯ランプが赤色になっていることを確認してください。
+        </p>
+        <div class="u-Adjust_Mt-24">
+          <div class="l-Media_Image u-Adjust_Align-center">
+              <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step06.png" class="c-Img_Capture" alt="">
+          </div>
+        </div>
+
+        <div class="l-Media_Image u-Adjust_Mt-24">
+          <div class="<%= nameSpace %>-Img_Capture">
+            <p class="c-Txt_Cap u-Adjust_Align-left">※ Rakuten Casa（初代）をご利用の場合は、以下の画像が表示されます。</p>
+            <img src="<%= sitepath %>assets/img/guide/rakuten-casa/wi-fi-invalid/img-step-casa.png" alt="" class="u-Adjust_Mt-16">
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <p class="u-Adjust_Mt-48">以上でWi-Fiの無効化は完了です。</p>
+
+  </div>
+</div>
+
+
+<%- include('/include/guide/_inquiry') %>
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

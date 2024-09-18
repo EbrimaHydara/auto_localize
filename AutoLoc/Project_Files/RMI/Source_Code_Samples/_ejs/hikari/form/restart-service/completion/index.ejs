@@ -1,0 +1,44 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "楽天ひかり・楽天ブロードバンド お支払い連絡・ご利用再開受付 | 送信完了" -%>
+<% const namespace = "hikari-restart-service-completion" %>
+<% const directories = [] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    <!-- directories: directories, -->
+    description: '',
+    noindex: true,
+    pathname: filepath,
+    ishikari: true
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/form/restart-service/completion/completion.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/form/completion.css?20240424">
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+
+  <%- include('/hikari/include/_header', { headerType: 'logo', pagetitle: pagetitle, directories: directories, tax: false }) %>
+
+  <%- include('/include/hikari/form/completion/_completion', {
+    pagetitle: '楽天ひかり・楽天ブロードバンド お支払い連絡・ご利用再開受付',
+    description:'受付内容の確認が取れ次第、数時間～最大24時間程度でご利用再開していただけます。',
+    description2:'しばらくお待ちください。',
+    isbutton:true,
+    isrestart:true,
+  }) %>
+
+
+  <footer class="g-Footer u-Adjust_Mt-64">
+    <%- include('/include/_footer-simple') %>
+  </footer>
+
+</div>
+<%- include('/include/hikari/_common-js', { jquery: '3.6.4' }) %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

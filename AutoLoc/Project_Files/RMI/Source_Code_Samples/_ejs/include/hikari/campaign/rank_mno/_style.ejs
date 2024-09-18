@@ -1,0 +1,98 @@
+<% const {stageId, stageEn, isClosed} = rankData -%>
+<style>
+    #rank-ddt .rank-ddt_cta_btn a {
+      display: none;
+      background-color: #ff008c;
+    }
+    #rank-ddt .rank-ddt_cta_btn a:hover {
+      background-color: #ff33a3;
+    }
+    #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions {
+      display: none;
+    }
+    #rank-ddt .rank-ddt_mainvisual .rank-ddt_comment {
+      text-align: left;
+      color: #676767;
+      font-family: 'Noto Sans JP';
+    }
+    #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions .rank-ddt_achievement-conditions-text.rank-ddt_icon-hikari::before {
+      background-image: url('<%= sitepath %>assets/img/hikari/campaign/rank/img-icon.png');
+      background-size: contain;
+      width: 107px;
+      height: 44px;
+    }
+    #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions .rank-ddt_achievement-conditions-text {
+      display: none;
+      padding-left: 118px;
+    }
+    #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions .rank-ddt_achievement-conditions-text span {
+      background-image: url('<%= sitepath %>assets/img/hikari/campaign/rank/achievement-condition-<%= stageId %>-mno-pc.png?220902');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 824px;
+      height: 39px;
+      text-indent: -9999px;
+    }
+    #rank-ddt.rank-ddt_<%= stageEn %> .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_rank-incentive.hikari_use {
+      background-image: url('<%= sitepath %>assets/img/hikari/campaign/rank/img-hero-incentive-<%= stageId %>-mno-pc.png?221102');
+      background-size: contain;
+      width: 100%;
+      height: 0;
+      margin-top: 20px;
+      padding-top: 26%;
+    }
+    #rank-ddt .rank-ddt_inner {
+      width: 100%;
+      max-width: 950px;
+      padding: 0 16px;
+    }
+    #rank-ddt .rank-ddt_comment-txt {
+      margin-top: -64px;
+    }
+    <% if (isClosed === 'true') { %>
+      .rank-ddt_cta_btn {
+        display: none!important;
+      }
+      #js-fixed-btn {
+        display: none!important;
+      }
+      #mno-entry {
+        display: none!important;
+      }
+    <% } %>
+    @media screen and (max-width: 768px) {
+      #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions {
+        padding: 0;
+      }
+      #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions .rank-ddt_achievement-conditions-text.rank-ddt_icon-hikari {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding-left: 0;
+      }
+      #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions .rank-ddt_achievement-conditions-text.rank-ddt_icon-hikari::before {
+        position: static;
+        margin: 0 auto;
+      }
+      #rank-ddt .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_achievement-conditions .rank-ddt_achievement-conditions-text span {
+        background-image: url('<%= sitepath %>assets/img/hikari/campaign/rank/achievement-condition-<%= stageId %>-mno-sp.png?220902');
+        width: 90%;
+        height: 58px;
+        margin-top: 8px;
+      }
+      #rank-ddt.rank-ddt_<%= stageEn %> .rank-ddt_mainvisual .rank-ddt_inner .rank-ddt_rank-incentive.hikari_use {
+        background-image: url('<%= sitepath %>assets/img/hikari/campaign/rank/img-hero-incentive-<%= stageId %>-mno-sp.png?221102');
+        background-size: contain;
+        min-width: 335px;
+        width: 100%;
+        height: 356px;
+        margin-top: 16px;
+      }
+      #rank-ddt .rank-ddt_comment-txt {
+        margin-top: -24px;
+      }
+    }
+  </style>

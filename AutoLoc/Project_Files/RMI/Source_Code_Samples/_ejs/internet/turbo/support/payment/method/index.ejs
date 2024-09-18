@@ -1,0 +1,211 @@
+<% const pagetitle = "お支払い方法" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/payment/", label:"請求・お支払い方法"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    isUserCategory: true
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboのプラン料金（クレジットカード・デビットカード、楽天ポイント支払い、口座振替）、製品代金のお支払い方法（クレジットカード・デビットカード、楽天ポイント支払い、代金引換）をご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-32">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">
+          製品やご利用料金のお支払い方法についてご案内します。<br>楽天モバイルでは、「クレジットカード・デビットカード」「口座振替」「代金引換」「楽天ポイント利用」などのお支払い方法をご用意しておりますが、お申し込み内容によってご利用いただける決済方法が異なりますので、ご確認ください。
+        </p>
+        <p class="u-Adjust_Mt-16">
+          毎月のご利用料金のお支払いが、お客様指定のお支払い方法で確認できなかった場合は「未払い料金」となります。「未払い料金」のお支払い方法は「<a href="<%= sitepath %>guide/payment/invoice/flow/" class="c-Link_Txt">未払い料金のお支払い方法</a>」をご確認ください。
+        </p>
+        <div class="c-Table_Wrap-scroll u-Adjust_Mt-24">
+          <table class="c-Table_Container u-Adjust_W-860">
+            <colgroup>
+              <col class="u-Adjust_W-120">
+              <col class="u-Adjust_W-120">
+              <col class="u-Adjust_W-120">
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">月額利用料</th>
+                <th scope="col">製品代金</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>クレジットカード・楽天銀行デビットカードと他社発行のデビットカード（一部<sup>※1</sup>）</th>
+                <td class="u-Adjust_Align-center">○</td>
+                <td class="u-Adjust_Align-center">○</td>
+              </tr>
+              <tr>
+                <th>口座振替<sup>※2</sup></th>
+                <td class="u-Adjust_Align-center">○</td>
+                <td class="u-Adjust_Align-center">×</td>
+              </tr>
+              <tr>
+                <th>代金引換<sup>※2</sup></th>
+                <td class="u-Adjust_Align-center">×</td>
+                <td class="u-Adjust_Align-center">○<sup>※3</sup></td>
+              </tr>
+              <tr>
+                <th>楽天ポイント利用</th>
+                <td class="u-Adjust_Align-center">○<br>
+                  <sup>※クレジットカード・デビットカード支払い時のみ利用可</sup>
+                </td>
+                <td class="u-Adjust_Align-center">○<br>
+                  <sup>※クレジットカード・デビットカード支払いで一括払いまたは分割払いの初回のみ利用可</sup>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+            <li><span>※1</span> お支払いの登録ができても、ご請求時に何らかの理由でお手続きが出来ない場合がございます。<br>ご利用可否は各カード発行会社の判断によります。詳細は各カード発行会社へお問い合わせください。</li>
+            <li><span>※2</span> ご利用には手数料がかかります。詳細は<a href="#payment_type" data-auto-rat="anchor" class="js-scroll">お支払い方法の種類</a>の各詳細ページでご確認ください。</li>
+            <li><span>※3</span> 以下の場合には代金引換はご利用できません。<br>
+              　・本人確認方法で「受け取り時に自宅で確認」を選択した場合<br>
+              　・送料含む商品合計額（税込）が300,001円以上の場合<br>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2" id="payment_type">お支払い方法の種類</h2>
+        <p class="u-Adjust_Mt-16">お支払い方法の確認と変更方法は以下をご確認ください。</p>
+        <p>
+          <a href="<%= sitepath %>internet/turbo/support/payment/change/" class="c-Link_Txt-inline">お支払い方法の確認と変更方法を見る<span class="c-Icon_Chevron-right"></span></a>
+        </p>
+        <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">クレジットカード·デビットカードでお支払い</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-24">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/method/img-01.png" alt="クレジットカード・デビットカードでお支払い" width="328" height="179">
+            </div>
+            <div>
+              <p class="">楽天カードでのお支払いはもちろん、各種クレジットカード・デビットカードをご利用いただけます。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">※ご利用のクレジットカードにより、ご利用可能な製品の分割払い回数が異なります。</p>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/payment/card/" class="c-Link_Txt-inline">クレジットカード·デビットカードでのお支払い方法を見る<span class="c-Icon_Chevron-right"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="l-Media_Grid-reverse u-Adjust_Mt-40">
+            <div>
+              <h4 class="c-Heading_Lv4 <%= namespace %>-Utility_Heading_Lv4">楽天カードのお支払いが便利！</h4>
+              <ul class="c-List_Text-disc">
+                <li class="u-Adjust_Mt-8">製品代金の48回払いが可能</li>
+                <li class="u-Adjust_Mt-8">製品代金の分割払い手数料が無料</li>
+                <li class="u-Adjust_Mt-8">お支払い額100円につき1円相当の楽天ポイントが貯まるのは楽天カードだけ！</li>
+              </ul>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※一部店舗では、楽天カードを利用した場合でも、分割手数料が発生する場合がございます。詳しくは、店舗までご確認ください。</p>
+              <div class="u-Adjust_Mt-16">
+                <a href="https://www.rakuten-card.co.jp/campaign/rakuten_card/app/" target="_blank" rel="noopener noreferrer" class="c-Link_Txt-inline">楽天カードの詳細を見る<span class="c-Icon_New-window-l"></span></a>
+              </div>
+            </div>
+            <div class="l-Media_Image">
+            </div>
+          </div>
+        </div>
+        <div class="c-Theme-Borderbox u-Adjust_Mt-16">
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">口座振替でお支払い</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-24">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/method/img-02.png" alt="口座振替でお支払い" width="328" height="179">
+            </div>
+            <div>
+              <p>月額料金のお支払いに、銀行口座からの引き落とし（口座振替）をご利用いただけます。ご利用可能な金融機関をこちらからご確認ください。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">※口座振替で製品代金のお支払いは行えません。代金引換（お届け時現金払い）をご利用ください。</p>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/payment/autopay/" class="c-Link_Txt-inline">口座振替でのお支払い方法を見る<span class="c-Icon_Chevron-right"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-Theme-Borderbox u-Adjust_Mt-16">
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">代金引換（お届け時現金払い）でお支払い</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-24">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/method/autopay-image-1.png" alt="代金引換（お届け時現金払い）でお支払い" width="328" height="146">
+            </div>
+            <div>
+              <p class="">製品代金のお支払いに、代金引換（代引き）をご利用いただけます。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">※本人確認方法で「受け取り時に自宅で確認」を選択した場合には代金引換はご利用できません。</p>
+              <p class="c-Txt_Cap">※製品代金、送料のほかに代金引換額に応じた代金引換手数料がかかります。</p>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>guide/payment/daibiki/" class="c-Link_Txt-inline">代金引換でのお支払い方法を見る<span class="c-Icon_Chevron-right"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-Theme-Borderbox u-Adjust_Mt-16">
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Heading_Lv3">楽天ポイントをお支払いに利用</h3>
+          <div class="l-Media_Grid u-Adjust_Mt-24">
+            <div class="l-Media_Image">
+              <img src="<%= sitepath %>assets/img/internet/turbo/support/payment/method/img-03.png" alt="楽天ポイントをお支払いに利用" width="328" height="179">
+            </div>
+            <div>
+              <p class="">月額料金のお支払いに、1ポイント＝1円として楽天ポイントをご利用いただけます。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-16">※口座振替をご指定の場合は、楽天ポイントをご利用いただけません。</p>
+              <div class="c-Theme-Light u-Adjust_Mt-24">
+                <h4 class="c-Heading_Lv4 <%= namespace %>-Utility_Heading_Lv4">様々なサービスで貯まったポイントを月々のお支払いに使える！</h4>
+                <p class="u-Adjust_Mt-16">楽天市場・楽天トラベルなど楽天グループのサービスはもちろん、コンビニやドラッグストアなどのご利用時に貯まった楽天ポイントが、プラン料金やオプションサービス料金などのお支払いにご利用いただけます！</p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※毎月の製品分割払い料金は「楽天ポイント利用」対象外です。<br>※一度に利用できるポイント数は1～30,000 (ダイヤモンド会員の方は～500,000) ポイントです。</p>
+                <h4 class="c-Heading_Lv4 u-Adjust_Mt-24 <%= namespace %>-Utility_Heading_Lv4">期間限定ポイントを使い切るなら、楽天ポイント利用！</h4>
+                <p class="u-Adjust_Mt-16">一度、利用するポイント数を設定すれば、毎月自動的に設定した額のポイントが充当されますので、毎月のお支払いが便利になります。</p>
+              </div>
+              <div class="u-Adjust_Mt-16">
+                <a href="<%= sitepath %>internet/turbo/support/payment/point/" class="c-Link_Txt-inline">楽天ポイントの利用方法を見る<span class="c-Icon_Chevron-right"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/internet/turbo/support/_smallcategory-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

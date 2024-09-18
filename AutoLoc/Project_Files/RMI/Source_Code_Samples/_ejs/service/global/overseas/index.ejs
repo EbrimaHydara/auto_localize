@@ -1,0 +1,898 @@
+<% const pagetitle = "楽天モバイルは海外でも2GB無料！追加設定なしでそのまま使える" -%>
+<% const directories = [{path:"service/", label:"オプションサービス"},{path:"service/global/", label:"国際サービス"}] -%>
+<% const namespace = "overseas" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルは海外でもデータ通信が2GB無料です。追加料金・追加設定なしでお使いのスマホをそのまま海外で使えます。おトクな国際サービス（国際通話、国際SMS、海外ローミング）や、海外での携帯電話のご利用方法をご案内します。※プランのデータ利用量に加算',
+    noindex: false,
+    pathname: filepath,
+  });
+%>
+<% const voice = [
+  {
+    url: '/uservoice/57/?l-id=service_global_overseas_uservoice_57',
+    img: 'avator-57.png',
+    h3: '海外で月をまたぐと4GBも無料でつかえる！手軽で便利な海外ローミング',
+    text: 'タイのバンコクです。年末年始とゴールデンウィークに、それぞれ1週間...'
+  },
+  {
+    url: '/uservoice/52/?l-id=service_global_overseas_uservoice_52',
+    img: 'avator-52.png',
+    h3: '海外ローミングは手軽な設定で使えます！はじめての旅行にも便利',
+    text: '渡航先で現地の海外SIMを設定するまでの間、楽天モバイルを利用していま...'
+  },
+] -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/service/global/overseas/overseas.css?240425">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+
+  <div class="l-System">
+
+    <%- include('/include/_header') %>
+
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+
+    <h1 class="<%= namespace %>-Hero">
+      <img src="<%= sitepath %>assets/img/service/global/overseas/kv-pc-240430.png" class="<%= namespace %>-Hero_Pc <%= namespace %>-Utility_Show-pc" alt="海外利用も追加設定なし!※1楽天モバイルは海外でもそのまま2GB無料※2　[プラン料金]家族割引適用で880円～（税込968円～）" style="width:100%;">
+      <img src="<%= sitepath %>assets/img/service/global/overseas/kv-sp-240430.png" class="<%= namespace %>-Hero_Sp <%= namespace %>-Utility_Show-sp" alt="海外利用も追加設定なし!※1楽天モバイルは海外でもそのまま2GB無料※2　[プラン料金]家族割引適用で880円～（税込968円～）">
+    </h1>
+    <div class="<%= namespace %>-Layout_Gray ">
+      <div class="<%= namespace %>-Utility_Show-pc <%= namespace %>-Utility_Show2-pc">
+        <div class="<%= namespace %>-Layout_Head-pc c-Banner_Hover-act">
+          <a class="<%= namespace %>-Layout_Head-pc-item js-scroll" href="#anc1" data-ratid="service_global_overseas_mv_link_data" data-ratevent="click" data-ratparam="all">
+            <img src="<%= sitepath %>assets/img/service/global/overseas/kv-card-1-pc-220704.png" alt="データ通信（海外ローミング） 毎月2GBまで無料※2">
+          </a>
+          <a class="<%= namespace %>-Layout_Head-pc-item js-scroll" href="#anc2" data-ratid="service_global_overseas_mv_link_call" data-ratevent="click" data-ratparam="all">
+            <img src="<%= sitepath %>assets/img/service/global/overseas/kv-card-2-pc-220704.png" alt="国際通話 Rakuten Linkアプリ同士ならかけ放題※3">
+          </a>
+          <a class="<%= namespace %>-Layout_Head-pc-item js-scroll" href="#anc3" data-ratid="service_global_overseas_mv_link_sms" data-ratevent="click" data-ratparam="all">
+            <img src="<%= sitepath %>assets/img/service/global/overseas/kv-card-3-pc-220704.png" alt="国際SMS Rakuten Linkアプリ同士なら送受信無料※4">
+          </a>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Utility_Show-sp">
+        <div class="<%= namespace %>-Layout_Head-sp c-Banner_Hover-act">
+          <a class="<%= namespace %>-Layout_Head-sp-item js-scroll" href="#anc1" data-ratid="service_global_overseas_mv_link_data" data-ratevent="click" data-ratparam="all">
+            <img src="<%= sitepath %>assets/img/service/global/overseas/kv-card-1-sp-220704.png" alt="データ通信（海外ローミング） 毎月2GBまで無料※2">
+          </a>
+          <a class="<%= namespace %>-Layout_Head-sp-item js-scroll" href="#anc2" data-ratid="service_global_overseas_mv_link_call" data-ratevent="click" data-ratparam="all">
+            <img src="<%= sitepath %>assets/img/service/global/overseas/kv-card-2-sp-220704.png" alt="国際通話 Rakuten Linkアプリ同士ならかけ放題※3">
+          </a>
+          <a class="<%= namespace %>-Layout_Head-sp-item js-scroll" href="#anc3" data-ratid="service_global_overseas_mv_link_sms" data-ratevent="click" data-ratparam="all">
+            <img src="<%= sitepath %>assets/img/service/global/overseas/kv-card-3-sp-220704.png" alt="国際SMS Rakuten Linkアプリ同士なら送受信無料※4">
+          </a>
+        </div>
+      </div>
+      <div class="l-System_Container">
+
+        <div class="u-Adjust_Mt-24">
+          <p class="u-Adjust_Align-right">
+            <a href="<%= sitepath %>service/global/overseas/en/?l-id=service_global_overseas_service_global_overseas_en" class="c-Link_Txt-inline">English<span class="c-Icon_Chevron-right"></span></a>
+          </p>
+        </div>
+
+        <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-24 u-Adjust_Align-center">
+          <a href="#anc4" data-ratid="service_global_overseas_mv_link_airport" data-ratevent="click" data-ratparam="all">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/service/global/overseas/bnr-airport-wifi-sp-231227.png" width="666" height="520">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/bnr-airport-wifi-pc-231227.png" width="1032" height="123" alt="当日受付カウンター成田国際空港・中部国際空港にOPEN！">
+            </picture>
+          </a>
+        </div>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">
+          ※1 利用時にmy 楽天モバイルとスマホの設定が別途必要です。※2 プランのデータ利用量に加算。通話料等別。2GB超過後は最大128kbps。データ通信（海外ローミング）の<a href="#note1" class="c-Link_Txt">注意事項の詳細はこちら</a>
+          ※3 出国前にRakuten Linkアプリの<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt">初期設定</a>を完了してください。国際通話の<a href="#note2" class="c-Link_Txt">注意事項の詳細はこちら</a> ※4 国際SMSの<a href="#note3" class="c-Link_Txt">注意事項の詳細はこちら</a>
+          ※5 使用端末・渡航先によっては契約のご案内ができかねる場合があります。※6 Wi-Fi本体の購入が必要です。
+        </p>
+        <div class="<%= namespace %>-Layout_Easy-to-use u-Adjust_Mt-32">
+          <h2 class="u-Adjust_Align-center c-Heading_Lv2" data-ratid="service_global_overseas_scroll-01_menu" data-ratevent="appear" data-ratparam="all">ご利用はこんなに簡単！</h2>
+          <ul class="u-Adjust_Mt-24 <%= namespace %>-Layout_Easy-to-use-list">
+            <li>
+              <h3>my 楽天モバイルから<br>「海外ローミング」をON<span class="c-Txt_Cap <%= namespace %>-Layout_Easy-to-use-text-cap">※</span>にするだけ</h3>
+              <p>初期設定や専用アプリのダウンロードなど、面倒な手続きは不要です。</p>
+              <div class="u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/service/global/overseas/img-easy-to-use-01.png" alt="" loading="lazy" width="320" height="163">
+              </div>
+            </li>
+            <li>
+              <h3>追加のお申し込み不要！</h3>
+              <p>海外ローミングのサービスは、プランに含まれています。</p>
+              <div class="u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/service/global/overseas/img-easy-to-use-02.png" alt="" loading="lazy" width="320" height="163">
+              </div>
+            </li>
+            <li>
+              <h3>お使いのスマホがそのまま使える！</h3>
+              <p>SIMカードの差し替えや、レンタル機器の受け取りが不要です。</p>
+              <div class="u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/service/global/overseas/img-easy-to-use-03.png" alt="" loading="lazy" width="320" height="163">
+              </div>
+            </li>
+          </ul>
+        </div>
+        <p class="u-Adjust_Mt-32 u-Align_Llc">
+          海外で利用する時は、出発前・到着後・帰国後の流れに沿ってスマホを設定してご利用ください。
+        </p>
+        <div class="<%= namespace %>-Utility_Mt-8-16 u-Adjust_Align-center">
+          <a href="<%= sitepath %>guide/global/?l-id=service_global_overseas_guide_global" class="c-Btn_Regular"><span>海外利用時の設定方法を確認する</span></a>
+        </div>
+        <div class="c-Infobox_Standing-warning u-Adjust_Mt-32">
+          <p class="c-Txt_Emp-02">海外の対象国追加のお知らせ</p>
+          <p class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">サウジアラビア</span>を追加し、海外指定73の国と地域で海外ローミングがご利用できるようになりました（2024年4月19日時点）</p>
+        </div>
+      </div>
+      <h2 class="u-Adjust_Mt-32 u-Adjust_Align-center">海外でもおトクに使える、<br class="<%= namespace %>-Utility_Show-sp">Rakuten最強プラン</h2>
+        <div class="overseas-Anchor_menu">
+          <div class="l-System_Container">
+            <ul class="overseas-Anchor_menu_link">
+              <li><a href="#anc1" class="c-Link_Txt-inline" data-ratid="service_global_overseas_menu_link_data" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>データ通信</a></li>
+              <li><a href="#anc2" class="c-Link_Txt-inline" data-ratid="service_global_overseas_menu_link_call" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>国際通話</a></li>
+              <li><a href="#anc3" class="c-Link_Txt-inline" data-ratid="service_global_overseas_menu_link_sms" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>国際SMS</a></li>
+              <li>
+                <div>
+                  <p class="c-Txt_Emp-02">＼成田国際空港・中部国際空港からご出発のお客様向け／</p>
+                  <a href="#anc4" class="c-Link_Txt-inline" data-ratid="service_global_overseas_menu_link_app" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>出発当日のご案内について</a>
+                </div>
+              </li>
+              <!-- <li><a href="" class="c-Link_Txt-inline "><span class="c-Icon_Arrow-down-l"></span>海外利用時の他社比較</a></li> -->
+            </ul>
+          </div>
+        </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Pink" id="js-trigger">
+      <div class="<%= namespace %>-Layout_Content">
+        <div class="<%= namespace %>-Utility_Pt-64-48">
+          <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-02_data" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+          <div class="<%= namespace %>-Layout_Sub-head">
+            <h3 id="anc1" class="c-Txt_Normal-ll <%= namespace %>-Utility_Fs-28-20">データ通信（海外ローミング）</h3>
+          </div>
+          <div class="<%= namespace %>-Layout_White <%= namespace %>-Layout_Sub-head-content <%= namespace %>-Utility_Pb-40-24">
+
+
+            <div class="l-Media_Grid-large-reverse <%= namespace %>-Layout_FreeContents">
+              <div>
+                <p class=" <%= namespace %>-Layout_FreeContents-txt">
+                  <span>海外指定73の国と地域で</span><br class="u-Show_Oxx"><span>データ通信が利用できます</span>
+                </p>
+                <div class="u-Adjust_Mt-8 u-Adjust_Mt-sp-16">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/service/global/overseas/2g-free-txt-sp.png" width="608" height="230">
+                    <img src="<%= sitepath %>assets/img/service/global/overseas/2g-free-txt-pc.png" width="443" height="140" alt="高速データ通信が毎月2GBまで無料※ 2GB超過後は最大128kbpsで使い放題※1" loading="lazy">
+                  </picture>
+                </div>
+              </div>
+              <div class="l-Media_Image">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/service/global/overseas/2g-free-img-sp.png" width="622" height="349">
+                  <img src="<%= sitepath %>assets/img/service/global/overseas/2g-free-img-pc.png" width="303" height="203" alt="" loading="lazy">
+                </picture>
+              </div>
+            </div>
+
+
+            <p class="<%= namespace %>-Utility_Align-center-left <%= namespace %>-Utility_Mt-24-16 c-Txt_Cap">
+              ※プランのデータ利用量に加算。<br class="<%= namespace %>-Utility_Show-sp">
+              ※1 データ通信（海外ローミング）の<a href="#note1" class="c-Link_Txt js-scroll">注意事項の詳細はこちら</a>
+            </p>
+            <div class="<%= namespace %>-Layout_Data-usage u-Adjust_Mt-40">
+              <h4 class="c-Heading_Lv4 u-Adjust_Align-center" data-ratid="service_global_overseas_scroll-02_data02" data-ratevent="appear" data-ratparam="all">追加費用なし！<br><span class="c-Txt_Normal-l u-Color_Primary">海外利用分の2GBは、プラン料金に含まれています</span></h4>
+              <div class="u-Adjust_Mt-32 u-Adjust_Mt-pc-24 u-Adjust_Py-16 u-Adjust_Align-center">
+                <p>
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/service/global/overseas/ladder-sp-240430.png" width="622" height="471">
+                    <img src="<%= sitepath %>assets/img/service/global/overseas/ladder-pc-240430.png" width="848" height="317" alt="使わなければ勝手に安くなるおトクなワンプラン。「最強家族プログラム」適用後100円/月（税別）引きで、20GB超過後無制限※2,880円/月（税込3,168円）、3GB超過後20GBまで1,880円/月（税込2,068円）、3GBまで880円/月（税込968円）" loading="lazy">
+                  </picture>
+                </p>
+                <p class="u-Adjust_Mt-8 c-Txt_Cap"> *公平なサービス提供または環境により速度低下する場合あり ※通話料等別</p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>fee/saikyo-plan/?l-id=service_global_overseas_fee_saikyo-plan" class="c-Btn_Regular-large">料金プランの詳細を見る</a>
+                </div>
+                <p id="roaming2gb" class="u-Adjust_Mt-32">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/service/global/overseas/roaming-data-sp-240430.png" width="738" height="1028">
+                    <img src="<%= sitepath %>assets/img/service/global/overseas/roaming-data-pc-240430.png" width="816" height="400" alt="海外ローミング2GB利用イメージ　[例えば]高速データ容量合計22GBを利用した場合も家族割引適用時2,880円（税込3,168円）で利用できます！" loading="lazy">
+                  </picture>
+                </p>
+              </div>
+              <div class="u-Adjust_Mt-40 <%= namespace %>-Utility_Pb-28-24 u-Adjust_Align-center">
+                <div class="<%= namespace %>-Layout_Data-usage-sub-head">
+                  <p data-ratid="service_global_overseas_scroll-02_data03" data-ratevent="appear" data-ratparam="all"><span class="<%= namespace %>-Layout_Sub-inner-content-head-normal">海外でも高速データ容量を<br class="u-Show_Sp"></span><span class="<%= namespace %>-Layout_Sub-inner-content-head-big">2GB</span><span class="<%= namespace %>-Layout_Sub-inner-content-head-normal">以上使いたい </span><span class="<%= namespace %>-Layout_Sub-inner-content-head-small">そんな場合も</span></p>
+                </div>
+                <div class="u-Adjust_Mt-24">
+                  <picture>
+                    <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/service/global/overseas/500-sp-220704.png" width="559" height="288">
+                    <img src="<%= sitepath %>assets/img/service/global/overseas/500-pc-220704.png" width="640" height="97" alt="いつでも必要な分だけ高速データ容量を1GBあたり500円でチャージできます！" loading="lazy">
+                  </picture>
+                </div>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>service/data-charge/?l-id=service_global_overseas_service_data-charge" class="c-Btn_Regular"><span>サービス詳細を見る</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="c-Accordion u-Adjust_Mt-32 u-Adjust_Mt-pc-54">
+              <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1" data-ratid="service_global_overseas_data-sec_area" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><span class="c-Txt_Normal-l">海外指定73の国と地域</span></button>
+              <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+                <p id="area">アイスランド、アイルランド、アメリカ（ハワイ）、アメリカ本土、アラブ首長国連邦、アンドラ、イギリス、イタリア、インド、インドネシア、ウクライナ、エジプト、エストニア、オーストラリア、オーストリア、オランダ、カタール、カナダ、カンボジア、韓国、キプロス、ギリシャ、グアドループ、グアム、クウェート、クロアチア、サイパン、サウジアラビア、ジブラルタル、シンガポール、スイス、スウェーデン、スペイン、スロバキア、スロベニア、タイ、台湾、チェコ共和国、中国、デンマーク、ドイツ、トルコ、ニュージーランド、ノルウェー、ハンガリー、フィリピン、フィンランド、ブラジル、フランス、フランス領ギアナ、ブルガリア、ベトナム、ペルー、ベルギー、ポーランド、ポルトガル、香港、マカオ、マルタ、マルティニーク、マレーシア、南アフリカ、ミャンマー、メキシコ、モロッコ、ヨルダン、ラトビア、リトアニア、リヒテンシュタイン、ルーマニア、ルクセンブルク、レユニオン、ロシア（2024年4月19日時点）</p>
+                <p class="u-Adjust_Mt-16 c-Txt_Emp-02 c-Txt_Cap">※アラブ首長国連邦、ウクライナ、エジプト、カタール、クウェート、サウジアラビア、ヨルダンは、国際通話かけ放題の対象外、また国際SMS送信の無料対象国外です。</p>
+                <p class="c-Txt_Emp-02 c-Txt_Cap">※ミャンマーは、国際通話かけ放題の対象外です。</p>
+                <p class="c-Txt_Cap">※データ通信（海外ローミング）および国際通話、国際SMS、国際通話かけ放題のサービスエリア・提供条件は予告なく変更になる場合があります。</p>
+              </div>
+            </div>
+            <div class="c-Accordion">
+              <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2" data-ratid="service_global_overseas_data-sec_data" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span><span class="c-Txt_Normal-l">データ通信量の目安</span></button>
+              <div id="accordion-content-2" class="js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display:none;">
+                <div class="u-Adjust_Pt-8 u-Adjust_Pb-32">
+                  <p class="c-Txt_Cap">
+                    ※下記はあくまで1コンテンツを単独で利用した目安のデータ量です。写真や動画については画質やサイズなどによって使用するデータ通信量が変動いたします<br>
+                    ※ご利用状況や操作内容の組み合わせにより、ご利用できる内容は変動します<br>
+                    ※掲載の商品名称やサービス名称などは、一般に各社の商標または登録商標です<br>
+                    ※各社の商標記載においては™や®などの商標表示を省略する場合があります
+                  </p>
+                  <div class="u-Adjust_Mt-24">
+                    <h4 class="c-Heading_Lv4">Google（Web検索）</h4>
+                    <p class="u-Adjust_Mt-16">約1.8MB／1ページ</p>
+                    <table class="c-Table_Container u-Adjust_Mt-16">
+                      <thead>
+                        <tr>
+                          <th scope="col">データ利用量</th>
+                          <th scope="col">利用可能目安</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1GB</td>
+                          <td>約625ページ</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※1ページ閲覧で1.8MB消費した場合</p>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h4 class="c-Heading_Lv4">Google マップ</h4>
+                    <p class="u-Adjust_Mt-16">約1MB／1経路検索</p>
+                    <table class="c-Table_Container u-Adjust_Mt-16">
+                      <thead>
+                        <tr>
+                          <th scope="col">データ利用量</th>
+                          <th scope="col">利用可能目安</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1GB</td>
+                          <td>約1,000回</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※1経路の検索あたり約1MB消費した場合</p>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h4 class="c-Heading_Lv4">Google 翻訳</h4>
+                    <p class="u-Adjust_Mt-16">約2MB／10文</p>
+                    <table class="c-Table_Container u-Adjust_Mt-16">
+                      <thead>
+                        <tr>
+                          <th scope="col">データ利用量</th>
+                          <th scope="col">利用可能目安</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1GB</td>
+                          <td>約5,000文</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※10文の翻訳で約2MB消費した場合</p>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h4 class="c-Heading_Lv4">メール送信</h4>
+                    <div class="u-Adjust_Mt-16">
+                      <p>テキスト送信：約5KB／1通</p>
+                      <table class="c-Table_Container u-Adjust_Mt-16">
+                        <thead>
+                          <tr>
+                            <th scope="col">データ利用量</th>
+                            <th scope="col">利用可能目安</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1GB</td>
+                            <td>約20万通</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※1通のテキスト送信で約5KB消費した場合</p>
+                    </div>
+                    <div class="u-Adjust_Mt-24">
+                      <p>写真添付送信：約500KB／1通</p>
+                      <table class="c-Table_Container u-Adjust_Mt-16">
+                        <thead>
+                          <tr>
+                            <th scope="col">データ利用量</th>
+                            <th scope="col">利用可能目安</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1GB</td>
+                            <td>約2,000通</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※1通の写真添付送信で約500KB消費した場合</p>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h4 class="c-Heading_Lv4">LINE</h4>
+                    <div class="u-Adjust_Mt-16">
+                      <p>テキスト送信：約3KB／1トーク</p>
+                      <table class="c-Table_Container u-Adjust_Mt-16">
+                        <thead>
+                          <tr>
+                            <th scope="col">データ利用量</th>
+                            <th scope="col">利用可能目安</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1GB</td>
+                            <td>約33万回</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※1トーク送信するのに約3KB消費した場合</p>
+                    </div>
+                    <div class="u-Adjust_Mt-24">
+                      <p>無料通話：約0.3MB／1分</p>
+                      <table class="c-Table_Container u-Adjust_Mt-16">
+                        <thead>
+                          <tr>
+                            <th scope="col">データ利用量</th>
+                            <th scope="col">利用可能目安</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1GB</td>
+                            <td>約55時間</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※1分無料通話するのに約0.3MB消費した場合</p>
+                    </div>
+                    <div class="u-Adjust_Mt-24">
+                      <p>ビデオ通話：約5.1MB／1分</p>
+                      <table class="c-Table_Container u-Adjust_Mt-16">
+                        <thead>
+                          <tr>
+                            <th scope="col">データ利用量</th>
+                            <th scope="col">利用可能目安</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1GB</td>
+                            <td>約3時間</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※1分ビデオ通話するのに約5.1MB消費した場合</p>
+                    </div>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h4 class="c-Heading_Lv4">YouTube</h4>
+                    <p class="u-Adjust_Mt-16">標準画質：約450MB／1時間</p>
+                    <table class="c-Table_Container u-Adjust_Mt-16">
+                      <thead>
+                        <tr>
+                          <th scope="col">データ利用量</th>
+                          <th scope="col">利用可能目安</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1GB</td>
+                          <td>約2.2時間</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※標準画質で1時間視聴するのに約450MB消費した場合</p>
+                  </div>
+                  <div class="u-Adjust_Mt-32">
+                    <h4 class="c-Heading_Lv4">動画配信サービス（Netflix）</h4>
+                    <p class="u-Adjust_Mt-16">Netflix（HD画質）：約1,300MB／1時間</p>
+                    <table class="c-Table_Container u-Adjust_Mt-16">
+                      <thead>
+                        <tr>
+                          <th scope="col">データ利用量</th>
+                          <th scope="col">利用可能目安</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1GB</td>
+                          <td>約0.8時間</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※Netflix（HD画質）で1時間視聴するのに約1,300MB消費した場合</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-Adjust_Mt-24 u-Adjust_Align-center <%= namespace %>-Utility_3btn">
+              <a href="<%= sitepath %>support/international-roaming/area/?l-id=service_global_overseas_support_international-roaming_area" class="c-Btn_Regular"><span>海外渡航先別のご利用可否を<br class="u-Show_Sp">確認する</span></a>
+              <a href="<%= sitepath %>service/international-roaming/?l-id=service_global_overseas_service_international-roaming" class="c-Btn_Regular"><span>サービス詳細を見る</span></a>
+              <a href="<%= sitepath %>guide/international-roaming/?l-id=service_global_overseas_guide_international-roaming" class="c-Btn_Regular"><span>ご利用方法を見る</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="<%= namespace %>-Layout_Content u-Adjust_Mt-40">
+        <div>
+          <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-03_call" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+          <div class="<%= namespace %>-Layout_Sub-head">
+            <h3 id="anc2" class="c-Txt_Normal-ll <%= namespace %>-Utility_Fs-28-20">国際通話</h3>
+          </div>
+          <div class="<%= namespace %>-Layout_White <%= namespace %>-Layout_Sub-head-content <%= namespace %>-Utility_Pb-40-24">
+            <div class="<%= namespace %>-Utility_Pt-34-16">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/overseas-free-pc-220704.png" class="<%= namespace %>-Utility_Show-pc" alt="「Rakuten Link」アプリご利用で日本の電話番号との国際通話が無料※ 相手がアプリを使っていなくてもOK データ利用量にカウントされない" width="820">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/overseas-free-sp-220704.png" class="<%= namespace %>-Utility_Show-sp" alt="「Rakuten Link」アプリご利用で日本の電話番号との国際通話が無料※ 相手がアプリを使っていなくてもOK データ利用量にカウントされない">
+            </div>
+            <div class="l-Media_Grid-half">
+              <div class="u-Adjust_Mr-0">
+              </div>
+              <div>
+                <p class="u-Adjust_Mt-16 c-Txt_Cap">
+                  ※無料通話は一部対象外番号あり。国際通話の<a href="#note2" class="c-Link_Txt js-scroll">注意事項の詳細はこちら</a><br>
+                  <span class="c-Txt_Emp-01">※「Rakuten最強プラン（データタイプ）」は対象外です。</span>
+                </p>
+              </div>
+            </div>
+
+            <p class="<%= namespace %>-Utility_Fs-24-20 u-Adjust_Align-center c-Txt_Emp-01 u-Adjust_Mt-32">＼  たとえばこんな時におトク！ ／</p>
+            <div class="<%= namespace %>-Layout_Value u-Adjust_Mt-16 <%= namespace %>-Utility_Mw-820">
+              <div class="<%= namespace %>-Layout_Value-item">
+                <p class="c-Txt_Emp-01">
+                  Rakuten Linkアプリ同士なら<br>海外にいる友達との<span class="c-Txt_Emp-02">通話無料</span>！
+                </p>
+                <img src="<%= sitepath %>assets/img/service/global/overseas/otoku1.png" alt="">
+              </div>
+              <div class="<%= namespace %>-Layout_Value-item">
+                <p class="c-Txt_Emp-01">
+                  一緒に海外旅行する友達が<br>日本の電話番号なら<span class="c-Txt_Emp-02">通話無料</span>！
+                </p>
+                <img src="<%= sitepath %>assets/img/service/global/overseas/otoku2.png" alt="">
+              </div>
+              <div class="<%= namespace %>-Layout_Value-item">
+                <p class="c-Txt_Emp-01">
+                  海外出張先で日本の自宅にいる<br>家族への<span class="c-Txt_Emp-02">通話無料</span>！
+                </p>
+                <img src="<%= sitepath %>assets/img/service/global/overseas/otoku3.png" alt="">
+              </div>
+            </div>
+            <div class="<%= namespace %>-Utility_Mw-820 <%= namespace %>-Utility_Align-right-left">
+              <p class="u-Adjust_Mt-16 c-Txt_Cap">※Rakuten Link利用時。無料通話は一部対象外番号あり。</p>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-24-32 u-Adjust_Align-center <%= namespace %>-Utility_2btn">
+              <a href="<%= sitepath %>service/international-call/?l-id=service_global_overseas_service_international-call" class="c-Btn_Regular"><span>サービス詳細を見る</span></a>
+            </div>
+            <div class="u-Adjust_Mt-16 <%= namespace %>-Utility_2btn">
+              <a href="<%= sitepath %>guide/international-call/overseas/?l-id=service_global_overseas_guide_international-call_overseas" class="c-Btn_Regular"><span>海外でのご利用方法を見る</span></a>
+              <a href="<%= sitepath %>guide/international-call/?l-id=service_global_overseas_guide_international-call" class="c-Btn_Regular"><span>日本でのご利用方法を見る</span></a>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-40-56">
+              <div class="<%= namespace %>-Layout_Sub-inner-content <%= namespace %>-Utility_Pb-28-24">
+                <div class="<%= namespace %>-Layout_Sub-inner-content-head u-Adjust_Mb-24">
+                  <p>相手が海外の電話番号の場合は<br class="<%= namespace %>-Utility_Show-sp">こちらもおすすめ！</p>
+                </div>
+                <div class="l-Media_Grid-small <%= namespace %>-Layout_Media">
+                  <div class="l-Media_Image <%= namespace %>-Layout_Media-img">
+                      <img src="<%= sitepath %>assets/img/service/global/overseas/icon-pc-220704.png" class="<%= namespace %>-Utility_Show-pc" alt="国際通話かけ放題 日本から海外の通話・海外から海外の通話 980円/月でかけ放題">
+                      <img src="<%= sitepath %>assets/img/service/global/overseas/980-sp-220704.png" class="<%= namespace %>-Utility_Show-sp" alt="国際通話かけ放題 日本から海外の通話・海外から海外の通話 980円/月でかけ放題" width="500">
+                  </div>
+
+                  <div class="<%= namespace %>-Layout_Media-content">
+                    <img src="<%= sitepath %>assets/img/service/global/overseas/media-text-pc-220704.png" class="<%= namespace %>-Utility_Show-pc" alt="国際通話かけ放題" width="240">
+                    <img src="<%= sitepath %>assets/img/service/global/overseas/980-pc-220704.png" class="<%= namespace %>-Utility_Show-pc u-Adjust_Mt-16" alt="日本から海外の通話 海外から海外の通話 980円/月でかけ放題" width="600">
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">
+                      ※海外から発信する際はRakuten Linkをご利用ください。<span style="font-weight: bold">海外からOS標準の電話アプリを利用して発信した場合、国際通話かけ放題のサービス対象外となります。</span>※一部対象外番号あり。<span class="c-Txt_Emp-01">※「Rakuten最強プラン（データタイプ）」は対象外です。</span>
+                    </p>
+                    <div class="u-Adjust_Mt-16">
+                      <a href="<%= sitepath %>service/international-unlimited-talk/?l-id=service_global_overseas_service_international-unlimited-talk" class="c-Btn_Regular"><span>サービス詳細を見る</span></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="<%= namespace %>-Layout_Content u-Adjust_Mt-40 <%= namespace %>-Utility_Pb-64-56">
+        <div>
+          <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-04_sms" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+          <div class="<%= namespace %>-Layout_Sub-head">
+            <h3 id="anc3" class="c-Txt_Normal-ll <%= namespace %>-Utility_Fs-28-20">国際SMS</h3>
+          </div>
+          <div class="<%= namespace %>-Layout_White <%= namespace %>-Layout_Sub-head-content <%= namespace %>-Utility_Pb-40-24">
+            <div class="<%= namespace %>-Utility_Pt-34-16">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/overseas-free-sms-pc-220704.png" class="<%= namespace %>-Utility_Show-pc" alt="「Rakuten Link」アプリご利用で日本でも海外でも国際SMSが送受信無料 アプリ利用なら対象の国と地域の電話番号へ送信無料 相手がアプリ未利用でも海外から日本の電話番号へ送信無料 データ利用量にカウントされない" width="884.25px">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/overseas-free-sms-sp-220704.png" class="<%= namespace %>-Utility_Show-sp" alt="「Rakuten Link」アプリご利用で日本でも海外でも国際SMSが送受信無料 アプリ利用なら対象の国と地域の電話番号へ送信無料 相手がアプリ未利用でも海外から日本の電話番号へ送信無料 データ利用量にカウントされない">
+            </div>
+
+
+            <div class="l-Media_Grid-large">
+              <div>
+              </div>
+              <div>
+                <p class="<%= namespace %>-Utility_Mt-22-16 c-Txt_Cap">
+                  ※1 <a href="<%= sitepath %>service/international-sms/#area" class="c-Link_Txt">海外の対象国と地域</a>の電話番号。<br>
+                  ※SMSには一日の送信上限あり。国際SMSの<a href="#note3" class="c-Link_Txt js-scroll">注意事項の詳細はこちら</a>
+                </p>
+              </div>
+            </div>
+
+
+
+
+                <div class="<%= namespace %>-Utility_Mt-24-32 u-Adjust_Align-center <%= namespace %>-Utility_2btn">
+                  <a href="<%= sitepath %>service/international-sms/?l-id=service_global_overseas_service_international-sms" class="c-Btn_Regular"><span>サービス詳細を見る</span></a>
+                </div>
+                <div class="u-Adjust_Mt-16 <%= namespace %>-Utility_2btn">
+                  <a href="<%= sitepath %>guide/international-sms/overseas/?l-id=service_global_overseas_guide_international-sms_overseas" class="c-Btn_Regular"><span>海外でのご利用方法を見る</span></a>
+                  <a href="<%= sitepath %>guide/international-sms/?l-id=service_global_overseas_guide_international-sms" class="c-Btn_Regular"><span>日本でのご利用方法を見る</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+    <div class="<%= namespace %>-Layout_Gray <%= namespace %>-Utility_Pt-64-48">
+      <div class="l-System_Container u-Adjust_Align-center">
+        <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-05_plan" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+        <h3>
+          <span class="<%= namespace %>-Utility_Fs-28-18 <%= namespace %>-Utility_Mt-24-16 c-Txt_Emp-01">＼ 楽天モバイルをご検討中のお客様も ／</span><br>
+          <span class="c-Txt_Emp-01 c-Txt_Normal-l">
+            <span class="<%= namespace %>-Utility_Fs-42-34 c-Txt_Emp-02">プラン申し込みだけ</span>で<br class="<%= namespace %>-Utility_Show-sp"><span class="<%= namespace %>-Utility_Fs-42-34">海外</span>でも利用できます！
+          </span>
+        </h3>
+        <p class="u-Adjust_Mt-24 c-Txt_Emp-01">
+          楽天モバイルの海外／国際サービス<br class="<%= namespace %>-Utility_Show-sp">
+          （データ通信、国際通話、国際SMS）<br class="<%= namespace %>-Utility_Show-sp">は<br class="<%= namespace %>-Utility_Show-pc"><span class="c-Txt_Emp-02">料金プランに含まれている</span>ので、<br class="<%= namespace %>-Utility_Show-sp">
+          <span class="c-Txt_Emp-02">追加申し込みは不要</span>です。
+        </p>
+        <p class="<%= namespace %>-Utility_Align-center-left c-Txt_Cap u-Adjust_Mt-16">
+          ※国際通話、国際SMSは一部従量課金。<br>
+          ※ご利用用途にあわせて、オプションサービスを追加してご利用ください。<br>
+          <span class="c-Txt_Emp-01">※「Rakuten最強プラン（データタイプ）」をご契約の場合、国際通話はご利用いただけません。</span>
+        </p>
+      </div>
+
+      <div class="<%= namespace %>-Utility_Mt-40-24 u-Adjust_Pb-64">
+      <%- include('/inc/_saikyo') %>
+      </div>
+    </div>
+
+
+    <div id="user-voice" class="l-System_Container u-Adjust_Mt-8">
+      <div class="<%= namespace %>-Layout">
+        <div class="<%= namespace %>-Layout_System">
+          <div class="<%= namespace %>-Layout_Contents-inner">
+            <div class="<%= namespace %>-Voice">
+              <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-06_voice" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+              <h2 class="<%= namespace %>-Tag <%= namespace %>-Voice_Tag">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/guide/kids-ke-tai/title-uv-sp.png" width="688" height="240">
+                  <img src="<%= sitepath %>assets/img/guide/kids-ke-tai/title-uv-pc.png" width="831" height="113" alt="楽天モバイルってどう？ご利用中の方にお聞きしました" loading="lazy">
+                </picture>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="<%= namespace %>-Voice_List">
+          <% voice.forEach(function (value, key) { %>
+          <div class="<%= namespace %>-Voice_Item">
+            <a href="<%= value.url %>">
+              <div class="<%= namespace %>-Voice_Img"><img src="<%= sitepath %>assets/img/uservoice/<%= value.img %>" width="124" height="124" alt="" loading="lazy"></div>
+              <div class="<%= namespace %>-Voice_Txt">
+                <h3><%= value.h3 %></h3>
+                <p  class="<%= namespace %>-Voice_Txt-detail"><%= value.text %></p>
+                <p class="<%= namespace %>-Voice_Txt-link">
+                  <span>続きを読む</span>
+                  <sapn class="c-Icon_Chevron-right <%= namespace %>-Voice_Txt-link-arrow"></sapn>
+                </p>
+              </div>
+            </a>
+          </div>
+          <% }); %>
+        </div>
+        <div class="c-Carousel_Nav"></div>
+        <div class="<%= namespace %>-Layout_System">
+          <div class="<%= namespace %>-Layout_Contents-inner">
+            <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+              <a href="<%= sitepath %>uservoice/?l-id=service_global_overseas_uservoice" class="c-Btn_Regular-large"><span>ご利用者の声一覧</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="<%= namespace %>-Utility_Pt-64-48" style="margin: 0 16px;" >
+      <div id="anc4" class="l-System_Container u-Adjust_Align-center">
+        <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-07_app01" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+        <h3 class="<%= namespace %>-Layout_Withsub">
+          <span class="<%= namespace %>-Utility_Mt-28-28 c-Txt_Emp-01 <%= namespace %>-Layout_Withsub-sub"><span class="<%= namespace %>-Layout_Withsub-show-pc">＼</span>成田国際空港・中部国際空港から<br class="<%= namespace %>-Layout_Withsub-show-sp"><span class="<%= namespace %>-Layout_Withsub-show-sp">＼</span>ご出発のお客様向け／</span>
+          <span class="c-Txt_Emp-01 c-Txt_Normal-l <%= namespace %>-Layout_Withsub-head">
+            <span class="<%= namespace %>-Utility_Mt-32-32 <%= namespace %>-Utility_Fs-34-34 c-Txt_Emp-02">出発当日の<br class="<%= namespace %>-Utility_Show-sp">ご案内について</span>
+          </span>
+        </h3>
+      </div>
+
+        <div class="c-Theme-Borderbox overseas-Layout_Content <%= namespace %>-Utility_Mt-30-24 u-Adjust_Pt-32 u-Adjust_Pb-32">
+          <div>
+            <div style="font-size: 20px;" class="c-Txt_Emp-01">楽天モバイル 成田国際空港第一ターミナル店・中部国際空港セントレア店</div>
+            <div class="<%= namespace %>-Utility_Mt-23-24 <%= namespace %>-Layout_campaign-wifi-pc">
+              <img class="<%= namespace %>-Layout_campaign-wifi-image-pc" src="<%= sitepath %>assets/img/service/global/overseas/centrair-airport.png?220809" alt="">
+              <div class="<%= namespace %>-Utility_Px-24-0 u-Adjust_Mt-8">
+                <div class="c-Txt_Emp-02">ご来店時刻は機内搭乗時刻の150分前を推奨します。</div>
+                <div>また、混雑する場合がありますので、事前の来店予約がおすすめです。<br>ご予約の際は余裕を持った時間をお選びください。<br>店頭でのご案内・対応内容については、以下よりご確認ください。</div>
+                <p id="anc4-1pc" class="<%= namespace %>-Utility_Mt-24-16 c-Txt_Emp-01">成田国際空港第一ターミナル店</p>
+                <div class="u-Adjust_Mt-8">
+                  <a href="https://reserve.mobile.rakuten.net/reservations/about?label_id=2439&event_id=2807" class="c-Btn_Regular u-Adjust_Mr-24"><span>来店予約をする</span></a>
+                  <a href="<%= sitepath %>shop-detail/8468/?l-id=service_global-overseas_shop-detail_8468" class="c-Btn_Regular"><span>店舗情報を詳しく見る</span></a>
+                </div>
+                <p class="<%= namespace %>-Utility_Mt-24-16 c-Txt_Emp-01">中部国際空港セントレア店</p>
+                <div class="u-Adjust_Mt-8">
+                  <a href="https://reserve.mobile.rakuten.net/reservations/about?label_id=2382&event_id=2743" class="c-Btn_Regular u-Adjust_Mr-24"><span>来店予約をする</span></a>
+                  <a href="<%= sitepath %>shop-detail/8414/?l-id=service_global-overseas_shop-detail_8414" class="c-Btn_Regular"><span>店舗情報を詳しく見る</span></a>
+                </div>
+
+                <div class="u-Adjust_Mt-16"><p class="c-Txt_Cap"><span class="c-Txt_Cap c-Txt_Emp-02">※万が一、搭乗時間に間に合わなかった場合の責任は負いかねますのでご了承ください</span> <br>※使用端末・渡航先によっては契約のご案内ができかねる場合があります</p></div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-23-24 <%= namespace %>-Utility_Pb-24-16 <%= namespace %>-Layout_campaign-wifi-sp">
+              <img class="<%= namespace %>-Layout_campaign-wifi-image-sp" src="<%= sitepath %>assets/img/service/global/overseas/centrair-airport.png?220809" alt="">
+              <div class="<%= namespace %>-Utility_Px-24-0">
+                <div class="c-Txt_Emp-02">ご来店時刻は機内搭乗時刻の150分前を推奨します。</div>
+                <div>また、混雑する場合がありますので、事前の来店予約がおすすめです。<br>ご予約の際は余裕を持った時間をお選びください。<br>店頭でのご案内・対応内容については、以下よりご確認ください。</div>
+                <p id="anc4-1sp" class="<%= namespace %>-Utility_Mt-24-16 c-Txt_Emp-01">成田国際空港第一ターミナル店</p>
+                <div class="u-Adjust_Mt-8">
+                  <a href="https://reserve.mobile.rakuten.net/reservations/about?label_id=2439&event_id=2807" class="c-Btn_Regular"><span>来店予約をする</span></a>
+                  <a href="<%= sitepath %>shop-detail/8468/?l-id=service_global-overseas_shop-detail_8468" class="c-Btn_Regular u-Adjust_Mt-16"><span>店舗情報を詳しく見る</span></a>
+                </div>
+                <p class="u-Adjust_Mt-24 c-Txt_Emp-01">中部国際空港セントレア店</p>
+                <div class="u-Adjust_Mt-8">
+                  <a href="https://reserve.mobile.rakuten.net/reservations/about?label_id=2382&event_id=2743" class="c-Btn_Regular"><span>来店予約をする</span></a>
+                  <a href="<%= sitepath %>shop-detail/8414/?l-id=service_global-overseas_shop-detail_8414" class="c-Btn_Regular u-Adjust_Mt-16"><span>店舗情報を詳しく見る</span></a>
+                </div>
+                <div class="<%= namespace %>-Utility_Mt-8-16"><p class="c-Txt_Cap"><span class="c-Txt_Cap c-Txt_Emp-02">※万が一、搭乗時間に間に合わなかった場合の責任は負いかねますのでご了承ください</span> <br>※使用端末・渡航先によっては契約のご案内ができかねる場合があります</p></div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="<%= namespace %>-Utility_Mt-80-32">
+            <div class="l-System_Container u-Adjust_Align-center">
+              <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-08_app02" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+              <p class="<%= namespace %>-Utility_Fs-28-28 c-Txt_Emp-01">海外への出発前に空港で利用可能に！</p>
+            </div>
+            <div class="<%= namespace %>-Utility_Mt-24-16">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/airport-wifi.png?220809" class="<%= namespace %>-Utility_Show-pc" style="width: 100%;" alt="当日受付カウンター成田国際空港・中部国際空港にOPEN！">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/airport-wifi-icon-sp.png?220809" class="<%= namespace %>-Utility_Show-sp" alt="当日受付カウンター成田国際空港・中部国際空港にOPEN！">
+            </div>
+          </div>
+          <div class="<%= namespace %>-Layout_Gray <%= namespace %>-Utility_Mt-32-48 <%= namespace %>-Utility_Px-67-16">
+            <div>
+              <img src="<%= sitepath %>assets/img/service/global/overseas/wifi-pocke-pc.png?220809" class="<%= namespace %>-Utility_Show-pc" style="width: 100%;" alt="Wi-Fiルーターがおすすめ Rakuten WiFi Pocket 2C">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/wifi-pocke-detail-sp.png?220809" class="<%= namespace %>-Utility_Show-sp" alt="Wi-Fiルーターがおすすめ Rakuten WiFi Pocket 2C">
+              <img src="<%= sitepath %>assets/img/service/global/overseas/wifi-pocke-sp.png?220809" class="<%= namespace %>-Utility_Show-sp" alt="Wi-Fiルーターがおすすめ Rakuten WiFi Pocket 2C">
+            </div>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+              <a href="<%= sitepath %>product/internet/rakuten-wifi-pocket-2c/?l-id=service_global-overseas_product_internet_rakuten-wifi-pocket-2c" class="c-Btn_Regular"><span>Rakuten WiFi Pocket 2Cの詳細を見る</span></a>
+            </div>
+          </div>
+              <div>
+                <div class="l-System_Container u-Adjust_Align-center">
+                  <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-09_app03" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+                  <p class="<%= namespace %>-Utility_Fs-28-28 <%= namespace %>-Utility_Mt-56-48 c-Txt_Emp-01">お申し込み・<br class="<%= namespace %>-Utility_Show-sp">ご利用の流れ</p>
+                </div>
+                <div class="<%= namespace %>-Layout_Application-pc <%= namespace %>-Layout_campaign-wifi-pc">
+                  <div style="position: relative;"><img src="<%= sitepath %>assets/img/service/global/overseas/wifi-step1.png?220809" alt="出発当日、空港店舗でお手続き">
+                    <div class="u-Adjust_Ml-16" style="position: absolute;top: 270px;">
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※成田国際空港・中部国際空港のみ</p>
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※ご来店前に<a href="#anc4-1pc" class="c-Link_Txt js-scroll">店舗情報</a>をご確認ください</p>
+                    </div>
+                  </div>
+                  <div><img src="<%= sitepath %>assets/img/service/global/overseas/icon-light-arrow.png?220809" class="<%= namespace %>-Layout_campaign-wifi-image-arrow-pc" alt=""></div>
+                  <div><img src="<%= sitepath %>assets/img/service/global/overseas/wifi-step2.png?220809" alt="海外でご利用"></div>
+                  <div><img src="<%= sitepath %>assets/img/service/global/overseas/icon-light-arrow.png?220809" class="<%= namespace %>-Layout_campaign-wifi-image-arrow-pc" alt=""></div>
+                  <div><img src="<%= sitepath %>assets/img/service/global/overseas/wifi-step3.png?220809" alt="返却不要！帰国後もそのまま使える"></div>
+                </div>
+                <div class="<%= namespace %>-Layout_Application-sp <%= namespace %>-Utility_Show-sp u-Adjust_Align-center">
+                  <div style="position: relative;"><img src="<%= sitepath %>assets/img/service/global/overseas/wifi-step1.png?220809" alt="出発当日、空港店舗でお手続き">
+                    <div style="position: absolute;bottom: 8px; left: 8px; text-align: start;">
+                      <p class="c-Txt_Cap u-Adjust_Mt-8">※成田国際空港・中部国際空港のみ<br>※ご来店前に<a href="#anc4-1sp" class="c-Link_Txt js-scroll">店舗情報</a>をご確認ください</p>
+                    </div>
+                  </div>
+                  <div style="line-height: 0; margin: 8px 0;"><img src="<%= sitepath %>assets/img/service/global/overseas/icon-under-arrow.png?220809" class="<%= namespace %>-Layout_campaign-wifi-image-arrow-sp" alt=""></div>
+                  <div><img src="<%= sitepath %>assets/img/service/global/overseas/wifi-step2.png?220809" alt="海外でご利用"></div>
+                  <div style="line-height: 0; margin: 8px 0;"><img src="<%= sitepath %>assets/img/service/global/overseas/icon-under-arrow.png?220809" class="<%= namespace %>-Layout_campaign-wifi-image-arrow-sp" alt=""></div>
+                  <div><img src="<%= sitepath %>assets/img/service/global/overseas/wifi-step3.png?220809" alt="返却不要！帰国後もそのまま使える"></div>
+                </div>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">※Rakuten Linkアプリで国際通話をご利用の場合、出国前にRakuten Linkアプリの<a href="https://service.link.link/guide/index.html" target="_blank" class="c-Link_Txt js-scroll">初期設定</a>を完了してください</p>
+              </div>
+              <div>
+                <div class="accordion-1_opan u-Adjust_Align-center <%= namespace %>-Utility_Mt-24-24">当日お申し込みに必要な書類（運転免許証等）を必ずご確認ください。</div>
+                <div class="u-Adjust_Align-center <%= namespace %>-Utility_Mt-9-8"><a href="<%= sitepath %>shop/guide/?l-id=service_global-overseas_shop_guide" class="c-Btn_Regular"><span>ご来店時に必要なものを確認する</span></a></div>
+              </div>
+          </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Faq">
+      <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-10_faq" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+      <h2 class="u-Adjust_Mt-64">よく見られているご質問</h2>
+      <p class="u-Adjust_Mt-24">よく見られているご質問をご案内します。お困りごとが解決しない場合は、各ページからメッセージ相談やお電話でお問い合わせください。</p>
+      <a href="<%= sitepath %>support/plan/international-voice/?l-id=service_global_overseas_support_plan_international-voice#smallcategory-faq" class="c-Btn_Regular u-Adjust_Mt-16">よく見られているご質問を確認する</a>
+
+      <h2 class="u-Adjust_Mt-64">外務省のサービス案内</h2>
+      <ul class="c-List_Text-disc u-Adjust_Mt-24 <%= namespace %>-Layout_List">
+        <li>
+          <a href="https://www.anzen.mofa.go.jp/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">外務省 海外安全ホームページ<span class="c-Icon_New-window-l"></span></a>
+          <p class="u-Adjust_Mt-8">安全な渡航・滞在のために必要な、国・地域別の海外安全情報やお役立ち情報を掲載しています。</p>
+        </li>
+        <li class="u-Adjust_Mt-24">
+          <a href="https://www.ezairyu.mofa.go.jp/tabireg/index.html" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">たびレジ<span class="c-Icon_New-window-l"></span></a>
+          <p class="u-Adjust_Mt-8">最新の海外安全情報を受け取ることができる、外務省の情報配信サービスです。</p>
+        </li>
+      </ul>
+
+      <h2 class="u-Adjust_Mt-64">注意事項</h2>
+      <p class="u-Adjust_Mt-16 c-Txt_Emp-01" id="note1">
+        ■データ通信（海外ローミング）について
+      </p>
+      <p class="u-Adjust_Mt-8 c-Txt_Cap">
+        ※海外への渡航の前に、日本で楽天モバイルネットワークへの接続をしてください。<br>
+        ※海外への渡航の前に、国内でRakuten Linkを認証してください。海外ローミングエリアによっては認証できない場合がございます。<br>
+        ※海外ローミングで使用するデータは海外ローミングエリアの高速データ容量から消費されます。<br>
+        ※現地事業者の事情により、接続ができない場合があります。<br>
+        ※データ消費が「データ利用量」としてカウントされます。<a href="#roaming2gb" class="c-Link_Txt js-scroll">詳しくはデータ利用量のカウント方法</a>をご確認ください<br>
+        ※<a href="#accordion-1" class="accordion-1_opan c-Link_Txt js-scroll">海外の対象国と地域</a>にて、 海外ローミングエリアの高速データ容量を使い切った場合、海外ローミングエリアでの通信速度が最大128kbpsに制限されます。超過後は1GBあたり500円（不課税）のデータチャージにて、高速通信の利用が可能です。<br>
+        ※通信速度はベストエフォートであり、実効速度は通信環境・状況により変動します。<br>
+        ※海外の対象国と地域以外は、Wi-Fi接続時のみ利用可能です。<br>
+        ※データ通信（海外ローミング）のサービスエリア・提供条件は予告なく変更になる場合があります。<a href="#accordion-1" class="c-Link_Txt">対象エリア</a>をご確認ください。
+      </p>
+
+      <p class="u-Adjust_Mt-16 c-Txt_Emp-01" id="note2">
+        ■国際通話について
+      </p>
+      <p class="u-Adjust_Mt-8 c-Txt_Cap">
+        ※Rakuten LinkアプリiOS版をご利用のお客様は、相手がRakuten Linkを利用していない場合、iOS標準の電話アプリに着信いたします。海外にいるときは着信料が発生いたしますのでご注意ください。<br>
+        ※（0570）などから始まる他社接続サービス、一部特番（188）への通話については、無料通話の対象外となります。<a href="<%= sitepath %>faq/detail/00001887/" class="c-Link_Txt">対象外番号一覧</a>をご確認ください。<br>
+        ※ Rakuten Linkアプリを利用した場合、<a href="#accordion-1" class="accordion-1_opan c-Link_Txt js-scroll">海外の対象国と地域</a>からのみ発着信可能となります。その他の地域に関してはWi-Fi接続中の場合のみ発着信可能となります。<br>
+        ※国際通話・国際SMSのサービスエリア・提供条件は予告なく変更になる場合があります。<br>
+        ※通話先の相手国・地域によっては、現地事業者の設備などの都合により接続できない場合があります。
+      </p>
+
+      <p class="u-Adjust_Mt-16 c-Txt_Emp-01" id="note3">
+        ■国際SMSについて
+      </p>
+      <p class="u-Adjust_Mt-8 c-Txt_Cap">
+        ※Rakuten LinkアプリiOS版をご利用のお客様は、相手がRakuten Linkを利用していない場合、Rakuten Linkで国際SMSを送受信することができません。ご利用の際はiOS標準のメッセージアプリをご利用ください。<br>
+        ※Rakuten Linkアプリを利用した場合、<a href="#accordion-1" class="accordion-1_opan c-Link_Txt js-scroll">海外の対象国と地域</a>からのみ送受信可能となります。<br>
+        ※国際通話・国際SMSのサービスエリア・提供条件は予告なく変更になる場合があります。<br>
+        ※ご利用の機種や、海外ローミング先のネットワーク、または通信先の相手国のネットワークの通信事情により、一覧にある事業者でサービスをご利用いただけない場合があっても当社は一切の責任を負いません。
+      </p>
+    </div>
+
+
+    <div class="l-System_Container u-Adjust_Pb-64">
+      <div class="<%= namespace %>-Utility_Mt-60-44">
+        <div class="u-Rat_Appear-height" data-ratid="service_global_overseas_scroll-11_service" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+        <h2 class="c-Heading_Lv2 u-Adjust_Pb-24">海外／国際サービス</h2>
+        <div class="l-Media_List-3 <%= namespace %>-Layout_List">
+          <div class="<%= namespace %>-Layout_List-flexbox">
+            <a href="<%= sitepath %>service/global/overseas/?l-id=service_global_overseas_service_global_overseas" class="c-Card_Normal <%= namespace %>-Card <%= namespace %>-Card_active">
+              <img src="<%= sitepath %>assets/img/service/global/common/img-global-01.png" width="186" alt="">
+              <p class="u-Adjust_Mt-8 c-Txt_Emp-01">海外で使う</p>
+            </a>
+          </div>
+          <div class="<%= namespace %>-Layout_List-flexbox">
+            <a href="<%= sitepath %>service/global/outgoing/?l-id=service_global_overseas_service_global_outgoing" class="c-Card_Normal <%= namespace %>-Card">
+              <img src="<%= sitepath %>assets/img/service/global/common/img-global-02.png" width="186" alt="">
+              <p class="u-Adjust_Mt-8 c-Txt_Emp-01">日本から海外へ電話をかける・<br class="<%= namespace %>-Layout_Show-pc">SMSを送る</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overseas-Layout_Bottom-fixed" id="js-fixed-btn" aria-expanded="false">
+      <div class="overseas-Layout_Bottom-fixed-inner">
+        <div class="overseas-Layout_Bottom-fixed-btn u-Show_Pc">
+          <a href="<%= sitepath %>guide/application/?lid-r=service_global_overseas_floating_guide_application" class="c-Btn_Primary-large">
+            <div class="overseas-Layout_Bottom-fixed-btn-inner-box"><span>新規／乗り換え（MNP）お申し込み</span></div>
+          </a>
+        </div>
+        <div class="overseas-Layout_Bottom-fixed-btn u-Show_Pc js-btn-ms" aria-hidden="false">
+          <a href="<%= sitepath %>shop/?l-id=service_global_overseas_floating_shop" class="c-Btn_Secondly-large">
+            <div class="overseas-Layout_Bottom-fixed-btn-inner-box"><span>お近くのショップを探す</span></div>
+          </a>
+        </div>
+        <div class="overseas-Layout_Bottom-fixed-btn-sp">
+          <a href="<%= sitepath %>guide/application/?lid-r=service_global_overseas_sp_floating_guide_application" class="c-Btn_Primary-large overseas-Layout_Bottom-fixed-btn-sp-link">新規／乗り換え(MNP)</a>
+        </div>
+        <div class="overseas-Layout_Bottom-fixed-btn-sp">
+          <a href="<%= sitepath %>shop/?l-id=service_global_overseas_sp_floating_shop" class="c-Btn_Secondly-large overseas-Layout_Bottom-fixed-btn-sp-link">お近くのショップを探す</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="g-Footer">
+
+      <div class="c-Breadcrumbs_Foot">
+        <div class="l-System_Container">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+
+      <%- include('/include/_footer') %>
+
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/service.overseas.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+  <script>
+    (function($){
+        $(function(){
+            $('.accordion-1_opan').on('click', function(){
+              $('#accordion-1').attr('aria-expanded', 'true');
+              $('#accordion-content-1').attr('aria-hidden', 'false');
+              $('#accordion-content-1').slideDown(200);
+            });
+        });
+    })(jQuery);
+  </script>
+</body>
+
+</html>

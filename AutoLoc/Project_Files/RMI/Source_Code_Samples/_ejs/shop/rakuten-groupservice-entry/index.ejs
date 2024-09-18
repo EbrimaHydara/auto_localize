@@ -1,0 +1,203 @@
+<% const pagetitle = "楽天モバイルショップ　楽天グループサービス　申し込みエントリーページ" -%>
+<% const directories = [{path:"shop/", label:"ショップ"}] -%>
+<% const namespace = "rakuten-groupservice-entry" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '',
+    keywords: '',
+    noindex: true,
+    pathname: filepath,
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/_append-head') %>
+
+<script type="text/javascript">
+<!--
+function doTrim(el) {
+  el.value = el.value.replace(/^\s+|\s+$/g, '');
+}
+
+function isInput(el) {
+  return el.value.length != 0;
+}
+
+function isChecked(el) {
+  if (el.length) {
+    for (var i = 0; i < el.length; i++) {
+      if (el[i].checked) {
+        return true;
+      }
+    }
+  } else {
+    if (el.checked) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function isNum(el) {
+  return (el.value == "" || /^[0-9]+$/.test(el.value));
+}
+
+function isRange(el, min, max) {
+  return (el.value == "" || (/^[0-9]+$/.test(el.value) && min <= el.value && el.value <= max));
+}
+
+function isLength(el, len) {
+  if ("え".length == 2) {
+    len *= 2;
+  }
+  return el.value.length <= len;
+}
+
+function zen2han(el) {
+  el.value = el.value.replace(/[０]/g, "0");
+  el.value = el.value.replace(/[１]/g, "1");
+  el.value = el.value.replace(/[２]/g, "2");
+  el.value = el.value.replace(/[３]/g, "3");
+  el.value = el.value.replace(/[４]/g, "4");
+  el.value = el.value.replace(/[５]/g, "5");
+  el.value = el.value.replace(/[６]/g, "6");
+  el.value = el.value.replace(/[７]/g, "7");
+  el.value = el.value.replace(/[８]/g, "8");
+  el.value = el.value.replace(/[９]/g, "9");
+}
+
+function checkForm() {
+  var el;
+  var obj = document.enenForm;
+
+  el = obj.elements['answers[37552_257991]'];
+  doTrim(el);
+  zen2han(el);
+  if (!isInput(el)) {
+    alert("「ご来店いただいた楽天モバイルショップの店舗コードを入力してください」を入力してください。");
+    return false;
+  }
+
+  if (!isNum(el)) {
+    alert("「ご来店いただいた楽天モバイルショップの店舗コードを入力してください」は数値で入力してください。");
+    return false;
+  }
+
+  if (!isRange(el, 1, 9999)) {
+    alert("「ご来店いただいた楽天モバイルショップの店舗コードを入力してください」は1〜9999の範囲で入力してください。");
+    return false;
+  }
+
+  if (!isLength(el, 256)) {
+    alert("「ご来店いただいた楽天モバイルショップの店舗コードを入力してください」は256文字以内で入力してください。");
+    return false;
+  }
+
+  el = obj.elements['answers[37552_258016][]'];
+  if (!isChecked(el)) {
+    alert("「利用予定のサービスにチェックを入れてください。(複数選択可能)」を選択してください。");
+    return false;
+  }
+
+}
+// -->
+</script>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <header class="g-Header">
+    <div class="g-Header_Container">
+      <div class="g-Header_Logo"><a style="pointer-events: none;">Rakuten Mobile</a></div>
+    </div>
+  </header>
+
+  <div class="l-System_Container u-Adjust_Mt-40">
+    <h2 class="c-Heading_Lv2">楽天モバイルショップ　楽天グループサービス　申し込みエントリーページ</h2>
+
+    <form action="https://form.rakuten.co.jp/ans/apply/37552" name="enenForm" method="POST" onsubmit="return checkForm()">
+      <h2 class="c-Heading_Lv4 u-Adjust_Mt-40">ご来店いただいた楽天モバイルショップの店舗コードを入力してください
+      <span class="c-Txt_Emp-02 c-Txt_Normal-s">必須</span>
+      </h2>
+    <div class="u-Adjust_Mt-16">
+    <textarea name="answers[37552_257991]" rows="1" cols="40" class="c-Form_Input" placeholder="店舗コードを入力"></textarea>
+    </div>
+
+    <h2 class="c-Heading_Lv4 u-Adjust_Mt-32">利用予定のサービスにチェックを入れてください。(複数選択可能)
+      <span class="c-Txt_Emp-02 c-Txt_Normal-s">必須</span>
+    </h2>
+    <div class="u-Adjust_Mt-16">
+    <ul class="c-Link_List-horizontal-simple">
+
+      <!--
+      <li><label for="a715405" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715405" value="715405" data-label="楽天カード"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天カード</span></label></li>
+      <li><label for="a715406" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715406" value="715406" data-label="楽天銀行"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天銀行</span></label></li>
+      <li><label for="a715407" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715407" value="715407" data-label="楽天証券"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天証券</span></label></li>
+      <li><label for="a715408" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715408" value="715408" data-label="楽天生命"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天生命</span></label></li>
+      <li><label for="a715409" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715409" value="715409" data-label="楽天損保"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天損保</span></label></li>
+      <li><label for="a715875" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715875" value="715875" data-label="楽天市場"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天市場</span></label></li>
+      <li><label for="a715876" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715876" value="715876" data-label="楽天マガジン"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天マガジン</span></label></li>
+      <li><label for="a715877" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715877" value="715877" data-label="Rakuten Music"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">Rakuten Music</span></label></li>
+      <li><label for="a715878" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715878" value="715878" data-label="楽天TV"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天TV</span></label></li>
+      <li><label for="a715879" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715879" value="715879" data-label="楽天ブックス"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ブックス</span></label></li>
+      <li><label for="a715880" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715880" value="715880" data-label="楽天Kobo"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天Kobo</span></label></li>
+      <li><label for="a715881" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715881" value="715881" data-label="楽天トラベル"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天トラベル</span></label></li>
+      <li><label for="a715882" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715882" value="715882" data-label="楽天ファッション"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ファッション</span></label></li>
+      <li><label for="a715883" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715883" value="715883" data-label="楽天ビューティ"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ビューティ</span></label></li>
+      -->
+      <li><label for="a715884" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715884" value="715884" data-label="RAXY"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">RAXY</span></label></li>
+      <!--
+      <li><label for="a715885" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715885" value="715885" data-label="楽天ラクマ"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ラクマ</span></label></li>
+      <li><label for="a715886" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715886" value="715886" data-label="楽天リーベイツ"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天リーベイツ</span></label></li>
+      -->
+      <li><label for="a715887" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715887" value="715887" data-label="楽天ファーム"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ファーム</span></label></li>
+      <li><label for="a715888" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715888" value="715888" data-label="GORA(楽天ゴルフ倶楽部)"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">GORA(楽天ゴルフ倶楽部)</span></label></li>
+      <!--
+      <li><label for="a715889" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715889" value="715889" data-label="楽天デリバリー"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天デリバリー</span></label></li>
+      <li><label for="a715890" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715890" value="715890" data-label="楽天チェック"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天チェック</span></label></li>
+      <li><label for="a715891" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715891" value="715891" data-label="楽天チケット"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天チケット</span></label></li>
+      <li><label for="a715892" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715892" value="715892" data-label="楽天自動車保険一括見積もり"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天自動車保険一括見積もり</span></label></li>
+      <li><label for="a715893" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715893" value="715893" data-label="楽天Edy"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天Edy</span></label></li>
+      <li><label for="a715894" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715894" value="715894" data-label="楽天ペイアプリ"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ペイアプリ</span></label></li>
+      <li><label for="a715895" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715895" value="715895" data-label="楽天でんき"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天でんき</span></label></li>
+      <li><label for="a715896" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715896" value="715896" data-label="楽天ひかり"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ひかり</span></label></li>
+      <li><label for="a715897" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715897" value="715897" data-label="楽天ポイントカード"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ポイントカード</span></label></li>
+      <li><label for="a715898" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715898" value="715898" data-label="楽天スーパーポイントスクリーン"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天スーパーポイントスクリーン</span></label></li>
+      <li><label for="a715899" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715899" value="715899" data-label="楽天インサイト"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天インサイト</span></label></li>
+      <li><label for="a715900" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715900" value="715900" data-label="楽天ウェブ検索"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">楽天ウェブ検索</span></label></li>
+      <li><label for="a715901" class="c-Form_Checkbox"><input type="checkbox" name="answers[37552_258016][]" id="a715901" value="715901" data-label="Rakuten Pasha"><span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">Rakuten Pasha</span></label></li>
+      -->
+    </ul>
+    </div>
+
+    <div class="u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Mb-64">
+
+      <p class="u-Adjust_Mb-16 u-Adjust_Ml-16 u-Adjust_Mr-16 u-Adjust_Align-left">
+        楽天モバイル株式会社（以下「当社」）は、当社の商品及びサービス並びに楽天グループ株式会社及び楽天グループ株式会社の子会社・関連会社の商品・サービスの運営、管理及びマーケティングのため、当社が取得及び保有するお客様の楽天IDを楽天グループ株式会社及び楽天グループ株式会社の子会社・関連会社に提供する場合がございます。
+        <span class="c-Txt_Emp-02">
+        下記送信ボタンを押した場合、当該情報提供につき同意したものとみなしますので予めご了承ください。
+        </span>
+      </p>
+
+      <input type="hidden" name="c" value="楽天">
+      <input type="hidden" name="l" value="ja">
+      <button class="c-Btn_Primary-large" type="submit"><span>上記内容に同意して送信する</span></button>
+    </div>
+  </form>
+
+</div>
+
+</div>
+
+<footer class="g-Footer">
+
+  <%- include('/include/_footer-simple') %>
+
+</footer>
+
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

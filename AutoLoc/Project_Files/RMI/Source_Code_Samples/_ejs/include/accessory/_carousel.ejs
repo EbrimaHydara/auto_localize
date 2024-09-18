@@ -1,0 +1,62 @@
+<div class="c-Carousel <%= namespace %>-Carousel_Wrap js-<%= namespace %>-Carousel">
+<%_
+  items.forEach(function (item) {
+  const { model, img, link, colors, beforePrice, price } = item
+  const dispPrice = price.length > 3 ? Number(price).toLocaleString() : price
+_%>
+
+  <div class="<%= namespace %>-Carousel_Item">
+    <a href="<%= sitepath %><%= link %>">
+      <div class="<%= namespace %>-Carousel_Item-inner">
+        <div class="<%= namespace %>-Carousel_Item-body">
+
+          <%_ if (typeof features !== 'undefined') { _%>
+            <ul class="<%= namespace %>-Carousel_Features">
+            <%_ features.forEach(function (feature) { _%>
+              <li><span class="c-Icon_Check"></span><%= feature %></li>
+            <%_ }) _%>
+            </ul>
+          <%_ } _%>
+
+          <div class="<%= namespace %>-Carousel_ImgWrapper">
+            <figure>
+              <img src="<%= sitepath %><%= img %>" alt="">
+            </figure>
+          </div>
+
+          <div>
+            <p class="<%= namespace %>-Carousel_Item-link"><%= model %></p>
+            <ul class="<%= namespace %>-Carousel_ItemColor">
+            <%_
+              colors.forEach(function (color) {
+              const { bgColor, isBorder } = color
+              const borderClass = isBorder ? 'color-white' : null
+            _%>
+              <li><span class="<%= borderClass %>" style="background: <%= bgColor %>;"></span></li>
+            <%_ }) _%>
+            </ul>
+          </div>
+        </div>
+        <%_ if(beforePrice) { _%>
+              <p class="<%= namespace %>-Carousel_Item-price">
+                <span class="<%= namespace %>-Carousel_Item-price-before">
+                  <span class="<%= namespace %>-Carousel_Item-price">
+                    <del><%= Number(beforePrice).toLocaleString() %></del><%#
+                  _%></span><%#
+                  _%><span class="c-Txt_Cap">※1</span>
+                </span>
+                →<%= dispPrice %>
+              </p>
+        <%_ } else { _%>
+              <p class="<%= namespace %>-Carousel_Item-price"><%= dispPrice %></p>
+        <%_ } _%>
+      </div>
+    </a>
+  </div>
+
+<%_ }) _%>
+</div>
+<div class="c-Carousel_Nav-v2-wrap">
+  <div class="c-Carousel_Nav-v2"></div>
+  <div class="c-Carousel_Nav-v2-bar"></div>
+</div>

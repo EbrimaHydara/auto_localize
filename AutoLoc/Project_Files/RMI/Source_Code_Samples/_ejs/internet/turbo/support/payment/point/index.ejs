@@ -1,0 +1,211 @@
+<% const pagetitle = "楽天ポイントの利用（お支払い方法）" -%>
+<% const directories = [{path:"internet/turbo/support/", label:"お客様サポート"}, {path:"internet/turbo/support/payment/", label:"請求・お支払い方法"}] -%>
+<% const namespace = "support-smallcategory" -%>
+<%
+  const pageInfo = {
+    namespace,
+    isUserCategory: true
+  };
+%>
+<%-
+ include('/_header', {
+    pagetitle,
+    directories,
+    description: '楽天モバイルのホームルーターRakuten Turboのプラン料金、製品代金の支払いに、楽天ポイントを利用する方法をご確認いただけます',
+    noindex: false,
+    pathname: filepath,
+    isTurbo: true
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/internet/turbo/support/_smallcategory-css') %>
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <%- include('/include/internet/turbo/_prepend-body-internet') %>
+  <div class="l-System">
+    <%- include('/include/internet/turbo/_header', {
+      pagetitle,
+      directories,
+      tax: false,
+    }) %>
+
+    <div class="l-System_Container">
+      <section class="u-Adjust_Mt-32">
+        <h1 class="c-Heading_Lv1 <%= namespace %>-Utility_Heading_Lv1"><%= pagetitle %></h1>
+        <p class="c-Txt_Normal u-Adjust_Mt-16">
+          楽天モバイルのお支払いに楽天ポイントを利用できる項目や、ご利用における注意事項についてご案内します。
+        </p>
+        <p class="u-Adjust_Mt-24">
+          <a href="#point_about" class="c-Link_Txt-inline"><span class="c-Icon_Arrow-down-l"></span>楽天ポイントのご利用について</a>
+        </p>
+        <p class="u-Adjust_Mt-16">
+          <a href="#point_content" class="c-Link_Txt-inline"><span class="c-Icon_Arrow-down-l"></span>楽天ポイントを利用できる項目</a>
+        </p>
+        <p class="u-Adjust_Mt-16">
+          <a href="#point_attention" class="c-Link_Txt-inline"><span class="c-Icon_Arrow-down-l"></span>楽天ポイントご利用時の注意事項</a>
+        </p>
+      </section>
+
+      <section>
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2 u-Adjust_Pt-64" id="point_about">楽天ポイントのご利用について</h2>
+        <ul class="c-List_Text-disc u-Adjust_Mt-8">
+          <li>1ポイント＝1円としてお支払いに充当できます。</li>
+          <li>1回のお支払いにつき、30,000ポイントまで（ダイヤモンド会員の方は500,000ポイントまで）ご利用できます。</li>
+          <li>期間限定ポイント→通常ポイント→楽天キャッシュの順に利用します。</li>
+        </ul>
+        <ul class="c-List_Cap u-Adjust_Mt-8">
+          <li class="c-Txt_Cap">※楽天キャッシュを保有している場合、お支払い金額がポイント保有数／利用上限を超えた際に楽天キャッシュを充当します。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2 u-Adjust_Pt-64" id="point_content">楽天ポイントを利用できる項目</h2>
+        <p class="c-Txt_Normal u-Adjust_Mt-16">
+          ご指定のお支払い方法によって、ポイントをご利用いただける項目が異なります。
+        </p>
+        <ul class="c-List_Cap u-Adjust_Mt-8">
+          <li class="c-Txt_Emp-02"><span>※</span>口座振替、代金引換ではポイントはご利用できませんのでご注意ください。</li>
+        </ul>
+        <div class="c-Table_Wrap-scroll u-Adjust_Mt-24">
+          <div class="js-Scrollable scroll-hint is-scrollable">
+          <table class="c-Table_Container u-Adjust_W-840">
+            <colgroup>
+              <col class="u-Adjust_W-120">
+              <col class="u-Adjust_W-120">
+              <col class="u-Adjust_W-200">
+              <col class="u-Adjust_W-200">
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col" colspan="2">お支払い方法</th>
+                <th scope="col">クレジットカード<br>デビットカード</th>
+                <th scope="col">口座振替</th>
+                <th scope="col">代金引換</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="2">月額料金、各種手数料<span class="c-Txt_Cap">※1</span>
+                  <button class="c-Tooltip js-Tooltip-inline" data-tippy-theme="default" data-tippy-content="有料サービス料金が含まれます" data-auto-rat="tip">
+                    <span class="c-Icon_Stack c-Tooltip_Icon">
+                      <span class="c-Icon_Sign-help-f c-Icon_Stack-icon-f"></span>
+                      <span class="c-Icon_Sign-help-l c-Icon_Stack-icon-l"></span>
+                    </span>
+                  </button>
+                </td>
+                <td class="u-Adjust_Align-center">○</td>
+                <td class="u-Adjust_Align-center">×</td>
+                <td class="u-Adjust_Align-center">代金引換利用不可</td>
+              </tr>
+              <tr>
+                <td rowspan="3">製品代金
+                  <button class="c-Tooltip js-Tooltip-inline" data-tippy-theme="default" data-tippy-content="スマートフォン、アクセサリー代金が含まれます" data-auto-rat="tip">
+                    <span class="c-Icon_Stack c-Tooltip_Icon">
+                      <span class="c-Icon_Sign-help-f c-Icon_Stack-icon-f"></span>
+                      <span class="c-Icon_Sign-help-l c-Icon_Stack-icon-l"></span>
+                    </span>
+                  </button>
+                </td>
+                <td>一括払い</td>
+                <td class="u-Adjust_Align-center">○</td>
+                <td rowspan="3" class="u-Adjust_Align-center" style="vertical-align:middle;">口座振替利用不可</td>
+                <td class="u-Adjust_Align-center">×</td>
+              </tr>
+              <tr>
+                <td>24回払い</td>
+                <td class="u-Adjust_Align-center">×<span class="c-Txt_Cap">※2</span></td>
+                <td class="u-Adjust_Align-center">×</td>
+              </tr>
+              <tr>
+                <td>48回払い</td>
+                <td class="u-Adjust_Align-center">×<span class="c-Txt_Cap">※2</span></td>
+                <td class="u-Adjust_Align-center">×</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <ul class="c-List_Cap-wide u-Adjust_Mt-8">
+          <li><span>※1</span>詳細は<a href="<%= sitepath %>internet/turbo/fee/">各種手数料ページ</a>でご確認ください。</li>
+          <li><span>※2</span>初回お支払い時のみ可</li>
+          <li>※ 製品代金のお支払いに楽天ポイントを利用する場合、お支払い方法設定時に「すべてのポイントを使う」または「一部のポイントを使う」を選択してください。</li>
+        </ul>
+        <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/point-payment/" class="c-Link_Txt-inline">楽天ポイントの利用設定・変更方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+      </section>
+
+      <section>
+        <div class="u-Adjust_Mb-40">
+          <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2 u-Adjust_Pt-56" id="point_attention">楽天ポイントご利用時の注意事項</h2>
+            <ul class="c-List_Text-disc u-Adjust_Pt-16">
+              <li>クレジットカードやデビットカードの情報が有効でない場合、楽天ポイントのご利用はできません。</li>
+              <li>毎月1日から3日までに設定したポイント数は当月の請求に、毎月4日から月末までに設定したポイント数は翌月の請求に充当されます。なお、適用となる楽天ポイント口座は、ご利用料金確定時に登録しているポイント口座です。</li>
+              <li>ご利用料金のお支払いに充当するポイント数は、月末まで変更・キャンセルできます。</li>
+              <li>ご利用料金請求時（毎月11日ごろ） に有効期限を過ぎて失効した期間限定ポイントは、お支払いにご利用いただけません。</li>
+              <li>充当時に楽天ポイントが不足している場合、お支払い方法に設定しているクレジットカード／デビットカードに不足分の金額を請求します。</li>
+              <li>コンビニ払込票（ハガキ）のお支払いには、楽天ポイントをご利用できません。</li>
+            </ul>
+        </div>
+        <div class="u-Adjust_Mt-48">
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-48 <%= namespace %>-Utility_Heading_Lv3" id="other">その他のお支払い方法</h3>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/card/" class="c-Link_Txt-inline js-scroll">クレジットカード・デビットカードでのお支払い方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/autopay/" class="c-Link_Txt-inline js-scroll">口座振替でのお支払い方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/payment/daibiki/" class="c-Link_Txt-inline js-scroll">代金引換（お届け時現金払い）でのお支払い方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+      </section>
+
+      <section class="u-Adjust_Mt-64">
+        <h2 class="c-Heading_Lv2 <%= namespace %>-Utility_Heading_Lv2">お支払い方法についてよくあるご質問</h2>
+        <p class="u-Adjust_Mt-16">お支払いに関するよくあるご質問は以下からご確認いただけます。</p>
+        <div class="l-Media_List-3 u-Adjust_Pt-24">
+          <div class="c-Theme-Light <%= namespace %>-Layout_Payment_Flex">
+            <h3 class="c-Heading_Lv4 <%= namespace %>-Utility_Heading_Lv4">お支払い方法の確認・変更</h3>
+            <p class="u-Adjust_Mt-16 u-Adjust_Pb-16">お支払い方法のご確認や変更についてのよくあるご質問を掲載しています。</p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Layout_Payment_Flex-bottom">
+              <a href="<%= sitepath %>internet/turbo/support/payment/change/" class="c-Link_Txt-inline">お支払い方法の確認・変更方法<span class="c-Icon_Chevron-right"></span></a>
+            </div>
+          </div>
+          <div class="c-Theme-Light <%= namespace %>-Layout_Payment_Flex">
+            <h3 class="c-Heading_Lv4 <%= namespace %>-Utility_Heading_Lv4">請求金額の確認</h3>
+            <p class="u-Adjust_Mt-16 u-Adjust_Pb-16">請求内容や料金明細のご確認についてのよくあるご質問を掲載しています。</p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Layout_Payment_Flex-bottom">
+              <a href="<%= sitepath %>internet/turbo/support/payment/certificate/" class="c-Link_Txt-inline">請求金額の確認方法<span class="c-Icon_Chevron-right"></span></a>
+            </div>
+          </div>
+          <div class="c-Theme-Light <%= namespace %>-Layout_Payment_Flex">
+            <h3 class="c-Heading_Lv4 <%= namespace %>-Utility_Heading_Lv4">未払い関連</h3>
+            <p class="u-Adjust_Mt-16 u-Adjust_Pb-16">ご指定の支払い方法でご利用料金のお支払いが確認できなかった場合のお支払い方法をご確認いただけます。</p>
+            <div class="u-Adjust_Align-center <%= namespace %>-Layout_Payment_Flex-bottom">
+              <a href="<%= sitepath %>guide/payment/invoice/flow/" class="c-Link_Txt-inline">未払い料金のお支払い方法<span class="c-Icon_Chevron-right"></span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="u-Adjust_Pt-80">
+      <div class="<%= namespace %>-Layout_Category">
+        <div class="l-System_Container">
+          <%- include('/include/internet/turbo/support/_smallcategory-category', { pageInfo }) %>
+        </div>
+      </div>
+    </section>
+
+    <div class="u-Adjust_Mt-24">
+      <!-- ReX UX Survey: Mounting point for embedded components -->
+      <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+      <%- include('/include/internet/turbo/_footer', { directories, pagetitle }) %>
+    </div>
+  </div>
+
+  <%- include('/include/_common-js') %>
+  <%- include('/include/internet/turbo/support/_smallcategory-js') %>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/internet/turbo/_rex-survey') %>
+
+</body>
+
+</html>

@@ -1,0 +1,1144 @@
+<% const pagetitle = "楽天モバイルご利用者様用電波改善・調査依頼" -%>
+<% const directories = [{path:"inquiry/", label:"お問い合わせ"}] -%>
+<% const namespaceEasy = 'inquiry-easy' %>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '通信・エリアに関するお問い合わせ、電波改善要望はこちら。「◯◯場所の携帯電話の電波がつながりにくいので改善してほしい」などお客様のご要望をお寄せください',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inquiry/inquiry.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/inquiry/easy/easy.css?20240424">
+<%- include('/include/_append-head', {messaging: true}) %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="inquiry-Layout_Container-inquiry">
+  <div class="l-System_Container u-Adjust_Mb-16">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">
+      楽天回線の電波に関するお困りごと、ご意見・ご要望をお聞かせください。<br />
+      お客様の電波状況確認のため、ご質問へのご回答と必要事項のご入力にご協力ください。お客様の電波状況を確認し、改善活動に活かしてまいります。
+    </p>
+    <p class="u-Adjust_Mt-16 c-Txt_Emp-01">
+      楽天モバイル法人プランをご契約中のお客様は、「<a href="https://business-portal.mobile.rakuten.co.jp/" class="c-Link_Txt-inline">my 楽天モバイル Office</a>」のお問い合わせフォームよりご依頼ください。
+    </p>
+    <p class=" c-Txt_Emp-02">電波以外のお問い合わせにつきましては、「<a href="<%= sitepath %>support/?l-id=inquiry_input_support">お客様サポート</a>」をご参照ください。</p>
+    <p class="c-Txt_Emp-02">ご利用製品の楽天回線状況については、「<a href="<%= sitepath %>product/byod/?l-id=area_inquiry_product_byod" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener">ご利用製品の対応状況確認<span class="c-Icon_New-window-l"></span></a>」からご確認いただけます。</p>
+  </div>
+  <!-- 本番用 → --><form id="js-inquiry_Form" action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST" autocomplete="off"><!-- ← 本番用 -->
+  <div class="c-Theme-Light inquiry-Layout_Interview" aria-hidden="false">
+    <div class="l-System_Container">
+      <div id="js-interview-0" class="inquiry-Layout_Interview-item">
+        <h2 class="c-Txt_Normal-ll u-Adjust_Mt-40">ご利用中の製品をお選びください。</h2>
+        <div class="inquiry-Layout_Interview-item-wrapper u-Adjust_Mt-16">
+          <label class="c-Form_Radioblock" data-ratid="inquiry_input_1" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-android" name="cellphonemodels" value="Android">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">Android</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="inquiry_input_2" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-iPhone" name="cellphonemodels" value="iPhone">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">iPhone</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="inquiry_input_3" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-rakutenWiFiPocket" name="cellphonemodels" value="Rakuten WiFi Pocket">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">Rakuten WiFi Pocket</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="inquiry_input_4" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-rakutenCasa" name="cellphonemodels" value="Rakuten Casa">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">Rakuten Casa</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="inquiry_input_5" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-rakutenTurbo" name="cellphonemodels" value="Rakuten Turbo">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">Rakuten Turbo</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="inquiry_input_9" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-another" name="cellphonemodels" value="その他">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">その他</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div id="js-interview-1" class="inquiry-Layout_Interview-item" style="display: none;">
+        <span id="js-back-0" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+        <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">ご利用中の製品は、楽天回線対応製品でしょうか。</h2>
+        <div class="inquiry-Layout_Interview-item-wrapper js-inquiry-Layout_Interview-item-wrapper u-Adjust_Mt-16">
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-1" name="rakutenoriginal" value="はい">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">はい</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-2" name="rakutenoriginal" value="いいえ">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">いいえ</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div id="js-interview-2" class="inquiry-Layout_Interview-item" style="display: none;">
+        <span id="js-back-1" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+        <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">お困りの内容をお選びください。</h2>
+        <div class="inquiry-Layout_Interview-item-wrapper js-inquiry-Layout_Interview-item-wrapper u-Adjust_Mt-16">
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-3" name="00N2u000000QAHn" value="通話">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">通話</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-4" name="00N2u000000QAHn" value="インターネット接続などのデータ通信">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">インターネット接続などのデータ通信</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div id="js-interview-3" class="inquiry-Layout_Interview-item" style="display: none;">
+        <span id="js-back-2" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+        <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">不具合状況をお選びください。</h2>
+        <div class="inquiry-Layout_Interview-item-wrapper js-inquiry-Layout_Interview-item-wrapper u-Adjust_Mt-16">
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-5" name="00N2u000000QAHs" value="データ通信に問題はないが、通話のみ不具合が発生する">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">データ通信に問題はないが、通話のみ不具合が発生する</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-6" name="00N2u000000QAHs" value="データ通信も通話も不具合が発生する">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">データ通信も通話も不具合が発生する</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div id="js-interview-4" class="inquiry-Layout_Interview-item" style="display: none;">
+        <span id="js-back-3" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+        <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">通話の不具合状況をお選びください。</h2>
+        <div class="inquiry-Layout_Interview-item-wrapper js-inquiry-Layout_Interview-item-wrapper u-Adjust_Mt-16">
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-7" name="00N2u000000QAHx" value="Rakuten Link使用時のみ、不具合が発生する">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">Rakuten Link使用時のみ、不具合が発生する</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-8" name="00N2u000000QAHx" value="Rakuten Link使用時以外の通話でも不具合が発生する">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">Rakuten Link使用時以外の通話でも不具合が発生する</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div id="js-interview-5" class="inquiry-Layout_Interview-item" style="display: none;">
+        <span id="js-back-4" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+        <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">今回お困りの電波状況について、過去にもお問い合わせされたことがあるかお選びください。</h2>
+        <div class="inquiry-Layout_Interview-item-wrapper js-inquiry-Layout_Interview-item-wrapper u-Adjust_Mt-16">
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-9" name="00N2u000000QAI2" value="今回が初めて">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">今回が初めて</span>
+            </span>
+          </label>
+          <label class="c-Form_Radioblock" data-ratid="" data-ratevent="click" data-ratparam="all">
+            <input type="radio" id="js-interview-btn-10" name="00N2u000000QAI2" value="過去に問い合わせたが、改善していない">
+            <span class="c-Form_Radioblock-wrap">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radioblock-label">過去に問い合わせたが、改善していない</span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="js-interview-2a" style="display: none;">
+    <div class="c-Theme-Light">
+      <div class="l-System_Container">
+        <span id="js-back-2a" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">トラブルシューティングをお試しください。</h2>
+      <p class="u-Adjust_Mt-16">
+        多くの場合、以下のトラブルシューティングを行うことで問題は解決いたします。<br>
+        お手数をおかけいたしますが、以下の項目を上から順番にすべてお試しください。（なお、ご利用の製品やOSバージョンによって一部順序や表記が異なる場合がございます。恐れ入りますが詳細につきましては製品メーカーへご確認ください。）
+      </p>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>guide/inquiry/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">メーカー別 問い合わせ先一覧はこちら<span class="c-Icon_New-window-l"></span></a>
+      </div>
+      <h4 class="c-Txt_Normal-m u-Adjust_Mt-24">操作手順（Android、iPhone共通）</h4>
+      <ol class="u-Adjust_Mt-16 c-List_Ordered">
+        <li>本体を再起動する</li>
+        <li>Wi-Fiや機内モードのON/OFF</li>
+        <li>モバイルデータ通信のON/OFF</li>
+        <li>SIMカードの抜き差し</li>
+      </ol>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>faq/detail/10000189/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">操作手順の詳細はこちら<span class="c-Icon_New-window-l"></span></a>
+      </div>
+      <div class="c-Accordion u-Adjust_Mt-24">
+        <button type="button" id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>iPhoneをご利用の場合は、こちらもご確認ください</button>
+        <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true" style="display: none;">
+          <ol class="c-List_Ordered">
+            <li>ご利用中のiPhoneが楽天回線対応製品であるか確認する</li>
+            <li>OSバージョンが14.4以降にアップデートされているか確認する</li>
+            <li>「キャリア設定のアップデート」が完了しているか確認する</li>
+            <li>SIMロック解除できているか確認する</li>
+            <li>プロファイルを削除する（MVNOから移行の場合）</li>
+          </ol>
+          <div class="u-Adjust_Mt-16">
+            <a href="<%= sitepath %>faq/detail/10000189/#sec5" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">iPhone製品の操作手順詳細はこちら<span class="c-Icon_New-window-l"></span></a>
+          </div>
+        </div>
+      </div>
+      <p class="u-Adjust_Mt-16">
+        お客様の端末やSIMの不具合の可能性もございますので、SIM交換や、より詳細なトラブルシューティングもお試しください。
+      </p>
+      <div class="u-Adjust_Mt-24">
+        <a href="<%= sitepath %>faq/detail/00001406/#sec2" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">SIM交換の操作手順詳細はこちら<span class="c-Icon_New-window-l"></span></a>
+      </div>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>guide/trouble-check/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">トラブル解決ナビはこちら<span class="c-Icon_New-window-l"></span></a>
+      </div>
+      <div class="u-Adjust_Mt-32">
+        <h2 class="c-Txt_Normal-ll">トラブルシューティングでも解決しない場合</h2>
+        <p class="u-Adjust_Mt-24">
+          お客様の情報をもとに電波状況の調査をさせていただきます。
+        </p>
+        <h4 class="c-Txt_Normal-m u-Adjust_Mt-32">電波改善フォームのご利用の流れ</h4>
+        <p class="u-Adjust_Mt-16">
+          <span class="c-Txt_Emp-02">STEP1</span>：電波改善要望の場所・お困りごとの入力
+        </p>
+        <p class="u-Adjust_Mt-8">
+          <span class="c-Txt_Emp-02">STEP2</span>：契約者情報の入力<br>
+          <span class="c-Txt_Cap c-Txt_Emp-02 u-Weight_Normal">※ Casa 設置希望・調査結果の回答を希望する場合のみ</span>
+        </p>
+        <p class="u-Adjust_Mt-8">
+          <span class="c-Txt_Emp-02">STEP3</span>：受付完了
+        </p>
+        <div class="u-Adjust_Mt-24">
+          <div id="modal1" style="display:none;">
+            <div>
+              <h2 class="c-Txt_Normal-ll">ご契約情報の確認</h2>
+              <p class="u-Adjust_Mt-24">ご準備いただくものはそれぞれ下記より確認いただけます。</p>
+              <ol class="c-List_Ordered u-Adjust_Mt-24">
+                <li>ご契約電話番号</li>
+                <li>楽天モバイルID</li>
+                <li>ご契約者氏名</li>
+                <li>ご契約者生年月日</li>
+              </ol>
+              <div class="u-Adjust_Mt-24">
+                <div>
+                  <a href="<%= sitepath %>my-rakuten-mobile/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">my 楽天モバイルにログインする<span class="c-Icon_New-window-l"></span></a>
+                </div>
+                <div class="u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/inquiry/img-info-login-230621.png" width="600" height="264">
+                    <img src="<%= sitepath %>assets/img/inquiry/img-info-login-230621.png" width="300" height="132" alt="my 楽天モバイルにログインする" style="border: 1px solid #e0e0e0;">
+                  </picture>
+                </div>
+              </div>
+              <div class="u-Adjust_Mt-48">
+                <div>
+                  <a href="https://portal.mobile.rakuten.co.jp/dashboard#contracts" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">ご契約内容の案内をダウンロードする<span class="c-Icon_New-window-l"></span></a>
+                </div>
+                <p class="u-Adjust_Mt-16">「ご契約内容のダウンロード」より下図のようなご契約内容を参照できます。</p>
+                <div class="u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/inquiry/img-info-download.png" width="600" height="231">
+                    <img src="<%= sitepath %>assets/img/inquiry/img-info-download.png" width="300" height="216" alt="ご契約内容のダウンロード" style="border: 1px solid #e0e0e0;">
+                  </picture>
+                </div>
+              </div>
+              <div class="u-Adjust_Mt-48">
+                <div>
+                  <a href="https://portal.mobile.rakuten.co.jp/dashboard?scrollTo=contactInfo#personal-info" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">契約者情報を確認する<span class="c-Icon_New-window-l"></span></a>
+                </div>
+                <div class="u-Adjust_Mt-16">
+                  <picture>
+                    <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/inquiry/img-info-personal.png" width="600" height="458">
+                    <img src="<%= sitepath %>assets/img/inquiry/img-info-personal.png" width="301" height="229" alt="契約者情報を確認する" style="border: 1px solid #e0e0e0;">
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-Adjust_Mt-40 u-Adjust_Align-center">
+          <span id="js-next-step" data-ratid="" data-ratevent="click" data-ratparam="all" class="c-Btn_Regular-large">次へ進む</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="js-interview-2b" style="display: none;">
+    <div class="c-Theme-Light">
+      <div class="l-System_Container">
+        <span id="js-back-2b" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">Rakuten Linkに関するお問い合わせ</h2>
+      <p class="u-Adjust_Mt-16">Rakuten Linkに関するお問い合わせは以下の専用フォームにて受け付けいたします。</p>
+      <div class="u-Adjust_Mt-16">
+        <a class="c-Btn_Regular" href="https://r10.to/hPDUZj"><span>Rakuten Linkお問い合わせ専用フォーム</span></a>
+      </div>
+    </div>
+
+  </div>
+  <div id="js-interview-2c" style="display: none;">
+    <div class="c-Theme-Light">
+      <div class="l-System_Container">
+        <span id="js-back-2c" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">楽天回線対応製品以外をご利用のお客様へ</h2>
+      <p class="u-Adjust_Mt-16">
+        誠に恐れ入りますが、「楽天回線対応製品」以外の製品は操作保証対象外のため、当社ではお客様の不具合についてのご案内ができません。<br>
+        以下のトラブルシューティングを行うことで、改善する場合がございます。<br>
+        また、快適にご利用いただくために、楽天回線対応製品のご購入をご検討ください。
+      </p>
+      <h4 class="c-Txt_Normal-m u-Adjust_Mt-24">操作手順（Android、iPhone共通）</h4>
+      <ol class="u-Adjust_Mt-16 c-List_Ordered">
+        <li>本体を再起動する</li>
+        <li>Wi-Fiや機内モードのON/OFF</li>
+        <li>モバイルデータ通信のON/OFF</li>
+        <li>SIMカードの抜き差し</li>
+      </ol>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>faq/detail/10000189/" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">操作手順の詳細はこちら<span class="c-Icon_New-window-l"></span></a>
+      </div>
+    </div>
+
+  </div>
+  <div id="js-interview-2d" style="display: none;">
+    <div class="c-Theme-Light">
+      <div class="l-System_Container">
+        <span id="js-back-2d" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">Rakuten Casaでお困りのお客様へ</h2>
+      <p class="u-Adjust_Mt-16">Rakuten Casa機器本体の不具合や、Rakuten Casaを設置しているが通信が不安定などの事象がある場合には、下記へお問い合わせください。</p>
+      <h4 class="c-Txt_Normal-m u-Adjust_Mt-24">お問い合わせ</h4>
+      <p class="u-Adjust_Mt-16">コミュニケーションセンター</p>
+      <p class="u-Adjust_Mt-4">お問い合わせ先　<a href="tel:08008050400">0800-805-0400</a>（通話料無料）<br>営業時間　9:00～17:00／無休</p>
+      <ul class="c-Txt_Cap u-Adjust_Mt-8">
+        <li>※ 法人のお客様は、9:00～18:00／土日祝日・年末年始（12/31～1/3）を除く</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="js-interview-2e" style="display: none;">
+    <div class="c-Theme-Light">
+      <div class="l-System_Container">
+        <span id="js-back-2e" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+      </div>
+    </div>
+    <div class="l-System_Container">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Mt-16">Rakuten Turboでお困りのお客様へ</h2>
+      <p class="u-Adjust_Mt-16">
+        Rakuten Turboで不具合が発生した場合、下記よりお問い合わせ窓口をご確認いただき、お問い合わせいただくようお願いいたします。
+      </p>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>internet/turbo/support/product/rakuten-turbo5g/?l-id=inquiry_input_internet_turbo_support_product_rakuten-turbo5g" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener noreferrer">Rakuten Turboのお問い合わせ窓口はこちら<span class="c-Icon_New-window-l"></span></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="js-back-form-wrapper" class="c-Theme-Light" style="display: none;">
+    <div class="l-System_Container">
+      <span id="js-back-form" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</span>
+    </div>
+  </div>
+  <div class="l-System_Container">
+      <!-- 本番用 → --><input type="hidden" name="orgid" value="00D28000000cT0x"><!-- ← 本番用 -->
+      <input type="hidden" name="recordType" value="0120I000001Dmn0">
+      <div id="js-target-generate-00N2u000000wSzS"></div>
+      <input id="subject" type="hidden" name="subject" value="MNOお問い合わせ・ご要望フォーム">
+      <input type="hidden" id="00N2u000000P1gm" name="00N2u000000P1gm" value="0">
+      <input type="hidden" name="retURL" value="https://network.mobile.rakuten.co.jp/inquiry/thanks.html">
+
+      <!-- ↓↓↓↓デバッグモードでテストする場合は下記コメントアウト解除。本番時削除↓↓↓↓ -->
+      <!-- <input type="hidden" name="debug" value=1> -->
+      <!-- <input type="hidden" name="debugEmail" value="sebjornnord.svendsen@rakuten.com"> -->
+      <!-- ↑↑↑↑デバッグモードでテストする場合は下記コメントアウト解除。本番時削除↑↑↑↑ -->
+
+      <dl id="js-inquiry_Form-top" class="c-Form_List u-Adjust_Mt-24" style="display: none;">
+        <div class="c-Accordion u-Adjust_Mt-32" style="display: block;">
+          <button type="button" id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>お問い合わせ内容の確認</button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true" style="display: none;">
+            <div id="disp-questionnaire-1-sec" class="inquiry-Form_Item-section u-Adjust_Mt-16" aria-hidden="true">
+              <span class="c-Txt_Emp-01">Q1.ご利用中の製品をお選びください。</span><br>
+              <span id="disp-questionnaire-1"></span><br>
+            </div>
+            <div id="disp-questionnaire-2-sec" class="inquiry-Form_Item-section u-Adjust_Mt-16" aria-hidden="true">
+              <span class="c-Txt_Emp-01">Q2.ご利用中の製品は、楽天回線対応製品でしょうか。</span><br>
+              <span id="disp-questionnaire-2"></span><br>
+            </div>
+            <div id="disp-questionnaire-3-sec" class="inquiry-Form_Item-section u-Adjust_Mt-16" aria-hidden="true">
+              <span class="c-Txt_Emp-01">Q3.お困りの内容をお選びください。</span><br>
+              <span id="disp-questionnaire-3"></span><br>
+            </div>
+            <div id="disp-questionnaire-4-sec" class="inquiry-Form_Item-section u-Adjust_Mt-16" aria-hidden="true">
+              <span class="c-Txt_Emp-01">Q4.不具合状況をお選びください。</span><br>
+              <span id="disp-questionnaire-4"></span><br>
+            </div>
+            <div id="disp-questionnaire-5-sec" class="inquiry-Form_Item-section u-Adjust_Mt-16" aria-hidden="true">
+              <span class="c-Txt_Emp-01">Q5.通話の不具合状況をお選びください。</span><br>
+              <span id="disp-questionnaire-5"></span><br>
+            </div>
+            <div id="disp-questionnaire-6-sec" class="inquiry-Form_Item-section u-Adjust_Mt-16" aria-hidden="true">
+              <span class="c-Txt_Emp-01">Q6.今回不具合の状況が発生した場所について、過去にもお問い合わせされたことがあるかお選びください。</span><br>
+              <span id="disp-questionnaire-6"></span>
+            </div>
+          </div>
+        </div>
+        <div class="inquiry-Form_Item-area u-Adjust_Mt-32">
+          <dt>電波改善要望の場所<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <div class="<%= namespaceEasy %>-Form_Radio-colum">
+              <!-- 発生場所種別 -->
+              <p class="c-Txt_Emp-01">不具合発生場所 区分<span class="c-Form_List-required">必須</span></p>
+              <p id="err-radio_00N0I00000JycJR" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">必須項目です</p>
+              <div class="<%= namespaceEasy %>-Form_Radio-colum">
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N0I00000JycJR" id="" value="自宅（戸建）" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">自宅（戸建）</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N0I00000JycJR" id="" value="自宅（集合住宅）" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">自宅（集合住宅）</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N0I00000JycJR" id="" value="商業施設" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">商業施設</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N0I00000JycJR" id="" value="公共施設（駅、空港含む）" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">公共施設（駅、空港含む）</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N0I00000JycJR" id="" value="オフィス、オフィスビル" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">オフィス、オフィスビル</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N0I00000JycJR" id="" value="その他" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">その他</span>
+                </label>
+              </div>
+            </div>
+            <div id="js-step-2" class="u-Adjust_Mb-16 u-Adjust_Mt-32 inquiry-Form_Item-section" aria-hidden="true">
+              <!-- 発生場所種別 -->
+              <p class="c-Txt_Emp-01 u-Adjust_Mb-16">不具合発生場所 検索方法<span class="c-Form_List-required">必須</span></p>
+              <p id="err-radio_search-method" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">必須項目です</p>
+              <div class="<%= namespaceEasy %>-Form_Radio-colum">
+                <label class="c-Form_Radio">
+                  <input type="radio" name="search-method" class="js-search-method" value="郵便番号から検索" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">郵便番号から検索</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="search-method" class="js-search-method" value="キーワード・地図から検索" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">キーワード・地図から検索</span>
+                </label>
+              </div>
+            </div>
+
+
+          <div id="js-scroll-target-search-methods">
+
+            <div id="js-disp-search-postcode" class="inquiry-Form_Item-section" aria-hidden="true">
+              <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-24">不具合発生場所 郵便番号<span class="c-Form_List-required">必須</span></p>
+              <p class="c-Txt_Cap u-Adjust_Mb-16">※半角数字7文字で入力してください</p>
+              <p id="err-required_00N0I00000JycJH" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+              <p id="err-numeric_00N0I00000JycJH" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+              <p id="err-length_00N0I00000JycJH" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">7文字で入力してください</p>
+              <div class="inquiry-Form_Auxiliary">
+                <input class="c-Form_Input inquiry-Form_Auxiliary-item u-Adjust_W-160" minlength="7" maxlength="7" id="00N0I00000JycJH" name="00N0I00000JycJH" size="20" type="text" placeholder="例）1580094" aria-required="true" data-validate="required length numeric" autocomplete="off">
+                <button type="button" class="c-Btn_Regular inquiry-Form_Auxiliary-item js-inquiry_Zip2addr"><span>郵便番号から住所表示</span></button>
+              </div>
+            </div>
+            <div id="js-disp-search-keyword" class="u-Adjust_Mt-24 inquiry-Form_Item-section" aria-hidden="true">
+              <!-- 住所 -->
+              <div class="u-Adjust_Mt-24">
+                <p class="c-Txt_Emp-01">発生場所検索</p>
+                <p id="err-required_00N280000095Txj" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">発生場所が指定されていません。<br>地図上のピンで場所指定、または住所情報の記入をお願いします。</p>
+                <div class="u-Adjust_Mt-8">
+                  <div class="c-Search_Container">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <input type="text" class="form-control controls c-Search_Input" id="js-inquiry-easy_Map-input" aria-describedby="searchHelp" placeholder="市区町村名や住所を入力" autocomplete="off">
+                    <div class="c-Search_Btn" id="js-inquiry-easy_Map-search-btn"><span class="c-Icon_Search c-Search_Icon"></span></div>
+                  </div>
+                  <p class="<%= namespaceEasy %>-Map_Display u-Adjust_Mt-8" id="js-Map-address"></p>
+                  <p class="<%= namespaceEasy %>-Form_Attention u-Adjust_Mt-8 js-address-attention-text" style="display: none;">※住所と地図が正しい位置を指していることをご確認ください。地図をクリックすることで位置を変更できます。</p>
+                  <div class="<%= namespaceEasy %>-Map u-Adjust_Mt-24">
+                    <button type="button" class="<%= namespaceEasy %>-Map_Button" id="js-inquiry-easy_Map-location">
+                      <img src="<%= sitepath %>assets/img/common/current-location.png" width="40" height="43" alt="現在地">
+                    </button>
+                    <div class="<%= namespaceEasy %>-Map_Container" id="js-inquiry-easy_Map"></div>
+                    <div class="<%= namespaceEasy %>-Map_Loading" id="js-inquiry-easy_Map-loading">
+                      <div>読み込み中…</div>
+                    </div>
+                  </div>
+                  <!-- 緯度 -->
+                  <input id="00N2u000000wSyU" name="00N2u000000wSyU" maxlength="50" size="20" type="hidden" data-validate="">
+                  <!-- 経度 -->
+                  <input id="00N2u000000wSyZ" name="00N2u000000wSyZ" maxlength="50" size="20" type="hidden" data-validate="">
+                </div>
+              </div>
+            </div>
+
+            <div id="js-defective-address" class="inquiry-Form_Item-section" aria-hidden="true">
+              <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">不具合発生場所 住所<span class="c-Form_List-required">必須</span></p>
+              <p class="c-Txt_Cap u-Adjust_Mb-16">※255文字以内で入力してください</p>
+              <p id="err-required_00N280000095Txj" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+              <input class="c-Form_Input" maxlength="255" id="00N280000095Txj" name="00N280000095Txj" size="20" type="text" placeholder="例）東京都世田谷区玉川" aria-required="true" data-validate="required" autocomplete="off">
+            </div>
+
+            <div id="js-defective-address-other" class="inquiry-Form_Item-section" aria-hidden="true">
+              <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">不具合発生場所 住所（丁目以降）<span class="c-Form_List-required">必須</span></p>
+              <p class="c-Txt_Cap u-Adjust_Mb-16">※丁目、番地、マンション名、部屋番号を入力してください<br>※255文字以内で入力してください</p>
+              <p id="err-required_00N0I00000KRr1H" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+              <input class="c-Form_Input" maxlength="255" id="00N0I00000KRr1H" name="00N0I00000KRr1H" size="20" type="text" placeholder="例）一丁目14番1号 楽天クリムゾンハウス" aria-required="true" data-validate="required" autocomplete="off">
+            </div>
+
+
+          </div>
+
+            <div class="inquiry-Form_Item-section js-step-3" aria-hidden="true">
+              <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">発生場所種別<span class="c-Form_List-required">必須</span></p>
+              <p id="err-radio_00N2u000001T0kB" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+              <div class="u-Adjust_Mt-16 inquiry-Form_Input-radio">
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N2u000001T0kB" id="" value="屋外" aria-required="true" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">屋外</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N2u000001T0kB" id="" value="高層階（21F以上）" aria-required="true" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">高層階（21F以上）</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N2u000001T0kB" id="" value="中層階（11～20F）" aria-required="true" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">中層階（11～20F）</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N2u000001T0kB" id="" value="低層階（1～10F）" aria-required="true" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">低層階（1～10F）</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N2u000001T0kB" id="" value="地下" aria-required="true" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">地下</span>
+                </label>
+                <label class="c-Form_Radio">
+                  <input type="radio" name="00N2u000001T0kB" id="" value="その他（電車・自動車の移動中など）" aria-required="true" data-validate="radio">
+                  <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">その他（電車・自動車の移動中など）</span>
+                </label>
+              </div>
+              <div id="js-floor-position" class="inquiry-Form_Item-section" aria-hidden="true">
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">階数<span class="c-Form_List-required">必須</span></p>
+                <p class="c-Txt_Cap u-Adjust_Mb-16">※不具合が発生している階数を記載ください。複数階で問題がある場合は特にご利用でお困りの階数を記載ください。</p>
+                <p id="err-required_00N2u000000PkFH" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+                <div class="c-Form_Select">
+                  <select id="00N2u000000PkFH" name="00N2u000000PkFH" aria-required="true" data-validate="required">
+                    <option value="">選択してください</option>
+                    <%# optionデータは発生場所種別の選択されたvalueを持ってJSで切り替え %>
+                  </select>
+                  <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+                </div>
+              </div>
+              <div id="js-same-address" class="inquiry-Form_Item-section" aria-hidden="true">
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">ご入力いただいたご自宅住所と、my 楽天モバイルの登録住所は同一住所ですか？<span class="c-Form_List-required">必須</span></p>
+                <p id="err-radio_00N2u000000QARJ" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+                <div class="inquiry-Form_Item-area">
+                  <label class="c-Form_Radio u-Adjust_Mr-24">
+                    <input type="radio" name="00N2u000000QARJ" value="はい" aria-required="true" data-validate="radio">
+                    <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">はい</span>
+                  </label>
+                  <label class="c-Form_Radio u-Adjust_Mr-24">
+                    <input type="radio" name="00N2u000000QARJ" value="いいえ" aria-required="true" data-validate="radio">
+                    <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">いいえ</span>
+                  </label>
+                </div>
+              </div>
+              <div id="js-another-address" class="u-Adjust_Mt-32 inquiry-Form_Item-section" aria-hidden="false">
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16">施設名・具体的な場所<span id="mark-00N2u000000PkFM" class="c-Form_List-required inquiry-Form_List-required">必須</span></p>
+                <p class="c-Txt_Cap">※不具合が発生した<span class="c-Txt_Emp-02">施設名と施設内の場所や店舗名</span>を入力してください </p>
+                <p class="c-Txt_Cap u-Adjust_Mb-16">※〇〇モール 〇〇店付近、〇〇役所〇〇課付近、〇〇スーパー〇〇売り場付近など</p>
+                <p id="err-required_00N2u000000PkFM" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+                <input class="c-Form_Input" id="00N2u000000PkFM" maxlength="255" name="00N2u000000PkFM" size="20" type="text" placeholder="例）〇〇大学〇号棟〇〇教室" aria-required="false" data-validate="required" autocomplete="off">
+              </div>
+            </div>
+          </dd>
+        </div>
+        <div id="js-target-antenna" class="inquiry-Form_Item-area js-step-3" aria-hidden="true">
+          <dt>アンテナバー／アンテナピクト本数表示<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p class="c-Txt_Cap u-Adjust_Mb-16">
+              ※ 不明の場合は圏外を選択してください
+            </p>
+            <p id="err-radio_00N2u000001TCEC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div class="u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/inquiry/img-antenna.png" alt="" width="300">
+            </div>
+            <div class="u-Adjust_Mt-16 inquiry-easy-Form_Radio-colum">
+              <label class="c-Form_Radio u-Adjust_Mr-24">
+                <input type="radio" name="00N2u000001TCEC" value="圏外" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">圏外</span>
+              </label>
+              <label class="c-Form_Radio u-Adjust_Mr-24">
+                <input type="radio" name="00N2u000001TCEC" value="0～2本" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">0～2本</span>
+              </label>
+              <label class="c-Form_Radio u-Adjust_Mr-24">
+                <input type="radio" name="00N2u000001TCEC" value="3本以上" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">3本以上</span>
+              </label>
+            </div>
+          </dd>
+        </div>
+        <div id="js-target-network-type" class="inquiry-Form_Item-area js-disp-within-range" aria-hidden="true">
+          <dt>ネットワーク種別<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p class="c-Txt_Cap u-Adjust_Mb-16">
+              ※ 調査および改善希望のネットワーク種別をご選択ください<br>
+              ※ご利用のネットワーク種別がご不明の場合は、4Gをご選択ください
+            </p>
+            <p id="err-radio_00N2u000000Pg8C" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <label class="c-Form_Radio u-Adjust_Mr-24">
+              <input type="radio" name="00N2u000000Pg8C" value="4G" aria-required="true" data-validate="radio">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">4G</span>
+            </label>
+            <label class="c-Form_Radio u-Adjust_Mr-24">
+              <input type="radio" name="00N2u000000Pg8C" value="5G" aria-required="true" data-validate="radio">
+              <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">5G</span>
+            </label>
+          </dd>
+        </div>
+        <div id="js-target-phenomenon-details" class="inquiry-Form_Item-area js-disp-within-range" aria-hidden="true">
+          <dt>事象詳細<span class="c-Form_List-required">必須</span></dt>
+          <!-- 00N2u000000Pg7s -->
+          <dd>
+            <p id="err-required_00N2u000000wSye" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div class="<%= namespaceEasy %>-Form_Radio-colum">
+              <label class="c-Form_Checkbox">
+                <input type="checkbox" name="00N2u000000wSye" value="Webページや動画閲覧に時間がかかる" data-validate="checkboxRequired">
+                <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">Webページや動画閲覧に時間がかかる</span>
+              </label>
+              <label class="c-Form_Checkbox">
+                <input type="checkbox" name="00N2u000000wSye" value="WebページやSNSへの投稿に時間がかかる" data-validate="checkboxRequired">
+                <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">WebページやSNSへの投稿に時間がかかる</span>
+              </label>
+              <label class="c-Form_Checkbox">
+                <input type="checkbox" name="00N2u000000wSye" value="QRコード決済ができない" data-validate="checkboxRequired">
+                <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">QRコード決済ができない</span>
+              </label>
+              <label class="c-Form_Checkbox">
+                <input type="checkbox" name="00N2u000000wSye" value="標準通話アプリでの通話品質が悪い" data-validate="checkboxRequired">
+                <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">標準通話アプリでの通話品質が悪い</span>
+              </label>
+              <label class="c-Form_Checkbox">
+                <input type="checkbox" name="00N2u000000wSye" value="Rakuten Link アプリでの通話品質が悪い" data-validate="checkboxRequired">
+                <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">Rakuten Link アプリでの通話品質が悪い</span>
+              </label>
+              <label class="c-Form_Checkbox">
+                <input type="checkbox" name="00N2u000000wSye" value="上記以外のアプリ（例：LINE）での通話品質が悪い" data-validate="checkboxRequired">
+                <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">上記以外のアプリ（例：LINE）での通話品質が悪い</span>
+              </label>
+              <label class="c-Form_Checkbox">
+                <input type="checkbox" name="00N2u000000wSye" id="js-chk-phenomenon-detail-another" value="その他" data-validate="checkboxRequired">
+                <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">その他</span>
+              </label>
+            </div>
+            <p id="err-required_00N2u000000wTZQ" class="c-Form_Txt-error u-Adjust_Mt-16 u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div id="js-textarea-phenomenon-detail" class="u-Adjust_Mt-16 inquiry-Form_Item-area" aria-hidden="true">
+              <textarea id="js-00N2u000000wTZQ" class="c-Form_Input" value="" name="00N2u000000wTZQ" placeholder="発生状況をご記入ください" aria-invalid="false" data-validate="required"></textarea>
+            </div>
+          </dd>
+        </div>
+        <div id="js-target-classification" class="inquiry-Form_Item-area js-step-3" aria-hidden="true">
+          <dt>発生時期<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p id="err-required_00N2u000000QAHO" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div class="<%= namespaceEasy %>-Form_Radio-colum">
+              <!-- 発生場所種別 -->
+              <p id="err-radio_00N2u000000QAHO" class="c-Form_Txt-error u-Adjust_Mt-16" aria-hidden="true">必須項目です</p>
+              <label class="c-Form_Radio">
+                <input type="radio" name="00N2u000000QAHO" id="" value="以前からずっと" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">以前からずっと</span>
+              </label>
+              <label class="c-Form_Radio">
+                <input type="radio" name="00N2u000000QAHO" id="" value="最近（1カ月以内）突然" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">最近（1カ月以内）突然</span>
+              </label>
+              <label class="c-Form_Radio">
+                <input type="radio" name="00N2u000000QAHO" id="" value="ある特定日のみ" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">ある特定日のみ</span>
+              </label>
+              <label class="c-Form_Radio">
+                <input type="radio" name="00N2u000000QAHO" id="" value="わからない" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">わからない</span>
+              </label>
+            </div>
+          </dd>
+        </div>
+        <div class="inquiry-Form_Item-area" id="js-event" aria-hidden="true">
+          <dt>事象発生日<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p id="err-required_00N2u000000P1ft" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div class="inquiry-Form_Datepicker-container">
+              <input id="00N2u000000P1ft" name="00N2u000000P1ft" class="c-Form_Input u-Adjust_Mb-16 js-Datepicker01 c-Form_Datepicker" maxlength="20" size="20" type="text" placeholder="" aria-required="true" data-validate="required" readonly>
+              <span class="c-Icon_Calendar-l js-Datepicker_Btn c-Form_Datepicker_Btn"></span>
+            </div>
+            <p id="err-required_00N0I00000JyyIk" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です（時間）</p>
+            <p id="err-required_00N0I00000JyyIp" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です（分）</p>
+            <div class="inquiry-Form_Datepicker-time">
+              <div class="c-Form_Select">
+                <select id="00N0I00000JyyIk" name="00N0I00000JyyIk" aria-required="true" data-validate="required">
+                  <option value="0時">0</option>
+                  <option value="1時">1</option>
+                  <option value="2時">2</option>
+                  <option value="3時">3</option>
+                  <option value="4時">4</option>
+                  <option value="5時">5</option>
+                  <option value="6時">6</option>
+                  <option value="7時">7</option>
+                  <option value="8時">8</option>
+                  <option value="9時">9</option>
+                  <option value="10時">10</option>
+                  <option value="11時">11</option>
+                  <option value="12時">12</option>
+                  <option value="13時">13</option>
+                  <option value="14時">14</option>
+                  <option value="15時">15</option>
+                  <option value="16時">16</option>
+                  <option value="17時">17</option>
+                  <option value="18時">18</option>
+                  <option value="19時">19</option>
+                  <option value="20時">20</option>
+                  <option value="21時">21</option>
+                  <option value="22時">22</option>
+                  <option value="23時">23</option>
+                </select>
+                <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+              </div>
+              <span class="inquiry-Form_Datepicker-time-sub">時</span>
+              <div class="c-Form_Select">
+                <select id="00N0I00000JyyIp" name="00N0I00000JyyIp" aria-required="true" data-validate="required">
+                  <option value="00分">00</option>
+                  <option value="10分">10</option>
+                  <option value="20分">20</option>
+                  <option value="30分">30</option>
+                  <option value="40分">40</option>
+                  <option value="50分">50</option>
+                </select>
+                <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+              </div>
+              <span class="inquiry-Form_Datepicker-time-sub">分</span>
+            </div>
+          </dd>
+        </div>
+        <div id="js-target-product" class="inquiry-Form_Item-area js-step-3" aria-hidden="true">
+          <dt>ご利用製品<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p id="err-required_00N2u000000PdLm" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <div class="c-Form_Select">
+              <select id="00N2u000000PdLm" name="00N2u000000PdLm" aria-required="true" data-validate="required">
+                <option value="">選択してください</option>
+                <option value="Android">Android</option>
+                <option value="iPhone">iPhone</option>
+                <option value="Rakuten WiFi Pocket">Rakuten WiFi Pocket</option>
+                <option value="その他">その他</option>
+              </select>
+              <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+            </div>
+            <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">ご利用中の製品機種名<span class="c-Form_List-required">必須</span></p>
+            <p class="c-Txt_Cap u-Adjust_Mb-16">※255文字以内で入力してください</p>
+            <p id="err-required_00N280000095TyO" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <input class="c-Form_Input" maxlength="255" id="00N280000095TyO" name="00N280000095TyO" size="20" type="text" placeholder="例）iPhone 12、AQUOS sense6など" aria-required="false" data-validate="required">
+          </dd>
+        </div>
+        <div class="inquiry-Form_Item-area js-step-3" aria-hidden="true">
+          <dt>ご意見・ご要望詳細<span class="c-Form_List-required">必須</span></dt>
+          <dd>
+            <p class="c-Txt_Cap u-Adjust_Mb-16">※255文字以内で入力してください</p>
+            <p id="err-required_00N2u000000PkIp" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+            <textarea class="c-Form_Input" maxlength="255" id="00N2u000000PkIp" name="00N2u000000PkIp" aria-required="true" data-validate="required" wrap="soft"></textarea>
+          </dd>
+        </div>
+        <div id="js-inquiry_Nextbtn-wrapper" class="u-Adjust_Align-center inquiry-Form_Nextbtn js-step-3" aria-hidden="true">
+          <button id="js-inquiry_Nextbtn" type="button" class="c-Btn_Secondly-large u-Adjust_Mt-32 u-Adjust_Mb-32"><span>次へ進む</span></button>
+        </div>
+      </dl>
+      <div id="js-inquiry_Other-section" class="inquiry-Form_Other-section u-Adjust_Pt-48" aria-hidden="true">
+        <h2 class="c-Heading_Lv3 u-Adjust_Mt-64">調査結果のご案内について</h2>
+        <p class="u-Adjust_Mt-16">ご入力ありがとうございます。いただいたご意見・ご要望をもとに、調査を実施させていただきます。調査結果のご案内方法をお選びください。</p>
+        <dl class="c-Form_List u-Adjust_Mt-16">
+          <div class="inquiry-Form_Item-area">
+            <dt>ご案内方法<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <p id="err-radio_00N2u000000QAHT" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+              <label class="c-Form_Radio u-Adjust_Mr-24 u-Adjust_Mb-8">
+                <input type="radio" name="00N2u000000QAHT" value="メールでの回答を希望する" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">メールでの回答を希望する</span>
+              </label>
+              <br>
+              <label class="c-Form_Radio u-Adjust_Mr-24">
+                <input type="radio" name="00N2u000000QAHT" value="回答は希望しない" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">回答は希望しない</span>
+              </label>
+            </dd>
+          </div>
+          <div id="js-rakuten-casa" class="inquiry-Form_Item-area" aria-hidden="true">
+            <dt>Rakuten Casa設置希望<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <p class="u-Adjust_Mb-8">
+                ご自宅でご利用のインターネット回線に接続することで、ご自宅内で楽天回線がご利用いただけるようになる小型室内アンテナ（フェムトセル）「<a href="<%= sitepath %>area/rakuten-casa/?l-id=inquiry_input_area_rakuten_casa" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener">Rakuten Casa<span class="c-Icon_New-window-l"></span></a>」がございます。<br>
+                「Rakuten Casa」の設置をご希望でしょうか。
+              </p>
+              <p class="c-Txt_Cap u-Adjust_Mb-16">※ご希望されない場合でも、「Rakuten Casa」をご案内させていただく場合がございます。あらかじめご了承ください。</p>
+              <p id="err-radio_00N2u000000grnt" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+              <label class="c-Form_Radio u-Adjust_Mr-24 u-Adjust_Mb-8">
+                <input type="radio" name="00N2u000000grnt" value="希望する" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">希望する</span>
+                <br><span class="c-Txt_Cap">※ご希望の場合、本フォームを送信後ご案内メールをお送りします。ご案内メール受け取り後、ご自身でお手続き、設置いただくようお願い申し上げます。</span>
+              </label>
+              <br>
+              <label class="c-Form_Radio u-Adjust_Mr-24">
+                <input type="radio" name="00N2u000000grnt" value="希望しない" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">希望しない</span>
+              </label>
+              <br>
+            </dd>
+          </div>
+          <div id="js-env" class="inquiry-Form_Item-area" aria-hidden="true">
+            <dt>インターネット環境<span class="c-Form_List-required">必須</span></dt>
+            <dd>
+              <p class="u-Adjust_Mb-8">
+                「Rakuten Casa」設置にあたり、<a href="<%= sitepath %>area/rakuten-casa/broadband/?l-id=inquiry_input_area_rakuten-casa_broadband" class="c-Link_Txt-inline-icon" target="_blank" rel="noopener">指定インターネット回線<span class="c-Icon_New-window-l"></span></a>が必要となっております。<br>
+                ご契約住所のご自宅に指定インターネット回線はお持ちでしょうか。
+              </p>
+              <p class="c-Txt_Cap u-Adjust_Mb-16">※条件が当てはまらない場合でも、「Rakuten Casa」をご案内させていただく場合がございます。あらかじめご了承ください。</p>
+              <p id="err-radio_00N2u000000QAHi" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+              <label class="c-Form_Radio u-Adjust_Mr-24 u-Adjust_Mb-8">
+                <input type="radio" name="00N2u000000QAHi" value="はい" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">はい</span>
+              </label>
+              <br>
+              <label class="c-Form_Radio u-Adjust_Mr-24 u-Adjust_Mb-8">
+                <input type="radio" name="00N2u000000QAHi" value="いいえ" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">いいえ</span>
+              </label>
+              <br>
+              <label class="c-Form_Radio u-Adjust_Mr-24">
+                <input type="radio" name="00N2u000000QAHi" value="わからない" aria-required="true" data-validate="radio">
+                <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">わからない</span>
+              </label>
+            </dd>
+          </div>
+        </dl>
+        <div id="js-inquiry_Common-section" class="inquiry-Form_Common-section" aria-hidden="true">
+          <dl class="c-Form_List">
+            <div class="inquiry-Form_Item-area">
+              <dt>返信用メールアドレス<span class="c-Form_List-required">必須</span></dt>
+              <dd style="padding-bottom: 24px;">
+                <p id="err-required_email" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+                <p id="err-email_email" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">正しいメールアドレスを入力してください</p>
+                <input class="c-Form_Input" id="email" maxlength="80" name="email" size="20" type="text" placeholder="例）example@example.com" aria-required="true" data-validate="required email" autocomplete="off">
+              </dd>
+            </div>
+          </dl>
+          <h2 class="c-Heading_Lv3  u-Adjust_Mt-40">お客様ご契約情報確認</h2>
+          <p class="u-Adjust_Mt-16">調査にあたり、お客様のご契約情報を確認をさせていただきます。my 楽天モバイルにご登録の情報と、ご入力いただいた情報に相違があった場合、調査に進めない可能性がございます。</p>
+          <p class="u-Adjust_Mt-32"><a href="#modal1" class="c-Link_Txt-inline-icon js-Modal"><span class="c-Icon_Zoom-in-l"></span>ご契約情報の確認方法はこちら</a></p>
+          <dl class="c-Form_List u-Adjust_Mt-32">
+            <div class="inquiry-Form_Item-area">
+              <dt>ご契約情報<span class="c-Form_List-required">必須</span></dt>
+              <dd>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16">ご契約電話番号<span class="c-Form_List-required">必須</span></p>
+                <p class="c-Txt_Cap u-Adjust_Mb-16">※半角数字10文字または半角数字11文字で入力してください<br>※ー（ハイフン）を入れずに入力してください</p>
+                <p id="err-required_00N0I00000Jxe3E" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+                <p id="err-numeric_00N0I00000Jxe3E" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+                <p id="err-length_00N0I00000Jxe3E" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">正しい電話番号を入力してください</p>
+                <input class="c-Form_Input" minlength="10" maxlength="11" name="00N0I00000Jxe3E" size="20" type="text" placeholder="例）090XXXXXXXX" aria-required="true" data-validate="required length numeric" autocomplete="off">
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">楽天モバイルID<span class="c-Form_List-required">必須</span></p>
+                <p class="c-Txt_Cap u-Adjust_Mb-16">※20から始まる13桁の数字を入力してください</p>
+                <p id="err-required_00N2u000000P1oC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+                <p id="err-numeric_00N2u000000P1oC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">半角数字で入力してください</p>
+                <p id="err-length_00N2u000000P1oC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">13文字で入力してください</p>
+                <p id="err-startWith_00N2u000000P1oC" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">20から始まる数字で入力してください</p>
+                <input class="c-Form_Input" minlength="13" maxlength="13" id="00N2u000000P1oC" name="00N2u000000P1oC" size="20" type="text" placeholder="例）20XXXXXXXXXXX" aria-required="true" data-validate="required length numeric startWith" autocomplete="off">
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area">
+              <dt>ご契約者氏名<span class="c-Form_List-required">必須</span></dt>
+              <dd>
+                <p id="err-required_name" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">「姓」は必須項目です</p>
+                <p id="err-required_00N0I00000Jxe34" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">「名」は必須項目です</p>
+                <dl class="c-Form_List-sub">
+                  <div>
+                    <dt>姓</dt>
+                    <dd><input class="c-Form_Input u-Adjust_W-160" maxlength="80" id="name" name="name" size="20" type="text" placeholder="例）楽天" aria-required="true" data-validate="required" autocomplete="off"></dd>
+                  </div>
+                  <div>
+                    <dt>名</dt>
+                    <dd><input class="c-Form_Input u-Adjust_W-160" maxlength="80" id="00N0I00000Jxe34" name="00N0I00000Jxe34" size="20" type="text" placeholder="例）太郎" aria-required="true" data-validate="required" autocomplete="off"></dd>
+                  </div>
+                </dl>
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area">
+              <dt>ご契約者 生年月日<span class="c-Form_List-required">必須</span></dt>
+              <dd>
+                <p id="err-required_00N0I00000JyFjg" class="c-Form_Txt-error u-Adjust_Mb-16" aria-hidden="true">必須項目です</p>
+                <div class="inquiry-Form_Datepicker-container">
+                  <input id="00N0I00000JyFjg" name="00N0I00000JyFjg" class="c-Form_Input u-Adjust_Mb-16 js-Datepicker03 c-Form_Datepicker" maxlength="" size="" type="text" placeholder="" aria-required="true" data-validate="required" readonly>
+                  <span class="c-Icon_Calendar-l js-Datepicker_Btn c-Form_Datepicker_Btn"></span>
+                </div>
+              </dd>
+            </div>
+          </dl>
+          <div class="inquiry-Form_Check-area">
+            <h2 class="c-Heading_Lv3">個人情報の取扱いについて</h2>
+            <p class="u-Adjust_Mt-16">「<a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" target="_blank" class="c-Link_Txt-inline-icon">個人情報の取扱いについて<span class="c-Icon_New-window-l"></span></a>」をご確認いただき、同意される場合は下記のチェックボタンをチェックしてください。</p>
+            <label class="c-Form_Checkbox u-Adjust_Mt-16">
+              <input type="checkbox" name="agree2" value="" aria-required="true">
+              <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">個人情報の取扱いに同意します</span>
+            </label>
+          </div>
+          <p class="c-Txt_Cap u-Adjust_Mt-32">「免責事項」「個人情報の取扱いについて」のチェックボックスにチェックする必要があります。</p>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-48">
+          <button id="js-inquiry_Confirm" data-ratid="" data-ratevent="click" data-ratparam="all" type="button" class="c-Btn_Secondly-large" aria-disabled="true" disabled><span>入力内容を確認する</span></button>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <button type="button" id="js-inquiry_Back" class="c-Btn_Regular-large"><span>戻る</span></button>
+        </div>
+      </div>
+      <div id="modal-confirm" style="display:none;">
+        <h2 class="c-Heading_Lv3 u-Adjust_Mb-32">入力内容の確認</h2>
+        <div class="inquiry-Form_Confirm-initial">
+          <dl class="c-Form_List-confirm">
+            <div class="inquiry-Form_Item-area">
+              <dt>電波改善要望の場所</dt>
+              <dd>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16">不具合発生場所 区分</p>
+                <p id="disp-00N0I00000JycJR" class="u-Adjust_Txt-break"></p>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">不具合発生場所 検索方法</p>
+                <p id="disp-search-method" class="u-Adjust_Txt-break"></p>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">不具合発生場所 郵便番号</p>
+                <p id="disp-00N0I00000JycJH" class="u-Adjust_Txt-break"></p>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">不具合発生場所 住所</p>
+                <p id="disp-00N280000095Txj" class="u-Adjust_Txt-break"></p>
+
+                <div id="js-inquiry-easy-Modal_Map-wrapper" class="inquiry-Form_Item-section" aria-hidden="true">
+                  <div class="<%= namespaceEasy %>-Map u-Adjust_Mt-16">
+                    <div class="<%= namespaceEasy %>-Map_Container" id="js-inquiry-easy-Modal_Map"></div>
+                    <div class="<%= namespaceEasy %>-Map_Loading" id="js-inquiry-easy-Modal_Map-loading">
+                      <div>読み込み中…</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="js-disp-00N0I00000KRr1H-wrapper" class="inquiry-Form_Item-section" aria-hidden="true">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">不具合発生場所 住所（丁目以降）</p>
+                  <p id="disp-00N0I00000KRr1H" class="u-Adjust_Txt-break"></p>
+                </div>
+
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">発生場所種別</p>
+                <p id="disp-00N2u000001T0kB" class="u-Adjust_Txt-break"></p>
+                <div id="disp-floor-position" class="u-Adjust_Mt-32 inquiry-Form_Confirm-initial" aria-hidden="true">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mb-16">階数</p>
+                  <p id="disp-00N2u000000PkFH" class="u-Adjust_Txt-break"></p>
+                </div>
+                <div id="disp-same-address" class="u-Adjust_Mt-32 inquiry-Form_Confirm-initial" aria-hidden="true">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mb-16">ご入力いただいたご自宅住所と、my 楽天モバイルの登録住所は同一住所ですか？</p>
+                  <p id="disp-00N2u000000QARJ" class="u-Adjust_Txt-break"></p>
+                </div>
+                <div id="disp-facility-name" class="u-Adjust_Mt-32 inquiry-Form_Confirm-initial" aria-hidden="true">
+                  <p class="c-Txt_Emp-01 u-Adjust_Mb-16">施設名・具体的な場所</p>
+                  <p id="disp-00N2u000000PkFM" class="u-Adjust_Txt-break"></p>
+                </div>
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area">
+              <dt>アンテナバー／アンテナピクト本数表示</dt>
+              <dd><p id="disp-00N2u000001TCEC" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div id="js-disp-network-variable-kinds" class="inquiry-Form_Item-area">
+              <dt>ネットワーク種別</dt>
+              <dd><p id="disp-00N2u000000Pg8C" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div id="js-disp-network-details" class="inquiry-Form_Item-area">
+              <dt>事象詳細</dt>
+              <dd>
+                <p id="disp-00N2u000000wSye" class="u-Adjust_Txt-break"></p>
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area">
+              <dt>発生時期</dt>
+              <dd><p id="disp-00N2u000000QAHO" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div class="inquiry-Form_Item-area">
+              <dt>事象発生日</dt>
+              <dd>
+                <p>
+                <span id="disp-00N2u000000P1ft" class="u-Adjust_Txt-break">
+                </span>
+                <span id="disp-00N0I00000JyyIk" class="u-Adjust_Txt-break">
+                </span>
+                <span id="disp-00N0I00000JyyIp" class="u-Adjust_Txt-break">
+                </span>
+                </p>
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area">
+              <dt>ご利用中のスマートフォン</dt>
+              <dd>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16">使用製品</p>
+                <p id="disp-00N2u000000PdLm" class="u-Adjust_Txt-break"></p>
+
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">ご利用中のスマートフォン詳細</p>
+                <p id="disp-00N280000095TyO" class="u-Adjust_Txt-break"></p>
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area">
+              <dt>ご意見・ご要望詳細</dt>
+              <dd><p id="disp-00N2u000000PkIp" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="inquiry-Form_Confirm-common">
+          <dl class="c-Form_List-confirm">
+            <div class="inquiry-Form_Item-area">
+              <dt>ご案内方法</dt>
+              <dd>
+                <p id="disp-00N2u000000QAHT" class="u-Adjust_Txt-break"></p>
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area" id="disp-rakuten-casa" aria-hidden="false">
+              <dt>Rakuten Casa設置希望</dt>
+              <dd>
+                <p id="disp-00N2u000000grnt" class="u-Adjust_Txt-break"></p>
+              </dd>
+            </div>
+            <div class="inquiry-Form_Item-area" id="disp-sec-env" aria-hidden="false">
+              <dt>インターネット環境</dt>
+              <dd>
+                <p id="disp-00N2u000000QAHi" class="u-Adjust_Txt-break"></p>
+              </dd>
+            </div>
+            <div class="js-not-is-answer-by-email inquiry-Form_Item-area" aria-hidden="false">
+              <dt>返信用メールアドレス</dt>
+              <dd><p id="disp-email" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+            <div class="js-not-is-answer-by-email inquiry-Form_Item-area" aria-hidden="false">
+              <dt>ご契約情報</dt>
+              <dd>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16">ご契約電話番号</p>
+                <p id="disp-00N0I00000Jxe3E" class="u-Adjust_Txt-break"></p>
+                <p class="c-Txt_Emp-01 u-Adjust_Mb-16 u-Adjust_Mt-32">楽天モバイルID</p>
+                <p id="disp-00N2u000000P1oC" class="u-Adjust_Txt-break"></p>
+              </dd>
+            </div>
+            <div class="js-not-is-answer-by-email inquiry-Form_Item-area" aria-hidden="false">
+              <dt>ご契約者氏名</dt>
+              <dd><p><span id="disp-name" class="u-Adjust_Txt-break"></span> <span id="disp-00N0I00000Jxe34" class="u-Adjust_Txt-break"></span></p></dd>
+            </div>
+            <div class="js-not-is-answer-by-email inquiry-Form_Item-area" aria-hidden="false">
+              <dt>ご契約者 生年月日</dt>
+              <dd><p id="disp-00N0I00000JyFjg" class="u-Adjust_Txt-break"></p></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-40">
+          <button type="button" data-ratid="" data-ratevent="click" data-ratparam="all" id="js-inquiry_Submit" class="c-Btn_Primary-large"><span>この内容で送信する</span></button>
+        </div>
+        <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+          <button type="button" id="js-inquiry_Confirm-close" class="c-Btn_Regular-large"><span>修正する</span></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_common-js', {jquery: '3.7.1'}) %>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+<script>
+(function() {
+    const setZipToAddressListener = (triggerClassName, zipCodeId, addressId) => {
+      const triggers = document.getElementsByClassName(triggerClassName);
+      triggers[0].addEventListener('click', () => {
+        AjaxZip3.zip2addr(zipCodeId, '', addressId, addressId);
+      });
+    }
+    setZipToAddressListener('js-inquiry_Zip2addr', '00N0I00000JycJH', '00N280000095Txj');
+})();
+</script>
+<script src="<%= sitepath %>assets/js/inquiry.input-interview.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/library/markerclustererplus.min.js?200408"></script>
+<%- include('/include/inquiry/_input') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

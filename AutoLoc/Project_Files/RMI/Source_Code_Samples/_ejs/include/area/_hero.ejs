@@ -1,0 +1,68 @@
+<%_
+const pagearea = jData.directory2 ? jData.city : jData.pref;
+const coverage = jData.cover_ratio.slice( 0, -1 );
+const [intPart, decPart] = coverage.split('.').map(String);
+
+const namespace = "area-city"
+const imgPath = "/assets/img/area/city/"
+_%>
+<section>
+  <%_ if( jData.directory2 ) { _%>
+    <div class="u-Rat_Appear-height" data-ratid="city_area_kanban" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } else { _%>
+    <div class="u-Rat_Appear-height" data-ratid="prefecture_area_kanban" data-ratevent="appear" data-ratparam="all">&nbsp;</div>
+  <%_ } _%>
+  <div class="<%= namespace %>-Hero">
+    <div class="<%= namespace %>-Hero_Main">
+        <h1 class="<%= namespace %>-Hero_Heading">
+        <span class="<%= namespace %>-Hero_Heading-text">
+          <span class="<%= namespace %>-Hero_Heading-first">
+            <span class="<%= namespace %>-Hero_Heading-region">
+              <%_ if( jData.directory2 ) { _%>
+                <span class="<%= namespace %>-Hero_Heading-region-s"><%= jData.pref %></span>
+              <%_ } _%>
+              <span class="<%= namespace %>-Hero_Heading-region-l"><%= pagearea %></span>
+            </span>
+            <span class="<%= namespace %>-Hero_Heading-center">でも</span>
+          </span>
+          <span class="<%= namespace %>-Hero_Heading-last">
+            <span class="<%= namespace %>-Hero_Heading-coverage-txt">
+              <span class="<%= namespace %>-Hero_Heading-coverage-txt-1">人口</span>
+              <span class="<%= namespace %>-Hero_Heading-coverage-txt-2">カバー率</span>
+            </span>
+            <span class="<%= namespace %>-Hero_Heading-coverage-num">
+              <span class="<%= namespace %>-Hero_Heading-coverage-num-l"><%= intPart %></span>.<span class="<%= namespace %>-Hero_Heading-coverage-num-s"><%= decPart %></span><span class="<%= namespace %>-Hero_Heading-coverage-per">%</span><span class="<%= namespace %>-Hero_Heading-sub">※1</span>
+            </span>
+          </span>
+        </span>
+        <span class="<%= namespace %>-Hero_Heading-image">
+          <% const HeroImage = Object.entries(jData).find(([key, value]) => key === "kv_cth_pc" && value !== "catch-pc.png"); %>
+          <% if (HeroImage) { %>
+            <img class="<%= namespace %>-Hero_Main-catch" src="<%= imgPath %>kv/<%=  jData.kv_cth_pc %>" width="1320" height="188" alt="お客様増加数No1">
+          <% } else { %>
+            <img class="<%= namespace %>-Hero_Main-catch" src="<%= imgPath %>kv/catch-pc.png" width="1320" height="188" alt="「最強」のコストパフォーマンスを目指して より速く！よりつながりやすく！ネットワーク改善プロジェクト進行中">
+          <% } %>
+        </span>
+      </h1>
+      <div class="<%= namespace %>-Hero_Mask <%= namespace %>-Hero_Mask <%= namespace %>-Hero_Mask <%= namespace %>-Hero_Mask-l"></div>
+      <div class="<%= namespace %>-Hero_Mask <%= namespace %>-Hero_Mask <%= namespace %>-Hero_Mask <%= namespace %>-Hero_Mask-r"></div>
+      <img class="<%= namespace %>-Hero_Img" src="<%= imgPath %>kv/<%= jData.kv_img %>" width="377" height="240" alt="データ高速無制限でつながる">
+    </div>
+    <div class="<%= namespace %>-Hero_Sub">
+      <% if (HeroImage) { %>
+        <img class="<%= namespace %>-Hero_Sub-catch" src="<%= imgPath %>kv/<%= jData.kv_cth_sp %>" width="1320" height="188" alt="お客様増加数No1">
+      <% } else { %>
+      <img class="<%= namespace %>-Hero_Sub-catch" src="<%= imgPath %>kv/catch-sp.png" width="1320" height="188" alt="「最強」のコストパフォーマンスを目指して より速く！よりつながりやすく！ネットワーク改善プロジェクト進行中">
+      <% } %>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="u-Adjust_Pt-8">
+      <% if (jData.kv_notice_txt) { %>
+        <p class="c-Txt_Cap"><%- jData.kv_notice_txt %></p>
+      <% } else { %>
+        <p class="c-Txt_Cap">※1 2023年9月時点。人口カバー率は、国勢調査に用いられる約500m区画において、50%以上の場所で通信可能なエリアを基に算出</p>
+      <% } %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,232 @@
+<%
+const namespace = "saikyo-plan-Modal"
+
+const askDataSizeList = [
+  {label: '0.5GB以下', value: 'under_0.5'},
+  {label: '1GB以下', value: 'under_1'},
+  {label: '2GB以下', value: 'under_2'},
+  {label: '3GB以下', value: 'under_3'},
+  {label: '4GB以下', value: 'under_4'},
+  {label: '5GB以下', value: 'under_5'},
+  {label: '6GB以下', value: 'under_6'},
+  {label: '7GB以下', value: 'under_7'},
+  {label: '9GB以下', value: 'under_9'},
+  {label: '15GB以下', value: 'under_15'},
+  {label: '20GB以下', value: 'under_20'},
+  {label: '25GB以下', value: 'under_25'},
+  {label: '30GB以下', value: 'under_30'},
+  {label: '50GB以下', value: 'under_50'},
+  {label: '60GB以下', value: 'under_60'},
+  {label: '100GB以下', value: 'under_100'},
+  {label: '150GB以下', value: 'under_150'},
+  {label: '150GB超', value: 'over_150'},
+  {label: '分からない', value: 'unknown'},
+];
+
+const carrierList = [
+  {label: 'docomo', value: 'docomo'},
+  {label: 'au', value: 'au'},
+  {label: 'SoftBank', value: 'softbank'},
+  {label: 'Y!mobile', value: 'ymobile'},
+  {label: 'UQ mobile', value: 'uqmobile'},
+  {label: 'ahamo', value: 'ahamo'},
+  {label: 'povo2.0', value: 'povo'},
+  {label: 'LINEMO', value: 'linemo'},
+  {label: 'eximo', value: 'docomo_eximo'},
+  {label: 'irumo', value: 'docomo_irumo'},
+  {label: 'ペイトク', value: 'softbank_paytoku'},
+  {label: 'その他', value: 'other'},
+];
+
+const contractLines = [
+  {label: 'なし', value: ''},
+  {label: '2回線', value: 'family_2'},
+  {label: '3回線', value: 'family_3_over'},
+];
+
+%>
+
+<style>
+  .saikyo-plan-Modal .modaal-content-container {
+    padding: 0 !important;
+  }
+
+  .saikyo-plan-Modal .modaal-container {
+    max-width: 504px !important;
+  }
+</style>
+
+<div class="<%= namespace %>_Btn-side">
+  <a href="#modalBtnContent" id="modalBtn" data-ratid="saikyo-plan_simulation_b_banner_click" data-ratevent="click">
+    <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-btn.png" width="48" height="83" alt="おトク度チェック！">
+  </a>
+</div>
+
+<div class="<%= namespace %>_Container" id="modalBtnContent" style="display:none;">
+
+  <div id="entry" class="<%= namespace %>_Container-entry current">
+    <div class="<%= namespace %>_Container-entry-header u-Adjust_Align-center">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-title-sp.png" width="546" height="206">
+        <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-title-pc.png" width="450" height="69" alt="楽天モバイルに乗り換えで、どれだけおトクになる？30秒ですぐ結果 料金＆ポイントかんたんチェック！">
+      </picture>
+    </div>
+    <div class="<%= namespace %>_Container-entry-body" data-ratid="saikyo-plan_simulation_b_modal" data-ratevent="appear">
+      <div>
+        <div class="<%= namespace %>_Input-section-title">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-select-title01.png" width="381" height="31" alt="１ヶ月に使うデータ量はどのくらいですか？">
+        </div>
+        <div class="c-Form_Select">
+          <select name="askDataSize" id="askDataSize" class="formItems">
+            <option value="">選択してください</option>
+            <% askDataSizeList.forEach((item) => { %>
+              <option value="<%= item.value %>"><%= item.label %></option>
+            <% }) %>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-16" id="selectCarrier">
+        <div class="<%= namespace %>_Input-section-title">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-select-title02.png" width="381" height="31" alt="いまどの携帯電話会社を使っていますか？">
+        </div>
+        <div class="c-Form_Select">
+          <select name="carrier" id="carrier" class="formItems" disabled>
+            <option value="">選択してください</option>
+            <% carrierList.forEach((item) => { %>
+              <option value="<%= item.value %>"><%= item.label %></option>
+            <% }) %>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-16" id="selectFamily">
+        <p class="<%= namespace %>_Input-section-title">家族割をご利用の場合は選択してください</p>
+        <div class="<%= namespace %>_Input-section-wrap">
+          <% contractLines.forEach((item) => { %>
+            <label class="c-Form_Radioblock">
+              <% if (item.value === '') { %>
+                <input type="radio" name="lines" value="<%= item.value %>" checked />
+              <%  } else { %>
+                <input type="radio" name="lines" value="<%= item.value %>" />
+              <% } %>
+              <span class="c-Form_Radioblock-wrap">
+                <span class="c-Form_Radio-label <%= namespace %>_Radio-label"><%= item.label %></span>
+              </span>
+            </label>
+          <% }) %>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+        <div class="<%= namespace %>_Btn-submit-box">
+          <div class="<%= namespace %>_Bg-center">
+            <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-bg-illustrator.png" width="230" height="56" alt="">
+          </div>
+          <button class="c-Btn_Primary-large <%= namespace %>_Btn-submit" id="btnSubmit" aria-disabled="true" data-ratid="" data-ratevent="click">シミュレーション結果を見る</button>
+          <p class="u-Adjust_Mt-8 <%= namespace %>_Comment">*2023年10月3日時点の情報</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="result" class="<%= namespace %>_Container-result">
+    <div class="<%= namespace %>_Section">
+      <div class="<%= namespace %>_Container-result-header" id="resultHeader">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-result-title-sp.png" width="221" height="19">
+          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-result-title-pc.png" width="306" height="26" alt="楽天モバイルに乗り換えると">
+        </picture>
+      </div>
+      <div class="<%= namespace %>_Container-result-body" id="resultBody">
+        <div class="<%= namespace %>_Appeal-Loading" id="js-modal-loading">
+          <div class="<%= namespace %>_Appeal-Loading-container"><div class="<%= namespace %>_Appeal-Loading-item"></div></div>
+        </div>
+        <div id="resultBodyWrap">
+          <div class="<%= namespace %>_Appeal-graph-wrap">
+            <div class="<%= namespace %>_Appeal-graph js-graph" id="js-graph-modal">
+              <div class="<%= namespace %>_Appeal-graph-main">
+                <div class="<%= namespace %>_Appeal-graph-items">
+                  <div class="<%= namespace %>_Appeal-graph-item">
+                    <div class="<%= namespace %>_Appeal-graph-bar <%= namespace %>_Appeal-graph-bar--target js-graph-target-modal">
+                      <div class="js-win-pattern" style="display:none;">
+                        <div class="<%= namespace %>_Appeal-graph-arrow <%= namespace %>_Appeal-graph-arrow--long js-graph-arrow-long-modal" style="display: none;">
+                          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/graph-arrow-long.svg" alt="" width="306" height="47">
+                        </div>
+                        <div class="<%= namespace %>_Appeal-graph-arrow <%= namespace %>_Appeal-graph-arrow--short js-graph-arrow-short-modal" style="display: none;">
+                          <img src="<%= sitepath %>assets/img/fee/saikyo-plan/graph-arrow-short.svg" alt="" width="74" height="28">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="<%= namespace %>_Appeal-graph-value js-graph-value-target">
+                      <div class="<%= namespace %>_Appeal-graph-carrier js-graph-target-carrier-modal"></div>
+                      <div class="<%= namespace %>_Appeal-graph-price"><span class="<%= namespace %>_Appeal-graph-price-num js-graph-target-price-modal"></span><span class="<%= namespace %>_Appeal-graph-price-num-comment-wrap">円<span class="<%= namespace %>_Appeal-graph-price-num-comment-upper">*1</span></span></div>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>_Appeal-graph-item">
+                    <div class="<%= namespace %>_Appeal-graph-bar <%= namespace %>_Appeal-graph-bar--rmi js-graph-rmi-modal"></div>
+                    <div class="<%= namespace %>_Appeal-graph-value js-graph-value-rmi">
+                      <div class="<%= namespace %>_Appeal-graph-carrier">楽天モバイル</div>
+                      <div class="<%= namespace %>_Appeal-graph-price"><span class="<%= namespace %>_Appeal-graph-price-num js-graph-rmi-price-modal"></span>円</div>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>_Appeal-graph-item <%= namespace %>_Appeal-graph-item-point">
+                    <div class="<%= namespace %>_Appeal-graph-bar <%= namespace %>_Appeal-graph-bar--point js-graph-point-modal"></div>
+                    <div class="<%= namespace %>_Appeal-graph-value <%= namespace %>_Appeal-graph-value-point js-graph-value-point">
+                      <div class="<%= namespace %>_Appeal-graph-carrier">楽天ポイント利用時</div>
+                      <div class="<%= namespace %>_Appeal-graph-price"><span class="<%= namespace %>_Appeal-graph-price-num js-graph-point-price-modal"></span>円</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>_Appeal-graph-point">
+                  <div class="<%= namespace %>_Appeal-graph-point-inner">
+                    <p>
+                      <span class="js-monthly-point-text">楽天モバイルご利用者の<br class="u-Show_Oox">月平均獲得</span>
+                      <span class="c-Txt_Emp-02"><span class="js-monthly-point"></span>ポイント</span>を利用<span class="<%= namespace %>_Appeal-graph-point-comment">*2</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="<%= namespace %>_Appeal-diff u-Adjust_Mt-8 js-win-pattern" style="display: none;">
+                <div class="<%= namespace %>_Appeal-diff-container">
+                  <p>
+                    <span class="<%= namespace %>_Appeal-diff-text">
+                      <span class="<%= namespace %>_Appeal-diff-term">2年間で</span>
+                      <span class="<%= namespace %>_Appeal-diff-price">
+                        <span class="<%= namespace %>_Appeal-diff-price-num js-graph-diff-price-modal"></span>
+                        円
+                      </span>
+                      <span class="<%= namespace %>_Appeal-graph-point-comment-wrap">
+                        おトク!<span class="<%= namespace %>_Appeal-graph-point-comment-upper">*3</span>
+                      </span>
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <p class="c-Txt_Cap u-Adjust_Mt-8 u-Adjust_Align-center">*1 <span class="js-graph-target-plan"></span>で算出</p>
+            </div>
+          </div>
+          <div class="<%= namespace %>_Appeal-otherImg" id="otherPatternImg">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-data04-sp.png" width="590" height="260">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-data04-pc.png" width="457" height="145" alt="データ高速無制限">
+            </picture>
+          </div>
+          <div class="u-Adjust_Mt-16">
+            <picture id="additionalImg">
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-additional01-sp.png" width="590" height="118">
+              <img src="<%= sitepath %>assets/img/fee/saikyo-plan/simulation-modal-additional01-pc.png" width="457" height="77" alt="さらにRakuten Linkアプリ利用で国内通話0円">
+            </picture>
+          </div>
+          <div class="u-Adjust_Mt-16">
+            <a href="" class="c-Btn_Primary-large <%= namespace %>_Btn-submit" id="applicationBtn">今すぐお申し込み</a>
+          </div>
+          <p class="u-Adjust_Mt-16">
+            <a href="#" class="c-Link_Txt-icon-front js-reTry" id="retryBtn" data-ratid="" data-ratevent="click"><span class="c-Icon_Chevron-left"></span>もう一度試す</a>
+          </p>
+          <p class="u-Adjust_Mt-8 <%= namespace %>_Comment" id="resultComment"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

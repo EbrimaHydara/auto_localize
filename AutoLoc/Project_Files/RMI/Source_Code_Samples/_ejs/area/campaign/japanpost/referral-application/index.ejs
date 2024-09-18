@@ -1,0 +1,301 @@
+<% const pagetitle = '楽天モバイル紹介キャンペーン！紹介された方に10,000ポイントプレゼント'
+const directories = [{path:"area/", label:"通信・エリア"}]
+const namespace = "japanpost-referral-application"
+const campaignState = ""
+const entryData = "2024年5月13日（月）9:00～2024年10月31日（木）23:59"
+const japanpostdata = "日本郵政グループ従業員・ご家族様限定キャンペーン窓口 050-5443-6493(営業時間9:00-17:00※定休日無し)"
+
+-%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '楽天モバイルご契約者様からの紹介で申し込むと10,000ポイントを進呈するキャンペーンです。',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/inc/_about-rakuten-mobile-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/campaign/japanpost/referral-application/japanpost-referral-application.css">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <%- include('/include/_breadcrumbs', {
+      type: 'head',
+      pagetitle,
+      directories,
+    }) %>
+
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List">
+        <li class="c-Label_Normal">エントリー必要</li>
+      </ul>
+      <p class="<%= namespace %>-Layout_Label-point">ポイント：進呈日を含めて6カ月の期間限定ポイント</p>
+    </div>
+
+    <section class="<%= namespace %>-Hero">
+      <div class="<%= namespace %>-Hero_Main">
+        <h1>
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral-application/kv-sp.png" width="750" height="540">
+            <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/kv-pc.png" alt="日本郵政グループ従業員様・ご家族様限定 楽天モバイル紹介キャンペーン 初めて本キャンペーンからのお申し込みで10,000円相当ポイントプレゼント！" width="1440" height="321">
+          </picture>
+        </h1>
+      </div>
+    </section>
+
+    <ul class="l-System_Container c-Txt_Cap u-Adjust_Mt-16">
+      <li>※日本郵政グループ従業員様・ご家族様がお申し込みをされる場合は「<a href="<%= sitepath %>area/campaign/japanpost/byod/?l-id=campaign_japanpost_referral-application_campaign_japanpost_byod" class="c-Link_Txt">【お得意様向け（福利厚生・スポンサー特典）】Rakuten最強プランのお申し込みで、20,000ポイントプレゼントキャンペーン（2258）</a>」をご利用ください</li>
+      <li class="c-Txt_Emp-02">※「Rakuten最強プラン（データタイプ）」は対象外です</li>
+      <li>※ポイントは期間限定ポイントとして進呈いたします</li>
+    </ul>
+
+    <div class="l-System_Container u-Adjust_Mt-24 u-Adjust_Mb-24">
+      <% if (campaignState === 'finish') { %>
+      <div class="u-Adjust_Align-center">
+        <p class="c-Txt_Emp-02 c-Heading_Lv4">
+          本キャンペーンは<%= enddate %>をもちまして終了いたしました。<br>
+          このページに掲載されている情報は、キャンペーン終了時点のものです。<br>
+          ※キャンペーン終了後のご紹介は無効となりますのでご留意ください。
+        </p>
+      </div>
+      <% } %>
+      <div class="u-Adjust_Align-center">
+        <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%= japanpostdata %></p>
+        <p class="u-Adjust_Mt-24 u-Adjust_Mb-8">
+          <span class="c-Txt_Emp-01 ">【キャンペーン期間】</span>
+          <br class="u-Show_Sp">
+          <%= entryData %>
+        </p>
+      </div>
+    </div>
+
+    <section class="<%= namespace %>-Section_Adjust <%= namespace %>-Step <%= namespace %>-Util_Bg-gray">
+      <div class="l-System_Container">
+        <h2 class="c-Heading_Lv2 u-Adjust_Align-center">キャンペーンの流れ</h2>
+        <ol class="<%= namespace %>-Step_Accordion u-Adjust_Mt-24">
+
+          <li class="<%= namespace %>-Accordion_Card c-Accordion">
+            <button type="button" id="accordion-step-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-step-1" data-ratId="campaign_japanpost_referral-application_accordion-step1_01" data-ratevent="click" data-ratparam="all">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>
+              <span class="<%= namespace %>-Accordion_Label">
+                <span class="<%= namespace %>-Accordion_Label-step">STEP 1</span>
+                <span>楽天モバイルのお申し込み</span>
+              </span>
+            </button>
+            <div id="accordion-content-step-1" class="c-Accordion_Panel js-Accordion_Panel <%= namespace %>-Accordion_Card-panel" role="region" aria-labelledby="accordion-step-1" aria-hidden="true">
+              <div class="c-Tab js-Tab">
+                <ul class="c-Tab_Items" role="tablist">
+                  <li class="c-Tab_Item" id="tab-menu1-1" role="tab" aria-selected="true" aria-controls="tab-content1-1" data-ratId="campaign_japanpost_referral-application_tab_application_web_01 " data-ratevent="click" data-ratparam="all">Web</li>
+                  <li class="c-Tab_Item" id="tab-menu1-2" role="tab" aria-selected="false" aria-controls="tab-content1-2" data-ratId="campaign_japanpost_referral-application_tab_application_shop_01" data-ratevent="click" data-ratparam="all">ショップ</li>
+                </ul>
+                <div class="c-Tab_Panel" id="tab-content1-1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1-1">
+                  <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+                    <div class="l-Media_Grid">
+                      <div class="l-Media_Image">
+                        <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/img-point-02.png" width="285" height="169" alt="本人確認書類" loading="lazy">
+                      </div>
+                      <div>
+                        <h3 class="c-Heading_Lv4">お申し込みに必要なもの</h3>
+                        <ul class="c-List_Text-disc <%= namespace %>-List_Narrow u-Adjust_Mt-8">
+                          <li>
+                            <a href="<%= sitepath %>guide/verify/?l-id=campaign_japanpost_referral-application_guide_verify_01" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a>
+                          </li>
+                          <li>
+                            楽天会員ID、パスワード
+                          </li>
+                          <li>
+                            <a href="<%= sitepath %>guide/payment/?l-id=campaign_japanpost_referral-application_guide_payment_01" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a>
+                          </li>
+                        </ul>
+                        <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                          <li>※未成年の方のお申し込み方法は<a href="<%= sitepath %>flow/for-minors/?l-id=campaign_japanpost_referral-application_flow_for-minors" class="c-Link_Txt">こちら</a></li>
+                          <li>※MNPワンストップ未対応の携帯電話会社から乗り換えの方は、MNP予約番号の取得が必要です。MNPワンストップ対象の携帯電話会社は<a href="<%= sitepath %>guide/mnp/#career" class="c-Link_Txt">こちら</a>からご確認ください。</li>
+                          <li>※ショップでのお手続きは、ワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="<%= namespace %>-Grid_2col u-Adjust_Mt-24">
+                    <div class="c-Theme-Borderbox">
+                      <h4 class="c-Heading_Lv4 <%= namespace %>-Heading_Icon-front"><span class="c-Icon_New-user-f"></span>新規電話番号／他社から乗り換え（MNP）</h4>
+                      <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                        <a class="c-Btn_Primary-large" aria-disabled="false" href="https://onboarding.mobile.rakuten.co.jp/?l-id=campaign_japanpost_referral-application"><span>お申し込みはこちら</span></a>
+                      </div>
+                      <div class="u-Adjust_Align-center">
+                        <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>fee/saikyo-plan/?l-id=campaign_japanpost_referral-application_fee_saikyo-plan" class="c-Link_Txt-inline">Rakuten最強プランの詳細<span class="c-Icon_Chevron-right"></span></a></p>
+                        <p class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/flow/application/?l-id=campaign_japanpost_referral-application_guide_flow_application" class="c-Link_Txt-inline">Rakuten最強プランのお申し込み方法<span class="c-Icon_Chevron-right"></span></a></p>
+                      </div>
+                    </div>
+                    <div class="c-Theme-Borderbox">
+                      <h4 class="c-Heading_Lv4 <%= namespace %>-Heading_Icon-front"><span class="c-Icon_Paper-plane-l"></span>楽天モバイル（ドコモ・au回線）からプラン変更（移行）</h4>
+                      <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_japanpost_referral-application_ms1&mno_migration=1" class="c-Btn_Secondly-large">
+                          <span>メンバーズステーションから<br class="u-Show_Xxo">MNP予約番号を発行する</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="c-Tab_Panel" id="tab-content1-2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu1-2">
+                  <div class="u-Adjust_Align-center">
+                    <p class="c-Txt_Emp-02 c-Txt_Normal-s u-Adjust_Mt-24">※ショップでご契約される場合は、本キャンペーンを適用する旨のご申告と合わせて本画面を店舗スタッフにお見せください</p>
+                    <a href="<%= sitepath %>shop/?l-id=campaign_japanpost_byod_shop_02" class="c-Btn_Secondly-large u-Adjust_Mt-8">お近くのショップを探す</a>
+                  </div>
+                  <div class="<%= namespace %>-Layout_whitebox c-Theme-Borderbox u-Adjust_Mt-24">
+                    <div class="l-Media_Grid" style="align-items: center;">
+                      <div class="l-Media_Image c-Flow_Image">
+                        <picture>
+                          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/campaign/japanpost/byod/img-05-sp.png" width="232">
+                          <img src="<%= sitepath %>assets/img/campaign/japanpost/byod/img-05-pc.png" width="280" height="180" alt="本人確認書類">
+                        </picture>
+                      </div>
+                      <div>
+                        <p class="c-Txt_Emp-01">お申し込みに必要なもの</p>
+                        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                          <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/verify/?l-id=campaign_japanpost_byod_guide_verify_shop" class="c-Link_Txt-inline">本人確認書類<span class="c-Icon_Chevron-right"></span></a></li>
+                          <li class="u-Adjust_Mt-8">楽天会員ID、パスワード</li>
+                          <li class="u-Adjust_Mt-8"><a href="<%= sitepath %>guide/payment/?l-id=campaign_japanpost_byod_guide_payment_shop" class="c-Link_Txt-inline">クレジットカード、銀行口座情報<span class="c-Icon_Chevron-right"></span></a></li>
+                        </ul>
+                        <p class="c-Txt_Cap u-Adjust_Mt-8">※<a href="<%= sitepath %>flow/for-minors/?l-id=campaign_japanpost_byod_flow_for-minors_shop">未成年の方のお申し込み方法はこちら</a></p>
+                        <p class="c-Txt_Cap u-Adjust_Mt-8">※ショップでのお手続きは、ワンストップ対象の他社からの転入であっても、MNP予約番号を取得のうえ、ご来店ください。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="<%= namespace %>-Accordion_Card c-Accordion">
+            <button type="button" id="accordion-step-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-step-2" data-ratId="campaign_referral-application_accordion-step2_01" data-ratevent="click" data-ratparam="all">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>
+              <span class="<%= namespace %>-Accordion_Label">
+                <span class="<%= namespace %>-Accordion_Label-step">STEP 2</span>
+                <span>「Rakuten最強プラン」利用開始</span>
+              </span>
+            </button>
+            <div id="accordion-content-step-2" class="c-Accordion_Panel js-Accordion_Panel <%= namespace %>-Accordion_Card-panel" role="region" aria-labelledby="accordion-step-2" aria-hidden="true">
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/img-illust-01.png" width="304" height="136" alt="「Rakuten最強プラン」利用開始" loading="lazy">
+                </div>
+                <div>
+                  <p><span class="c-Txt_Emp-01">期限：紹介メッセージ経由でのログイン日の翌月末日23:59まで</span></p>
+                  <div class="u-Adjust_Mt-24">
+                    <a href="https://network.mobile.rakuten.co.jp/faq/detail/00001648/?l-id=campaign_japanpost_referral-application_faq_detail_00001648" class="c-Btn_Regular"><span>プラン利用開始手順</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="c-Theme-Borderbox <%= namespace %>-Util_Bg-white">
+            <div class="l-Media_Grid-reverse">
+              <div>
+                <h4 class="<%= namespace %>-Heading_Referral">
+                  紹介された方に<br class="u-Show_Oox"><span class="c-Txt_Emp-02"><em class="<%= namespace %>-Txt_Emp-num">10,000</em>ポイントプレゼント！</span>
+                </h4>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">
+                  ※プラン利用開始した月の4ヶ月後の末日頃に期間限定ポイントとして進呈<br>
+                  ※本キャンペーンの適用はおひとり様1回限り
+                </p>
+              </div>
+              <div class="l-Media_Image">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral-application/img-step-point.png" width="212" height="92">
+                  <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/img-step-point.png" width="304" height="110" alt="point logo" loading="lazy">
+                </picture>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="<%= namespace %>-Section_Bnr">
+      <div class="l-System_Container">
+        <div class="<%= namespace %>-Bnr_Head u-Adjust_Align-center u-Adjust_Pb-16 u-Adjust_Pt-48">
+          <div class="<%= namespace %>-Bnr_Heading">
+            <div class="<%= namespace %>-Bnr_Comment">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-simulation-comment-sp.png" width="480" height="128">
+                <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-simulation-comment-pc.png" width="468" height="54" alt="楽天モバイルを使うとこんなにおトク！を伝えよう" loading="lazy">
+              </picture>
+            </div>
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-simulation-title-sp.png" width="620" height="216">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-simulation-title-pc.png" width="780" height="43" alt="家族やお友達がいくらおトクになるのかシミュレーション！" loading="lazy">
+            </picture>
+          </div>
+        </div>
+        <div class="<%= namespace %>-Bnr_Body u-Adjust_Align-center">
+          <div class="<%= namespace %>-Bnr_Body-inner">
+            <p>現在お使いのキャリアとプラン料金を比較できます。<br class="u-Show_Pc">料金シミュレーションでどれくらい節約できるのか今すぐチェック！</p>
+            <div class="u-Show_Sp u-Adjust_Mt-16">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-simulation-img-sp.png" width="620" height="248" alt="プラン料金をシミュレーション" loading="lazy">
+            </div>
+            <a href="<%= sitepath %>fee/simulation/?l-id=campaign_japanpost_referral-application_fee_un-limit_simulation" class="c-Btn_Secondly-large <%= namespace %>-Bnr_Btn"><span>プラン料金をシミュレーションする</span></a>
+          </div>
+        </div>
+        <div class="<%= namespace %>-Bnr_Link">
+          <div class="u-Show_Oox u-Adjust_Align-center">
+            <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-link-1.png" width="109" height="114" alt="rakuten-link1" loading="lazy">
+          </div>
+          <p class="<%= namespace %>-Bnr_Link-title u-Adjust_Align-center">Rakuten Linkアプリ利用で国内通話かけ放題！<span class="<%= namespace %>-Bnr_Link-annotation">※6</span></p>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-link-2-sp.png" width="622" height="204">
+              <img src="<%= sitepath %>assets/img/campaign/japanpost/referral-application/bnr-link-2-pc.png" width="925" height="202" alt="rakuten-link2" loading="lazy">
+            </picture>
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-32 u-Adjust_Align-center">
+            <a href="<%= sitepath %>service/rakuten-link/?l-id=campaign_japanpost_referral-application_service_rakuten-link" class="c-Btn_Regular-large <%= namespace %>-Bnr_Link-btn"><span>詳細を見る</span></a>
+          </div>
+          <p class="<%= namespace %>-Bnr_Link-annotation u-Adjust_Mt-16">
+            ※（0180）（0570）などから始まる他社接続サービス、一部特番（188）への通話については、無料通話の対象外となります。OS標準の電話アプリを利用した場合、30秒22円
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="<%= namespace %>-Util_Bg-gray <%= namespace %>-Section">
+      <%- include('/inc/_about-rakuten-mobile', { baseLId: 'japanpost_referral-application' }) %>
+    </section>
+
+    <section id="campaign-rule" class="u-Adjust_Pt-48 u-Adjust_Pb-48 <%= namespace %>-Utility_Bg-gray">
+      <div class="l-System_Container">
+        <%_ if (campaignState === "finish") { _%>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-32 u-Adjust_Mb-32">
+            <p class="c-Txt_Normal-m c-Txt_Emp-02">
+              本キャンペーンは<%= enddate %>をもちまして終了いたしました。<br>
+              このページに掲載されている情報は、キャンペーン終了時点のものです。
+            </p>
+          </div>
+        <%_ } _%>
+        <!-- 2259 -->
+        <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2259', level: 'h2', year: '2024', class: '' }}) %>
+      </div>
+    </section>
+
+    <footer class="g-Footer">
+      <div class="l-System_Container">
+        <%- include('/include/_breadcrumbs', {
+          type: 'foot',
+          pagetitle,
+          directories,
+        }) %>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+
+  </div>
+  <%- include('/include/_common-js') %>
+  <%- include('/include/_append-body') %>
+</body>
+</html>

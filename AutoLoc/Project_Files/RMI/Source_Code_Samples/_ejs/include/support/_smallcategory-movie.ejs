@@ -1,0 +1,217 @@
+<%_
+  const {namespace, movieContent, youtubeContent} = pageInfo
+  const youtubes = youtubeContent || []
+  const movies = movieContent || []
+  const movieContents = [...youtubes, ...movies]
+  const layoutClasses = movieContents.length >= 6 ? `${namespace}-Layout_Movie u-Adjust_Mb-32` : `${namespace}-Layout_Movie u-Adjust_Mb-48`
+  var productSetting = `support_movie_`
+_%>
+<div class="<%= layoutClasses %>">
+  <div class="l-System_Container">
+    <div class="<%= namespace %>-Category_Heading u-Adjust_Align-center">
+      <h2 class="c-Heading_Lv2">動画で見る</h2>
+      <p class="u-Adjust_Mt-16">設定手順に関する知りたい・調べたい情報を動画でご案内いたします</p>
+
+      <div class="<%= namespace %>-Movie <%= namespace %>-Movie_Pc">
+        <%_ for (let i = 0; i < 6; i++) { _%>
+
+          <%_ if (!movieContents[i]) { break } _%>
+          <%_ if (movieContents[i].isYoutube) { _%>
+            <%_ if (movieContents[i].isProduct) {
+                productSetting = `support_product_setting_movie_`
+             } else {
+                productSetting = `support_movie_`
+             } _%>
+            <div>
+              <div class="<%= namespace %>-Movie_Thumbnail">
+                <a href="<%= sitepath %>support/youtube/index.html?movie-id=<%= movieContents[i].id %>&l-id=support_movie_<%= movieContents[i].id %>" data-ratid="<%= productSetting %><%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all" target="_blank">
+                  <img src="https://img.youtube.com/vi/<%= movieContents[i].id %>/mqdefault.jpg" alt="<%= movieContents[i].title.replace(/(<([^>]+)>)/gi, '') %>">
+                </a>
+                <div class="<%= namespace %>-Movie_Thumbnail-time"><%- movieContents[i].time %></div>
+              </div>
+              <div class="<%= namespace %>-Movie_Description">
+                <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+              </div>
+            </div>
+
+          <%_ } else { _%>
+
+            <div>
+              <!-- ::: PIP-Maker Start ::: -->
+              <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+              <div id="pipmaker<%= movieContents[i].id %>" data-ratid="support_movie_<%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+              <script type="text/javascript">
+                pipmaker.priority = ["WebGL", "Flash", "HTML5"];
+                pipmaker.embed("//www.pip-maker.com/?view=<%= movieContents[i].id %>", "pipmaker<%= movieContents[i].id %>", 320, 180);
+              </script>
+              <!-- ::: PIP-Maker End ::: -->
+              <div class="<%= namespace %>-Movie_Description">
+                <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+              </div>
+            </div>
+
+          <%_ } _%>
+        <%_ } _%>
+      </div>
+
+
+      <%_ if (movieContents.length > 6) { _%>
+        <div class="js-Readmore <%= namespace %>-Movie_Hidden-sp u-Adjust_Mt-8">
+          <div class="c-Readmore_Content" aria-hidden="true">
+            <div class="<%= namespace %>-Movie <%= namespace %>-Movie_Pc">
+              <% for (let i = 6; i < movieContents.length; i++) { -%>
+
+                <%_ if (!movieContents[i]) { break } _%>
+                <%_ if (movieContents[i].isYoutube) { _%>
+                  <%_ if (movieContents[i].isProduct) {
+                      productSetting = `support_product_setting_movie_`
+                   } else {
+                      productSetting = `support_movie_`
+                   } _%>
+                  <div>
+                    <div class="<%= namespace %>-Movie_Thumbnail">
+                      <a href="<%= sitepath %>support/youtube/index.html?movie-id=<%= movieContents[i].id %>&l-id=support_movie_<%= movieContents[i].id %>" data-ratid="<%= productSetting %><%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all" target="_blank">
+                        <img src="https://img.youtube.com/vi/<%= movieContents[i].id %>/mqdefault.jpg" alt="<%= movieContents[i].title.replace(/(<([^>]+)>)/gi, '') %>">
+                      </a>
+                      <div class="<%= namespace %>-Movie_Thumbnail-time"><%- movieContents[i].time %></div>
+                    </div>
+                    <div class="<%= namespace %>-Movie_Description">
+                      <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                      <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+                    </div>
+                  </div>
+
+                <%_ } else { _%>
+
+                  <div>
+                    <!-- ::: PIP-Maker Start ::: -->
+                    <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+                    <div id="pipmaker<%= movieContents[i].id %>" data-ratid="support_movie_<%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+                    <script type="text/javascript">
+                      pipmaker.priority = ["WebGL", "Flash", "HTML5"];
+                      pipmaker.embed("//www.pip-maker.com/?view=<%= movieContents[i].id %>", "pipmaker<%= movieContents[i].id %>", 320, 180);
+                    </script>
+                    <!-- ::: PIP-Maker End ::: -->
+                    <div class="<%= namespace %>-Movie_Description">
+                      <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                      <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+                    </div>
+                  </div>
+
+                <%_ } _%>
+              <%_ } _%>
+            </div>
+          </div>
+          <div class="c-Readmore_Trigger">
+            <button class="js-Readmore_Trigger"><span class="c-Icon_Chevron-right c-Readmore_Arrow"></span>もっと見る</button>
+          </div>
+        </div>
+      <%_ } _%>
+
+
+      <div class="<%= namespace %>-Movie_Sp-container">
+        <div class="<%= namespace %>-Movie <%= namespace %>-Movie_Sp">
+
+          <%_ for (let i = 0; i < 6; i++) { _%>
+
+            <%_ if (!movieContents[i]) { break } _%>
+            <%_ if (movieContents[i].isYoutube) { _%>
+              <%_ if (movieContents[i].isProduct) {
+                  productSetting = `support_product_setting_movie_`
+               } else {
+                  productSetting = `support_movie_`
+               } _%>
+              <div>
+                <div class="<%= namespace %>-Movie_Thumbnail">
+                  <a href="<%= sitepath %>support/youtube/index.html?movie-id=<%= movieContents[i].id %>&l-id=support_movie_<%= movieContents[i].id %>" data-ratid="<%= productSetting %><%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all" target="_blank">
+                    <img src="https://img.youtube.com/vi/<%= movieContents[i].id %>/mqdefault.jpg" alt="<%= movieContents[i].title.replace(/(<([^>]+)>)/gi, '') %>">
+                  </a>
+                  <div class="<%= namespace %>-Movie_Thumbnail-time"><%- movieContents[i].time %></div>
+                </div>
+                <div class="<%= namespace %>-Movie_Description">
+                  <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                  <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+                </div>
+              </div>
+
+            <%_ } else { _%>
+
+              <div>
+                <!-- ::: PIP-Maker Start ::: -->
+                <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+                <div id="pipmaker<%= movieContents[i].id %>sp" data-ratid="support_movie_<%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+                <script type="text/javascript">
+                  pipmaker.priority = ["WebGL", "Flash", "HTML5"];
+                  pipmaker.embed("//www.pip-maker.com/?view=<%= movieContents[i].id %>&l-id=support_movie_<%= movieContents[i].id %>", "pipmaker<%= movieContents[i].id %>sp", 168, 95);
+                </script>
+                <!-- ::: PIP-Maker End ::: -->
+                <div class="<%= namespace %>-Movie_Description">
+                  <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                  <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+                </div>
+              </div>
+
+            <%_ } _%>
+          <%_ } _%>
+        </div>
+      </div>
+
+
+      <%_ if (movieContents.length > 6) { _%>
+        <div class="js-Readmore <%= namespace %>-Movie_Hidden-pc u-Adjust_Mt-8">
+          <div class="c-Readmore_Content" aria-hidden="true">
+            <div class="<%= namespace %>-Movie <%= namespace %>-Movie_Sp">
+              <% for (let i = 6; i < movieContents.length; i++) { -%>
+
+                <%_ if (!movieContents[i]) { break } _%>
+                <%_ if (movieContents[i].isYoutube) { _%>
+                  <%_ if (movieContents[i].isProduct) {
+                      productSetting = `support_product_setting_movie_`
+                   } else {
+                      productSetting = `support_movie_`
+                   } _%>
+                  <div>
+                    <div class="<%= namespace %>-Movie_Thumbnail">
+                      <a href="<%= sitepath %>support/youtube/index.html?movie-id=<%= movieContents[i].id %>&l-id=support_movie_<%= movieContents[i].id %>" data-ratid="<%= productSetting %><%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all" target="_blank">
+                        <img src="https://img.youtube.com/vi/<%= movieContents[i].id %>/mqdefault.jpg" alt="<%= movieContents[i].title.replace(/(<([^>]+)>)/gi, '') %>">
+                      </a>
+                      <div class="<%= namespace %>-Movie_Thumbnail-time"><%- movieContents[i].time %></div>
+                    </div>
+                    <div class="<%= namespace %>-Movie_Description">
+                      <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                      <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+                    </div>
+                  </div>
+
+                <%_ } else { _%>
+
+                  <div>
+                    <!-- ::: PIP-Maker Start ::: -->
+                    <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+                    <div id="pipmaker<%= movieContents[i].id %>sp" data-ratid="support_movie_<%= movieContents[i].id %>" data-ratevent="click" data-ratparam="all"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+                    <script type="text/javascript">
+                      pipmaker.priority = ["WebGL", "Flash", "HTML5"];
+                      pipmaker.embed("//www.pip-maker.com/?view=<%= movieContents[i].id %>&l-id=support_movie_<%= movieContents[i].id %>", "pipmaker<%= movieContents[i].id %>sp", 168, 95);
+                    </script>
+                    <!-- ::: PIP-Maker End ::: -->
+                    <div class="<%= namespace %>-Movie_Description">
+                      <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                      <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+                    </div>
+                  </div>
+
+                <%_ } _%>
+              <%_ } _%>
+            </div>
+          </div>
+          <div class="c-Readmore_Trigger">
+            <button class="js-Readmore_Trigger"><span class="c-Icon_Chevron-right c-Readmore_Arrow"></span>もっと見る</button>
+          </div>
+        </div>
+      <%_ } _%>
+
+    </div>
+  </div>
+</div>

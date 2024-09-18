@@ -1,0 +1,74 @@
+<% const pagetitle = "通信・エリア" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイルの通信エリア（4G・5Gの電波状況）を、地図や住所検索で簡単にご確認いただけます。あなたの住む街でも快適に。楽天回線がつながるエリア拡大中！',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/area/area-fullmap.css?20240426">
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="area-Fullmap">
+  <div id="place-search-wrapper">
+    <div class="c-Search_Container area-Fullmap_Search form-group">
+      <span class="glyphicon glyphicon-search"></span>
+      <input type="text" class="form-control controls c-Search_Input area-Fullmap_Search-input" id="pac-input" placeholder="住所・建物名で探す">
+      <div class="c-Search_Btn js-area-Search_Btn area-Fullmap_Search-btn" data-ratid="area_full_partner_address-search" data-ratevent="click" data-ratparam="all"><input type="submit" value="" class="c-Search_Submit"><span class="c-Icon_Search c-Search_Icon area-Fullmap_Search-icon"></span></div>
+    </div>
+  </div>
+  <div id="map" data-update="20220516"></div>
+  <button type="button" id="map-loc-button" class="c-Btn_Regular" data-ratid="area_full_partner_current-location" data-ratevent="click" data-ratparam="all"><span class="area-Fullmap_Btn-current-icon"></span><span class="u-Show_Xxo">現在地</span></button>
+  <a href="<%= sitepath %>area/?map=conversion-current5g" class="area-Fullmap_Btn-exit c-Btn_Secondly" id="exit"><span>全画面表示を終了</span></a>
+
+  <div class="area-Fullmap_Menu" id="js-map-menu">
+    <div class="u-Show_Oox area-Fullmap_Menu-link">
+      <button type="button" class="area-Fullmap_Menu-button" id="js-map-menu-button">
+        <span class="c-Icon_Chevron-up"></span><span id="js-map-menu-label">マップメニューを表示</span>
+      </button>
+    </div>
+    <div id="mapLegend" class="area-Fullmap_Legend-wrap">
+      <ul class="area-Fullmap_Legend js-area-target" data-target="area-partner" aria-hidden="true">
+        <li class="area-Fullmap_Legend-service">楽天回線 4G LTEエリア
+          <button class="c-Tooltip js-Tooltip-inline" aria-label="エリアの説明を表示" data-tippy-theme="default" data-tippy-content="楽天モバイル自社回線に接続する4G LTEエリアです">
+            <span class="c-Icon_Stack c-Tooltip_Icon">
+              <span class="c-Icon_Sign-help-f c-Icon_Stack-icon-f"></span>
+              <span class="c-Icon_Sign-help-l c-Icon_Stack-icon-l"></span>
+            </span>
+          </button>
+        </li>
+        <li class="area-Fullmap_Legend-partner-4g" id="js-partner-4g-color">パートナー回線エリア
+          <button class="c-Tooltip js-Tooltip-inline" aria-label="エリアの説明を表示" data-tippy-theme="default" data-tippy-content="パートナー（au）回線にてご利用可能なエリアです">
+            <span class="c-Icon_Stack c-Tooltip_Icon">
+              <span class="c-Icon_Sign-help-f c-Icon_Stack-icon-f"></span>
+              <span class="c-Icon_Sign-help-l c-Icon_Stack-icon-l"></span>
+            </span>
+          </button>
+        </li>
+      </ul>
+      <div class="area-Fullmap_Legend-bottom" aria-hidden="true">
+        <label class="c-Form_Checkbox">
+          <input type="checkbox" name="" id="toggle-map-checkbox" value="4g">
+          <span class="c-Icon_Check"></span>
+          <span class="c-Form_Checkbox-label">4G LTEのみ表示</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="area-Fullmap_Conversion" id="area-conversion-buttons" aria-hidden="true">
+  <div class="area-conversion-button" id="area-current-button"><span><input type="radio" id="current" name="area-conversion">4G</span></div>
+  <div class="area-conversion-button" id="area-current5g-button"><span><input type="radio" id="current5g" name="area-conversion">5G</span></div>
+</div>
+
+<%- include('/include/_common-js') %>
+<%- include('/include/area/_map') %>
+<script src="<%= sitepath %>assets/js/library/map_dsd.js?240329"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

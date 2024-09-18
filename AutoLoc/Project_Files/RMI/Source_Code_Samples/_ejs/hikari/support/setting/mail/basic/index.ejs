@@ -1,0 +1,115 @@
+<% const hikaripath = "hikari/" -%>
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+<% const pagetitle = "メールサーバーの設定" -%>
+<% const directories = [{path: hikariroot.path + "support/", label:"お客様サポート"}, {path: hikariroot.path + "support/setting/mail/", label:"メール設定方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '受信用メールサーバー（POP／IMAP）と送信用メールサーバー（SMTP）の設定方法をご案内します。',
+    noindex: false,
+    pathname: filepath,
+    ishikari: true,
+    canonical_custom: 'https://network.mobile.rakuten.co.jp/hikari/support/setting/mail/basic/',
+  });
+%>
+<%- include('/include/hikari/_common-v2-hikari-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/hikari/support/support.css?20240424">
+<%- include('/include/_append-head-hikari') %>
+</head>
+<body>
+<%- include('/include/_prepend-body-hikari') %>
+
+<div class="l-System">
+  <%- include('/hikari/include/_header', { headerType: 'normal', pagetitle: pagetitle, directories: directories, tax: false }) %>
+
+  <div class="l-hikari-Section_Main">
+    <div class="l-System_Container">
+      <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+
+      <div class="l-hikari-Section_Sub-short">
+        <h2 class="c-Heading_Lv4">受信用メールサーバー（POP／IMAP）</h2>
+        <div class="l-hikari-Section_Sub-content-short">
+        <div class="c-Table_Wrap l-hikari-Section_Sub-content-middle">
+          <table class="c-Table_Container">
+            <tbody>
+              <tr>
+                <th><span>アカウントの種類</span></th>
+                <td><span>POP／IMAP</span></td>
+              </tr>
+              <tr>
+                <th><span>受信用メールサーバー</span></th>
+                <td><span>popmail.gol.com</span></td>
+              </tr>
+              <tr>
+                <th><span>ポート</span></th>
+                <td><span>POP：995 ／IMAP：993</span></td>
+              </tr>
+              <tr>
+                <th><span>セキュリティ</span></th>
+                <td><span>SSLを使用する</span>
+                  <p class="u-Adjust_Mt-16">STARTTLS設定可<br>※STARTTLS設定時、ポート番号はPOP ：110／IMAP：143</p>
+                </td>
+              </tr>
+              <tr>
+                <th><span>ユーザー名</span></th>
+                <td><span>お客様のメールアドレス</span></td>
+              </tr>
+              <tr>
+                <th><span>パスワード</span></th>
+                <td><span>メールパスワードを入力</span></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="l-hikari-Section_Sub-short">
+        <h2 class="c-Heading_Lv4">送信用メールサーバー（SMTP）</h2>
+        <div class="c-Table_Wrap l-hikari-Section_Sub-content-middle">
+          <table class="c-Table_Container">
+            <tbody>
+              <tr>
+                <th><span>送信用メールサーバー</span></th>
+                <td><span>mail.gol.com</span></td>
+              </tr>
+              <tr>
+                <th><span>ポート</span></th>
+                <td><span>465</span></td>
+              </tr>
+              <tr>
+                <th><span>セキュリティ</span></th>
+                <td><span>SSLを使用する</span>
+                  <p class="u-Adjust_Mt-16">STARTTLS設定可<br>※STARTTLS設定時、ポート番号は587</p></td>
+              </tr>
+              <tr>
+                <th><span>SMTP認証</span></th>
+                <td><span>認証が必要</span></td>
+              </tr>
+              <tr>
+                <th><span>ユーザー名</span></th>
+                <td><span>お客様のメールアドレス</span></td>
+              </tr>
+              <tr>
+                <th><span>パスワード</span></th>
+                <td><span>メールパスワードを入力</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+    <footer class="g-Footer">
+      <%- include('/hikari/include/_footer', { pagetitle: pagetitle, directories: directories, hiddenFooterCta: true, hiddenCta: true }) %>
+    </footer>
+
+
+</div>
+<%- include('/include/hikari/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

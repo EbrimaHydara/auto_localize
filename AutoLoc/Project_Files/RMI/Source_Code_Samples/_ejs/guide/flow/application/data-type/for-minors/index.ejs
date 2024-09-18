@@ -1,0 +1,245 @@
+<% const pagetitle = "Rakuten最強プラン（データタイプ）のお申し込み方法（未成年のお客様）" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/application/flow/", label:"お申し込み方法"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '未成年（18歳未満）のお客様がRakuten最強プラン（データタイプ）にお申し込みいただく際の手順をご案内いたします。',
+    noindex: false,
+    pathname: filepath,
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/guide.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/flow/application/data-type/data-type.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container u-Adjust_Pt-32">
+  <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-32">18歳未満のお客様がRakuten最強プラン（データタイプ）にお申し込みいただく際の手順をご案内いたします。</p>
+  <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-16">
+    <li><a href="#explanation1" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>未成年のお客様のお申し込みについて</a></li>
+    <li><a href="#explanation2" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>お申し込み窓口</a></li>
+  </ul>
+
+  <section class="u-Adjust_Mt-64">
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-48" id="explanation1">未成年のお客様のお申し込みについて</h2>
+    <p class="u-Adjust_Mt-16">18歳未満のお客様はお電話にてお申し込みいただくことで、Rakuten最強プラン（データタイプ）をご利用いただけます。</p>
+    <p class="c-Txt_Emp-02 u-Adjust_Mt-16">18歳未満のお客様が楽天モバイルをご利用いただく場合、「あんしんコントロール by i-フィルター」のご契約が必須となります（330円/月）。</p>
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="Accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="Accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>あんしんコントロール by i-フィルターとは</button>
+      <div id="Accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="Accordion-1" aria-hidden="true">
+        <p>ご家庭でも外出先でも、お子さまのスマホ・タブレット利用を見守る、あんしん・便利なフィルタリングサービスです。</p>
+        <p class="c-Txt_Cap u-Adjust_Mt-16">※あんしんコントロール by i-フィルターを解約する場合は申出書の提出が必要です。<a href="<%= sitepath %>faq/detail/00001190/" class="c-Link_Txt">詳細はこちら</a></p>
+        <p class="u-Adjust_Mt-16">
+          <a href="<%= sitepath %>service/i-filter/" class="c-Btn_Regular data-type-Btn_Regular-normal" target="_blank">詳細を見る</a>
+        </p>
+      </div>
+    </div>
+    <div class="u-Adjust_Mt-32">
+      <h3 class="c-Heading_Lv2">お申し込みの流れ</h3>
+      <ol class="c-Flow u-Adjust_Mt-32">
+        <li>
+          <h4 class="c-Heading_Lv3">1. 必要書類等を準備・確認する</h4>
+          <p class="u-Adjust_Mt-16">お申し込みに必要な書類や、利用規約等をご確認いただき、表示されるお申し込み窓口にお電話ください。</p>
+          <p class="u-Adjust_Mt-16"><span class="c-Txt_Emp-02">「必要情報」「重要事項説明・利用規約等の確認」を確認後、各チェックボックスにチェックを入れていただくと</span>お申し込み窓口の電話番号が表示されます。</p>
+          <p class="u-Adjust_Mt-16">
+            <a href="#requirements" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>必要書類等を確認する</a>
+          </p>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv3">2. お申し込みをする</h4>
+          <p class="u-Adjust_Mt-16">オペレーターの案内に沿ってお申し込みください。<br>「法定代理人同意書 兼 支払い名義人同意書」のアップロードや支払い方法を設定いただくと、お申し込みが完了いたします。</p>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv3">3. 開通手続きへ進む</h4>
+          <p class="u-Adjust_Mt-16">お申し込み時にeSIMを選択した場合は、お申し込み完了メールを受け取り後、すぐに利用を開始することができます※。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※審査状況により変動します。</p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/setting/data-type-sim/" class="c-Link_Txt-inline-icon">開通手続き方法（SIMカード）を見る<span class="c-Icon_Chevron-right"></span></a></p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/setting/data-type-esim/" class="c-Link_Txt-inline-icon">開通手続き方法（eSIM利用）を見る<span class="c-Icon_Chevron-right"></span></a></p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="u-Adjust_Mt-64">
+    <h2 class="c-Heading_Lv2" id="explanation2">お申し込み窓口</h2>
+    <div class="u-Adjust_Mt-16">
+      <h3 class="c-Heading_Lv3">お申し込みの前に以下をご確認ください。</h3>
+      <p class="c-Theme-Emphasis1 u-Adjust_Mt-16"><span class="c-Txt_Emp-02">「必要情報」「重要事項説明・利用規約等の確認」を確認後、各チェックボックスにチェックを入れていただくと</span>お申し込み窓口の電話番号が表示されます。</p>
+      <h4 class="c-Heading_Lv4 u-Adjust_Mt-24" id="requirements">必要情報</h4>
+      <p class="u-Adjust_Mt-16">以下の情報をご用意ください。</p>
+      <ul class="data-type-List_Text-disc u-Adjust_Mt-16">
+        <li>
+          <p>楽天会員ログイン用のユーザーID、パスワード</p>
+          <p class="u-Adjust_Mt-16"><a href="https://member.id.rakuten.co.jp/rms/nid/registfwdi" class="c-Link_Txt-inline-icon" target="_blank">楽天の会員登録（無料）をする<span class="c-Icon_New-window-l"></span></a></p>
+        </li>
+        <li>
+          <p>法定代理人同意書 兼 支払名義人同意書</p>
+          <p class="u-Adjust_Mt-16">18歳未満の方がご契約になる場合、法定代理人となる保護者の同意書が必要です。以下からダウンロードしてご記入をお願いします。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">※法定代理人とは親権者／未成年後見人／成年後見人を指します。法定代理人であることの証明書は不要です</p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>pdf/terms/legal_representative_consent_form_and_payer_consent_form.pdf?231020" target="_blank" class="c-Link_Txt-inline-icon">法定代理人同意書 兼 支払名義人同意書を確認する<span class="c-Icon_Pdf-l"></span></a></p>
+        </li>
+        <li>
+          <p>親権者情報</p>
+          <p class="u-Adjust_Mt-16">18歳未満の方がご契約になる場合、お申し込み手続きの中で、親権者情報として、保護者（親権者）のお名前、生年月日、ご連絡先をお伺いいたします。</p>
+        </li>
+        <li>
+          <p>楽天カード</p>
+          <p class="u-Adjust_Mt-16">楽天カードは、親権者様の名義でのみお申し込みいただけます。</p>
+        </li>
+      </ul>
+      <div class="c-Theme-Emphasis1 u-Adjust_Align-center u-Adjust_Mt-16">
+        <label class="c-Form_Checkbox">
+          <input type="checkbox" name="agree1" id="js-agree1" value="agree1">
+          <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">上記の項目を確認しました</span>
+        </label>
+      </div>
+    </div>
+    <div class="u-Adjust_Mt-32">
+      <h3 class="c-Heading_Lv3">重要事項説明・利用規約等の確認</h3>
+      <p class="u-Adjust_Mt-16">以下、4つの規約等を必ずご一読ください。ご不明点がある場合は、お電話の際にオペレーターにお伝えください。</p>
+      <ul class="u-Adjust_Mt-16">
+        <li class="c-Txt_Cap">※「快適なサービスをご利用いただくための情報提供についての規約」については、オペレーターからお客様にご確認させていただきます。</li>
+        <li class="c-Txt_Cap u-Adjust_Mt-8">※以下をお読みいただくと、チェックボックスがチェックできる状態になります。</li>
+      </ul>
+      <ul class="u-Adjust_Mt-16">
+        <li class="js-agree-list">1. <a href="<%= sitepath %>terms/pdf/rakuten_mobile_important_explanation_data-type.pdf?240301" class="c-Link_Txt-inline-icon" target="_blank">重要事項説明書<span class="c-Icon_Pdf-l"></span></a></li>
+        <li class="js-agree-list u-Adjust_Mt-16">2. <a href="https://corp.mobile.rakuten.co.jp/guide/privacy/" class="c-Link_Txt-inline-icon" target="_blank">個人情報の取扱い<span class="c-Icon_New-window-l"></span></a></li>
+      </ul>
+      <p class="u-Adjust_Mt-16">各オプションサービスやその他規約は以下よりご確認ください。</p>
+      <ul>
+        <li class="js-agree-list u-Adjust_Mt-16">3. <a href="https://corp.mobile.rakuten.co.jp/guide/privacy/bandwidth/" class="c-Link_Txt-inline-icon" target="_blank">帯域制御のための通信に関する情報の取得、利用に関する規約<span class="c-Icon_New-window-l"></span></a></li>
+        <li class="js-agree-list u-Adjust_Mt-16">4. <a href="<%= sitepath %>terms/" class="c-Link_Txt-inline-icon" target="_blank">その他の利用規約<span class="c-Icon_New-window-l"></span></a></li>
+      </ul>
+    </div>
+    <div class="c-Theme-Emphasis1 u-Adjust_Mt-16" id="js-agree-box" aria-disabled="true">
+      <p class="c-Txt_Emp-02 u-Adjust_Align-center" id="js-agree-txt" aria-hidden="false">4つの規約等をすべてご確認いただくと、チェックできる状態となります</p>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <label class="c-Form_Checkbox">
+          <input type="checkbox" name="agree2" id="js-agree2" value="agree2" disabled>
+          <span class="c-Icon_Check"></span><span class="c-Form_Checkbox-label">上記の項目を確認しました</span>
+        </label>
+      </div>
+    </div>
+    <div class="c-Theme-Borderbox u-Adjust_Mt-32 data-type-Util_Display" id="js-tel-text" aria-hidden="false">
+      <p>「必要書類の準備」および「重要事項説明・利用規約等の確認」、2つのチェックボックスをチェックいただくと、ご契約窓口の電話番号が表示されます</p>
+    </div>
+    <div class="c-Theme-Borderbox u-Adjust_Mt-32 data-type-Util_Display" id="js-tel-info" aria-hidden="true">
+      <p class="c-Heading_Lv3 u-Adjust_Align-center">Rakuten最強プラン（データタイプ）お申し込み窓口</p>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center">営業時間：10:00～19:00（土日祝含む。年末年始を除く）</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Align-center">※混雑時はお電話がつながりにくい場合があります。<br>※通話料金はお客様負担となります。ご希望の場合、オペレーターからおかけ直しします。</p>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center"><a href="tel:05054436500" class="c-Txt_Alphanumeric-m" data-ratid="guide_flow_application_data-type_for-minors_tel" data-ratevent="click" data-ratparam="all">050-5443-6500</a></p>
+    </div>
+    <div class="u-Adjust_Mt-32">
+      <p class="c-Heading_Lv2 u-Adjust_Align-center">取扱販売店</p>
+      <p class="u-Adjust_Mt-16 u-Adjust_Align-center">〒158-0094 東京都世田谷区玉川一丁目14番1号 楽天クリムゾンハウス<br>
+        楽天モバイル 電話契約店<br>
+        TEL：050-5434-8549<br>
+        届出番号：第C2302523号</p>
+    </div>
+  </section>
+
+  <section class="u-Adjust_Mt-64 u-Adjust_Mb-40">
+    <h2 class="c-Heading_Lv2">よく見られているご質問</h2>
+    <p class="u-Adjust_Mt-16">よく見られているご質問をご案内します。お困りごとが解決しない場合は、各ページからチャットやお電話でお問い合わせいただけます。</p>
+    <ul class="c-Link_List u-Adjust_Mt-24">
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000812/">「Rakuten最強プラン」と「Rakuten最強プラン（データタイプ）」の違いは何ですか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000809/">「Rakuten最強プラン（データタイプ）」から「Rakuten最強プラン」への変更はできますか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000808/">「Rakuten最強プラン」から「Rakuten最強プラン（データタイプ）」への変更はできますか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000810/">「Rakuten最強プラン」か「Rakuten最強プラン（データタイプ）」のどちらを申し込んだか確認する方法はありますか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+      <li>
+        <a href="<%= sitepath %>faq/detail/10000811/">「Rakuten 最強プラン（データタイプ）」で、キャリア決済の月額利用可能額が設定できないのはなぜですか？<span class="c-Icon_Chevron-right guide-Faq_Items-icon"></span></a>
+      </li>
+    </ul>
+  </section>
+
+  <div class="u-Adjust_Align-center">
+    <div class="u-Adjust_Mt-32"><a href="<%= sitepath %>support/" class="c-Btn_Regular data-type-Btn_Regular-normal"><span>お客様サポートトップに戻る</span></a></div>
+    <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular data-type-Btn_Regular-normal"><span>楽天モバイルトップへ</span></a></div>
+  </div>
+
+  <div class="u-Adjust_Mt-16 guide-Btn_Bot" id="openchatbot">
+    <a href="#openchatbot" data-ratId="floating-ai_chat_support" data-ratEvent="click" data-ratParam="all"><img src="<%= sitepath %>assets/img/common/img-aichat-bot.png" width="124" alt="Open chat Bot"></a>
+    <div class="u-Adjust_Mt-16 guide-Btn_Bot-close">
+      <div role="button" tabindex="0" id="closechatbot" class="guide-Btn_Bot-close-btn" aria-label="チャットボットを閉じる"><img src="<%= sitepath %>assets/img/common/img-aichat-close.png" width="20" alt=""></div>
+    </div>
+  </div>
+
+
+  <%- include('/include/guide/_inquiry') %>
+  <%- include('/include/guide/_review') %>
+</div>
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <div class="l-System_Container">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.for-minors.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+
+</body>
+</html>

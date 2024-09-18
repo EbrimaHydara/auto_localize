@@ -1,0 +1,47 @@
+<%_
+  const {nameSpace2, movieContent, youtubeContent} = pageInfo
+  const youtubes = youtubeContent || []
+  const movies = movieContent || []
+  const movieContents = [...youtubes, ...movies]
+_%>
+<div class="<%= nameSpace2 %>-Layout_Movie">
+    <div class="<%= nameSpace2 %>-Category_Heading">
+      <div class="<%= nameSpace2 %>-Movie <%= nameSpace2 %>-Movie_Pc">
+        <%_ for (let i = 0; i < 6; i++) { _%>
+
+          <%_ if (!movieContents[i]) { break } _%>
+          <%_ if (movieContents[i].isYoutube) { _%>
+
+            <div id="<%= movieContents[i].id %>">
+
+              <p><%- movieContents[i].movietxt %></p>
+
+              <div class="<%= nameSpace2 %>-Movie_Thumbnail u-Adjust_Mt-16">
+                <a href="<%= sitepath %>support/youtube/index.html?movie-id=<%= movieContents[i].id %>&l-id=support_movie_<%= movieContents[i].ratId %>" data-ratid="guide_my-rakuten-mobile_movie_<%= movieContents[i].ratId %>" data-ratevent="click" data-ratparam="all" target="_blank">
+                  <img src="https://img.youtube.com/vi/<%= movieContents[i].id %>/maxresdefault.jpg" alt="<%= movieContents[i].title.replace(/(<([^>]+)>)/gi, '') %>">
+                </a>
+              </div>
+            </div>
+
+          <%_ } else { _%>
+
+            <div>
+              <!-- ::: PIP-Maker Start ::: -->
+              <script type="text/javascript" src="https://www.pip-maker.com/js/pipmaker.js"></script>
+              <div id="pipmaker<%= movieContents[i].id %>" data-ratid="guide_my-rakuten-mobile_movie_<%= movieContents[i].ratId %>" data-ratevent="click" data-ratparam="all"><noscript>For viewing this content please enable the JavaScript.</noscript></div>
+              <script type="text/javascript">
+                pipmaker.priority = ["WebGL", "Flash", "HTML5"];
+                pipmaker.embed("//www.pip-maker.com/?view=<%= movieContents[i].id %>", "pipmaker<%= movieContents[i].id %>", 320, 180);
+              </script>
+              <!-- ::: PIP-Maker End ::: -->
+              <div class="<%= nameSpace2 %>-Movie_Description">
+                <h3 class="c-Txt_Normal"><%- movieContents[i].title %></h3>
+                <p class="c-Txt_Normal-s u-Adjust_Mt-8"><%- movieContents[i].description %></p>
+              </div>
+            </div>
+
+          <%_ } _%>
+        <%_ } _%>
+      </div>
+    </div>
+</div>

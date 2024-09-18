@@ -1,0 +1,52 @@
+<% const pagetitle = "ログアウト" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<%- include('/include/_breadcrumbs', {
+  type: 'head',
+  pagetitle,
+}) %>
+
+<div class="l-System_Container">
+  <p class="c-Heading_Lv1 u-Adjust_Mt-32">ログアウトしました</p>
+
+  <div class="u-Adjust_Pt-32 u-Adjust_Pb-80">
+    <div class="u-Adjust_Mt-16"><a href="<%= rootpath %>" class="c-Btn_Regular"><span>楽天モバイルトップへ</span></a></div>
+  </div>
+  <iframe src="https://member.id.rakuten.co.jp/rms/nid/logout" width="1" height="1" style="visibility: hidden;"></iframe>
+</div>
+
+<footer class="g-Footer">
+
+  <div class="l-System_Container">
+    <%- include('/include/_breadcrumbs', {
+      type: 'foot',
+      pagetitle,
+    }) %>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

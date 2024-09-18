@@ -1,0 +1,2568 @@
+<% const pagetitle = "楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "payment-service" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント',
+  keywords: '',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<% const information = {
+  campaignState:'start',
+  campaignFinishSchedule:'20yy年mm月dd日'
+}; %>
+<% const hiddenItem = "false" -%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/payment-service/payment-service.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/_entry-button/rex-overwrite_v2.css?20240424">
+<!-- ReX Campaign Button: stylesheet -->
+<link rel="stylesheet" href="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/css/main.css?20240424">
+<%- include('/include/_append-head') %>
+<%- include('/include/poikaku-gadget/_css') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script defer="defer" src="https://r.r10s.jp/com/js/c/common/entry_button/1.1/entry_button-1.1.0.min.js"></script>
+<link rel="dns-prefetch" href="https://cdn.rex.contents.rakuten.co.jp">
+<script src="https://www.rakuten.co.jp/com/advance/mobile/point_gadget_test/responsive/condition.js?240404"></script>
+<script src="https://r.r10s.jp/com/ap/target/phoenix-3.2.2.min.js"></script>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header', { applyHide: true }) %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Layout_Label">
+      <ul class="c-Label_List <%= namespace %>-Layout_Label-list">
+        <li class="c-Label_Normal">Rakuten Link利用必要</li>
+        <li><span class="<%= namespace %>-Layout_Label-point">ポイント：付与日を含めて6カ月の期間限定ポイント</span></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Hero_Return">
+      <div class="l-System_Container <%= namespace %>-Hero_Container">
+        <div class="<%= namespace %>-Hero_Main">
+          <h1><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-heading-pc_240315.png?240315" alt="楽天モバイル 楽天ポイント 楽天Pay 楽天Edy 毎月開催 楽天モバイルお申し込み＆条件達成で 最大19,000ポイントプレゼント 本ページから楽天モバイルに初めてお申し込み＆電話番号そのまま他社からお乗り換えで最大9,000ポイント※1 さらに期間中に対象サービスで条件達成すると抽選で100名様に10,000ポイント※2 要エントリー" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-heading-sp_240315.png?240315" alt="楽天モバイル 楽天ポイント 楽天Pay 楽天Edy 毎月開催 楽天モバイルお申し込み＆条件達成で 最大19,000ポイントプレゼント 本ページから楽天モバイルに初めてお申し込み＆電話番号そのまま他社からお乗り換えで最大9,000ポイント※1 さらに期間中に対象サービスで条件達成すると抽選で100名様に10,000ポイント※2 要エントリー" class="<%= namespace %>-Utility_Img-sp"></h1>
+        </div>
+      </div>
+    </div>
+    <%- include('/inc/_poikaku',{ pagename: namespace, type: 'rat' }) %>
+    <div class="<%= namespace %>-Layout_Body">
+      <div class="l-System_Container">
+        <% if (information.campaignState == 'finish') { %>
+          <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= information.campaignFinishSchedule %>をもちまして終了いたしました。<br>
+            このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+        <% } else { %>
+          <!-- else -->
+        <% } %>
+        <ul class="<%= namespace %>-Table_Rule-Cap kv-Cap">
+          <li><span>※1</span><span class="c-Txt_Emp-02">「Rakuten最強プラン（データタイプ）」は対象外です。<br>
+            キャンペーン期間中に予告なく特典内容の変更、キャンペーンの中止を行う可能性があります。特典は今後の開催時に増減する場合もあります。<br>
+            端末の予約購入をお申し込みの場合は本キャンペーンは対象外になります。</span><br>
+            キャンペーンによってポイントの付与時期・有効期間が異なり、分割して付与される場合もあります。必ず<a href="#campaign-rule" class="rmobile-rule js-scroll">キャンペーンルール</a>をご確認ください。<br>
+            楽天モバイルの<a href="#campaign-rule" class="rmobile-rule js-scroll">キャンペーンルール</a>に記載の併用可能キャンペーン以外は併用できません。<br>
+            最大9,000ポイントの<a href="#max-point" class="js-scroll">内訳を見る</a></li>
+          <li class="u-Adjust_Mt-0"><span>※2</span>当キャンペーンには対象外店舗や参加条件があります。<a href="#campaign-rule" class="payment-rule js-scroll">キャンペーンルール</a>をご確認ください。<br>
+            事前に告知のうえ特典内容を変更する可能性があります。</li>
+          <li class="u-Adjust_Mt-0"><span>※</span>特典のポイントは期間限定ポイントです。</li>
+        </ul>
+
+        <div class="ac-15 c-Accordion u-Adjust_Mt-48">
+          <button id="accordion-15" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-15"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>本ページの「お申し込みはこちら」ボタンよりお手続きください</button>
+          <div id="accordion-content-15" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-15" aria-hidden="true">
+            <div class="<%= namespace %>-Kv_Attention">
+              <ul>
+                <li><span>・</span>本ページ以外からお手続きされた場合は特典適用対象外となります。</li>
+                <li><span>・</span>「お申し込み内容」画面でクーポンコード14桁の英数字が表示されていることをご確認のうえ、お申し込みを完了してください。表示されていない場合は特典適用対象外となるため、再度本ページの「お申し込みはこちら」ボタンよりお申し込みをやり直してください。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="coupon_btn" class="<%= namespace %>-Layout_Entry-Area u-Adjust_Mt-40">
+        <p class="u-Adjust_Mt-16 c-Txt_Emp-02 <%= namespace %>-Utility_Mt-unique u-Adjust_Align-center">クーポンコード：PMTREG00000002</p>
+      <% if (information.campaignState == 'finish') { %>
+        <div class="u-Adjust_Mt-8 u-Adjust_Align-center"><div class="c-Btn_Primary-large fin">お申し込みはこちら</div></div>
+      <% } else { %>
+      <!-- else -->
+      <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+        <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=PMTREG00000002&l-id=campaign_payment-service_coupon_link01" class="c-Btn_Primary-large"><span>お申し込みはこちら</span></a>
+      </div>
+      <% } %>
+        <p class="u-Adjust_Mt-16 c-Txt_Cap u-Adjust_Align-center">本ページの「お申し込みはこちら」ボタン以外からお手続きされた場合、特典適用対象外となります。</p>
+
+      <% if (information.campaignState == 'finish') { %>
+      <% } else { %>
+        <!-- else -->
+        <!-- ReX Campaign Entry Button: Mounting points -->
+        <!-- mounting point for button 1 --><div id="rex-ceb-01" class="campaign-Rexoverwrite"></div>
+      <% } %>
+      </div>
+
+      <div class="l-System_Container">
+        <div class="<%= namespace %>-Layout_Table-period u-Adjust_Mt-40">
+          <dl>
+            <dt>お申し込み・エントリー<br>
+              楽天ポイントカードご利用期間<br>
+              楽天ペイ・楽天Edyお支払い期間</dt>
+            <dd>2024年5月1日（水）09:00～2024年6月3日（月）08:59</dd>
+          </dl>
+          <dl>
+            <dt>プラン利用開始・「Rakuten Link」利用期限</dt>
+            <dd>2024年6月30日（日）23:59まで</dd>
+          </dl>
+        </div>
+
+        <div class="u-Rat_Appear-height" data-ratid="campaign_payment-service_scroll-01" data-ratevent="appear"></div>
+        <div id="max-point" class="<%= namespace %>-Conditions u-Adjust_Mt-40">
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">最大19,000ポイント<span class="<%= namespace %>-Txt_Nl">キャンペーン参加方法</span></h2>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-05-sp.png?230801">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-05.png?230801" alt="">
+            </picture>
+          </div>
+          <ul class="<%= namespace %>-Conditions_Flow u-Adjust_Mt-8">
+            <li>
+              <h4 class="u-Adjust_Align-center c-Heading_Lv4">本ページから初めて<br>
+                楽天モバイルのお申し込み</h4>
+              <div class="<%= namespace %>-Conditions_Img <%= namespace %>-Layout_Break-pc">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-01.png?230801" alt="">
+              </div>
+              <p class="u-Adjust_Align-center"><a href="#coupon_btn" class="js-scroll">お申し込みはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+              <p class="c-Txt_Cap u-Adjust_Align-center u-Adjust_Mt-8">※最大9,000ポイントの内訳は下記となります。<br>
+                <a href="#tab-content1" class="js-scroll rmobile-rule">キャンペーンコード:1815（3,000ポイント）</a><br>
+                <a href="#campaign-rule02" class="js-scroll rmobile-rule">キャンペーンコード:2091（6,000ポイント）</a></p>
+            </li>
+            <li>
+              <div class="<%= namespace %>-Conditions_Icon"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-04.png?230801" alt="＋"></div>
+              <h4 class="u-Adjust_Align-center c-Heading_Lv4">プランのご利用</h4>
+              <div class="<%= namespace %>-Conditions_Img <%= namespace %>-Layout_Break-pc">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-02.png?230801" alt="">
+              </div>
+              <p class="c-Txt_Cap u-Adjust_Align-center">※<a href="#campaign-rule-plan" class="js-scroll rmobile-rule">プラン利用開始日の定義はこちら</a>。</p>
+            </li>
+            <li>
+              <div class="<%= namespace %>-Conditions_Icon"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-04.png?230801" alt="＋"></div>
+              <h4 class="u-Adjust_Align-center c-Heading_Lv4">Rakuten Linkで<span class="txt-Nl">10秒以上通話</span></h4>
+              <div class="<%= namespace %>-Conditions_Img <%= namespace %>-Layout_Break-pc">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-03.png?230801" alt="">
+              </div>
+              <p class="c-Txt_Cap">※電話の発信時、（0570）などから始まる他社接続サービス、一部特番（188）への通話については、特典対象外。</p>
+            </li>
+          </ul>
+          <div class="u-Adjust_Align-center u-Adjust_Mt-24">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-08-sp.png?230801">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-08.png?230801" alt="">
+            </picture>
+          </div>
+          <ul class="<%= namespace %>-Conditions_Flow payment-Flow u-Adjust_Mt-8">
+            <li>
+              <h4 class="u-Adjust_Align-center c-Heading_Lv4">本ページからエントリー</h4>
+              <div class="<%= namespace %>-Conditions_Img <%= namespace %>-Layout_Break-pc">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-06.png?230801" alt="">
+              </div>
+              <p class="u-Adjust_Align-center u-Adjust_Mt-8"><a href="#rex-ceb-01" class="js-scroll">エントリーはこちら<span class="c-Icon_Chevron-right"></span></a></p>
+            </li>
+            <li>
+              <div class="<%= namespace %>-Conditions_Icon"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-conditions-07.png?230801" alt="＋"></div>
+              <h4 class="u-Adjust_Align-center c-Heading_Lv4">対象サービスを利用<br class="<%= namespace %>-Layout_Break-sp"><span class="c-Txt_Normal">以下いずれかの条件を達成</span></h4>
+              <ul class="payment-contents">
+                <li class="u-Adjust_Mt-0">
+                  <div class="payment-contents-Img"><img src="<%= sitepath %>assets/img/campaign/payment-service/img-flow-06.png?220403" alt="楽天ポイント"></div>
+                  <div>
+                    <p>楽天ポイントカードを提示のうえお会計をして期間中5ポイント以上獲得</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="payment-contents-Img"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-flow-07_231002.png?231002" alt="楽天Pay"></div>
+                  <div>
+                    <p>楽天ペイ（コード/QR/セルフ払い）で期間中合計500円（税込）以上お支払い</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="payment-contents-Img"><img src="<%= sitepath %>assets/img/campaign/payment-service/img-flow-08.png?220403" alt="楽天Edy"></div>
+                  <div>
+                    <p>対象の楽天Edyで期間中合計500円（税込）以上お支払い</p>
+                    <p class="c-Txt_Cap">※楽天ポイントが貯まる設定がされている楽天Edyが対象</p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="c-Tab js-Tab <%= namespace %>-Layout_Display-sp u-Adjust_Mt-40">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="true" aria-controls="tab-content3">初めて＆他社から<br>お乗り換え</li>
+            <li class="c-Tab_Item" id="tab-menu4" role="tab" aria-selected="false" aria-controls="tab-content4">楽天モバイル初めて<br>お申し込み</li>
+          </ul>
+          <ul class="<%= namespace %>-Pointdetails u-Adjust_Mt-16">
+            <li>
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-02-sp.png?231201" alt="本ページから楽天モバイル初めてのお申し込みで">
+              </div>
+              <div class="point_Box">
+                <div class="point_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-03-sp.png?231201" alt="もれなく3,000ポイント">
+                </div>
+              </div>
+            </li>
+            <li class="pointdetails-Icon">
+              <div>
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-01.png?231201" alt="＋">
+              </div>
+            </li>
+            <li class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu3">
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-04-sp.png?231201" alt="楽天モバイル初めて＆他社からのお乗り換えで">
+              </div>
+              <div class="point_Box">
+                <div class="point_Img">
+                  <picture>
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-05-sp_240315.png?240315" alt="もれなく6,000ポイント">
+                  </picture>
+                </div>
+              </div>
+              <div class="pointdetails-Icon">
+                <div>
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-12-sp.png?231201" alt="">
+                </div>
+              </div>
+              <div class="pointdetails-All">
+                <div class="ttl_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09-sp.png?231201" alt="合計">
+                </div>
+                <div class="point_Box">
+                  <div class="point_Img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-10-sp_240315.png?240315" alt="9,000ポイント">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="c-Tab_Panel" id="tab-content4" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu4">
+              <div class="ttl_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-06-sp.png?231201" alt="楽天モバイル初めて＆他社からじゃなくても">
+              </div>
+              <div class="point_Box">
+                <div class="point_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-07-sp.png?231201" alt="もれなく2,000ポイント">
+                </div>
+              </div>
+              <div class="pointdetails-Icon">
+                <div>
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-12-sp.png?231201" alt="">
+                </div>
+              </div>
+              <div class="pointdetails-All">
+                <div class="ttl_Img">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09-sp.png?231201" alt="合計">
+                </div>
+                <div class="point_Box">
+                  <div class="point_Img">
+                    <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-11-sp.png?231201" alt="5,000ポイント">
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <ul class="<%= namespace %>-Pointdetails <%= namespace %>-Layout_Display-pc u-Adjust_Mt-56">
+          <li>
+            <div class="ttl_Img">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-02.png?231201" alt="本ページから楽天モバイル初めてのお申し込みで">
+            </div>
+            <div class="point_Box">
+              <div class="point_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-03.png?231201" alt="もれなく3,000ポイント">
+              </div>
+            </div>
+          </li>
+          <li class="pointdetails-Icon">
+            <div>
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-01.png?231201" alt="＋">
+            </div>
+          </li>
+          <li>
+            <div class="ttl_Img">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-04.png?231201" alt="楽天モバイル初めて＆他社からのお乗り換えで">
+            </div>
+            <div class="point_Box">
+              <div class="point_Img">
+                <picture>
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-05_240315.png?240315" alt="もれなく6,000ポイント">
+                </picture>
+              </div>
+            </div>
+
+            <p class="pointdetails-Or u-Adjust_Align-center <%= namespace %>-Layout_Display-pc"><img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-08.png?231201" alt="もしくは"></p>
+
+            <div class="ttl_Img">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-06.png?231201" alt="楽天モバイル初めて＆他社からじゃなくても">
+            </div>
+            <div class="point_Box">
+              <div class="point_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-07.png?231201" alt="もれなく2,000ポイント">
+              </div>
+            </div>
+          </li>
+          <li class="pointdetails-Icon">
+            <div>
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-12.png?231201" alt="">
+            </div>
+          </li>
+          <li class="pointdetails-All">
+            <div class="ttl_Img">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09.png?231201" alt="合計">
+            </div>
+            <div class="point_Box pointdetails-All_Point-9000">
+              <div class="point_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-10_240315.png?240315" alt="9,000ポイント">
+              </div>
+            </div>
+            <div class="ttl_Img">
+              <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-09.png?231201" alt="合計">
+            </div>
+            <div class="point_Box">
+              <div class="point_Img">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-pointdetails-11.png?231201" alt="5,000ポイント">
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+          <li><span>※</span>予告なく特典内容の変更、キャンペーンの中止を行う可能性があります。</li>
+          <li class="u-Adjust_Mt-0 c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です。</li>
+          <li class="u-Adjust_Mt-0"><span>※</span>キャンペーンによってポイントの付与時期・有効期間が異なり、分割して付与されるポイントもあります。必ず<a href="#campaign-rule" class="rmobile-rule js-scroll">キャンペーンルール</a>をご確認ください。</li>
+        </ul>
+      </div>
+
+      <div class="u-Adjust_Mt-40 <%= namespace %>-Info_Area">
+        <div class="l-System_Container">
+          <div class="u-Rat_Appear-height" data-ratid="campaign_payment-service_scroll-02" data-ratevent="appear"></div>
+          <h2 class="c-Heading_Lv2 u-Adjust_Align-center">楽天モバイルを<span class="<%= namespace %>-Txt_Nl">オススメする4つの理由</span></h2>
+          <ul class="<%= namespace %>-Info_Contents">
+            <li class="u-Adjust_Mt-32">
+              <div class="<%= namespace %>-Info_Ttl u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-ttl-01.png?230403" alt="オススメ1">
+              </div>
+              <div class="<%= namespace %>-Info_Contents-img u-Adjust_Align-center">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-01-sp_240221.png?240221">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-01_240221.png?240221" alt="動画もゲームも好きなだけOK！ 家族割引適用時 データ高速無制限※1で2,880円/月（税込3,168円）※通話料等別">
+                </picture>
+              </div>
+              <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span class="c-Txt_Emp-02">※1</span><span class="c-Txt_Emp-02">最強家族プログラム適用条件あり。</span><br>
+                  公平なサービス提供のため、速度制限の場合あり。環境により速度低下する場合あり。</li>
+                <li><span>※</span>ゲーム内課金、コンテンツ利用料等別。<a href="<%= sitepath %>fee/saikyo-plan/?l-id=campaign_payment-service_fee_saikyo-plan02#anc_note">その他条件の詳細はこちら</a></li>
+              </ul>
+            </li>
+            <li class="u-Adjust_Mt-32">
+              <div class="<%= namespace %>-Info_Ttl u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-ttl-02.png?230403" alt="オススメ2">
+              </div>
+              <div class="<%= namespace %>-Info_Contents-img u-Adjust_Align-center">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-03-sp_230601.png?230601">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-03_230601.png?230601" alt="毎月の楽天モバイルご利用に応じて楽天ポイントがもらえる！※3">
+                </picture>
+              </div>
+              <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span>※3</span>月々のお支払い100円（税別）につき楽天ポイントが1ポイント貯まります。<br>
+                  <a href="https://network.mobile.rakuten.co.jp/faq/detail/00001576/?l-id=campaign_payment-service_faq_00001576">ポイント進呈対象はこちら</a></li>
+              </ul>
+            </li>
+            <li class="u-Adjust_Mt-32">
+              <div class="<%= namespace %>-Info_Ttl u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-ttl-03.png?230403" alt="オススメ3">
+              </div>
+              <div class="<%= namespace %>-Info_Contents-img u-Adjust_Align-center">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-04-sp_230601.png?230601">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-04_230601.png?230601" alt="楽天ポイントがスマホ本体代や月々のお支払いにも使える！※4">
+                </picture>
+              </div>
+              <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span>※4</span>楽天ポイントは1ポイント＝1円として、製品の購入や月々のお支払いにご利用いただけます。<br>
+                  <a href="<%= sitepath %>guide/point/?l-id=campaign_payment-service_guide_point">ご利用条件あり</a></li>
+              </ul>
+            </li>
+            <li class="u-Adjust_Mt-32">
+              <div class="<%= namespace %>-Info_Ttl u-Adjust_Align-center">
+                <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-ttl-04.png?230403" alt="オススメ4">
+              </div>
+              <div class="<%= namespace %>-Info_Contents-img u-Adjust_Align-center">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-05-sp_230703.png?230703">
+                  <img src="<%= sitepath %>assets/img/campaign/<%= namespace %>/img-info-05_230703.png?230703" alt="日本全国の通信エリアでデータ高速無制限※5 人口カバー率99.9％突破※6 つながるエリアがどんどん広がる！">
+                </picture>
+              </div>
+              <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                <li><span>※5</span>公平なサービス提供のため、速度制限の場合あり。環境により速度低下する場合あり</li>
+                <li><span>※6</span>2023年9月時点。人口カバー率は、国勢調査に用いられる約500m区画において、50%以上の場所で通信可能なエリアを基に算出。<a href="<%= sitepath %>area/?l-id=campaign_payment-service_area#caution">その他条件の詳細はこちら</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="l-System_Container">
+        <h2 id="faq" class="c-Heading_Lv2 u-Adjust_Mt-40 u-Adjust_Align-center u-Adjust_Mb-16">よくあるご質問</h2>
+        <div class="_sample u-Adjust_Mt-16 u-Adjust_Mb-40">
+          <div class="c-Accordion">
+            <button id="accordion-faq-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーンのポイント獲得の対象になっているか確認したいです。</button>
+            <div id="accordion-content-faq-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-1" aria-hidden="true">
+              <p>「<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile">my 楽天モバイル</a>」の申し込み履歴から、クーポンの利用状況をご確認いただけます。<br>
+                詳しい手順は<a href="https://network.mobile.rakuten.co.jp/faq/detail/10000792/">こちら</a>からご確認ください。</p>
+              <p class="c-Txt_Cap u-Adjust_Mt-8">※ ログインができない場合は、「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001207/">my 楽天モバイルにログインできない場合どうすればよいですか？</a>」をご確認ください。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>キャンペーン期間内に楽天モバイルに申し込みができているか、確認方法はありますか？</button>
+            <div id="accordion-content-faq-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-2" aria-hidden="true">
+              <p>以下2種類の方法があります。<br>
+                &#9312;お申し込み完了メールを確認する<br>
+                &#9313;「<a href="https://portal.mobile.rakuten.co.jp/my-rakuten-mobile">my 楽天モバイル</a>」の申し込み履歴から確認する<br>
+                詳しい手順はお客様サポート内「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001827/">申し込みが正常にできているか確認したい</a>」からもご確認いただけます。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>メンバーズステーションで、MNP予約番号を発行する方法を教えてください。</button>
+            <div id="accordion-content-faq-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-3" aria-hidden="true">
+              <p>MNP（携帯電話ナンバーポータビリティ）をご利用することで、現在楽天モバイルで使っている番号をそのままで申し込みできます。<br>
+                <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&l-id=campaign_payment-service_ms3&mno_migration=1">メンバーズステーショントップページ</a>の「MNP予約番号発行・確認について」をタップし、MNP予約番号を発行してください。MNP予約番号発行手数料は発生しません。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>申し込み後に、本人確認書類の不備などで再提出になった場合でもキャンペーンは適用されますか？</button>
+            <div id="accordion-content-faq-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-4" aria-hidden="true">
+              <p>お申し込み後に、書類の再提出などいただきお申し込みが完了できた場合は、キャンペーンが適用されます。ただし、お申し込み画面内で入力された情報と本人確認書類の内容が一致しないなどの理由で楽天モバイルが定める審査に基づき、お申し込みをキャンセルさせていただく場合、キャンペーンは適用できません。</p>
+            </div>
+          </div>
+          <div class="c-Accordion">
+            <button id="accordion-faq-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-faq-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>ポイントの進呈はいつになりますか？</button>
+            <div id="accordion-content-faq-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-faq-5" aria-hidden="true">
+              <p>キャンペーンコード1815は楽天モバイルから9月末ごろ、キャンペーンコード1373は楽天ペイメントから8月末ごろにお申し込み・エントリーされた楽天IDにポイントを進呈いたします。<br>
+                進呈されたポイントは楽天PointClubの「<a href="https://point.rakuten.co.jp/history/" class="c-Link_Txt-inline" target="_blank">ポイント実績<span class="c-Icon_New-window-l"></span></a>」から確認することができます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include('/inc/_poikaku',{ pagename: namespace, type: 'section', withFloat: true }) %>
+
+      <div class="l-System_Container">
+        <div id="campaign-rule" class="c-Tab js-Tab  u-Adjust_Mt-32">
+          <ul class="c-Tab_Items" role="tablist">
+            <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">楽天モバイル</li>
+            <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">楽天ペイメント</li>
+          </ul>
+          <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+            <div class="u-Adjust_Mt-24">
+            <% if (information.campaignState == 'finish') { %>
+              <h2 class="c-Heading_Lv2 u-Adjust_Align-left" id="campaign-rule1815">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</h2>
+              <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= information.campaignFinishSchedule %>をもちまして終了いたしました。<br>
+                このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+            <% } else { %>
+              <!-- else -->
+            <% } %>
+            </div>
+
+            <div id="campaign-rule02" class="u-Adjust_Mt-64">
+              <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2091', level: 'h2', year: '2023', class: '' }}) %>
+            </div>
+
+            <div id="campaign-rule03" class="u-Adjust_Mt-64">
+              <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '2142', level: 'h2', year: '2023', class: '' }}) %>
+            </div>
+
+            <div class="c-Accordion u-Adjust_Mt-48">
+              <button id="accordion-past-campaign-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-past-campaign-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイル：過去のキャンペーン</button>
+              <div id="accordion-content-past-campaign-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-past-campaign-1" aria-hidden="true">
+                <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-0">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1815_240301', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1815_240201', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1815_240105', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1815_231201', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1815_231101', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1815_231002', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1815_230901', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1815</p>
+                          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                            <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                          <p>- Web　2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                          <p>2023年9月30日（土）23:59まで</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                          <p>2023年9月30日（土）23:59まで</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                          <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                            <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                            <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                            <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8">・オプションサービスを引き継ぎたい場合<br>
+                            本ページからお申し込みした際、オプションサービスはすべて解約となります。<br>
+                            【お申し込み時の注意事項】<br>
+                            ・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります<br>
+                            ・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります<br>
+                            ・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください<br>
+                            ・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>より、プラン変更（移行）した場合、キャンペーンの適用はございません<br>
+                            ・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</p>
+                          <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li>【プラン利用開始日とは】<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                              （1）当社に配送完了データが通知された日<br>
+                              （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">【3】「Rakuten Link」のご利用</span></p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+
+                          <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                            Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                            「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                              <li><span>※</span>電話の発信時、（0570）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                            </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                        <dd>
+                          <p>2,000ポイントプレゼント</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典はおひとり様1回限り（過去キャンペーンコード1815が適用されている場合は非対象となります）</li>
+                            <li><span>※</span>ご契約が1回線目（初回）でなくても本キャンペーンの適用が初めての場合は対象となります</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                        <dd>
+                          <p>2023年12月末ごろに進呈</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                            <li><span>※</span>権利の譲渡はできません</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                        <dd>
+                          <p>ポイント進呈日を含めて6カ月</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典適用対象外</dt>
+                        <dd>
+                          <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                            <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                            <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                            <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合</li>
+                            <li><span> </span>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                            <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                            <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                            <li><span>※</span>「楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント」の適用回数が、おひとり様1契約1回を超える場合は対象外となります</li>
+                            <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                            <li><span>※</span>店舗（楽天モバイルショップ）でのお申し込みの場合</li>
+                            <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>
+                              -プラン利用開始の手続き方法につきましては、こちらの<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-SIM-CARD.pdf?240321">SIMカード版スタートガイド</a>または<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-eSIM.pdf?240216">eSIM版スタートガイド</a>を参照ください</li>
+                            <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                            <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                            <li><span>※</span>当社または楽天ペイメント株式会社、楽天Edy株式会社が定める規約などに違反した場合</li>
+                            <li><span>※</span>楽天ペイメントサービス（楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック）利用者でない場合</li>
+                            <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」をお申し込みした場合</li>
+                            <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>併用可能キャンペーン</dt>
+                        <dd>
+                          <p>以下のキャンペーンは併用が可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                          <p class="u-Adjust_Mt-16">- 【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>「【楽天モバイル】Rakuten最強プラン紹介キャンペーン（キャンペーンコード：1784）」のご紹介経由でのお申し込みは特典適用対象外となります。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">- 楽天モバイルもう1回線追加お申し込みで3,000ポイントプレゼント（キャンペーンコード：1896）</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>「【楽天モバイル】Rakuten最強プラン紹介キャンペーン（キャンペーンコード：1784）」のご紹介経由でのお申し込みは特典適用対象外となります。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                            <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                            <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合や弊社が不正と判断した場合は、特典ポイント進呈の対象外となる場合がございます</li>
+                            <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                            <li><span>※</span>記載の内容は2023年8月1日（火）時点の情報となります</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1815</p>
+                          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                            <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                          <p>- Web　2023年7月3日（月）9:00～2023年8月1日（火）8:59</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                          <p>2023年8月31日（木）23:59まで</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                          <p>2023年8月31日（木）23:59まで</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                          <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                            <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                            <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                            <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8">・オプションサービスを引き継ぎたい場合<br>
+                            本ページからお申し込みした際、オプションサービスはすべて解約となります。<br>
+                            【お申し込み時の注意事項】<br>
+                            ・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります<br>
+                            ・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります<br>
+                            ・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください<br>
+                            ・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>より、プラン変更（移行）した場合、キャンペーンの適用はございません<br>
+                            ・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</p>
+                          <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li>【プラン利用開始日とは】<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                              （1）当社に配送完了データが通知された日<br>
+                              （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">【3】「Rakuten Link」のご利用</span></p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+
+                          <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                            Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                            「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                              <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                            </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                        <dd>
+                          <p>2,000ポイントプレゼント</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典はおひとり様1回限り（過去キャンペーンコード1815が適用されている場合は非対象となります）</li>
+                            <li><span>※</span>ご契約が1回線目（初回）でなくても本キャンペーンの適用が初めての場合は対象となります</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                        <dd>
+                          <p>2023年11月末ごろに進呈</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                            <li><span>※</span>権利の譲渡はできません</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                        <dd>
+                          <p>ポイント進呈日を含めて6カ月</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典適用対象外</dt>
+                        <dd>
+                          <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                            <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                            <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                            <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合</li>
+                            <li><span> </span>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                            <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                            <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                            <li><span>※</span>「楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント」の適用回数が、おひとり様1契約1回を超える場合は対象外となります</li>
+                            <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                            <li><span>※</span>店舗（楽天モバイルショップ）でのお申し込みの場合</li>
+                            <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>
+                              -プラン利用開始の手続き方法につきましては、こちらの<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-SIM-CARD.pdf?240321">SIMカード版スタートガイド</a>または<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-eSIM.pdf?240216">eSIM版スタートガイド</a>を参照ください</li>
+                            <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                            <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                            <li><span>※</span>当社または楽天ペイメント株式会社、楽天Edy株式会社が定める規約などに違反した場合</li>
+                            <li><span>※</span>楽天ペイメントサービス（楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック）利用者でない場合</li>
+                            <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」をお申し込みした場合</li>
+                            <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>併用可能キャンペーン</dt>
+                        <dd>
+                          <p>以下のキャンペーンは併用が可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                          <p class="u-Adjust_Mt-16">- 【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">- 楽天モバイルもう1回線追加お申し込みで3,000ポイントプレゼント（キャンペーンコード：1896）</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                            <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                            <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合や弊社が不正と判断した場合は、特典ポイント進呈の対象外となる場合がございます</li>
+                            <li class="c-Txt_Emp-02"><span>※</span>「Rakuten最強プラン（データタイプ）」は対象外です</li>
+                            <li><span>※</span>記載の内容は2023年7月3日（月）時点の情報となります</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1815</p>
+                          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                            <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                          <p>- Web　2023年6月1日（木）9:00～2023年7月3日（月）8:59</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                          <p>2023年7月31日（月）23:59まで</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                          <p>2023年7月31日（月）23:59まで</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                          <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                            <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                            <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8">・オプションサービスを引き継ぎたい場合<br>
+                            本ページからお申し込みした際、オプションサービスはすべて解約となります。<br>
+                            【お申し込み時の注意事項】<br>
+                            ・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります<br>
+                            ・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります<br>
+                            ・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください<br>
+                            ・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>より、プラン変更（移行）した場合、キャンペーンの適用はございません<br>
+                            ・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</p>
+                          <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li>【プラン利用開始日とは】<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                              （1）当社に配送完了データが通知された日<br>
+                              （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">【3】「Rakuten Link」のご利用</span></p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+
+                          <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                            Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                            「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                              <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                            </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典 （楽天ポイント）</dt>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                        <dd>
+                          <p>2,000ポイントプレゼント </p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典はおひとり様1回限り（過去キャンペーンコード1815が適用されている場合は非対象となります）</li>
+                            <li><span>※</span>ご契約が1回線目（初回）でなくても本キャンペーンの適用が初めての場合は対象となります</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                        <dd>
+                          <p>2023年10月末ごろに進呈</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                            <li><span>※</span>権利の譲渡はできません</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                        <dd>
+                          <p>ポイント進呈日を含めて6カ月</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典適用対象外</dt>
+                        <dd>
+                          <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                            <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                            <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                            <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合</li>
+                            <li><span> </span>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                            <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                            <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                            <li><span>※</span>「楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイルお申し込みでポイントプレゼント」の適用回数が、おひとり様1契約1回を超える場合は対象外となります</li>
+                            <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                            <li><span>※</span>店舗（楽天モバイルショップ）でのお申し込みの場合</li>
+                            <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>
+                              -プラン利用開始の手続き方法につきましては、こちらの<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-SIM-CARD.pdf?240321">SIMカード版スタートガイド</a>または<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-eSIM.pdf?240216">eSIM版スタートガイド</a>を参照ください</li>
+                            <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                            <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                            <li><span>※</span>当社または楽天ペイメント株式会社、楽天Edy株式会社が定める規約などに違反した場合</li>
+                            <li><span>※</span>楽天ペイメントサービス（楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック）利用者でない場合</li>
+                            <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>併用可能キャンペーン</dt>
+                        <dd>
+                          <p>以下のキャンペーンは併用が可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                          <p class="u-Adjust_Mt-16">- 【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">- 楽天モバイルもう1回線追加お申し込みで3,000ポイントプレゼント（キャンペーンコード：1896）</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                            <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                            <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                            <li><span>※</span>記載の内容は2023年6月1日（木）時点の情報となります</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】​楽天モバイル初めてのお申し込みでポイントプレゼント</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1815</p>
+                          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                            <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                          <p>- Web　2023年5月1日（月）9:00～2023年6月1日（木）8:59</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                          <p>2023年6月30日（金）23:59まで</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                          <p>2023年6月30日（金）23:59まで</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                            <li><span>※</span>特典はおひとり様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten最強プラン」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                            <li><span>※</span>「Rakuten UN-LIMIT VII」から「Rakuten最強プラン」への移行は対象外となります。</li>
+                            <li><span>※</span>現在ご利用中のお客さまのプランは、6月1日（木）以降順次、自動的に「Rakuten最強プラン」へ移行します。<a href="https://network.mobile.rakuten.co.jp/information/news/service/2331/">詳細はこちら</a>。</li>
+                            <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8">・オプションサービスを引き継ぎたい場合<br>
+                            本ページからお申し込みした際、オプションサービスはすべて解約となります。<br>
+                            【お申し込み時の注意事項】<br>
+                            ・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります<br>
+                            ・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります<br>
+                            ・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください<br>
+                            ・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>より、プラン変更（移行）した場合、キャンペーンの適用はございません<br>
+                            ・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</p>
+                          <p class="u-Adjust_Mt-8">【2】「Rakuten最強プラン」利用開始</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li>【プラン利用開始日とは】<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                              （1）当社に配送完了データが通知された日<br>
+                              （2）プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天モバイルの電波が利用できるようになった日</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">【3】「Rakuten Link」のご利用</span></p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">「Rakuten最強プラン」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+
+                          <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                            Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                            「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                              <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                            </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典 （楽天ポイント）</dt>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                        <dd>
+                          <p>2,000ポイントプレゼント </p>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                        <dd>
+                          <p>2023年9月末ごろに進呈</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                            <li><span>※</span>権利の譲渡はできません</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                        <dd>
+                          <p>ポイント進呈日を含めて6カ月</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典適用対象外</dt>
+                        <dd>
+                          <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数のRakuten最強プランお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                            <li><span>※</span>過去に同一名義で楽天モバイル（Rakuten UN-LIMIT V、Rakuten UN-LIMIT VI、Rakuten UN-LIMIT VII含む）をご契約いただいたことがある場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                            <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                            <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                            <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合</li>
+                            <li><span> </span>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                            <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                            <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                            <li><span>※</span>「楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイル初めてのお申し込みでポイントプレゼント」の適用回数が、おひとり様1契約1回を超える場合は対象外となります</li>
+                            <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                            <li><span>※</span>店舗（楽天モバイルショップ）でのお申し込みの場合</li>
+                            <li><span>※</span>「Rakuten最強プラン」の利用開始がされなかった場合<br>
+                              -プラン利用開始の手続き方法につきましては、こちらの<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-SIM-CARD.pdf?240321">SIMカード版スタートガイド</a>または<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-eSIM.pdf?240216">eSIM版スタートガイド</a>を参照ください</li>
+                            <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                            <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                            <li><span>※</span>当社または楽天ペイメント株式会社、楽天Edy株式会社が定める規約などに違反した場合</li>
+                            <li><span>※</span>楽天ペイメントサービス（楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック）利用者でない場合</li>
+                            <li><span>※</span>そのほか、当社が会員として不適格であると合理的に判断した場合</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>併用可能キャンペーン</dt>
+                        <dd>
+                          <p>以下のキャンペーンは併用が可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                          <p class="u-Adjust_Mt-16">- 【Rakuten最強プランお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten最強プラン）セットでご注文した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten最強プラン」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                            <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                            <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                            <li><span>※</span>記載の内容は2023年6月1日（木）時点の情報となります</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイル初めてのお申し込みでポイントプレゼント</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1815</p>
+                          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                            <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                          <p>- Web　2023年5月1日（月）9:00～2023年6月1日（木）8:59</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                          <p>2023年6月30日（金）23:59まで</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                          <p>2023年6月30日（金）23:59まで</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方<br>
+                            <span class="c-Txt_Emp-01">※特典はおひとり様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</span></p>
+                          <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                            <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8">・オプションサービスを引き継ぎたい場合<br>
+                            本ページからお申し込みした際、オプションサービスはすべて解約となります。<br>
+                            【お申し込み時の注意事項】<br>
+                            ・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります<br>
+                            ・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります<br>
+                            ・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください<br>
+                            ・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>より、プラン変更（移行）した場合、キャンペーンの適用はございません<br>
+                            ・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</p>
+                          <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li>【プラン利用開始日とは】<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                              （1）当社に配送完了データが通知された日<br>
+                              （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">【3】「Rakuten Link」のご利用</span></p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+
+                          <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                            Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                            「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                              <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                            </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典 （楽天ポイント）</dt>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                        <dd>
+                          <p>2,000ポイントプレゼント </p>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                        <dd>
+                          <p>2023年9月末ごろに進呈</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                            <li><span>※</span>権利の譲渡はできません</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                        <dd>
+                          <p>ポイント進呈日を含めて6カ月</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典適用対象外</dt>
+                        <dd>
+                          <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数の Rakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                            <li><span>※</span>過去に同一名義で楽天モバイル（Rakuten UN-LIMIT V、Rakuten UN-LIMIT VI含む）をご契約いただいたことがある場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                            <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                            <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                            <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合</li>
+                            <li><span> </span>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                            <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                            <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                            <li><span>※</span>「楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイル初めてのお申し込みでポイントプレゼント」の適用回数が、おひとり様1契約1回を超える場合は対象外となります</li>
+                            <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                            <li><span>※</span>店舗（楽天モバイルショップ）でのお申し込みの場合</li>
+                            <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、こちらの<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-SIM-CARD.pdf?240321">SIMカード版スタートガイド</a>または<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-eSIM.pdf">eSIM版スタートガイド</a>を参照ください</li>
+                            <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                            <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                            <li><span>※</span>当社または楽天ペイメント株式会社、楽天Edy株式会社が定める規約などに違反した場合</li>
+                            <li><span>※</span>楽天ペイメントサービス（楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック）利用者でない場合</li>
+                            <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>併用可能キャンペーン</dt>
+                        <dd>
+                          <p>以下のキャンペーンは併用が可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                          <p class="u-Adjust_Mt-16">- 【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten UN-LIMIT VII）セットでご注文した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten UN-LIMIT VII」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                            <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                            <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                            <li><span>※</span>記載の内容は2023年5月1日（月）時点の情報となります</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイル初めてのお申し込みでポイントプレゼント</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1815</p>
+                          <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                            <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                          <p>- Web　2023年4月3日（月）9:00～2023年5月1日（月）8:59</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">プラン利用開始期限</p>
+                          <p>2023年5月31日（水）23:59まで</p>
+                          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">「Rakuten Link」利用期限</p>
+                          <p>2023年5月31日（水）23:59まで</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方<br>
+                            <span class="c-Txt_Emp-01">※特典はおひとり様1回のみ。楽天回線を初めてお申し込みいただいた場合に適用となります。</span></p>
+                          <p class="u-Adjust_Mt-8">【1】本キャンペーンページの「お申し込みはこちら」ボタンより「Rakuten UN-LIMIT VII」へ、下記（1）～（3）いずれかの方法にてお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                            <li><span>※</span>下記に当てはまる方はメンバーズステーション経由のプラン変更（移行）をご検討ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8">・オプションサービスを引き継ぎたい場合<br>
+                            本ページからお申し込みした際、オプションサービスはすべて解約となります。<br>
+                            【お申し込み時の注意事項】<br>
+                            ・キャンペーン特典の適用は、本ページの「お申し込みはこちら」ボタンからのお手続きが必要となります<br>
+                            ・お手続き中に時間超過等でセッションが切れた場合、再度本ページの「お申し込みはこちら」ボタンよりお手続きが必要になります<br>
+                            ・楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合は、キャンペーン特典の適用はございません。メンテナンスの終了後に改めてお申し込みください<br>
+                            ・楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、<a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten" target="_blank" class="c-Link_Txt-inline">メンバーズステーション<span class="c-Icon_New-window-l"></span></a>より、プラン変更（移行）した場合、キャンペーンの適用はございません<br>
+                            ・お手続き完了前に、「受け取りとお支払い方法」ページのお申し込み内容にて、クーポンコードが表示されることを必ずご確認ください</p>
+                          <p class="u-Adjust_Mt-8">【2】「Rakuten UN-LIMIT VII」プラン利用開始</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li>【プラン利用開始日とは】<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります</span><br>
+                              （1）当社に配送完了データが通知された日<br>
+                              （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                              <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                              プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-8"><span class="c-Txt_Emp-01">【3】「Rakuten Link」のご利用</span></p>
+                          <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">「Rakuten UN-LIMIT VII」をお申し込みした回線で「Rakuten Link」を用いた発信で10秒以上の通話</p>
+
+                          <p class="u-Adjust_Mt-16">【Rakuten Linkアプリご利用方法】<br>
+                            Rakuten Linkページの「<a href="https://service.link.link/guide/" target="_blank" class="c-Link_Txt-inline">使い方<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <p class="u-Adjust_Mt-16">【Rakuten Link利用履歴の確認方法】<br>
+                            「<a href="https://network.mobile.rakuten.co.jp/faq/detail/00001919/" target="_blank" class="c-Link_Txt-inline">キャンペーンにおけるRakuten Linkの利用について<span class="c-Icon_New-window-l"></span></a>」をご確認ください</p>
+                            <ul class="<%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                              <li><span>※</span>電話の発信時、（0570）（0180）などの他社接続サービス、♯ダイヤル番号、プレフィックス番号を付けて発信した場合は、特典対象外となります</li>
+                            </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典 （楽天ポイント）</dt>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                        <dd>
+                          <p>2,000ポイントプレゼント </p>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント進呈日</dt>
+                        <dd>
+                          <p>2023年8月末ごろに進呈</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントの進呈は、楽天モバイルより行います</li>
+                            <li><span>※</span>権利の譲渡はできません</li>
+                          </ul>
+                        </dd>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                        <dd>
+                          <p>ポイント進呈日を含めて6カ月</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank" class="c-Link_Txt-inline">期間限定ポイントについて<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典適用対象外</dt>
+                        <dd>
+                          <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>本ルールに記載の併用可能キャンペーンを除き、本キャンペーンより進呈ポイント数やクーポン割引額が多いRakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンが適用となった場合（複数の Rakuten UN-LIMIT VIIお申し込みでポイントまたはクーポンプレゼントキャンペーンの対象となった場合、進呈ポイント数やクーポン割引額が一番多いキャンペーンのみが適用されます。）</li>
+                            <li><span>※</span>過去に同一名義で楽天モバイル（Rakuten UN-LIMIT V、Rakuten UN-LIMIT VI含む）をご契約いただいたことがある場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタン以外からお申し込みされた場合</li>
+                            <li><span>※</span>本ページの「お申し込みはこちら」ボタンよりお手続き中に時間超過等でセッションが切れた場合</li>
+                            <li><span>※</span>楽天モバイルお申し込み画面がメンテナンス中に申し込んだ場合</li>
+                            <li><span>※</span>楽天モバイル（ドコモ回線・au回線）をお使いのお客様が、メンバーズステーション経由でプラン変更（移行）した場合</li>
+                            <li><span>※</span>お申し込み途中で、他のお申し込みボタンからお申し込みを開始したり、ブラウザ、スマートフォンやパソコンを変えるなどして「受け取りとお支払い方法」ページのお申し込み内容で、クーポンコードが表示されていない場合</li>
+                            <li><span> </span>クーポンコードは、キャンペーンページの「クーポンコード」に記載の14桁の英数字です。</li>
+                            <li><span>※</span>お申し込み途中で、クーポンを解除した場合</li>
+                            <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                            <li><span>※</span>「楽天ペイメントサービスご利用者様へ【毎月開催】楽天モバイル初めてのお申し込みでポイントプレゼント」の適用回数が、おひとり様1契約1回を超える場合は対象外となります</li>
+                            <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                            <li><span>※</span>店舗（楽天モバイルショップ）でのお申し込みの場合</li>
+                            <li><span>※</span>「Rakuten UN-LIMIT VII」のプラン利用開始がされなかった場合<br>-プラン利用開始の手続き方法につきましては、こちらの<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-SIM-CARD.pdf?240321">SIMカード版スタートガイド</a>または<a href="<%= sitepath %>assets/pdf/product/STARTGUIDE-eSIM.pdf?240216">eSIM版スタートガイド</a>を参照ください</li>
+                            <li><span>※</span>期限までに「Rakuten Link」を利用されなかった場合</li>
+                            <li><span>※</span>ポイント進呈までに楽天会員から退会している場合</li>
+                            <li><span>※</span>当社または楽天ペイメント株式会社、楽天Edy株式会社が定める規約などに違反した場合</li>
+                            <li><span>※</span>楽天ペイメントサービス（楽天ペイ、楽天ポイントカード、楽天Edy、楽天チェック）利用者でない場合</li>
+                            <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>併用可能キャンペーン</dt>
+                        <dd>
+                          <p>以下のキャンペーンは併用が可能となります。以下記載のキャンペーン以外は併用不可となります。</p>
+                          <p class="u-Adjust_Mt-16">- 【Rakuten UN-LIMIT VIIお申し込み特典】だれでも3,000ポイントプレゼント（キャンペーンコード：1526）</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天モバイル公式 楽天市場店でRakuten WiFi Pocket 2Cを楽天回線プラン（Rakuten UN-LIMIT VII）セットでご注文した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>楽天モバイルショップ、楽天モバイルオンラインでRakuten Hand 5GまたはRakuten WiFi Pocket 2Cを「Rakuten UN-LIMIT VII」ご契約と同時に購入した場合は特典適用対象外となります。</li>
+                            <li><span>※</span>2023年4月14日（金）9:00より特典適用対象外を追加いたしました。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください</li>
+                            <li><span>※</span>本キャンペーンの特典進呈対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法・電気通信事業法の範囲内に制限される場合があります</li>
+                            <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります</li>
+                            <li><span>※</span>記載の内容は2023年4月14日（金）時点の情報となります</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+            <div class="u-Adjust_Mt-24">
+            <% if (information.campaignState == 'finish') { %>
+              <h2 class="c-Heading_Lv2 u-Adjust_Align-left" id="campaign-rule1373">楽天ペイメントサービスご利用で抽選でx00名様にx,000ポイント！（xx月度）</h2>
+              <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは<%= information.campaignFinishSchedule %>をもちまして終了いたしました。<br>
+                このページに掲載されている情報は、キャンペーン終了時点のものです。</p>
+              <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373', level: '', year: '2024', class: '' }}) %>
+            <% } else { %>
+              <!-- else -->
+              <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373', level: 'h2', year: '2024', class: '' }}) %>
+            <% } %>
+            </div>
+            <div class="c-Accordion u-Adjust_Mt-48" id="past-campaigns">
+              <button id="accordion-past-campaign-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-past-campaign-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天ペイメント：過去のキャンペーン</button>
+              <div id="accordion-content-past-campaign-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-past-campaign-2" aria-hidden="true">
+                <div class="<%= namespace %>-Layout_Rule u-Adjust_Mt-0">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373_240401', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（4月度）</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373_240301', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（3月度）</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373_240201', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（2月度）</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373_240105', level: '', year: '2024', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（1月度）</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373_231201', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（12月度）</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373_231101', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（11月度）</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <%- include('/include/campaign/rules/_campaign-rule-current.ejs', {campaign: {id: '1373_231002', level: '', year: '2023', class: '', comments: '<span class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（10月度）</span>' }}) %>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（9月度）</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1373</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>エントリー期間</dt>
+                        <dd>
+                          <p>2023年9月1日（金）9:00～2023年10月2日（月）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p>楽天ポイントカードご利用期間／楽天ペイ・楽天Edyお支払い期間<br>
+                            2023年9月1日（金）9:00～2023年10月2日（月）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>以下の条件を満たした楽天会員の方が対象となります。</p>
+                          <p class="u-Adjust_Mt-16">1.エントリー期間中に当キャンペーンページよりエントリーが完了された方</p>
+                          <p>2.以下のいずれかを達成した方</p>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li>A.キャンペーン期間中に楽天ポイントカードを提示して5ポイント以上獲得された方のうち、<a href="https://pointcard.rakuten.co.jp/register/" class="c-Link_Txt-inline" target="_blank">楽天ポイントカードの利用登録<span class="c-Icon_New-window-l"></span></a>がお済みの方（お済みでない方は、キャンペーン終了日までに楽天ポイントカードの利用登録を完了してください）</li>
+                            <li>B.キャンペーン期間中に対象店舗にて楽天ペイ（コード／QR／セルフ払い）で500円（税込）以上お支払いをされた方</li>
+                            <li>C.キャンペーン期間中に対象店舗にて対象の楽天Edyで500円（税込）以上お支払いをされた方</li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>キャンペーンにエントリーをした楽天ID、楽天ポイントカードを提示した楽天ID、支払いに利用した楽天のお支払いサービスの楽天IDが異なる場合は、当キャンペーンの対象外となります。</li>
+                            <li><span>※</span>エントリー、楽天ポイントカードを提示してのお買い物、または楽天ペイアプリ・楽天Edyでのお支払い、利用登録の順序は問いません。</li>
+                            <li><span>※</span>Edyでの支払いの場合、楽天ポイントを貯める設定をされた方が対象です。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dd>
+                          <p>エントリー期間中に、当キャンペーンにエントリーのうえ、キャンペーン期間中に、『楽天ポイントカードを提示しての5ポイント以上の獲得』または『楽天のお支払いサービス（楽天ペイアプリ・楽天Edy）のいずれか1つで500円（税込）以上のお支払い』をされた方の中から抽選で100名様に、10,000ポイントを進呈いたします。</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典ポイント進呈</dt>
+                        <dd>
+                          <p>[9月開催] 2023年12月31日（日）頃までに2024年1月31日（水）までご利用いただける期間限定ポイントで進呈いたします。</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典ポイントは楽天ペイメントより進呈いたします。</li>
+                            <li><span>※</span>獲得された特典ポイントは、<a href="https://point.rakuten.co.jp/history/" class="c-Link_Txt-inline" target="_blank">ポイント実績<span class="c-Icon_New-window-l"></span></a>よりご確認ください。</li>
+                            <li><span>※</span>期間限定ポイントの詳細は<a href="https://r10.to/hvoTD0" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>でご確認ください。</li>
+                            <li><span>※</span>特典ポイントをご利用いただける期間が短いのでご注意ください。</li>
+                            <li><span>※</span>登録されている楽天IDが複数ある場合、いずれか1つの楽天IDにポイント進呈いたします。</li>
+                            <li><span>※</span>当選者の発表は特典ポイントの進呈をもってかえさせていただきます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン対象サービス</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカード（楽天ポイントカードアプリまたは楽天ポイントカード機能が搭載されたアプリを含む）、Edy-楽天ポイントカード、楽天ポイントカード機能付き楽天カード、楽天ペイアプリの楽天ポイントカード機能</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>アプリにログインしていない状態でバーコードを提示された方はキャンペーン終了までにログインを行ってください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリのコード、QR、セルフ払い</p>
+                          <p>【楽天Edy】</p>
+                          <p>楽天ポイントが貯まる設定がされている楽天Edy</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>設定状況のご確認は<a href="https://edy.rakuten.co.jp/my/login/rspedy" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                            <li><span>※</span>ログイン後、お持ちのEdyカードが表示されていれば、ポイントの設定は完了しています。</li>
+                            <li><span>※</span>楽天Edyの種類によって設定方法が異なりますので、楽天ポイントを貯める設定がされていない場合は以下より設定方法をご確認のうえ、設定を行ってください。</li>
+                          </ul>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=we_grp_campaign_linkage_edytype_osaifukeitai_pc" class="c-Link_Txt-inline" target="_blank">おサイフケータイの方<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=we_grp_campaign_linkage_edytype_edycard_pc" class="c-Link_Txt-inline" target="_blank">カード、グッズの方<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>Edy機能付き楽天カードはすでに設定されているため、別途設定の必要はありません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>対象店舗</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカードの提示でポイントを獲得できる全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリでコード表示・QR読み取り・セルフでのお支払いが利用できる店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天Edy】</p>
+                          <p>ファミリーマートを除く、楽天Edyの使える全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天Edyが使える店舗は<a href="https://edy.rakuten.co.jp/search/merchant/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ポイントカードのご利用に関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>お会計の際に提示された楽天ポイントカードの登録を削除された方、もしくは楽天会員を退会された方は対象外となります。</li>
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ペイアプリでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <p>【キャンペーン対象となるご利用】</p>
+                          <p>当キャンペーンは楽天ペイアプリによるコード、QR、セルフでのお支払いを対象としています。</p>
+                          <p class="u-Adjust_Mt-16">【キャンペーン対象外のご利用】</p>
+                          <p>以下のお支払い分は対象外となります。</p>
+                          <p class="u-Adjust_Mt-16">・楽天ペイ（請求書払い）によるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天ポイントカードによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天Edyへのチャージ分、楽天Edyによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天カードタッチ決済によるお支払い分<br>
+                            ・楽天ペイアプリ内のSuicaへのチャージ分、Suicaによるお支払い分<br>
+                            ・ネットでの楽天ペイのお支払い分</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ペイアプリでのお支払いをキャンセルされた場合、キャンセル分の金額はキャンペーン対象外となります。</li>
+                            <li><span>※</span>楽天ペイアプリの対応機種は<a href="https://support.pay.rakuten.net/faq/show/1152?site_domain=appuser" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認いただけます。</li>
+                            <li><span>※</span>楽天ペイアプリに設定可能なカードは、すべての楽天カード、およびその他のVisa、Mastercardとなります。前述以外のカードは、<a href="https://my.rakuten.co.jp/" class="c-Link_Txt-inline" target="_blank">楽天会員情報<span class="c-Icon_New-window-l"></span></a>に登録されていても、楽天ペイアプリのお支払い元の選択画面には表示されません。</li>
+                            <li><span>※</span>楽天カード以外のJCB、American Expressのカードをお支払い元に設定した場合、一部の店舗でお支払いいただけません。</li>
+                            <li><span>※</span>お支払いの設定に楽天カードを設定してお支払いの場合、通常進呈いたします[楽天カードご利用通常ポイント分のポイント1％]とは別に本特典を進呈いたします。</li>
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天Edyでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>特典進呈までに楽天ポイントを貯める設定を解除または楽天会員を退会した場合、特典進呈の対象外となります。</li>
+                            <li><span>※</span>特典進呈の時点で携帯電話の機種変更や楽天Edyアプリの再発行等の理由により当キャンペーン参加に利用された楽天EdyのEdy番号が変更になっていた場合は特典進呈対象外となります。</li>
+                            <li><span>※</span>楽天Edyのお支払いにはEdyの受け取り（Edyギフト）は含みませんので、ご注意ください。</li>
+                            <li><span>※</span>エントリーと楽天Edyのお支払いの順序は問いません。</li>
+                            <li><span>※</span>本キャンペーン期間中に楽天Edyのお支払いが完了している必要がありますので、ご注意ください。</li>
+                            <li><span>※</span>楽天Edyのご利用のキャンセル等により、特典進呈対象外となる場合がございます。</li>
+                            <li><span>※</span>楽天Edyから楽天キャッシュへのチャージは対象外となります。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>事前に告知のうえ特典内容を変更する可能性がございます。</li>
+                            <li><span>※</span>楽天会員でない方は、エントリーと同時に楽天会員登録（無料）が必要です。</li>
+                            <li><span>※</span>楽天グループの役職員および関係者は応募できません。</li>
+                            <li><span>※</span>同一の方が複数回エントリーされていると判断した場合や、弊社が不正と合理的に判断した場合は、特典ポイント進呈の対象外となる場合がございます。</li>
+                            <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合がございます。</li>
+                            <li><span>※</span>当キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                            <li><span>※</span>当ページをアプリでご覧の際、一部のリンク先が表示されない場合があります。大変お手数ですが、推奨環境にてご覧ください。</li>
+                            <li><span>※</span>当キャンペーンのポイント進呈対象者は、同時期に行われている他のキャンペーンの対象から除外、または景品総額が景品表示法上の範囲内に制限される場合がございます。</li>
+                            <li><span>※</span>当キャンペーンは、楽天ペイメント株式会社・楽天Edy株式会社が主催しております。天災地変や大規模システム障害などの影響により、実施または継続が困難と弊社が判断した場合、予告なく中止する場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（8月度）</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1373</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>エントリー期間</dt>
+                        <dd>
+                          <p>2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p>楽天ポイントカードご利用期間／楽天ペイ・楽天Edyお支払い期間<br>
+                            2023年8月1日（火）9:00～2023年9月1日（金）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>以下の条件を満たした楽天会員の方が対象となります。</p>
+                          <p class="u-Adjust_Mt-16">1.エントリー期間中に当キャンペーンページよりエントリーが完了された方</p>
+                          <p>2.以下のいずれかを達成した方</p>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li>A.キャンペーン期間中に楽天ポイントカードを提示して5ポイント以上獲得された方のうち、<a href="https://pointcard.rakuten.co.jp/register/" class="c-Link_Txt-inline" target="_blank">楽天ポイントカードの利用登録<span class="c-Icon_New-window-l"></span></a>がお済みの方（お済みでない方は、キャンペーン終了日までに楽天ポイントカードの利用登録を完了してください）</li>
+                            <li>B.キャンペーン期間中に対象店舗にて楽天ペイ（コード／QR／セルフ払い）で500円（税込）以上お支払いをされた方</li>
+                            <li>C.キャンペーン期間中に対象店舗にて対象の楽天Edyで500円（税込）以上お支払いをされた方</li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>キャンペーンにエントリーをした楽天ID、楽天ポイントカードを提示した楽天ID、支払いに利用した楽天のお支払いサービスの楽天IDが異なる場合は、当キャンペーンの対象外となります。</li>
+                            <li><span>※</span>エントリー、楽天ポイントカードを提示してのお買い物、または楽天ペイアプリ・楽天Edyでのお支払い、利用登録の順序は問いません。</li>
+                            <li><span>※</span>Edyでの支払いの場合、楽天ポイントを貯める設定をされた方が対象です。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dd>
+                          <p>エントリー期間中に、当キャンペーンにエントリーのうえ、キャンペーン期間中に、『楽天ポイントカードを提示しての5ポイント以上の獲得』または『楽天のお支払いサービス（楽天ペイアプリ・楽天Edy）のいずれか1つで500円（税込）以上のお支払い』をされた方の中から抽選で100名様に、10,000ポイントを進呈いたします。</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典ポイント進呈</dt>
+                        <dd>
+                          <p>[8月開催] 2023年11月30日（木）頃までに2023年12月31日（日）までご利用いただける期間限定ポイントで進呈いたします。</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典ポイントは楽天ペイメントより進呈いたします。</li>
+                            <li><span>※</span>獲得された特典ポイントは、<a href="https://point.rakuten.co.jp/history/" class="c-Link_Txt-inline" target="_blank">ポイント実績<span class="c-Icon_New-window-l"></span></a>よりご確認ください。</li>
+                            <li><span>※</span>期間限定ポイントの詳細は<a href="https://r10.to/hvoTD0" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>でご確認ください。</li>
+                            <li><span>※</span>特典ポイントをご利用いただける期間が短いのでご注意ください。</li>
+                            <li><span>※</span>登録されている楽天IDが複数ある場合、いずれか1つの楽天IDにポイント進呈いたします。</li>
+                            <li><span>※</span>当選者の発表は特典ポイントの進呈をもってかえさせていただきます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン対象サービス</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカード（楽天ポイントカードアプリまたは楽天ポイントカード機能が搭載されたアプリを含む）、Edy-楽天ポイントカード、楽天ポイントカード機能付き楽天カード、楽天ペイアプリの楽天ポイントカード機能</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>アプリにログインしていない状態でバーコードを提示された方はキャンペーン終了までにログインを行ってください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリのコード、QR、セルフ払い</p>
+                          <p>【楽天Edy】</p>
+                          <p>楽天ポイントが貯まる設定がされている楽天Edy</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>設定状況のご確認は<a href="https://edy.rakuten.co.jp/my/login/rspedy" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                            <li><span>※</span>ログイン後、お持ちのEdyカードが表示されていれば、ポイントの設定は完了しています。</li>
+                            <li><span>※</span>楽天Edyの種類によって設定方法が異なりますので、楽天ポイントを貯める設定がされていない場合は以下より設定方法をご確認のうえ、設定を行ってください。</li>
+                          </ul>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=we_grp_campaign_linkage_edytype_osaifukeitai_pc" class="c-Link_Txt-inline" target="_blank">おサイフケータイの方<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=we_grp_campaign_linkage_edytype_edycard_pc" class="c-Link_Txt-inline" target="_blank">カード、グッズの方<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>Edy機能付き楽天カードはすでに設定されているため、別途設定の必要はありません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>対象店舗</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカードの提示でポイントを獲得できる全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリでコード表示・QR読み取り・セルフでのお支払いが利用できる店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天Edy】</p>
+                          <p>ファミリーマートを除く、楽天Edyの使える全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天Edyが使える店舗は<a href="https://edy.rakuten.co.jp/search/merchant/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ポイントカードのご利用に関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>お会計の際に提示された楽天ポイントカードの登録を削除された方、もしくは楽天会員を退会された方は対象外となります。</li>
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ペイアプリでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <p>【キャンペーン対象となるご利用】</p>
+                          <p>当キャンペーンは楽天ペイアプリによるコード、QR、セルフでのお支払いを対象としています。</p>
+                          <p class="u-Adjust_Mt-16">【キャンペーン対象外のご利用】</p>
+                          <p>以下のお支払い分は対象外となります。</p>
+                          <p class="u-Adjust_Mt-16">・楽天ペイ（請求書払い）によるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天ポイントカードによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天Edyへのチャージ分、楽天Edyによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天カードタッチ決済によるお支払い分<br>
+                            ・楽天ペイアプリ内のSuicaへのチャージ分、Suicaによるお支払い分<br>
+                            ・ネットでの楽天ペイのお支払い分</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ペイアプリでのお支払いをキャンセルされた場合、キャンセル分の金額はキャンペーン対象外となります。</li>
+                            <li><span>※</span>楽天ペイアプリの対応機種は<a href="https://support.pay.rakuten.net/faq/show/1152?site_domain=appuser" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認いただけます。</li>
+                            <li><span>※</span>楽天ペイアプリに設定可能なカードは、すべての楽天カード、およびその他のVisa、Mastercardとなります。前述以外のカードは、<a href="https://my.rakuten.co.jp/" class="c-Link_Txt-inline" target="_blank">楽天会員情報<span class="c-Icon_New-window-l"></span></a>に登録されていても、楽天ペイアプリのお支払い元の選択画面には表示されません。</li>
+                            <li><span>※</span>楽天カード以外のJCB、American Expressのカードをお支払い元に設定した場合、一部の店舗でお支払いいただけません。</li>
+                            <li><span>※</span>お支払いの設定に楽天カードを設定してお支払いの場合、通常進呈いたします[楽天カードご利用通常ポイント分のポイント1％]とは別に本特典を進呈いたします。</li>
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天Edyでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>特典進呈までに楽天ポイントを貯める設定を解除または楽天会員を退会した場合、特典進呈の対象外となります。</li>
+                            <li><span>※</span>特典進呈の時点で携帯電話の機種変更や楽天Edyアプリの再発行等の理由により当キャンペーン参加に利用された楽天EdyのEdy番号が変更になっていた場合は特典進呈対象外となります。</li>
+                            <li><span>※</span>楽天Edyのお支払いにはEdyの受け取り（Edyギフト）は含みませんので、ご注意ください。</li>
+                            <li><span>※</span>エントリーと楽天Edyのお支払いの順序は問いません。</li>
+                            <li><span>※</span>本キャンペーン期間中に楽天Edyのお支払いが完了している必要がありますので、ご注意ください。</li>
+                            <li><span>※</span>楽天Edyのご利用のキャンセル等により、特典進呈対象外となる場合がございます。</li>
+                            <li><span>※</span>楽天Edyから楽天キャッシュへのチャージは対象外となります。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>事前に告知のうえ特典内容を変更する可能性がございます。</li>
+                            <li><span>※</span>楽天会員でない方は、エントリーと同時に楽天会員登録（無料）が必要です。</li>
+                            <li><span>※</span>楽天グループの役職員および関係者は応募できません。</li>
+                            <li><span>※</span>同一の方が複数回エントリーされていると判断した場合や、弊社が不正と合理的に判断した場合は、特典ポイント進呈の対象外となる場合がございます。</li>
+                            <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合がございます。</li>
+                            <li><span>※</span>当キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                            <li><span>※</span>当ページをアプリでご覧の際、一部のリンク先が表示されない場合があります。大変お手数ですが、推奨環境にてご覧ください。</li>
+                            <li><span>※</span>当キャンペーンのポイント進呈対象者は、同時期に行われている他のキャンペーンの対象から除外、または景品総額が景品表示法上の範囲内に制限される場合がございます。</li>
+                            <li><span>※</span>当キャンペーンは、楽天ペイメント株式会社・楽天Edy株式会社が主催しております。天災地変や大規模システム障害などの影響により、実施または継続が困難と弊社が判断した場合、予告なく中止する場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（7月度）</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1373</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>エントリー期間</dt>
+                        <dd>
+                          <p>2023年7月3日（月）9:00～2023年8月1日（火）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p>楽天ポイントカードご利用期間／楽天ペイ・楽天Edyお支払い期間<br>
+                            2023年7月3日（月）9:00～2023年8月1日（火）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>以下の条件を満たした楽天会員の方が対象となります。</p>
+                          <p class="u-Adjust_Mt-16">1.エントリー期間中に当キャンペーンページよりエントリーが完了された方</p>
+                          <p>2.以下のいずれかを達成した方</p>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li>A.キャンペーン期間中に楽天ポイントカードを提示して5ポイント以上獲得された方のうち、<a href="https://pointcard.rakuten.co.jp/register/" class="c-Link_Txt-inline" target="_blank">楽天ポイントカードの利用登録<span class="c-Icon_New-window-l"></span></a>がお済みの方（お済みでない方は、キャンペーン終了日までに楽天ポイントカードの利用登録を完了してください）</li>
+                            <li>B.キャンペーン期間中に対象店舗にて楽天ペイ（コード／QR／セルフ払い）で500円（税込）以上お支払いをされた方</li>
+                            <li>C.キャンペーン期間中に対象店舗にて対象の楽天Edyで500円（税込）以上お支払いをされた方</li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントカードを提示してのお会計、楽天ペイアプリ・楽天Edyでのお支払いは、それぞれ別のお店でも抽選の対象となります。</li>
+                            <li><span>※</span>キャンペーンにエントリーをした楽天ID、楽天ポイントカードを提示した楽天ID、支払いに利用した楽天のお支払いサービスの楽天IDが異なる場合は、当キャンペーンの対象外となります。</li>
+                            <li><span>※</span>エントリー、楽天ポイントカードを提示してのお買い物、または楽天ペイアプリ・楽天Edyでのお支払い、利用登録の順序は問いません。</li>
+                            <li><span>※</span>Edyでの支払いの場合、楽天ポイントを貯める設定をされた方が対象です。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dd>
+                          <p>エントリー期間中に、当キャンペーンにエントリーのうえ、キャンペーン期間中に、『楽天ポイントカードを提示しての5ポイント以上の獲得』または『楽天のお支払いサービス（楽天ペイアプリ・楽天Edy）のいずれか1つで500円（税込）以上のお支払い』をされた方の中から抽選で100名様に、10,000ポイントを進呈いたします。</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典ポイント進呈</dt>
+                        <dd>
+                          <p>[7月開催] 10月31日（火）頃までに2023年11月30日（木）までご利用いただける期間限定ポイントで進呈いたします。</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典ポイントは楽天ペイメントより進呈いたします。</li>
+                            <li><span>※</span>獲得された特典ポイントは、<a href="https://point.rakuten.co.jp/history/" class="c-Link_Txt-inline" target="_blank">ポイント実績<span class="c-Icon_New-window-l"></span></a>よりご確認ください。</li>
+                            <li><span>※</span>期間限定ポイントの詳細は<a href="https://r10.to/hvoTD0" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>でご確認ください。</li>
+                            <li><span>※</span>特典ポイントをご利用いただける期間が短いのでご注意ください。</li>
+                            <li><span>※</span>登録されている楽天IDが複数ある場合、いずれか1つの楽天IDにポイント進呈いたします。</li>
+                            <li><span>※</span>当選者の発表は特典ポイントの進呈をもってかえさせていただきます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン対象サービス</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカード（楽天ポイントカードアプリまたは楽天ポイントカード機能が搭載されたアプリを含む）、Edy-楽天ポイントカード、楽天ポイントカード機能付き楽天カード、楽天ペイアプリの楽天ポイントカード機能</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>アプリにログインしていない状態でバーコードを提示された方はキャンペーン終了までにログインを行ってください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリのコード、QR、セルフ払い</p>
+                          <p>【楽天Edy】</p>
+                          <p>楽天ポイントが貯まる設定がされている楽天Edy</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>設定状況のご確認は<a href="https://edy.rakuten.co.jp/my/login/rspedy" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                            <li><span>※</span>ログイン後、お持ちのEdyカードが表示されていれば、ポイントの設定は完了しています。</li>
+                            <li><span>※</span>楽天Edyの種類によって設定方法が異なりますので、楽天ポイントを貯める設定がされていない場合は以下より設定方法をご確認のうえ、設定を行ってください。</li>
+                          </ul>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=we_grp_campaign_linkage_edytype_osaifukeitai_pc" class="c-Link_Txt-inline" target="_blank">おサイフケータイの方<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=we_grp_campaign_linkage_edytype_edycard_pc" class="c-Link_Txt-inline" target="_blank">カード、グッズの方<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>Edy機能付き楽天カードはすでに設定されているため、別途設定の必要はありません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>対象店舗</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカードの提示でポイントを獲得できる全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリでコード表示・QR読み取り・セルフでのお支払いが利用できる店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天Edy】</p>
+                          <p>ファミリーマートを除く、楽天Edyの使える全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天Edyが使える店舗は<a href="https://edy.rakuten.co.jp/search/merchant/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ポイントカードのご利用に関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>お会計の際に提示された楽天ポイントカードの登録を削除された方、もしくは楽天会員を退会された方は対象外となります。</li>
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ペイアプリでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <p>【キャンペーン対象となるご利用】</p>
+                          <p>当キャンペーンは楽天ペイアプリによるコード、QR、セルフでのお支払いを対象としています。</p>
+                          <p class="u-Adjust_Mt-16">【キャンペーン対象外のご利用】</p>
+                          <p>以下のお支払い分は対象外となります。</p>
+                          <p class="u-Adjust_Mt-16">・楽天ペイ（請求書払い）によるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天ポイントカードによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天Edyへのチャージ分、楽天Edyによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天カードタッチ決済によるお支払い分<br>
+                            ・楽天ペイアプリ内のSuicaへのチャージ分、Suicaによるお支払い分<br>
+                            ・ネットでの楽天ペイのお支払い分</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ペイアプリでのお支払いをキャンセルされた場合、キャンセル分の金額はキャンペーン対象外となります。</li>
+                            <li><span>※</span>楽天ペイアプリの対応機種は<a href="https://support.pay.rakuten.net/faq/show/1152?site_domain=appuser" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認いただけます。</li>
+                            <li><span>※</span>楽天ペイアプリに設定可能なカードは、すべての楽天カード、およびその他のVisa、Mastercardとなります。前述以外のカードは、<a href="https://my.rakuten.co.jp/" class="c-Link_Txt-inline" target="_blank">楽天会員情報<span class="c-Icon_New-window-l"></span></a>に登録されていても、楽天ペイアプリのお支払い元の選択画面には表示されません。</li>
+                            <li><span>※</span>楽天カード以外のJCB、American Expressのカードをお支払い元に設定した場合、一部の店舗でお支払いいただけません。</li>
+                            <li><span>※</span>お支払いの設定に楽天カードを設定してお支払いの場合、通常進呈いたします[楽天カードご利用通常ポイント分のポイント1％]とは別に本特典を進呈いたします。</li>
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天Edyでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>特典進呈までに楽天ポイントを貯める設定を解除または楽天会員を退会した場合、特典進呈の対象外となります。</li>
+                            <li><span>※</span>特典進呈の時点で携帯電話の機種変更や楽天Edyアプリの再発行等の理由により当キャンペーン参加に利用された楽天EdyのEdy番号が変更になっていた場合は特典進呈対象外となります。</li>
+                            <li><span>※</span>楽天Edyのお支払いにはEdyの受け取り（Edyギフト）は含みませんので、ご注意ください。</li>
+                            <li><span>※</span>エントリーと楽天Edyのお支払いの順序は問いません。</li>
+                            <li><span>※</span>本キャンペーン期間中に楽天Edyのお支払いが完了している必要がありますので、ご注意ください。</li>
+                            <li><span>※</span>楽天Edyのご利用のキャンセル等により、特典進呈対象外となる場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>事前に告知のうえ特典内容を変更する可能性がございます。</li>
+                            <li><span>※</span>楽天会員でない方は、エントリーと同時に楽天会員登録（無料）が必要です。</li>
+                            <li><span>※</span>楽天グループの役職員および関係者は応募できません。</li>
+                            <li><span>※</span>同一の方が複数回エントリーされていると判断した場合や、弊社が不正と合理的に判断した場合は、特典ポイント進呈の対象外となる場合がございます。</li>
+                            <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合がございます。</li>
+                            <li><span>※</span>当キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                            <li><span>※</span>当ページをアプリでご覧の際、一部のリンク先が表示されない場合があります。大変お手数ですが、推奨環境にてご覧ください。</li>
+                            <li><span>※</span>当キャンペーンのポイント進呈対象者は、同時期に行われている他のキャンペーンの対象から除外、または景品総額が景品表示法上の範囲内に制限される場合がございます。</li>
+                            <li><span>※</span>当キャンペーンは、楽天ペイメント株式会社・楽天Edy株式会社が主催しております。天災地変や大規模システム障害などの影響により、実施または継続が困難と弊社が判断した場合、予告なく中止する場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（6月度）</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1373</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>エントリー期間</dt>
+                        <dd>
+                          <p>2023年6月1日（木）9:00～2023年7月3日（月）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p>楽天ポイントカードご利用期間／楽天ペイ・楽天Edyお支払い期間<br>
+                            2023年6月1日（木）9:00～2023年7月3日（月）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>以下の条件を満たした楽天会員の方が対象となります。</p>
+                          <p class="u-Adjust_Mt-16">1.エントリー期間中に当キャンペーンページよりエントリーが完了された方</p>
+                          <p>2.以下のいずれかを達成した方</p>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li>A.キャンペーン期間中に楽天ポイントカードを提示して5ポイント以上獲得された方のうち、<a href="https://pointcard.rakuten.co.jp/register/" class="c-Link_Txt-inline" target="_blank">楽天ポイントカードの利用登録<span class="c-Icon_New-window-l"></span></a>がお済みの方（お済みでない方は、キャンペーン終了日までに楽天ポイントカードの利用登録を完了してください）</li>
+                            <li>B.キャンペーン期間中に対象店舗にて楽天ペイ（コード／QR／セルフ払い）で500円（税込）以上お支払いをされた方</li>
+                            <li>C.キャンペーン期間中に対象店舗にて対象の楽天Edyで500円（税込）以上お支払いをされた方</li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントカードを提示してのお会計、楽天ペイアプリ・楽天Edyでのお支払いは、それぞれ別のお店でも抽選の対象となります。</li>
+                            <li><span>※</span>キャンペーンにエントリーをした楽天ID、楽天ポイントカードを提示した楽天ID、支払いに利用した楽天のお支払いサービスの楽天IDが異なる場合は、当キャンペーンの対象外となります。</li>
+                            <li><span>※</span>エントリー、楽天ポイントカードを提示してのお買い物、または楽天ペイアプリ・楽天Edyでのお支払い、利用登録の順序は問いません。</li>
+                            <li><span>※</span>Edyでの支払いの場合、楽天ポイントを貯める設定をされた方が対象です。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dd>
+                          <p>エントリー期間中に、当キャンペーンにエントリーのうえ、キャンペーン期間中に、『楽天ポイントカードを提示しての5ポイント以上の獲得』または『楽天のお支払いサービス（楽天ペイアプリ・楽天Edy）のいずれか1つで500円（税込）以上のお支払い』をされた方の中から抽選で100名様に、10,000ポイントを進呈いたします。</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典ポイント進呈</dt>
+                        <dd>
+                          <p>[6月開催] 2023年9月30日（土）頃までに2023年10月31日（火）までご利用いただける期間限定ポイントで進呈いたします。</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典ポイントは楽天ペイメントより進呈いたします。</li>
+                            <li><span>※</span>獲得された特典ポイントは、<a href="https://point.rakuten.co.jp/history/" class="c-Link_Txt-inline" target="_blank">ポイント実績<span class="c-Icon_New-window-l"></span></a>よりご確認ください。</li>
+                            <li><span>※</span>期間限定ポイントの詳細は<a href="https://r10.to/hvoTD0" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>でご確認ください。</li>
+                            <li><span>※</span>特典ポイントをご利用いただける期間が短いのでご注意ください。</li>
+                            <li><span>※</span>登録されている楽天IDが複数ある場合、いずれか1つの楽天IDにポイント進呈いたします。</li>
+                            <li><span>※</span>当選者の発表は特典ポイントの進呈をもってかえさせていただきます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン対象サービス</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカード（楽天ポイントカードアプリまたは楽天ポイントカード機能が搭載されたアプリを含む）、Edy-楽天ポイントカード、楽天ポイントカード機能付き楽天カード、楽天ペイアプリの楽天ポイントカード機能</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>アプリにログインしていない状態でバーコードを提示された方はキャンペーン終了までにログインを行ってください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリのコード、QR、セルフ払い</p>
+                          <p>【楽天Edy】</p>
+                          <p>楽天ポイントが貯まる設定がされている楽天Edy</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>設定状況のご確認は<a href="https://edy.rakuten.co.jp/my/login/rspedy" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                            <li><span>※</span>ログイン後、お持ちのEdyカードが表示されていれば、ポイントの設定は完了しています。</li>
+                            <li><span>※</span>楽天Edyの種類によって設定方法が異なりますので、楽天ポイントを貯める設定がされていない場合は以下より設定方法をご確認のうえ、設定を行ってください。</li>
+                          </ul>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=we_grp_campaign_linkage_edytype_osaifukeitai_pc" class="c-Link_Txt-inline" target="_blank">おサイフケータイの方<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=we_grp_campaign_linkage_edytype_edycard_pc" class="c-Link_Txt-inline" target="_blank">カード、グッズの方<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>Edy機能付き楽天カードはすでに設定されているため、別途設定の必要はありません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>対象店舗</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカードの提示でポイントを獲得できる全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリでコード表示・QR読み取り・セルフでのお支払いが利用できる店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天Edy】</p>
+                          <p>ファミリーマートを除く、楽天Edyの使える全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天Edyが使える店舗は<a href="https://edy.rakuten.co.jp/search/merchant/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ポイントカードのご利用に関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>お会計の際に提示された楽天ポイントカードの登録を削除された方、もしくは楽天会員を退会された方は対象外となります。</li>
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ペイアプリでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <p>【キャンペーン対象となるご利用】</p>
+                          <p>当キャンペーンは楽天ペイアプリによるコード、QR、セルフでのお支払いを対象としています。</p>
+                          <p class="u-Adjust_Mt-16">【キャンペーン対象外のご利用】</p>
+                          <p>以下のお支払い分は対象外となります。</p>
+                          <p class="u-Adjust_Mt-16">・楽天ペイ（請求書払い）によるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天ポイントカードによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天Edyへのチャージ分、楽天Edyによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天カードタッチ決済によるお支払い分<br>
+                            ・楽天ペイアプリ内のSuicaへのチャージ分、Suicaによるお支払い分<br>
+                            ・ネットでの楽天ペイのお支払い分</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ペイアプリでのお支払いをキャンセルされた場合、キャンセル分の金額はキャンペーン対象外となります。</li>
+                            <li><span>※</span>楽天ペイアプリの対応機種は<a href="https://support.pay.rakuten.net/faq/show/1152?site_domain=appuser" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認いただけます。</li>
+                            <li><span>※</span>楽天ペイアプリに設定可能なカードは、すべての楽天カード、およびその他のVisa、Mastercardとなります。前述以外のカードは、<a href="https://my.rakuten.co.jp/" class="c-Link_Txt-inline" target="_blank">楽天会員情報<span class="c-Icon_New-window-l"></span></a>に登録されていても、楽天ペイアプリのお支払い元の選択画面には表示されません。</li>
+                            <li><span>※</span>楽天カード以外のJCB、American Expressのカードをお支払い元に設定した場合、一部の店舗でお支払いいただけません。</li>
+                            <li><span>※</span>お支払いの設定に楽天カードを設定してお支払いの場合、通常進呈いたします[楽天カードご利用通常ポイント分のポイント1％]とは別に本特典を進呈いたします。</li>
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天Edyでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>特典進呈までに楽天ポイントを貯める設定を解除または楽天会員を退会した場合、特典進呈の対象外となります。</li>
+                            <li><span>※</span>特典進呈の時点で携帯電話の機種変更や楽天Edyアプリの再発行等の理由により当キャンペーン参加に利用された楽天EdyのEdy番号が変更になっていた場合は特典進呈対象外となります。</li>
+                            <li><span>※</span>楽天Edyのお支払いにはEdyの受け取り（Edyギフト）は含みませんので、ご注意ください。</li>
+                            <li><span>※</span>エントリーと楽天Edyのお支払いの順序は問いません。</li>
+                            <li><span>※</span>本キャンペーン期間中に楽天Edyのお支払いが完了している必要がありますので、ご注意ください。</li>
+                            <li><span>※</span>楽天Edyのご利用のキャンセル等により、特典進呈対象外となる場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>事前に告知のうえ特典内容を変更する可能性がございます。</li>
+                            <li><span>※</span>楽天会員でない方は、エントリーと同時に楽天会員登録（無料）が必要です。</li>
+                            <li><span>※</span>楽天グループの役職員および関係者は応募できません。</li>
+                            <li><span>※</span>同一の方が複数回エントリーされていると判断した場合や、弊社が不正と合理的に判断した場合は、特典ポイント進呈の対象外となる場合がございます。</li>
+                            <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合がございます。</li>
+                            <li><span>※</span>当キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                            <li><span>※</span>当ページをアプリでご覧の際、一部のリンク先が表示されない場合があります。大変お手数ですが、推奨環境にてご覧ください。</li>
+                            <li><span>※</span>当キャンペーンのポイント進呈対象者は、同時期に行われている他のキャンペーンの対象から除外、または景品総額が景品表示法上の範囲内に制限される場合がございます。</li>
+                            <li><span>※</span>当キャンペーンは、楽天ペイメント株式会社・楽天Edy株式会社が主催しております。天災地変や大規模システム障害などの影響により、実施または継続が困難と弊社が判断した場合、予告なく中止する場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（5月度）</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1373</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>エントリー期間</dt>
+                        <dd>
+                          <p>2023年5月1日（月）9:00～2023年6月1日（木）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p>楽天ポイントカードご利用期間／楽天ペイ・楽天Edyお支払い期間<br>
+                            2023年5月1日（月）9:00～2023年6月1日（木）8:59</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>以下の条件を満たした楽天会員の方が対象となります。</p>
+                          <p class="u-Adjust_Mt-16">1.エントリー期間中に当キャンペーンページよりエントリーが完了された方</p>
+                          <p>2.以下のいずれかを達成した方</p>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li>A.キャンペーン期間中に楽天ポイントカードを提示して5ポイント以上獲得された方のうち、<a href="https://pointcard.rakuten.co.jp/register/" class="c-Link_Txt-inline" target="_blank">楽天ポイントカードの利用登録<span class="c-Icon_New-window-l"></span></a>がお済みの方（お済みでない方は、キャンペーン終了日までに楽天ポイントカードの利用登録を完了してください）</li>
+                            <li>B.キャンペーン期間中に対象店舗にて楽天ペイ（コード／QR／セルフ払い）で500円（税込）以上お支払いをされた方</li>
+                            <li>C.キャンペーン期間中に対象店舗にて対象の楽天Edyで500円（税込）以上お支払いをされた方</li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントカードを提示してのお会計、楽天ペイアプリ・楽天Edyでのお支払いは、それぞれ別のお店でも抽選の対象となります。</li>
+                            <li><span>※</span>キャンペーンにエントリーをした楽天ID、楽天ポイントカードを提示した楽天ID、支払いに利用した楽天のお支払いサービスの楽天IDが異なる場合は、当キャンペーンの対象外となります。</li>
+                            <li><span>※</span>エントリー、楽天ポイントカードを提示してのお買い物、または楽天ペイアプリ・楽天Edyでのお支払い、利用登録の順序は問いません。</li>
+                            <li><span>※</span>Edyでの支払いの場合、楽天ポイントを貯める設定をされた方が対象です。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dd>
+                          <p>エントリー期間中に、当キャンペーンにエントリーのうえ、キャンペーン期間中に、『楽天ポイントカードを提示しての5ポイント以上の獲得』または『楽天のお支払いサービス（楽天ペイアプリ・楽天Edy）のいずれか1つで500円（税込）以上のお支払い』をされた方の中から抽選で100名様に、10,000ポイントを進呈いたします。</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典ポイント進呈</dt>
+                        <dd>
+                          <p>[5月開催] 2023年8月31日（木）頃までに2023年9月30日（土）までご利用いただける期間限定ポイントで進呈いたします。</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典ポイントは楽天ペイメントより進呈いたします。</li>
+                            <li><span>※</span>獲得された特典ポイントは、<a href="https://point.rakuten.co.jp/history/" class="c-Link_Txt-inline" target="_blank">ポイント実績<span class="c-Icon_New-window-l"></span></a>よりご確認ください。</li>
+                            <li><span>※</span>期間限定ポイントの詳細は<a href="https://r10.to/hvoTD0" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>でご確認ください。</li>
+                            <li><span>※</span>特典ポイントをご利用いただける期間が短いのでご注意ください。</li>
+                            <li><span>※</span>登録されている楽天IDが複数ある場合、いずれか1つの楽天IDにポイント進呈いたします。</li>
+                            <li><span>※</span>当選者の発表は特典ポイントの進呈をもってかえさせていただきます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン対象サービス</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカード（楽天ポイントカードアプリまたは楽天ポイントカード機能が搭載されたアプリを含む）、Edy-楽天ポイントカード、楽天ポイントカード機能付き楽天カード、楽天ペイアプリの楽天ポイントカード機能</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>アプリにログインしていない状態でバーコードを提示された方はキャンペーン終了までにログインを行ってください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリのコード、QR、セルフ払い</p>
+                          <p>【楽天Edy】</p>
+                          <p>楽天ポイントが貯まる設定がされている楽天Edy</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>設定状況のご確認は<a href="https://edy.rakuten.co.jp/my/login/rspedy" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                            <li><span>※</span>ログイン後、お持ちのEdyカードが表示されていれば、ポイントの設定は完了しています。</li>
+                            <li><span>※</span>楽天Edyの種類によって設定方法が異なりますので、楽天ポイントを貯める設定がされていない場合は以下より設定方法をご確認のうえ、設定を行ってください。</li>
+                          </ul>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=we_grp_campaign_linkage_edytype_osaifukeitai_pc" class="c-Link_Txt-inline" target="_blank">おサイフケータイの方<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=we_grp_campaign_linkage_edytype_edycard_pc" class="c-Link_Txt-inline" target="_blank">カード、グッズの方<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>Edy機能付き楽天カードはすでに設定されているため、別途設定の必要はありません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>対象店舗</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカードの提示でポイントを獲得できる全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリでコード表示・QR読み取り・セルフでのお支払いが利用できる店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天Edy】</p>
+                          <p>ファミリーマートを除く、楽天Edyの使える全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天Edyが使える店舗は<a href="https://edy.rakuten.co.jp/search/merchant/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ポイントカードのご利用に関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>お会計の際に提示された楽天ポイントカードの登録を削除された方、もしくは楽天会員を退会された方は対象外となります。</li>
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ペイアプリでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <p>【キャンペーン対象となるご利用】</p>
+                          <p>当キャンペーンは楽天ペイアプリによるコード、QR、セルフでのお支払いを対象としています。</p>
+                          <p class="u-Adjust_Mt-16">【キャンペーン対象外のご利用】</p>
+                          <p>以下のお支払い分は対象外となります。</p>
+                          <p class="u-Adjust_Mt-16">・楽天ペイ（請求書払い）によるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天ポイントカードによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天Edyへのチャージ分、楽天Edyによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天カードタッチ決済によるお支払い分<br>
+                            ・楽天ペイアプリ内のSuicaへのチャージ分、Suicaによるお支払い分<br>
+                            ・ネットでの楽天ペイのお支払い分</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ペイアプリでのお支払いをキャンセルされた場合、キャンセル分の金額はキャンペーン対象外となります。</li>
+                            <li><span>※</span>楽天ペイアプリの対応機種は<a href="https://support.pay.rakuten.net/faq/show/1152?site_domain=appuser" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認いただけます。</li>
+                            <li><span>※</span>楽天ペイアプリに設定可能なカードは、すべての楽天カード、およびその他のVisa、Mastercardとなります。前述以外のカードは、<a href="https://my.rakuten.co.jp/" class="c-Link_Txt-inline" target="_blank">楽天会員情報<span class="c-Icon_New-window-l"></span></a>に登録されていても、楽天ペイアプリのお支払い元の選択画面には表示されません。</li>
+                            <li><span>※</span>楽天カード以外のJCB、American Expressのカードをお支払い元に設定した場合、一部の店舗でお支払いいただけません。</li>
+                            <li><span>※</span>お支払いの設定に楽天カードを設定してお支払いの場合、通常進呈いたします[楽天カードご利用通常ポイント分のポイント1％]とは別に本特典を進呈いたします。</li>
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天Edyでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>特典進呈までに楽天ポイントを貯める設定を解除または楽天会員を退会した場合、特典進呈の対象外となります。</li>
+                            <li><span>※</span>特典進呈の時点で携帯電話の機種変更や楽天Edyアプリの再発行等の理由により当キャンペーン参加に利用された楽天EdyのEdy番号が変更になっていた場合は特典進呈対象外となります。</li>
+                            <li><span>※</span>楽天Edyのお支払いにはEdyの受け取り（Edyギフト）は含みませんので、ご注意ください。</li>
+                            <li><span>※</span>エントリーと楽天Edyのお支払いの順序は問いません。</li>
+                            <li><span>※</span>本キャンペーン期間中に楽天Edyのお支払いが完了している必要がありますので、ご注意ください。</li>
+                            <li><span>※</span>楽天Edyのご利用のキャンセル等により、特典進呈対象外となる場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>事前に告知のうえ特典内容を変更する可能性がございます。</li>
+                            <li><span>※</span>楽天会員でない方は、エントリーと同時に楽天会員登録（無料）が必要です。</li>
+                            <li><span>※</span>楽天グループの役職員および関係者は応募できません。</li>
+                            <li><span>※</span>同一の方が複数回エントリーされていると判断した場合や、弊社が不正と合理的に判断した場合は、特典ポイント進呈の対象外となる場合がございます。</li>
+                            <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合がございます。</li>
+                            <li><span>※</span>当キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                            <li><span>※</span>当ページをアプリでご覧の際、一部のリンク先が表示されない場合があります。大変お手数ですが、推奨環境にてご覧ください。</li>
+                            <li><span>※</span>当キャンペーンのポイント進呈対象者は、同時期に行われている他のキャンペーンの対象から除外、または景品総額が景品表示法上の範囲内に制限される場合がございます。</li>
+                            <li><span>※</span>当キャンペーンは、楽天ペイメント株式会社・楽天Edy株式会社が主催しております。天災地変や大規模システム障害などの影響により、実施または継続が困難と弊社が判断した場合、予告なく中止する場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Rule">
+                  <div class="c-Txt_Emp-01">楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（4月度）</div>
+                  <div class="u-Adjust_Mt-24">
+                    <div class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                      <dl>
+                        <dt>キャンペーンコード</dt>
+                        <dd>
+                          <p>1373</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>エントリー期間</dt>
+                        <dd>
+                          <p>2023年4月3日（月）9:00～2023年5月1日（月）9:00</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン期間</dt>
+                        <dd>
+                          <p>楽天ポイントカードご利用期間／楽天ペイ・楽天Edyお支払い期間<br>
+                            2023年4月3日（月）9:00～2023年5月1日（月）9:00</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン条件</dt>
+                        <dd>
+                          <p>以下の条件を満たした楽天会員の方が対象となります。</p>
+                          <p class="u-Adjust_Mt-16">1.エントリー期間中に当キャンペーンページよりエントリーが完了された方</p>
+                          <p>2.以下のいずれかを達成した方</p>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li>A.キャンペーン期間中に楽天ポイントカードを提示して5ポイント以上獲得された方のうち、<a href="https://pointcard.rakuten.co.jp/register/" class="c-Link_Txt-inline" target="_blank">楽天ポイントカードの利用登録<span class="c-Icon_New-window-l"></span></a>がお済みの方（お済みでない方は、キャンペーン終了日までに楽天ポイントカードの利用登録を完了してください）</li>
+                            <li>B.キャンペーン期間中に対象店舗にて楽天ペイ（コード／QR／セルフ払い）で500円（税込）以上お支払いをされた方</li>
+                            <li>C.キャンペーン期間中に対象店舗にて対象の楽天Edyで500円（税込）以上お支払いをされた方</li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ポイントカードを提示してのお会計、楽天ペイアプリ・楽天Edyでのお支払いは、それぞれ別のお店でも抽選の対象となります。</li>
+                            <li><span>※</span>キャンペーンにエントリーをした楽天ID、楽天ポイントカードを提示した楽天ID、支払いに利用した楽天のお支払いサービスの楽天IDが異なる場合は、当キャンペーンの対象外となります。</li>
+                            <li><span>※</span>エントリー、楽天ポイントカードを提示してのお買い物・楽天ペイアプリ・楽天Edyでのお支払い、利用登録の順序は問いません。</li>
+                            <li><span>※</span>Edyでの支払いの場合、楽天ポイントを貯める設定をされた方が対象です。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン特典（楽天ポイント）</dt>
+                        <dd>
+                          <p>エントリー期間中に、当キャンペーンにエントリーのうえ、キャンペーン期間中に、『楽天ポイントカードを提示しての5ポイント以上の獲得』または『楽天のお支払いサービス（楽天ペイアプリ・楽天Edy）のいずれか1つで500円（税込）以上のお支払い』をされた方の中から抽選で100名様に、10,000ポイントを進呈いたします。</p>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>特典ポイント進呈</dt>
+                        <dd>
+                          <p>[4月開催] 2023年7月31日（月）頃までに2023年8月31日（木）までご利用いただける期間限定ポイントで進呈いたします。</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>特典ポイントは楽天ペイメントより「楽天ペイメントサービスご利用で抽選で100名様に10,000ポイント！（4月度）」の内容で進呈いたします。</li>
+                            <li><span>※</span>獲得された特典ポイントは、<a href="https://point.rakuten.co.jp/history/" class="c-Link_Txt-inline" target="_blank">ポイント実績<span class="c-Icon_New-window-l"></span></a>よりご確認ください。</li>
+                            <li><span>※</span>期間限定ポイントの詳細は<a href="https://r10.to/hvoTD0" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>でご確認ください。</li>
+                            <li><span>※</span>特典ポイントをご利用いただける期間が短いのでご注意ください。</li>
+                            <li><span>※</span>登録されている楽天IDが複数ある場合、いずれか1つの楽天IDにポイント進呈いたします。</li>
+                            <li><span>※</span>当選者の発表は特典ポイントの進呈をもってかえさせていただきます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>キャンペーン対象サービス</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカード（楽天ポイントカードアプリまたは楽天ポイントカード機能が搭載されたアプリを含む）、Edy-楽天ポイントカード、楽天ポイントカード機能付き楽天カード、楽天ペイアプリの楽天ポイントカード機能</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>アプリにログインしていない状態でバーコードを提示された方はキャンペーン終了までにログインを行ってください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリのコード、QR、セルフ払い</p>
+                          <p>【楽天Edy】</p>
+                          <p>楽天ポイントが貯まる設定がされている楽天Edy</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>設定状況のご確認は<a href="https://edy.rakuten.co.jp/my/login/rspedy" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                            <li><span>※</span>ログイン後、お持ちのEdyカードが表示されていれば、ポイントの設定は完了しています。</li>
+                            <li><span>※</span>楽天Edyの種類によって設定方法が異なりますので、楽天ポイントを貯める設定がされていない場合は以下より設定方法をご確認のうえ、設定を行ってください。</li>
+                          </ul>
+                          <ul class="list-01 c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><a href="https://edy.rakuten.co.jp/howto/osaifukeitai/point/?scid=we_grp_campaign_linkage_edytype_osaifukeitai_pc" class="c-Link_Txt-inline" target="_blank">おサイフケータイの方<span class="c-Icon_New-window-l"></span></a></li>
+                            <li><a href="https://edy.rakuten.co.jp/card/edydeptop/rakuten/select?scid=we_grp_campaign_linkage_edytype_edycard_pc" class="c-Link_Txt-inline" target="_blank">カード、グッズの方<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>Edy機能付き楽天カードはすでに設定されているため、別途設定の必要はありません。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>対象店舗</dt>
+                        <dd>
+                          <p>【楽天ポイントカード】</p>
+                          <p>楽天ポイントカードの提示でポイントを獲得できる全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天ペイアプリ】</p>
+                          <p>楽天ペイアプリでコード表示・QR読み取り・セルフでのお支払いが利用できる店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                          <p class="u-Adjust_Mt-16">【楽天Edy】</p>
+                          <p>ファミリーマートを除く、楽天Edyの使える全店舗</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>楽天Edyが使える店舗は<a href="https://edy.rakuten.co.jp/search/merchant/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a></li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ポイントカードのご利用に関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>お会計の際に提示された楽天ポイントカードの登録を削除された方、もしくは楽天会員を退会された方は対象外となります。</li>
+                            <li><span>※</span>一部ポイント進呈対象外の店舗・商品・サービス・決済方法・申し込み方法等がございます。詳しくは、<a href="https://pointcard.rakuten.co.jp/partner/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>から各お店の詳細ページよりご確認いただくか、店頭もしくは楽天ポイントカードお客様サポートセンターへお問い合わせください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天ペイアプリでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <p>【キャンペーン対象となるご利用】</p>
+                          <p>当キャンペーンは楽天ペイアプリによるコード、QR、セルフでのお支払いを対象としています。</p>
+                          <p class="u-Adjust_Mt-16">【キャンペーン対象外のご利用】</p>
+                          <p>以下のお支払い分は対象外となります。</p>
+                          <p class="u-Adjust_Mt-16">・楽天ペイ（請求書払い）によるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天ポイントカードによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天Edyへのチャージ分、楽天Edyによるお支払い分<br>
+                            ・楽天ペイアプリ内の楽天カードタッチ決済によるお支払い分<br>
+                            ・楽天ペイアプリ内のSuicaへのチャージ分、Suicaによるお支払い分<br>
+                            ・ネットでの楽天ペイのお支払い分</p>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                            <li><span>※</span>楽天ペイアプリでのお支払いをキャンセルされた場合、キャンセル分の金額はキャンペーン対象外となります。</li>
+                            <li><span>※</span>楽天ペイアプリの対応機種は<a href="https://support.pay.rakuten.net/faq/show/1152?site_domain=appuser" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認いただけます。</li>
+                            <li><span>※</span>楽天ペイアプリに設定可能なカードは、すべての楽天カード、およびその他のVisa、Mastercardとなります。前述以外のカードは、<a href="https://my.rakuten.co.jp/" class="c-Link_Txt-inline" target="_blank">楽天会員情報<span class="c-Icon_New-window-l"></span></a>に登録されていても、楽天ペイアプリのお支払い元の選択画面には表示されません。</li>
+                            <li><span>※</span>楽天カード以外のJCB、American Expressのカードをお支払い元に設定した場合、一部の店舗でお支払いいただけません。</li>
+                            <li><span>※</span>お支払いの設定に楽天カードを設定してお支払いの場合、通常進呈いたします[楽天カードご利用通常ポイント分のポイント1％]とは別に本特典を進呈いたします。</li>
+                            <li><span>※</span>楽天ペイアプリでのお支払いについては、一部店舗でのご利用分はポイント進呈対象外となります。詳しくは必ず<a href="https://pay.rakuten.co.jp/campaign/2020/pointprogram/rule/shop/" class="c-Link_Txt-inline" target="_blank">こちら<span class="c-Icon_New-window-l"></span></a>からご確認ください。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>楽天Edyでのお支払いに関する注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>特典進呈までに楽天ポイントを貯める設定を解除または楽天会員を退会した場合、特典進呈の対象外となります。</li>
+                            <li><span>※</span>特典進呈の時点で携帯電話の機種変更や楽天Edyアプリの再発行等の理由により当キャンペーン参加に利用された楽天EdyのEdy番号が変更になっていた場合は特典進呈対象外となります。</li>
+                            <li><span>※</span>楽天Edyのお支払いにはEdyの受け取り（Edyギフト）は含みませんので、ご注意ください。</li>
+                            <li><span>※</span>エントリーと楽天Edyのお支払いの順序は問いません。</li>
+                            <li><span>※</span>本キャンペーン期間中に楽天Edyのお支払いが完了している必要がありますので、ご注意ください。</li>
+                            <li><span>※</span>楽天Edyのご利用のキャンセル等により、特典進呈対象外となる場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="<%= namespace %>-campaign-Rule_Title-sub">注意事項</dt>
+                        <dd>
+                          <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                            <li><span>※</span>事前に告知のうえ特典内容を変更する可能性がございます。</li>
+                            <li><span>※</span>楽天会員でない方は、エントリーと同時に楽天会員登録（無料）が必要です。</li>
+                            <li><span>※</span>楽天グループの役職員および関係者は応募できません。</li>
+                            <li><span>※</span>同一の方が複数回エントリーされていると判断した場合や、弊社が不正と判断した場合は、特典ポイント進呈の対象外となる場合がございます。</li>
+                            <li><span>※</span>メンテナンス等でキャンペーンにご参加いただけない場合がございます。</li>
+                            <li><span>※</span>当キャンペーン参加にかかる費用（通信費等含む）は、お客様のご負担となりますので、あらかじめご了承ください。</li>
+                            <li><span>※</span>当ページをアプリでご覧の際、一部のリンク先が表示されない場合があります。大変お手数ですが、推奨環境にてご覧ください。</li>
+                            <li><span>※</span>当キャンペーンのポイント進呈対象者は、同時期に行われている他のキャンペーンの対象から除外、または景品総額が景品表示法上の範囲内に制限される場合がございます。</li>
+                            <li><span>※</span>当キャンペーンは、楽天ペイメント株式会社・楽天Edy株式会社が主催しております。天災地変や大規模システム障害などの影響により、実施または継続が困難と弊社が判断した場合、予告なく中止する場合がございます。</li>
+                          </ul>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReX UX Survey: Mounting point for embedded components -->
+    <div id="rexSurveyEmbedded" class="rexSurveyNamespace"></div>
+
+    <% if (information.campaignState == 'finish') { %>
+      <footer class="g-Footer u-Adjust_Mt-64 <%= namespace %>-Layout_Footer Fin">
+    <% } else { %>
+      <!-- else -->
+      <div id="js-fixed-btn" class="<%= namespace %>-Layout_Bottom-fixed" aria-expanded="true" role="region">
+        <div class="<%= namespace %>-Layout_Bottom-fixed-inner u-Adjust_Mt-0">
+          <a href="https://onboarding.mobile.rakuten.co.jp/coupon_link?id=PMTREG00000002&l-id=campaign_payment-service_f_coupon_link" class="js-scroll c-Btn_Primary-large"><span>お申し込みはこちら</span></a>
+          <a href="#rex-ceb-01" class="js-scroll c-Btn_Regular-large"><span>エントリーはこちら</span></a>
+        </div>
+      </div>
+      <footer class="g-Footer u-Adjust_Mt-64 <%= namespace %>-Layout_Footer">
+    <% } %>
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+  <%- include('/include/poikaku-gadget/_js') %>
+  <script>
+    (function($){
+        $(function(){
+          $('.accordion1_opan').on('click', function(){
+            $('#accordion-1').attr('aria-expanded', 'true');
+            $('#accordion-content-1').attr('aria-hidden', 'false');
+            $('#accordion-content-1').slideDown(200);
+          });
+          $('.js-Ac_Members').on('click',function() {
+            var n = window.location.href.slice(window.location.href.indexOf('?') + 4);
+            var p = $("#members").offset().top;
+            $('html,body').animate({ scrollTop: p }, 'slow');
+            return false;
+          });
+        });
+        $(function(){
+            $('.rmobile-rule').on('click', function(){
+              document.getElementById("tab-menu1").click();
+            });
+        });
+        $(function(){
+            $('.payment-rule').on('click', function(){
+              document.getElementById("tab-menu2").click();
+            });
+        });
+    })(jQuery);
+  </script>
+
+  <!-- ReX UX Survey: Config -->
+  <script>
+window.rexSurveyConfig = {"language":"ja","surveyId":"39499","cId":{"name":"answers[39499_269617]","value":""},"embedded":true,"url":{"name":"answers[39499_269618]"},"triggerIdName":"trigger","reappearancePeriodWithRespond":"10","reappearancePeriodWithoutRespond":"10","enableDisplaySuppressionPerPage":true,"enableFormAction":true,"displayStartDate":"","displayEndDate":"","permission":{"inquiryTxt":"キャンペーンをより分かりやすくするためにアンケートにご協力ください (選択式1問)","yesBtnTxt":"協力する","noBtnTxt":"今は協力しない","available":false},"thanks":{"txt0":"ご協力ありがとうございました","txt1":"いただいた情報は、サービス改善のために使用させていただきます。","thanksDisplaySeconds":3},"nps":{"available":true,"question":{"label":"このページの総合的な「わかりやすさ」について、どのように感じましたか？"},"options":[{"name":"answers[39499_269619]","value":"746867"},{"name":"answers[39499_269619]","value":"746868"},{"name":"answers[39499_269619]","value":"746869"},{"name":"answers[39499_269619]","value":"746870"},{"name":"answers[39499_269619]","value":"746871"}],"txt0":"わかりづらかった","txt1":"わかりやすかった","checked":4},"inquiry":{"available":true,"checkList":{"questionType":"multipleAnswer","available":true,"question":"あなたがキャンペーンの内容やページについて思ったことで、当てはまるものを教えてください (複数可) ","shuffleChoices":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":"ポイント獲得の条件や流れがわかりにくい"},{"name":"answers[39499_269620][]","value":"746873","label":"文字数や情報量が多すぎてわかりにくい"},{"name":"answers[39499_269620][]","value":"746874","label":"色や文字サイズ等のデザインが見にくい"},{"name":"answers[39499_269620][]","value":"746875","label":"楽天モバイルの申し込み方法がわかりにくい"},{"name":"answers[39499_269620][]","value":"746876","label":"キャンペーンに申し込むメリットを感じない"},{"name":"answers[39499_269620][]","value":"746877","label":"その他(次の設問でご記入ください)"},{"name":"answers[39499_269620][]","value":"746878","label":" 特に無い"}]},"freeInput":{"available":true,"name":"answers[39499_269621]","title":"ご回答いただいた内容の理由や、このページについてのご意見・ご要望がございましたら、ご自由にお書きください【1000文字】"},"sendBtnTxt":"送信する","footerNote":{"available":true,"text":"お客様よりご提供いただく情報はサービス向上のため使用させていただきます。","link":"https://privacy.rakuten.co.jp/","htmlText":""}},"inquiryNegative":{"checkList":{"available":false,"options":[{"name":"answers[39499_269620][]","value":"746872","label":""},{"name":"answers[39499_269620][]","value":"746873","label":""},{"name":"answers[39499_269620][]","value":"746874","label":""},{"name":"answers[39499_269620][]","value":"746875","label":""},{"name":"answers[39499_269620][]","value":"746876","label":""},{"name":"answers[39499_269620][]","value":"746877","label":""},{"name":"answers[39499_269620][]","value":"746878","label":""}]}},"ua":{"name":"answers[39499_269622]"},"href":{"name":"answers[39499_269623]"},"cookie":{"available":false},"assetPaths":{"closeButton":"","checkIcon":""}}
+  </script>
+<!-- ReX UX Survey: Script -->
+<script type="text/javascript" src="https://cdn.rex.contents.rakuten.co.jp/rex-ips/2.1.0/js/main.js" defer></script>
+
+<!-- ReX Campaign Entry Button: Configuration -->
+<script>
+var rexButtons = [{"code":"/rpay/2024/0501/mobile10000","theme":"red","wide":false,"showCelebration":false,"below":{"checkboxText":"メルマガやアンケートなどをSMSやメールで受け取る","html":"※楽天モバイルよりSMSや<a href=\"https://my.rakuten.co.jp/\">楽天会員情報</a><span class=\"c-Txt_Emp-01\">ご登録のメールアドレス</span>にお送りする<span class=\"c-Txt_Emp-01\">楽天モバイルニュース</span>などおトクな情報等を<span class=\"c-Txt_Emp-01\">受け取らない方はチェックを外してください。</span>","isCheckboxMandatory":false,"isChecked":true},"ids":["rex-ceb-01"]}]
+</script>
+<!-- ReX Campaign Entry Button: Script -->
+<script src="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<% const namespace = "area-city" -%>
+<% const imgPath = "/assets/img/area/city/" -%>
+
+<% if (jData.kvbn1_img_pc) { %>
+<section>
+  <div class="l-System_Container u-Adjust_Pt-16 u-Adjust_Pb-16 u-Adjust_Align-center">
+    <% if (jData.kvbn1_url) { %>
+    <a class="c-Banner_Hover-act" href="<%= jData.kvbn1_url %>"<% if (jData.kvbn1_blank) { %> target="_blank"<% } %>>
+    <% } %>
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgPath %>bnr/<%= jData.kvbn1_img_sp %>" width="656" height="370x">
+        <img src="<%= imgPath %>bnr/<%= jData.kvbn1_img_pc %>" width="1032" height="160" loading="lazy" alt="<%= jData.kvbn1_alt %>">
+      </picture>
+    <% if (jData.kvbn1_url) { %>
+    </a>
+    <% } %>
+  </div>
+</section>
+<% } %>

@@ -1,0 +1,739 @@
+<% const pagetitle = "SIM（シム）- お使いのスマホそのままで楽天モバイルのSIMを使う方法" -%>
+<% const directories = [{path:"product/", label:"製品"}] -%>
+<% const namespace = "product-sim" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'お使いのスマホで楽天モバイルのSIM（eSIM・nanoSIM、シムカード）を使う方法についてご案内いたします。SIM（物理SIM、デジタルSIM）の基本知識や、SIMの設定方法、SIMロック解除方法についてもご確認いただけます。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/sim/<%= namespace %>.css?20240510">
+<%- include('/inc/_saikyo-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <%- include('/include/_header') %>
+
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="<%= namespace %>-Hero">
+    <h1 class="<%= namespace %>-Hero_Content">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/product/sim/img-hero-sp-231006.png" width="375" height="240">
+        <img src="<%= sitepath %>assets/img/product/sim/img-hero-pc-231006.png" width="1440" height="240" alt="お使いのスマホのまま乗り換えOK! 楽天モバイルのSIM 楽天モバイルが提供するSIMをご紹介します">
+      </picture>
+    </h1>
+  </div>
+  <div class="l-System_Container u-Adjust_Mt-8">
+    <p class="c-Txt_Cap">※楽天回線対応製品が必要となります</p>
+  </div>
+  <div class="<%= namespace %>-Link_List c-Box_App">
+    <ul class="<%= namespace %>-Link_List-content c-Anchor_List l-System_Container">
+      <li>
+          <a href="#about" class="c-Anchor_Icon js-scroll" data-ratid="product_sim_about_anker" data-ratevent="click" data-ratparam="all">
+              <span class="c-Icon_Arrow-down-l u-Show_Xxo"></span>
+              <span class="u-Color_Light-black">SIMとは</span>
+              <span class="c-Icon_Sign-info-l"></span>
+          </a>
+      </li>
+      <li>
+          <a href="#choice" class="c-Anchor_Icon js-scroll" data-ratid="product_sim_sim‐type_anker" data-ratevent="click" data-ratparam="all">
+              <span class="c-Icon_Arrow-down-l u-Show_Xxo"></span>
+             <span class="u-Color_Light-black">選べる2つの<br class="u-Show_Oox">SIMタイプ</span>
+              <span class="c-Icon_Product-sim"></span>
+          </a>
+      </li>
+      <li>
+          <a href="#flow" class="c-Anchor_Icon js-scroll" data-ratid="product_sim_application_anker" data-ratevent="click" data-ratparam="all">
+              <span class="c-Icon_Arrow-down-l u-Show_Xxo"></span>
+              <span class="u-Color_Light-black">お申し込みから<br class="u-Show_Oox">ご利用までの流れ</span>
+              <span class="c-Icon_Smartphone-l"></span>
+          </a>
+      </li>
+  </ul>
+  </div>
+  <div id="about" class="<%= namespace %>-Utility_Mt-48-40 l-System_Container">
+    <h2 class="c-Txt_Normal-ll u-Adjust_Align-center">SIM（シム）とは</h2>
+    <p class="<%= namespace %>-Utility_Align-center-left u-Adjust_Mt-16">
+      スマホやタブレットでデータ通信・通話を行うために必要な、固有のIDなどが記録されたICカードのことです。
+    </p>
+  </div>
+  <div class="u-Adjust_Pt-40">
+    <div class="l-System_Container">
+    <h2 id="choice" class="c-Txt_Normal-ll u-Adjust_Align-center">選べる<span class="c-Txt_Emp-02">2つのSIMタイプ</span></h2>
+    <ul class="u-Adjust_Mt-24 <%= namespace %>-Layout_Card">
+      <li class="<%= namespace %>-Layout_Card-content <%= namespace %>-Utility_Section-border">
+        <h3 class="c-Txt_Normal-l <%= namespace %>-Layout_Card-title">SIMカード<span class="c-Txt_Normal-s <%= namespace %>-Utility_Ml-16-8">製品に挿入するカード型</span></h3>
+        <div class="<%= namespace %>-Layout_Card-content-item u-Adjust_Mt-24">
+          <div class="<%= namespace %>-Layout_Card-content-item-img">
+            <img src="<%= sitepath %>assets/img/product/sim/sim.png" width="236" height="200" alt="">
+          </div>
+          <div class="<%= namespace %>-Layout_Card-content-item-inner">
+            <h4 class="c-Txt_Normal-m">利用開始方法</h4>
+            <p class="u-Adjust_Mt-8">SIMカード受け取り後、製品に挿入</p>
+            <ul class="<%= namespace %>-Layout_Card-content-item-inner-card <%= namespace %>-Utility_Mt-24-16">
+              <li class="<%= namespace %>-Layout_Card-content-item-inner-card-merit">
+                <p class="<%= namespace %>-Layout_Card-content-item-inner-card-merit-title">メリット</p>
+                <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp <%= namespace %>-Layout_Card-content-item-inner-card-exp-mod-01">
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-img u-Adjust_Mr-8">
+                    <img src="<%= sitepath %>assets/img/product/sim/double-circle.png" width="22" height="22" alt="">
+                  </div>
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-txt">
+                    <p class="c-Txt_Emp-01">
+                      SIMカードを差し替えるだけだから、Webでの開通手続きが不安な方におすすめ
+                    </p>
+                    <p class="u-Adjust_Mt-8">
+                      機種変更時もスムーズ
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="<%= namespace %>-Layout_Card-content-item-inner-card-demerit">
+                <p class="<%= namespace %>-Layout_Card-content-item-inner-card-demerit-title">デメリット</p>
+                <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp">
+                  <span class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-img <%= namespace %>-Layout_Card-content-item-inner-card-exp-img-mod-01">
+                    <img src="<%= sitepath %>assets/img/product/sim/polygon.png" width="22" height="22" alt="">
+                  </span>
+                  <span class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-txt c-Txt_Emp-01">
+                    SIMの発送を待つ必要あり
+                  </span>
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-note">
+                    <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-note-img u-Adjust_Mr-8">
+                      <img src="<%= sitepath %>assets/img/product/sim/light-bulb.png" width="20" alt="">
+                    </div>
+                    <p class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-note-txt">
+                      楽天モバイルならSIMカードでも発送までの時間が比較的少なく、スムーズに受け取り可能。
+                    </p>
+                  </div>
+                  <ul class="c-List_Text-disc <%= namespace %>-Layout_Card-content-item-inner-card-exp-note-txt-list u-Adjust_Ml-16">
+                    <li>ショップ：その場ですぐにお受け取り</li>
+                    <li>Web：お申し込み完了から最短2日でお届け<span class="c-Txt_Cap">※</span></li>
+                  </ul>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">
+                    ※お客様の審査状況や天候、配送状況によっては、お届けまでに数日~1週間ほどお時間をいただく場合があります。
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li class="<%= namespace %>-Layout_Card-content <%= namespace %>-Utility_Section-border">
+        <h3 class="c-Txt_Normal-l <%= namespace %>-Layout_Card-title">eSIM<span class="c-Txt_Normal-s <%= namespace %>-Utility_Ml-16-8">製品に内蔵された本体一体型</span></h3>
+        <div class="<%= namespace %>-Layout_Card-content-item u-Adjust_Mt-24">
+          <div class="<%= namespace %>-Layout_Card-content-item-img">
+            <img src="<%= sitepath %>assets/img/product/sim/esim.png" width="236" height="200" alt="">
+          </div>
+          <div class="<%= namespace %>-Layout_Card-content-item-inner">
+            <h4 class="c-Txt_Normal-m">利用開始方法</h4>
+            <p class="u-Adjust_Mt-8">お申し込み完了後、Webで開通手続き（アプリ／QRコードからダウンロード）</p>
+            <ul class="<%= namespace %>-Layout_Card-content-item-inner-card <%= namespace %>-Utility_Mt-24-16">
+              <li class="<%= namespace %>-Layout_Card-content-item-inner-card-merit">
+                <p class="<%= namespace %>-Layout_Card-content-item-inner-card-merit-title">メリット</p>
+                <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp <%= namespace %>-Layout_Card-content-item-inner-card-exp-mod-01">
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-img u-Adjust_Mr-8">
+                    <img src="<%= sitepath %>assets/img/product/sim/double-circle.png" width="22" height="22" alt="">
+                  </div>
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-txt">
+                    <p class="c-Txt_Emp-01">
+                      最短3分！すぐに利用開始できる<span class="c-Txt_Cap">※1</span>
+                    </p>
+                    <p class="u-Adjust_Mt-8">
+                      SIMカードの到着を待つ必要なし
+                    </p>
+                  </div>
+                </div>
+                <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp <%= namespace %>-Layout_Card-content-item-inner-card-exp-mod-01 u-Adjust_Mt-16">
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-img u-Adjust_Mr-8">
+                    <img src="<%= sitepath %>assets/img/product/sim/double-circle.png" width="22" height="22" alt="">
+                  </div>
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-txt">
+                    <p class="c-Txt_Emp-01">
+                      SIMカードの差し替え作業が不要
+                    </p>
+                    <p class="u-Adjust_Mt-8">
+                      Webで開通手続きするだけだから、<br>SIMの紛失や破損の心配なし
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="<%= namespace %>-Layout_Card-content-item-inner-card-demerit">
+                <p class="<%= namespace %>-Layout_Card-content-item-inner-card-demerit-title">デメリット</p>
+                <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp">
+                  <span class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-img <%= namespace %>-Layout_Card-content-item-inner-card-exp-img-mod-01">
+                    <img src="<%= sitepath %>assets/img/product/sim/polygon.png" width="22" height="22" alt="">
+                  </span>
+                  <span class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-txt c-Txt_Emp-01">
+                    対応製品が限られる
+                  </span>
+                  <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-note">
+                    <div class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-note-img u-Adjust_Mr-8">
+                      <img src="<%= sitepath %>assets/img/product/sim/light-bulb.png" width="20" alt="">
+                    </div>
+                    <p class="<%= namespace %>-Layout_Card-content-item-inner-card-exp-note-txt">
+                      SIMカードと比較すると対応製品が限られるが、iPhone XS・XR以上や最新のAndroid製品など対応製品は多数あり！
+                    </p>
+                  </div>
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>product/sim/esim/?l-id=product_sim_product_sim_esim#product-rakuten-esim" class="c-Link_Txt-inline">対応製品を確認する<span class="c-Icon_Chevron-right"></span></a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="<%= namespace %>-Utility_Mt-24-16">
+              <a href="<%= sitepath %>product/sim/esim/?l-id=gnavi_product_sim_esim" class="c-Btn_Regular"><span>eSIMの詳細を確認する</span></a>
+            </div>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap">
+              ※1 eSIM対応製品の場合。審査状況により変動。アプリ最新版利用時
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="u-Adjust_Align-center">
+      <div class="<%= namespace %>-Utility_Mt-24-16">
+        <h3 class="c-Txt_Normal-l">こんな使い方も</h3>
+      </div>
+      <div class="<%= namespace %>-Layout_Other-inner u-Adjust_Mt-16">
+        <div class="u-Adjust_Align-center">
+          <div class="<%= namespace %>-Utility_Bg-pink">
+            <h4 class="c-Txt_Normal-m">1台のスマホに2つのSIM<br class="<%= namespace %>-Utility_Show-sp">（デュアルSIM）</h4>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+              スマホに2つのSIMを挿入すれば、スマホ1台で2つの回線を使い分けできます。 SIMごとに別の携帯電話会社が利用できるので、もしものときも安心！
+            </p>
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a class="c-Banner_Hover-act" href="<%= sitepath %>product/sim/dual-sim/?l-id=product_sim_product_sim_dual-sim">
+                <picture>
+                  <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-dual-sim-311-98.png" width="311" height="98">
+                  <img src="<%= sitepath %>assets/img/bnr/bnr-dual-sim-984-152.png" width="984" height="152" alt="超かんたん＆便利 デュアルSIMのススメ! デュアルSIMを詳しく解説!">
+                </picture>
+              </a>
+            </div>
+            <p class="u-Adjust_Mt-16 c-Txt_Cap u-Adjust_Align-left">
+              ※「デュアルSIM」対応製品が必要です。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="flow" class="<%= namespace %>-Utility_Section-gray u-Adjust_Mt-24">
+    <div class="l-System_Container">
+      <p class="u-Adjust_Align-center c-Txt_Emp-01">＼ お持ちのスマホのまま楽天モバイルに ／</p>
+      <h2 class="c-Txt_Normal-ll u-Adjust_Align-center">かんたん乗り換え方法</h2>
+
+  <div class="<%= namespace %>-Utility_Bg-white u-Adjust_Mt-24">
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/product/sim/img-flow-01-sp.png">
+        <img src="<%= sitepath %>assets/img/product/sim/img-flow-01.png" alt="乗り換えって面倒？">
+      </picture>
+    </div>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+      <picture>
+        <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/product/sim/img-flow-02-sp-231127.png">
+        <img src="<%= sitepath %>assets/img/product/sim/img-flow-02-231127.png" alt="楽天モバイルなら、サクっとWeb申し込み！">
+      </picture>
+    </div>
+    <div class="<%= namespace %>-Utility_Bg-pink u-Adjust_Mt-24 u-Adjust_Align-center">
+      <div class="u-Adjust_Align-center">
+        <picture>
+          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/product/sim/img-flow-03-sp-231201.png" width="575" height="105">
+          <img src="<%= sitepath %>assets/img/product/sim/img-flow-03-231201.png" alt="＼革新的な契約体験をご提供！／そんな楽天モバイルは" width="270" height="63">
+        </picture>
+      </div>
+      <div class="<%= namespace %>-Layout_Mnp-merit u-Adjust_Align-center <%= namespace %>-Utility_Mt-16-8">
+        <div>
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/common/img-web-no1-sp-240412.png" width="574" height="200">
+            <img src="<%= sitepath %>assets/img/common/img-web-no1-pc-240412.png" width="326" height="100" alt="Web契約でNo.1">
+          </picture>
+        </div>
+        <div>
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/common/img-0yen-sp-240412.png" width="574" height="200">
+            <img src="<%= sitepath %>assets/img/common/img-0yen-pc-240412.png" width="287" height="100" alt="ショップもWebも契約事務手数料0円 ">
+          </picture>
+        </div>
+      </div>
+      <ul class="c-Txt_Cap u-Adjust_Mt-8 <%= namespace %>-Utility_Align-center-left">
+        <li>※ MMD研究所調べ / 2022年3月21日時点 / 2021年8月～半年間にメイン通信サービスの新規・MNPのWeb契約をした人を対象 / n=1,260</li>
+      </ul>
+    </div>
+  </div>
+<div class="<%= namespace %>-Utility_Bg-white u-Adjust_Mt-24">
+  <div class="u-Adjust_Align-center">
+    <picture>
+      <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/product/sim/img-flow-05-sp.png">
+      <img src="<%= sitepath %>assets/img/product/sim/img-flow-05.png" alt="さらに！楽天市場/楽天カード/楽天ペイのアプリをお持ちならプランのみ申し込みがもっとかんたん！">
+    </picture>
+  </div>
+  <p class="u-Adjust_Mt-24 u-Adjust_Align-center">
+    <a href="<%= sitepath %>guide/flow/application/group/?l-id=guide_sim_guide_application-group" class="c-Btn_Regular"><span>グループアプリ経由での申し込み方法を見る</span></a>
+  </p>
+</div>
+<ul class="c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Align-left">
+  <li>*1 楽天銀行・楽天証券・楽天生命のいずれかをご契約されている場合。条件あり。<a href="<%= sitepath %>guide/verify/group-kyc/?l-id=guide_sim_guide_verify-group-kyc">詳しくはこちら</a></li>
+  <li>*2 Webでのお申し込みのみ。MNPワンストップ未対応会社からお乗り換えの場合、MNP予約番号の取得が必要。<a href="<%= sitepath %>guide/mnp/fast-convert/?l-id=guide_sim_guide_mnp_fast-convert">詳しくはこちら</a></li>
+  <li>*3 メール持ち運びサービス330円/月 <a href="<%= sitepath %>cm/mail_portability/?l-id=product_sim_mail_portability">詳細はこちら</a></li>
+  <li>*4 eSIM対応製品でeSIMをご利用の場合。審査状況により変動。アプリ最新版利用時</li>
+</ul>
+</div>
+</div>
+
+  <div id="step" class="<%= namespace %>-Utility_Mt-48-40 l-System_Container">
+    <h3 id="js-trigger" class="c-Txt_Normal-ll u-Adjust_Align-center">お申し込みからご利用までの流れ</h3>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+      <ul class="c-Tab_Items" role="tablist">
+        <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">SIMカードの場合</li>
+        <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">eSIMの場合</li>
+      </ul>
+      <div class="c-Tab_Panel u-Adjust_Mt-24" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+        <div class="c-Accordion-emp">
+          <button type="button" id="accordion-emp-1-1" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="true" aria-controls="accordion-emp-1-1-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">STEP 1</span>  事前確認</span>
+          </button>
+          <div id="accordion-emp-1-1-content" class="c-Accordion-emp_Panel-step js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-1-1" aria-hidden="true" style="">
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/sim/step-1-1.png" alt="">
+              </div>
+              <div>
+                お持ちの製品が楽天モバイルで使えるかどうかご確認ください。
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/byod/?l-id=product_sim_product_byod01" class="c-Btn_Regular"><span>質問に答えて、対応製品か確認する</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Flow-theme-gray u-Adjust_Mt-16">
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/sim/step-1-2.png" alt="SIMロック製品 他社のSIM 利用中の携帯電話会社でしか使えない状態 SIMロックがかかっていない製品 自由に携帯電話会社を選べる状態">
+                </div>
+                <div>
+                  <span class="c-Txt_Emp-01">2021年10月以前に発売</span>された製品の場合、製品によっては事前に「SIMロック解除」のお手続きが必要です。
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>faq/detail/10000070/?l-id=product_sim_faq-10000070_01" class="c-Btn_Regular"><span>SIMロックの解除について</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-Accordion-emp <%= namespace %>-Utility_Mt-24-16">
+          <button type="button" id="accordion-emp-1-2" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-1-2-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">STEP 2</span>  お申し込み</span>
+          </button>
+          <div id="accordion-emp-1-2-content" class="c-Accordion-emp_Panel-step js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-1-2" aria-hidden="true" style="display: none;">
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/sim/step-2-1.png" alt="">
+              </div>
+              <div>
+                <p>
+                  お申し込み画面で、料金プラン「Rakuten最強プラン」を選択し、SIMタイプで「SIMカード」を選択してください。
+                </p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>guide/application/?lid-r=product_sim_guide_application01" class="c-Btn_Regular"><span>オンラインでお申し込み</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="u-Adjust_Mt-24">
+              <ul class="<%= namespace %>-Layout_Flow-bnr">
+                <li>
+                  お申し込み方法はここから<br class="<%= namespace %>-Utility_Show-sp">チェック
+                  <div class="u-Adjust_Mt-16">
+                    <a class="c-Banner_Hover-act" href="<%= sitepath %>guide/procedure/?l-id=product_sim_guide_procedure01">
+                      <picture>
+                        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-apply-guide-343-108.png" width="343" height="108">
+                        <img src="<%= sitepath %>assets/img/bnr/bnr-apply-guide-504-158.png" width="504" height="158" alt="お申し込み手続きでお困りごとはありますか？ はじめてでも安心！ お申し込みガイド ご利用開始までかんたん4ステップでご案内します">
+                      </picture>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  Webでのお申し込みなら<br class="<%= namespace %>-Utility_Show-sp">よりスピーディーに
+                  <div class="u-Adjust_Mt-16">
+                    <a class="c-Banner_Hover-act" href="<%= sitepath %>guide/mnp/fast-convert/?l-id=product_sim_guide_mnp_fast-convert01">
+                      <picture>
+                        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-fast-convert-343-108-231201.png" width="343" height="108">
+                        <img src="<%= sitepath %>assets/img/bnr/bnr-fast-convert-504-158-231201.png" width="504" height="158" alt="電話番号そのまま！MNP予約番号なしで乗り換えできる！MNPワンストップ  Webでの申し込みがさらに簡単に。乗り換えるなら楽天モバイル">
+                      </picture>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="c-Accordion-emp <%= namespace %>-Utility_Mt-24-16">
+          <button type="button" id="accordion-emp-1-3" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-1-3-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">STEP 3</span>  SIMカードをセット</span>
+          </button>
+          <div id="accordion-emp-1-3-content" class="c-Accordion-emp_Panel-step js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-1-3" aria-hidden="true" style="display: none;">
+            <p class="c-Txt_Normal u-Adjust_Mt-24">SIMカードがご自宅に届いたら、以下の手順に沿ってセットしてください。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※必ず本体の電源を切ってご対応ください。</p>
+            <p class="c-Txt_Cap u-Adjust_Mt-8">※各手順の写真は「OPPO Reno A 128GB」のものです。製品に同封されている取扱説明書もあわせてご確認ください。</p>
+
+            <ol class="<%= namespace %>-Layout_Flow <%= namespace %>-Utility_Adjust-primary">
+              <li class="<%= namespace %>-Layout_Flow-item c-Theme-Light">
+                <p class="c-Txt_Normal c-Txt_Emp-01">台紙からSIMカードを切り離す</p>
+                <div class="l-Media_Grid u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/product/sim/img-flow04.png" alt="">
+                  </div>
+                  <div class="<%= namespace %>-Layout_Howtoset-step">
+                    <p class="c-Txt_Normal">標準SIM部分を後ろから指で押し上げて切り離します。同様にmicroSIM部分を切り離し、さらにnanoSIM部分を切り離します。</p>
+                    <p class="c-Txt_Cap c-Txt_Emp-02 <%= namespace %>-Layout_Howtoset-step-txt">※切り離すときに、金属部分を傷つけないようにご注意ください。<br>
+                      ※切り離し作業中にSIMカードを破損してしまった場合は、SIMの再発行手続き（無料）が必要ですのでご注意ください。
+                    </p>
+                    <p class="<%= namespace %>-Utility_Adjust-tertiary"><a href="<%= sitepath %>guide/sim-lost/?l-id=product_sim_guide_sim-lost" class="c-Link_Txt-inline">SIMの再発行方法を確認する<span class="c-Icon_Chevron-right"></span></a></p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="<%= namespace %>-Layout_Flow-item c-Theme-Light">
+                <p class="c-Txt_Normal c-Txt_Emp-01">SIMカードを引き出す</p>
+                <div class="l-Media_Grid u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/product/sim/img-flow05.jpg" alt="">
+                  </div>
+                  <div class="<%= namespace %>-Layout_Howtoset-step">
+                    <p class="c-Txt_Normal">製品に付属しているピンを、本体のSIMカードトレイが差し込まれている箇所にある小さな穴に差し込み、出てきたSIMカードトレイを指で挟んで引き出してください。</p>
+                    <p class="c-Txt_Cap u-Adjust_Mt-8">※ピンを使用せずにSIMカードトレイを取り出す製品もあります。詳しくは製品に同封されている取扱説明書をご確認ください。</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="<%= namespace %>-Layout_Flow-item c-Theme-Light">
+                <p class="c-Txt_Normal c-Txt_Emp-01 u-Adjust_Mb-8">SIMカードを入れ替える</p>
+                <div class="l-Media_Grid u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/product/sim/img-flow06.jpg" alt="">
+                  </div>
+                  <div class="<%= namespace %>-Layout_Howtoset-step">
+                    <p class="c-Txt_Normal">SIMカードトレイから、現在のSIMカードを外し、切り離したSIMカードをセットしてください。次に、下の写真のようにトレイを水平に保ったまま本体に差し込み、最後まで押し込みます。本体の電源を入れて完了です。</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="c-Accordion-emp <%= namespace %>-Utility_Mt-24-16">
+          <button type="button" id="accordion-emp-1-4" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-1-4-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">STEP 4</span>  初期設定</span>
+          </button>
+          <div id="accordion-emp-1-4-content" class="c-Accordion-emp_Panel-step js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-1-4" aria-hidden="true" style="display: none;">
+            SIMカードがセットできたら、初期設定を行ってください。各製品によって、設定方法が異なります。以下よりご確認ください。
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <a href="<%= sitepath %>guide/setting/?l-id=product_sim_guide_setting01" class="c-Btn_Regular"><span>各種製品の初期設定を見る</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c-Tab_Panel u-Adjust_Mt-24" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+        <div class="c-Accordion-emp">
+          <button type="button" id="accordion-emp-2-1" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="true" aria-controls="accordion-emp-2-1-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">STEP 1</span>  事前確認</span>
+          </button>
+          <div id="accordion-emp-2-1-content" class="c-Accordion-emp_Panel-step js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-2-1" aria-hidden="true" style="">
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/sim/step-1-1.png" alt="">
+              </div>
+              <div>
+                お持ちの製品が楽天モバイルで使えるかどうかご確認ください。
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>product/byod/?l-id=product_sim_product_byod02" class="c-Btn_Regular"><span>質問に答えて、対応製品か確認する</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="<%= namespace %>-Layout_Flow-theme-gray u-Adjust_Mt-16">
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/product/sim/step-1-2.png" alt="SIMロック製品 他社のSIM 利用中の携帯電話会社でしか使えない状態 SIMロックがかかっていない製品 自由に携帯電話会社を選べる状態">
+                </div>
+                <div>
+                  <span class="c-Txt_Emp-01">2021年10月以前に発売</span>された製品の場合、製品によっては事前に「SIMロック解除」のお手続きが必要です。
+                  <div class="u-Adjust_Mt-16">
+                    <a href="<%= sitepath %>faq/detail/10000070/?l-id=product_sim_faq-10000070_02" class="c-Btn_Regular"><span>SIMロックの解除について</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-Accordion-emp <%= namespace %>-Utility_Mt-24-16">
+          <button type="button" id="accordion-emp-2-2" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-2-2-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">STEP 2</span>  お申し込み</span>
+          </button>
+          <div id="accordion-emp-2-2-content" class="c-Accordion-emp_Panel-step js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-2-2" aria-hidden="true" style="display: none;">
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <img src="<%= sitepath %>assets/img/product/sim/step-2-1.png" alt="">
+              </div>
+              <div>
+                <p>
+                  お申し込み画面で、料金プラン「Rakuten最強プラン」を選択し、SIMタイプで「eSIM」を選択してください。
+                </p>
+                <p class="u-Adjust_Mt-8">
+                  お申し込みフローの本人確認のステップで「AIかんたん本人確認（eKYC）」※1をお選びいただくと、お申し込み完了後、最短3分※2で本人確認審査が完了し、手軽に開通できます。
+                </p>
+                <p class="c-Txt_Cap u-Adjust_Mt-8">
+                  ※1 eKYCを利用できるOS／ブラウザは、Android OS 7.1 以上（Google Chrome 最新版）、iOS 最新版（Safari 最新版）です。アプリの場合は、Android OS 5 以上、iOS 10 以上より利用可。<br>
+                  ※1 パソコンからの申し込みは「AIかんたん本人確認（eKYC）」利用不可。<br>
+                  ※2 eSIM対応製品でアプリからeKYCで申し込んだ場合。
+                </p>
+                <div class="u-Adjust_Mt-16">
+                  <a href="<%= sitepath %>guide/application/?lid-r=product_sim_guide_application02" class="c-Btn_Regular"><span>オンラインでお申し込み</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="u-Adjust_Mt-24">
+              <ul class="<%= namespace %>-Layout_Flow-bnr">
+                <li>
+                  <span class="<%= namespace %>-Utility_Inline-pc"></span>お申し込み方法はここから<br class="<%= namespace %>-Utility_Show-sp">チェック<span class="<%= namespace %>-Utility_Inline-pc"></span>
+                  <div class="u-Adjust_Mt-16">
+                    <a class="c-Banner_Hover-act" href="<%= sitepath %>guide/procedure/?l-id=product_sim_guide_procedure02">
+                      <picture>
+                        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-apply-guide-343-108.png" width="343" height="108">
+                        <img src="<%= sitepath %>assets/img/bnr/bnr-apply-guide-504-158.png" width="504" height="158" alt="お申し込み手続きでお困りごとはありますか？ はじめてでも安心！ お申し込みガイド ご利用開始までかんたん4ステップでご案内します">
+                      </picture>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <span class="<%= namespace %>-Utility_Inline-pc"></span>Webでのお申し込みなら<br class="<%= namespace %>-Utility_Show-sp">よりスピーディーに<span class="<%= namespace %>-Utility_Inline-pc"></span>
+                  <div class="u-Adjust_Mt-16">
+                    <a class="c-Banner_Hover-act" href="<%= sitepath %>guide/mnp/fast-convert/?l-id=product_sim_guide_mnp_fast-convert02">
+                      <picture>
+                        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-fast-convert-343-108-231201.png" width="343" height="108">
+                        <img src="<%= sitepath %>assets/img/bnr/bnr-fast-convert-504-158-231201.png" width="504" height="158" alt="電話番号そのまま！MNP予約番号なしで乗り換えできる！MNPワンストップ  Webでの申し込みがさらに簡単に。乗り換えるなら楽天モバイル">
+                      </picture>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="c-Accordion-emp <%= namespace %>-Utility_Mt-24-16">
+          <button type="button" id="accordion-emp-2-3" class="c-Accordion-emp_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-emp-2-3-content">
+            <span class="c-Icon_Chevron-right c-Accordion-emp_Arrow"></span>
+            <span class="c-Accordion-emp_Trigger-txt"><span class="c-Txt_Emp-02">STEP 3</span>  初期設定</span>
+          </button>
+          <div id="accordion-emp-2-3-content" class="c-Accordion-emp_Panel-step js-Accordion_Panel" role="region" aria-labelledby="accordion-emp-2-3" aria-hidden="true" style="display: none;">
+            本人確認審査が完了後、「my 楽天モバイル」アプリにて、そのまま開通手続きを行っていただけます。開通後、初期設定を行い、ご利用を開始してください。
+            <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+              <div class="<%= namespace %>-Layout_Flow-btns">
+                <a href="<%= sitepath %>guide/verify/ekyc/esim-activation/?l-id=product_sim_guide_verify_ekyc_esim-activation02" class="c-Btn_Regular"><span>eKYCからの開通方法を見る</span></a>
+                <a href="<%= sitepath %>faq/detail/00001374/?l-id=product_sim_faq_00001374_02" class="c-Btn_Regular"><span>eKYC以外の開通方法を見る</span></a>
+                <a href="<%= sitepath %>guide/setting/" class="c-Btn_Regular"><span>各種製品の初期設定を見る</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-Adjust_Mt-24">
+      <ul class="<%= namespace %>-Layout_Flow-bnr">
+        <li>
+          <div class="u-Adjust_Mt-16">
+            <a class="c-Banner_Hover-act" href="<%= sitepath %>campaign/mnp/?l-id=product_sim_campaign_mnp">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-mnp-343-108-240315.png" width="343" height="108">
+                <img src="<%= sitepath %>assets/img/bnr/bnr-mnp-504-158-240315.png" width="504" height="158" alt="スマホそのまま乗り換え！電話番号もそのまま他社から乗り換え＆初めてお申し込みで6,000ポイントプレゼント!データ3GB（税込1,078円）x5カ月分がポイント還元で実質5カ月無料！">
+              </picture>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="u-Adjust_Mt-16">
+            <a class="c-Banner_Hover-act" href="<%= sitepath %>campaign/referral/?l-id=product_sim_campaign_referral">
+              <picture>
+                <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/bnr/bnr-referral-343-108-240201.png" width="343" height="108">
+                <img src="<%= sitepath %>assets/img/bnr/bnr-referral-504-158-240201.png" width="504" height="158" alt="楽天モバイル紹介キャンペーン">
+              </picture>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="<%= namespace %>-Utility_Mt-64-48">
+    <%- include('/inc/_saikyo') %>
+  </div>
+
+  <div class="l-System_Container">
+    <div class="u-Adjust_Mt-48">
+      <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+    </div>
+
+    <h2 id="<%= namespace %>-qa" class="c-Heading_Lv2 u-Adjust_Mt-48">よくあるご質問</h2>
+    <div class="c-Accordion u-Adjust_Mt-16">
+      <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイル（ドコモ回線・au回線）について</button>
+      <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+          <p class="c-Txt_Normal">2020年4月8日（水）9:00より楽天回線を用いた携帯キャリアサービスを本格開始に伴い、楽天モバイル（ドコモ回線・au回線）の新規申し込み受付を終了しました。<br>
+          なお、機種変更は引き続きご利用いただけます。</p>
+          <p class="c-Txt_Normal">ご検討中のお客様は、楽天モバイル（楽天回線）をご検討ください。</p>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">また、現在、楽天モバイル（ドコモ回線・au回線）をご利用中のお客様には、楽天モバイル（楽天回線）への移行方法もご案内しています。以下よりご確認ください。</p>
+
+          <p class="u-Adjust_Mt-32"><a href="https://mobile.rakuten.co.jp/news/service_20200316/" class="c-Link_Txt-inline">楽天モバイル（ドコモ回線・au回線）新規受付終了のお知らせの詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイル（ドコモ回線・au回線）のデータSIM・通話SIMサービスについて</button>
+      <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+          <p class="c-Txt_Normal">楽天モバイル（ドコモ回線・au回線）のデータSIM（旧050データSIM含む）・通話SIMの新規申し込み受付は終了しました。</p>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">楽天モバイル（楽天回線）の料金プラン「Rakuten最強プラン」のご利用もご検討ください。</p>
+
+          <p class="u-Adjust_Mt-32"><a href="<%= sitepath %>fee/un-limit/" class="c-Link_Txt-inline">Rakuten最強プランの詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイル（ドコモ回線・au回線）の「楽天モバイル SIMアプリ」について</button>
+      <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+          <p class="c-Txt_Normal">楽天モバイル（ドコモ回線・au回線）を現在ご利用中のお客様は、引き続き「楽天モバイル SIMアプリ」をご利用いただけます。<br>以下よりご確認いただけます。</p>
+
+          <p class="u-Adjust_Mt-32"><a href="https://mvno.mobile.rakuten.co.jp/support/sim_app_basic/" class="c-Link_Txt-inline">「楽天モバイル SIMアプリ」の詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </div>
+
+    <div class="c-Accordion">
+      <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>楽天モバイルでご購入いただいた製品のSIMロック解除について</button>
+      <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true">
+          <p class="c-Txt_Normal">楽天モバイルで購入いただいた製品は、全てSIMフリー製品のため、SIMロック解除のお手続きは不要です。</p>
+      </div>
+    </div>
+
+    <div class="c-Accordion u-Adjust_Mb-56">
+      <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>SIMの返却について</button>
+      <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true">
+          <p class="c-Txt_Normal">楽天モバイル（楽天回線）解約時、楽天モバイル（ドコモ回線・au回線）から楽天回線移行時にSIMの返却が必要となります。<br>詳しくは以下よりご確認ください。</p>
+
+          <p class="u-Adjust_Mt-32"><a href="<%= sitepath %>faq/detail/00001247/" class="c-Link_Txt-inline">解約時のSIMカードの返却先はどこですか<span class="c-Icon_Chevron-right"></span></a></p>
+      </div>
+    </div>
+    <%- include('/include/_related-media.ejs', { articles: [
+      {
+        title: "SIMフリーとは？メリットやデメリットなどを詳しく解説",
+        link: "https://network.mobile.rakuten.co.jp/sumakatsu/contents/articles/2020/00001/?l-id=product_sim_media_00001"
+      },
+      {
+        title: "SIMロック解除とは？メリットや注意点などを詳しく解説",
+        link: "https://network.mobile.rakuten.co.jp/sumakatsu/contents/articles/2020/00003/?l-id=product_sim_media_00003"
+      },
+      {
+        title: "SIMカードの入れ替え方法について解説！ 事前に必要な準備や注意点とは？",
+        link: "https://network.mobile.rakuten.co.jp/sumakatsu/contents/articles/2020/00011/?l-id=product_sim_media_00011"
+      },
+      {
+        title: "白ロムとは？メリットと注意点、使い方解説！",
+        link: "https://network.mobile.rakuten.co.jp/sumakatsu/contents/articles/2020/00015/?l-id=product_sim_media_00015"
+      }
+    ] }) %>
+  </div>
+</div>
+
+<div class="<%= namespace %>-Layout_Bottom-fixed" id="js-fixed-btn" aria-expanded="false">
+  <div class="<%= namespace %>-Layout_Bottom-fixed-inner">
+    <div class="<%= namespace %>-Layout_Bottom-fixed-btn">
+      <div class="<%= namespace %>-Utility_Show-pc" style="width:100%">
+        <a href="<%= sitepath%>guide/application/?lid-r=product_sim_guide_application_0" class="c-Btn_Primary-large <%= namespace %>-Layout_Bottom-fixed-btn">
+          <span>新規／乗り換え（MNP）お申し込み</span>
+        </a>
+      </div>
+      <div class="<%= namespace %>-Utility_Show-sp" style="width:100%">
+        <a href="<%= sitepath%>guide/application/?lid-r=product_sim_guide_application_0" class="c-Btn_Primary-large <%= namespace %>-Layout_Bottom-fixed-btn">
+          <span>新規／乗り換え(MNP)</span>
+        </a>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Bottom-fixed-btn js-btn-ms" aria-hidden="false">
+      <div class="<%= namespace %>-Utility_Show-pc" style="width:100%">
+        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&?l-id=product_sim_ms_2&mno_migration=0" class="c-Btn_Secondly-large <%= namespace %>-Layout_Bottom-fixed-btn" style="border: 1px solid #ff008c;">
+          <span><span>スーパーホーダイ、組み合わせプランからの</span> プラン変更（移行）お申し込み</span>
+        </a>
+      </div>
+      <div class="<%= namespace %>-Utility_Show-sp" style="width:100%">
+        <a href="https://members-station.mobile.rakuten.co.jp/members/rmb/login?language=J&campaign=web-rakuten&?l-id=product_sim_ms_2&mno_migration=0" class="c-Btn_Secondly-large <%= namespace %>-Layout_Bottom-fixed-btn" style="border: 1px solid #ff008c;">
+          <span><span>以前の楽天モバイルからの</span>プラン変更（移行）</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%#- include('/include/footer/related/related-product-top-v2.ejs') %>
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%#- include('/faq/include/related-product.ejs') %>
+
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+<script src="<%= sitepath %>assets/js/product.sim.bundle.js?20240521"></script>
+</body>
+</html>

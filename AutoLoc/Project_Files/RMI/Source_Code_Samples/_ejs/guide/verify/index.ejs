@@ -1,0 +1,1300 @@
+<% const pagetitle = "本人確認書類" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}, {path:"support/application/verification/", label:"本人確認"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'ご契約時に必要な本人確認書類をご案内します。本人確認書類に使える書類の一覧はこちらをご覧ください。',
+    noindex: false,
+    pathname: filepath,
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+
+  <div class="l-System">
+
+    <%- include('/include/_header') %>
+
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+
+    <div class="<%= nameSpace %>-Layout_Container">
+      <div class="l-System_Container">
+        <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+        <div class="guide-Hero guide-Hero_Verify">
+          <p>本人確認は、ご来店でも、Webからでも、ご自宅でも。<br>
+            本人確認書類を方法別にご案内いたします。</p>
+        </div>
+
+        <ul class="u-Adjust_Mt-16 c-Link_List-horizontal-simple">
+          <li><a href="<%= sitepath %>guide/verify/en/?l-id=verify_en_verify-en" class="c-Link_Txt-inline">Identity verification<span class="c-Icon_Chevron-right"></span></a></li>
+        </ul>
+
+        <div class="u-Adjust_Mt-16">
+          <p class="c-Txt_Normal">楽天モバイルでは、本人確認の方法をお客様のニーズに合わせてご用意しています。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※ 未成年のお客様のお申し込みに必要な本人確認書類は、<a href="<%= sitepath %>flow/for-minors/" class="c-Link_Txt">こちらのご案内ページ</a>でご確認ください。</p>
+        </div>
+
+        <div class="c-Theme-Borderbox u-Adjust_Mt-32">
+          <h3 class="c-Heading_Lv3">本人確認方法をお選びください</h3>
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">ご来店での本人確認</p>
+          <p class="u-Adjust_Mt-8"><a href="#shop" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>ご来店時に書類を確認</a></p>
+
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">Webでの本人確認</p>
+          <p class="u-Adjust_Mt-8"><a href="#upload" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>書類画像をアップロードで確認</a></p>
+          <p class="u-Adjust_Mt-8"><a href="#ekyc" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>AIかんたん本人確認（eKYC）</a></p>
+          <p class="u-Adjust_Mt-8"><a href="#check" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>楽天グループに提出済みの書類で確認</a></p>
+
+          <p class="c-Txt_Emp-01 u-Adjust_Mt-16">ご自宅での本人確認</p>
+          <p class="u-Adjust_Mt-8"><a href="#home" class="c-Link_Txt-icon-front"><span class="c-Icon_Arrow-down-l"></span>受け取り時に自宅で確認</a></p>
+        </div>
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2">ご来店時に書類を確認または書類画像をアップロード</h2>
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="shop">ご来店時に書類を確認</h3>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">店舗でのお申し込み時に、以下の書類の中から、いずれかをご用意のうえ、必ず原本をお持ちください。コピーでは受け付けできません。</p>
+
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-32" id="upload">書類画像をアップロードで確認</h3>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">Webからのお申し込み時に、以下の書類の中から、いずれかをご用意のうえ、手順に沿って、撮影した画像をアップロードしてください。</p>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>guide/verify/img-upload/" class="c-Link_Txt-inline">アップロード方法について<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+
+        <h3 class="c-Heading_Lv3 u-Adjust_Mt-32">本人確認書類一覧</h3>
+        <p class="c-Txt_Cap u-Adjust_Mt-8">※下記以外の書類はご利用いただけません。</p>
+
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">日本国籍のお客様</h4>
+        <div class="c-Accordion u-Adjust_Mt-24">
+          <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>運転免許証
+          </button>
+          <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_List-3">
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-02-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-03-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>表面、裏面のアップロードが必要</li>
+                    <li>公安委員会発行のものであること</li>
+                    <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること（※）</li>
+                    <li>有効期限内であること</li>
+                    <li>顔写真が確認できるもの</li>
+                  </ul>
+                </div>
+                <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-24">
+                  <li><span>※</span>記載の氏名・住所が最新ではない場合、お住まいの市区町村担当窓口にて変更手続き後にお申し込みいただくか、別の本人確認書類のご提出をお願いいたします。</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>運転免許証は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+              <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-2" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-2">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>運転経歴証明書
+          </button>
+          <div id="accordion-content-2" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-2" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_List-3">
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-07-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-08-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>表面、裏面のアップロードが必要</li>
+                    <li>公安委員会発行のものであること</li>
+                    <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること（※）</li>
+                    <li>交付年月日が平成24年4月1日以降であること</li>
+                    <li>顔写真が確認できるもの</li>
+                  </ul>
+                </div>
+                <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-24">
+                  <li><span>※</span>記載の氏名・住所が最新ではない場合、お住まいの市区町村担当窓口にて変更手続き後にお申し込みいただくか、別の本人確認書類のご提出をお願いいたします。</li>
+                </ul>
+              </div>
+            </div>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>運転経歴証明書は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-3" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-3">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>マイナンバーカード（個人番号カード）
+          </button>
+          <div id="accordion-content-3" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-3" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-09-230209.png" alt="">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>表面（顔写真が確認できる面）のみアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること（※）</li>
+                  <li>有効期限内であること</li>
+                </ul>
+                <ul class="c-List_Cap u-Adjust_Mt-24">
+                  <li>裏面の画像がアップロードされた場合、弊社にてデータ破棄を行います。</li>
+                </ul>
+                <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-24">
+                  <li><span>※</span>記載の氏名・住所が最新ではない場合、お住まいの市区町村担当窓口にて変更手続き後にお申し込みいただくか、別の本人確認書類のご提出をお願いいたします。</li>
+                </ul>
+                <div class="c-Theme-Light u-Adjust_Mt-24">
+                  <div class="l-Media_Grid">
+                    <div class="l-Media_Image">
+                      <div class="u-Adjust_Align-center">
+                        <img src="<%= sitepath %>assets/img/guide/verify/main-image-22-230209.png" alt="" width="144">
+                      </div>
+                    </div>
+                    <div class="c-Txt_Emp-02">
+                      マイナンバー通知カードは本人確認書類・補助書類として受け付けられません。他の本人確認書類をご利用ください。
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>マイナンバーカード（個人番号カード）は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="c-Accordion">
+          <button id="accordion-5" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-5">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>精神障がい者保健福祉手帳
+          </button>
+          <div id="accordion-content-5" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-5" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-11-230209.png" alt="">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>表面のアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること（※）</li>
+                  <li>有効期限内であること</li>
+                  <li>住所記載があるもの</li>
+                </ul>
+                <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-24">
+                  <li><span>※</span>記載の氏名・住所が最新ではない場合、お住まいの市区町村担当窓口にて変更手続き後にお申し込みいただくか、別の本人確認書類のご提出をお願いいたします。</li>
+                </ul>
+              </div>
+            </div>
+
+
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>精神障がい者保健福祉手帳は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+              <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-6" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-6">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>療育手帳
+          </button>
+          <div id="accordion-content-6" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-6" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-12-230209.png" alt="">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>顔写真の記載面のアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること（※）</li>
+                  <li>有効期限内であること</li>
+                  <li>住所記載があるもの</li>
+                </ul>
+                <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-24">
+                  <li><span>※</span>記載の氏名・住所が最新ではない場合、お住まいの市区町村担当窓口にて変更手続き後にお申し込みいただくか、別の本人確認書類のご提出をお願いいたします。</li>
+                </ul>
+              </div>
+            </div>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>療育手帳は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="c-Accordion">
+          <button id="accordion-4" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-4">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+            </span>身体障がい者手帳<span class="c-Txt_Emp-02 u-Adjust_Pl-16 c-Txt_Normal-s">補助書類必要</span>
+          </button>
+          <div id="accordion-content-4" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-4" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-10-230209.png" alt="">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>表面のアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること</li>
+                </ul>
+              </div>
+            </div>
+            <p class="u-Adjust_Pt-40">書類に住所が記載されている場合は補助書類のご提出は不要です。<br>
+            仕様上、補助書類の提出が必須となりますので、補助書類欄は同じ身体障がい者手帳画像のアップロードをお願いします。</p>
+            <p class="u-Adjust_Pt-40">補助書類を併せてご提出いただく必要があります。</p>
+            <div class="c-Theme-Light u-Adjust_Mt-16">
+              <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">補助書類の注意事項</h3>
+              <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                <li>発行から<span class="c-Txt_Emp-02">3カ月</span>以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</li>
+                <li class="c-Txt_Emp-02">記載の氏名がご家族など、ご契約者様本人の物でない場合、ご利用できません。また、氏名の表記（かな／カナ／漢字）含め、本人確認書類と一致していない場合も同様にご利用できません。</li>
+                <li>書類全体が写るように撮影してください。</li>
+              </ul>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">公共料金の請求書・領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li class="c-Txt_Emp-02"><span>※</span>現住所の建物名や部屋番号等まで正しく記載されている必要があります。また、現住所一部のみ記載の場合は受け付けられません。</li>
+                    <li><span>※</span>領収証印（領収日付または発行年月日の記載）または口座振替が証明できる記載されている必要があります。</li>
+                    <li class="c-Txt_Emp-02"><span>※</span>インターネットからプリントアウトした請求書・明細書やWEB明細画面などのスクリーンショットは受け付けられません。</li>
+                    <li><span>※</span>公共料金の延納に関する督促状は受け付けられません。</li>
+                    <li><span>※</span>楽天でんきの請求書はWeb明細のため、受け付けられません。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">住民票</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>住民票を取得する際には、個人番号（マイナンバー）の記載がないものを準備してください。</li>
+                    <li><span>※</span>本籍地、個人番号（マイナンバー）が記載されている場合、紙などで本籍地および個人番号の箇所のみ隠した状態で画像を撮影、アップロードしてください。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">届出避難場所証明書</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>避難場所が再取得住宅の住所であることをご確認ください。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>身体障がい者手帳は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="c-Accordion">
+          <button id="accordion-7" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-7">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+            </span>健康保険証<span class="c-Txt_Emp-02 u-Adjust_Pl-16 c-Txt_Normal-s">補助書類必要</span>
+          </button>
+          <div id="accordion-content-7" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-7" aria-hidden="true">
+            <p class="u-Adjust_Pt-8 c-Txt_Emp-01">
+              ※以下の場合は、本人確認書類として健康保険証はご利用できません。
+            </p>
+            <ul class="c-List_Text-disc u-Adjust_Mt-24">
+              <li>スマホ下取りサービスをご利用の場合</li>
+              <li>楽天モバイル買い替え超トクプログラムをご利用中で25カ月目以降の機種変更時、または機種変更せずにご返却をする場合</li>
+            </ul>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-24">注意事項</h3>
+            <div class="l-Media_List-3">
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-13-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-14-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li class="c-Txt_Emp-02">カード型の健康保険証の場合、表面・裏面のアップロードが必要</li>
+                    <li class="c-Txt_Emp-02">裏面に住所の記載が必要な場合は、事前に記入すること</li>
+                    <li>紙型の保険証の場合、被扶養者はご自身の氏名が記載されている部分の画像のアップロードが必要</li>
+                    <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること</li>
+                    <li>有効期限内であること（国民健康保険証のみ）</li>
+                  </ul>
+                  <p class="c-Txt_Cap u-Adjust_Mt-8">※健康保険特例退職被保険者証も対象となります。</p>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="c-Theme-Borderbox u-Adjust_Mt-24">
+              <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">アップロードに際して、マスキング処理のお願い</h3>
+              <p class="u-Adjust_Pt-16">2020年10月の健康保険法改正に基づき、<span class="c-Txt_Emp-02">「記号」「番号」「保険者番号」「QRコード（※記載のある場合）」情報は見えないようマスキング処理（書類の撮影前に付箋などで隠す、撮影後に画像編集アプリやソフトで塗りつぶす等）をしてからアップロードしてください。</span></p>
+              <ul class="c-List_Cap u-Adjust_Mt-8">
+                <li><span>※</span>「記号」「番号」情報が空欄の場合も、マスキング処理をしてください。</li>
+                <li><span>※</span>健康保険証は、保険者名称・発行主体・交付年月日が見えるよう、保険証全体を撮影してください。</li>
+                <li><span>※</span>各保険証により、記載位置などは異なります。</li>
+              </ul>
+              <div class="l-Media_List-2 u-Adjust_Pt-24">
+                <div>
+                  <h4 class="c-Txt_Emp-01 c-Theme-Light u-Adjust_Align-center u-Adjust_Pt-8 u-Adjust_Pb-8">カード型の場合</h4>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-25-230209.png" alt="" width="300">
+                    </div>
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-26-230209.png" alt="" width="300">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="c-Txt_Emp-01 c-Theme-Light u-Adjust_Align-center u-Adjust_Pt-8 u-Adjust_Pb-8">紙型の場合</h4>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-27-230209.png" alt="" width="293">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="u-Adjust_Pt-40">補助書類を併せてご提出いただく必要があります。</p>
+
+            <div class="c-Theme-Light u-Adjust_Mt-16">
+              <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">補助書類の注意事項</h3>
+              <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                <li>発行から<span class="c-Txt_Emp-02">3カ月</span>以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</li>
+                <li class="c-Txt_Emp-02">記載の氏名がご家族など、ご契約者様本人の物でない場合、ご利用できません。また、氏名の表記（かな／カナ／漢字）含め、本人確認書類と一致していない場合も同様にご利用できません。</li>
+                <li>書類全体が写るように撮影してください。</li>
+              </ul>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">公共料金の請求書・領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li class="c-Txt_Emp-02"><span>※</span>現住所の建物名や部屋番号等まで正しく記載されている必要があります。また、現住所一部のみ記載の場合は受け付けられません。</li>
+                    <li><span>※</span>領収証印（領収日付または発行年月日の記載）または口座振替が証明できる記載されている必要があります。</li>
+                    <li class="c-Txt_Emp-02"><span>※</span>インターネットからプリントアウトした請求書・明細書やWEB明細画面などのスクリーンショットは受け付けられません。</li>
+                    <li><span>※</span>公共料金の延納に関する督促状は受け付けられません。</li>
+                    <li><span>※</span>楽天でんきの請求書はWeb明細のため、受け付けられません。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">住民票</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>住民票を取得する際には、個人番号（マイナンバー）の記載がないものを準備してください。</li>
+                    <li><span>※</span>本籍地、個人番号（マイナンバー）が記載されている場合、紙などで本籍地および個人番号の箇所のみ隠した状態で画像を撮影、アップロードしてください。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">届出避難場所証明書</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>避難場所が再取得住宅の住所であることをご確認ください。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>健康保険証は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+              <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-8" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-8">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+            </span>日本国パスポート<span class="c-Txt_Emp-02 u-Adjust_Pl-16 c-Txt_Normal-s">補助書類必要</span>
+          </button>
+          <div id="accordion-content-8" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-8" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_List-3">
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-15-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-16-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>顔写真の記載面、所持人記入面または緊急連絡先面のアップロードが必要</li>
+                    <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること</li>
+                    <li>有効期限内であること</li>
+                    <li>顔写真が確認できるもの</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <p class="u-Adjust_Pt-40">補助書類を併せてご提出いただく必要があります。</p>
+
+            <div class="c-Theme-Light u-Adjust_Mt-16">
+              <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">補助書類の注意事項</h3>
+              <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                <li>発行から<span class="c-Txt_Emp-02">3カ月</span>以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</li>
+                <li class="c-Txt_Emp-02">記載の氏名がご家族など、ご契約者様本人の物でない場合、ご利用できません。また、氏名の表記（かな／カナ／漢字）含め、本人確認書類と一致していない場合も同様にご利用できません。</li>
+                <li>書類全体が写るように撮影してください。</li>
+              </ul>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">公共料金の請求書・領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li class="c-Txt_Emp-02"><span>※</span>現住所の建物名や部屋番号等まで正しく記載されている必要があります。また、現住所一部のみ記載の場合は受け付けられません。</li>
+                    <li><span>※</span>領収証印（領収日付または発行年月日の記載）または口座振替が証明できる記載されている必要があります。</li>
+                    <li class="c-Txt_Emp-02"><span>※</span>インターネットからプリントアウトした請求書・明細書やWEB明細画面などのスクリーンショットは受け付けられません。</li>
+                    <li><span>※</span>公共料金の延納に関する督促状は受け付けられません。</li>
+                    <li><span>※</span>楽天でんきの請求書はWeb明細のため、受け付けられません。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">住民票</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>住民票を取得する際には、個人番号（マイナンバー）の記載がないものを準備してください。</li>
+                    <li><span>※</span>本籍地、個人番号（マイナンバー）が記載されている場合、紙などで本籍地および個人番号の箇所のみ隠した状態で画像を撮影、アップロードしてください。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">届出避難場所証明書</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>避難場所が再取得住宅の住所であることをご確認ください。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>日本国パスポートは全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="c-Accordion">
+          <button id="accordion-9" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-9">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+            </span>住民基本台帳カード<span class="c-Txt_Emp-02 u-Adjust_Pl-16 c-Txt_Normal-s">補助書類必要</span>
+          </button>
+          <div id="accordion-content-9" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-9" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-17-230209.png" alt="">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>表面、裏面のアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること</li>
+                  <li>有効期限内であること</li>
+                  <li>住所記載があるもの</li>
+                </ul>
+              </div>
+            </div>
+            <p class="u-Adjust_Pt-40">補助書類を併せてご提出いただく必要があります。</p>
+
+            <div class="c-Theme-Light u-Adjust_Mt-16">
+              <h3 class="c-Heading_Lv4 u-Adjust_Mt-8">補助書類の注意事項</h3>
+              <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                <li>発行から<span class="c-Txt_Emp-02">3カ月</span>以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</li>
+                <li class="c-Txt_Emp-02">記載の氏名がご家族など、ご契約者様本人の物でない場合、ご利用できません。また、氏名の表記（かな／カナ／漢字）含め、本人確認書類と一致していない場合も同様にご利用できません。</li>
+                <li>書類全体が写るように撮影してください。</li>
+              </ul>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">公共料金の請求書・領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li class="c-Txt_Emp-02"><span>※</span>現住所の建物名や部屋番号等まで正しく記載されている必要があります。また、現住所一部のみ記載の場合は受け付けられません。</li>
+                    <li><span>※</span>領収証印（領収日付または発行年月日の記載）または口座振替が証明できる記載されている必要があります。</li>
+                    <li class="c-Txt_Emp-02"><span>※</span>インターネットからプリントアウトした請求書・明細書やWEB明細画面などのスクリーンショットは受け付けられません。</li>
+                    <li><span>※</span>公共料金の延納に関する督促状は受け付けられません。</li>
+                    <li><span>※</span>楽天でんきの請求書はWeb明細のため、受け付けられません。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">住民票</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-05-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>住民票を取得する際には、個人番号（マイナンバー）の記載がないものを準備してください。</li>
+                    <li><span>※</span>本籍地、個人番号（マイナンバー）が記載されている場合、紙などで本籍地および個人番号の箇所のみ隠した状態で画像を撮影、アップロードしてください。</li>
+                  </ul>
+                </div>
+              </div>
+              <h4 class="c-Txt_Emp-01 u-Adjust_Mt-32">届出避難場所証明書</h4>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-06-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>避難場所が再取得住宅の住所であることをご確認ください。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>住民基本台帳カードは全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <h4 class="c-Heading_Lv4 u-Adjust_Mt-24">外国籍のお客様</h4>
+
+        <div class="c-Accordion u-Adjust_Mt-24">
+          <button id="accordion-11" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-11">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>在留カード
+          </button>
+          <div id="accordion-content-11" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-11" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-19-230209.png" alt="">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>表面、裏面のアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること<br>
+                    <span class="c-Txt_Cap c-Txt_Emp-02">※氏名が漢字とローマ字併記の方：ローマ字で契約者情報を入力すること</span>
+                  </li>
+                  <li>有効期限内であること</li>
+                  <li>住所記載があるもの</li>
+                  <li>顔写真が確認できるもの</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>在留カードは全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="c-Accordion">
+          <button id="accordion-10" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-10">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>特別永住者証明書
+          </button>
+          <div id="accordion-content-10" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-10" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-18-230209.png" alt="">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>表面、裏面のアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること<br>
+                    <span class="c-Txt_Cap c-Txt_Emp-02">※氏名が漢字とローマ字併記の方：ローマ字で契約者情報を入力すること</span>
+                  </li>
+                  <li>有効期限内であること</li>
+                  <li>住所記載があるもの</li>
+                  <li>顔写真が確認できるもの</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="c-Heading_Lv4 u-Adjust_Mt-40">撮影時のポイント</h3>
+            <ul class="c-List_Text-disc u-Adjust_Mt-16">
+              <li>特別永住者証明書は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="c-Accordion">
+          <button id="accordion-gaikoukan" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-gaikoukan">
+            <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+            </span>外交官身分証明票<span class="c-Txt_Emp-02 u-Adjust_Pl-16 c-Txt_Normal-s">住居証明書必要</span>
+          </button>
+          <div id="accordion-content-gaikoukan" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-gaikoukan" aria-hidden="true">
+            <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_Grid">
+              <div class="l-Media_Image">
+                <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-gaikoukan-230209.png" alt="" width="343" height="196">
+                </div>
+              </div>
+              <div>
+                <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                  <li>表面、裏面のアップロードが必要</li>
+                  <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること</li>
+                  <li>有効期限内であること</li>
+                </ul>
+              </div>
+            </div>
+            <p class="u-Adjust_Mt-32">
+              書類に住居が記載されている場合は住居証明書のご提出は不要です。<br>
+              仕様上、補助書類の提出が必須となりますので、補助書類欄は同じ外交官身分証明票画像のアップロードをお願いします。
+            </p>
+            <p class="u-Adjust_Mt-16">住居の記載がない場合、事務所住所記載の場合、外交官身分証明票と住居証明書のご提出をお願いいたします。</p>
+            <p class="u-Adjust_Mt-16">その他、外務省発行の「身分証明票」「領事館身分証明票」「国際機関職員身分証明票」についても同様に対象の書類です。</p>
+
+            <h4 class="c-Heading_Lv4 u-Adjust_Mt-32">撮影時のポイント</h4>
+            <ul class="c-List_Text-disc u-Adjust_Mt-8">
+              <li>外交官身分証明票は全体が写るように撮影してください。</li>
+              <li>画像は加工せず、原本をカラー画像でアップロードをしてください。アップロード画像を間違えた場合は再度撮影が可能です。</li>
+              <li>光の反射が強いなどの理由で、書類内容が判読しづらい場合は、再度撮影してアップロードをお願いします(カメラのフラッシュ機能をOFFにすると強い反射を抑えることができます)。</li>
+            </ul>
+
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2" id="ekyc">AIかんたん本人確認（eKYC）</h2>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">運転免許証またはマイナンバーカードをお持ちであれば、その場で本人確認が完了する「AIかんたん本人確認（eKYC）」がご利用いただけます。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8">※外国籍の方はご利用いただけません。</p>
+          <p class="u-Adjust_Mt-32"><a href="<%= sitepath %>guide/verify/ekyc/" class="c-Link_Txt-inline">eKYCとは<span class="c-Icon_Chevron-right"></span></a></p>
+
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">本人確認書類一覧</h3>
+          <div class="c-Accordion u-Adjust_Mt-24">
+            <button id="accordion-18" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-18">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>運転免許証
+            </button>
+            <div id="accordion-content-18" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-18" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+              <div class="l-Media_List-3">
+                <div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-02-230209.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-03-230209.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>表面、厚み、裏面の撮影が必要</li>
+                      <li>公安委員会発行のものであること</li>
+                      <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること（※）</li>
+                      <li>有効期限内であること</li>
+                      <li>顔写真が確認できるもの</li>
+                    </ul>
+                  </div>
+                  <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>記載の氏名・住所が最新ではない場合、お住まいの市区町村担当窓口にて変更手続き後にお申し込みいただくか、別の本人確認書類のご提出をお願いいたします。</li>
+                  </ul>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-19" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-19">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>マイナンバーカード（個人番号カード）
+            </button>
+            <div id="accordion-content-19" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-19" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-09-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>表面（顔写真が確認できる面）のみアップロードが必要</li>
+                    <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること（※）</li>
+                    <li>有効期限内であること</li>
+                  </ul>
+                  <ul class="c-List_Cap c-Txt_Cap u-Adjust_Mt-24">
+                    <li><span>※</span>記載の氏名・住所が最新ではない場合、お住まいの市区町村担当窓口にて変更手続き後にお申し込みいただくか、別の本人確認書類のご提出をお願いいたします。</li>
+                  </ul>
+                  <div class="c-Theme-Light u-Adjust_Mt-24">
+                    <div class="l-Media_Grid">
+                      <div class="l-Media_Image">
+                        <div class="u-Adjust_Align-center">
+                          <img src="<%= sitepath %>assets/img/guide/verify/main-image-22-230209.png" alt="" width="144">
+                        </div>
+                      </div>
+                      <div class="c-Txt_Emp-02">
+                        マイナンバー通知カードは本人確認書類・補助書類として受け付けられません。他の本人確認書類をご利用ください。
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2" id="check">楽天グループに提出済みの書類で確認</h2>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">
+            楽天銀行・楽天証券・楽天生命のいずれかをご契約されている方は、楽天モバイル申し込み時の本人確認書類の撮影が不要になります。
+            また、eSIMでお申し込みの場合は、お申し込み後、簡単に開通・ご利用開始いただけます。
+          </p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※</span>楽天銀行・楽天証券・楽天生命をご契約されていても、条件を満たさない場合、「楽天グループに提出済みの書類で確認」をご利用になれない場合があります。</p>
+          <p class="c-Txt_Cap u-Adjust_Mt-8"><span>※</span>お申し込み後に送付される転送不要郵便のお受け取りが確認できない場合、お申し込みがキャンセルになる、もしくは別途本人確認の手続きを実施いただく必要があります。</p>
+          <p class="u-Adjust_Mt-32"><a href="<%= sitepath %>guide/verify/group-kyc/" class="c-Link_Txt-inline">楽天グループに提出済みの書類で確認とは<span class="c-Icon_Chevron-right"></span></a></p>
+        </div>
+
+        <div class="u-Adjust_Mt-64">
+          <h2 class="c-Heading_Lv2" id="home">受け取り時に自宅で確認</h2>
+          <p class="c-Txt_Normal u-Adjust_Mt-16">Webからのお申し込み時に本人確認をスキップし、商品のお受け取りの際にご自宅で本人確認を行う方法です。以下の書類の中から、いずれかをご用意のうえ、お申し込みください。</p>
+
+          <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8"><span>※</span>以下の場合は、ご自宅での本人確認がご利用いただけません。</p>
+          <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>お支払い方法が代金引換の場合</p>
+          <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>ご契約者が18歳未満の場合</p>
+          <p class="c-Txt_Cap c-Txt_Emp-02"><span>・</span>離島など一部の地域にお住まいの場合</p>
+
+          <div class="c-Txt_Cap u-Adjust_Mt-16">
+            <p>※記載の住所が最新ではない場合、または「日本国パスポート」を本人確認書類としてご提示いただく場合、補助書類のご提出をお願いいたします。詳しくは、以下の書類名をクリックして表示される「補助書類の注意事項」をご覧ください。</p>
+            <p class="u-Adjust_Mt-8">※外国籍の方はご利用いただけません。</p>
+          </div>
+          <p class="u-Adjust_Mt-32"><a href="<%= sitepath %>guide/verify/home-kyc/" class="c-Link_Txt-inline">受け取り時に自宅で確認とは<span class="c-Icon_Chevron-right"></span></a></p>
+
+
+          <h3 class="c-Heading_Lv3 u-Adjust_Mt-40">本人確認書類一覧</h3>
+          <div class="c-Accordion u-Adjust_Mt-24">
+            <button id="accordion-13" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-13">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+              </span>運転免許証<span class="c-Txt_Emp-02 u-Adjust_Pl-16 c-Txt_Normal-s">運転経歴証明書は不可</span>
+            </button>
+            <div id="accordion-content-13" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-13" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+              <p class="c-Txt_Emp-02 u-Adjust_Mt-8">ご自宅で本人確認をする場合、運転経歴証明書は本人確認書類としてご利用いただけません。必ず運転免許証をご用意ください。</p>
+              <div class="l-Media_List-3">
+                <div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-02-230209.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-03-230209.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                      <li>公安委員会発行のものであること</li>
+                      <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること</li>
+                      <li>有効期限内であること</li>
+                      <li>顔写真が確認できるもの</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <p class="c-Txt_Emp-02 u-Adjust_Mt-32">記載の住所が最新ではない場合、補助書類のご提出をお願いいたします。</p>
+
+              <div class="c-Theme-Light u-Adjust_Mt-16">
+                <h3 class="c-Heading_Lv4">補助書類の注意事項</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                  <li>発行から<span class="c-Txt_Emp-02">3カ月</span>以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</li>
+                  <li class="c-Txt_Emp-02">記載の氏名がご家族など、ご契約者様本人の物でない場合、ご利用できません。また、氏名の表記（かな／カナ／漢字）含め、本人確認書類と一致していない場合も同様にご利用できません。</li>
+                </ul>
+                <div class="l-Media_Grid-small u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-sp u-Adjust_Mb-24 u-Adjust_Align-left">公共料金の請求書・領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</p>
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-pc">公共料金の領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</p>
+                    <ul class="c-List_Cap u-Adjust_Mt-16">
+                      <li class="c-Txt_Emp-02"><span>※</span>現住所の建物名や部屋番号等まで正しく記載されている必要があります。また、現住所一部のみ記載の場合は受け付けられません。</li>
+                      <li><span>※</span>領収証印（領収日付または発行年月日の記載）または口座振替が証明できる記載されている必要があります。</li>
+                      <li class="c-Txt_Emp-02"><span>※</span>インターネットからプリントアウトした請求書・明細書やWEB明細画面などのスクリーンショットは受け付けられません。</li>
+                      <li><span>※</span>公共料金の延納に関する督促状は受け付けられません。</li>
+                      <li><span>※</span>楽天でんきの請求書はWeb明細のため、受け付けられません。</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div>
+                    <p class="c-Txt_Emp-01">納税証明書</p>
+                  </div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pl-40 u-Adjust_Pr-40">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-23-230209.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div>
+                    <p class="c-Txt_Emp-01">社会保険料の領収証書</p>
+                  </div>
+                  <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-24-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-14" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-14">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>マイナンバーカード（個人番号カード）
+            </button>
+            <div id="accordion-content-14" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-14" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+              <div class="l-Media_Grid">
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-09-230209.png" alt="">
+                  </div>
+                </div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること</li>
+                    <li>有効期限内であること</li>
+                  </ul>
+                  <div class="l-Media_Grid-small u-Adjust_Mt-24 c-Theme-Lightzw">
+                    <div class="l-Media_Image">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-22-230209.png" alt="" width="144">
+                    </div>
+                    <div>
+                      <p class="c-Txt_Emp-02">マイナンバー通知カードは本人確認書類・補助書類として受け付けられません。他の本人確認書類をご利用ください。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 c-Txt_Emp-02">記載の住所が最新ではない場合、補助書類のご提出をお願いいたします。</p>
+
+              <div class="c-Theme-Light u-Adjust_Mt-16">
+                <h3 class="c-Heading_Lv4">補助書類の注意事項</h3>
+                <ul class="c-List_Text-disc u-Adjust_Mt-16 u-Adjust_Mb-24">
+                  <li>発行から<span class="c-Txt_Emp-02">3カ月</span>以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</li>
+                  <li class="c-Txt_Emp-02">記載の氏名がご家族など、ご契約者様本人の物でない場合、ご利用できません。また、氏名の表記（かな／カナ／漢字）含め、本人確認書類と一致していない場合も同様にご利用できません。</li>
+                </ul>
+
+                <div class="l-Media_Grid-small u-Adjust_Mt-24">
+                  <div class="l-Media_Image">
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-sp u-Adjust_Mb-24 u-Adjust_Align-left">公共料金の領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</p>
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                  </div>
+                  <div>
+                    <p class="c-Txt_Emp-01 <%= nameSpace %>-Utility_Show-pc">公共料金の領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</p>
+                    <ul class="c-List_Cap u-Adjust_Mt-16">
+                      <li class="c-Txt_Emp-02"><span>※</span>現住所の建物名や部屋番号等まで正しく記載されている必要があります。また、現住所一部のみ記載の場合は受け付けられません。</li>
+                      <li><span>※</span>領収証印（領収日付または発行年月日の記載）または口座振替が証明できる記載されている必要があります。</li>
+                      <li class="c-Txt_Emp-02"><span>※</span>インターネットからプリントアウトした請求書・明細書やWEB明細画面などのスクリーンショットは受け付けられません。</li>
+                      <li><span>※</span>楽天でんきの請求書はWeb明細のため、受け付けられません。</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div>
+                    <p class="c-Txt_Emp-01">納税証明書</p>
+                  </div>
+                  <div class="l-Media_Image">
+                    <div class="u-Adjust_Pl-40 u-Adjust_Pr-40">
+                      <img src="<%= sitepath %>assets/img/guide/verify/main-image-23-230209.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                  <div>
+                    <p class="c-Txt_Emp-01">社会保険料の領収証書</p>
+                  </div>
+                  <div class="l-Media_Image">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-24-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+                <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                  <span>よくあるご質問</span>
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="c-Accordion">
+            <button id="accordion-15" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-15">
+              <span class="c-Icon_Chevron-right c-Accordion_Arrow">
+              </span>日本国パスポート<span class="c-Txt_Emp-02 u-Adjust_Pl-16 c-Txt_Normal-s">補助書類必要</span>
+            </button>
+            <div id="accordion-content-15" class="c-Accordion_Panel js-Accordion_Panel" role="region" aria-labelledby="accordion-15" aria-hidden="true">
+              <h3 class="c-Heading_Lv4 u-Adjust_Pt-8">注意事項</h3>
+            <div class="l-Media_List-3">
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-15-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pt-24 u-Adjust_Align-center">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-16-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <ul class="c-List_Text-disc u-Adjust_Mt-24">
+                    <li>氏名、住所、生年月日がお申し込みいただいた内容と一致していること
+                    </li>
+                    <li>有効期限内であること</li>
+                    <li>住所記載があるもの</li>
+                    <li>顔写真が確認できるもの</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <p class="u-Adjust_Mt-32">補助書類を併せてご提出いただく必要があります。</p>
+
+            <div class="c-Theme-Light u-Adjust_Mt-16">
+              <h3 class="c-Heading_Lv4">補助書類の注意事項</h3>
+              <ul class="c-List_Text-disc u-Adjust_Mt-16">
+                <li>発行から<span class="c-Txt_Emp-02">3カ月</span>以内で、氏名、住所がお申し込みいただいた内容と一致している必要があります。</li>
+                <li class="c-Txt_Emp-02">記載の氏名がご家族など、ご契約者様本人の物でない場合、ご利用できません。また、氏名の表記（かな／カナ／漢字）含め、本人確認書類と一致していない場合も同様にご利用できません。</li>
+              </ul>
+              <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                <div>
+                  <p class="c-Txt_Emp-01">公共料金の領収書（電気・ガス・水道のいずれか／新電力、LPガス、プロパンガスも可）</p>
+                  <ul class="c-List_Cap u-Adjust_Mt-16">
+                    <li class="c-Txt_Emp-02"><span>※</span>現住所の建物名や部屋番号等まで正しく記載されている必要があります。また、現住所一部のみ記載の場合は受け付けられません。</li>
+                    <li><span>※</span>領収証印（領収日付または発行年月日の記載）または口座振替が証明できる記載されている必要があります。</li>
+                    <li class="c-Txt_Emp-02"><span>※</span>インターネットからプリントアウトした請求書・明細書やWEB明細画面などのスクリーンショットは受け付けられません。</li>
+                    <li><span>※</span>公共料金の延納に関する督促状は受け付けられません。</li>
+                    <li><span>※</span>楽天でんきの請求書はWeb明細のため、受け付けられません。</li>
+                  </ul>
+                </div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-04-230209.png" alt="">
+                </div>
+              </div>
+              <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                <div>
+                  <p class="c-Txt_Emp-01">納税証明書</p>
+                </div>
+                <div class="l-Media_Image">
+                  <div class="u-Adjust_Pl-40 u-Adjust_Pr-40">
+                    <img src="<%= sitepath %>assets/img/guide/verify/main-image-23-230209.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="l-Media_Grid-small-reverse u-Adjust_Mt-24">
+                <div>
+                  <p class="c-Txt_Emp-01">社会保険料の領収証書</p>
+                </div>
+                <div class="l-Media_Image">
+                  <img src="<%= sitepath %>assets/img/guide/verify/main-image-24-230209.png" alt="">
+                </div>
+              </div>
+            </div>
+            <p class="u-Adjust_Mt-24 u-Adjust_Mb-24 u-Adjust_Align-center">
+              <a href="<%= sitepath %>support/application/verification/" class="c-Btn_Regular">
+                <span>よくあるご質問</span>
+              </a>
+            </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="u-Adjust_Mt-64 u-Adjust_Pb-64">
+          <h2 class="c-Heading_Lv2">注意事項</h2>
+          <ul class="c-List_Text-disc u-Adjust_Mt-16">
+            <li>お申し込み画面内で入力された情報と本人確認書類の内容が一致しない場合、または書類やアップロード画像に不備がある場合は、受け付けできません。</li>
+            <li>ご利用開始後、改めてメール等で本人確認書類の提出をお願いする場合があります。</li>
+            <li>楽天モバイルが定める審査に基づき、お申し込みをキャンセルさせていただく場合があります。 その際、再提出依頼のメールと行き違いになることがありますがご了承ください。</li>
+          </ul>
+        </div>
+
+        <%- include('/include/guide/_faq') %>
+
+      </div>
+    </div>
+
+
+
+
+    <%- include('/include/guide/_inquiry') %>
+    <%- include('/include/guide/_review') %>
+
+    <footer class="g-Footer">
+
+      <div class="g-Footer_Aside">
+
+        <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+      </div>
+      <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+      </div>
+
+      <%- include('/include/_footer') %>
+
+    </footer>
+
+  </div>
+  <%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+
+
+
+</body>
+</html>

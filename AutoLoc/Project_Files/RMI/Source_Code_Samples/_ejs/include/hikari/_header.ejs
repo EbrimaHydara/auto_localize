@@ -1,0 +1,182 @@
+<% const hikariroot = {path: "hikari/", title: "楽天ひかり"} -%>
+
+<header class="g-hikari-Header">
+  <div class="g-hikari-Header_Container">
+    <% if (typeof page != 'undefined') { %>
+      <% if (page == 'top') { %>
+      <h1><span class="g-hikari-Header_Logo"><a href="<%= rootpath %>" data-lid_parts="header">Rakuten Mobile</a></span><span class="g-hikari-Header_Sitename-basic">楽天ひかり</span></h1>
+      <% } else { %>
+      <div class="g-hikari-Header_Logo"><a href="<%= rootpath %>" data-lid_parts="header">Rakuten Mobile</a></div>
+      <div class="g-hikari-Header_Sitename-basic"><a href="/hikari/index_a.html" data-lid_parts="header">楽天ひかり</a></div>
+      <% } %>
+    <% } else { %>
+      <div class="g-hikari-Header_Logo"><a href="<%= rootpath %>" data-lid_parts="header">Rakuten Mobile</a></div>
+      <div class="g-hikari-Header_Sitename-basic"><a href="/hikari/index_a.html" data-lid_parts="header">楽天ひかり</a></div>
+    <% } %>
+      <div class="g-hikari-Header_Apply02"><a href="https://secure3.gol.com/mod-pl/rbb/rmch.cgi?scode=qngTI9rXJpRlc1l6roM&cpnkind=mnocampaign" class="g-hikari-Header_Apply-btn" data-lid_parts="header">楽天ひかりにお申し込み</a></div>
+      <div class="g-hikari-Header_Ms"><a href="https://ms.fusioncom.co.jp/rbb/members/login?campaign=web-rakuten" target="_blank" rel="noopener" data-lid_parts="header" class="g-hikari-Header_Apply-btn">メンバーズステーション</a></div>
+      <div id="hikari-header-search-icon"></div>
+      <% if (typeof fixedmenu != 'undefined') { if (fixedmenu == 'true') { %>
+      <div class="g-hikari-Header_Drawer-wrap-fixed">
+        <div class="g-hikari-Header_Drawer-icon-fixed js-hikari-nav-fixed" aria-controls="js-drawer" data-ratId="rhk_header_hamburger" data-ratEvent="click" data-ratParam="all"><span class="c-Icon_Menu"></span><span class="g-hikari-Header_Drawer-text">メニュー</span></div>
+      </div>
+      <% } else { %>
+      <div class="g-hikari-Header_Drawer-icon js-nav" aria-controls="js-drawer" data-ratId="rhk_header_hamburger" data-ratEvent="click" data-ratParam="all"><span class="c-Icon_Menu"></span><span class="g-hikari-Header_Drawer-text">メニュー</span></div>
+      <% } } else { %>
+      <div class="g-hikari-Header_Drawer-icon js-nav" aria-controls="js-drawer" data-ratId="rhk_header_hamburger" data-ratEvent="click" data-ratParam="all"><span class="c-Icon_Menu"></span><span class="g-hikari-Header_Drawer-text">メニュー</span></div>
+      <% } %>
+  </div>
+
+  <div class="g-hikari-Header_Search js-search" id="js-search" aria-expanded="false">
+    <div class="g-hikari-Header_Search-close js-nav" aria-controls="js-search"><span class="c-Icon_X"></span></div>
+    <div id="hikari-header-search"></div>
+  </div>
+
+  <nav class="g-hikari-Header_Drawer js-drawer" id="js-drawer" aria-expanded="false">
+    <% if (typeof fixedmenu != 'undefined') { if (fixedmenu == 'true') { %>
+      <div class="g-hikari-Header_Drawer-close js-hikari-nav-fixed" aria-controls="js-drawer"><span class="c-Icon_X"></span></div>
+    <% } else { %>
+      <div class="g-hikari-Header_Drawer-close js-nav" aria-controls="js-drawer"><span class="c-Icon_X"></span></div>
+    <% } } else { %>
+      <div class="g-hikari-Header_Drawer-close js-nav" aria-controls="js-drawer"><span class="c-Icon_X"></span></div>
+    <% } %>
+      <div class="g-hikari-Header_Drawer-container">
+        <div class="g-hikari-Header_Link-logo">
+          <a href="<%= sitepath %><%= hikariroot.path %>index_a.html" data-lid_parts="gmenu"><img src="<%= sitepath %>assets/img/hikari/common/logo-hikari.svg" alt="楽天ひかり" width="180"></a>
+        </div>
+        <div class="g-hikari-Header_Link g-hikari-Header_Link-apply">
+          <a href="https://secure3.gol.com/mod-pl/rbb/rmch.cgi?scode=qngTI9rXJpRlc1l6roM&cpnkind=mnocampaign" data-lid_parts="gmenu" class="g-hikari-Header_Link-btn1">楽天ひかりに申し込む</a>
+        </div>
+        <div class="g-hikari-Header_Link">
+          <a href="https://ms.fusioncom.co.jp/rbb/members/login?campaign=web-rakuten" data-lid_parts="gmenu" target="_blank" rel="noopener" class="g-hikari-Header_Link-btn2">メンバーズステーションへログイン</a>
+        </div>
+      </div>
+      <ul class="g-hikari-Header_Drawer-main">
+        <li>
+          <div class="c-Accordion g-hikari-Header_Drawer-accordion">
+            <button id="accordion-drawer-1" class="c-Accordion_Trigger js-Accordion_Trigger js-drawer-accordion" aria-expanded="false" aria-controls="accordion-drawer-content-1">料金<span class="c-Icon_Chevron-right g-hikari-Header_Drawer-accordion-arrow"></span></button>
+            <div id="accordion-drawer-content-1" class="c-Accordion_Panel js-Accordion_Panel g-hikari-Header_Drawer-accordion-panel" role="region" aria-labelledby="accordion-drawer-1" aria-hidden="true">
+              <ul>
+                <li><a href="<%= sitepath %><%= hikariroot.path %>fee/simulation/index_a.html" data-lid_parts="gmenu">料金シミュレーション</a></li>
+                <li><a href="<%= sitepath %><%= hikariroot.path %>fee/transfer-benefit/index_a.html" data-lid_parts="gmenu">乗り換えがおトク</a></li>
+                <li><a href="<%= sitepath %><%= hikariroot.path %>fee/schedule/index_a.html" data-lid_parts="gmenu">お支払いスケジュール</a></li>
+                <li><a href="<%= sitepath %><%= hikariroot.path %>fee/pricelist/index_a.html" data-lid_parts="gmenu">料金表・お支払い方法</a></li>
+                <li><a href="<%= sitepath %><%= hikariroot.path %>fee/option/index_a.html" data-lid_parts="gmenu">オプション・サービス</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="c-Accordion g-hikari-Header_Drawer-accordion">
+            <button id="accordion-drawer-2" class="c-Accordion_Trigger js-Accordion_Trigger js-drawer-accordion" aria-expanded="false" aria-controls="accordion-drawer-content-2">高速インターネット<span class="c-Icon_Chevron-right g-hikari-Header_Drawer-accordion-arrow"></span></button>
+            <div id="accordion-drawer-content-2" class="c-Accordion_Panel js-Accordion_Panel g-hikari-Header_Drawer-accordion-panel" role="region" aria-labelledby="accordion-drawer-2" aria-hidden="true">
+            <ul>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>internet/benefit/index_a.html" data-lid_parts="gmenu">光回線のメリット</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>internet/about/index_a.html" data-lid_parts="gmenu">光回線とは</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>internet/ipv6/index_a.html" data-lid_parts="gmenu">次世代規格IPv6とは</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>internet/area/index_a.html" data-lid_parts="gmenu">利用可能エリア</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>internet/speed/index_a.html" data-lid_parts="gmenu">通信速度 実測情報</a></li>
+            </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="c-Accordion g-hikari-Header_Drawer-accordion">
+            <button id="accordion-drawer-3" class="c-Accordion_Trigger js-Accordion_Trigger js-drawer-accordion" aria-expanded="false" aria-controls="accordion-drawer-content-3">ポイントでおトク<span class="c-Icon_Chevron-right g-hikari-Header_Drawer-accordion-arrow"></span></button>
+            <div id="accordion-drawer-content-3" class="c-Accordion_Panel js-Accordion_Panel g-hikari-Header_Drawer-accordion-panel" role="region" aria-labelledby="accordion-drawer-3" aria-hidden="true">
+            <ul>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>point/index_a.html" data-lid_parts="gmenu">楽天ポイントでおトク</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>point/case-01/index_a.html" data-lid_parts="gmenu">ライフイベントでポイントをガッツリ貯める</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>point/case-02/index_a.html" data-lid_parts="gmenu">毎月かかる生活費で賢くポイントを貯める</a></li>
+            </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="<%= sitepath %><%= hikariroot.path %>campaign/index_a.html" data-lid_parts="gmenu">キャンペーン・特典</a></li>
+        <li><a href="<%= sitepath %><%= hikariroot.path %>review/index_a.html" data-lid_parts="gmenu">ご利用者様アンケート</a></li>
+        <li>
+          <div class="c-Accordion g-hikari-Header_Drawer-accordion">
+            <button id="accordion-drawer-4" class="c-Accordion_Trigger js-Accordion_Trigger js-drawer-accordion" aria-expanded="false" aria-controls="accordion-drawer-content-4">申し込みの流れ<span class="c-Icon_Chevron-right g-hikari-Header_Drawer-accordion-arrow"></span></button>
+            <div id="accordion-drawer-content-4" class="c-Accordion_Panel js-Accordion_Panel g-hikari-Header_Drawer-accordion-panel" role="region" aria-labelledby="accordion-drawer-4" aria-hidden="true">
+            <ul class="">
+              <li><a href="<%= sitepath %><%= hikariroot.path %>flow/index_a.html" data-lid_parts="gmenu">申し込みの流れ</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>flow/construction/index_a.html" data-lid_parts="gmenu">開通工事とは</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>flow/house-moving/index_a.html" data-lid_parts="gmenu">引越しのお手続き</a></li>
+            </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="c-Accordion g-hikari-Header_Drawer-accordion">
+            <button id="accordion-drawer-5" class="c-Accordion_Trigger js-Accordion_Trigger js-drawer-accordion" aria-expanded="false" aria-controls="accordion-drawer-content-5">お客様サポート<span class="c-Icon_Chevron-right g-hikari-Header_Drawer-accordion-arrow"></span></button>
+            <div id="accordion-drawer-content-5" class="c-Accordion_Panel js-Accordion_Panel g-hikari-Header_Drawer-accordion-panel" role="region" aria-labelledby="accordion-drawer-5" aria-hidden="true">
+            <ul class="">
+              <li><a href="<%= sitepath %><%= hikariroot.path %>support/index_a.html" data-lid_parts="gmenu">お客様サポート</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>support/setting/router/index_a.html" data-lid_parts="gmenu">インターネット接続方法</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>support/wifi-router/index_a.html" data-lid_parts="gmenu">楽天ひかりのIPv6対応ルーター</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>support/setting/mail/index_a.html" data-lid_parts="gmenu">メール設定方法</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>support/speed/index_a.html" data-lid_parts="gmenu">光回線の通信速度改善</a></li>
+              <li><a href="<%= sitepath %><%= hikariroot.path %>support/members-station/index_a.html" data-lid_parts="gmenu">メンバーズステーションのご利用方法</a></li>
+            </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="<%= sitepath %><%= hikariroot.path %>information/" data-lid_parts="gmenu">お知らせ</a></li>
+        <li><a href="https://hikari.faq.rakuten.net?site_domain=default&type=a" data-lid_parts="gmenu">よくあるご質問</a></li>
+        <li><a href="<%= sitepath %><%= hikariroot.path %>inquiry/index_a.html" data-lid_parts="gmenu">お問い合わせ</a></li>
+      </ul>
+      <div class="g-hikari-Header_Drawer-container">
+        <div class="g-hikari-Header_Drawer-sub u-Adjust_Mt-24">
+          <a href="<%= sitepath %>" data-lid_parts="gmenu" class="g-hikari-Header_Link-btn3"><span>楽天モバイルを見る</span></a>
+        </div>
+      </div>
+  </nav>
+  <div class="g-hikari-Header_Overlay js-overlay" aria-hidden="true"></div>
+  <nav class="g-hikari-Header_Nav-sub">
+    <div class="g-hikari-Header_Nav-sub-container">
+      <ul class="g-hikari-Header_Nav-sub-inner1">
+        <li class="g-hikari-Header_Nav-sub-dropdown-container">
+          <button class="js-dropdown g-hikari-Header_Dropdown c-Link_Txt-icon" aria-controls="dropdown-content-1" aria-current="false">料金<span class="c-Icon_Chevron-right g-hikari-Header_Dropdown-icon"></span></button>
+          <ul id="dropdown-content-1" class="js-dropdown-child g-hikari-Header_Nav-sub-dropdown" aria-hidden="true">
+            <li><a href="<%= sitepath %><%= hikariroot.path %>fee/simulation/index_a.html" data-lid_parts="gheader">料金シミュレーション</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>fee/transfer-benefit/index_a.html" data-lid_parts="gheader">乗り換えがおトク</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>fee/schedule/index_a.html" data-lid_parts="gheader">お支払いスケジュール</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>fee/pricelist/index_a.html" data-lid_parts="gheader">料金表・お支払い方法</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>fee/option/index_a.html" data-lid_parts="gheader">オプション・サービス</a></li>
+          </ul>
+        </li>
+        <li class="g-hikari-Header_Nav-sub-dropdown-container">
+          <button class="js-dropdown g-hikari-Header_Dropdown c-Link_Txt-icon" aria-controls="dropdown-content-2" aria-current="false">高速インターネット<span class="c-Icon_Chevron-right g-hikari-Header_Dropdown-icon"></span></button>
+          <ul id="dropdown-content-2" class="js-dropdown-child g-hikari-Header_Nav-sub-dropdown" aria-hidden="true">
+            <li><a href="<%= sitepath %><%= hikariroot.path %>internet/benefit/index_a.html" data-lid_parts="gheader">光回線のメリット</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>internet/about/index_a.html" data-lid_parts="gheader">光回線とは</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>internet/ipv6/index_a.html" data-lid_parts="gheader">次世代規格IPv6とは</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>internet/area/index_a.html" data-lid_parts="gheader">利用可能エリア</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>internet/speed/index_a.html" data-lid_parts="gheader">通信速度 実測情報</a></li>
+          </ul>
+        </li>
+        <li class="g-hikari-Header_Nav-sub-dropdown-container">
+          <button class="js-dropdown g-hikari-Header_Dropdown c-Link_Txt-icon" aria-controls="dropdown-content-3" aria-current="false">ポイントでおトク<span class="c-Icon_Chevron-right g-hikari-Header_Dropdown-icon"></span></button>
+          <ul id="dropdown-content-3" class="js-dropdown-child g-hikari-Header_Nav-sub-dropdown" aria-hidden="true">
+            <li><a href="<%= sitepath %><%= hikariroot.path %>point/index_a.html" data-lid_parts="gheader">楽天ポイントでおトク</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>point/case-01/index_a.html" data-lid_parts="gheader">ライフイベントでポイントをガッツリ貯める</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>point/case-02/index_a.html" data-lid_parts="gheader">毎月かかる生活費で賢くポイントを貯める</a></li>
+          </ul>
+        </li>
+        <li><a href="<%= sitepath %><%= hikariroot.path %>campaign/index_a.html" data-lid_parts="gheader">キャンペーン・特典</a></li>
+        <li class="g-hikari-Header_Nav-sub-dropdown-container">
+          <button class="js-dropdown g-hikari-Header_Dropdown c-Link_Txt-icon" aria-controls="dropdown-content-4" aria-current="false">申し込みの流れ<span class="c-Icon_Chevron-right g-hikari-Header_Dropdown-icon"></span></button>
+          <ul id="dropdown-content-4" class="js-dropdown-child g-hikari-Header_Nav-sub-dropdown" aria-hidden="true">
+            <li><a href="<%= sitepath %><%= hikariroot.path %>flow/index_a.html" data-lid_parts="gheader">申し込みの流れ</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>flow/construction/index_a.html" data-lid_parts="gheader">開通工事とは</a></li>
+            <li><a href="<%= sitepath %><%= hikariroot.path %>flow/house-moving/index_a.html" data-lid_parts="gheader">引越しのお手続き</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="g-hikari-Header_Nav-sub-inner2"><a href="<%= sitepath %>" data-lid_parts="gheader">楽天モバイル</a></div>
+    </div>
+  </nav>
+  <div class="g-Header_Overlay js-overlay" aria-hidden="true"></div>
+</header>
+
+<script></script>

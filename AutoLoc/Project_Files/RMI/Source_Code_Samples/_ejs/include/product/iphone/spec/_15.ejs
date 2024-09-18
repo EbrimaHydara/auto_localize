@@ -1,0 +1,13 @@
+<%_
+  const commonNamespace = "product-iphone-15-common"
+  const diamond = "<sup>&#9674;</sup>"
+  const productName = currentDir === 'iphone-15' ? 'iPhone 15' : 'iPhone 15 Plus'
+_%>
+<%- include('/include/product/iphone/spec/visual/_15', { commonNamespace, diamond, productName }) %>
+<%- include('/include/product/iphone/spec/compare/_15', { commonNamespace, diamond }) %>
+<%- include('/include/product/iphone/spec/other/_15', { commonNamespace, diamond }) %>
+<%_ if (currentDir === 'iphone-15') { _%>
+<%- include('/include/product/iphone/spec/feature/_15') %>
+<%_ } else if (currentDir === 'iphone-15-plus') { _%>
+<%- include('/include/product/iphone/spec/feature/_15-plus') %>
+<%_ } _%>

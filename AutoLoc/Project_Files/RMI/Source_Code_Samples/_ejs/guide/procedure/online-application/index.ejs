@@ -1,0 +1,511 @@
+<% const pagetitle = "オンラインお申し込みガイド" -%>
+<% const directories = [{path:"guide/procedure/", label:"はじめてでも安心！お申し込みガイド"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルの「オンラインお申し込みガイド」ページです。オンラインでのお申し込み方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const namespace = "guide-procedure-online-application" -%>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/guide/procedure/online-application/guide-procedure-online-application.css?20240424">
+
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <%- include('/include/_header') %>
+
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="<%= namespace %>-Layout_Kv">
+    <h1 class="<%= namespace %>-Layout_Kv-inner">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/guide/procedure/online-application/kv-sp.png">
+        <img src="<%= sitepath %>assets/img/guide/procedure/online-application/kv-pc.png" width="1440" height="240" alt="実はとっても簡単! オンラインお申し込みガイド">
+      </picture>
+    </h1>
+  </div>
+  <div class="<%= namespace %>-Layout_Feature">
+    <div class="l-System_Container <%= namespace %>-Layout_Feature-container">
+      <picture>
+        <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/guide/procedure/online-application/feature-sp.png" width="100%">
+        <img src="<%= sitepath %>assets/img/guide/procedure/online-application/feature-pc.png" alt="最短3分で即開通※1 待ち時間ゼロ 送料無料※2 チャット相談によるサポート" width="1032">
+      </picture>
+      <ul class="<%= namespace %>-Layout_Cap c-Txt_Cap u-Adjust_Mt-16">
+        <li><span>※1</span>楽天モバイル対応のeSIM対応製品でアプリからeKYCで申し込んだ場合。</li>
+        <li><span>※2</span>製品以外のアクセサリを単品でご購入の場合、送料がかかります。詳しくは<a href="<%= sitepath %>guide/delivery/?l-id=guide_online-application_guide_delivery" class="c-Link_Txt">こちら</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="<%= namespace %>-Layout_Nav">
+    <div class="l-System_Container">
+      <h2 class="c-Txt_Normal-ll u-Adjust_Align-center">プラン（＋製品）を<br class="u-Show_Oxx">お申し込みの場合</h2>
+      <ul class="u-Adjust_Mt-16 <%= namespace %>-Layout_Nav-list">
+        <li>
+          <a href="#step-1">
+            <span class="c-Icon_Arrow-down-l c-Txt_Emp-02"></span>
+            <p>
+              <span class="c-Txt_Emp-02">STEP 1</span>
+              <span>お申し込みの準備</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#step-2">
+            <span class="c-Icon_Arrow-down-l c-Txt_Emp-02"></span>
+            <p>
+              <span class="c-Txt_Emp-02">STEP 2</span>
+              <span>SIMの種類を確認</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#step-3">
+            <span class="c-Icon_Arrow-down-l c-Txt_Emp-02"></span>
+            <p>
+              <span class="c-Txt_Emp-02">STEP 3</span>
+              <span>本人確認方法を確認</span>
+            </p>
+          </a>
+        </li>
+        <li>
+          <a href="#step-4">
+            <span class="c-Icon_Arrow-down-l c-Txt_Emp-02"></span>
+            <p>
+              <span class="c-Txt_Emp-02">STEP 4</span>
+              <span>ご希望の内容でお申し込み</span>
+            </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Infobox_Standing-info <%= namespace %>-Layout_Info u-Adjust_Mt-16">
+      <h3>製品のみお申し込みをご希望の方</h3>
+      <p>楽天モバイルは製品のみのお申し込みも可能です。お手続き方法は<a href="<%= sitepath %>faq/detail/10000530/?l-id=guide_online-application_faq_detail-10000530" class="c-Link_Txt">こちら</a>をご参照ください。</p>
+    </div>
+    <div id="step-1" class="u-Adjust_Align-center u-Adjust_Mt-64">
+      <p class="c-Txt_Normal-m c-Txt_Emp-02">STEP 1</p>
+      <h2 class="c-Txt_Normal-ll">お申し込みの準備</h2>
+    </div>
+    <p class="u-Adjust_Mt-16 <%= namespace %>-Util_Align-center-left">
+      はじめてでも安心！お申し込みガイドの<br>
+      ステップ１、ステップ２で<br>
+      <span class="c-Txt_Emp-01">「お申し込みに必要なもの」、「注意事項」、および「ご利用いただくスマホ」</span>の3点をご確認ください。
+    </p>
+    <div class="<%= namespace %>-Util_Align-mt-24-16 u-Adjust_Align-center">
+      <a class="c-Btn_Regular" href="<%= sitepath %>guide/procedure/?l-id=guide_online-application_guide_procedure"><span>お申し込みガイドを確認する</span></a>
+    </div>
+  </div>
+  <div class="<%= namespace %>-Layout_Type u-Adjust_Mt-64">
+    <div class="l-System_Container">
+      <div id="step-2" class="u-Adjust_Align-center">
+        <p class="c-Txt_Normal-m c-Txt_Emp-02">STEP 2</p>
+        <h2 class="c-Txt_Normal-ll">SIMの種類を確認</h2>
+      </div>
+      <p class="<%= namespace %>-Util_Align-center-left u-Adjust_Mt-16">
+        SIMとは、利用者を特定するための契約者情報が記録された、通話やインターネットなどの通信をするために必要なものです。
+      </p>
+      <h3 class="c-Txt_Normal-l u-Adjust_Mt-24 u-Adjust_Align-center c-Txt_Emp-02">選べる2つのSIMタイプ</h3>
+      <ul class="<%= namespace %>-Util_Align-mt-16-24 <%= namespace %>-Layout_Type-content-wrapper">
+        <li>
+          <p class="c-Txt_Emp-02 <%= namespace %>-Layout_Type-balloon">楽天モバイルのオススメ</p>
+          <div class="<%= namespace %>-Layout_Type-content">
+            <p class="<%= namespace %>-Layout_Type-title">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-esim.png" alt="eSIM" width="40">
+              <span class="c-Txt_Normal-l">eSIM</span>
+            </p>
+            <h4 class="c-Txt_Normal-m u-Adjust_Align-center u-Adjust_Mt-16">製品に内蔵された本体一体型のSIM</h4>
+            <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/guide/procedure/online-application/img-esim.png" alt="製品に内蔵された本体一体型のSIM" width="100%">
+            <div class="u-Adjust_Mt-16">
+              <p>
+                <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-eli-g.png" alt="" width="20">
+                <span class="c-Txt_Emp-01 u-Adjust_Ml-8">SIMの発送を待つ必要なし</span>
+              </p>
+              <p class="u-Adjust_Mt-8">
+                <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-eli-g.png" alt="" width="20">
+                <span class="c-Txt_Emp-01 u-Adjust_Ml-8">SIMの紛失・破損の心配なし</span>
+              </p>
+              <p class="u-Adjust_Mt-8">
+                <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-pol.png" alt="" width="20">
+                <span class="c-Txt_Emp-01 u-Adjust_Ml-8">対応製品が限られる</span>
+              </p>
+            </div>
+            <div class="u-Adjust_Mt-24 <%= namespace %>-Layout_Type-content-sub c-Theme-Emphasis1">
+              <p class="c-Txt_Emp-01 u-Adjust_Align-center">こんな方におすすめ</p>
+              <div>
+                <p class="c-Txt_Emp-02 u-Adjust_Mt-8"><span class="c-Icon_Check"></span>早く利用開始したい方</p>
+                <p class="c-Txt_Emp-02 u-Adjust_Mt-8"><span class="c-Icon_Check"></span>複数のSIMを登録したい方</p>
+                <p class="c-Txt_Emp-02 u-Adjust_Mt-8"><span class="c-Icon_Check"></span>iPhone XS・XR以上をご利用の方</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="<%= namespace %>-Layout_Type-content <%= namespace %>-Layout_Type-content-mod-1">
+            <p class="<%= namespace %>-Layout_Type-title">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-sim.png" alt="SIMカード" width="89">
+              <span class="c-Txt_Normal-l">SIMカード</span>
+            </p>
+            <h4 class="c-Txt_Normal-m u-Adjust_Align-center u-Adjust_Mt-16">製品に挿入するカード型のSIM</h4>
+            <img class="u-Adjust_Mt-16" src="<%= sitepath %>assets/img/guide/procedure/online-application/sim.png" alt="製品に挿入するカード型のSIM" width="100%">
+            <div class="u-Adjust_Mt-16">
+              <p>
+                <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-eli-g.png" alt="" width="20">
+                <span class="c-Txt_Emp-01 u-Adjust_Ml-8">対応製品が多い</span>
+              </p>
+              <p class="u-Adjust_Mt-8">
+                <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-eli-g.png" alt="" width="20">
+                <span class="c-Txt_Emp-01 u-Adjust_Ml-8">製品変更時もSIMを差し替えるだけ</span>
+              </p>
+              <p class="u-Adjust_Mt-8">
+                <img src="<%= sitepath %>assets/img/guide/procedure/online-application/icon-pol.png" alt="" width="20">
+                <span class="c-Txt_Emp-01 u-Adjust_Ml-8">SIMの発送を待つ必要あり</span>
+              </p>
+            </div>
+            <div class="u-Adjust_Mt-24 <%= namespace %>-Layout_Type-content-sub c-Theme-Emphasis1">
+              <p class="c-Txt_Emp-01 u-Adjust_Align-center">こんな方におすすめ</p>
+              <div>
+                <p class="c-Txt_Emp-02 u-Adjust_Mt-8"><span class="c-Icon_Check"></span>今まで通りの方法が安心な方</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+        <a class="c-Btn_Regular" href="<%= sitepath %>product/sim/?l-id=guide_online-application_product_sim"><span>SIM詳細を確認する</span></a>
+      </div>
+    </div>
+  </div>
+  <div id="step-3" class="l-System_Container">
+    <div class="u-Adjust_Align-center u-Adjust_Mt-64">
+      <p class="c-Txt_Normal-m c-Txt_Emp-02">STEP 3</p>
+      <h2 class="c-Txt_Normal-ll">お好みの本人確認方法を<br class="u-Show_Oxx">確認</h2>
+    </div>
+    <div class="u-Adjust_Mt-16 <%= namespace %>-Util_Align-center-left">
+      <p>オンラインお申し込みでは、お申し込みいただく端末に応じて4種類の本人確認方法からお選びいただけます。</p>
+      <ul class="<%= namespace %>-Layout_Cap <%= namespace %>-Layout_Cap-mod-1 c-Txt_Cap u-Adjust_Mt-8">
+        <li><span>※</span>データタイプでお申し込み、楽天モバイル（ドコモ回線・au回線）からの移行の方は本人確認は不要です。</li>
+      </ul>
+    </div>
+    <div class="u-Adjust_Mt-24 <%= namespace %>-Layout_Identification">
+      <ul>
+        <li>
+          <div class="<%= namespace %>-Layout_Identification-terminal">
+            <span class="c-Txt_Cap">対応端末</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-sp">スマホ</span>
+          </div>
+          <div class="<%= namespace %>-Layout_Identification-content u-Adjust_Align-center u-Adjust_Mt-8">
+            <p class="u-Adjust_Mt-16 c-Txt_Emp-02">＼その場で完了、最短3分<span class="<%= namespace %>-Layout_Identification-content-txt-small">※1</span>で開通！／</p>
+            <h3 class="c-Txt_Normal-l">AIかんたん本人確認<br>eKYC</h3>
+            <div class="u-Adjust_Mt-8">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-3-1.png" alt="AIかんたん本人確認 eKYC" width="124">
+            </div>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+              スマホで本人確認書類とご本人を撮影するだけ！
+            </p>
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/verify/ekyc/?l-id=guide_online-application_guide_ekyc"><span>詳細を確認する</span></a>
+          </div>
+        </li>
+        <li>
+          <div class="<%= namespace %>-Layout_Identification-terminal">
+            <span class="c-Txt_Cap">対応端末</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-sp">スマホ</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-pc">PC</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-tb">タブレット</span>
+          </div>
+          <div class="<%= namespace %>-Layout_Identification-content u-Adjust_Align-center u-Adjust_Mt-8">
+            <p class="u-Adjust_Mt-16 c-Txt_Emp-02">＼PC・タブレットからもOK！／</p>
+            <h3 class="c-Txt_Normal-l">書類画像を<br>アップロードで確認</h3>
+            <div class="u-Adjust_Mt-8">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-3-2.png" alt="書類画像をアップロードで確認" width="124">
+            </div>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+              撮影／スキャンした本人確認書類をアップロードするだけ！
+            </p>
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/verify/?l-id=guide_online-application_guide_verify#upload"><span>詳細を確認する</span></a>
+          </div>
+        </li>
+        <li>
+          <div class="<%= namespace %>-Layout_Identification-terminal">
+            <span class="c-Txt_Cap">対応端末</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-sp">スマホ</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-pc">PC</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-tb">タブレット</span>
+          </div>
+          <div class="<%= namespace %>-Layout_Identification-content u-Adjust_Align-center u-Adjust_Mt-8">
+            <p class="u-Adjust_Mt-16 c-Txt_Emp-02">＼本人確認書類の撮影が不要！／</p>
+            <h3 class="c-Txt_Normal-l">楽天グループに<br>提出済みの書類で確認</h3>
+            <div class="u-Adjust_Mt-8">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-3-3-230908.png" alt="書類画像をアップロードで確認" width="343" height="166">
+            </div>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+              楽天銀行・楽天証券・楽天生命のいずれかをご契約中の方は、
+              本人確認書類の撮影は不要！<span class="c-Txt_Cap">※2</span>
+            </p>
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/verify/group-kyc/?l-id=guide_online-application_guide_group-kyc"><span>詳細を確認する</span></a>
+          </div>
+        </li>
+        <li>
+          <div class="<%= namespace %>-Layout_Identification-terminal">
+            <span class="c-Txt_Cap">対応端末</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-sp">スマホ</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-pc">PC</span>
+            <span class="<%= namespace %>-Layout_Identification-terminal-tb">タブレット</span>
+          </div>
+          <div class="<%= namespace %>-Layout_Identification-content u-Adjust_Align-center u-Adjust_Mt-8">
+            <p class="u-Adjust_Mt-16 c-Txt_Emp-02">＼アップロード不要で手続きが簡単！／</p>
+            <h3 class="c-Txt_Normal-l">受け取り時に<br class="u-Show_Xoo">自宅で確認</h3>
+            <div class="u-Adjust_Mt-8">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-3-3.png" alt="受け取り時に自宅で確認" width="296">
+            </div>
+            <p class="u-Adjust_Mt-16 u-Adjust_Align-left">
+              商品のお届け時に、配達員に本人確認書類を提示するだけ！
+            </p>
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/verify/home-kyc/?l-id=guide_online-application_guide_home-kyc"><span>詳細を確認する</span></a>
+          </div>
+        </li>
+      </ul>
+      <p class="<%= namespace %>-Util_Align-center-left <%= namespace %>-Util_Align-mt-16-24 c-Txt_Cap">
+        ※1 楽天モバイル対応のeSIM対応製品でアプリからeKYCで申し込んだ場合。
+      </p>
+      <p class="<%= namespace %>-Util_Align-center-left <%= namespace %>-Util_Align-mt-8-24 c-Txt_Cap">
+        ※2 楽天銀行・楽天証券・楽天生命をご契約されていても、条件を満たさない場合、「楽天グループに提出済みの書類で確認」をご利用になれない場合があります。お申し込み後に送付される転送不要郵便のお受け取りが確認できない場合、お申し込みがキャンセルになる、もしくは別途本人確認の手続きを実施いただく必要があります。
+      </p>
+    </div>
+  </div>
+  <div class="<%= namespace %>-Layout_Apply u-Adjust_Mt-64">
+    <div class="l-System_Container">
+      <div id="step-4" class="u-Adjust_Align-center">
+        <p class="c-Txt_Normal-m c-Txt_Emp-02">STEP 4</p>
+        <h2 class="c-Txt_Normal-ll">ご希望の内容でお申し込み</h2>
+      </div>
+      <p class="u-Adjust_Mt-16 <%= namespace %>-Util_Align-center-left">
+        お手続きの手順はご希望の契約内容をご確認ください。
+      </p>
+      <ul class="<%= namespace %>-Util_Align-mt-16-24 <%= namespace %>-Layout_Apply-content">
+        <li>
+          <h4 class="c-Txt_Normal-m">お使いの電話番号を<br class="u-Show_Oxx">そのまま利用したい場合</h4>
+          <div class="u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-4-1.png" alt="お使いの電話番号をそのまま利用したい場合" width="244">
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/mnp/?l-id=guide_online-application_guide_mnp"><span>他社からお乗り換え（MNP）</span></a>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Txt_Normal-m">新しい電話番号で契約したい場合</h4>
+          <div class="u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-4-2.png" alt="新しい電話番号で契約したい場合" width="244">
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/flow/application/?l-id=guide_online-application_guide_flow-application"><span>新規お申し込み</span></a>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Txt_Normal-m">データ通信のみ契約したい場合</h4>
+          <div class="u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-4-3.png" alt="データ通信のみ契約したい場合" width="244">
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/flow/application/data-type/?l-id=guide_online-application_guide_flow_data-type"><span>データタイプでお申し込み</span></a>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Txt_Normal-m">旧プランからの<br class="u-Show_Oxx">プラン変更をしたい場合</h4>
+          <div class="u-Adjust_Mt-16">
+            <img src="<%= sitepath %>assets/img/guide/procedure/online-application/step-4-4.png" alt="旧プランからのプラン変更をしたい場合" width="244">
+          </div>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/mnp/migration/?l-id=guide_online-application_guide_migration"><span>楽天モバイル（ドコモ回線・au回線）からの移行</span></a>
+          </div>
+        </li>
+      </ul>
+      <div class="<%= namespace %>-Layout_Apply-content-flow">
+        <h4 class="c-Txt_Normal-m">お申し込み後の流れ</h4>
+        <p class="u-Adjust_Mt-16 <%= namespace %>-Util_Align-center-left">
+          お申し込み・配送状況は「<a class="c-Link_Txt" href="<%= sitepath %>my-rakuten-mobile/" target="_blank">my 楽天モバイル</a>」で確認いただけます。詳細は<a class="c-Link_Txt" href="<%= sitepath %>faq/detail/00001827/?l-id=guide_online-application_faq_detail-00001827">こちら</a>
+        </p>
+        <ul class="<%= namespace %>-Layout_Apply-content-flow-indicator">
+          <li>
+            <span class="c-Txt_Emp-01">お申し込み完了</span>
+            <div class="<%= namespace %>-Layout_Apply-content-flow-indicator-bar-wrapper <%= namespace %>-Layout_Apply-content-flow-indicator-bar-start">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/eli-start.png" alt="" width="24">
+            </div>
+          </li>
+          <li>
+            <span>審査中<br class="u-Show_Xxo">（本人確認などの審査）</span>
+            <div class="<%= namespace %>-Layout_Apply-content-flow-indicator-bar-wrapper">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/eli-other.png" alt="" width="24">
+            </div>
+          </li>
+          <li>
+            <span>審査完了</span>
+            <div class="<%= namespace %>-Layout_Apply-content-flow-indicator-bar-wrapper">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/eli-other.png" alt="" width="24">
+            </div>
+          </li>
+          <li>
+            <span>お届け準備中</span>
+            <div class="<%= namespace %>-Layout_Apply-content-flow-indicator-bar-wrapper">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/eli-other.png" alt="" width="24">
+            </div>
+          </li>
+          <li>
+            <span>お届け中</span>
+            <div class="<%= namespace %>-Layout_Apply-content-flow-indicator-bar-wrapper">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/eli-other.png" alt="" width="24">
+            </div>
+          </li>
+          <li>
+            <span class="c-Txt_Emp-02">お届け完了</span>
+            <div class="<%= namespace %>-Layout_Apply-content-flow-indicator-bar-wrapper <%= namespace %>-Layout_Apply-content-flow-indicator-bar-end">
+              <img src="<%= sitepath %>assets/img/guide/procedure/online-application/eli-end.png" alt="" width="24">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="l-System_Container">
+    <div class="u-Adjust_Align-center u-Adjust_Mt-64">
+      <h2 class="c-Txt_Normal-ll">オンラインお申し込みに不安がある方はショップ・お電話がおすすめ！</h2>
+    </div>
+    <ul class="u-Adjust_Mt-32 <%= namespace %>-Layout_Contact">
+      <li class="<%= namespace %>-Layout_Contact-content">
+        <img src="<%= sitepath %>assets/img/guide/procedure/online-application/shop.png" alt="" width="100%">
+        <div class="<%= namespace %>-Layout_Contact-content-inner">
+          <h3 class="c-Txt_Normal-l">ショップ</h3>
+          <p class="<%= namespace %>-Util_Align-center-left u-Adjust_Mt-16">
+            楽天モバイルは店舗でもお申し込み可能。<br>
+            お申し込みから初期設定まで丁寧にサポートします
+          </p>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>shop/?l-id=guide_online-application_shop"><span>お近くのショップを検索する</span></a>
+          </div>
+        </div>
+      </li>
+      <li class="<%= namespace %>-Layout_Contact-content">
+        <img src="<%= sitepath %>assets/img/guide/procedure/online-application/online.png" alt="" width="100%">
+        <div class="<%= namespace %>-Layout_Contact-content-inner">
+          <h3 class="c-Txt_Normal-l">電話／ビデオ通話<sup>※</sup></h3>
+          <p class="<%= namespace %>-Util_Align-center-left u-Adjust_Mt-16">
+            小さな疑問もオペレーターが丁寧に回答。<br>
+            お申し込みまでサポートします
+          </p>
+          <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+            <a class="c-Btn_Regular" href="<%= sitepath %>guide/application-support/?l-id=guide_online-application_guide_application-support"><span>まずはオペレーターに電話相談</span></a>
+          </div>
+          <p class="<%= namespace %>-Util_Align-center-left c-Txt_Cap u-Adjust_Mt-16">
+            ※ビデオ通話にはZoomアプリのダウンロードが必要
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="l-System_Container u-Adjust_Mt-64">
+    <h2 class="c-Txt_Normal-ll u-Adjust_Align-center">よくあるご質問</h2>
+    <div class="u-Adjust_Mt-32">
+      <ul class="c-Link_List">
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001833/">本人確認不備になった場合どうすれば良いですか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001970/">本人確認でよくある不備はなんですか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001830/">MNP転入の手続きに失敗した、または再度申請したい場合どうすればよいですか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001512/">楽天モバイル（ドコモ回線・au回線）からRakuten最強プランへのプラン変更（移行）ができません。どうすればよいですか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00002025/">使用する製品に対応していないSIMタイプを申し込んでしまったのですが、どうすればよいですか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001889/">[AIかんたん本人確認(eKYC)] 撮影の流れや注意点を教えてください<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001540/">なぜ本人確認書類に記載以外の住所に製品やSIMカードを配送できないのですか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001743/">【受け取り時に自宅で確認】製品を受け取れずキャンセルされたのですが、再度申し込みできますか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/00001234/">「製品発送完了のお知らせ」メールが届きましたが、製品はいつ届きますか<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+        <li>
+          <a href="<%= sitepath %>faq/detail/10000748/">eSIMを申し込んだ場合、すぐに楽天モバイルを利用できますか？<span class="c-Icon_Chevron-right"></span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+      <a href="<%= sitepath %>support/?l-id=guide_procedure-online-application_support&tab-list=tab-menu2" class="c-Btn_Regular" target="_blank"><span>お客様サポート トップへ</span></a>
+    </div>
+  </div>
+
+  <footer class="g-Footer">
+
+    <div class="g-Footer_Aside">
+      <%- /* 続けてこちらをチェック */ include('/include/footer/related/_related-campaign-v2') %>
+    </div>
+
+    <div class="l-System_Container">
+      <div class="c-Breadcrumbs_Foot">
+        <ul>
+          <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ if (typeof directories !== 'undefined') { _%>
+          <%_ let dirs = []; _%>
+          <%_ directories.forEach(function (dir) { _%>
+            <%_ if (dir.path !== "") { _%>
+              <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } else { _%>
+              <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+            <%_ } _%>
+          <%_ }) _%>
+          <%_ } _%>
+          <li aria-current="true"><%= pagetitle %></li>
+        </ul>
+      </div>
+    </div>
+
+    <%- include('/include/_footer') %>
+
+  </footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>

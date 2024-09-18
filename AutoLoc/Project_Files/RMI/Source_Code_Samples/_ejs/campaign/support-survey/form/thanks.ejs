@@ -1,0 +1,49 @@
+<% const pagetitle = "楽天モバイルお客様サポートページに関するアンケート" -%>
+<% const directories = [{path:"campaign/support-survey/form", label:"キャンペーン・特典"}] -%>
+<% const namespace = "support-survey-form" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '楽天モバイルお客様サポートページに関するアンケートの回答完了ページです。',
+  keywords: '',
+  noindex: true,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/support-survey-form/support-survey-form.css?20240424">
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const closebutton = document.getElementById('closeBtn');
+    closebutton.addEventListener('click', () => {
+        window.close();
+    });
+  }, false);
+</script>
+</head>
+
+<body>
+<%- include('/include/_prepend-body') %>
+<div class="l-System">
+<%- include('/include/_header-simple') %>
+<div class="l-System_Container">
+<h1 class="u-Adjust_Mt-32">楽天モバイルお客様サポートページに関するアンケート</h1>
+<div class="u-Adjust_Mt-16">
+  <h2 class="c-Heading_Lv2">アンケート回答完了</h2>
+  <p class="c-Txt_Normal u-Adjust_Mt-16">以上でアンケートは終了です。<br>ご回答いただき、ありがとうございました。</p>
+  <p class="c-Txt_Normal u-Adjust_Mt-16">アンケートにお寄せいただいた貴重なご意見は、お客様サポートページの使いやすさ向上に役立ててまいります。</p>
+</div>
+<div class="u-Adjust_Mt-32 u-Adjust_Align-center">
+  <input class="c-Btn_Regular-large" id="closeBtn" type="button" value="閉じる">
+</div>
+</div>
+<footer class="g-Footer u-Adjust_Mt-64">
+<%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<% const pagetitle = "OPPO Reno3 A 再入荷お知らせメール受付ページ" -%>
+<% const directories = [{path:"product/", label:"製品"}] -%>
+
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイル OPPO Reno3 A 再入荷お知らせメール受付ページです。製品（スマホ）の在庫がない場合、ご登録いただいたお客様に製品が再入荷した際にメールでご案内させていただきます。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+
+
+<%- include('/include/_common-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="l-System_Container">
+  <h1 class="c-Heading_Lv1 u-Adjust_Mt-32"><%= pagetitle %></h1>
+  <p class="u-Adjust_Mt-16">現在在庫がない製品については、ご登録いただいたお客様に、製品が再入荷した際にメールでご案内させていただきます。<br>下記のエントリーボタンよりご登録ください。</p>
+</div>
+
+<div class="c-Infobox_Standing-light u-Adjust_Mt-32 u-Adjust_Mb-32">
+  <p class="c-Heading_Lv1 u-Adjust_Mt-32 u-Adjust_Align-center">OPPO Reno3 A</p>
+  <img src="<%= sitepath %>assets/img/product/reservation/reno3-a.png" class="u-Adjust_Mt-32 " alt="OPPO Reno3 A" style="max-width: 185px;margin: auto;display: block;width: 100%;">
+  <div class="l-System_Container">
+    <ul class="c-List_Text-disc u-Adjust_Mt-32">
+      <li>再入荷のお知らせは、楽天会員情報にご登録いただいている、お客様のメールアドレスにお送りいたします。</li>
+      <a href="https://member.id.rakuten.co.jp/rms/nid/menufwd" class="c-Link_Txt-icon u-Adjust_Mt-8 u-Adjust_Ml-16" target="_blank">楽天会員情報の確認・変更はこちら<span class="c-Icon_New-window-l"></span></a>
+      <li>カラー別の再入荷お知らせはいたしておりません。一部カラーのみ入荷された場合でも、エントリーされたすべてのお客様に、再入荷お知らせメールをお送りします。</li>
+    </ul>
+    <p class="c-Txt_Cap u-Adjust_Mt-16">
+      ※ お客様が、再入荷のお知らせメールを受け取った時点で商品が再度在庫切れとなっている可能性がございます。あらかじめご了承ください。 <br>
+      ※今回のご登録により、再入荷のお知らせ以外のメールはお送りいたしません。また、再入荷がない場合はエントリーいただいても、ご案内メールをお送りしませんので、あらかじめご了承ください。
+    </p>
+    <a href="https://oubo.rakuten.co.jp/apply/opporeno3a/zaiko" class="c-Btn_Primary-half u-Adjust_Mt-32" style="max-width: 500px;margin: auto;display: block;width: 100%;padding: 17px;margin-bottom: 16px;"><span>再入荷お知らせ希望にエントリーする</span></a>
+    <a href="<%= sitepath %>product/smartphone/reno3-a/" class="c-Link_Txt-icon u-Adjust_Mt-32">OPPO Reno3 A製品詳細ページにもどる<span class="c-Icon_Chevron-right"></span></a>
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <div class="g-Footer_Pagetop">
+      <a href="#top" class="js-scroll">
+        <span class="c-Icon_Arrow-up-l"></span>
+      </a>
+    </div>
+  </div>
+  <div class="c-Breadcrumbs_Foot">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/_append-body') %>
+
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<% const pagetitle = "料金シミュレーション結果（キャンペーンエントリー完了）" -%>
+<% const directories = [{path:"fee/saikyo-plan/", label:"Rakuten最強プラン（料金プラン）"}, {path:"campaign/fee-simulation/", label:"スマホ料金をチェックするだけで100ポイントプレゼント！"}] -%>
+<% const namespace = "fee-simulation-result" -%>
+<% const imgpath = `${sitepath}assets/img/fee/simulation/result/` %>
+
+<%
+  const rankIconList = [
+    { id: 2, rank: 'silver' },
+    { id: 3, rank: 'gold' },
+    { id: 4, rank: 'platinum' },
+    { id: 5, rank: 'diamond' },
+  ]
+%>
+
+<%-
+  include('/_header', {
+    pagetitle,
+    directories,
+    description: '料金シミュレーションの結果画面です（キャンペーンエントリー完了）。楽天モバイルだと毎月いくらになるのか、他社と比較するとどのくらいの月額料金になるのかご確認いただけます。楽天モバイルのおすすめポイントも伝授します！',
+    noindex: true,
+    pathname: filepath,
+  });
+%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/fee/simulation/result/result.css?20240515">
+<%- include('/include/_append-head') %>
+</head>
+<body class="js-fee-simulation-result-loading <%= namespace %>-Loading_Body" data-loading="false">
+  <%- include('/include/_prepend-body') %>
+
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <%- include('/include/_breadcrumbs', {
+      type: 'head',
+      pagetitle,
+      directories,
+    }) %>
+    <div class="<%= namespace %>-Loading_Target"><div></div></div>
+    <div id="js-entry-error-attach" class="<%= namespace %>-Loading_Wrapper js-fee-simulation-result-loading" data-loading="false">
+
+    <div id="js-entry-button-custom"></div>
+
+    <section class="<%= namespace %>-Main">
+      <div class="l-System_Container">
+        <div class="<%= namespace %>-Main_Summary">
+          <h1 class="<%= namespace %>-Main_Summary-head">
+            <picture>
+              <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgpath %>simulation-result-head-sp-240313.png" width="686" height="132">
+              <img src="<%= imgpath %>simulation-result-head-pc-240313.png" alt="シミュレーション結果" width="1708" height="152">
+            </picture>
+          </h1>
+        </div>
+        <div class="u-Rat_Appear-height" data-ratid="simulation-result_scroll-01" data-ratevent="appear"></div>
+
+        <%- include('/include/fee/simulation/_result-graph-area') %>
+      </div>
+    </section>
+
+    <%- include('/include/fee/simulation/_search-shop') %>
+
+    <section>
+      <div class="js-point-less-pattern u-Rat_Appear-height" data-ratid="result_case_01" data-ratevent="appear" style="display:none;"></div>
+      <div class="js-point-more-pattern u-Rat_Appear-height" data-ratid="result_case_02" data-ratevent="appear" style="display:none;"></div>
+      <div class="js-point-few-pattern u-Rat_Appear-height" data-ratid="result_case_03" data-ratevent="appear" style="display:none;"></div>
+      <div class="js-point-non-member-pattern u-Rat_Appear-height" data-ratid="result_case_04" data-ratevent="appear" style="display:none;"></div>
+    </section>
+
+    <div class="l-System_Container u-Adjust_Mt-32">
+      <div class="u-Adjust_Align-center">
+        <picture>
+          <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgpath %>x-screenshot-head-sp-240329.png" width="302" height="56">
+          <img src="<%= imgpath %>x-screenshot-head-pc-240329.png" alt="シミュレーションを試してくれたあなたへ おトクなキャンペーン" width="476" height="56" loading="lazy">
+        </picture>
+      </div>
+      <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+        <a href="<%= sitepath %>campaign/sim_result_check/?l-id=fee-simulation_result_campaign_sim_result_check" class="c-Banner_Hover-act">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= imgpath %>sim_result_check-bnr-sp-240517.png" width="686" height="216">
+            <img src="<%= imgpath %>sim_result_check-bnr-pc-240517.png" alt="スマホ料金チェックの結果をご確認されたお客様へ。楽天モバイル初めてのお申し込み＆他社から電話番号そのまま乗り換え（MNP）で9,000ポイント※期間限定ポイント※その他条件あり" width="854" height="60" loading="lazy">
+          </picture>
+        </a>
+      </div>
+    </div>
+
+    <div class="u-Adjust_Mt-32">
+      <%- include('/include/fee/simulation/_more-know') %>
+    </div>
+
+    <section class="u-Adjust_Mt-32" data-ratid="simulation-result_scroll-05" data-ratevent="appear">
+      <div class="l-System_Container">
+        <div class="u-Adjust_Align-center"><a href="<%= sitepath %>campaign/fee-simulation/?l-id=campaign_fee-simulation-result_campaign_fee-simulation" class="c-Btn_Regular-large">最初からやり直す</a></div>
+      </div>
+    </section>
+
+    <section class="u-Adjust_Mt-56 u-Adjust_Mt-pc-80" id="attention">
+      <div class="l-System_Container">
+        <%- include('/include/fee/simulation/_result-attention') %>
+      </div>
+    </section>
+
+    <div class="<%= namespace %>-Bottom" role="region">
+      <div class="<%= namespace %>-Bottom_Btn">
+        <a href="<%= sitepath %>guide/application/?lid-r=fee-un-limit_simulation_mno_guide-application01" class="<%= namespace %>-Bottom_Btn-link c-Btn_Primary-large">新規／乗り換え(MNP)<span class="u-Show_Xoo">お申し込み</span></a>
+      </div>
+      <div class="<%= namespace %>-Bottom_Btn">
+        <a href="<%= sitepath %>shop/?l-id=fee-un-limit_simulation-result_shop01" class="<%= namespace %>-Bottom_Btn-link c-Btn_Secondly-large">お近くのショップを探す</a>
+      </div>
+    </div>
+
+
+
+
+    <footer class="<%= namespace %>-Bottom_Margin g-Footer u-Adjust_Mt-56">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-simulation.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+
+      <div class="l-System_Container">
+        <%- include('/include/_breadcrumbs', {
+          type: 'foot',
+          pagetitle,
+          directories,
+        }) %>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  </div>
+
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/fee.simulation-result-cpn.bundle.js?20240521"></script>
+  <%- include('/include/poikaku-lp-bnr/_js') %>
+  <%- include('/include/_append-body') %>
+</body>
+</html>

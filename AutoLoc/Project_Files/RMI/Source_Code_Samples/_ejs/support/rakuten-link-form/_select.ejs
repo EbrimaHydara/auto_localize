@@ -1,0 +1,57 @@
+<% const namespace = "support-link-form" -%>
+
+<% const q1 = [ 'iOS', 'Android', 'デスクトップ' ] -%>
+
+<div class="<%= namespace %>-Layout_Select" id="js-content-wrap">
+  <div class="l-System_Container">
+    <div id="js-question-01" class="js-question" aria-hidden="false">
+      <h2 class="c-Heading_Lv2">ご利用のOSをお選びください。</h2>
+      <ul class="<%= namespace %>-Layout_Select-list u-Adjust_Pt-8">
+        <% q1.forEach(function (value, key) { %>
+          <li class="u-Adjust_Pt-16">
+            <label class="c-Form_Radioblock">
+              <input type="radio" name="00N2r0000021LO7" class="js-radio" data-q="q1<%= key +1 %>" value="<%= value %>">
+              <span class="c-Form_Radioblock-wrap <%= namespace %>-Form_Select-radio">
+                <span class="c-Form_Radio-icon"></span>
+                <span class="c-Form_Radioblock-label"><%= value %></span>
+              </span>
+            </label>
+          </li>
+        <% }); %>
+      </ul>
+    </div>
+    <div id="js-question-02" class="js-question" aria-hidden="true">
+      <p class="u-Adjust_Mb-16"><a href="#js-question-01" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</a></p>
+      <h2 class="c-Heading_Lv2"></h2>
+      <ul class="<%= namespace %>-Layout_Select-list u-Adjust_Pt-8">
+        <%- include('/support/rakuten-link-form/_q2') %>
+      </ul>
+    </div>
+    <div id="js-question-03" class="js-question" aria-hidden="true">
+      <p class="u-Adjust_Mb-16"><a href="#js-question-02" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</a></p>
+      <h2 class="c-Heading_Lv2"></h2>
+      <ul class="<%= namespace %>-Layout_Select-list u-Adjust_Pt-8">
+        <%- include('/support/rakuten-link-form/_q3') %>
+      </ul>
+    </div>
+    <div id="js-question-04" class="js-question" aria-hidden="true">
+      <p class="u-Adjust_Mb-16"><a href="#js-question-03" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</a></p>
+      <h2 class="c-Heading_Lv2"></h2>
+      <ul class="<%= namespace %>-Layout_Select-list u-Adjust_Pt-8">
+        <%- include('/support/rakuten-link-form/_q4') %>
+      </ul>
+    </div>
+    <div id="js-question-05" class="js-question" aria-hidden="true">
+      <p class="u-Adjust_Mb-16"><a href="#js-question-04" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</a></p>
+      <h2 class="c-Heading_Lv2"></h2>
+      <ul class="<%= namespace %>-Layout_Select-list u-Adjust_Pt-8">
+        <%- include('/support/rakuten-link-form/_q5') %>
+      </ul>
+    </div>
+
+    <div id="js-question-end" class="js-question" aria-hidden="true">
+      <p class="u-Adjust_Mb-16"><a href="#js-question-05" class="c-Link_Txt-icon-front js-back"><span class="c-Icon_Chevron-left"></span>ひとつ前の選択に戻る</a></p>
+    </div>
+
+  </div>
+</div>

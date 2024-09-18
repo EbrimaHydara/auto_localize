@@ -1,0 +1,824 @@
+<%_
+  const pagetitle = "Shops"
+  const nameSpace = "shop-en"
+  const customroot = {path: rootpath, label:"Top"}
+_%>
+<%-
+ include('/_header', {
+    pagetitle,
+    description: 'Find your nearest Rakuten Mobile shop in Japan with our store locator. Visit our stores to explore the latest smartphones and receive expert advice from our knowledgeable staff. We offer English-language materials and support to assist international customers. Our shop staff will help you with smartphone price simulations, rate plan information, and hands-on experience with the newest devices.',
+    noindex: false,
+    pathname: filepath,
+    browseragent: false,
+    isEnglish: true,
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/shop/en/en.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+<body class="<%= nameSpace %>-Base">
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+<%- include('/include/_breadcrumbs', {
+  type: 'head',
+  pagetitle,
+  customroot,
+}) %>
+
+<section class="c-Hero <%= nameSpace %>-Hero">
+  <div class="c-Hero_Content <%= nameSpace %>-Hero_Content">
+    <h1><span><%= pagetitle %></span></h1>
+  </div>
+</section>
+
+<div class="<%= nameSpace %>-Appeal">
+  <div class="l-System_Container">
+    <div class="<%= nameSpace %>-Appeal_Content">
+      <div class="<%= nameSpace %>-Appeal_Content-img">
+        <img src="<%= sitepath %>assets/img/shop/en/appeal-img.png" width="212" height="75" alt="">
+      </div>
+      <p class="<%= nameSpace %>-Appeal_Content-heading">Need English Support? No Problem!</p>
+      <p class="<%= nameSpace %>-Appeal_Content-text">Rakuten Mobile Shop welcomes you with convenient<br class="u-Show_Xxo"> English materials. Don't hesitate to drop by.</p>
+    </div>
+  </div>
+</div>
+
+<div class="l-System_Container">
+  <ul class="c-Anchor_List u-Adjust_Mt-32 u-Adjust_Mt-sp-24">
+    <li><a href="#shop" class="c-Anchor_Basic js-scroll" data-ratid="shop_en_click-01_find" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>Find a Shop</a></li>
+    <li><a href="#service" class="c-Anchor_Basic js-scroll" data-ratid="shop_en_click-02_service" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>What You Can Do at the Shop</a></li>
+    <li><a href="#belongings" class="c-Anchor_Basic js-scroll" data-ratid="shop_en_click-03_belongings" data-ratevent="click" data-ratparam="all"><span class="c-Icon_Arrow-down-l"></span>Before Your Shop Visit</a></li>
+  </ul>
+
+  <section class="u-Adjust_Mt-40 u-Adjust_Mt-sp-64">
+    <h2 class="c-Heading_Lv2 u-Adjust_Align-center" id="shop">Find a Shop</h2>
+    <h3 class="<%= nameSpace %>-Search_Heading c-Heading_Lv3 u-Adjust_Mt-24 u-Align_Ccl">Search by Prefecture</h3>
+    <div class="l-Media_List-2 u-Adjust_Mt-16">
+      <div class="u-Adjust_Mt-0">
+        <div class="c-Form_Select">
+          <select name="" id="js-shop-Search_Select-pref">
+            <option value="">Select Prefecture</option>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+      </div>
+      <div class="u-Adjust_Mt-16 u-Adjust_Mt-pc-0">
+        <div class="c-Form_Select">
+          <select name="" id="js-shop-Search_Select-city" aria-disabled="true" disabled>
+            <option value="">Select City</option>
+          </select>
+          <span class="c-Form_Select-icon c-Icon_Product-arrow-select"></span>
+        </div>
+      </div>
+    </div>
+    <div class="u-Adjust_Align-center u-Adjust_Mt-16">
+      <button data-ratid="shop_en_click-04_psearch" data-ratevent="click" data-ratparam="all" id="js-shop-Search_Prefcity" class="js-Modal_Close c-Btn_Secondly-large" aria-disabled="true" disabled><span>Search</span></button>
+    </div>
+
+    <h3 class="<%= nameSpace %>-Search_Heading c-Heading_Lv3 u-Adjust_Mt-56 u-Adjust_Mt-sp-40 u-Align_Ccl" id="js-shop-Search">Search by Location or Keyword</h3>
+    <div class="<%= nameSpace %>-Search_Map">
+      <div id="filter-by-service" class="<%= nameSpace %>-Search_Filters" aria-hidden="false">
+        <div class="c-Data">
+          <div>
+            <a data-ratid="shop_en_click-05_narrow" data-ratevent="click" data-ratparam="all" href="#shop-en-Search_Filter" class="c-Link_Txt-inline js-Modal"><span class="c-Icon_Sliders-l c-Data_Icon"></span>Narrow down your search by service/shop conditions</a>
+            <div id="<%= nameSpace %>-Search_Filter" style="display:none;">
+              <ul class="<%= nameSpace %>-Search_Service-list">
+                <li id="service-15" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="15" data-filterlabel="iPhone">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">iPhone</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-2" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="2" data-filterlabel="Apple Watch">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Apple Watch</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-9" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="9" data-filterlabel="Rakuten Turbo">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Rakuten Turbo</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-1" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="1" data-filterlabel="SIM (Change/Reissue)">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">SIM (Change/Reissue)</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-3" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="3" data-filterlabel="Device Upgrades">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Device Upgrades</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-4" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="4" data-filterlabel="Mobile Accessories">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Mobile Accessories</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-7" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="7" data-filterlabel="Rakuten Hikari">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Rakuten Hikari</span>
+                    </span>
+                  </label>
+                </li>
+                <!-- <li id="service-8" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="8" data-filterlabel="でんき">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">でんき</span>
+                    </span>
+                  </label>
+                </li> -->
+                <li id="service-6" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="6" data-filterlabel="Rakuten Card">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Rakuten Card</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-5" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="5" data-filterlabel="Screen Protection">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Screen Protection</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-13" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="13" data-filterlabel="Device Recycling">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Device Recycling</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-14" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="14" data-filterlabel="Repair">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Repair</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-12" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="12" data-filterlabel="Usage Support">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Usage Support</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-16" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="16" data-filterlabel="Data Transfer Assistance">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Data Transfer Assistance</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-10" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="10" data-filterlabel="Near Stations">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Near Stations</span>
+                    </span>
+                  </label>
+                </li>
+                <li id="service-11" aria-hidden="true">
+                  <label class="c-Form_Checkboxblock">
+                    <input type="checkbox" name="js-shop-Search_Map-filtervalue" value="11" data-filterlabel="Parking">
+                    <span class="c-Form_Checkboxblock-wrap">
+                      <span class="c-Icon_Check"></span><span class="c-Form_Checkboxblock-label">Parking</span>
+                    </span>
+                  </label>
+                </li>
+              </ul>
+              <div class="u-Adjust_Mt-24 u-Adjust_Align-center">
+                <button type="button" id="js-shop-Search_Map-filter" class="c-Btn_Secondly-large js-Modal_Close">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="js-shop-Search_Map-filters" class="<%= nameSpace %>-Search_Filters-label"></div>
+      </div>
+      <div class="<%= nameSpace %>-Search_Map-head">
+        <div class="c-Search_Container">
+          <span class="glyphicon glyphicon-search"></span>
+          <input type="text" class="form-control controls c-Search_Input" id="js-shop-Search_Map-input" aria-describedby="searchHelp" placeholder="Search by address or building name" autocomplete="off">
+          <div class="c-Search_Btn js-shop-Search_Btn"><input data-ratid="shop_en_click-06_lsearch" data-ratevent="click" data-ratparam="all" type="submit" value="" class="c-Search_Submit"><span class="c-Icon_Search c-Search_Icon"></span></div>
+        </div>
+      </div>
+      <div class="<%= nameSpace %>-Search_Map-body">
+        <button type="button" class="<%= nameSpace %>-Search_Map-button c-Btn_Regular" id="js-shop-Search_Map-location"><span>current location</span></button>
+        <div class="<%= nameSpace %>-Search_Map-container" id="js-shop-Search_Map"></div>
+        <div class="<%= nameSpace %>-Search_Map-loading js-shop-Search_Map-loading">
+          <div>Loading...</div>
+        </div>
+      </div>
+      <div class="<%= nameSpace %>-Search_Map-foot">
+        <div class="<%= nameSpace %>-Search_Map-msg c-Form_Txt-error" aria-hidden="true">
+          <p>No matching shops found. Please change the conditions and search again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="<%= nameSpace %>-Service u-Adjust_Py-56 u-Adjust_Mt-56">
+  <div class="l-System_Container">
+    <h2 class="c-Heading_Lv2 u-Adjust_Align-center" id="service">What You Can Do at the Shop</h2>
+    <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+      <p>We provide reliable support services even after subscription and purchase.</p>
+      <p class="c-Txt_Cap c-Txt_Emp-02 u-Adjust_Mt-8">*Some support services are not available at electronics retail stores and post offices.</p>
+    </div>
+
+    <ul class="<%= nameSpace %>-Service_List u-Adjust_Mt-24">
+      <li class="<%= nameSpace %>-Service_List-item1 c-Theme-White">
+        <h3 class="c-Heading_Lv3 u-Adjust_Align-center">English Support</h3>
+        <p class="u-Adjust_Mt-8">We offer English-language materials including Important Notice and application forms, alongside a Point-and-Speak phrase sheet for easier communication.</p>
+        <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/shop/en/img-01.png" width="200" height="140" alt="" loading="lazy">
+        </div>
+      </li>
+      <li class="<%= nameSpace %>-Service_List-item2 c-Theme-White">
+        <h3 class="c-Heading_Lv3 u-Adjust_Align-center">Post-Application Support</h3>
+        <p class="u-Adjust_Mt-8">We will support you even after your application, such as data transfer, protective film application, and repair of original Rakuten products.</p>
+        <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+          <img src="<%= sitepath %>assets/img/shop/en/img-02.png" width="456" height="140" alt="" loading="lazy">
+        </div>
+      </li>
+      <li class="<%= nameSpace %>-Service_List-item3 c-Theme-White">
+        <h3 class="c-Heading_Lv3 u-Adjust_Align-center">Home Internet Consultation</h3>
+        <p class="u-Adjust_Mt-8 u-Align_Llc">We also provide consultation and application for home internet environment.</p>
+        <div class="<%= nameSpace %>-Service_Consultation u-Adjust_Mt-16">
+          <dl class="<%= nameSpace %>-Service_Consultation-hikari u-Adjust_Align-center">
+            <dt><img src="<%= sitepath %>assets/img/shop/en/logo-hikari.png" width="118" height="25" alt="Rakuten Hikari" loading="lazy"></dt>
+            <dd>
+              <p class="<%= nameSpace %>-Service_Consultation-hikari-txt">Fast, Stable Fiber-Optic Service!</p>
+              <div class="u-Adjust_Mt-16 u-Adjust_Align-center">
+                <a class="c-Btn_Regular" href="<%= sitepath %>hikari/?l-id=shop_en_hikari">Learn More<br>About Rakuten Hikari</a>
+              </div>
+            </dd>
+          </dl>
+          <dl class="<%= nameSpace %>-Service_Consultation-turbo u-Adjust_Align-center">
+            <dt><img src="<%= sitepath %>assets/img/shop/en/logo-turbo.png" width="150" height="26" alt="Rakuten Turbo" loading="lazy"></dt>
+            <dd>
+              <p class="<%= nameSpace %>-Service_Consultation-turbo-txt">No Installation Needed!<br>Home WiFi Solutions</p>
+              <div class="u-Adjust_Mt-8 u-Adjust_Align-center">
+                <a class="c-Btn_Regular" href="<%= sitepath %>internet/turbo/?l-id=shop_en_internet_turbo">Learn More<br>About Rakuten Turbo</a>
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="l-System_Container">
+
+  <div class="<%= nameSpace %>-Belongings u-Adjust_Mt-56" id="belongings">
+    <div class="u-Adjust_Align-center">
+      <h2 class="c-Heading_Lv2">Before Your Shop Visit</h2>
+      <p class="c-Txt_Normal-l u-Adjust_Mt-16 c-Txt_Emp-01">Please make sure to check what you need to bring<br>with you on the day of your visit.</p>
+      <div class="u-Adjust_Mt-16">
+        <a href="<%= sitepath %>shop/guide/en/?l-id=shop_en_shop_guide_en" class="c-Btn_Regular">
+          <span>What to Bring for Your Visit</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-Accordion u-Adjust_Mt-40">
+    <button id="accordion-1" class="c-Accordion_Trigger js-Accordion_Trigger" aria-expanded="false" aria-controls="accordion-content-1"><span class="c-Icon_Chevron-right c-Accordion_Arrow"></span>Purchasing iPhones In-Store</button>
+    <div id="accordion-content-1" class="c-Accordion_Panel js-Accordion_Panel u-Adjust_Align-left" role="region" aria-labelledby="accordion-1" aria-hidden="true">
+      <p>
+        When delivering your iPhone, we'll verify the network connection using a Rakuten Mobile SIM, another provider's SIM, or Wi-Fi within our store. Should you decline this connectivity check, we regretfully cannot proceed with the sale of the iPhone.<br>
+        We appreciate your understanding in advance.
+      </p>
+    </div>
+  </div>
+</div>
+
+<footer class="g-Footer">
+  <div class="l-System_Container">
+    <%- include('/include/_breadcrumbs', {
+      type: 'foot',
+      pagetitle,
+      customroot,
+    }) %>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script>
+  const sitepath = '/';
+  const mapContainer = document.getElementById('js-shop-Search_Map');
+  const mapInput = document.getElementById('js-shop-Search_Map-input');
+  const mapLocation = document.getElementById('js-shop-Search_Map-location');
+  const mapFilter = document.getElementById('js-shop-Search_Map-filter');
+  const mapMsg = document.getElementsByClassName('shop-en-Search_Map-msg')[0];
+  const mapSelectedFilters = document.getElementById('js-shop-Search_Map-filters');
+  const selectPref = document.getElementById('js-shop-Search_Select-pref');
+  const selectCity = document.getElementById('js-shop-Search_Select-city');
+  const searchByPrefCity = document.getElementById('js-shop-Search_Prefcity');
+  const mapLoading = document.getElementsByClassName('js-shop-Search_Map-loading')[0];
+  const mapSetting = {
+      apiUrl: 'https://maps.googleapis.com/maps/api/js',
+      channel: '000-000791',
+      client: 'gme-rakuteninc2',
+      libraries: ['places', 'geometry']
+  };
+  const mapDefaultCenter = {
+      lat: Number('35.661853'),
+      lng: Number('139.700184')
+  };
+  const mapDefaultZoom = 13;
+  const mapOption = {
+      center: mapDefaultCenter,
+      mapTypeControl: false,
+      fullscreenControl: false,
+      streetViewControl: false,
+      zoom: mapDefaultZoom
+  };
+  const clusterStyles = [
+  {
+      textColor: 'white',
+      url: '/assets/img/common/mc/m0.png',
+      height: 36,
+      width: 36
+  }
+  ];
+  const markerImgSmall = '/assets/img/common/icon-location-s.png';
+  const markerImgLarge = '/assets/img/common/icon-location-l.png';
+
+  let today = new Date();
+  const filterPublication = function(value) {
+      const publicationStartDatetime= value.announcement_info.publication_start_datetime.replace(/-/g, '/');
+      const termStart = new Date(publicationStartDatetime);
+      if (termStart <= today) {
+          if (typeof value.announcement_info.publication_end_datetime !== 'undefined') {
+              const publicationEndDatetime = value.announcement_info.publication_end_datetime.replace(/-/g, '/');
+              const termEnd = new Date(publicationEndDatetime);
+              return today <= termEnd ? true : false;
+          } else {
+              return true;
+          }
+      } else {
+          return false;
+      }
+  };
+  const checkAvailableService = function(value) {
+      const allServices = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+      const availableServices = [];
+      value.forEach(elem => {
+          const arr = elem.supported_features.services;
+          availableServices.push.apply(availableServices, arr);
+      });
+      const availableServicesTrimmed = [...new Set(availableServices)];
+      const availableServicesSorted = availableServicesTrimmed.sort((a, b) => a - b);
+      const filteredServices = allServices
+          .filter(elem => availableServicesSorted.indexOf(elem) > -1);
+      return filteredServices;
+  }
+
+  function initMap() {
+
+    if (mapContainer) {
+        $.ajaxSetup({
+            cache: false
+        });
+
+        // PROD
+        $.getJSON('https://network.mobile.rakuten.co.jp/shopmaster-public/v1/shops')
+        // $.getJSON('/assets/json/shop_dummy2.json')
+        // $.getJSON('/assets/json/shop_dummy.json')
+        // $.getJSON('/assets/json/shop_dummy20230227.json')
+            .done(function(rawData) {
+                const data = rawData.filter(elem => filterPublication(elem));
+                const availableServices = checkAvailableService(data);
+                if (availableServices.length !== 0) {
+                    filterServices(availableServices);
+                } else {
+                    hideFilterByService();
+                }
+                buildMap(data, mapDefaultCenter, false);
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        buildMap(data, pos, true);
+                    });
+                }
+                if (selectPref) {
+                    let uniqueCities= setPrefectures(data);
+                    selectPref.addEventListener('change', function() {
+                      if (selectCity) {
+                          setCities(selectPref.value, uniqueCities);
+                      }
+                      enableSearchByPrefCity();
+                    });
+                }
+                if (selectCity) {
+                    selectCity.addEventListener('change', function() {
+                        enableSearchByPrefCity();
+                    });
+                }
+                if (searchByPrefCity) {
+                    searchByPrefCity.addEventListener('click', function(e) {
+                        window.location.href = searchByPrefCity.getAttribute('data-href');
+                    });
+                }
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                console.log('error.');
+            });
+    }
+  }
+
+  function buildMap (shopList, pos, isGeolocationEnabled) {
+      mapOption.center = pos;
+      let filteredList = [];
+
+      let map = new google.maps.Map(mapContainer, mapOption);
+      let service = new google.maps.places.PlacesService(map);
+      let mc = new MarkerClusterer(map, [],
+          {
+              gridSize: 60,
+              maxZoom: 20,
+              styles: clusterStyles
+          }
+      );
+      filteredList = setFilters(shopList);
+      setShopmarker(google.maps, map, filteredList, mc);
+      calcDistances(google.maps, map, filteredList);
+
+      const checkSessionStRequest = sessionStorage.getItem('shopSessionStRequest')
+      const checkSessionStAutoComp = sessionStorage.getItem('shopSessionStAutoComp')
+      let inputFormValue = document.querySelector('#js-shop-Search_Map-input');
+
+      if(checkSessionStRequest) {
+        const shopSessionStRequest = sessionStorage.getItem('shopSessionStRequest');
+        const shopSessionStResults = sessionStorage.getItem('shopSessionStResults');
+        const shopSessionStStatus = sessionStorage.getItem('shopSessionStStatus');
+        const shopSessionStResultsForArray = JSON.parse(shopSessionStResults);
+        map.setCenter(shopSessionStResultsForArray[0].geometry.location);
+        map.setZoom(mapDefaultZoom);
+        inputFormValue.value = JSON.parse(shopSessionStRequest).query;
+      }
+
+      if(checkSessionStAutoComp) {
+        const shopSessionStAutoCompForJson = JSON.parse(checkSessionStAutoComp);
+        let sw = new google.maps.LatLng(shopSessionStAutoCompForJson.south, shopSessionStAutoCompForJson.west);
+        let ne = new google.maps.LatLng(shopSessionStAutoCompForJson.north, shopSessionStAutoCompForJson.east);
+        let sessionStAutoBounds = new google.maps.LatLngBounds(sw, ne);
+        map.fitBounds(sessionStAutoBounds);
+        filteredList = setFilters(shopList);
+        setShopmarker(google.maps, map, filteredList, mc);
+        calcDistances(google.maps, map, filteredList);
+        let shopSessionStAutoCompValueInput = sessionStorage.getItem('shopSessionStAutoCompValue');
+        inputFormValue.value = shopSessionStAutoCompValueInput;
+        map.setZoom(mapDefaultZoom);
+      }
+
+      if (mapInput) {
+          let autocomplete = new google.maps.places.Autocomplete(mapInput);
+          autocomplete.bindTo('bounds', map);
+          autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
+
+          const searchShop = place => {
+              if (!place.geometry) {
+                  let request = {
+                      query: mapInput.value,
+                      fields: ['name', 'geometry'],
+                  };
+                  service.findPlaceFromQuery(request, function(results, status) {
+
+                let forSessionStRequest = JSON.stringify({
+                  "query": request.query,
+                  "fields": [request.fields]
+                })
+                let forSessionStResults = JSON.stringify(results);
+                let forSessionStStatus = JSON.stringify(status);
+                sessionStorage.setItem('shopSessionStRequest', forSessionStRequest);
+                sessionStorage.setItem('shopSessionStResults', forSessionStResults);
+                sessionStorage.setItem('shopSessionStStatus', forSessionStStatus);
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(mapDefaultZoom);
+                    filteredList = setFilters(shopList);
+                    setShopmarker(google.maps, map, filteredList, mc);
+                    calcDistances(google.maps, map, filteredList);
+                    //text検索
+                    sessionStorage.setItem('sessionStInputFormValue', inputFormValue.value);
+                    sessionStorage.removeItem('shopSessionStAutoComp');
+                }
+                  });
+                  return;
+              }
+              if (place.geometry.viewport) {
+                let shopSessionStAutoComp = JSON.stringify(place.geometry.viewport);
+                sessionStorage.setItem('shopSessionStAutoComp', shopSessionStAutoComp);
+                  map.fitBounds(place.geometry.viewport);
+                  filteredList = setFilters(shopList);
+                  setShopmarker(google.maps, map, filteredList, mc);
+                  calcDistances(google.maps, map, filteredList);
+                  //google検索
+                  let shopSessionStAutoCompValue = document.querySelector('#js-shop-Search_Map-input');
+                  sessionStorage.setItem('shopSessionStAutoCompValue', shopSessionStAutoCompValue.value);
+                  sessionStorage.removeItem('shopSessionStStatus');
+                  sessionStorage.removeItem('shopSessionStRequest');
+                  sessionStorage.removeItem('shopSessionStResults');
+              } else {
+                  map.setCenter(place.geometry.location);
+                  map.setZoom(mapDefaultZoom);
+                  filteredList = setFilters(shopList);
+                  setShopmarker(google.maps, map, filteredList, mc);
+                  calcDistances(google.maps, map, filteredList);
+              }
+          };
+
+          autocomplete.addListener('place_changed', function() {
+              const place = autocomplete.getPlace();
+              searchShop(place);
+          });
+
+          const shopSearchBtn = document.querySelector('.js-shop-Search_Btn');
+          shopSearchBtn.addEventListener('click', () => {
+            searchShop(inputFormValue.value);
+          });
+      }
+
+      if (mapLocation && isGeolocationEnabled) {
+          mapLocation.addEventListener('click', function() {
+              map.setCenter(pos);
+              map.setZoom(mapDefaultZoom);
+              calcDistances(google.maps, map, filteredList);
+          });
+      } else {
+          mapLocation.style.display = 'none';
+      }
+
+      if (mapFilter) {
+          mapFilter.addEventListener('click', function() {
+              filteredList = setFilters(shopList);
+              setShopmarker(google.maps, map, filteredList, mc);
+              calcDistances(google.maps, map, filteredList);
+
+              const rect = mapInput.getBoundingClientRect();
+              const position = rect.top + window.pageYOffset;
+              document.documentElement.scrollTop = position;
+          });
+      }
+      mapLoading.setAttribute('aria-hidden', true);
+  }
+
+  function setShopmarker(googleMaps, map, shopList, mc) {
+      let markers =[];
+      let infoWindow = new googleMaps.InfoWindow({
+          maxWidth: 320
+      });
+      const regIcon = {
+          url: markerImgSmall,
+          scaledSize: new googleMaps.Size(32, 32)
+      };
+      const largeIcon = {
+          url: markerImgLarge,
+          scaledSize: new googleMaps.Size(48, 48)
+      };
+
+      if (mapMsg) {
+          if (shopList.length === 0) {
+              mapMsg.setAttribute('aria-hidden', false);
+          } else {
+              mapMsg.setAttribute('aria-hidden', true);
+          }
+      }
+      const formatDate = function(value) {
+          const date = new Date(value);
+          return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+      };
+      const openSign = function(value) {
+          const startDate = new Date(value);
+          const term = new Date(value);
+          term.setDate(term.getDate() + 14);
+          if (startDate > today) {
+              return `${formatDate(value)}オープン予定`;
+          } else if (today <= term) {
+              return `${formatDate(value)}オープン`;
+          } else {
+              return false;
+          }
+      };
+      shopList.forEach(function(shop, index) {
+          let position = new googleMaps.LatLng(shop.location.latitude, shop.location.longitude);
+          let infoWindowContent = '';
+          if (openSign(shop.start_date)) {
+              infoWindowContent += `<p class="shop-en-Search_Infowindow-opensign"><span class="c-Txt_Emp-02">${openSign(shop.start_date)}</span></p>`;
+          }
+          infoWindowContent += '<p class="shop-en-Search_Infowindow-title"><a href="/shop-detail/';
+          infoWindowContent += shop.code + '">';
+          infoWindowContent += shop.name + '</a></p><p class="shop-en-Search_Infowindow-text">';
+          infoWindowContent += shop.location.prefecture + shop.location.city + shop.location.address + ' ' + shop.location.building_name + '</p>';
+          if (shop.reservation_info.link_url) {
+              infoWindowContent += '<a href="';
+              infoWindowContent += shop.reservation_info.link_url;
+              infoWindowContent += '" class="c-Btn_Secondly shop-en-Search_Infowindow-btn"><span>来店予約をする</span></a>';
+          }
+
+          markers[index] = new googleMaps.Marker({
+              icon: regIcon,
+              animation: googleMaps.Animation.DROP,
+              position: position
+          });
+          markers[index].addListener('click', function() {
+              markers.forEach(function(marker) {
+                  marker.setIcon(regIcon);
+              });
+              this.setIcon(largeIcon);
+              infoWindow.setContent(infoWindowContent);
+              infoWindow.open(map, this);
+          });
+      });
+
+      mc.clearMarkers();
+      mc.addMarkers(markers);
+  }
+
+  function calcDistances(googleMaps, map, shopList) {
+      let center = map.getCenter();
+      let nearestLoc = {
+          distance: 0
+      };
+      let bounds = new googleMaps.LatLngBounds();
+
+      shopList.forEach(function(shop, index) {
+          let position = new googleMaps.LatLng(shop.location.latitude, shop.location.longitude);
+          let distance = Math.round(googleMaps.geometry.spherical.computeDistanceBetween(center, position));
+
+          shop.distance = distance;
+
+          if (index === 0) {
+              nearestLoc = shop;
+          }
+          nearestLoc = nearestLoc.distance > shop.distance ? shop: nearestLoc;
+      });
+
+      if (nearestLoc.distance > 4000) {
+          bounds.extend(center);
+          bounds.extend(new googleMaps.LatLng(nearestLoc.location.latitude, nearestLoc.location.longitude));
+          map.fitBounds(bounds);
+      }
+  }
+
+  function setFilters(data) {
+      let filters = [];
+      let filterLabels = [];
+      let filtervalue = document.querySelectorAll('[name="js-shop-Search_Map-filtervalue"]:checked');
+
+
+      filtervalue.forEach(function(checked) {
+          filters.push(parseInt(checked.value, 10));
+          filterLabels.push(checked.getAttribute('data-filterlabel'));
+      });
+
+      if (mapSelectedFilters && filterLabels.length > 0) {
+          mapSelectedFilters.textContent = 'Filtering: ' + filterLabels.join(' / ');
+      } else {
+          mapSelectedFilters.textContent = '';
+      }
+
+      return data.filter(function(shop) {
+          let services = shop.supported_features.services;
+          return filters.every(function(filter) {
+              return services.includes(filter);
+          });
+      });
+  }
+
+  function filterServices(arr) {
+      arr.forEach(elem => {
+          const str = 'service-' + elem;
+          const node = document.getElementById(str);
+          return node.setAttribute('aria-hidden', 'false');
+      })
+  }
+  function hideFilterByService() {
+      const node = document.getElementById('filter-by-service');
+      node.setAttribute('aria-hidden', 'true');
+  }
+
+  function setPrefectures(data) {
+      let options = ['<option value="">Select Prefecture</option>'];
+      let flgment = '';
+      let uniqueCities = filterUniqueCities(data)
+          .map(function(item, index) {
+              return {order: getPrefectureCode(item.location.prefecture), region: item.location.region, zipcd: item.location.zip_code.replace('-', '').replace('‐', ''), prefecture: item.location.prefecture, city: item.location.city};
+          })
+          .sort(function(a, b) {
+              return parseInt((a.order + '' + a.zipcd), 10) - parseInt((b.order + '' + b.zipcd), 10);
+          });
+      uniqueCities.forEach(function(item) {
+          flgment = '<option value="' + item.prefecture + '">' + item.prefecture + '</option>';
+          if (options.indexOf(flgment) < 0) {
+              options.push(flgment);
+          }
+      });
+      selectPref.innerHTML = options.join();
+
+      return uniqueCities;
+  }
+
+  function setCities(pref, cities) {
+      let options = ['<option value="">Select City</option>'];
+      let flgment = '';
+      const sortedCities = cities.sort((a, b) => {
+        return a.city < b.city ? -1 : a.city > b.city ? 1 : 0;
+      });
+      sortedCities.forEach(function(item) {
+          flgment = '<option value="' + item.city + '">' + item.city + '</option>';
+          if (item.prefecture === pref && options.indexOf(flgment) < 0) {
+              options.push(flgment);
+          }
+      });
+      selectCity.innerHTML = options.join();
+      if (options.length === 1) {
+          selectCity.setAttribute('aria-disabled', true);
+          selectCity.setAttribute('disabled', true);
+      }
+      else {
+          selectCity.setAttribute('aria-disabled', false);
+          selectCity.removeAttribute('disabled');
+      }
+  }
+
+  function filterUniqueCities (array) {
+    let cities = array.map(function(item) {
+      return item.location.prefecture + item.location.city;
+    });
+    return array.filter(function(item, index) {
+      return cities.indexOf(item.location.prefecture + item.location.city) === index;
+    });
+  }
+
+  function getPrefectureCode(name) {
+      const list = ["北海道",
+          "青森県","岩手県","宮城県","秋田県","山形県","福島県",
+          "茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県",
+          "新潟県","富山県","石川県","福井県","山梨県","長野県",
+          "岐阜県","静岡県","愛知県","三重県",
+          "滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県",
+          "鳥取県","島根県","岡山県","広島県","山口県",
+          "徳島県","香川県","愛媛県","高知県",
+          "福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"
+      ];
+      return list.indexOf(name) + 1;
+  }
+
+  function enableSearchByPrefCity() {
+      if (searchByPrefCity) {
+          let url = sitepath + 'shop/search/?prefecture=' + encodeURI(selectPref.value) + '&city=' + selectCity.value;
+          if (selectPref.value !== '') {
+              searchByPrefCity.setAttribute('data-href', url);
+              searchByPrefCity.setAttribute('aria-disabled', false);
+              searchByPrefCity.removeAttribute('disabled');
+          } else {
+              searchByPrefCity.setAttribute('data-href', '');
+              searchByPrefCity.setAttribute('aria-disabled', true);
+              searchByPrefCity.setAttribute('disabled', true);
+          }
+      }
+  }
+</script>
+<script src="<%= sitepath %>assets/js/library/markerclustererplus.min.js?200408"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmiYC8QLzg9uN_RVQ2jkWNR5YRf1z7dfo&libraries=places,geometry&callback=initMap" async defer></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

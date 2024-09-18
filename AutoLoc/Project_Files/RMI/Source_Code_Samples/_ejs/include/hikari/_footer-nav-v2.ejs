@@ -1,0 +1,170 @@
+<%
+const hikaripath = "hikari/";
+
+const basic = {
+  "faq" : [
+    { url: "https://hikari.faq.rakuten.net/faq/show/5817?site_domain=default", title: "IPv6に関するよくある質問" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1124?site_domain=default", title: "楽天ひかりのIPv6通信を利用するメリット" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1167?site_domain=default", title: "自身の回線がIPv6に接続しているか知りたい" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1259?site_domain=default", title: "楽天ひかり利用開始までの流れを教えてください" }
+  ]
+};
+
+const pay = {
+  "faq" : [
+    { url: "https://hikari.faq.rakuten.net/faq/show/1138?site_domain=default", title: "楽天ひかりに切り替える場合に必要な料金" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1137?site_domain=default", title: "新規/転用/事業者変更の事務手数料" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1149?site_domain=default", title: "楽天ポイント口座の登録・変更方法" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1259?site_domain=default", title: "楽天ひかり利用開始までの流れを教えてください" }
+  ]
+};
+
+const eco = {
+  "faq" : [
+    { url: "https://hikari.faq.rakuten.net/faq/show/1149?site_domain=default", title: "楽天ポイント口座の登録・変更方法" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/6276?site_domain=default", title: "SPU（ポイント+1倍）はいつから対象となりますか？" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1260?site_domain=default", title: "利用できるエリアか確認できますか" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1259?site_domain=default", title: "申込み手続き後、楽天ひかり利用開始までの流れを教えてください。" }
+]
+};
+
+const speed = {
+  "faq" : [
+    { url: "https://hikari.faq.rakuten.net/faq/show/1078?site_domain=default", title: "速度が遅く、ページの表示に時間がかかる" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1176?site_domain=default", title: "インターネット回線の通信速度を測定する方法" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1160?site_domain=default", title: "IPv4 over IPv6（DS-lite）に対応しているルータ一覧" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1161?site_domain=default", title: "IPv6を利用するためにルーターの設定方法" }
+  ]
+};
+
+const flow = {
+  "faq" : [
+    { url: "https://hikari.faq.rakuten.net/faq/show/1259?site_domain=default", title: "楽天ひかり利用開始までの流れを教えてください。", lid: "" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1226?site_domain=default", title: "工事は土日や祝日も対応可能？", lid: "" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1106?site_domain=default", title: "事業者変更をする場合、事業者変更承諾番号の取得時に必要なもの", lid: "" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1115?site_domain=default", title: "転用承諾番号の取得時に必要なもの", lid: "" }
+  ]
+};
+
+const benefit = {
+  "faq" : [
+    { url: "https://hikari.faq.rakuten.net/faq/show/1078?site_domain=default&ratck=Rp%3D7fcfef79be4eb037838281bb53601bbb8a27af4", title: "速度が遅く、ページの表示に時間がかかる" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1176?category_id=153&site_domain=default", title: "インターネット回線の通信速度を測定する方法" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1259?site_domain=default&ratck=Rp%3D7fcfef79be4eb037838281bb53601bbb8a27af4", title: "楽天ひかり利用開始までの流れを教えてください" },
+    { url: "https://hikari.faq.rakuten.net/faq/show/1094?category_id=161&site_domain=default", title: "お申し込みから利用開始までの期間" }
+  ]
+};
+%>
+
+<div class="g-hikari-Footer">
+  <%_ if (typeof nav !== 'undefined' && nav === true) { _%>
+    <div class="g-hikari-Footer_Keywords">
+      <h2 class="c-Heading_Lv3">目的から探す</h2>
+      <nav class="g-hikari-Footer_Keywords-nav">
+        <a class="g-hikari-Footer_Keywords-card" href="<%= sitepath %>hikari/support/wifi-router/" data-lid_parts="cpath">
+          <div class="g-hikari-Footer_Keywords-img">
+            <img src="<%= sitepath %>assets/img/hikari/common-v2/icon-nav-01.png" alt="">
+          </div>
+          <p class="c-Txt_Normal">IPv6の対応ルーター<br>を見たい</p>
+        </a>
+        <a class="g-hikari-Footer_Keywords-card" href="<%= sitepath %>hikari/fee/transfer-benefit/" data-lid_parts="cpath">
+          <div class="g-hikari-Footer_Keywords-img">
+            <img src="<%= sitepath %>assets/img/hikari/common-v2/icon-nav-02.png" alt="">
+          </div>
+          <p class="c-Txt_Normal">楽天ひかりは<br>安いのか知りたい</p>
+        </a>
+        <a class="g-hikari-Footer_Keywords-card" href="<%= sitepath %>hikari/fee/pricelist/?l-id=rhk_cpath_fee_pricelist#anc-construction" data-lid_parts="cpath" data-ratid="rhk_cpath_fee_pricelist" data-ratevent="click" data-ratparam="all">
+          <div class="g-hikari-Footer_Keywords-img">
+            <img src="<%= sitepath %>assets/img/hikari/common-v2/icon-nav-03.png" alt="">
+          </div>
+          <p class="c-Txt_Normal">工事費が<br>知りたい</p>
+        </a>
+        <a class="g-hikari-Footer_Keywords-card" href="<%= sitepath %>hikari/internet/ipv6/" data-lid_parts="cpath">
+          <div class="g-hikari-Footer_Keywords-img">
+            <img src="<%= sitepath %>assets/img/hikari/common-v2/icon-nav-04.png" alt="">
+          </div>
+          <p class="c-Txt_Normal">速度が<br>知りたい</p>
+        </a>
+        <a class="g-hikari-Footer_Keywords-card" href="<%= sitepath %>hikari/campaign/" data-lid_parts="cpath">
+          <div class="g-hikari-Footer_Keywords-img">
+            <img src="<%= sitepath %>assets/img/hikari/common-v2/icon-nav-05.png" alt="">
+          </div>
+          <p class="c-Txt_Normal">キャンペーンを<br>探したい</p>
+        </a>
+        <a class="g-hikari-Footer_Keywords-card" href="<%= sitepath %>hikari/point/" data-lid_parts="cpath">
+          <div class="g-hikari-Footer_Keywords-img">
+            <img src="<%= sitepath %>assets/img/hikari/common-v2/icon-nav-06.png" alt="">
+          </div>
+          <p class="c-Txt_Normal">楽天ポイントは<br>貯まるのか知りたい</p>
+        </a>
+        <a class="g-hikari-Footer_Keywords-card" href="<%= sitepath %>hikari/review/" data-lid_parts="cpath">
+          <div class="g-hikari-Footer_Keywords-img">
+            <img src="<%= sitepath %>assets/img/hikari/common-v2/icon-nav-07.png" alt="">
+          </div>
+          <p class="c-Txt_Normal">楽天ひかりの<br>評判を知りたい</p>
+        </a>
+      </nav>
+    </div>
+  <%_ } _%>
+    <%_ if (typeof scrollParam !== 'undefined') { _%>
+    <%# スクロール計測　%>
+    <div class="u-Rat_Appear-height" style="height: 1px;" data-ratid="<%= scrollParam %>" data-ratevent="appear">&nbsp;</div>
+  <%_ } _%>
+
+  <%_ if (typeof faq !== 'undefined') { _%>
+    <div class="g-hikari-Footer_Faq">
+      <h2 class="c-Heading_Lv3">よくあるご質問</h2>
+      <ul class="c-Link_List u-Adjust_Mt-24">
+
+        <%_ if (typeof faq !== 'undefined' && faq === 'basic') { _%>
+          <% for ( let i = 0; i < basic.faq.length; i++ ) { %>
+            <li><a href="<%= basic.faq[i].url %>" data-lid_parts="faq" target="_blank" rel="noopener"><%= basic.faq[i].title %><span class="c-Icon_Chevron-right"></span></a></li>
+          <% } %>
+        <%_ } _%>
+
+
+        <%_ if (typeof faq !== 'undefined' && faq === 'pay') { _%>
+          <% for ( let i = 0; i < pay.faq.length; i++ ) { %>
+            <li><a href="<%= pay.faq[i].url %>" data-lid_parts="faq" target="_blank" rel="noopener"><%= pay.faq[i].title %><span class="c-Icon_Chevron-right"></span></a></li>
+          <% } %>
+        <%_ } _%>
+
+
+        <%_ if (typeof faq !== 'undefined' && faq === 'eco') { _%>
+          <% for ( let i = 0; i < eco.faq.length; i++ ) { %>
+            <li><a href="<%= eco.faq[i].url %>" data-lid_parts="faq" target="_blank" rel="noopener"><%= eco.faq[i].title %><span class="c-Icon_Chevron-right"></span></a></li>
+          <% } %>
+        <%_ } _%>
+
+
+        <%_ if (typeof faq !== 'undefined' && faq === 'speed') { _%>
+          <% for ( let i = 0; i < speed.faq.length; i++ ) { %>
+            <li><a href="<%= speed.faq[i].url %>" data-lid_parts="faq" target="_blank" rel="noopener"><%= speed.faq[i].title %><span class="c-Icon_Chevron-right"></span></a></li>
+          <% } %>
+        <%_ } _%>
+
+
+        <%_ if (typeof faq !== 'undefined' && faq === 'flow') { _%>
+          <% for ( let i = 0; i < flow.faq.length; i++ ) { %>
+            <li><a href="<%= flow.faq[i].url %>" data-lid_parts="faq" target="_blank" rel="noopener"><%= flow.faq[i].title %><span class="c-Icon_Chevron-right"></span></a></li>
+          <%_ } _%>
+        <%_ } _%>
+
+
+        <%_ if (typeof faq !== 'undefined' && faq === 'benefit') { _%>
+          <% for ( let i = 0; i < benefit.faq.length; i++ ) { %>
+            <li><a href="<%= benefit.faq[i].url %>" data-lid_parts="faq" target="_blank" rel="noopener"><%= benefit.faq[i].title %><span class="c-Icon_Chevron-right"></span></a></li>
+          <% } %>
+        <%_ } _%>
+
+      </ul>
+    </div>
+  <%_ } _%>
+
+
+  <%_ if (typeof cta !== 'undefined' && cta === true) { _%>
+    <div class="g-hikari-Footer_Cta">
+      <a href="https://secure3.gol.com/mod-pl/rbb/rmch.cgi?scode=qngTI9rXJpRlc1l6roM&cpnkind=marathon2207nb9" data-lid_parts="fixedbtn" class="c-Btn_Primary-large g-hikari-Footer_Cta-btn" data-ratid="rhk_fixedbtn_app_modal_01" data-ratevent="click" data-ratparam="all">楽天ひかりに申し込む</a>
+    </div>
+  <%_ } _%>
+</div>

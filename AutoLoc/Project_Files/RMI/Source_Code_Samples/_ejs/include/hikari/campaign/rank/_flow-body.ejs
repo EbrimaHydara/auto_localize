@@ -1,0 +1,45 @@
+<% const {namespace, stageId, point, applyHikariUrl} = rankData -%>
+<div id="flow" class="<%= namespace %>-Layout-section <%= namespace %>-Flow u-Adjust_Mt-32">
+  <div class="l-System_Container">
+    <h3 class="c-Heading_Lv2 u-Adjust_Align-center">キャンペーンの流れ</h3>
+    <div class="c-hikari-Flow u-Adjust_Mt-32 <%= namespace %>-Flow">
+    <ul class="<%= namespace %>-Flow-inner">
+      <!-- <li class="<%= namespace %>-Flow-list">
+        <div class="u-Adjust_Pt-8 <%= namespace %>-Flow-list-inner">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-step-01.png" alt="STEP1 このページからエントリーする">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-01.png" alt="">
+        </div>
+        <p class="u-Adjust_Mt-8 u-Adjust_Mb-8 c-Txt_Cap u-Adjust_Align-left">※お申し込みより前にエントリーが必要です</p>
+      </li> -->
+      <li class="<%= namespace %>-Flow-list">
+        <div class="u-Adjust_Pt-8 <%= namespace %>-Flow-list-inner">
+          <img class="hikari-campaign-rank-Utility_Img-pc" src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-step-01.png?210702" alt="STEP1 楽天モバイルに申し込む" style="min-height: 1px;">
+          <img class="hikari-campaign-rank-Utility_Img-sp" src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-step-01-sp.png?210702" alt="STEP1 楽天モバイルに申し込む" style="min-height: 1px;">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-02.png" alt="" style="min-height: 1px;">
+        </div>
+        <p class="u-Adjust_Mt-8 <%= namespace %>-Flow-list-button"><a href="<%= sitepath %>guide/application/?lid-r=rhk_rank_<%= stageId %>_mno_olsu" target="_blank" rel="noopener noreferrer" class="c-Btn_Secondly-half" data-ratid="rhk_rank_<%= stageId %>_mno_olsu" data-ratevent="click" data-ratparam="all"><span>楽天モバイルに申し込む<span class="c-Icon_New-window-l"></span></span></a></p>
+        <p class="<%= namespace %>-Flow-link u-Adjust_Mt-16"><a href="<%= sitepath %>fee/un-limit/" target="_blank" rel="noopener noreferrer" class="c-Link_Txt-icon" data-ratid="rhk_rank_<%= stageId %>_unlimit" data-ratevent="click" data-ratparam="all">Rakuten UN-LIMIT VIの詳細を見る<span class="c-Icon_New-window-l"></span></a></p>
+      </li>
+      <li class="<%= namespace %>-Flow-list">
+        <div class="u-Adjust_Pt-8 <%= namespace %>-Flow-list-inner">
+          <img class="hikari-campaign-rank-Utility_Img-pc" src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-step-02.png?210702" alt="STEP2 楽天ひかりに申し込む" style="min-height: 1px;">
+          <img class="hikari-campaign-rank-Utility_Img-sp" src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-step-02-sp.png?210702" alt="STEP2 楽天ひかりに申し込む" style="min-height: 1px;">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-03.png" alt="" style="min-height: 1px;">
+        </div>
+        <p class="u-Adjust_Mt-8 <%= namespace %>-Flow-list-button">
+          <a href="<%= applyHikariUrl %>" id="apply_hikari" class="c-Btn_Secondly-half" data-ratid="rhk_rank_<%= stageId %>_flow_olsu" data-ratevent="click" data-ratparam="all"><span>楽天ひかりに申し込む</span></a>
+        </p>
+        <p class="<%= namespace %>-Flow-link u-Adjust_Mt-16"><a href="<%= sitepath %>hikari/flow/" class="c-Link_Txt-icon" data-ratid="rhk_rank_<%= stageId %>_flow_01" data-ratevent="click" data-ratparam="all">申し込みまでの流れを見る<span class="c-Icon_Chevron-right"></span></a></p>
+      </li>
+      <li class="<%= namespace %>-Flow-list">
+        <picture style="display: block;">
+          <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-04-<%= point %>-sp.png?210702-1">
+          <source srcset="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-04-<%= point %>-pc.png?210702-1">
+          <img src="<%= sitepath %>assets/img/hikari/campaign/rank/img-flow-04-<%= point %>-pc.png?210702-1" alt="楽天ひかりの月額基本料1年無料&<%= point.toLocaleString() %>ポイント獲得!" style="min-height: 1px;width: 100%;">
+        </picture>
+      </li>
+    </ul>
+    <%- include('/include/hikari/campaign/rank/_flow-note', {rankData}) %>
+    </div>
+  </div>
+</div>

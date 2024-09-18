@@ -1,0 +1,474 @@
+<% const pagetitle = "みんなのツイート大募集！フォロー＆引用RTで抽選100名様に3,000ポイントプレゼント！" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "twitter-data" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: '楽天モバイルのおすすめポイント大募集！キャンペーン！楽天モバイル公式Twitterアカウントのフォロー＆対象投稿の引用リツイートで、抽選100名様に3,000ポイントプレゼント！',
+    keywords: '',
+    noindex: true,
+    pathname: filepath
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/twitter-data/twitter-data.css?20240424">
+<%- include('/include/_append-head') %>
+<script type="text/javascript">
+// <!--
+function doTrim(el) {
+  el.value = el.value.replace(/^\s+|\s+$/g, '');
+}
+
+function isInput(el) {
+  return el.value.length != 0;
+}
+
+function isLength(el, len) {
+  if ("え".length == 2) {
+    len *= 2;
+  }
+  return el.value.length <= len;
+}
+
+function isChecked(el) {
+  if (el.length) {
+    for (var i = 0; i < el.length; i++) {
+      if (el[i].checked) {
+        return true;
+      }
+    }
+  } else {
+    if (el.checked) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function zen2han(el) {
+  el.value = el.value.replace(/[０]/g, "0");
+  el.value = el.value.replace(/[１]/g, "1");
+  el.value = el.value.replace(/[２]/g, "2");
+  el.value = el.value.replace(/[３]/g, "3");
+  el.value = el.value.replace(/[４]/g, "4");
+  el.value = el.value.replace(/[５]/g, "5");
+  el.value = el.value.replace(/[６]/g, "6");
+  el.value = el.value.replace(/[７]/g, "7");
+  el.value = el.value.replace(/[８]/g, "8");
+  el.value = el.value.replace(/[９]/g, "9");
+}
+
+function checkForm() {
+  var el;
+  var obj = document.enenForm;
+
+  el = obj.elements['answers[39787_271216]'];
+  doTrim(el);
+  zen2han(el);
+  if (!isInput(el)) {
+    alert("「ご自身のTwitterユーザー名（@から始まる）を入力してください。」を入力してください。");
+    return false;
+  }
+
+  if (!isLength(el, 50)) {
+    alert("「ご自身のTwitterユーザー名（@から始まる）を入力してください。」は50文字以内で入力してください。");
+    return false;
+  }
+
+  el = obj.elements['answers[39787_271217]'];
+  if (!isChecked(el)) {
+    alert("「このキャンペーンをお知りになったきっかけを教えてください。」を選択してください。");
+    return false;
+  }
+
+  el = obj.elements['answers[39787_271218]'];
+  if (!isChecked(el)) {
+    alert("「楽天モバイル公式Twitterアカウントをフォローしたきっかけを教えてください。」を選択してください。");
+    return false;
+  }
+}
+// -->
+</script>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+<div class="<%= namespace %>-Layout_Label">
+  <ul class="c-Label_List <%= namespace %>-Layout_Label-list">
+        <li class="c-Label_Normal">全会員様対象</li>
+  </ul>
+  <p class="<%= namespace %>-Layout_Label-point">ポイント：付与日を含めて6カ月の期間限定ポイント</p>
+</div>
+<div class="<%= namespace %>-Hero_Bg">
+  <div class="<%= namespace %>-Hero_Bg-in">
+    <h1>
+      <img src="<%= sitepath %>assets/img/campaign/twitter-data/img_main3_spn_pc-230721.png" class="<%= namespace%>-Utility_Img-pc" width="1032" height="300" alt="楽天モバイルのおすすめポイント大募集！キャンペーン！楽天モバイル公式Twitterアカウントのフォロー＆対象投稿の引用リツイートで、抽選100名様に3,000ポイントプレゼント！">
+      <img src="<%= sitepath %>assets/img/campaign/twitter-data/img_main3_spn-230721.png" class="<%= namespace%>-Utility_Img-sp" width="" alt="楽天モバイルのおすすめポイント大募集！キャンペーン！楽天モバイル公式Twitterアカウントのフォロー＆対象投稿の引用リツイートで、抽選100名様に3,000ポイントプレゼント！">
+    </h1>
+  </div>
+</div>
+  <div class="<%= namespace %>-Layout_Section <%= namespace %>-Section_List">
+    <div class="l-System_Container">
+
+    <p class="u-Adjust_Align-left c-Txt_Cap">
+      ※エントリー、楽天モバイル公式Twitterアカウントのフォロー、キャンペーン投稿の引用リツイートで条件達成 <br>
+      ※キャンペーンのご応募には楽天会員への登録が必要です<br>
+      ※Twitter および Twitter ロゴ、Twitter の「T」ロゴ、Twitter の青い鳥は、アメリカ合衆国また他国々におけるTwitter, Inc.の登録商標です
+    </p>
+    <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Align-center u-Adjust_Mt-24">本キャンペーンは終了しました</p>
+    <p class="u-Adjust_Mt-24 u-Adjust_Align-center"><span class="c-Txt_Emp-01">【キャンペーン期間】</span><br class="<%= namespace %>-Utility_Br-sp">2023年7月21日（金）14:00～7月27日（木）13:59</p>
+
+  <h2 class="c-Heading_Lv2 u-Adjust_Mt-40 u-Adjust_Align-center" id="campaign-flow">キャンペーンの流れ</h2>
+    <ul class="c-Flow u-Adjust_Mt-24">
+      <li>
+        <h3 class="c-Heading_Lv3 <%= namespace %>-Layout_Inner">
+          <div class="<%= namespace %>-Flow_Title">
+            <p class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP1</p>
+            <p>キャンペーンに<br class="u-Show_Sp">エントリー</p>
+          </div>
+        </h3>
+        <form action="https://form.rakuten.co.jp/ans/apply/39787" name="enenForm" method="POST" onSubmit="return checkForm()">
+          <p class="u-Adjust_Mt-16 <%= namespace %>-Layout_Inner">
+            ＠から始まるTwitterのユーザー名を入力してエントリーしてください
+          </p>
+          <dl class="c-Dl_Origin u-Adjust_Mt-24">
+            <div>
+              <dt>
+                Twitterのユーザー名 <span class="c-Txt_Emp-02 c-Txt_Normal-ss">必須</span>
+              </dt>
+              <dd>
+                <p class="c-Txt_Cap u-Adjust_Mb-8">50文字以内</p>
+                <table style="border: none;">
+                  <tbody>
+                    <tr>
+                      <td style="padding-right: 13px;">@</td>
+                      <td style="width: 100%;">
+                        <textarea name="answers[39787_271216]" rows="1" cols="40" class="c-Form_Input js-cancelEnter" placeholder="Twitterのユーザー名を入力してください" autocomplete="off"></textarea>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </dd>
+            </div>
+          </dl>
+          <p class="u-Adjust_Mt-16 <%= namespace %>-Layout_Inner">
+            このキャンペーンをお知りになったきっかけを教えてください
+          </p>
+          <dl class="c-Dl_Origin u-Adjust_Mt-24">
+            <div>
+              <dt>
+                知ったきっかけ <span class="c-Txt_Emp-02 c-Txt_Normal-ss">必須</span>
+              </dt>
+              <dd>
+                <table style="border: none;">
+                  <tbody>
+                    <tr>
+                      <td class="<%= namespace %>-Layout_Form-chk">
+                        <label class="c-Form_Radio" for="a751405">
+                          <input type="radio" name="answers[39787_271217]" id="a751405" value="751405" autocomplete="off">
+                          <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">楽天モバイル公式Twitterの投稿</span>
+                        </label>
+                        <label class="c-Form_Radio u-Adjust_Mt-16" for="a751406">
+                          <input type="radio" name="answers[39787_271217]" id="a751406" value="751406" autocomplete="off">
+                          <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">ほかのお客様のリツイート</span>
+                        </label>
+                        <label class="c-Form_Radio u-Adjust_Mt-16" for="a751407">
+                          <input type="radio" name="answers[39787_271217]" id="a751407" value="751407" autocomplete="off">
+                          <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">楽天モバイル公式サイト</span>
+                        </label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </dd>
+            </div>
+          </dl>
+          <p class="u-Adjust_Mt-16 <%= namespace %>-Layout_Inner">
+            楽天モバイル公式Twitterアカウントをフォローしたきっかけを教えてください
+          </p>
+          <dl class="c-Dl_Origin u-Adjust_Mt-24">
+            <div>
+              <dt>
+                フォローのきっかけ <span class="c-Txt_Emp-02 c-Txt_Normal-ss">必須</span>
+              </dt>
+              <dd>
+                <table style="border: none;">
+                  <tbody>
+                    <tr>
+                      <td class="<%= namespace %>-Layout_Form-chk">
+                        <label class="c-Form_Radio" for="a751408">
+                          <input type="radio" name="answers[39787_271218]" id="a751408" value="751408" autocomplete="off">
+                          <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">今回のキャンペーンがきっかけ</span>
+                        </label>
+                        <label class="c-Form_Radio u-Adjust_Mt-16" for="a751409">
+                          <input type="radio" name="answers[39787_271218]" id="a751409" value="751409" autocomplete="off">
+                          <span class="c-Form_Radio-icon"></span><span class="c-Form_Radio-label">以前からフォローしていた</span>
+                        </label>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </dd>
+            </div>
+          </dl>
+
+          <div class="u-Adjust_Align-center u-Adjust_Mt-24 u-Adjust_Mb-24">
+            <input type="hidden" name="c" value="楽天">
+            <input type="hidden" name="l" value="ja">
+            <button class="c-Btn_Primary-large" type="submit"><span>エントリーする</span></button>
+          </div>
+          <p class="<%= namespace %>-Flow_Box-container c-Txt_Cap u-Adjust_Mt-16 u-Adjust_Align-center">
+            ※エントリー後は、「入力を受け付けました」と表示され、エントリーが完了します<br>
+            ※本キャンペーンはRakuten PointClubのエントリー履歴には反映されませんのでご了承ください
+          </p>
+        </form>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4 <%= namespace %>-Utility_Br-sp">
+          <div class="<%= namespace %>-Flow_Title">
+            <p class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP2</p>
+            <p>楽天モバイル公式<br class="u-Show_Sp">アカウントをフォロー</p>
+          </div>
+        </h3>
+        <div class="l-Media_Grid">
+          <div class="l-Media_Image">
+            <img src="<%= sitepath %>assets/img/campaign/twitter/twitter-2-221215.svg" width="107" alt="">
+          </div>
+          <div class="u-Adjust_Align-left <%= namespace %>-Layout_Inner">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Br-pc">
+              <div class="<%= namespace %>-Flow_Title">
+                <p class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP2</p>
+                <p>楽天モバイル公式アカウントをフォロー</p>
+              </div>
+            </h3>
+            <p class="u-Adjust_Mt-16">
+              Twitter公式アカウント「<span class="c-Txt_Emp-02">@Rakuten_Mobile</span>」をフォロー
+            </p>
+            <div class="u-Adjust_Align-center u-Adjust_Mt-16 <%= namespace %>-Utility_Br-sp">
+              <a href="https://twitter.com/Rakuten_Mobile/" class="c-Btn_Primary-large"
+                target="_blank"><span>楽天モバイル公式アカウント</span></a>
+            </div>
+            <div class="u-Adjust_Mt-16 <%= namespace %>-Utility_Br-pc">
+              <a href="https://twitter.com/Rakuten_Mobile/" class="c-Btn_Primary-large" target="_blank"><span>楽天モバイル公式アカウント</span></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4 <%= namespace %>-Utility_Br-sp">
+          <div class="<%= namespace %>-Flow_Title">
+            <p class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP3</p>
+            <p>本キャンペーンの投稿<br class="u-Show_Sp">を引用リツイート</p>
+          </div>
+        </h3>
+        <div class="l-Media_Grid">
+          <div class="l-Media_Image">
+            <img src="<%= sitepath %>assets/img/campaign/twitter-data/img_campaign_flow02.png" width="107" alt="">
+          </div>
+          <div class="u-Adjust_Align-left <%= namespace %>-Layout_Inner">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Br-pc">
+              <div class="<%= namespace %>-Flow_Title">
+                <p class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP3</p>
+                <p>本キャンペーンの投稿を引用リツイート</p>
+              </div>
+            </h3>
+            <p class="u-Adjust_Mt-16">
+              楽天モバイル公式アカウントで7月21日(金)に投稿された本キャンペーンに関するツイートを<span class="c-Txt_Emp-02">引用リツイート</span>
+            </p>
+            <!--p class="u-Adjust_Mt-16">
+            <a href="#" class="c-Link_Txt-inline">Twitter投稿のリンク<span class="c-Icon_Chevron-right"></span></a>
+            </p-->
+          </div>
+        </div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4 <%= namespace %>-Utility_Br-sp">
+          <div class="<%= namespace %>-Flow_Title">
+            <p class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP4</p>
+            <p>達成条件の内容を記載<br class="u-Show_Sp">して投稿</p>
+          </div>
+        </h3>
+        <div class="<%= namespace %>-Layout_Inner">
+          <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Br-pc">
+            <div class="<%= namespace %>-Flow_Title">
+              <p class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP4</p>
+              <p>達成条件の内容を記載して投稿</p>
+            </div>
+          </h3>
+          <ul class="u-Adjust_Mt-16 <%= namespace %>-Utility_Br-pc <%= namespace %>-Flow_OrderedList">
+            <li>本キャンペーンに関するツイートを<span class="c-Txt_Emp-02">引用リツイート</span></li>
+            <li><span class="c-Txt_Emp-02">楽天モバイルのおすすめポイントや魅力的なポイント</span>を本文に記載</li>
+            <li>ツイート内容を確認して投稿！</li>
+          </ul>
+          <p class="c-Txt_Cap u-Adjust_Mt-16">※楽天モバイルご契約者様以外もご参加いただけます></p>
+        </div>
+        <div class="<%= namespace %>-Utility_Br-sp">
+          <p class="c-Txt_Normal-m c-Txt_Emp-01 u-Adjust_Mt-24">
+            キャンペーンの達成条件
+          </p>
+          <ul class="u-Adjust_Mt-8">
+            <li><span class="c-Txt_Emp-02 c-Txt_Normal-m u-Adjust_Mr-8">&#10102;</span>本キャンペーンに関するツイートを<span class="c-Txt_Emp-02">引用リツイート</span></li>
+            <li><span class="c-Txt_Emp-02 c-Txt_Normal-m u-Adjust_Mr-8 u-Adjust_Mt-16">&#10103;</span><span class="c-Txt_Emp-02">楽天モバイルのおすすめポイントや魅力的なポイント</span>を本文に記載</li>
+            <li><span class="c-Txt_Emp-02 c-Txt_Normal-m u-Adjust_Mr-8 u-Adjust_Mt-16">&#10104;</span>ツイート内容を確認して投稿！</li>
+            <li><span class="c-Txt_Cap u-Adjust_Mr-8">※楽天モバイルご契約者様以外もご参加いただけます</span></li>
+          </ul>
+        </div>
+        <div class="l-Media_Image">
+          <picture>
+            <source media="(max-width: <%= themeGlb.max.m %>)" srcset="<%= sitepath %>assets/img/campaign/twitter-data/img_campaign_flow03-3-sp-230721.png">
+            <img src="<%= sitepath %>assets/img/campaign/twitter-data/img_campaign_flow03-3-230721.png" width="424" alt="">
+          </picture>
+        </div>
+      </li>
+      <li>
+        <h3 class="c-Heading_Lv4 <%= namespace %>-Utility_Br-sp u-Adjust_Align-left">
+          抽選で100名様に<span class="c-Txt_Emp-02">3,000ポイント</span><br>をプレゼント！
+        </h3>
+        <div class="l-Media_Grid">
+          <div class="l-Media_Image">
+            <img src="<%= sitepath %>assets/img/campaign/twitter/twitter-5-221215.svg" width="107" alt="">
+          </div>
+          <div class="u-Adjust_Align-left <%= namespace %>-Layout_Inner">
+            <h3 class="c-Heading_Lv3 <%= namespace %>-Utility_Br-pc">
+              抽選で100名様に<span class="c-Txt_Emp-02">3,000ポイント</span>をプレゼント！
+            </h3>
+            <p class="u-Adjust_Mt-16">
+              期間限定ポイントで2023年9月末日ごろに付与いたします
+            </p>
+            <p class="c-Txt_Cap u-Adjust_Mt-16">
+              ※当選者には楽天モバイルTwitter公式アカウントよりダイレクトメッセージ（DM）にて、8月末までにご連絡します<br>
+              ※「すべてのアカウントからのメッセージリクエストを許可する」の設定をオンにしてください
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="Container_bg u-Adjust_Mt-48">
+  <div class="l-System_Container">
+    <h1 id="rakutenmobile" class="c-Txt_Normal-ll u-Adjust_Align-center">楽天モバイル<span class="txt-nl">について</span></h1>
+    <p class="<%= namespace %>-Layout_step-txt u-Adjust_Mt-16 c-Txt_Emp-01">詳細は以下の各リンク先にてご確認ください</p>
+    <div class="<%= namespace %>-Card u-Adjust_Mt-24">
+      <a href="<%= sitepath %>fee/saikyo-plan/?l-id=campaign_twitter-data_fee_saikyo-plan" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_01.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">料金プラン</p>
+      </a>
+      <a href="<%= sitepath %>fee/zero/?l-id=campaign_twitter-data_fee_zero" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_02.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">お申し込み<span class="txt-nl">手数料</span></p>
+      </a>
+      <a href="<%= sitepath %>area/?l-id=campaign_twitter-data_area" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_03.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">サービス<span class="txt-nl">エリア</span></p>
+      </a>
+      <a href="<%= sitepath %>product/byod/?l-id=campaign_twitter-data_product_byod" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_04.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">楽天回線<span class="txt-nl">対応製品</span></p>
+      </a>
+      <a href="<%= sitepath %>service/?l-id=campaign_twitter-data_service" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_05.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">オプション<span class="txt-nl">サービス</span></p>
+      </a>
+      <a href="<%= sitepath %>guide/point/?l-id=campaign_twitter-data_guide_point" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_06.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">おトクな<span class="txt-nl">楽天ポイント</span></p>
+      </a>
+      <a href="<%= sitepath %>service/rakuten-link/?l-id=campaign_twitter-data_service_rakuten-link" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_07.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">Rakuten Link<span class="txt-nl">アプリ</span></p>
+      </a>
+      <a href="<%= sitepath %>campaign/?l-id=campaign_twitter-data_campaign" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_08.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">キャンペーン<span class="txt-nl">一覧</span></p>
+      </a>
+      <a href="<%= sitepath %>product/sim/?l-id=campaign_twitter-data_product_sim" class="c-Card_Normal">
+          <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+            <img src="<%= sitepath %>assets/img/campaign/marathon/link_img_09.png?220107" alt="">
+          </div>
+          <p class="u-Adjust_Mt-16 c-Txt_Emp-01">SIMの使い方</p>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="l-System_Container u-Adjust_Mt-64">
+  <%- include('/include/_bnr-cpn-recommend-v2.ejs') %>
+</div>
+
+<div class="Container_bg u-Adjust_Pt-48 u-Adjust_Pb-48 u-Adjust_Mb-48">
+  <div class="l-System_Container <%= namespace %>-Layout_Campaign-rule">
+    <%- include('./_part-rule1984', { namespace }) %>
+  </div>
+</div>
+
+
+<footer class="g-Footer">
+  <div class="g-Footer_Aside u-Adjust_Mt-32">
+    <%- include('/include/footer/related/_related-news.ejs') %>
+    <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+  </div>
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot u-Adjust_Mt-16">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+  </div>
+  <%- include('/include/_footer') %>
+</footer>
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<% const pagetitle = "デュアルeSIM利用に関する設定方法" -%>
+<% const directories = [{path:"support/", label:"お客様サポート"}] -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: 'デュアルeSIMの開通方法と、開通後に1台のスマートフォンで2回線を使用するための、eSIMの各種設定方法をご案内します。',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const parentTiltle = "ご利用ガイド" -%>
+<% const nameSpace = "guide" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/<%= nameSpace %>/<%= nameSpace %>.css?20240424">
+<%- include('/include/guide/_guide-flow-inquiry-css') %>
+<%- include('/include/_append-head') %>
+</head>
+<body>
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+<%- include('/include/_header') %>
+
+<div class="c-Breadcrumbs_Head">
+  <ul>
+    <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+    <%_ if (typeof directories !== 'undefined') { _%>
+    <%_ let dirs = []; _%>
+    <%_ directories.forEach(function (dir) { _%>
+      <%_ if (dir.path !== "") { _%>
+        <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } else { _%>
+        <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+      <%_ } _%>
+    <%_ }) _%>
+    <%_ } _%>
+    <li aria-current="true"><%= pagetitle %></li>
+  </ul>
+</div>
+
+<div class="<%= nameSpace %>-Layout_Container">
+  <div class="l-System_Container">
+    <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+    <p class="u-Adjust_Mt-24">
+      デュアルeSIMの開通方法と、開通後に1台のスマートフォンで2回線を使用するための、eSIMの各種設定方法をご案内します。
+    </p>
+
+    <ul class="<%= nameSpace %>-Layout_Anchorlink">
+      <li><a href="#dual-esim01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>デュアルeSIMとは？</a></li>
+      <li><a href="#dual-esim02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>eSIMの開通方法</a></li>
+      <li><a href="#dual-esim03" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>eSIM開通後の設定方法</a></li>
+    </ul>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="dual-esim01">デュアルeSIMとは？</h2>
+<p class="u-Adjust_Mt-24">
+  デュアルeSIMとは、1台のスマートフォンに<span class="c-Txt_Emp-01">2つのeSIMを登録して2回線利用する</span>ことをいいます。<br>
+  詳細は、「<a href="<%= sitepath %>product/sim/esim/#anc01">eSIMとは</a>」と「<a href="<%= sitepath %>faq/detail/00001710/">SIM、デュアルSIM（DSSS、DSDS、DSDV、DSDA）とは</a>」をご確認ください。<br>
+<br>
+例）<br>
+主回線：eSIM（楽天回線）<br>
+副回線：eSIM（他社回線）<br>
+<br>
+※デュアルeSIM対応製品は以下になります。
+</p>
+<div class="u-Adjust_Mt-16">
+  <a href="<%= sitepath %>product/smartphone/rakuten-hand-5g/" class="c-Link_Txt-inline">Rakuten Hand 5G<span class="c-Icon_Chevron-right"></span></a>
+</div>
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="dual-esim02">eSIMの開通方法（楽天回線手続き）</h2>
+    <h4 class="c-Heading_Lv4 u-Adjust_Mt-32">デュアルeSIMご利用時の注意事項</h4>
+    <div class="c-Theme-Light u-Adjust_Mt-24">
+      <p class="c-Txt_Emp-02">デュアルeSIMをご利用いただくには、1回線目と2回線目のeSIMを、それぞれ異なる登録先へダウンロードをする必要があります。</p>
+      <p class="c-Txt_Cap u-Adjust_Mt-8">
+        ※既に利用しているeSIMの登録先がわからない方は、「<a href="<%= sitepath %>guide/dual-esim/registration/#howto-apply">eSIMの登録先の確認方法</a>」よりご確認ください。<br>
+        ※誤って2回線とも同じ登録先へダウンロードした場合、「<a href="<%= sitepath %>guide/dual-esim/registration/#howto-change">eSIMの登録先の変更方法</a>」よりeSIMの変更・再発行手続きを行ってください。
+      </p>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/accordion_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </div>
+    <p class=" u-Adjust_Mt-16">eSIMの開通方法について以下よりご確認ください。</p>
+    <div class="u-Adjust_Mt-16">
+      <div><a href="<%= sitepath %>product/smartphone/rakuten-hand-5g/support/setting/#step-3" class="c-Btn_Regular"><span>eSIM開通方法</span></a></div>
+    </div>
+
+
+    <h2 class="c-Heading_Lv2 u-Adjust_Mt-64" id="dual-esim03">eSIM開通後の設定方法</h2>
+    <ul class="<%= nameSpace %>-Layout_Anchorlink">
+      <li><a href="#esim01" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>eSIMの有効化／無効化</a></li>
+      <li><a href="#esim02" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>データ通信・通話発信・SMS送信使用時に利用するeSIMの設定</a></li>
+    </ul>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64" id="esim01">eSIMを有効／無効にする</h3>
+    <p class="u-Adjust_Mt-24">お手持ちの製品の設定画面上でeSIMを有効／無効にすることができます。</p>
+    <p class="c-Txt_Cap">※デフォルトの設定は、「有効」になっています。</p>
+
+        <ul class="u-Adjust_Mt-16 c-Flow">
+          <li>
+            <h4 class="c-Heading_Lv4">
+              1. ホーム画面の「設定」をタップする
+            </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/esim/esim_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+          </li>
+        <li>
+          <h4 class="c-Heading_Lv4">
+            2. 「ネットワークとインターネット」をタップする
+          </h4>
+          <div>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/esim/esim_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">
+            3. 「モバイルネットワーク」をタップする
+          </h4>
+          <div>
+            <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/esim/esim_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+          </div>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">
+            4. 有効化／無効化するeSIMをタップする
+          </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/esim/esim_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+        </li>
+        <li>
+          <h4 class="c-Heading_Lv4">
+            5. プロファイル情報ページが表示されるので、「SIMを使用」のスイッチでON／OFFを切り替える
+          </h4>
+            <div>
+              <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/esim/esim_5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+            </div>
+        </li>
+      </ul>
+      <p class="u-Adjust_Mt-24">以上でeSIMの有効化／無効化は完了です。</p>
+
+    <h3 class="c-Heading_Lv3 u-Adjust_Mt-64" id="esim02">データ通信・通話発信・SMS送信使用時に利用するeSIMを設定する</h3>
+
+    <p class="u-Adjust_Mt-24">どのeSIMの回線でデータ通信、通話、メッセージ（SMS）を利用するか設定できます。</p>
+    <p class="u-Adjust_Mt-8">iOSの場合は「<a href="https://support.apple.com/ja-jp/HT209044">eSIM でデュアル SIM を活用する</a>」をご確認ください。</p>
+    <p class="c-Txt_Cap u-Adjust_Mt-8">※設定するeSIMが「有効」になっているかご確認ください。</p>
+
+    <h4 class="c-Heading_Lv4 u-Adjust_Mt-32">Androidの場合</h4>
+    <div class="c-Tab js-Tab u-Adjust_Mt-24">
+  <ul class="c-Tab_Items" role="tablist">
+    <li class="c-Tab_Item" id="tab-menu1" role="tab" aria-selected="true" aria-controls="tab-content1">データ通信</li>
+    <li class="c-Tab_Item" id="tab-menu2" role="tab" aria-selected="false" aria-controls="tab-content2">通話</li>
+    <li class="c-Tab_Item" id="tab-menu3" role="tab" aria-selected="false" aria-controls="tab-content3">SMS</li>
+  </ul>
+  <div class="c-Tab_Panel" id="tab-content1" role="tabpanel" aria-hidden="false" aria-labelledby="tab-menu1">
+
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li>
+        <h4 class="c-Heading_Lv4">
+          1. ホーム画面の「設定」をタップする
+        </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        2. 「ネットワークとインターネット」をタップする
+      </h4>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        3. 「モバイルネットワーク」をタップする
+      </h4>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        4. 有効なSIMのうち設定したいものをタップする
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        5.「 データ通信の設定」をタップする
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_5.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        6. データ使用時に利用したいSIMを選択する
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_6.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        7. 選択したSIMが反映されていることを確認する
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_7.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+  </ul>
+  <p class="u-Adjust_Mt-24">
+    以上でデータ通信の回線設定は完了です。
+  </p>
+  </div>
+  <div class="c-Tab_Panel" id="tab-content2" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu2">
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li>
+        <h4 class="c-Heading_Lv4">
+          1. ホーム画面の「設定」をタップする
+        </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        2. 「ネットワークとインターネット」をタップする
+      </h4>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        3. 「モバイルネットワーク」をタップする
+      </h4>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        4. 有効なSIMのうち設定したいものをタップする
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_4.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+      5. 「 通話の設定」をタップする
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_5-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        6. 通話使用時に利用したいSIMを選択する
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_6-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        7. 選択したSIMが反映されていることを確認する
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_7-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+  </ul>
+  <p class="u-Adjust_Mt-24">
+    以上で通話の回線設定は完了です。
+  </p>
+  </div>
+  <div class="c-Tab_Panel" id="tab-content3" role="tabpanel" aria-hidden="true" aria-labelledby="tab-menu3">
+
+    <ul class="u-Adjust_Mt-16 c-Flow">
+      <li>
+        <h4 class="c-Heading_Lv4">
+          1. ホーム画面の「設定」をタップする
+        </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_1.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+      </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        2. 「ネットワークとインターネット」をタップする
+      </h4>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        3. 「モバイルネットワーク」をタップする
+      </h4>
+      <div>
+        <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+      </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        4. 有効なSIMのうち設定したいものをタップする
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/data_esim_4-2.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        5. 「 SMSの設定」をタップする
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_5-3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        6. SMS使用時に利用したいSIMを選択する
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_6-3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+    <li>
+      <h4 class="c-Heading_Lv4">
+        7. 選択したSIMが反映されていることを確認する
+      </h4>
+        <div>
+          <figure class="u-Adjust_Mt-24 u-Adjust_Align-center"><img src="<%= sitepath %>assets/img/guide/dual-esim/dual-esim/esim_7-3.png" width="300" height="" alt="" class="c-Img_Capture"></figure>
+        </div>
+    </li>
+  </ul>
+  <p class="u-Adjust_Mt-24">
+    以上でSMSの回線設定は完了です。
+  </p>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+<%- include('/include/guide/_review') %>
+
+<footer class="g-Footer">
+
+  <div class="g-Footer_Aside">
+
+    <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+    <%- include('/include/footer/related/_related-service-v2.ejs') %>
+
+  </div>
+
+  <%- include('/include/guide/_inquiry') %>
+
+  <div class="l-System_Container">
+    <div class="c-Breadcrumbs_Foot">
+      <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+    </div>
+  </div>
+
+  <%- include('/include/_footer') %>
+
+</footer>
+
+</div>
+<%- include('/include/_common-js') %>
+<script src="<%= sitepath %>assets/js/guide.detail.bundle.js?20240521"></script>
+<script src="<%= sitepath %>assets/js/guide.inquiry.bundle.js?20240521"></script>
+<%- include('/include/_append-body') %>
+</body>
+</html>

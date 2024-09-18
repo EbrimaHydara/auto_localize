@@ -1,0 +1,91 @@
+<% const pagetitle = "外部送信される情報の取り扱いについて" -%>
+<%-
+ include('/_header', {
+    pagetitle: pagetitle,
+    description: '楽天モバイルのサービスで使用している外部送信される情報の取り扱いをご案内します',
+    keywords: '',
+    noindex: false,
+    pathname: filepath
+  });
+%>
+<% const nameSpace = "optout" -%>
+
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/optout/optout.css?20240424">
+<%- include('/include/_append-head') %>
+</head>
+
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <%- include('/include/_breadcrumbs', {
+      type: 'head',
+      pagetitle,
+    }) %>
+
+    <div class="u-Adjust_Mt-24">
+      <div class="l-System_Container">
+        <h1 class="c-Heading_Lv1"><%= pagetitle %></h1>
+        <p class="u-Adjust_Mt-24">楽天モバイル株式会社（以下、「当社」といいます。）では、サービス向上のために外部のサービスよりお客様の閲覧情報などのデータを収集しております。外部サービスの一覧および、各サービスが収集するデータの詳細、利用目的について以下にお知らせいたします。</p>
+
+        <ul class="u-Adjust_Mt-24 <%= nameSpace %>-Layout_Anchor">
+          <li><a href="#rakuten-web" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>楽天モバイル Webサイトについての情報を見る</a></li>
+          <li><a href="#my-rakuten-mobile" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>My 楽天モバイルについての情報を見る</a></li>
+          <li><a href="#rakuten-hikari" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>楽天ひかりとその他Webサイトについての情報を見る</a></li>
+        </ul>
+
+        <h2 id="rakuten-web" class="c-Heading_Lv2 u-Adjust_Mt-56">楽天モバイル Webサイト</h2>
+        <div class="c-Table_Wrap-scroll u-Adjust_Mt-24">
+          <div class="js-Scrollable">
+            <table id="js-rakuten-web" class="c-Table_Container <%= nameSpace %>-Table">
+            </table>
+          </div>
+        </div>
+
+        <h2 id="my-rakuten-mobile" class="c-Heading_Lv2 u-Adjust_Mt-56">My 楽天モバイル</h2>
+        <div class="c-Table_Wrap-scroll u-Adjust_Mt-24">
+          <div class="js-Scrollable">
+            <table id="js-my-rakuten-mobile" class="c-Table_Container <%= nameSpace %>-Table">
+            </table>
+          </div>
+        </div>
+
+        <h2 id="rakuten-hikari" class="c-Heading_Lv2 u-Adjust_Mt-56">楽天ひかりとその他 Webサイト</h2>
+        <ul class="c-List_Text-disc u-Adjust_Mt-16">
+          <li><a href="<%= sitepath %>hikari/" class="c-Link_Txt-inline">楽天ひかり</a></li>
+          <li><a href="https://broadband.rakuten.co.jp/" target="_blank" class="c-Link_Txt-inline">楽天ブロードバンド<span class="c-Icon_New-window-l"></span></a></li>
+          <li><a href="https://denwa.rakuten.co.jp/" target="_blank" class="c-Link_Txt-inline">楽天でんわ<span class="c-Icon_New-window-l"></span></a></li>
+          <li><a href="https://ip-phone-smart.jp/" target="_blank" class="c-Link_Txt-inline">SMARTalk<span class="c-Icon_New-window-l"></span></a></li>
+          <li><a href="https://comm.rakuten.co.jp/mobile/houjin/business-call/" target="_blank" class="c-Link_Txt-inline">国内・国際電話サービス<span class="c-Icon_New-window-l"></span></a></li>
+          <li><a href="https://comm.rakuten.co.jp/mobile/kojin/kokunai/" target="_blank" class="c-Link_Txt-inline">国内電話サービス<span class="c-Icon_New-window-l"></span></a></li>
+      </ul>
+        <div class="c-Table_Wrap-scroll u-Adjust_Mt-24">
+          <div class="js-Scrollable">
+            <table id="js-rakuten-hikari" class="c-Table_Container <%= nameSpace %>-Table">
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="g-Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news-v2.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <%- include('/include/_breadcrumbs', {
+          type: 'foot',
+          pagetitle,
+        }) %>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/optout.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+</body>
+
+</html>

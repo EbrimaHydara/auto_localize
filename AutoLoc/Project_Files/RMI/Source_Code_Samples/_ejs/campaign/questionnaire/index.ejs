@@ -1,0 +1,285 @@
+<% const pagetitle = "楽天モバイルに関するアンケートに答えるだけで100ポイントもらえる！キャンペーン" -%>
+<% const directories = [{path:"campaign/", label:"キャンペーン・特典"}] -%>
+<% const namespace = "questionnaire" -%>
+<%-
+include('/_header', {
+  pagetitle: pagetitle,
+  directories: directories,
+  description: '楽天モバイルに関するアンケートに答えるだけで100ポイントもらえます。',
+  keywords: '',
+  noindex: false,
+  pathname: filepath
+});
+%>
+<%- include('/include/_common-css-v2') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/campaign/promotion/questionnaire/questionnaire.css?20240424">
+<!-- ReX Campaign Button: stylesheet -->
+<link rel="stylesheet" href="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/css/main.css?20240424" />
+<%- include('/include/_append-head') %>
+<script src="<%= sitepath %>assets/js/library/jquery-3.4.1.min.js"></script>
+<script defer="defer" src="https://r.r10s.jp/com/js/c/common/entry_button/1.0/entry_button-1.0.0.min.js"></script>
+<link rel="dns-prefetch" href="https://cdn.rex.contents.rakuten.co.jp">
+</head>
+<body>
+  <%- include('/include/_prepend-body') %>
+  <div class="l-System">
+    <%- include('/include/_header') %>
+    <div class="c-Breadcrumbs_Head">
+      <ul>
+        <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ if (typeof directories !== 'undefined') { _%>
+        <%_ let dirs = []; _%>
+        <%_ directories.forEach(function (dir) { _%>
+          <%_ if (dir.path !== "") { _%>
+            <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } else { _%>
+            <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+          <%_ } _%>
+        <%_ }) _%>
+        <%_ } _%>
+        <li aria-current="true"><%= pagetitle %></li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Layout-Label">
+      <ul class="c-Label_List <%= namespace %>-Layout-Label_List">
+        <li class="c-Label_Normal <%= namespace %>-Layout-Label_pink">ご契約者様限定</li>
+        <li class="c-Label_Normal <%= namespace %>-Layout-Label_pink">エントリー必要</li>
+      </ul>
+    </div>
+    <div class="<%= namespace %>-Hero_Return">
+      <div class="l-System_Container <%= namespace %>-Hero_Container">
+        <div class="<%= namespace %>-Hero_Main">
+          <h1><img src="<%= sitepath %>assets/img/campaign/questionnaire/img-heading-pc.png?210802" alt="楽天モバイル契約者様限定 アンケート回答でもれなく100円相当分ポイントプレゼント！" class="<%= namespace %>-Utility_Img-pc"><img src="<%= sitepath %>assets/img/campaign/questionnaire/img-heading-sp.png?210802" alt="楽天モバイル契約者様限定 アンケート回答でもれなく100円相当分ポイントプレゼント！" class="<%= namespace %>-Utility_Img-sp"></h1>
+        </div>
+      </div>
+    </div>
+    <div class="<%= namespace %>-Layout_Body">
+          <div class="l-System_Container">
+            <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-32 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは終了しました。</p>
+          <ul class="c-Txt_Cap">
+            <li><span>※</span>ポイントは付与日を含めて6カ月の期間限定ポイントとなります。</li>
+            <li class="c-Txt_Emp-02"><span>※</span>アンケート回答後のエントリーは特典付与の対象外となります。</li>
+            <li><span>※</span>付与するポイントには条件がございます。詳しくは<a href="#campaign-rule" class="js-scroll">キャンペーン詳細</a>をご確認ください。</li>
+          </ul>
+
+          <div class="l-System_Container <%= namespace %>-Layout-sec u-Adjust_Mt-24">
+            <div class="<%= namespace %>-Layout-sec_Period">
+              <dl>
+                <dt>エントリー＆キャンペーン期間</dt>
+                <dd>2021年8月2日（月）10:00 ～ 2021年8月31日（火）9:59</dd>
+              </dl>
+            </div>
+          </div>
+
+          <ul class="c-Link_List-horizontal-simple u-Adjust_Mt-40">
+            <li><a href="#campaign-rule" class="c-Link_Txt-icon-front js-scroll"><span class="c-Icon_Arrow-down-l"></span>キャンペーンルール</a></li>
+          </ul>
+        </div>
+
+        <div class="l-System_Container ">
+        <h2 class="c-Heading_Lv2 u-Adjust_Mt-48 u-Adjust_Align-center" id="campaign-flow">3ステップでポイントGET！</h2>
+          <ul class="<%= namespace %>-Flow_List">
+            <li>
+              <h3 class="c-Heading_Lv3 u-Adjust_Mt-8 u-Adjust_Mb-16"><span class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP1</span><br class="<%= namespace %>-Layout-Display_Sp">このページからエントリー</h3>
+              <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+                <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                  <img src="<%= sitepath %>assets/img/campaign/questionnaire/img-point-01.png?210802" alt="">
+                </div>
+                <div>
+                  <p>エントリー期間：2021年8月2日（月）10:00～2021年8月31日（火）9:59</p>
+                  <p class="c-Txt_Emp-02 c-Txt_Cap u-Adjust_Mt-8">※アンケート回答後のエントリーは特典付与の対象外となります。</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv3 u-Adjust_Mt-8 u-Adjust_Mb-16"><span class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP2</span><br class="<%= namespace %>-Layout-Display_Sp">アンケートに回答</h3>
+              <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+                <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                  <img src="<%= sitepath %>assets/img/campaign/questionnaire/img-point-02.png?210802" alt="">
+                </div>
+                <div>
+                  <p>アンケート回答期限：2021年8月31日（火）9:59まで</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <h3 class="c-Heading_Lv3 u-Adjust_Mt-8 u-Adjust_Mb-16"><span class="c-Txt_Emp-02 u-Adjust_Mr-16">STEP3</span><br class="<%= namespace %>-Layout-Display_Sp">楽天ポイント100ポイントGET！</h3>
+              <div class="l-Media_Grid <%= namespace %>-Flow_List-in">
+                <div class="l-Media_Image <%= namespace %>-Flow_List-img">
+                  <img src="<%= sitepath %>assets/img/campaign/questionnaire/img-point-03.png?210802" alt="">
+                </div>
+                <div class="c-Txt_Cap">
+                  <p>※特典ポイント付与は2021年10月末日ごろとなります。</p>
+                  <p>※付与日から6カ月間有効の期間限定ポイントとなります。</p>
+                  <p>※ポイント付与日までに1度でもメルマガ（楽天モバイルニュース）、またはSMSの購読を解除している場合、特典付与の対象外となります。</p>
+                  <p class="c-Txt_Emp-02">※特典はおひとり様1回のみ</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        <div class="u-Adjust_Mt-64">
+          <div class="<%= namespace %>-Layout_Rule" id="campaign-rule">
+            <h2>楽天モバイルに関するアンケートに答えるだけで100ポイントもらえる！キャンペーン　ルール</h2>
+            <p class="c-Txt_Normal-m c-Txt_Emp-02 u-Adjust_Mt-48 u-Adjust_Mb-48 u-Adjust_Align-center">本キャンペーンは終了しました。</p>
+            <div class="u-Adjust_Mt-24">
+              <dl class="c-Dl_Origin <%= namespace %>-campaign-Rule">
+                <div>
+                  <dt>キャンペーンコード</dt>
+                  <dd>
+                    <p>1266</p>
+                    <ul class="c-Txt_Cap u-Adjust_Mt-8">
+                      <li><span>※</span>本キャンペーンに関してお問い合わせの際は、上記「キャンペーンコード」をお伝えください。</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                    <dt>キャンペーン期間</dt>
+                    <dd>
+                      <p class="c-Txt_Emp-01">エントリー&キャンペーン期間</p>
+                      <p>2021年8月2日（月）10:00～2021年8月31日（火）9:59</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">【楽天モバイル未契約の場合】</p>
+                      <p class="c-Txt_Emp-01">プランのお申し込み期間</p>
+                      <p>[Web]：2021年8月2日（月）10:00～2021年8月31日（火）9:59<br>
+                        [店舗（楽天モバイルショップ）]：2021年8月2日（月）開店～2021年8月30日（月）閉店</p>
+                      <p class="c-Txt_Emp-01 u-Adjust_Mt-16">【キャンペーン開始時点で、すでにお申し込みが完了している場合】</p>
+                      <p class="c-Txt_Emp-01">プラン利用開始期限</p>
+                      <p>2021年8月31日（火）9:59まで</p>
+                    </dd>
+                </div>
+                <div>
+                  <dt>キャンペーン条件</dt>
+                  <dd>
+                    <p>上記各項目の期間内に【1】、【2】、【3】の条件をすべて満たした楽天会員の方</p>
+                    <p class="u-Adjust_Mt-8">【1】キャンペーンへのエントリー<br>
+                      エントリー期間内に本キャンペーンページでエントリー</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8">
+                      <li><span>※</span>エントリーと同時にメルマガ（楽天モバイルニュース）とSMSの購読登録が必要です。</li>
+                      <li><span>※</span>ポイント付与日までに1度でもメルマガ（楽天モバイルニュース）、またはSMSの購読を解除している場合、ポイント付与の対象になりません。</li>
+                    </ul>
+                    <p class="u-Adjust_Mt-8">【2】アンケートへの回答</p>
+                    <p class="u-Adjust_Mt-8">キャンペーン期間内に本キャンペーンページ上のアンケートへの回答</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8 u-Adjust_Ml-16">
+                      <li><span>※</span>エントリー前のアンケート回答は特典付与対象外となりますので、ご注意ください。</li>
+                      <li><span>※</span>アンケートへの回答は、お1人様1回までとなります。</li>
+                    </ul>
+
+                    <p class="u-Adjust_Mt-16">【3】楽天モバイル契約者である。または、キャンペーン期間中に「Rakuten UN-LIMIT VI」へ、下記（1）～（3）いずれかの方法にてお申し込み。キャンペーン開始時点で、すでにお申し込みが完了している場合は期限までにプラン利用開始。</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（1）新規お申し込み</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（2）他社からの乗り換え（MNP）でお申し込み</p>
+                    <p class="u-Adjust_Mt-8 u-Adjust_Ml-8">（3）楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）手続き後、お申し込み</p>
+                    <p class="u-Adjust_Mt-16">以下はキャンペーン開始時点で、すでにお申し込みが完了している場合</p>
+                    <p class="u-Adjust_Mt-8">期限までに「Rakuten UN-LIMIT VI」プラン利用開始</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li id="campaign-rule-plan">【プラン利用開始日とは】<br><br>
+                        <span class="<%= namespace %>-Table_Rule-bold">新規お申し込みの場合　※（1）（2）のいずれか早い方がプラン利用開始日となります。</span><br>
+                        （1）当社に配送完了データが通知された日<br>
+                        （2）プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                        <span class="<%= namespace %>-Table_Rule-bold">他社から乗り換え（MNP）の場合</span><br>
+                        プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日<br><br>
+                        <span class="<%= namespace %>-Table_Rule-bold">楽天モバイル（ドコモ回線・au回線）の料金プランからプラン変更（移行）した場合</span><br>
+                        プラン（SIMカード、eSIM）にて楽天回線またはパートナー回線の電波が利用できるようになった日</li>
+                    </ul>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-8 u-Adjust_Ml-16">
+                      <li><span>※</span>キャンペーン期間前にお申し込みが完了している場合、期間中のプラン利用開始が条件となります。</li>
+                      <li><span>※</span>楽天モバイル未契約の方は、エントリー後、アンケートへの回答の順序が満たされていれば、 「Rakuten UN-LIMIT VI」のお申し込みの順序については問いません。</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>キャンペーン特典 （楽天ポイント）</dt>
+                  <dt class="<%= namespace %>-campaign-Rule_Title-sub">特典内容</dt>
+                  <dd>
+                    <p>100ポイントプレゼント</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span>本特典の進呈はお1人様1回までとなります。</li>
+                    </ul>
+                  </dd>
+                  <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント付与日</dt>
+                  <dd>
+                    <p>2021年10月末日ごろに付与</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span>楽天ポイントの付与は、楽天モバイルより行います。</li>
+                      <li><span>※</span>権利の譲渡はできません。</li>
+                    </ul>
+                  </dd>
+                  <dt class="<%= namespace %>-campaign-Rule_Title-sub">ポイント有効期間</dt>
+                  <dd>
+                    <p>ポイント付与日を含めて6カ月</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span><a href="https://ichiba.faq.rakuten.net/detail/000006532" target="_blank">期間限定ポイントについて</a></li>
+                      <li><span>※</span>有効期限までにポイントをご利用いただいた場合でも、有効期限以降にキャンセルや金額修正などが生じた場合には返還されません。</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>特典適用対象外</dt>
+                  <dd>
+                    <p>以下の条件に当てはまる場合は、特典適用対象外となります</p>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap u-Adjust_Mt-16">
+                      <li><span>※</span>当社の提供するサービスなどの料金のお支払いが、お支払い期限までに行われず、未納・未払いが発生した場合</li>
+                      <li><span>※</span>ご契約者 本人／利用者確認の不備や、MNPの手続きの不備等により申し込みキャンセルとなった場合</li>
+                      <li><span>※</span>ポイント付与までに楽天会員から退会している場合</li>
+                      <li><span>※</span>当社または楽天グループ株式会社が定める規約などに違反した場合</li>
+                      <li><span>※</span>そのほか、当社が会員として不適格であると判断した場合</li>
+                      <li><span>※</span>ポイント付与日までに1度でもメルマガ（楽天モバイルニュース）、またはSMSの購読を解除している場合</li>
+                      <li><span>※</span>期間中に契約者変更（譲渡・承継）を受けた場合</li>
+                      <li><span>※</span>複数回線お持ちの方が、ある1回線で回答いただいている場合、その他回線での回答は対象外となります。</li>
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt>注意事項</dt>
+                  <dd>
+                    <ul class="c-List_Cap <%= namespace %>-Table_Rule-Cap">
+                      <li><span>※</span>本キャンペーンは予告なく内容の変更、中止もしくは延長させていただく場合があります。あらかじめご了承ください。</li>
+                      <li><span>※</span>本キャンペーンの特典付与対象者は、同時期に行われているほかのキャンペーンの対象から除外、または特典総額が景品表示法上の範囲内に制限される場合があります。</li>
+                      <li><span>※</span>メンテナンスなどにより、アンケートにご回答いただけない場合がございます。</li>
+                      <li><span>※</span>本キャンペーンの対象者以外への転送などの不正利用、不正転売などの違反が見つかった場合、キャンペーンを終了とさせていただく場合があります。</li>
+                      <li><span>※</span>記載の内容は2021年8月2日（月）時点の情報となります。</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+
+    <footer class="g-Footer">
+      <div class="g-Footer_Aside">
+        <%- include('/include/footer/related/_related-news.ejs') %>
+        <%- include('/include/footer/bnr/_bnr-news.ejs') %>
+      </div>
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+      <%- include('/include/_footer') %>
+    </footer>
+  </div>
+  <%- include('/include/_common-js') %>
+  <script src="<%= sitepath %>assets/js/info.bundle.js?20240521"></script>
+  <%- include('/include/_append-body') %>
+<!-- ReX Campaign Entry Button: Configuration -->
+<script>var rexButtons = [{"code":"/rmobile/questionnaire/210726","theme":"red","wide":false,"showCelebration":false,"alreadyAppliedText":"エントリー済み","below":{"checkboxText":"楽天モバイルニュースやお知らせなどをメール・SMSで受け取る","html":"※<a href=\"https://my.rakuten.co.jp/\">楽天会員情報</a>に<span class=\"c-Txt_Emp-01\">ご登録されているメールアドレスや電話番号</span>宛に、<span class=\"c-Txt_Emp-01\">楽天モバイル</span>より、会員限定のキャンペーン情報や楽天グループまたはその他企業のおトクな情報などが掲載された<span class=\"c-Txt_Emp-01\">メルマガ</span>や<span class=\"c-Txt_Emp-01\">SMS</span>をお送りいたします。<span class=\"c-Txt_Emp-01\">メルマガ・SMSの購読がキャンペーン応募条件となりますので、あらかじめご了承のうえご応募ください。</span>","isCheckboxMandatory":true,"isChecked":true},"ids":["rex-ceb-01","rex-ceb-02"]}]</script>
+
+<!-- ReX Campaign Entry Button: Script -->
+<script src="https://cdn.rex.contents.rakuten.co.jp/rex-ceb/4.0.0/static/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<% const pagetitle = "Rakuten Hand 5G" -%>
+<% const directory = "rakuten-hand-5g" -%>
+<% const directories = [{path:"product/", label:"製品"}, {path:"product/smartphone/", label:"Android"}] -%>
+<% const namespace = "product-Rakuten-hand-5g" -%>
+<% const theme = "Dark" -%>
+<%# const theme = "Light" -%>
+<% const customtheme = "Rakuten-1" -%>
+<% const point = 3000 -%>
+<%# const pointModel = 1000 -%>
+<%# price-detail.ejsファイルに変数の説明の記載があります -%>
+
+<%
+/* insert Modal /*
+/*
+  ストア遷移 → 'bundle'
+  在庫あり → 'stock'
+  在庫切れ → 'soldout'
+  入荷待ち → 'backorder'
+*/
+const bundleFlag = 'bundle';
+-%>
+
+<% const priceDetailConfig = {
+  bundleFlag: bundleFlag,
+  theme: 'Light',
+  price: 19001,
+  // priceBefore: ,
+  // pointBackPriceModel: pointModel,
+  pointBackPrice: point,
+  // pointModelText: `<span>製品購入で<span class="product-detail-Price_Pointback-num">${pointModel.toLocaleString()}</span>ポイント<sub>※1</sub></span>`,
+  pointBackTextA: ``,
+  // pointEntryText: `さらに、エントリー＆抽選で<span class="product-detail-Price_Pointback-num">2,000</span>ポイント<sub>※2</sub>`,
+  division24: 791,
+  // division24Before: ,
+  division48: 395,
+  // division48Before: ,
+  tradeinProductName: 'Rakuten BIG s',
+  optionPattern: 'one-option',
+  maxTradeinPrice: 8640,
+  lid: directory,
+  capacity: 128,
+  pointAppealBtnCapNo: 2,
+  carrier: '楽天モバイル',
+  realPrice: true,
+  realPriceBg: 'black',
+  discountPrice: 19000,
+  mnp: false,
+  trakingId: 'rakuten-hand-5g',
+  isDisableBuyBodyCaseSetBtn: true,
+}
+-%>
+<% const tradeinUrl = sitepath + "service/tradein/?l-id=product_" + directory + "_cpn_02" -%>
+<%-
+  include('/_header', {
+    pagetitle: pagetitle,
+    directories: directories,
+    description: "Rakuten Hand 5G（楽天モバイル）の特長・スペックなどをご確認いただけます。楽天モバイル対応Android製品。オンライン簡単手続きが便利！",
+    noindex: false,
+    pathname: filepath,
+    browseragent: true
+  });
+%>
+<%- include('/include/_common-css-v2') %>
+<%- include('/include/product/_category-css') %>
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/<%= directory %>/product-<%= directory %>.css?20240424">
+<link rel="stylesheet" href="<%= sitepath %>assets/css/product/smartphone/purchase-modal-drilldown.css?20240424">
+<%- include('/include/_append-head') %>
+<link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css?20240424">
+<link rel="stylesheet" href="/assets/css/product/product-history.css?20240424">
+</head>
+<body>
+<%
+const modalInfo = [
+  {
+    question: {
+      title: '色を選択',
+      warning: '購入する製品の色を選択してください。',
+      type: 'color',
+      value: 'color',
+      select: [
+        {
+          'id': 'black',
+          'name': 'ブラック',
+          'sub': '',
+          'color': '#222',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'white',
+          'name': 'ホワイト',
+          'sub': '',
+          'color': '#fff',
+          'checked': false,
+          'disabled': false,
+        },
+        {
+          'id': 'red',
+          'name': 'クリムゾンレッド',
+          'sub': '',
+          'color': '#BF0000',
+          'checked': false,
+          'disabled': false,
+        }
+      ],
+      upperinfo: ``,
+      lowerinfo: ``
+    },
+  },
+  {
+    question: {
+      title: 'SIMタイプ・プラン（Rakuten UN-LIMIT VI）を選択',
+      warning: 'プランを選択してください。',
+      type: 'radio',
+      value: 'plan',
+      select: [
+        {
+          'id': 'sim',
+          'name': 'eSIM＋プランで申し込む',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nosim',
+          'name': 'プランを申し込まない（製品のみ購入）',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: '',
+      lowerinfo: `
+        <p class="c-Txt_Cap">※製品のみ購入の場合、SIM購入（プラン選択）は不要です。</p>
+      `
+    }
+  },
+  {
+    question: {
+      title: 'ケースを購入',
+      warning: 'ケースを購入するか選択してください。',
+      type: 'radio',
+      value: 'case',
+      select: [
+        {
+          'id': 'note',
+          'name': '手帳型ケース：1,480円（税込）',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nocase',
+          'name': 'ケースを購入しない',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: '',
+      lowerinfo: `
+        <p class="c-Txt_Emp-02">※Rakuten Hand製品単体の販売は現在入荷待ちとなっており、手帳型ケースとのセット販売のみ行っております。</p>
+        <p class="c-Txt_Emp-02">※Rakuten Hand製品単体の販売は、3月中旬以降に再開予定です。</p>
+        <p class="c-Txt_Cap">※手帳型ケースはRakuten Handと同色のケースとなります。</p>
+      `
+    }
+  },
+  {
+    question: {
+      title: 'スマホ交換保証プラスを選択',
+      warning: 'スマホ交換保証プラスを選択してください。',
+      type: 'radio',
+      value: 'warranty',
+      select: [
+        {
+          'id': 'warranty',
+          'name': '申し込む：715円／月（税込）',
+          'sub': '',
+          'checked': true,
+          'disabled': false,
+          'soldout' : '',
+        },
+        {
+          'id': 'nowarranty',
+          'name': '申し込まない',
+          'sub': '',
+          'checked': false,
+          'disabled': false,
+          'soldout' : '',
+        },
+      ],
+      upperinfo: `
+        <p class="c-Txt_Emp-02">加入できるのは購入時のみ</p>
+        <p class="u-Adjust_Mt-8">楽天モバイルで購入したスマートフォンやモバイルルーターの故障・紛失時に、最短で当日<sub>※</sub>に新品同等の同一機種を交換品としてお届けします。</p>
+        <small>※対象地域：東京／神奈川／千葉／埼玉（12時までに受付の場合）</small>
+        <p>サービスの詳細は、こちらの<a href="/service/replacement-warranty-plus/">スマホ交換保証プラス</a>をご参照ください。</p>
+      `,
+      lowerinfo: ''
+    }
+  }
+]
+%>
+<%_ if (bundleFlag === 'stock') { _%>
+<script>
+const urlList = {
+  'black_sim_note_warranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9159546415165853175:1',
+  'black_sim_note_nowarranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9159546415165853175:0',
+  'black_sim_nocase_warranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9158806889865638191:1',
+  'black_sim_nocase_nowarranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9158806889865638191:0',
+  'black_nosim_note_warranty': '<%= onboardingpath2 %>referral_link?id_d=9159546415165853175:1',
+  'black_nosim_note_nowarranty': '<%= onboardingpath2 %>referral_link?id_d=9159546415165853175:0',
+  'black_nosim_nocase_warranty': '<%= onboardingpath2 %>referral_link?id_d=9158806889865638191:1',
+  'black_nosim_nocase_nowarranty': '<%= onboardingpath2 %>equipment-details?exid=327145&selectAvailable=true',
+  'white_sim_note_warranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9159546415165853200:1',
+  'white_sim_note_nowarranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9159546415165853200:0',
+  'white_sim_nocase_warranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9158806889865638221:1',
+  'white_sim_nocase_nowarranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9158806889865638221:0',
+  'white_nosim_note_warranty': '<%= onboardingpath2 %>referral_link?id_d=9159546415165853200:1',
+  'white_nosim_note_nowarranty': '<%= onboardingpath2 %>referral_link?id_d=9159546415165853200:0',
+  'white_nosim_nocase_warranty': '<%= onboardingpath2 %>referral_link?id_d=9158806889865638221:1',
+  'white_nosim_nocase_nowarranty': '<%= onboardingpath2 %>equipment-details?id=9158806889865638221',
+  'red_sim_note_warranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9159546415265853225:1',
+  'red_sim_note_nowarranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9159546415265853225:0',
+  'red_sim_nocase_warranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9158806889865638251:1',
+  'red_sim_nocase_nowarranty': '<%= onboardingpath2 %>referral_link?id=9158206969665397225:1&id_d=9158806889865638251:0',
+  'red_nosim_note_warranty': '<%= onboardingpath2 %>referral_link?id_d=9159546415265853225:1',
+  'red_nosim_note_nowarranty': '<%= onboardingpath2 %>referral_link?id_d=9159546415265853225:0',
+  'red_nosim_nocase_warranty': '<%= onboardingpath2 %>referral_link?id_d=9158806889865638251:1',
+  'red_nosim_nocase_nowarranty': '<%= onboardingpath2 %>equipment-details?id=9158806889865638251',
+}
+</script>
+<%- include('/include/product/_purchase-modal', { modalInfo: modalInfo }) %>
+<%_ } _%>
+
+<%- include('/include/_prepend-body') %>
+
+<div class="l-System">
+
+  <%- include('/include/_header') %>
+
+  <div class="c-Breadcrumbs_Head">
+    <ul>
+      <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+      <%_ if (typeof directories !== 'undefined') { _%>
+      <%_ let dirs = []; _%>
+      <%_ directories.forEach(function (dir) { _%>
+        <%_ if (dir.path !== "") { _%>
+          <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } else { _%>
+          <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+        <%_ } _%>
+      <%_ }) _%>
+      <%_ } _%>
+      <li aria-current="true"><%= pagetitle %></li>
+    </ul>
+  </div>
+
+  <div class="<%= namespace %>">
+    <nav id="nav" class="<%= namespace %>_Nav">
+      <div class="<%= namespace %>_Nav-wrap">
+        <svg width="180" height="32" viewbox="0 0 180 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_7794_7618)">
+          <path d="M18.3192 23.9811L14.0101 18.1153C13.6266 18.183 13.1754 18.2168 12.6565 18.2168H10.0733V23.9811H7.99207V7.99121H12.7016C14.5234 7.99121 15.9672 8.44806 17.0389 9.35613C18.1105 10.2642 18.6407 11.5163 18.6407 13.1012C18.6407 14.1221 18.4094 15.0076 17.9526 15.769C17.4901 16.5304 16.8358 17.117 15.9842 17.5344L20.8178 23.9754H18.3192V23.9811ZM16.5369 13.1068C16.5369 10.9692 15.2115 9.89758 12.555 9.89758H10.0733V16.3104H12.555C15.2115 16.3104 16.5369 15.2445 16.5369 13.1068Z" fill="white"/>
+          <path d="M32.1264 11.2003V23.9809H30.3948L30.1692 21.5726C29.7857 22.3735 29.2048 23.0164 28.4264 23.5015C27.6481 23.9866 26.7851 24.2291 25.832 24.2291C24.7772 24.2291 23.8241 23.9471 22.9724 23.3774C22.1207 22.8078 21.4496 22.0181 20.9532 21.0085C20.4625 19.999 20.2144 18.8596 20.2144 17.5906C20.2144 16.3216 20.4625 15.1823 20.9532 14.1727C21.4439 13.1631 22.1207 12.3735 22.9724 11.8038C23.8241 11.2342 24.7772 10.9521 25.832 10.9521C26.8021 10.9521 27.6706 11.189 28.4377 11.6684C29.2048 12.1422 29.7801 12.7908 30.1692 13.6087L30.3948 11.2003H32.1264ZM28.229 21.6854C28.8212 21.2962 29.2894 20.7435 29.6334 20.0328C29.9775 19.3221 30.1467 18.51 30.1467 17.5906C30.1467 16.6713 29.9775 15.8591 29.6334 15.1484C29.2894 14.4378 28.8212 13.885 28.229 13.4959C27.6368 13.101 26.9656 12.9093 26.2098 12.9093C25.4597 12.9093 24.7829 13.1067 24.1907 13.4959C23.5984 13.8907 23.1303 14.4378 22.7863 15.1484C22.4422 15.8591 22.273 16.6713 22.273 17.5906C22.273 18.51 22.4422 19.3221 22.7863 20.0328C23.1303 20.7435 23.5984 21.2962 24.1907 21.6854C24.7829 22.0802 25.4541 22.2719 26.2098 22.2719C26.9656 22.2776 27.6368 22.0802 28.229 21.6854Z" fill="white"/>
+          <path d="M42.4026 23.9812L36.3338 17.8391V23.9756H34.3315V6.18652H36.3338V16.6603L41.9232 11.2006H44.4274L38.2684 17.0889L45.0591 23.9812H42.4026Z" fill="white"/>
+          <path d="M56.2323 11.2002V23.9808H54.5008L54.2977 21.6514C53.8804 22.4354 53.3051 23.0614 52.5662 23.5296C51.833 23.9977 51.0377 24.229 50.1861 24.229C48.7817 24.229 47.6762 23.7383 46.864 22.7625C46.0518 21.7868 45.6514 20.388 45.6514 18.5662V11.2002H47.6536V18.4422C47.6536 19.6774 47.9187 20.6249 48.4545 21.2848C48.9903 21.9447 49.7236 22.2775 50.6598 22.2775C51.3141 22.2775 51.9063 22.0857 52.4534 21.7022C52.9949 21.3186 53.4291 20.7941 53.745 20.1342C54.0608 19.4743 54.2188 18.758 54.2188 17.9909V11.2002H56.2323Z" fill="white"/>
+          <path d="M66.5594 23.327C65.7416 23.9305 64.7489 24.2294 63.5758 24.2294C62.3237 24.2294 61.393 23.8741 60.7839 23.1634C60.1748 22.4528 59.8702 21.3698 59.8702 19.9203V13.0563H57.6423V11.2006H59.8702V7.89551H61.8725V11.2063H66.3338V13.0619H61.8725V19.8301C61.8725 21.4657 62.4985 22.2835 63.7506 22.2835C64.1342 22.2835 64.5008 22.2159 64.8392 22.0692C65.1832 21.9282 65.5611 21.697 65.9785 21.3811L66.5594 23.327Z" fill="white"/>
+          <path d="M78.5391 18.1149H69.3175C69.4021 19.5024 69.7969 20.5627 70.5075 21.296C71.2182 22.0292 72.1658 22.4014 73.3502 22.4014C74.1172 22.4014 74.8166 22.1984 75.4427 21.7979C76.0687 21.3975 76.6158 20.8391 77.084 20.1172L78.3868 21.5723C77.8172 22.3901 77.0896 23.05 76.2041 23.5407C75.3186 24.0314 74.3147 24.2796 73.1979 24.2796C71.9965 24.2796 70.9475 24.0032 70.0507 23.4505C69.1539 22.8978 68.4658 22.1194 67.9808 21.1098C67.4957 20.1002 67.2532 18.9327 67.2532 17.6129C67.2532 16.3101 67.4901 15.1482 67.9695 14.1273C68.4432 13.1064 69.1144 12.3168 69.9717 11.7472C70.829 11.1775 71.8161 10.8955 72.9159 10.8955C74.0157 10.8955 74.9915 11.1775 75.8375 11.7472C76.6835 12.3168 77.3434 13.1064 77.8172 14.1273C78.291 15.1482 78.5335 16.3101 78.5335 17.6129V18.1149H78.5391ZM70.5583 13.7438C69.9322 14.3868 69.5374 15.2836 69.3682 16.4398H76.4579C76.3056 15.2892 75.9165 14.3924 75.2904 13.7438C74.6643 13.1008 73.8747 12.7793 72.9215 12.7793C71.974 12.7793 71.1844 13.1008 70.5583 13.7438Z" fill="white"/>
+          <path d="M89.5769 12.4186C90.3891 13.3943 90.7952 14.7931 90.7952 16.6149V23.9809H88.7929V16.7107C88.7929 15.4925 88.5278 14.5506 87.992 13.8907C87.4562 13.2308 86.723 12.9036 85.7867 12.9036C85.0873 12.9036 84.4556 13.101 83.8973 13.4902C83.3389 13.885 82.9046 14.4039 82.5944 15.0582C82.2842 15.7068 82.1319 16.4175 82.1319 17.1902V23.9809H80.1296V11.2003H81.8612L82.0868 13.5805C82.5211 12.7626 83.102 12.1197 83.8296 11.6515C84.5572 11.1834 85.3693 10.9521 86.2718 10.9521C87.6592 10.9521 88.7647 11.4372 89.5769 12.4186Z" fill="white"/>
+          <path d="M97.1855 23.9811V7.99121H100.417V14.3815H107.011V7.99121H110.243V23.9811H107.011V17.3426H100.417V23.9811H97.1855Z" fill="white"/>
+          <path d="M117.603 24.2572C116.531 24.2572 115.567 23.9752 114.709 23.4168C113.847 22.8585 113.164 22.0745 112.656 21.0593C112.149 20.0497 111.895 18.8765 111.895 17.5398C111.895 16.2031 112.143 15.0299 112.645 14.0203C113.147 13.0107 113.83 12.2211 114.698 11.6515C115.567 11.0818 116.537 10.7998 117.603 10.7998C118.505 10.7998 119.317 11.0198 120.034 11.4653C120.75 11.9109 121.28 12.5031 121.613 13.2589L121.889 11.1044H124.568V23.9865H121.889L121.641 21.8827C121.292 22.599 120.756 23.1799 120.039 23.6142C119.317 24.0373 118.505 24.2572 117.603 24.2572ZM118.302 21.3751C119.222 21.3751 119.983 21.0198 120.581 20.3091C121.184 19.5984 121.483 18.6791 121.483 17.5398C121.483 16.4061 121.184 15.4755 120.581 14.7592C119.977 14.0429 119.222 13.6819 118.302 13.6819C117.366 13.6819 116.605 14.0429 116.007 14.7592C115.414 15.4755 115.116 16.4061 115.116 17.5398C115.116 18.6735 115.414 19.5984 116.007 20.3091C116.605 21.0198 117.366 21.3751 118.302 21.3751Z" fill="white"/>
+          <path d="M126.627 23.9811V11.099H129.306L129.554 13.2309C129.955 12.4808 130.513 11.8886 131.235 11.4543C131.952 11.02 132.752 10.8057 133.644 10.8057C135.031 10.8057 136.131 11.3133 136.937 12.3341C137.75 13.355 138.15 14.8045 138.15 16.694V23.9867H135.02V16.8914C135.02 15.8705 134.805 15.0922 134.382 14.5507C133.959 14.0093 133.367 13.7385 132.617 13.7385C131.765 13.7385 131.077 14.0826 130.547 14.7651C130.023 15.4532 129.757 16.2766 129.757 17.2467V23.9867H126.627V23.9811Z" fill="white"/>
+          <path d="M145.415 24.2576C144.343 24.2576 143.378 23.9756 142.51 23.4059C141.641 22.8363 140.959 22.0466 140.457 21.0371C139.955 20.0275 139.707 18.86 139.707 17.5402C139.707 16.2204 139.955 15.0529 140.446 14.0433C140.936 13.0337 141.602 12.2384 142.436 11.6631C143.271 11.0878 144.213 10.8002 145.268 10.8002C146.17 10.8002 146.966 11.0089 147.659 11.4262C148.353 11.8436 148.883 12.3963 149.25 13.0788V6.18652H152.38V23.9812H149.701L149.453 21.8774C149.086 22.6107 148.545 23.1916 147.823 23.6203C147.101 24.0433 146.3 24.2576 145.415 24.2576ZM146.114 21.3755C147.033 21.3755 147.795 21.0201 148.393 20.3095C148.996 19.5988 149.295 18.6795 149.295 17.5402C149.295 16.4065 148.996 15.4759 148.393 14.7596C147.789 14.0433 147.033 13.6823 146.114 13.6823C145.178 13.6823 144.416 14.0433 143.818 14.7596C143.226 15.4759 142.927 16.4065 142.927 17.5402C142.927 18.6738 143.226 19.5988 143.818 20.3095C144.416 21.0201 145.183 21.3755 146.114 21.3755Z" fill="white"/>
+          <path d="M170.355 7.7373H157.152C156.238 7.7373 155.499 8.47616 155.499 9.38987V22.5935C155.499 23.5072 156.238 24.246 157.152 24.246H170.355C171.269 24.246 172.008 23.5072 172.008 22.5935V9.38423C172.002 8.47616 171.263 7.7373 170.355 7.7373ZM162.38 18.6228C162.149 19.0063 161.827 19.3053 161.416 19.5196C161.004 19.7339 160.519 19.8411 159.972 19.8411C158.962 19.8411 158.122 19.5196 157.462 18.8823L158.06 17.6019C158.579 18.1942 159.165 18.4874 159.825 18.4874C160.237 18.4874 160.57 18.3746 160.812 18.1547C161.06 17.9347 161.179 17.6414 161.179 17.2692C161.179 16.9195 161.066 16.6375 160.84 16.4288C160.615 16.2201 160.316 16.1129 159.938 16.1129C159.408 16.1129 158.99 16.3442 158.675 16.7954L157.71 16.3047L157.964 12.3171H162.346V13.6651H159.171L159.052 15.4305C159.408 15.0639 159.882 14.8834 160.474 14.8834C160.914 14.8834 161.303 14.9849 161.641 15.188C161.974 15.391 162.239 15.673 162.431 16.0396C162.623 16.4006 162.719 16.818 162.719 17.2917C162.73 17.7881 162.611 18.2336 162.38 18.6228ZM169.842 18.7469C169.03 19.4801 168.094 19.8467 167.022 19.8467C166.334 19.8467 165.742 19.6944 165.24 19.3899C164.738 19.0853 164.349 18.651 164.078 18.087C163.801 17.523 163.666 16.8631 163.666 16.096C163.666 15.3233 163.801 14.6521 164.072 14.0768C164.343 13.5015 164.726 13.056 165.217 12.7401C165.713 12.4243 166.283 12.2664 166.932 12.2664C167.53 12.2664 168.065 12.3961 168.55 12.6612C169.03 12.9262 169.413 13.3041 169.695 13.8005L169.098 14.5224C168.607 13.6256 167.902 13.1801 166.977 13.1801C166.261 13.1801 165.691 13.4395 165.268 13.9584C164.845 14.4773 164.636 15.188 164.636 16.0904C164.636 16.9872 164.851 17.6865 165.279 18.1885C165.708 18.6961 166.3 18.9443 167.056 18.9443C167.783 18.9443 168.404 18.7356 168.923 18.3126V16.7503H166.994V15.9099H169.836V18.7469H169.842Z" fill="white"/>
+          </g>
+          <defs>
+          <clippath id="clip0_7794_7618">
+          <rect width="180" height="31.9741" fill="white"/>
+          </clippath>
+          </defs>
+          </svg>
+        <div class="<%= namespace %>_Nav-arrow"><span data-ratevent="click" data-ratparam="all" data-ratid="rakuten-hand-5g_navi-menu"></span></div>
+      </div>
+    </nav>
+
+    <div class="l-System_Container u-Adjust_My-24 u-Adjust_Align-center">
+      <p class="c-Txt_Emp-01 c-Txt_Normal-xl">Rakuten Hand 5Gは販売を終了いたしました。</p>
+      <div class="u-Adjust_Mt-24">
+        <a href="/product/smartphone/?l-id=end_product_smartphone" class="c-Btn_Regular-large"><span>販売中のAndroid製品を見る</span></a>
+      </div>
+    </div>
+
+    <div id="hero" class="<%= namespace %>-Hero">
+      <div class="<%= namespace %>-Hero_Container">
+        <h1 class="l-System_Container">
+          <picture>
+            <source media="(max-width: 768px)" srcset="<%= sitepath %>assets/img/product/rakuten-hand-5g/hero-sp-230802.png">
+            <img src="<%= sitepath %>assets/img/product/rakuten-hand-5g/hero-pc-230802.png" width="1061" height="673" alt="手にしたくなる5G Rakuten Hand 5G">
+          </picture>
+          <p class="<%= namespace %>-Hero_Cap c-Txt_Cap">※5G利用は<br class="<%= namespace %>-Util_Sp-m">一部エリアのみ</p>
+        </h1>
+      </div>
+    </div>
+
+
+    <div class="l-System_Container">
+    <div id="sectionOther" class="product-detail-Layout_Other">
+
+        <%- include('/include/product/_compensation') %>
+
+        <section>
+          <div class="product-detail-Layout_Section">
+            <h2 class="c-Heading_Lv2">仕様</h2>
+
+            <div class="<%= namespace %>-Device">
+              <div class="u-Adjust_Mt-32"><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-devicelist-02.png" alt=""></div>
+              <div><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-devicelist-01.png" alt=""></div>
+              <div><img src="<%= sitepath %>assets/img/product/<%= directory %>/pht-devicelist-00.png" alt=""></div>
+            </div>
+
+            <div class="product-detail-Spec">
+              <ul class="product-detail-Spec_<%= theme %>">
+                <li aria-current="true"><span class="c-Icon_Product-waterproof"></span>防水</li>
+                <li aria-current="true"><span class="c-Icon_Product-price-yen"></span>FeliCa</li>
+                <li aria-current="true"><span class="c-Icon_Product-hi-res"></span>ハイレゾ<br>オーディオ</li>
+                <li aria-current="true"><span class="c-Icon_Product-faceid"></span>顔認証</li>
+                <li aria-current="true"><span class="c-Icon_Product-finger"></span>指紋認証</li>
+                <li aria-current="false"><span class="c-Icon_Product-charger"></span>ワイヤレス<br>充電</li>
+                <li aria-current="true"><span class="c-Icon_Product-connection"></span>高速通信</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="product-detail-Layout_Section" id="spec">
+          <h2 class="c-Heading_Lv2" data-ratid="rakuten-hand-5g_scroll-10_spec" data-ratevent="appear">スペック</h2>
+          <dl class="c-Dl">
+            <div>
+              <dt>製品名</dt>
+              <dd>
+                Rakuten Hand 5G
+              </dd>
+            </div>
+            <div>
+              <dt>色</dt>
+              <dd>
+                クリムゾンレッド / ブラック / ホワイト
+              </dd>
+            </div>
+            <div>
+              <dt>サイズ(高さ/幅/厚さ)</dt>
+              <dd>
+                約138 x 約63 x 約9.5 (mm)
+              </dd>
+            </div>
+            <div>
+              <dt>重量</dt>
+              <dd>
+                約134g
+              </dd>
+            </div>
+            <div>
+              <dt>ディスプレイ</dt>
+              <dd>
+                <p>サイズ / 種類</p>
+                約5.1インチ / AMOLED
+                <p class="u-Adjust_Mt-16">解像度</p>
+                HD+ / 1,520 × 720
+              </dd>
+            </div>
+            <div>
+              <dt>連続待受時間（LTE）</dt>
+              <dd>
+                約343時間
+              </dd>
+            </div>
+            <div>
+              <dt>連続通話（通信）時間（LTE）</dt>
+              <dd>
+                約26.6時間
+              </dd>
+            </div>
+            <div>
+              <dt>CPU</dt>
+              <dd>
+                Qualcomm® Snapdragon™ 480 / オクタコア 2.2GHz + 2.0GHz + 1.9GHz + 1.8GHz
+              </dd>
+            </div>
+            <div>
+              <dt>OS</dt>
+              <dd>
+                Android™ 11
+              </dd>
+            </div>
+            <div>
+              <dt>内蔵メモリ（RAM / ROM）</dt>
+              <dd>
+                4GB (RAM) / 128GB (ROM)
+              </dd>
+            </div>
+            <div>
+              <dt>メインカメラ（外側）</dt>
+              <dd>
+                約6,400万画素 + 約200万画素 (深度測位)
+              </dd>
+            </div>
+            <div>
+              <dt>フロントカメラ（内側）</dt>
+              <dd>
+                約1,600万画素
+              </dd>
+            </div>
+            <div>
+              <dt>バッテリー容量<span class="c-Txt_Cap">※1</span></dt>
+              <dd>
+                2,630mAh
+              </dd>
+            </div>
+            <div>
+              <dt>ワイヤレス充電</dt>
+              <dd>
+                非対応
+              </dd>
+            </div>
+            <div>
+              <dt>おサイフケータイ / NFC</dt>
+              <dd>
+                対応/対応
+              </dd>
+            </div>
+            <div>
+              <dt>防水 / 防塵</dt>
+              <dd>
+                対応 (IPX8<span class="c-Txt_Cap">※2</span> / IP6X<span class="c-Txt_Cap">※3</span>)
+              </dd>
+            </div>
+            <div>
+              <dt>生体認証（指紋 / 顔）</dt>
+              <dd>
+                対応/対応
+              </dd>
+            </div>
+            <div>
+              <dt>Wi-Fi規格</dt>
+              <dd>
+                IEEE802.11 a/b/g/n/ac
+              </dd>
+            </div>
+            <div>
+              <dt>テザリング（Wi-Fi）</dt>
+              <dd>
+                10台
+              </dd>
+            </div>
+            <div>
+              <dt>SIMタイプ</dt>
+              <dd>
+                eSIM<br>
+                （デュアルSIMでのご利用は、eSIM x 2 でご利用可能です）
+              </dd>
+            </div>
+            <div>
+              <dt>付属品</dt>
+              <dd>
+                USB Type-C ケーブルx1 / 3.5mmイヤホン変換アダプターx1 / クイックスタートガイド （保証書） / 安全上のご注意
+              </dd>
+            </div>
+          </dl>
+          <ul class="c-Txt_Cap u-Adjust_Mt-24">
+            <li>※ Rakuten Hand 5Gの開通手続きにはWi-Fi環境が必要になります。</li>
+            <li>※1 実際に使用できるバッテリー容量は多少異なる可能性があります。</li>
+            <li>※2 IPX8とは、常温で水道水、かつ静水の水深1.5mのところに携帯電話を静かに沈め、約30分間放置後に取り出したときに通信機器としての機能を有することを意味します。</li>
+            <li>※3 IP6Xとは、保護度合いを指し、直径75μm以下の塵埃（じんあい）が入った装置に携帯電話を8時間入れてかくはんさせ、取り出したときに内部に塵埃が侵入しない機能を有することを意味します。</li>
+          </ul>
+          <p class="u-Adjust_Mt-16"><a href="<%= sitepath %>product/smartphone/<%= directory %>/spec.html?l-id=product_rakuten-hand-5g_spec_rakuten-hand-5g" class="c-Link_Txt-inline">スペック詳細を見る<span class="c-Icon_Chevron-right"></span></a></p>
+        </section>
+
+        <section class="product-detail-Layout_Section">
+          <h2 class="c-Heading_Lv2">設定・サポート</h2>
+          <p class="u-Adjust_Mt-16">初期設定方法や、サポート情報をご確認いただけます。</p>
+          <div class="u-Adjust_Mt-24">
+            <a href="<%= sitepath %>product/smartphone/<%= directory %>/support/?l-id=product_rakuten-hand-5g_support" class="c-Btn_Regular">Rakuten Hand 5Gサポート情報を見る</a>
+          </div>
+          <p class="u-Adjust_Mt-24"><a href="<%= sitepath %>product/smartphone/<%= directory %>/support/setting/?l-id=product_rakuten-hand-5g_support_setting" class="c-Link_Txt-inline">初期設定方法を見る<span class="c-Icon_Chevron-right"></span></a></p>
+          <p class="u-Adjust_Mt-24">
+            <a href="<%= sitepath %>assets/pdf/product/Rakuten-Hand-5g-manual.pdf" class="c-Link_Txt-inline" data-ratevent="click" data-ratparam="all" data-ratid="rakuten-hand-5g_manual">
+              取扱説明書を見る<span class="c-Icon_Pdf-l"></span>
+            </a>
+          </p>
+          <p class="u-Adjust_Mt-24">
+            <a href="<%= sitepath %>assets/pdf/product/Rakuten-Hand-5G-safety-cautions.pdf" class="c-Link_Txt-inline" data-ratevent="click" data-ratparam="all" data-ratid="rakuten-hand-5g_safety-cautions">
+              安全上のご注意を見る<span class="c-Icon_Pdf-l"></span>
+            </a>
+          </p>
+          <%#
+          <p class="u-Adjust_Mt-24">
+            <a href="<##################################%= sitepath %########################>assets/pdf/product/******************.pdf" class="c-Link_Txt-inline">
+              クイックスタートガイドを見る<span class="c-Icon_Pdf-l"></span>
+            </a>
+          </p>
+          _%>
+        </section>
+
+        <div id="previously-seen"></div>
+
+      </div>
+    </div>
+
+    <div class="u-Adjust_Mt-40">
+      <%- include('/include/product/_support') %>
+    </div>
+
+    <footer class="g-Footer">
+
+      <div class="g-Footer_Aside">
+
+        <%- include('/include/footer/related/_related-product-v2.ejs') %>
+
+        <%- include('/include/footer/bnr/_bnr.ejs') %>
+
+      </div>
+
+      <div class="l-System_Container">
+        <div class="c-Breadcrumbs_Foot">
+          <ul>
+            <li><a href="<%= rootpath %>"><%= sitetitle %></a><span class="c-Icon_Chevron-right"></span></li>
+            <%_ if (typeof directories !== 'undefined') { _%>
+            <%_ let dirs = []; _%>
+            <%_ directories.forEach(function (dir) { _%>
+              <%_ if (dir.path !== "") { _%>
+                <li><a href="<%= sitepath %><%= dir.path %>"><%= dir.label %></a><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } else { _%>
+                <li><%= dir.label %><span class="c-Icon_Chevron-right"></span></li>
+              <%_ } _%>
+            <%_ }) _%>
+            <%_ } _%>
+            <li aria-current="true"><%= pagetitle %></li>
+          </ul>
+        </div>
+      </div>
+
+      <%- include('/include/_footer') %>
+
+    </footer>
+  </div>
+</div>
+<%- include('/include/_common-js') %>
+<%- include('/include/product/_category-js') %>
+<script src="<%= sitepath %>assets/js/product.purchase-modal.bundle.js?20240521"></script>
+<%- include('/include/product/_history-js') %>
+<%- include('/include/_append-body') %>
+</body>
+</html>
