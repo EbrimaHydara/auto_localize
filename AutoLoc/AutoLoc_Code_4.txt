@@ -1,3 +1,7 @@
+Read this file as a continuation from 'AutoLoc_Code_3.txt' file's content.
+
+15. l10n_manager.py: in `managers` module:
+
 # l10n_manager.py
 
 from PySide6.QtCore import QObject, Signal
@@ -238,4 +242,159 @@ class L10nManager(QObject):
             self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_java_files: {str(e)}")
+
+
+
+
+
+16. localizers.web_localizers.web_app_file_localizer.py:
+
+# web_app_file_localizer.py
+
+import os
+import json
+from pathlib import Path
+from PySide6.QtCore import QObject, Signal
+from setting_manager import SettingManager
+from source_code_manager import SourceCodeManager
+from error_manager import (
+    InitializationError,
+    InvalidUserInputError,
+    ResourceFileError,
+)
+
+class WebAppFileLocalizer(QObject):
+    """
+    The WebAppFileLocalizer class serves as the base class for all web app file type localizer classes.
+    It manages common functionalities such as progress tracking, key generation, and saving extracted strings to resource files.
+    """
+
+    # Signal to indicate the progress of file localization
+    localization_progress_signal = Signal(int)  # emits the percentage of files localized
+
+    def __init__(self, source_code_id):
+        super().__init__()
+        try:
+            # Initialize necessary managers
+            self.setting_manager = SettingManager()
+            self.source_code_manager = SourceCodeManager(source_code_id)
+            
+            # Get source code information
+            self.source_code = self.source_code_manager.get_source_code(source_code_id)
+            self.source_locale = self.source_code['source_locale']
+            self.app_settings = self.setting_manager.get_app_settings()
+
+            # Initialize paths
+            self.locales_path = Path(self.source_code['localized_source_code_path']) / "locales"
+
+            # Ensure the locales directory exists
+            self.locales_path.mkdir(parents=True, exist_ok=True)
+            
+            # Get target locales for the source code
+            self.target_locales = self.setting_manager.get_target_locales(source_code_id)
+        except (InitializationError, InvalidUserInputError) as e:
+            raise InitializationError(f"WebAppFileLocalizer Initialization Error: {str(e)}")
+
+    def get_work_progress(self, files):
+        """
+        Calculates the work progress based on the number of files completed.
+
+        :param files: List of files to be localized
+        :return: Percentage of work completed
+        """
+        try:
+            total_files = len(files)
+            completed_files = sum(1 for file in files if self.is_file_localized(file))
+            progress_percentage = int((completed_files / total_files) * 100) if total_files > 0 else 0
+            return progress_percentage
+        except Exception as e:
+            raise InvalidUserInputError(f"WebAppFileLocalizer Error in get_work_progress: {str(e)}")
+
+    def generate_key(self, file_path):
+        """
+        Generates a unique string identifier key for the extracted strings.
+
+        :param file_path: The path of the file being processed
+        :return: A unique key string
+        """
+        try:
+            namespace_prefix = f"{file_path}:" if self.app_settings.get('use_key_namespace', False) else ""
+            existing_keys = self._get_existing_keys(file_path)
+            new_key_index = len(existing_keys) + 1
+            return f"{namespace_prefix}str_{new_key_index}"
+        except Exception as e:
+            raise InvalidUserInputError(f"WebAppFileLocalizer Error in generate_key: {str(e)}")
+
+    def save_resource_files(self, data, file_path):
+        """
+        Saves the extracted strings in JSON format for both source and target locales.
+
+        :param data: The JSON data to save
+        :param file_path: The path to the file being processed
+        """
+        try:
+            # Remove extension from file path and create corresponding JSON file path
+            json_file_name = Path(file_path).with_suffix('.json').as_posix()
+
+            # Save data for source locale
+            source_locale_path = self.locales_path / self.source_locale / json_file_name
+            self._write_json_file(data, source_locale_path)
+
+            # Save data for each target locale
+            for locale in self.target_locales:
+                locale_path = self.locales_path / locale['code'] / json_file_name
+                self._write_json_file(data, locale_path)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in save_resource_files: {str(e)}")
+
+    def is_file_localized(self, file):
+        """
+        Checks if the file has already been localized by verifying the existence of its resource files.
+
+        :param file: The file path being checked
+        :return: Boolean indicating if the file is localized
+        """
+        try:
+            json_file_name = Path(file).with_suffix('.json').as_posix()
+            source_locale_file = self.locales_path / self.source_locale / json_file_name
+            return source_locale_file.exists()
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in is_file_localized: {str(e)}")
+
+    def _get_existing_keys(self, file_path):
+        """
+        Retrieves existing keys from the JSON resource file for the given file path.
+
+        :param file_path: The path of the file being processed
+        :return: A set of existing keys in the resource file
+        """
+        try:
+            json_file_name = Path(file_path).with_suffix('.json').as_posix()
+            source_locale_path = self.locales_path / self.source_locale / json_file_name
+
+            if source_locale_path.exists():
+                with open(source_locale_path, 'r', encoding='utf-8') as json_file:
+                    data = json.load(json_file)
+                    return set(data.keys())
+            return set()
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in _get_existing_keys: {str(e)}")
+
+    def _write_json_file(self, data, file_path):
+        """
+        Writes JSON data to the specified file path, ensuring the directory exists.
+
+        :param data: The JSON data to write
+        :param file_path: The path to the JSON file
+        """
+        try:
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(file_path, 'w', encoding='utf-8') as json_file:
+                json.dump(data, json_file, ensure_ascii=False, indent=4)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in _write_json_file: {str(e)}")
+
+
+
+17. localizers.web_localizers.web_app_html_file_localizer.py:
 
