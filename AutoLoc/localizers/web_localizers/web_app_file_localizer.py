@@ -18,9 +18,6 @@ class WebAppFileLocalizer(QObject):
     It manages common functionalities such as progress tracking, key generation, and saving extracted strings to resource files.
     """
 
-    # Signal to indicate the progress of file localization
-    localization_progress_signal = Signal(int)  # emits the percentage of files localized
-
     def __init__(self, source_code_id):
         super().__init__()
         try:
@@ -44,21 +41,6 @@ class WebAppFileLocalizer(QObject):
         except (InitializationError, InvalidUserInputError) as e:
             raise InitializationError(f"WebAppFileLocalizer Initialization Error: {str(e)}")
 
-    def get_work_progress(self, files):
-        """
-        Calculates the work progress based on the number of files completed.
-
-        :param files: List of files to be localized
-        :return: Percentage of work completed
-        """
-        try:
-            total_files = len(files)
-            completed_files = sum(1 for file in files if self.is_file_localized(file))
-            progress_percentage = int((completed_files / total_files) * 100) if total_files > 0 else 0
-            return progress_percentage
-        except Exception as e:
-            raise InvalidUserInputError(f"WebAppFileLocalizer Error in get_work_progress: {str(e)}")
-
     def generate_key(self, file_path):
         """
         Generates a unique string identifier key for the extracted strings.
@@ -67,7 +49,8 @@ class WebAppFileLocalizer(QObject):
         :return: A unique key string
         """
         try:
-            namespace_prefix = f"{file_path}:" if self.app_settings.get('use_key_namespace', False) else ""
+            # Remove the file extension from the file path
+            namespace_prefix = f"{Path(file_path).stem}:" if self.app_settings.get('use_key_namespace', False) else ""
             existing_keys = self._get_existing_keys(file_path)
             new_key_index = len(existing_keys) + 1
             return f"{namespace_prefix}str_{new_key_index}"
@@ -95,20 +78,6 @@ class WebAppFileLocalizer(QObject):
                 self._write_json_file(data, locale_path)
         except Exception as e:
             raise ResourceFileError(f"WebAppFileLocalizer Error in save_resource_files: {str(e)}")
-
-    def is_file_localized(self, file):
-        """
-        Checks if the file has already been localized by verifying the existence of its resource files.
-
-        :param file: The file path being checked
-        :return: Boolean indicating if the file is localized
-        """
-        try:
-            json_file_name = Path(file).with_suffix('.json').as_posix()
-            source_locale_file = self.locales_path / self.source_locale / json_file_name
-            return source_locale_file.exists()
-        except Exception as e:
-            raise ResourceFileError(f"WebAppFileLocalizer Error in is_file_localized: {str(e)}")
 
     def _get_existing_keys(self, file_path):
         """

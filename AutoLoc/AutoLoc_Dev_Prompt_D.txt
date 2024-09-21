@@ -1,127 +1,3 @@
-    Please continue the AutoLoc app development based on the context you have obtained from reading the above attached files.
-    
-    
-    - PROMPT:
-    Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
-    Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-    If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class:
-
-    
-    - L10nManager class:
-        - The L10nManager defines and executes all localization management procedures of the app. 
-        - It takes source_code_id argument at initialization.
-        - It imports and uses the SourceCodeManager class to get the source code's code_type attribute value.
-        - It imports and uses the SettingManager class to get the active file_types, having is_active = True and where code_type = self.source_code_type. 
-        - It imports and uses the classes in the following modules:
-            - localizers.web_localizers:
-                - classes:
-                    - web_app_html_file_localizer.py 
-                        - WebAppHTMLFileLocalizer: class
-                    - web_app_js_file_localizer.py 
-                        - WebAppJSFileLocalizer: class 
-                    - web_app_ejs_file_localizer.py
-                        - WebAppEJSFileLocalizer: class 
-                    - web_app_jsx_file_localizer.py
-                        - WebAppJSXFileLocalizer: class 
-                    - web_app_ts_file_localizer.py 
-                        - WebAppTSFileLocalizer: class 
-                    - web_app_tsx_file_localizer.py 
-                        - WebAppTSXFileLocalizer: class
-                    - web_app_vue_file_localizer.py 
-                        - WebAppVueFileLocalizer: class 
-                    - web_app_json_file_localizer.py 
-                        - WebAppJSONFileLocalizer: class 
-                    - web_app_csv_file_localizer.py 
-                        - WebAppCSVFileLocalizer: class
-
-            - localizers.android_localizers
-                - classes:
-                    - android_app_xml_file_localizer.py 
-                        - AndroidAppXMLFileLocalizer: class
-                    - android_app_java_file_localizer.py 
-                        - AndroidAppJavaFileLocalizer: class 
-                    - android_app_kotlin_file_localizer.py 
-                        - AndroidAppKotlinFileLocalizer: class 
-
-            - localizers.ios_localizers
-                - classes:
-                    - ios_app_swift_file_localizer.py 
-                        - IOSAppSwiftFileLocalizer: class 
-                    - ios_app_objc_m_file_localizer.py 
-                        - IOSAppObjcMFileLocalizer: class 
-                    - ios_app_objc_h_file_localizer.py 
-                        - IOSAppObjcHFileLocalizer: class 
-                    - ios_app_strings_file_localizer.py 
-                        - IOSAppStringsFileLocalizer: class
-                    - ios_app_storyboard_file_localizer.py 
-                        - IOSAppStoryboardFileLocalizer: class
-                    - ios_app_xib_file_localizer.py 
-                        - IOSAppXIBFileLocalizer: class
-                    - ios_app_plist_file_localizer.py 
-                        - IOSAppPListFileLocalizer: class
-
-            - localizers.java_localizers
-                - classes:
-                    - java_app_xhtml_file_localizer.py
-                        - JavaAppXHTMLFileLocalizer: class 
-                    - java_app_xml_file_localizer.py
-                        - JavaAppXMLFileLocalizer: class 
-                    - java_app_java_file_localizer.py
-                        - JavaAppJavaFileLocalizer: class 
-                    - java_app_properties_file_localizer.py
-                        - JavaAppPropertiesFileLocalizer: class 
-        
-        - It sends PySide6 Signals for the progress of files that have been completed by the localizer class to the L10nWidget class. The L10nWidget class displays a separate QProgressBar for each localizer class's progress. 
-        - It defines self.source_code = SourceCodeManager's get_source_code(source_code_id) at initialization.
-        - It defines self.source_code_type = source_code.code_type at initialization using source_code_id argument of the __init__ function. 
-        - It defines self.active_file_types = self.get_active_file_types() at initialization. 
-        - It defines the files dictionary, self.files = self. get_files() at initialization.
-        - It defines self.accepted_source_code_types = ["Web App", "Android App", "iOS App", "Java App"]
-        - It defines and executes the following functions and functionalities:
-            
-            - get_active_file_types() function that gets and returns a list of file extensions of the file_types from the SettingManager that have is_active = True. It returns an empty list if no file_type is active. 
-
-            - get_files() function that gets and returns a dictionary of lists of files whose extensions are in the returned list of get_active_file_types() function. The dictionary returned by this function should be in the format: {'extension': [files], 'extension': [files]}. This function may make use of get_files_by_extension() function to populate the dictionary. It returns an empty dictionary if get_active_file_types() is empty or if no extension has corresponding files list. 
-
-            - get_files_by_extension(extension) function that gets and returns all files in a list from the source_code.get_localized_source_code_path(). The files returned must not include the source_code.localized_source_code_path in their paths. Their paths should start from within the localized_source_code_path's folder level. The function returns an empty list if no files found. 
-
-            - localize_source_code() function that checks if the self.source_code_type is equal to "Web App", "Android App", "iOS App", or "Java App" to call the appropriate funtion based on the value of the self.source_code_type attribute. For example: 
-                - if the value is "Web App", it calls the localize_web_files() function
-                - if the value is "Android App", it calls the localize_android_files() function
-                - if the value is "iOS App", it calls the localize_ios_files() function
-                - if the value is "Java App", it calls the localize_java_files() function
-                - if the value is not the accepted_source_code_types list, it raises an exception.
-            
-            - localize_web_files() function that checks if an extension's list of files in the self.files dictionary is not empty, and then intializes and calls the corresponding localizer class to parse to it the non-empty files list to localize. Otherwise, if the files list is empty the function should not intialize and call the corresponding localizer class. It should just silently jump that extension affected. 
-            For example:
-                - if the self.files dictionary is empty or has no extension with non-empty files list, this function raises an exception.
-                - if the extension is ".html" and its files list is not empty, it initializes the WebAppHTMLFileLocalizer(source_code_id) and calls its localize_files(files) function by parsing the files list corresponding to the ".html" to it. 
-                - if the extension is ".js" and its files list is not empty, it initializes the WebAppJSFileLocalizer(source_code_id) and calls its localize_files(files) function by parsing the files list corresponding to the ".js" to it.
-                - if the extension is ".ejs" and its files list is not empty, it initializes the WebAppEJSFileLocalizer(source_code_id) and calls its localize_files(files) function by parsing the files list corresponding to the ".ejs" to it.
-                Use the above if-statements for ".jsx, .ts, .tsx, .vue, .json, and .csv" file types initializing their corresponding classes: WebAppJSXFileLocalizer, WebAppTSFileLocalizer, WebAppTSXFileLocalizer, WebAppVUEFileLocalizer, WebAppJSONFileLocalizer, and WebAppCSVFileLocalizer respectively.
-                The above is the approach for all the extensions in the dictionary whose files lists are not empty. 
-                If this function runs and completes without any error/exception, then it should update the source_code.status to "Localized" and save it to DB using update_source_code of the SourceCodeManager.
-                This function returns all PySide6 Signals emitted by all the classes it called and send them to the L10nWidget class for display in separate QProgressBars for each class progress. 
-                
-                - localize_android_files() function behaves similar to localize_web_files() function, but it only works with android app files: ".xml, .java, .kt" initializing their corresponding classes: AndroidAppXMLFileLocalizer, AndroidAppJavaFileLocalizer, and AndroidAppKotlinFileLocalizer respectively.
-                If this function runs and completes without any error/exception, then it should update the source_code.status to "Localized" and save it to DB using update_source_code of the SourceCodeManager.
-                This function returns all PySide6 Signals emitted by all the classes it called and send them to the L10nWidget class for display in separate QProgressBars for each class progress.  
-
-                - localize_ios_files() function behaves similar to localize_web_files() function, but it only works with ios app files: ".swift, .m, .h, .strings, .storyboard, .xib, .plist" initializing their corresponding classes: IOSAppSwiftFileLocalizer, IOSAppObjcMFileLocalizer, IOSAppObjcHFileLocalizer, IOSAppStringsFileLocalizer, IOSAppStoryboardFileLocalizer, IOSAppXIBFileLocalizer, and IOSAppPListFileLocalizer respectively.
-                If this function runs and completes without any error/exception, then it should update the source_code.status to "Localized" and save it to DB using update_source_code of the SourceCodeManager.
-                This function returns all PySide6 Signals emitted by all the classes it called and send them to the L10nWidget class for display in separate QProgressBars for each class progress. 
-
-                - localize_java_files() function behaves similar to localize_web_files() function, but it only works with java app files: ".xhtml, .xml, .java, .properties" initializing their corresponding classes: JavaAppXHTMLFileLocalizer, JavaAppXMLFileLocalizer, JavaAppJavaFileLocalizer, and JavaAppPropertiesFileLocalizer respectively.
-                If this function runs and completes without any error/exception, then it should update the source_code.status to "Localized" and save it to DB using update_source_code of the SourceCodeManager.
-                This function returns all PySide6 Signals emitted by all the classes it called and send them to the L10nWidget class for display in separate QProgressBars for each class progress. 
-
-        - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
-
-
-
-
-
-
 Classes: localizers module classes:
 
     - web_localizers sub-module classes:    
@@ -141,13 +17,11 @@ Classes: localizers module classes:
             - It defines self.source_locale = self.source_code.source_locale at initialization.
             - It defines self.target_locales = self.setting_manager.get_target_locales(source_code_id) at initialization.
             
-            - It implements and executes the following functions and functionalities:
-
-                - get_work_progress(files) function that gets and returns the percentage of files completed in localize_files() function of any child class of this class. The returned percentage is intended for a QProgressBar in the L10nWidget class later.  
+            - It implements and executes the following functions and functionalities: 
 
                 - generate_key(file_path) function to generate and return a unique string identifier key that will be assigned to any extracted string's replacement key value and as identifier in the JSON file keeping the extracted strings of the file. The key generated should be in the format: "str_1", "str_2", "str_3", etc. or "[file_path]:str_1", "[file_path]:str_2", "[file_path]:str_3" if self.app_settings['use_key_namespace'] = True.
 
-                - save_resource_files(data, file_path) function to save an extracted file's strings in JSON data format to a JSON file for the self.source_locale and each target locale in self.target_locales. This function saves the same JSON data for each locale JSON file. The parameters are explained as follows: 
+                - save_resource_filess(data, file_path) function to save an extracted file's strings in JSON data format to a JSON file for the self.source_locale and each target locale in self.target_locales. This function saves the same JSON data for each locale JSON file. The parameters are explained as follows: 
                     - :param data: The JSON data to save.
                     - :param file: The path to the file being processed.
                     The function saves the JSON resource file as self.locales_path/[locale's code]/[file's path without the extension].json. The [locale's code] stand for any locale code such as ja-JP, en-US, zh-CN, etc. for each locale (either source or target locale) specified in the parameters. The [file's path without extension] stands for the file's path being processed but without its extension (e.g. removing the .html) and replace the extension with .json and save the JSON data inside the JSON file created and saved to the locales folder using the self.locales_path.
@@ -172,11 +46,12 @@ Classes: localizers module classes:
             - The WebAppHTMLFileLocalizer handles all HTML file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the HTML files.
-            - It takes in source_code_id as argument at initialization. 
+            - It takes in source_code_id and files list as arguments at initialization. 
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
+
+                    - self.files = files
 
                     - self.target_tags = ['title', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'address', 'pre', 'blockquote', 'li', 'figcaption', 'caption', 'td', 'th', 'label', 'option']
                     
@@ -187,37 +62,182 @@ Classes: localizers module classes:
                     - self.formatting_tags = ['span', 'br', 'b', 'strong', 'i', 'em', 'mark', 'small', 'del', 'ins', 'sub', 'sup', 'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi', 'bdo', 'ruby', 'rt', 'rp', 'wbr']
 
 
-                - Please use the HTMLFileLocalizer class as a sample class for the WebAppHTMLFileLocalizer class with the following differences in the WebAppHTMLFileLocalizer:
-                    - If the self.app_settings['duplicate_html'] is equal to True, the localized HTML file version is duplicated and saved for each locale (source and target locales), otherwise, only the source locale's HTML version is saved to replace the original version. For example, duplicate the HTML file as follows if the above is true:
-                        - original.html 
-                        - locales/self.source_locale.code/original.html
-                        - locales/self.target_locale1.code/original.html
-                        - locales/self.target_locale2.code/original.html
-                        - locales/self.target_locale3.code/original.html
-                    - Adopt the following functions logic in definition, calling, and usage from the HTMLFileLocalizer class as appropriate for the WebAppHTMLFileLocalizer class:
-                        - localize_html_files(files) function should receive a list of files instead of calling get_files_by_extension().
-                        - _process_html_file() using get_work_progress() of parent class.
-                        - _mark_translatable_strings() but use the inherited generate_key(file_path) instead of generate_short_uuid(). Do not include the "html-str_", "html-meta-", or "html-alt-" and similar  parts of the keys in this class. 
-                        - _duplicate_html_file() only if self.app_settings['duplicate_html'] is equal to True, otherwise, only the localized original is saved.
-                        - _has_nav_or_formatting_tags()
-                        - _has_target_formatting_or_special_tags()
-                        - _is_inside_nav_or_formatting_tags()
-                        - _is_inside_nav_tags()
-                        - _extract_and_save_strings() should call parent's save_resource_files() instead and use the inherited generate_key() instead of generate_short_uuid(). Do not include the "html-str_", "html-meta-", or "html-alt-" and similar  parts of the keys in this class.  
-                        - Use save_resource_files() from parent class instead of _save_json_file().
-                        - _save_html_file() but do not duplicate the HTML unless the self.app_settings['duplicate_html'] is True. 
-                        - DO NOT implement nor use the following functions and logics from the HTMLFileLocalizer class:
-                            - _create_load_translations_js_file()
-                            - _write_report()
-                            - _is_duplicate()
-                            - _insert_i18next_logic()
-                            - _insert_navigation_links()
-                            - insert_links()
-                            - _get_locale_file_path()
-                            - _get_seo_url()
-                            - contains_translatable_tags()
+                - It executes the self.localize_files() function in the Thread's run() function.
+
+                - localize_files() function to localize all the files in self.files as in the following example:
+                    for html_file in files:
+                        self._process_html_file(html_file)
+                
+                - _process_html_file(html_file) function to process a given HTML file as in the following example:
+                    with open(html_file, 'r', encoding='utf-8') as file:
+                        soup = BeautifulSoup(file, 'html.parser')
+
+                    self._mark_translatable_strings(soup)
+                    self._extract_and_save_strings(soup, html_file)
+
+                    And the function duplicates the HTML file if the self.app_settings['duplicate_html'] is True as:
+
+                    self._duplicate_html_file(soup, html_file)
+                
+                - _mark_translatable_strings(soup, file_path) function to mark all the translatable strings in a given BeautifulSoup object and uses file_path in self.generate_key() from parent calss. This function implement a code similar to the following:
+
+                    def _mark_translatable_strings(self, soup, file_path):
+                        """
+                        Marks all translatable strings in the HTML content.
+
+                        :param soup: The BeautifulSoup object containing the HTML content.
+                        """
                         
-                        - Please make sure all the other requirements are met by the WebAppHTMLFileLocalizer that you deem appropriate for its functionalities.
+                        # Process target_tags
+
+                        for tag in soup.find_all(self.target_tags):
+                            if 'data-i18n' in tag.attrs:
+                                continue  # Skip tags that are already marked
+                            if self._is_inside_nav_or_formatting_tags(tag):
+                                continue  # Skip if tag is inside a nav tag or formatting tag parent
+                            if tag.find(self.target_tags) or tag.find(self.special_tags):
+                                continue  # Skip if tag contains another target tag or special tag as an immediate child
+                            
+                            if (tag.string and tag.string.strip()) or tag.get_text(strip=True):
+                                tag['data-i18n'] = self.generate_key(file_path)
+                            elif self._has_nav_or_formatting_tags(tag):
+                                tag['data-i18n'] = self.generate_key(file_path)
+
+                        # Process special_tags
+
+                        for tag in soup.find_all(self.special_tags):
+                            if 'data-i18n' in tag.attrs:
+                                continue  # Skip tags that are already marked
+                            if self._is_inside_nav_or_formatting_tags(tag):
+                                continue  # Skip if tag is inside a nav tag
+                            if tag.name == 'img' and tag.has_attr('alt') and tag['alt'].strip():
+                                tag['data-i18n'] = self.generate_key(file_path)
+                            elif tag.name == 'meta' and (tag.get('name') in ['description', 'author'] or tag.get('property') in ['og:title', 'og:description', 'og:site_name']):
+                                if tag.has_attr('content') and tag['content'].strip():
+                                    tag['data-i18n'] = self.generate_key(file_path)
+
+                        # Process nav_tags
+
+                        for tag in soup.find_all(self.nav_tags):
+                            if 'data-i18n' in tag.attrs:
+                                continue  # Skip tags that are already marked
+                            if self._has_target_formatting_or_special_tags(tag):
+                                tag['data-i18n'] = self.generate_key(file_path)
+                            elif any(sibling.name in self.target_tags for sibling in tag.find_next_siblings()):
+                                tag['data-i18n'] = self.generate_key(file_path)
+
+                        # Formatting tags are never marked
+
+                        The following are the example helper functions called in the _mark_translatable_strings() above:
+
+                        def _has_nav_or_formatting_tags(self, tag):
+                            """
+                            Checks if a tag has nav_tags or formatting_tags children.
+                            """
+                            for child in tag.find_all(recursive=False):
+                                if child.name in self.nav_tags or child.name in self.formatting_tags:
+                                    return True
+                            return False
+                        
+                        def _has_target_formatting_or_special_tags(self, tag):
+                            """
+                            Checks if a tag has target_tags, formatting_tags, or special_tags children.
+                            """
+                            for child in tag.find_all(recursive=False):
+                                if child.name in self.target_tags or child.name in self.formatting_tags or child.name in self.special_tags:
+                                    return True
+                            return False
+
+                        def _is_inside_nav_or_formatting_tags(self, tag):
+                            """
+                            Checks if a tag is inside nav_tags or formatting_tags parents.
+                            """
+                            parent = tag.parent
+                            while parent is not None:
+                                if parent.name in self.nav_tags or parent.name in self.formatting_tags:
+                                    return True
+                                parent = parent.parent
+                            return False
+                        
+                        def _is_inside_nav_tags(self, tag):
+                            """
+                            Checks if a tag is inside nav_tags parents.
+                            """
+                            parent = tag.parent
+                            while parent is not None:
+                                if parent.name in self.nav_tags:
+                                    return True
+                                parent = parent.parent
+                            return False
+                
+                - _extract_and_save_strings(soup, html_file) function that extracts and saves the translatable strings to JSON files. The function can be implemented as similar to the following code example:
+
+                    def _extract_and_save_strings(self, soup, html_file):
+                        """
+                        Extracts and saves the translatable strings to JSON files.
+
+                        :param soup: The BeautifulSoup object containing the HTML content.
+                        :param html_file: The path to the HTML file being processed.
+                        """
+                        source_json = {}
+                        html_file_key = os.path.relpath(html_file, self.root_dir).replace(os.sep, '/')
+
+                        for tag in soup.find_all(attrs={"data-i18n": True}):
+                            key = tag['data-i18n']
+                            inner_html = ''.join(str(child) for child in tag.children).strip() if tag.children else None
+                            if inner_html and inner_html.strip():
+                                if html_file_key not in source_json:
+                                    source_json[html_file_key] = {}
+                                source_json[html_file_key][key] = inner_html
+
+                        if source_json:
+                            self.save_resource_files(source_json, html_file)
+                        
+                    Please adjust the following in the above code:
+                        - remove the html_file_key functionality
+                        - the key in source_json[key] should be split on the ":" part and take only second part without the namespace_suffix part. 
+
+                - _duplicate_html_file(soup, html_file) function that duplicates the HTML file for each target locale and modifies the lang attribute. The following is an implementation example of the this function:
+
+                    def _duplicate_html_file(self, soup, html_file):
+                        """
+                        Duplicates the HTML file for each target locale and modifies the lang attribute.
+
+                        :param soup: The BeautifulSoup object containing the HTML content.
+                        :param html_file: The path to the HTML file being processed.
+                        """
+                        source_locale = self.source_locale
+                        soup.html['lang'] = source_locale
+                        self._save_html_file(soup, html_file, source_locale, is_original=True)
+
+                        for target_locale in self.target_locales:
+                            duplicate_html = BeautifulSoup(str(soup), 'html.parser')
+                            duplicate_html.html['lang'] = target_locale['code']
+                            self._save_html_file(duplicate_html, html_file, target_locale['code'])
+
+                    def _save_html_file(self, soup, html_file, locale, is_original=False):
+                        """
+                        Saves the modified HTML file with the lang attribute.
+
+                        :param soup: The BeautifulSoup object containing the HTML content.
+                        :param html_file: The path to the HTML file being processed.
+                        :param locale: The locale code for the HTML file.
+                        :param is_original: A flag indicating if this is the original HTML file.
+                        """
+                        file_dir, file_name = os.path.split(html_file)
+                        if is_original:
+                            new_file_path = os.path.join(file_dir, file_name)
+                        else:
+                            locale_dir = os.path.join(file_dir, "locales", locale)
+                            file_name_without_ext, file_ext = os.path.splitext(file_name)
+                            new_file_name = f"{file_name_without_ext}_{locale.replace('-', '_')}{file_ext}"
+                            new_file_path = os.path.join(locale_dir, new_file_name)
+
+                        os.makedirs(os.path.dirname(new_file_path), exist_ok=True)
+
+                        with open(new_file_path, 'w', encoding='utf-8') as file:
+                            file.write(soup.prettify())
+                
             
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
 
@@ -233,33 +253,49 @@ Classes: localizers module classes:
             - The WebAppJSFileLocalizer handles all JS file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the JS files.
-            - It takes in source_code_id as argument at initialization. 
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
 
+                    - self.files = files
+
                     - self.translatable_patterns = [
-                        re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+                        # Please correct this part to match simple strings in double quotes only.
+                        re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in double quotes
                         re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
                         re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
                         ]
-                    
+                
+                - It executes the self.localize_files() function in the Thread's run() function.                   
 
-                - Please use the JSFileLocalizer class as a sample class for the WebAppJSFileLocalizer class with the following differences in the WebAppJSFileLocalizer:
-                    - Adopt the following functions logic in definition, calling, and usage from the JSFileLocalizer class as appropriate for the WebAppJSFileLocalizer class:
-                        - localize_js_files(files) function gets files list argument instead of calling get_files_by_extension() function.
-                        - _process_js_file() using get_work_progress() of parent class.
-                        - _mark_translatable_strings() but use the inherited generate_key(file_path) instead of uuid.uuid4(). Do not include the "js-str_" and similar  parts of the keys in this class. 
-                        - _extract_and_save_strings() but use the inherited save_resource_files().  
-                        - Use save_resource_files() from parent class instead of _save_json_file().
-                        - _save_js_file() 
-                        - _insert_i18next_import()
-                        - DO NOT implement nor use the following functions and logics from the JSFileLocalizer class:
-                            - _write_report()
-                        
-                        - Please make sure all the other requirements are met by the WebAppJSFileLocalizer that you deem appropriate for its functionalities.
-            
+                - localize_files() function that localizes all the JS files in the self.files veriable. Code example:
+                    
+                    for js_file in self.files:
+                        self._process_js_file(js_file)
+                
+                - _process_js_file(js_file) function that processes an individual JS file for localization. Code example:
+
+                    def _process_js_file(self, js_file):
+                        """
+                        Processes an individual JS file for localization.
+
+                        :param js_file: The path to the JS file to process.
+                        """
+                        with open(js_file, 'r', encoding='utf-8') as file:
+                            content = file.read()
+
+                        self._mark_and_extract_strings(content, js_file)
+                
+                - _mark_and_extract_strings(file_path) function that marks and extracts all the translatable strings in the JS file content and save them to a JSON file. It implements the following features:
+                    - It captures every string that matches the self.translatable_patterns and sends it to a JSON file using self.save_resource_files() from parent class. 
+                    - It ensures that the extracted string to the JSON file is replaced with "${translate('unique_id')}" where unique_id is obtained from self.generate_key(file_path) of parent class. 
+                    - The key of the string in the JSON file must not include the namespace_suffix of the key if self.app_settings['use_key_namespace'] is True.
+                    - Please ensure that the replacement effected in JS content is exactly as "${translate('unique_id')}". Please make sure to escape the {} parts of the replacement string in Python to avoid errors.
+                    - It calls self._save_js_file(content, js_file) to save the modified JS file as replacement of the original JS file.
+                
+                - _save_js_file(content, js_file) function that saves the modified JS file to replace the original.
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
 
 
@@ -276,33 +312,48 @@ Classes: localizers module classes:
             - The WebAppEJSFileLocalizer handles all EJS file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the EJS files.
-            - It takes in source_code_id as argument at initialization.
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
 
+                    - self.files = files
+
                     - self.translatable_patterns = [
                         re.compile(r'<%=\s*(.*?)\s*%>'),  # Matches rendered EJS content
                         ]
+                
+                - It executes the self.localize_files() function in the Thread's run() function.                   
 
+                - localize_files() function that localizes all the EJS files in the self.files veriable. Code example:
+                    
+                    for ejs_file in self.files:
+                        self._process_ejs_file(ejs_file)
+                
+                - _process_ejs_file(ejs_file) function that processes an individual EJS file for localization. Code example:
 
-                - Please use the EJSFileLocalizer class as a sample class for the WebAppEJSFileLocalizer class with the following differences in the WebAppEJSFileLocalizer:
-                    - Adopt the following functions logic in definition, calling, and usage from the EJSFileLocalizer class as appropriate for the WebAppEJSFileLocalizer class:
-                        - localize_ejs_files(files) takes in files list argument instead of calling get_files_by_extension().
-                        - _process_ejs_file() using get_work_progress() of parent class.
-                        - _mark_translatable_strings() but use the inherited generate_key(). 
-                        - _extract_and_save_strings() but use the inherited save_resource_files() instead of uuid.uuid4().  
-                        - Use save_resource_files() from parent class instead of _save_json_file(). 
-                        - _save_ejs_file() 
-                        - _insert_i18next_import()
-                        - DO NOT implement nor use the following functions and logics from the EJSFileLocalizer class:
-                            - _duplicate_ejs_file()
-                            - _write_report()
-                        
-                        - Please make sure all the other requirements are met by the WebAppEJSFileLocalizer that you deem appropriate for its functionalities.
-            
+                    def _process_ejs_file(self, ejs_file):
+                        """
+                        Processes an individual EJS file for localization.
+
+                        :param ejs_file: The path to the EJS file to process.
+                        """
+                        with open(ejs_file, 'r', encoding='utf-8') as file:
+                            content = file.read()
+
+                        self._mark_and_extract_strings(content, ejs_file)
+                
+                - _mark_and_extract_strings(file_path) function that marks and extracts all the translatable strings in the EJS file content and save them to a JSON file. It implements the following features:
+                    - It captures every string that matches the self.translatable_patterns and sends it to a JSON file using self.save_resource_files() from parent class. 
+                    - It ensures that the extracted string to the JSON file is replaced with "${{unique_id}}" where unique_id is obtained from self.generate_key(file_path) of parent class. 
+                    - The key of the string in the JSON file must not include the namespace_suffix of the key if self.app_settings['use_key_namespace'] is True.
+                    - Please ensure that the replacement effected in EJS content is exactly as "${translate('unique_id')}". Please make sure to escape the {} parts of the replacement string in Python to avoid errors.
+                    - It calls self._save_ejs_file(content, ejs_file) to save the modified EJS file as replacement of the original EJS file.
+                
+                - _save_ejs_file(content, ejs_file) function that saves the modified EJS file to replace the original.
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
+
 
 
 
@@ -317,32 +368,46 @@ Classes: localizers module classes:
             - The WebAppJSXFileLocalizer handles all JSX file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the JSX files.
-            - It takes in source_code_id as argument at initialization.
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
 
+                    - self.files = files
+
                     - self.translatable_patterns = [
                         Please put here appropriate Regular Expression patterns appropriate for JSX translatable strings targetting. 
                         ]
-                    
+                
+                - It executes the self.localize_files() function in the Thread's run() function.                   
 
-                - Please use an imaginary JSXFileLocalizer class imitating the previous sample classes as a sample class for the WebAppJSXFileLocalizer class with the following differences in the WebAppJSXFileLocalizer:
-                    - Adopt the following functions logic in definition, calling, and usage from the JSXFileLocalizer class as appropriate for the WebAppJSXFileLocalizer class:
-                        - localize_jsx_files(files) takes in files list argument instead of calling get_files_by_extension().
-                        - _process_jsx_file() using get_work_progress() of parent class.
-                        - _mark_translatable_strings() but use the inherited generate_key() instead of uuid.uuid4(). 
-                        - _extract_and_save_strings() but use the inherited save_resource_files(). Do not include the "jsx-str_" and similar  parts of the keys in this class.  
-                        - Use save_resource_files() from parent class instead of _save_json_file(). 
-                        - _save_jsx_file() 
-                        - _insert_i18next_import()
-                        - DO NOT implement nor use the following functions and logics from the JSXFileLocalizer class:
-                            - _duplicate_jsx_file()
-                            - _write_report()
-                        
-                        - Please make sure all the other requirements are met by the WebAppJSXFileLocalizer that you deem appropriate for its functionalities.
-            
+                - localize_files() function that localizes all the JSX files in the self.files veriable. Code example:
+                    
+                    for jsx_file in self.files:
+                        self._process_jsx_file(jsx_file)
+                
+                - _process_jsx_file(jsx_file) function that processes an individual JSX file for localization. Code example:
+
+                    def _process_jsx_file(self, jsx_file):
+                        """
+                        Processes an individual JSX file for localization.
+
+                        :param jsx_file: The path to the JSX file to process.
+                        """
+                        with open(jsx_file, 'r', encoding='utf-8') as file:
+                            content = file.read()
+
+                        self._mark_and_extract_strings(content, jsx_file)
+                
+                - _mark_and_extract_strings(file_path) function that marks and extracts all the translatable strings in the JSX file content and save them to a JSON file. It implements the following features:
+                    - It captures every string that matches the self.translatable_patterns and sends it to a JSON file using self.save_resource_files() from parent class. 
+                    - It ensures that the extracted string to the JSON file is replaced with the key obtained from self.generate_key(file_path) of parent class. 
+                    - The key of the string in the JSON file must not include the namespace_suffix of the key if self.app_settings['use_key_namespace'] is True.
+                    - Please ensure that the replacement effected in JSX content is exactly as "{t('key')}". Please make sure to escape the {} parts of the replacement string in Python to avoid errors.
+                    - It calls self._save_jsx_file(content, jsx_file) to save the modified JSX file as replacement of the original JSX file.
+                
+                - _save_jsx_file(content, jsx_file) function that saves the modified JSX file to replace the original.
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
 
 
@@ -358,38 +423,50 @@ Classes: localizers module classes:
             - The WebAppTSFileLocalizer handles all TS file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the TS files.
-            - It takes in source_code_id as argument at initialization.
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
+
+                    - self.files = files
 
                     - self.translatable_patterns = [
                         re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
                         re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
                         re.compile(r'>{1}\s*(.*?)\s*<{1}'),         # Matches HTML content between tags
                         ]
-                    - Please adjust the above patterns to fit for use in a Typescript (TS) file if necessary since the above was copied from a TSX file. 
- 
                 
-                - Please understand that the sample class provided is a TSX specific code. Hence understand the TSXFileLocalizer as the TSFileLocalizer provided above and adjust any necessary changes and requirements to fit TS code.
+                - It executes the self.localize_files() function in the Thread's run() function.                   
 
-                - Please use the TSFileLocalizer class as a sample class for the WebAppTSFileLocalizer class with the following differences in the WebAppTSFileLocalizer:
-                    - Adopt the following functions logic in definition, calling, and usage from the TSFileLocalizer class as appropriate for the WebAppTSFileLocalizer class:
-                        - localize_ts_files(files)
-                        - _process_ts_file() using get_work_progress() of parent class.
-                        - _mark_translatable_strings() but use the inherited generate_key(). Do not include the "ts-str_" and similar  parts of the keys in this class. 
-                        - _extract_and_save_strings() but use the inherited save_resource_files(). Do not include the "ts-str_" and similar  parts of the keys in this class.  
-                        - Use save_resource_files() from parent class instead of _save_json_file(). 
-                        - _save_ts_file() 
-                        - _insert_i18next_import()
-                        - DO NOT implement nor use the following functions and logics from the TSFileLocalizer class:
-                            - _duplicate_ts_file()
-                            - _write_report()
-                        
-                        - Please make sure all the other requirements are met by the WebAppTSFileLocalizer that you deem appropriate for its functionalities.
-            
+                - localize_files() function that localizes all the TS files in the self.files veriable. Code example:
+                    
+                    for ts_file in self.files:
+                        self._process_ts_file(ts_file)
+                
+                - _process_ts_file(ts_file) function that processes an individual TS file for localization. Code example:
+
+                    def _process_ts_file(self, ts_file):
+                        """
+                        Processes an individual TS file for localization.
+
+                        :param ts_file: The path to the TS file to process.
+                        """
+                        with open(ts_file, 'r', encoding='utf-8') as file:
+                            content = file.read()
+
+                        self._mark_and_extract_strings(content, ts_file)
+                
+                - _mark_and_extract_strings(file_path) function that marks and extracts all the translatable strings in the TS file content and save them to a JSON file. It implements the following features:
+                    - It captures every string that matches the self.translatable_patterns and sends it to a JSON file using self.save_resource_files() from parent class. 
+                    - It ensures that the extracted string to the JSON file is replaced with the key obtained from self.generate_key(file_path) of parent class. 
+                    - The key of the string in the JSON file must not include the namespace_suffix of the key if self.app_settings['use_key_namespace'] is True.
+                    - Please ensure that the replacement effected in TS content is exactly as "t('key')". Please make sure to escape the {} parts of the replacement string in Python to avoid errors.
+                    - It calls self._save_ts_file(content, ts_file) to save the modified TS file as replacement of the original TS file.
+                
+                - _save_ts_file(content, ts_file) function that saves the modified TS file to replace the original.
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
+
 
 
 
@@ -404,38 +481,50 @@ Classes: localizers module classes:
             - The WebAppTSXFileLocalizer handles all TSX file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the TSX files.
-            - It takes in source_code_id as argument at initialization.
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
+
+                    - self.files = files
 
                     - self.translatable_patterns = [
                         re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
                         re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
                         re.compile(r'>{1}\s*(.*?)\s*<{1}'),         # Matches HTML content between tags
                         ]
-                    
+                
+                - It executes the self.localize_files() function in the Thread's run() function.                   
 
-                - Please use the TSXFileLocalizer class as a sample class for the WebAppTSXFileLocalizer class with the following differences in the WebAppTSXFileLocalizer:
-                    - Adopt the following functions logic in definition, calling, and usage from the TSXFileLocalizer class as appropriate for the WebAppTSXFileLocalizer class:
-                        - localize_tsx_files(files)
-                        - _process_tsx_file() using get_work_progress() of parent class.
-                        - _mark_translatable_strings() but use the inherited generate_key() instead of uuid.uuid4(). Do not include the "tsx-str_" and similar  parts of the keys in this class. 
-                        - _extract_and_save_strings() but use the inherited save_resource_files(). Do not include the "tsx-str_" and similar  parts of the keys in this class.  
-                        - Use save_resource_files() from parent class instead of _save_json_file(). 
-                        - _save_tsx_file() 
-                        - _insert_i18next_import()
-                        - DO NOT implement nor use the following functions and logics from the TSXFileLocalizer class:
-                            - _duplicate_tsx_file()
-                            - _set_lang_attribute()
-                            - _insert_navigation_links()
-                            - _get_locale_file_path()
-                            - _write_report()
-                        
-                        - Please make sure all the other requirements are met by the WebAppTSXFileLocalizer that you deem appropriate for its functionalities.
-            
+                - localize_files() function that localizes all the TSX files in the self.files veriable. Code example:
+                    
+                    for tsx_file in self.files:
+                        self._process_tsx_file(tsx_file)
+                
+                - _process_tsx_file(tsx_file) function that processes an individual TSX file for localization. Code example:
+
+                    def _process_tsx_file(self, tsx_file):
+                        """
+                        Processes an individual TSX file for localization.
+
+                        :param tsx_file: The path to the TSX file to process.
+                        """
+                        with open(tsx_file, 'r', encoding='utf-8') as file:
+                            content = file.read()
+
+                        self._mark_and_extract_strings(content, tsx_file)
+                
+                - _mark_and_extract_strings(file_path) function that marks and extracts all the translatable strings in the TSX file content and save them to a JSON file. It implements the following features:
+                    - It captures every string that matches the self.translatable_patterns and sends it to a JSON file using self.save_resource_files() from parent class. 
+                    - It ensures that the extracted string to the JSON file is replaced with the key obtained from self.generate_key(file_path) of parent class. 
+                    - The key of the string in the JSON file must not include the namespace_suffix of the key if self.app_settings['use_key_namespace'] is True.
+                    - Please ensure that the replacement effected in TSX content is exactly as "{t('key')}". Please make sure to escape the {} parts of the replacement string in Python to avoid errors.
+                    - It calls self._save_tsx_file(content, tsx_file) to save the modified TSX file as replacement of the original TSX file.
+                
+                - _save_tsx_file(content, tsx_file) function that saves the modified TSX file to replace the original.
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
+
 
 
 
@@ -447,36 +536,52 @@ Classes: localizers module classes:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class:
 
-        - WebAppVueFileLocalizer: class
+        - WebAppVUEFileLocalizer: class
             - The WebAppVUEFileLocalizer handles all VUE file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the VUE files.
-            - It takes in source_code_id as argument at initialization.
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
                 - It defines the following variables at initialization:
 
-                    - self.translatable_patterns = [
-                        Please put here appropriate Regular Expression patterns appropriate for VUE translatable strings targetting. 
-                        ]
-                    
+                    - self.files = files
 
-                - Please use an imaginary VUEFileLocalizer class imitating the previous sample classes as a sample class for the WebAppVUEFileLocalizer class with the following differences in the WebAppVUEFileLocalizer:
-                    - Adopt the following functions logic in definition, calling, and usage from the VUEFileLocalizer class as appropriate for the WebAppVUEFileLocalizer class:
-                        - localize_vue_files(files)
-                        - _process_vue_file() using get_work_progress() of parent class.
-                        - _mark_translatable_strings() but use the inherited generate_key() instead of uuid.uuid4(). Do not include the "vue-str_" and similar  parts of the keys in this class. 
-                        - _extract_and_save_strings() but use the inherited save_resource_files(). Do not include the "vue-str_" and similar  parts of the keys in this class.  
-                        - Use save_resource_files() from parent class instead of _save_json_file(). 
-                        - _save_vue_file() 
-                        - _insert_i18next_import()
-                        - DO NOT implement nor use the following functions and logics from the VUEFileLocalizer class:
-                            - _duplicate_vue_file()
-                            - _write_report()
-                        
-                        - Please make sure all the other requirements are met by the WebAppVUEFileLocalizer that you deem appropriate for its functionalities.
-            
+                    - self.translatable_patterns = [
+                        re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+                        re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
+                        re.compile(r'>{1}\s*(.*?)\s*<{1}'),         # Matches HTML content between tags
+                        ]
+                
+                - It executes the self.localize_files() function in the Thread's run() function.                   
+
+                - localize_files() function that localizes all the VUE files in the self.files veriable. Code example:
+                    
+                    for vue_file in self.files:
+                        self._process_vue_file(vue_file)
+                
+                - _process_vue_file(vue_file) function that processes an individual VUE file for localization. Code example:
+
+                    def _process_vue_file(self, vue_file):
+                        """
+                        Processes an individual VUE file for localization.
+
+                        :param vue_file: The path to the VUE file to process.
+                        """
+                        with open(vue_file, 'r', encoding='utf-8') as file:
+                            content = file.read()
+
+                        self._mark_and_extract_strings(content, vue_file)
+                
+                - _mark_and_extract_strings(file_path) function that marks and extracts all the translatable strings in the VUE file content and save them to a JSON file. It implements the following features:
+                    - It captures every string that matches the self.translatable_patterns and sends it to a JSON file using self.save_resource_files() from parent class. 
+                    - It ensures that the extracted string to the JSON file is replaced with the key obtained from self.generate_key(file_path) of parent class. 
+                    - The key of the string in the JSON file must not include the namespace_suffix of the key if self.app_settings['use_key_namespace'] is True.
+                    - Please ensure that the replacement effected in VUE content is exactly as "{{$t('key')}}". Please make sure to escape the {} parts of the replacement string in Python to avoid errors.
+                    - It calls self._save_vue_file(content, vue_file) to save the modified VUE file as replacement of the original VUE file.
+                
+                - _save_vue_file(content, vue_file) function that saves the modified VUE file to replace the original.
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
 
 
@@ -484,7 +589,9 @@ Classes: localizers module classes:
 
 
 
-        - PROMPT:
+
+
+       - PROMPT:
         Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class:
@@ -493,18 +600,25 @@ Classes: localizers module classes:
             - The WebAppJSONFileLocalizer handles all JSON file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the JSON files.
-            - It takes in source_code_id as argument at initialization.
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
+                - It defines the following variables at initialization:
 
-                - Please understand that the WebAppJSONFileLocalizer class only implements the logic to duplicate JSON files for the source and each target locale saved using the save_resource_files() function inherited from WebAppFileLocalizer class.
-                - Adopt the following functions and logics:
-                    - save_resource_files() from parent class instead of _save_json_file(). The data parameter is simply the content of the original file in file_path.  
+                    - self.files = files
+                
+                - It executes the self.localize_files() function in the Thread's run() function.                   
+
+                - localize_files() function that localizes all the JSON files in the self.files veriable. Code example:
                     
-                    - Please make sure all the other requirements are met by the WebAppJSONFileLocalizer that you deem appropriate for its functionalities.
-            
+                    for json_file in self.files:
+                        self._process_json_file(json_file)
+                
+                - _process_json_file(json_file) function that processes an individual JSON file for localization. This function extracts the contents of the json_file and saves it for each locale by calling self.save_resource_files() of parent class. 
+                
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
+
 
 
 
@@ -519,17 +633,25 @@ Classes: localizers module classes:
             - The WebAppCSVFileLocalizer handles all CSV file-specific localization procedures. 
             - It inherits the WebAppFileLocalizer class.
             - It runs on its own PySide6 Thread.
-            - It sends PySide6 Signal from self.get_work_progress() from its parent class to the L10nManager class. The L10nManager class further transmits this Signal to the L10nWidget class to display in its QProgressBar for the CSV files.
-            - It takes in source_code_id as argument at initialization.
+            - It takes in source_code_id and files list as arguments at initialization.
             - It implements and executes the following functions and functionalities:
 
-                - Please understand that the WebAppCSVFileLocalizer class only implements the logic to duplicate CSV files for each target locale saved using the save_resource_files() function inherited from WebAppFileLocalizer class.
-                - Adopt the following functions and logics:
-                    - save_resource_files() from parent class instead of _save_json_file(). The data parameter is simply the content of the original file in file_path. 
+                - It defines the following variables at initialization:
+
+                    - self.files = files
+                
+                - It executes the self.localize_files() function in the Thread's run() function.                   
+
+                - localize_files() function that localizes all the CSV files in the self.files veriable. Code example:
                     
-                    - Please make sure all the other requirements are met by the WebAppCSVFileLocalizer that you deem appropriate for its functionalities.
-            
+                    for csv_file in self.files:
+                        self._process_csv_file(csv_file)
+                
+                - _process_csv_file(csv_file) function that processes an individual CSV file for localization. This function extracts the contents of the csv_file and saves it for each locale by calling self.save_resource_files() of parent class. 
+                
+
             - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
+
 
     
 
@@ -537,52 +659,13 @@ Classes: localizers module classes:
 
     - android_localizers sub-module classes:
 
-        - PROMPT:
-        Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class:
-
-        - AndroidAppFileLocalizer class: 
-            - The AndroidAppFileLocalizer class is the base class for all android app file type localizer classes in the android_localizers module. 
-            - It uses the SettingManager and SourceCodeManager classes.
-            - It takes in source_code_id as argument at initialization.
-            - It defines self.app_settings = self.setting_manager.get_app_settings()
-            - It defines and creates self.locales_path variable pointing at source_code.localized_source_code_path/"locales" at initialization.
-            - It defines self.source_locale = self.source_code.source_locale at initialization.
-            - It defines self.target_locales = self.setting_manager.get_target_locales(source_code_id) at initialization.
-            
-            - It implements and executes the following functions and functionalities:
-
-                - get_work_progress(files) function that gets and returns the percentage of files completed in localize_files() function of any child class of this class. The returned percentage is intended for a QProgressBar in the L10nWidget class later.  
-
-                - generate_key(file_path) function to generate and return a unique string identifier key that will be assigned to any extracted string's replacement key value and as identifier in the JSON file keeping the extracted strings of the file. The key generated should be in the format: "str_1", "str_2", "str_3", etc. or "[file_path]:str_1", "[file_path]:str_2", "[file_path]:str_3" if self.app_settings['use_key_namespace'] = True.
-
-                - save_resource_files(data, file_path) function to save an extracted file's strings in JSON data format to a JSON file for the self.source_locale and each target locale in self.target_locales. This function saves the same JSON data for each locale JSON file. The parameters are explained as follows: 
-                    - :param data: The JSON data to save.
-                    - :param file: The path to the file being processed.
-                    The function saves the JSON resource file as self.locales_path/[locale's code]/[file's path without the extension].json. The [locale's code] stand for any locale code such as ja-JP, en-US, zh-CN, etc. for each locale (either source or target locale) specified in the parameters. The [file's path without extension] stands for the file's path being processed but without its extension (e.g. removing the .html) and replace the extension with .json and save the JSON data inside the JSON file created and saved to the locales folder using the self.locales_path.
-                    For example, the saved JSON resource files should have the following similar paths:
-                        - self.locales_path/ja-JP/file/path/being/extracted/file.json
-                        - self.locales_path/en-US/file/path/being/extracted/file.json 
-                        - self.locales_path/zh-CN/file/path/being/extracted/file.json 
-                        - self.locales_path/zh-TW/file/path/being/extracted/file.json
-                        - self.locales_path/ko-KR/file/path/being/extracted/file.json
-                
-                - Adjust/add/remove any functionality you deem fit for the class based on your expertise and understanding of how such classes are written and what such classes should do.
-    
-
+        
 
 
 
 
     - ios_localizers sub-module classes:
 
-        - PROMPT:
-        Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class:
-
-        - 
     
 
 
@@ -591,12 +674,6 @@ Classes: localizers module classes:
 
     - java_localizers sub-module classes:
 
-        - PROMPT:
-        Write the full class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class:
-
-        - 
-
+    
 
 

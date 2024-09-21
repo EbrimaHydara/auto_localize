@@ -45,7 +45,6 @@ class L10nManager(QObject):
     """
     
     # Define signals to be emitted during localization
-    localization_progress_signal = Signal(str, int)
     localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id):
@@ -55,6 +54,7 @@ class L10nManager(QObject):
             self.source_code_manager = SourceCodeManager(source_code_id)
             self.source_code = self.source_code_manager.get_source_code(source_code_id)
             self.source_code_type = self.source_code['code_type']
+            self.source_code_status = self.source_code['status']
 
             # Initialize the setting manager and get active file types
             self.setting_manager = SettingManager()
@@ -69,6 +69,7 @@ class L10nManager(QObject):
             self.files = self.get_files()
         except (InitializationError, InvalidUserInputError) as e:
             raise InitializationError(f"L10nManager Initialization Error: {str(e)}")
+
 
     def get_active_file_types(self):
         """
@@ -114,6 +115,10 @@ class L10nManager(QObject):
         Initiates the localization process based on the source code type.
         """
         try:
+            # Check if the source code has already been localized
+            if self.source_code_status == "Localized":
+                raise LocalizationRenderError("L10nManager Error: The source code has already been localized!")
+
             if self.source_code_type == "Web App":
                 self.localize_web_files()
             elif self.source_code_type == "Android App":
@@ -124,8 +129,12 @@ class L10nManager(QObject):
                 self.localize_java_files()
             else:
                 raise InvalidUserInputError(f"L10nManager Error in localize_source_code: Unsupported source code type '{self.source_code_type}'")
+        except LocalizationRenderError as e:
+            self.localization_complete_signal.emit(f"L10nManager Error in localize_source_code: {str(e)}", False)
+            return  # Stop the localization process
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_source_code: {str(e)}")
+
 
     def localize_web_files(self):
         """
@@ -150,10 +159,9 @@ class L10nManager(QObject):
 
             for extension, files in self.files.items():
                 if files and extension in localizer_classes:
-                    localizer = localizer_classes[extension](self.source_code['id'])
-                    localizer.localization_progress_signal.connect(self.localization_progress_signal.emit)
+                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
                     localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.localize_files(files)
+                    localizer.start()  # Start the localizer thread
 
             self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
@@ -175,10 +183,9 @@ class L10nManager(QObject):
 
             for extension, files in self.files.items():
                 if files and extension in localizer_classes:
-                    localizer = localizer_classes[extension](self.source_code['id'])
-                    localizer.localization_progress_signal.connect(self.localization_progress_signal.emit)
+                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
                     localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.localize_files(files)
+                    localizer.start()  # Start the localizer thread
 
             self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
@@ -204,10 +211,9 @@ class L10nManager(QObject):
 
             for extension, files in self.files.items():
                 if files and extension in localizer_classes:
-                    localizer = localizer_classes[extension](self.source_code['id'])
-                    localizer.localization_progress_signal.connect(self.localization_progress_signal.emit)
+                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
                     localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.localize_files(files)
+                    localizer.start()  # Start the localizer thread
 
             self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
@@ -230,10 +236,9 @@ class L10nManager(QObject):
 
             for extension, files in self.files.items():
                 if files and extension in localizer_classes:
-                    localizer = localizer_classes[extension](self.source_code['id'])
-                    localizer.localization_progress_signal.connect(self.localization_progress_signal.emit)
+                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
                     localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.localize_files(files)
+                    localizer.start()  # Start the localizer thread
 
             self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
