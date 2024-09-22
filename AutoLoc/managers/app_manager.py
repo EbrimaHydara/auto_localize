@@ -1,7 +1,7 @@
 import os
 import sys
 import sqlite3
-from error_manager import (
+from managers.error_manager import (
     AppError,
     InitializationError,
     PermissionError,

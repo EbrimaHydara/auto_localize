@@ -1,0 +1,706 @@
+Please read this file content as a continuation from the AutoLoc_Code_4.txt file content.
+
+
+19. web_app_jsx_file_localizer.py:
+
+# web_app_jsx_file_localizer.py
+
+import re
+from PySide6.QtCore import QThread, Signal
+from web_app_file_localizer import WebAppFileLocalizer
+from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppJSXFileLocalizer(QThread, WebAppFileLocalizer):
+    """
+    The WebAppJSXFileLocalizer handles all JSX file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    """
+
+    localization_complete_signal = Signal(str, bool)
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+        # Regular expression patterns for identifying translatable strings in JSX files
+        self.translatable_patterns = [
+            re.compile(r'(?<!{)(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in double/single quotes not inside expressions
+            re.compile(r'>{([^<>]*?)}<'),  # Matches strings between JSX tags (e.g., >Text<)
+            re.compile(r'{`([^`]*?)`}')     # Matches template literals inside JSX
+        ]
+
+    def run(self):
+        """
+        Executes the localization process in a separate thread.
+        """
+        try:
+            self.localize_files()
+        except Exception as e:
+            self.localization_complete_signal.emit(f"WebAppJSXFileLocalizer Error: {str(e)}", False)
+
+    def localize_files(self):
+        """
+        Localizes all the JSX files in self.files.
+        """
+        try:
+            for jsx_file in self.files:
+                self._process_jsx_file(jsx_file)
+            self.localization_complete_signal.emit("Localization completed successfully.", True)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppJSXFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_jsx_file(self, jsx_file):
+        """
+        Processes an individual JSX file for localization.
+
+        :param jsx_file: The path to the JSX file to process.
+        """
+        try:
+            with open(jsx_file, 'r', encoding='utf-8') as file:
+                content = file.read()
+
+            self._mark_and_extract_strings(content, jsx_file)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppJSXFileLocalizer Error in _process_jsx_file: {str(e)}")
+
+    def _mark_and_extract_strings(self, content, jsx_file):
+        """
+        Marks and extracts all the translatable strings in the JSX file content and saves them to a JSON file.
+
+        :param content: The content of the JSX file.
+        :param jsx_file: The path to the JSX file being processed.
+        """
+        try:
+            source_json = {}
+            modified_content = content
+
+            for pattern in self.translatable_patterns:
+                matches = pattern.finditer(content)
+                for match in matches:
+                    original_string = match.group(0)
+                    translatable_string = match.group(1).strip()
+                    if not translatable_string:
+                        continue
+
+                    # Generate a unique key for the translatable string
+                    key = self.generate_key(jsx_file)
+
+                    # Adjust key if use_key_namespace is True
+                    if self.app_settings.get('use_key_namespace', False):
+                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+
+                    # Save the extracted string to the JSON file
+                    source_json[key] = translatable_string
+
+                    # Replace the string in the content with "{t('key')}"
+                    replacement_string = f"{{{{t('{key}')}}}}"
+                    modified_content = modified_content.replace(original_string, replacement_string)
+
+            # Save the extracted strings to a JSON file
+            if source_json:
+                self.save_resource_files(source_json, jsx_file)
+
+            # Save the modified JSX file
+            self._save_jsx_file(modified_content, jsx_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppJSXFileLocalizer Error in _mark_and_extract_strings: {str(e)}")
+
+    def _save_jsx_file(self, content, jsx_file):
+        """
+        Saves the modified JSX file to replace the original.
+
+        :param content: The modified content of the JSX file.
+        :param jsx_file: The path to the JSX file being saved.
+        """
+        try:
+            with open(jsx_file, 'w', encoding='utf-8') as file:
+                file.write(content)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppJSXFileLocalizer Error in _save_jsx_file: {str(e)}")
+
+
+
+20. web_app_ts_file_localizer.py:
+
+# web_app_ts_file_localizer.py
+
+import re
+from PySide6.QtCore import QThread, Signal
+from web_app_file_localizer import WebAppFileLocalizer
+from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppTSFileLocalizer(QThread, WebAppFileLocalizer):
+    """
+    The WebAppTSFileLocalizer handles all TS file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    """
+
+    localization_complete_signal = Signal(str, bool)
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+        # Regular expression patterns for identifying translatable strings in TS files
+        self.translatable_patterns = [
+            re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+            re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
+            re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
+        ]
+
+    def run(self):
+        """
+        Executes the localization process in a separate thread.
+        """
+        try:
+            self.localize_files()
+        except Exception as e:
+            self.localization_complete_signal.emit(f"WebAppTSFileLocalizer Error: {str(e)}", False)
+
+    def localize_files(self):
+        """
+        Localizes all the TS files in self.files.
+        """
+        try:
+            for ts_file in self.files:
+                self._process_ts_file(ts_file)
+            self.localization_complete_signal.emit("Localization completed successfully.", True)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppTSFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_ts_file(self, ts_file):
+        """
+        Processes an individual TS file for localization.
+
+        :param ts_file: The path to the TS file to process.
+        """
+        try:
+            with open(ts_file, 'r', encoding='utf-8') as file:
+                content = file.read()
+
+            self._mark_and_extract_strings(content, ts_file)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppTSFileLocalizer Error in _process_ts_file: {str(e)}")
+
+    def _mark_and_extract_strings(self, content, ts_file):
+        """
+        Marks and extracts all the translatable strings in the TS file content and saves them to a JSON file.
+
+        :param content: The content of the TS file.
+        :param ts_file: The path to the TS file being processed.
+        """
+        try:
+            source_json = {}
+            modified_content = content
+
+            for pattern in self.translatable_patterns:
+                matches = pattern.finditer(content)
+                for match in matches:
+                    original_string = match.group(0)
+                    translatable_string = match.group(1).strip() if len(match.groups()) > 0 else match.group(0).strip()
+                    if not translatable_string:
+                        continue
+
+                    # Generate a unique key for the translatable string
+                    key = self.generate_key(ts_file)
+
+                    # Adjust key if use_key_namespace is True
+                    if self.app_settings.get('use_key_namespace', False):
+                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+
+                    # Save the extracted string to the JSON file
+                    source_json[key] = translatable_string
+
+                    # Replace the string in the content with "t('key')"
+                    replacement_string = f"t('{key}')"
+                    modified_content = modified_content.replace(original_string, replacement_string)
+
+            # Save the extracted strings to a JSON file
+            if source_json:
+                self.save_resource_files(source_json, ts_file)
+
+            # Save the modified TS file
+            self._save_ts_file(modified_content, ts_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppTSFileLocalizer Error in _mark_and_extract_strings: {str(e)}")
+
+    def _save_ts_file(self, content, ts_file):
+        """
+        Saves the modified TS file to replace the original.
+
+        :param content: The modified content of the TS file.
+        :param ts_file: The path to the TS file being saved.
+        """
+        try:
+            with open(ts_file, 'w', encoding='utf-8') as file:
+                file.write(content)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppTSFileLocalizer Error in _save_ts_file: {str(e)}")
+
+
+21. web_app_tsx_file_localizer.py:
+
+# web_app_tsx_file_localizer.py
+
+import re
+from PySide6.QtCore import QThread, Signal
+from web_app_file_localizer import WebAppFileLocalizer
+from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppTSXFileLocalizer(QThread, WebAppFileLocalizer):
+    """
+    The WebAppTSXFileLocalizer handles all TSX file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    """
+
+    localization_complete_signal = Signal(str, bool)
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+        # Regular expression patterns for identifying translatable strings in TSX files
+        self.translatable_patterns = [
+            re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+            re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
+            re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
+        ]
+
+    def run(self):
+        """
+        Executes the localization process in a separate thread.
+        """
+        try:
+            self.localize_files()
+        except Exception as e:
+            self.localization_complete_signal.emit(f"WebAppTSXFileLocalizer Error: {str(e)}", False)
+
+    def localize_files(self):
+        """
+        Localizes all the TSX files in self.files.
+        """
+        try:
+            for tsx_file in self.files:
+                self._process_tsx_file(tsx_file)
+            self.localization_complete_signal.emit("Localization completed successfully.", True)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppTSXFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_tsx_file(self, tsx_file):
+        """
+        Processes an individual TSX file for localization.
+
+        :param tsx_file: The path to the TSX file to process.
+        """
+        try:
+            with open(tsx_file, 'r', encoding='utf-8') as file:
+                content = file.read()
+
+            self._mark_and_extract_strings(content, tsx_file)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppTSXFileLocalizer Error in _process_tsx_file: {str(e)}")
+
+    def _mark_and_extract_strings(self, content, tsx_file):
+        """
+        Marks and extracts all the translatable strings in the TSX file content and saves them to a JSON file.
+
+        :param content: The content of the TSX file.
+        :param tsx_file: The path to the TSX file being processed.
+        """
+        try:
+            source_json = {}
+            modified_content = content
+
+            for pattern in self.translatable_patterns:
+                matches = pattern.finditer(content)
+                for match in matches:
+                    original_string = match.group(0)
+                    translatable_string = match.group(1).strip() if len(match.groups()) > 0 else match.group(0).strip()
+                    if not translatable_string:
+                        continue
+
+                    # Generate a unique key for the translatable string
+                    key = self.generate_key(tsx_file)
+
+                    # Adjust key if use_key_namespace is True
+                    if self.app_settings.get('use_key_namespace', False):
+                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+
+                    # Save the extracted string to the JSON file
+                    source_json[key] = translatable_string
+
+                    # Replace the string in the content with "{t('key')}"
+                    replacement_string = f"{{{{t('{key}')}}}}"
+                    modified_content = modified_content.replace(original_string, replacement_string)
+
+            # Save the extracted strings to a JSON file
+            if source_json:
+                self.save_resource_files(source_json, tsx_file)
+
+            # Save the modified TSX file
+            self._save_tsx_file(modified_content, tsx_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppTSXFileLocalizer Error in _mark_and_extract_strings: {str(e)}")
+
+    def _save_tsx_file(self, content, tsx_file):
+        """
+        Saves the modified TSX file to replace the original.
+
+        :param content: The modified content of the TSX file.
+        :param tsx_file: The path to the TSX file being saved.
+        """
+        try:
+            with open(tsx_file, 'w', encoding='utf-8') as file:
+                file.write(content)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppTSXFileLocalizer Error in _save_tsx_file: {str(e)}")
+
+
+
+22. web_app_ejs_file_localizer.py:
+
+# web_app_ejs_file_localizer.py
+
+import re
+from PySide6.QtCore import QThread, Signal
+from web_app_file_localizer import WebAppFileLocalizer
+from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppEJSFileLocalizer(QThread, WebAppFileLocalizer):
+    """
+    The WebAppEJSFileLocalizer handles all EJS file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    """
+
+    localization_complete_signal = Signal(str, bool)
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+        # Regular expression patterns for identifying translatable strings in EJS files
+        self.translatable_patterns = [
+            re.compile(r'<%=\s*(.*?)\s*%>'),  # Matches rendered EJS content
+        ]
+
+    def run(self):
+        """
+        Executes the localization process in a separate thread.
+        """
+        try:
+            self.localize_files()
+        except Exception as e:
+            self.localization_complete_signal.emit(f"WebAppEJSFileLocalizer Error: {str(e)}", False)
+
+    def localize_files(self):
+        """
+        Localizes all the EJS files in self.files.
+        """
+        try:
+            for ejs_file in self.files:
+                self._process_ejs_file(ejs_file)
+            self.localization_complete_signal.emit("Localization completed successfully.", True)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppEJSFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_ejs_file(self, ejs_file):
+        """
+        Processes an individual EJS file for localization.
+
+        :param ejs_file: The path to the EJS file to process.
+        """
+        try:
+            with open(ejs_file, 'r', encoding='utf-8') as file:
+                content = file.read()
+
+            self._mark_and_extract_strings(content, ejs_file)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppEJSFileLocalizer Error in _process_ejs_file: {str(e)}")
+
+    def _mark_and_extract_strings(self, content, ejs_file):
+        """
+        Marks and extracts all the translatable strings in the EJS file content and saves them to a JSON file.
+
+        :param content: The content of the EJS file.
+        :param ejs_file: The path to the EJS file being processed.
+        """
+        try:
+            source_json = {}
+            modified_content = content
+
+            for pattern in self.translatable_patterns:
+                matches = pattern.finditer(content)
+                for match in matches:
+                    original_string = match.group(0)
+                    translatable_string = match.group(1).strip()
+                    if not translatable_string:
+                        continue
+
+                    # Generate a unique key for the translatable string
+                    key = self.generate_key(ejs_file)
+
+                    # Adjust key if use_key_namespace is True
+                    if self.app_settings.get('use_key_namespace', False):
+                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+
+                    # Save the extracted string to the JSON file
+                    source_json[key] = translatable_string
+
+                    # Replace the string in the content with "${{unique_id}}"
+                    replacement_string = f"${{{{{key}}}}}"  # Ensure replacement is exactly ${{unique_id}}
+                    modified_content = modified_content.replace(original_string, replacement_string)
+
+            # Save the extracted strings to a JSON file
+            if source_json:
+                self.save_resource_files(source_json, ejs_file)
+
+            # Save the modified EJS file
+            self._save_ejs_file(modified_content, ejs_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppEJSFileLocalizer Error in _mark_and_extract_strings: {str(e)}")
+
+    def _save_ejs_file(self, content, ejs_file):
+        """
+        Saves the modified EJS file to replace the original.
+
+        :param content: The modified content of the EJS file.
+        :param ejs_file: The path to the EJS file being saved.
+        """
+        try:
+            with open(ejs_file, 'w', encoding='utf-8') as file:
+                file.write(content)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppEJSFileLocalizer Error in _save_ejs_file: {str(e)}")
+
+
+23. web_app_vue_file_localizer.py:
+
+# web_app_vue_file_localizer.py
+
+import re
+from PySide6.QtCore import QThread, Signal
+from web_app_file_localizer import WebAppFileLocalizer
+from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppVUEFileLocalizer(QThread, WebAppFileLocalizer):
+    """
+    The WebAppVUEFileLocalizer handles all VUE file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    """
+
+    localization_complete_signal = Signal(str, bool)
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+        # Regular expression patterns for identifying translatable strings in VUE files
+        self.translatable_patterns = [
+            re.compile(r'(["\'])(?:(?=(\\?))\2.)*?\1'),  # Matches simple strings in quotes
+            re.compile(r'`(?:\\.|[^`\\])*`'),            # Matches template literals
+            re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
+        ]
+
+    def run(self):
+        """
+        Executes the localization process in a separate thread.
+        """
+        try:
+            self.localize_files()
+        except Exception as e:
+            self.localization_complete_signal.emit(f"WebAppVUEFileLocalizer Error: {str(e)}", False)
+
+    def localize_files(self):
+        """
+        Localizes all the VUE files in self.files.
+        """
+        try:
+            for vue_file in self.files:
+                self._process_vue_file(vue_file)
+            self.localization_complete_signal.emit("Localization completed successfully.", True)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppVUEFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_vue_file(self, vue_file):
+        """
+        Processes an individual VUE file for localization.
+
+        :param vue_file: The path to the VUE file to process.
+        """
+        try:
+            with open(vue_file, 'r', encoding='utf-8') as file:
+                content = file.read()
+
+            self._mark_and_extract_strings(content, vue_file)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppVUEFileLocalizer Error in _process_vue_file: {str(e)}")
+
+    def _mark_and_extract_strings(self, content, vue_file):
+        """
+        Marks and extracts all the translatable strings in the VUE file content and saves them to a JSON file.
+
+        :param content: The content of the VUE file.
+        :param vue_file: The path to the VUE file being processed.
+        """
+        try:
+            source_json = {}
+            modified_content = content
+
+            for pattern in self.translatable_patterns:
+                matches = pattern.finditer(content)
+                for match in matches:
+                    original_string = match.group(0)
+                    translatable_string = match.group(1).strip() if len(match.groups()) > 0 else match.group(0).strip()
+                    if not translatable_string:
+                        continue
+
+                    # Generate a unique key for the translatable string
+                    key = self.generate_key(vue_file)
+
+                    # Adjust key if use_key_namespace is True
+                    if self.app_settings.get('use_key_namespace', False):
+                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+
+                    # Save the extracted string to the JSON file
+                    source_json[key] = translatable_string
+
+                    # Replace the string in the content with "{{$t('key')}}"
+                    replacement_string = f"{{{{$t('{key}')}}}}"
+                    modified_content = modified_content.replace(original_string, replacement_string)
+
+            # Save the extracted strings to a JSON file
+            if source_json:
+                self.save_resource_files(source_json, vue_file)
+
+            # Save the modified VUE file
+            self._save_vue_file(modified_content, vue_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppVUEFileLocalizer Error in _mark_and_extract_strings: {str(e)}")
+
+    def _save_vue_file(self, content, vue_file):
+        """
+        Saves the modified VUE file to replace the original.
+
+        :param content: The modified content of the VUE file.
+        :param vue_file: The path to the VUE file being saved.
+        """
+        try:
+            with open(vue_file, 'w', encoding='utf-8') as file:
+                file.write(content)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppVUEFileLocalizer Error in _save_vue_file: {str(e)}")
+
+
+24. web_app_json_file_localizer.py:
+
+# web_app_json_file_localizer.py
+
+import json
+from PySide6.QtCore import QThread, Signal
+from web_app_file_localizer import WebAppFileLocalizer
+from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppJSONFileLocalizer(QThread, WebAppFileLocalizer):
+    """
+    The WebAppJSONFileLocalizer handles all JSON file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    """
+
+    localization_complete_signal = Signal(str, bool)
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+    def run(self):
+        """
+        Executes the localization process in a separate thread.
+        """
+        try:
+            self.localize_files()
+        except Exception as e:
+            self.localization_complete_signal.emit(f"WebAppJSONFileLocalizer Error: {str(e)}", False)
+
+    def localize_files(self):
+        """
+        Duplicates all the JSON files in self.files for each target locale.
+        """
+        try:
+            for json_file in self.files:
+                self._process_json_file(json_file)
+            self.localization_complete_signal.emit("Localization completed successfully.", True)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppJSONFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_json_file(self, json_file):
+        """
+        Processes an individual JSON file by duplicating it for each target locale.
+
+        :param json_file: The path to the JSON file to process.
+        """
+        try:
+            with open(json_file, 'r', encoding='utf-8') as file:
+                content = json.load(file)
+
+            # Save the content to the resource files for each locale
+            self.save_resource_files(content, json_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppJSONFileLocalizer Error in _process_json_file: {str(e)}")
+
+
+25. web_app_csv_file_localizer.py:
+
+# web_app_csv_file_localizer.py
+
+import csv
+from PySide6.QtCore import QThread, Signal
+from web_app_file_localizer import WebAppFileLocalizer
+from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppCSVFileLocalizer(QThread, WebAppFileLocalizer):
+    """
+    The WebAppCSVFileLocalizer handles all CSV file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    """
+
+    localization_complete_signal = Signal(str, bool)
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+    def run(self):
+        """
+        Executes the localization process in a separate thread.
+        """
+        try:
+            self.localize_files()
+        except Exception as e:
+            self.localization_complete_signal.emit(f"WebAppCSVFileLocalizer Error: {str(e)}", False)
+
+    def localize_files(self):
+        """
+        Duplicates all the CSV files in self.files for each target locale.
+        """
+        try:
+            for csv_file in self.files:
+                self._process_csv_file(csv_file)
+            self.localization_complete_signal.emit("Localization completed successfully.", True)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppCSVFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_csv_file(self, csv_file):
+        """
+        Processes an individual CSV file by duplicating it for each target locale.
+
+        :param csv_file: The path to the CSV file to process.
+        """
+        try:
+            with open(csv_file, 'r', encoding='utf-8') as file:
+                reader = csv.reader(file)
+                content = list(reader)
+
+            # Save the content to the resource files for each locale
+            self.save_resource_files(content, csv_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppCSVFileLocalizer Error in _process_csv_file: {str(e)}")

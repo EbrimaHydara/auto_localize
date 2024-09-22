@@ -1,6 +1,6 @@
-from app_manager import AppManager
-from db_manager import DBManager
-from error_manager import (
+from managers.app_manager import AppManager
+from managers.db_manager import DBManager
+from managers.error_manager import (
     InitializationError,
     DatabaseError,
     InvalidUserInputError,

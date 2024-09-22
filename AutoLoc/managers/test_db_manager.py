@@ -1,5 +1,5 @@
-from db_manager import DBManager
-from error_manager import (
+from managers.db_manager import DBManager
+from managers.error_manager import (
     DatabaseError,
     DatabaseConnectionError,
     FilePermissionError,

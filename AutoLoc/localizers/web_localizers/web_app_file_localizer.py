@@ -4,9 +4,9 @@ import os
 import json
 from pathlib import Path
 from PySide6.QtCore import QObject, Signal
-from setting_manager import SettingManager
-from source_code_manager import SourceCodeManager
-from error_manager import (
+from managers.setting_manager import SettingManager
+from managers.source_code_manager import SourceCodeManager
+from managers.error_manager import (
     InitializationError,
     InvalidUserInputError,
     ResourceFileError,
@@ -22,11 +22,12 @@ class WebAppFileLocalizer(QObject):
         super().__init__()
         try:
             # Initialize necessary managers
+            self.source_code_id = source_code_id
             self.setting_manager = SettingManager()
-            self.source_code_manager = SourceCodeManager(source_code_id)
+            self.source_code_manager = SourceCodeManager(self.source_code_id)
             
             # Get source code information
-            self.source_code = self.source_code_manager.get_source_code(source_code_id)
+            self.source_code = self.source_code_manager.get_source_code(self.source_code_id)
             self.source_locale = self.source_code['source_locale']
             self.app_settings = self.setting_manager.get_app_settings()
 
@@ -37,7 +38,7 @@ class WebAppFileLocalizer(QObject):
             self.locales_path.mkdir(parents=True, exist_ok=True)
             
             # Get target locales for the source code
-            self.target_locales = self.setting_manager.get_target_locales(source_code_id)
+            self.target_locales = self.setting_manager.get_target_locales(self.source_code_id)
         except (InitializationError, InvalidUserInputError) as e:
             raise InitializationError(f"WebAppFileLocalizer Initialization Error: {str(e)}")
 

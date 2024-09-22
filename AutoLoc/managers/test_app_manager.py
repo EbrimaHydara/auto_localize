@@ -1,6 +1,6 @@
 import os
-from app_manager import AppManager
-from error_manager import (  # Import specific exceptions
+from managers.app_manager import AppManager
+from managers.error_manager import (  # Import specific exceptions
     InitializationError,
     PermissionError,
     DatabaseError,

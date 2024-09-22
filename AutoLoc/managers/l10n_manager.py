@@ -1,9 +1,9 @@
 # l10n_manager.py
 
 from PySide6.QtCore import QObject, Signal
-from source_code_manager import SourceCodeManager
-from setting_manager import SettingManager
-from error_manager import (
+from managers.source_code_manager import SourceCodeManager
+from managers.setting_manager import SettingManager
+from managers.error_manager import (
     InitializationError,
     InvalidUserInputError,
     LocalizationRenderError

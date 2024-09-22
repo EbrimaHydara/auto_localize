@@ -1,13 +1,13 @@
-# import sqlite3
-# from project_manager import ProjectManager
-# from error_manager import (
-#     DatabaseError,
-#     InitializationError,
-#     InvalidUserInputError
-# )
+import sqlite3
+from managers.project_manager import ProjectManager
+from managers.error_manager import (
+    DatabaseError,
+    InitializationError,
+    InvalidUserInputError
+)
 
-# # Create an instance of ProjectManager
-# project_manager = ProjectManager()
+# Create an instance of ProjectManager
+project_manager = ProjectManager()
 
 # # 1. Test `get_projects` function
 # try:
@@ -31,24 +31,24 @@
 # except Exception as e:
 #     print(f"Test get_project: Failed with Exception: {str(e)}")
 
-# # 3. Test `add_project` function
-# try:
-#     new_project = project_manager.add_project(
-#         name="New Project",
-#         client="Client A",
-#         description="A test project",
-#         status="In Progress",
-#         start_date="2024-09-13",
-#         end_date="2024-10-31",
-#         lead_engineer="Engineer A"
-#     )
-#     assert new_project['name'] == 'New Project', f"Expected 'New Project', got {new_project['name']}"
-#     assert new_project['client'] == 'Client A', f"Expected 'Client A', got {new_project['client']}"
-#     print("Test add_project: Passed")
-# except DatabaseError as e:
-#     print(f"Test add_project: Failed with DatabaseError: {str(e)}")
-# except Exception as e:
-#     print(f"Test add_project: Failed with Exception: {str(e)}")
+# 3. Test `add_project` function
+try:
+    new_project = project_manager.add_project(
+        name="Rakuten Mobile Project",
+        client="Rakuten Mobile Inc.",
+        description="A project to localize RMI source code.",
+        status="In Progress",
+        start_date="2024-09-01",
+        end_date="2024-09-30",
+        lead_engineer="Ebrima Hydara"
+    )
+    assert new_project['name'] == 'Rakuten Mobile Project', f"Expected 'Rakuten Mobile Project', got {new_project['name']}"
+    assert new_project['client'] == 'Rakuten Mobile Inc.', f"Expected 'Rakuten Mobile Inc.', got {new_project['client']}"
+    print("Test add_project: Passed")
+except DatabaseError as e:
+    print(f"Test add_project: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test add_project: Failed with Exception: {str(e)}")
 
 # # 4. Test `update_project` function
 # try:

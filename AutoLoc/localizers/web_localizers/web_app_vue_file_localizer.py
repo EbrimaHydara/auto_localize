@@ -2,8 +2,8 @@
 
 import re
 from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
 class WebAppVUEFileLocalizer(QThread, WebAppFileLocalizer):
     """
@@ -14,7 +14,12 @@ class WebAppVUEFileLocalizer(QThread, WebAppFileLocalizer):
     localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
-        super().__init__(source_code_id)
+        # Initialize QThread without arguments
+        QThread.__init__(self) # as super().__init__(self)
+
+        # Initialize WebAppFileLocalizer with the source_code_id argument
+        WebAppFileLocalizer.__init__(self, source_code_id)
+        
         self.files = files
 
         # Regular expression patterns for identifying translatable strings in VUE files

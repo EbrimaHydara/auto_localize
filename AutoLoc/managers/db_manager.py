@@ -1,13 +1,13 @@
-from app_manager import AppManager
+from managers.app_manager import AppManager
 import sqlite3
 import os
-from error_manager import (
+from managers.error_manager import (
     DatabaseError,
     DatabaseConnectionError,
     FilePermissionError,
     InitializationError,
 )
-from default_data import CREATE_TABLE_STATEMENTS, DEFAULT_RECORDS
+from managers.default_data import CREATE_TABLE_STATEMENTS, DEFAULT_RECORDS
 
 class DBManager:
     """

@@ -1,18 +1,18 @@
-# import sqlite3
-# from target_locale_manager import TargetLocaleManager
-# from error_manager import (
-#     DatabaseError,
-#     LocaleManagementError,
-#     InitializationError
-# )
+import sqlite3
+from managers.target_locale_manager import TargetLocaleManager
+from managers.error_manager import (
+    DatabaseError,
+    LocaleManagementError,
+    InitializationError
+)
 
-# # Sample data for testing
-# source_code_id = 3  # Assume this is a valid source code ID
-# target_locale_name = "French"
-# target_locale_code = "fr-FR"
+# Sample data for testing
+source_code_id = 4  # Assume this is a valid source code ID
+target_locale_name = "Korean (KR)"
+target_locale_code = "ko-KR"
 
-# # Create an instance of TargetLocaleManager
-# target_locale_manager = TargetLocaleManager(source_code_id)
+# Create an instance of TargetLocaleManager
+target_locale_manager = TargetLocaleManager(source_code_id)
 
 # # 1. Test `get_target_locales` function
 # try:
@@ -24,16 +24,16 @@
 # except Exception as e:
 #     print(f"Test get_target_locales: Failed with Exception: {str(e)}")
 
-# # 2. Test `add_target_locale` function
-# try:
-#     new_target_locale = target_locale_manager.add_target_locale(target_locale_name, target_locale_code)
-#     assert new_target_locale['name'] == target_locale_name, f"Expected '{target_locale_name}', got {new_target_locale['name']}"
-#     assert new_target_locale['code'] == target_locale_code, f"Expected '{target_locale_code}', got {new_target_locale['code']}"
-#     print("Test add_target_locale: Passed")
-# except LocaleManagementError as e:
-#     print(f"Test add_target_locale: Failed with LocaleManagementError: {str(e)}")
-# except Exception as e:
-#     print(f"Test add_target_locale: Failed with Exception: {str(e)}")
+# 2. Test `add_target_locale` function
+try:
+    new_target_locale = target_locale_manager.add_target_locale(target_locale_name, target_locale_code)
+    assert new_target_locale['name'] == target_locale_name, f"Expected '{target_locale_name}', got {new_target_locale['name']}"
+    assert new_target_locale['code'] == target_locale_code, f"Expected '{target_locale_code}', got {new_target_locale['code']}"
+    print("Test add_target_locale: Passed")
+except LocaleManagementError as e:
+    print(f"Test add_target_locale: Failed with LocaleManagementError: {str(e)}")
+except Exception as e:
+    print(f"Test add_target_locale: Failed with Exception: {str(e)}")
 
 # # 3. Test `get_target_locale` function
 # try:

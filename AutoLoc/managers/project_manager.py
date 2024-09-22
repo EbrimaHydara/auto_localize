@@ -1,6 +1,6 @@
-from db_manager import DBManager  # Import DBManager from the same module
+from managers.db_manager import DBManager  # Import DBManager from the same module
 from datetime import datetime
-from error_manager import (
+from managers.error_manager import (
     DatabaseError,
     InitializationError,
     InvalidUserInputError

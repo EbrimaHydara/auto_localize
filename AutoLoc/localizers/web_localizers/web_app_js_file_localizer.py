@@ -1,9 +1,9 @@
 # web_app_js_file_localizer.py
 
 import re
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from PySide6.QtCore import QObject, QThread, Signal
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
 class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
     """
@@ -14,7 +14,18 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
     localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
-        super().__init__(source_code_id)
+
+        self.source_code_id = source_code_id
+
+        # Initialize the QObject explicitly
+        QObject.__init__(self) # as super().__init__(self)
+
+        # Initialize WebAppFileLocalizer with the source_code_id argument
+        WebAppFileLocalizer.__init__(self.source_code_id) # as super().__init__(self)
+
+        # Initialize QThread without arguments
+        QThread.__init__(self) # as super().__init__(self)
+
         self.files = files
 
         # Regular expression patterns for identifying translatable strings in JS files
