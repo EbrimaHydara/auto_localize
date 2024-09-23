@@ -1,16 +1,17 @@
 Read this file as a continuation from 'AutoLoc_Code_3.txt' file's content.
 
 15. l10n_manager.py: in `managers` module:
-
 # l10n_manager.py
 
 import os
+import shutil
 from managers.source_code_manager import SourceCodeManager
 from managers.setting_manager import SettingManager
 from managers.error_manager import (
     InitializationError,
     InvalidUserInputError,
-    LocalizationRenderError
+    LocalizationRenderError,
+    ResourceFileError
 )
 
 # Import all the localizer classes
@@ -152,7 +153,7 @@ class L10nManager:
                 '.jsx': WebAppJSXFileLocalizer,
                 '.ts': WebAppTSFileLocalizer,
                 '.tsx': WebAppTSXFileLocalizer,
-                '.vue': WebAppVueFileLocalizer,
+                '.vue': WebAppVUEFileLocalizer,
                 '.json': WebAppJSONFileLocalizer,
                 '.csv': WebAppCSVFileLocalizer,
             }
@@ -240,13 +241,49 @@ class L10nManager:
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_java_files: {str(e)}")
 
+    def unlocalize_source_code(self):
+        """
+        Restores the original source code by deleting all localized files and copying the original files back.
+        Updates the source code status to "Unlocalized".
+        """
+        try:
+            # Get the paths for the localized and original source code from self.source_code
+            localized_path = self.source_code['localized_source_code_path']
+            original_path = self.source_code['original_source_code_path']
+
+            # Delete all files in the localized source code path
+            for root, _, files in os.walk(localized_path, topdown=False):
+                for file in files:
+                    os.remove(os.path.join(root, file))
+            
+            # Remove the directories after deleting the files
+            for root, dirs, _ in os.walk(localized_path, topdown=False):
+                for dir in dirs:
+                    os.rmdir(os.path.join(root, dir))
+            
+            # Recursively copy all files from the original source code path to the localized path
+            shutil.copytree(original_path, localized_path, dirs_exist_ok=True)
+
+            # Update the source code status to "Unlocalized" using SourceCodeManager
+            self.source_code_manager.update_source_code(self.source_code['id'], {'status': "Unlocalized"})
+
+        except FileNotFoundError as e:
+            raise ResourceFileError(f"File not found: {str(e)}")
+        except PermissionError as e:
+            raise ResourceFileError(f"Permission error: {str(e)}")
+        except Exception as e:
+            raise ResourceFileError(f"L10nManager Error in unlocalize_source_code: {str(e)}")
+
+
+
+
 
 
 
 16. localizers.web_localizers.web_app_file_localizer.py:
-
 import os
 import json
+import shutil
 from datetime import datetime
 from pathlib import Path
 from managers.setting_manager import SettingManager
@@ -290,14 +327,21 @@ class WebAppFileLocalizer:
     def generate_key(self, file_path):
         """
         Generates a unique string identifier key for the extracted strings.
-        If use_key_namespace is True, the key includes a namespace based on the file path.
+        If use_key_namespace is True, the key includes a namespace based on the relative path
+        of the file (excluding the file extension) in the context of the localized source code path.
 
         :param file_path: The path of the file being processed.
         :return: A unique key string.
         """
         try:
-            # Determine namespace prefix based on settings
-            namespace_prefix = f"{Path(file_path).stem}:" if self.app_settings['use_key_namespace'] else ""
+            # Determine the relative path in the context of the localized source code path
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+
+            # Remove the file extension from the relative path for the namespace prefix
+            relative_path_without_extension = os.path.splitext(relative_path)[0]
+
+            # Use the relative path without extension as namespace prefix if 'use_key_namespace' is True
+            namespace_prefix = f"{relative_path_without_extension.replace(os.sep, '/')}:" if self.app_settings['use_key_namespace'] else ""
 
             # Generate a unique ID using datetime attributes
             now = datetime.now()
@@ -307,7 +351,7 @@ class WebAppFileLocalizer:
             return f"{namespace_prefix}{unique_id}"
         except Exception as e:
             raise InvalidUserInputError(f"WebAppFileLocalizer Error in generate_key: {str(e)}")
-
+            
     def save_resource_files(self, data, file_path):
         """
         Saves the extracted strings in JSON format for both source and target locales.
@@ -347,12 +391,41 @@ class WebAppFileLocalizer:
                 json.dump(data, json_file, ensure_ascii=False, indent=4)
         except Exception as e:
             raise ResourceFileError(f"WebAppFileLocalizer Error in _write_json_file: {str(e)}")
+    
+    def duplicate_as_resource_files(self, file_path):
+        """
+        Duplicates the specified file into each locale's path without reading its content.
+
+        :param file_path: The path of the file to duplicate.
+        """
+        try:
+            # Determine the relative path of the file from the localized source code path
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+            
+            # Define the base name of the file for duplication
+            file_name = Path(file_path).name
+
+            # Duplicate the file for each target locale
+            for locale in self.target_locales:
+                # Construct the target locale path
+                target_locale_path = self.locales_path / locale['code'] / relative_path
+                target_locale_path.parent.mkdir(parents=True, exist_ok=True)  # Ensure the directory exists
+
+                # Define the full path for the duplicated file
+                target_file_path = target_locale_path.with_name(file_name)
+
+                # Copy the file to the target locale path
+                shutil.copyfile(file_path, target_file_path)
+
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in duplicate_as_resource_files: {str(e)}")
+
+
 
 
 
 
 17. web_app_html_file_localizer.py:
-
 # web_app_html_file_localizer.py
 
 import os
@@ -402,7 +475,7 @@ class WebAppHTMLFileLocalizer(WebAppFileLocalizer):
             self._mark_translatable_strings(soup, html_file)
             self._extract_and_save_strings(soup, html_file)
 
-            if self.app_settings.get('duplicate_html', False):
+            if self.app_settings['duplicate_html']:
                 self._duplicate_html_file(soup, html_file)
         except Exception as e:
             raise LocalizationRenderError(f"WebAppHTMLFileLocalizer Error in _process_html_file: {str(e)}")
@@ -458,7 +531,13 @@ class WebAppHTMLFileLocalizer(WebAppFileLocalizer):
             source_json = {}
 
             for tag in soup.find_all(attrs={"data-i18n": True}):
-                key = tag['data-i18n'].split(':', 1)[1]  # Take the second part without namespace_suffix
+                # Check if 'use_key_namespace' is True before splitting the 'data-i18n' attribute
+                if self.app_settings['use_key_namespace']:
+                    key = tag['data-i18n'].split(':', 1)[1]  # Take the second part without namespace_suffix
+                else:
+                    key = tag['data-i18n']  # Use the full key as is
+
+                # Get the inner HTML content if available
                 inner_html = ''.join(str(child) for child in tag.children).strip() if tag.children else None
                 if inner_html and inner_html.strip():
                     source_json[key] = inner_html
@@ -537,8 +616,8 @@ class WebAppHTMLFileLocalizer(WebAppFileLocalizer):
 
 
 
-18. web_app_js_file_localizer.py:
 
+18. web_app_js_file_localizer.py:
 # web_app_js_file_localizer.py
 
 import re
@@ -598,26 +677,31 @@ class WebAppJSFileLocalizer(WebAppFileLocalizer):
             source_json = {}
             modified_content = content
 
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
             for pattern in self.translatable_patterns:
                 matches = pattern.finditer(content)
                 for match in matches:
                     original_string = match.group(0)
-                    translatable_string = match.group(1).strip()
+                    translatable_string = match.group(1).strip() if len(match.groups()) > 0 else match.group(0).strip()
                     if not translatable_string:
                         continue
-                    
+
                     # Generate a unique key for the translatable string
-                    key = self.generate_key(js_file)
+                    generated_key = self.generate_key(js_file)
 
-                    # Adjust key if use_key_namespace is True
-                    if self.app_settings['use_key_namespace']:
-                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
 
-                    # Save the extracted string to the JSON file
-                    source_json[key] = translatable_string
+                    # Save the extracted string to the JSON file without the namespace prefix
+                    source_json[key_without_namespace] = translatable_string
 
-                    # Replace the string in the content with "${translate('unique_id')}"
-                    replacement_string = f"${{translate('{key}')}}"
+                    # Generate key with or without namespace for the replacement in modified content
+                    key_for_replacement = generated_key if use_namespace else key_without_namespace
+
+                    # Replace the string in the content with "${translate('key_for_replacement')}"
+                    replacement_string = f"${{translate('{key_for_replacement}')}}"
                     modified_content = modified_content.replace(original_string, replacement_string)
 
             # Save the extracted strings to a JSON file
@@ -628,7 +712,7 @@ class WebAppJSFileLocalizer(WebAppFileLocalizer):
             self._save_js_file(modified_content, js_file)
         except Exception as e:
             raise ResourceFileError(f"WebAppJSFileLocalizer Error in _mark_and_extract_strings: {str(e)}")
-
+            
     def _save_js_file(self, content, js_file):
         """
         Saves the modified JS file to replace the original.
@@ -641,9 +725,3 @@ class WebAppJSFileLocalizer(WebAppFileLocalizer):
                 file.write(content)
         except Exception as e:
             raise ResourceFileError(f"WebAppJSFileLocalizer Error in _save_js_file: {str(e)}")
-
-
-
-
-
-

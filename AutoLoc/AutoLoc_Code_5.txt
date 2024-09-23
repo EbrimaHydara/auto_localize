@@ -2,7 +2,6 @@ Please read this file content as a continuation from the AutoLoc_Code_4.txt file
 
 
 19. web_app_jsx_file_localizer.py:
-
 # web_app_jsx_file_localizer.py
 
 import re
@@ -62,26 +61,31 @@ class WebAppJSXFileLocalizer(WebAppFileLocalizer):
             source_json = {}
             modified_content = content
 
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
             for pattern in self.translatable_patterns:
                 matches = pattern.finditer(content)
                 for match in matches:
                     original_string = match.group(0)
-                    translatable_string = match.group(1).strip()
+                    translatable_string = match.group(1).strip() if len(match.groups()) > 0 else match.group(0).strip()
                     if not translatable_string:
                         continue
 
                     # Generate a unique key for the translatable string
-                    key = self.generate_key(jsx_file)
+                    generated_key = self.generate_key(jsx_file)
 
-                    # Adjust key if use_key_namespace is True
-                    if self.app_settings.get('use_key_namespace', False):
-                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
 
-                    # Save the extracted string to the JSON file
-                    source_json[key] = translatable_string
+                    # Save the extracted string to the JSON file without the namespace prefix
+                    source_json[key_without_namespace] = translatable_string
 
-                    # Replace the string in the content with "{t('key')}"
-                    replacement_string = f"{{{{t('{key}')}}}}"
+                    # Generate key with or without namespace for the replacement in modified content
+                    key_for_replacement = generated_key if use_namespace else key_without_namespace
+
+                    # Replace the string in the content with "{t('key_for_replacement')}"
+                    replacement_string = f"{{{{t('{key_for_replacement}')}}}}"
                     modified_content = modified_content.replace(original_string, replacement_string)
 
             # Save the extracted strings to a JSON file
@@ -108,8 +112,9 @@ class WebAppJSXFileLocalizer(WebAppFileLocalizer):
 
 
 
-20. web_app_ts_file_localizer.py:
 
+
+20. web_app_ts_file_localizer.py:
 # web_app_ts_file_localizer.py
 
 import re
@@ -169,6 +174,9 @@ class WebAppTSFileLocalizer(WebAppFileLocalizer):
             source_json = {}
             modified_content = content
 
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
             for pattern in self.translatable_patterns:
                 matches = pattern.finditer(content)
                 for match in matches:
@@ -178,17 +186,19 @@ class WebAppTSFileLocalizer(WebAppFileLocalizer):
                         continue
 
                     # Generate a unique key for the translatable string
-                    key = self.generate_key(ts_file)
+                    generated_key = self.generate_key(ts_file)
 
-                    # Adjust key if use_key_namespace is True
-                    if self.app_settings.get('use_key_namespace', False):
-                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
 
-                    # Save the extracted string to the JSON file
-                    source_json[key] = translatable_string
+                    # Save the extracted string to the JSON file without the namespace prefix
+                    source_json[key_without_namespace] = translatable_string
 
-                    # Replace the string in the content with "t('key')"
-                    replacement_string = f"t('{key}')"
+                    # Generate key with or without namespace for the replacement in modified content
+                    key_for_replacement = generated_key if use_namespace else key_without_namespace
+
+                    # Replace the string in the content with "{translate('key_for_replacement')}"
+                    replacement_string = f"{{translate('{key_for_replacement}')}}"
                     modified_content = modified_content.replace(original_string, replacement_string)
 
             # Save the extracted strings to a JSON file
@@ -214,8 +224,10 @@ class WebAppTSFileLocalizer(WebAppFileLocalizer):
             raise ResourceFileError(f"WebAppTSFileLocalizer Error in _save_ts_file: {str(e)}")
 
 
-21. web_app_tsx_file_localizer.py:
 
+
+
+21. web_app_tsx_file_localizer.py:
 # web_app_tsx_file_localizer.py
 
 import re
@@ -275,6 +287,9 @@ class WebAppTSXFileLocalizer(WebAppFileLocalizer):
             source_json = {}
             modified_content = content
 
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
             for pattern in self.translatable_patterns:
                 matches = pattern.finditer(content)
                 for match in matches:
@@ -284,17 +299,19 @@ class WebAppTSXFileLocalizer(WebAppFileLocalizer):
                         continue
 
                     # Generate a unique key for the translatable string
-                    key = self.generate_key(tsx_file)
+                    generated_key = self.generate_key(tsx_file)
 
-                    # Adjust key if use_key_namespace is True
-                    if self.app_settings.get('use_key_namespace', False):
-                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
 
-                    # Save the extracted string to the JSON file
-                    source_json[key] = translatable_string
+                    # Save the extracted string to the JSON file without the namespace prefix
+                    source_json[key_without_namespace] = translatable_string
 
-                    # Replace the string in the content with "{t('key')}"
-                    replacement_string = f"{{{{t('{key}')}}}}"
+                    # Generate key with or without namespace for the replacement in modified content
+                    key_for_replacement = generated_key if use_namespace else key_without_namespace
+
+                    # Replace the string in the content with "{{t('key_for_replacement')}}"
+                    replacement_string = f"{{{{t('{key_for_replacement}')}}}}"
                     modified_content = modified_content.replace(original_string, replacement_string)
 
             # Save the extracted strings to a JSON file
@@ -321,8 +338,10 @@ class WebAppTSXFileLocalizer(WebAppFileLocalizer):
 
 
 
-22. web_app_ejs_file_localizer.py:
 
+
+
+22. web_app_ejs_file_localizer.py:
 # web_app_ejs_file_localizer.py
 
 import re
@@ -380,26 +399,31 @@ class WebAppEJSFileLocalizer(WebAppFileLocalizer):
             source_json = {}
             modified_content = content
 
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
             for pattern in self.translatable_patterns:
                 matches = pattern.finditer(content)
                 for match in matches:
                     original_string = match.group(0)
-                    translatable_string = match.group(1).strip()
+                    translatable_string = match.group(1).strip() if len(match.groups()) > 0 else match.group(0).strip()
                     if not translatable_string:
                         continue
 
                     # Generate a unique key for the translatable string
-                    key = self.generate_key(ejs_file)
+                    generated_key = self.generate_key(ejs_file)
 
-                    # Adjust key if use_key_namespace is True
-                    if self.app_settings.get('use_key_namespace', False):
-                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
 
-                    # Save the extracted string to the JSON file
-                    source_json[key] = translatable_string
+                    # Save the extracted string to the JSON file without the namespace prefix
+                    source_json[key_without_namespace] = translatable_string
 
-                    # Replace the string in the content with "${{unique_id}}"
-                    replacement_string = f"${{{{{key}}}}}"  # Ensure replacement is exactly ${{unique_id}}
+                    # Generate key with or without namespace for the replacement in modified content
+                    key_for_replacement = generated_key if use_namespace else key_without_namespace
+
+                    # Replace the string in the content with "<%= translate('key_for_replacement') %>"
+                    replacement_string = f"<%= translate('{key_for_replacement}') %>"
                     modified_content = modified_content.replace(original_string, replacement_string)
 
             # Save the extracted strings to a JSON file
@@ -425,8 +449,11 @@ class WebAppEJSFileLocalizer(WebAppFileLocalizer):
             raise ResourceFileError(f"WebAppEJSFileLocalizer Error in _save_ejs_file: {str(e)}")
 
 
-23. web_app_vue_file_localizer.py:
 
+
+
+
+23. web_app_vue_file_localizer.py:
 # web_app_vue_file_localizer.py
 
 import re
@@ -486,6 +513,9 @@ class WebAppVUEFileLocalizer(WebAppFileLocalizer):
             source_json = {}
             modified_content = content
 
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
             for pattern in self.translatable_patterns:
                 matches = pattern.finditer(content)
                 for match in matches:
@@ -495,17 +525,19 @@ class WebAppVUEFileLocalizer(WebAppFileLocalizer):
                         continue
 
                     # Generate a unique key for the translatable string
-                    key = self.generate_key(vue_file)
+                    generated_key = self.generate_key(vue_file)
 
-                    # Adjust key if use_key_namespace is True
-                    if self.app_settings.get('use_key_namespace', False):
-                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
 
-                    # Save the extracted string to the JSON file
-                    source_json[key] = translatable_string
+                    # Save the extracted string to the JSON file without the namespace prefix
+                    source_json[key_without_namespace] = translatable_string
 
-                    # Replace the string in the content with "{{$t('key')}}"
-                    replacement_string = f"{{{{$t('{key}')}}}}"
+                    # Generate key with or without namespace for the replacement in modified content
+                    key_for_replacement = generated_key if use_namespace else key_without_namespace
+
+                    # Replace the string in the content with "{{$t('key_for_replacement')}}"
+                    replacement_string = f"{{$t('{key_for_replacement}')}}"
                     modified_content = modified_content.replace(original_string, replacement_string)
 
             # Save the extracted strings to a JSON file
@@ -532,8 +564,10 @@ class WebAppVUEFileLocalizer(WebAppFileLocalizer):
 
 
 
-24. web_app_json_file_localizer.py:
 
+
+
+24. web_app_json_file_localizer.py:
 # web_app_json_file_localizer.py
 
 import json
@@ -568,17 +602,18 @@ class WebAppJSONFileLocalizer(WebAppFileLocalizer):
         :param json_file: The path to the JSON file to process.
         """
         try:
-            with open(json_file, 'r', encoding='utf-8') as file:
-                content = json.load(file)
-
-            # Save the content to the resource files for each locale
-            self.save_resource_files(content, json_file)
+            # Use the duplicate_as_resource_files function to replicate the JSON file
+            self.duplicate_as_resource_files(json_file)
         except Exception as e:
             raise ResourceFileError(f"WebAppJSONFileLocalizer Error in _process_json_file: {str(e)}")
 
 
-25. web_app_csv_file_localizer.py:
 
+
+
+
+
+25. web_app_csv_file_localizer.py:
 # web_app_csv_file_localizer.py
 
 import csv
@@ -613,11 +648,9 @@ class WebAppCSVFileLocalizer(WebAppFileLocalizer):
         :param csv_file: The path to the CSV file to process.
         """
         try:
-            with open(csv_file, 'r', encoding='utf-8') as file:
-                reader = csv.reader(file)
-                content = list(reader)
-
-            # Save the content to the resource files for each locale
-            self.save_resource_files(content, csv_file)
+            # Use the duplicate_as_resource_files function to replicate the CSV file
+            self.duplicate_as_resource_files(csv_file)
         except Exception as e:
             raise ResourceFileError(f"WebAppCSVFileLocalizer Error in _process_csv_file: {str(e)}")
+
+
