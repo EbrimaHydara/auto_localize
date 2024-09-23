@@ -1,63 +1,74 @@
-# web_app_file_localizer.py
-
 import os
 import json
+import shutil
+from datetime import datetime
 from pathlib import Path
-from PySide6.QtCore import QObject, Signal
 from managers.setting_manager import SettingManager
 from managers.source_code_manager import SourceCodeManager
+from managers.target_locale_manager import TargetLocaleManager
 from managers.error_manager import (
     InitializationError,
     InvalidUserInputError,
     ResourceFileError,
 )
 
-class WebAppFileLocalizer(QObject):
+class WebAppFileLocalizer:
     """
     The WebAppFileLocalizer class serves as the base class for all web app file type localizer classes.
     It manages common functionalities such as progress tracking, key generation, and saving extracted strings to resource files.
     """
 
     def __init__(self, source_code_id):
-        super().__init__()
         try:
             # Initialize necessary managers
-            self.source_code_id = source_code_id
             self.setting_manager = SettingManager()
-            self.source_code_manager = SourceCodeManager(self.source_code_id)
-            
+            self.source_code_manager = SourceCodeManager(source_code_id)
+            self.target_locale_manager = TargetLocaleManager(source_code_id)  # Added target locale manager
+
             # Get source code information
-            self.source_code = self.source_code_manager.get_source_code(self.source_code_id)
+            self.source_code = self.source_code_manager.get_source_code(source_code_id)
             self.source_locale = self.source_code['source_locale']
-            self.app_settings = self.setting_manager.get_app_settings()
+            self.app_settings = self.setting_manager.get_app_settings()  # Use as sqlite3.Row object
 
             # Initialize paths
             self.locales_path = Path(self.source_code['localized_source_code_path']) / "locales"
 
             # Ensure the locales directory exists
             self.locales_path.mkdir(parents=True, exist_ok=True)
-            
+
             # Get target locales for the source code
-            self.target_locales = self.setting_manager.get_target_locales(self.source_code_id)
+            self.target_locales = self.target_locale_manager.get_target_locales()
         except (InitializationError, InvalidUserInputError) as e:
             raise InitializationError(f"WebAppFileLocalizer Initialization Error: {str(e)}")
 
     def generate_key(self, file_path):
         """
         Generates a unique string identifier key for the extracted strings.
+        If use_key_namespace is True, the key includes a namespace based on the relative path
+        of the file (excluding the file extension) in the context of the localized source code path.
 
-        :param file_path: The path of the file being processed
-        :return: A unique key string
+        :param file_path: The path of the file being processed.
+        :return: A unique key string.
         """
         try:
-            # Remove the file extension from the file path
-            namespace_prefix = f"{Path(file_path).stem}:" if self.app_settings.get('use_key_namespace', False) else ""
-            existing_keys = self._get_existing_keys(file_path)
-            new_key_index = len(existing_keys) + 1
-            return f"{namespace_prefix}str_{new_key_index}"
+            # Determine the relative path in the context of the localized source code path
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+
+            # Remove the file extension from the relative path for the namespace prefix
+            relative_path_without_extension = os.path.splitext(relative_path)[0]
+
+            # Use the relative path without extension as namespace prefix if 'use_key_namespace' is True
+            namespace_prefix = f"{relative_path_without_extension.replace(os.sep, '/')}:" if self.app_settings['use_key_namespace'] else ""
+
+            # Generate a unique ID using datetime attributes
+            now = datetime.now()
+            unique_id = f"str_id_{now.strftime('%Y%m%d%H%M%S%f')}"
+
+            # Return the key with or without the namespace prefix
+            return f"{namespace_prefix}{unique_id}"
         except Exception as e:
             raise InvalidUserInputError(f"WebAppFileLocalizer Error in generate_key: {str(e)}")
-
+            
     def save_resource_files(self, data, file_path):
         """
         Saves the extracted strings in JSON format for both source and target locales.
@@ -66,38 +77,23 @@ class WebAppFileLocalizer(QObject):
         :param file_path: The path to the file being processed
         """
         try:
-            # Remove extension from file path and create corresponding JSON file path
-            json_file_name = Path(file_path).with_suffix('.json').as_posix()
+            # Determine relative path of the file to preserve directory structure
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+            json_file_name = Path(file_path).with_suffix('.json').name
 
             # Save data for source locale
-            source_locale_path = self.locales_path / self.source_locale / json_file_name
+            source_locale_path = self.locales_path / self.source_locale / relative_path
+            source_locale_path = source_locale_path.with_suffix('.json')  # Replace the file extension with .json
             self._write_json_file(data, source_locale_path)
 
             # Save data for each target locale
             for locale in self.target_locales:
-                locale_path = self.locales_path / locale['code'] / json_file_name
-                self._write_json_file(data, locale_path)
+                target_locale_path = self.locales_path / locale['code'] / relative_path
+                target_locale_path = target_locale_path.with_suffix('.json')  # Replace the file extension with .json
+                self._write_json_file(data, target_locale_path)
+
         except Exception as e:
             raise ResourceFileError(f"WebAppFileLocalizer Error in save_resource_files: {str(e)}")
-
-    def _get_existing_keys(self, file_path):
-        """
-        Retrieves existing keys from the JSON resource file for the given file path.
-
-        :param file_path: The path of the file being processed
-        :return: A set of existing keys in the resource file
-        """
-        try:
-            json_file_name = Path(file_path).with_suffix('.json').as_posix()
-            source_locale_path = self.locales_path / self.source_locale / json_file_name
-
-            if source_locale_path.exists():
-                with open(source_locale_path, 'r', encoding='utf-8') as json_file:
-                    data = json.load(json_file)
-                    return set(data.keys())
-            return set()
-        except Exception as e:
-            raise ResourceFileError(f"WebAppFileLocalizer Error in _get_existing_keys: {str(e)}")
 
     def _write_json_file(self, data, file_path):
         """
@@ -112,3 +108,32 @@ class WebAppFileLocalizer(QObject):
                 json.dump(data, json_file, ensure_ascii=False, indent=4)
         except Exception as e:
             raise ResourceFileError(f"WebAppFileLocalizer Error in _write_json_file: {str(e)}")
+    
+    def duplicate_as_resource_files(self, file_path):
+        """
+        Duplicates the specified file into each locale's path without reading its content.
+
+        :param file_path: The path of the file to duplicate.
+        """
+        try:
+            # Determine the relative path of the file from the localized source code path
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+            
+            # Define the base name of the file for duplication
+            file_name = Path(file_path).name
+
+            # Duplicate the file for each target locale
+            for locale in self.target_locales:
+                # Construct the target locale path
+                target_locale_path = self.locales_path / locale['code'] / relative_path
+                target_locale_path.parent.mkdir(parents=True, exist_ok=True)  # Ensure the directory exists
+
+                # Define the full path for the duplicated file
+                target_file_path = target_locale_path.with_name(file_name)
+
+                # Copy the file to the target locale path
+                shutil.copyfile(file_path, target_file_path)
+
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in duplicate_as_resource_files: {str(e)}")
+

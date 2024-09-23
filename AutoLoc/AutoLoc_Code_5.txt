@@ -6,17 +6,14 @@ Please read this file content as a continuation from the AutoLoc_Code_4.txt file
 # web_app_jsx_file_localizer.py
 
 import re
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-class WebAppJSXFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppJSXFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppJSXFileLocalizer handles all JSX file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
@@ -29,15 +26,6 @@ class WebAppJSXFileLocalizer(QThread, WebAppFileLocalizer):
             re.compile(r'{`([^`]*?)`}')     # Matches template literals inside JSX
         ]
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppJSXFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the JSX files in self.files.
@@ -45,7 +33,7 @@ class WebAppJSXFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for jsx_file in self.files:
                 self._process_jsx_file(jsx_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppJSXFileLocalizer Error in localize_files: {str(e)}")
 
@@ -125,17 +113,14 @@ class WebAppJSXFileLocalizer(QThread, WebAppFileLocalizer):
 # web_app_ts_file_localizer.py
 
 import re
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-class WebAppTSFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppTSFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppTSFileLocalizer handles all TS file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
@@ -148,15 +133,6 @@ class WebAppTSFileLocalizer(QThread, WebAppFileLocalizer):
             re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
         ]
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppTSFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the TS files in self.files.
@@ -164,7 +140,7 @@ class WebAppTSFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for ts_file in self.files:
                 self._process_ts_file(ts_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppTSFileLocalizer Error in localize_files: {str(e)}")
 
@@ -243,17 +219,14 @@ class WebAppTSFileLocalizer(QThread, WebAppFileLocalizer):
 # web_app_tsx_file_localizer.py
 
 import re
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-class WebAppTSXFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppTSXFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppTSXFileLocalizer handles all TSX file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
@@ -266,15 +239,6 @@ class WebAppTSXFileLocalizer(QThread, WebAppFileLocalizer):
             re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
         ]
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppTSXFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the TSX files in self.files.
@@ -282,7 +246,7 @@ class WebAppTSXFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for tsx_file in self.files:
                 self._process_tsx_file(tsx_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppTSXFileLocalizer Error in localize_files: {str(e)}")
 
@@ -362,17 +326,14 @@ class WebAppTSXFileLocalizer(QThread, WebAppFileLocalizer):
 # web_app_ejs_file_localizer.py
 
 import re
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-class WebAppEJSFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppEJSFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppEJSFileLocalizer handles all EJS file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
@@ -383,15 +344,6 @@ class WebAppEJSFileLocalizer(QThread, WebAppFileLocalizer):
             re.compile(r'<%=\s*(.*?)\s*%>'),  # Matches rendered EJS content
         ]
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppEJSFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the EJS files in self.files.
@@ -399,7 +351,7 @@ class WebAppEJSFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for ejs_file in self.files:
                 self._process_ejs_file(ejs_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppEJSFileLocalizer Error in localize_files: {str(e)}")
 
@@ -478,17 +430,14 @@ class WebAppEJSFileLocalizer(QThread, WebAppFileLocalizer):
 # web_app_vue_file_localizer.py
 
 import re
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-class WebAppVUEFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppVUEFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppVUEFileLocalizer handles all VUE file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
@@ -501,15 +450,6 @@ class WebAppVUEFileLocalizer(QThread, WebAppFileLocalizer):
             re.compile(r'>\s*(.*?)\s*<'),               # Matches HTML content between tags
         ]
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppVUEFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the VUE files in self.files.
@@ -517,7 +457,7 @@ class WebAppVUEFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for vue_file in self.files:
                 self._process_vue_file(vue_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppVUEFileLocalizer Error in localize_files: {str(e)}")
 
@@ -591,44 +531,33 @@ class WebAppVUEFileLocalizer(QThread, WebAppFileLocalizer):
             raise ResourceFileError(f"WebAppVUEFileLocalizer Error in _save_vue_file: {str(e)}")
 
 
+
 24. web_app_json_file_localizer.py:
 
 # web_app_json_file_localizer.py
 
 import json
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError
 
-class WebAppJSONFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppJSONFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppJSONFileLocalizer handles all JSON file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
         self.files = files
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppJSONFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
-        Duplicates all the JSON files in self.files for each target locale.
+        Localizes all the JSON files in self.files by duplicating them for each target locale.
         """
         try:
             for json_file in self.files:
                 self._process_json_file(json_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppJSONFileLocalizer Error in localize_files: {str(e)}")
 
@@ -653,39 +582,27 @@ class WebAppJSONFileLocalizer(QThread, WebAppFileLocalizer):
 # web_app_csv_file_localizer.py
 
 import csv
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError
 
-class WebAppCSVFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppCSVFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppCSVFileLocalizer handles all CSV file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
         self.files = files
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppCSVFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
-        Duplicates all the CSV files in self.files for each target locale.
+        Localizes all the CSV files in self.files by duplicating them for each target locale.
         """
         try:
             for csv_file in self.files:
                 self._process_csv_file(csv_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppCSVFileLocalizer Error in localize_files: {str(e)}")
 

@@ -1,31 +1,17 @@
 # web_app_js_file_localizer.py
 
 import re
-from PySide6.QtCore import QObject, QThread, Signal
 from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
 from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppJSFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppJSFileLocalizer handles all JS file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
 
-    localization_complete_signal = Signal(str, bool)
-
     def __init__(self, source_code_id, files):
-
-        self.source_code_id = source_code_id
-
-        # Initialize the QObject explicitly
-        QObject.__init__(self) # as super().__init__(self)
-
-        # Initialize WebAppFileLocalizer with the source_code_id argument
-        WebAppFileLocalizer.__init__(self.source_code_id) # as super().__init__(self)
-
-        # Initialize QThread without arguments
-        QThread.__init__(self) # as super().__init__(self)
-
+        super().__init__(source_code_id)
         self.files = files
 
         # Regular expression patterns for identifying translatable strings in JS files
@@ -35,15 +21,6 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
             re.compile(r">\s*(.*?)\s*<", re.MULTILINE),               # Matches HTML content between tags
         ]
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppJSFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the JS files in self.files.
@@ -51,7 +28,7 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for js_file in self.files:
                 self._process_js_file(js_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppJSFileLocalizer Error in localize_files: {str(e)}")
 
@@ -80,26 +57,31 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
             source_json = {}
             modified_content = content
 
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
             for pattern in self.translatable_patterns:
                 matches = pattern.finditer(content)
                 for match in matches:
                     original_string = match.group(0)
-                    translatable_string = match.group(1).strip()  # Remove quotes or backticks around the string
+                    translatable_string = match.group(1).strip() if len(match.groups()) > 0 else match.group(0).strip()
                     if not translatable_string:
                         continue
-                    
+
                     # Generate a unique key for the translatable string
-                    key = self.generate_key(js_file)
+                    generated_key = self.generate_key(js_file)
 
-                    # Adjust key if use_key_namespace is True
-                    if self.app_settings.get('use_key_namespace', False):
-                        key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
 
-                    # Save the extracted string to the JSON file
-                    source_json[key] = translatable_string
+                    # Save the extracted string to the JSON file without the namespace prefix
+                    source_json[key_without_namespace] = translatable_string
 
-                    # Replace the string in the content with "${translate('unique_id')}"
-                    replacement_string = f"${{translate('{key}')}}"
+                    # Generate key with or without namespace for the replacement in modified content
+                    key_for_replacement = generated_key if use_namespace else key_without_namespace
+
+                    # Replace the string in the content with "${translate('key_for_replacement')}"
+                    replacement_string = f"${{translate('{key_for_replacement}')}}"
                     modified_content = modified_content.replace(original_string, replacement_string)
 
             # Save the extracted strings to a JSON file
@@ -110,7 +92,7 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
             self._save_js_file(modified_content, js_file)
         except Exception as e:
             raise ResourceFileError(f"WebAppJSFileLocalizer Error in _mark_and_extract_strings: {str(e)}")
-
+            
     def _save_js_file(self, content, js_file):
         """
         Saves the modified JS file to replace the original.

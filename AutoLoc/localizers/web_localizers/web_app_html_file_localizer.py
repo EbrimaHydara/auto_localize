@@ -2,27 +2,18 @@
 
 import os
 from pathlib import Path
-from PySide6.QtCore import QThread, Signal
 from bs4 import BeautifulSoup
 from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
 from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-
-class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppHTMLFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppHTMLFileLocalizer handles all HTML file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
 
-    localization_complete_signal = Signal(str, bool)
-
     def __init__(self, source_code_id, files):
-        # Initialize QThread without arguments
-        QThread.__init__(self) # as super().__init__(self)
-
-        # Initialize WebAppFileLocalizer with the source_code_id argument
-        WebAppFileLocalizer.__init__(self, source_code_id)
-        
+        super().__init__(source_code_id)
         self.files = files
 
         # Tags for localization
@@ -34,15 +25,6 @@ class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
                                 'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi',
                                 'bdo', 'ruby', 'rt', 'rp', 'wbr']
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppHTMLFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the files in self.files.
@@ -50,7 +32,7 @@ class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for html_file in self.files:
                 self._process_html_file(html_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppHTMLFileLocalizer Error in localize_files: {str(e)}")
 
@@ -65,7 +47,7 @@ class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
             self._mark_translatable_strings(soup, html_file)
             self._extract_and_save_strings(soup, html_file)
 
-            if self.app_settings.get('duplicate_html', False):
+            if self.app_settings['duplicate_html']:
                 self._duplicate_html_file(soup, html_file)
         except Exception as e:
             raise LocalizationRenderError(f"WebAppHTMLFileLocalizer Error in _process_html_file: {str(e)}")
@@ -121,7 +103,13 @@ class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
             source_json = {}
 
             for tag in soup.find_all(attrs={"data-i18n": True}):
-                key = tag['data-i18n'].split(':', 1)[1]  # Take the second part without namespace_suffix
+                # Check if 'use_key_namespace' is True before splitting the 'data-i18n' attribute
+                if self.app_settings['use_key_namespace']:
+                    key = tag['data-i18n'].split(':', 1)[1]  # Take the second part without namespace_suffix
+                else:
+                    key = tag['data-i18n']  # Use the full key as is
+
+                # Get the inner HTML content if available
                 inner_html = ''.join(str(child) for child in tag.children).strip() if tag.children else None
                 if inner_html and inner_html.strip():
                     source_json[key] = inner_html

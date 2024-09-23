@@ -4,10 +4,10 @@ Read this file as a continuation from 'AutoLoc_Code_3.txt' file's content.
 
 # l10n_manager.py
 
-from PySide6.QtCore import QObject, Signal
-from source_code_manager import SourceCodeManager
-from setting_manager import SettingManager
-from error_manager import (
+import os
+from managers.source_code_manager import SourceCodeManager
+from managers.setting_manager import SettingManager
+from managers.error_manager import (
     InitializationError,
     InvalidUserInputError,
     LocalizationRenderError
@@ -20,39 +20,35 @@ from localizers.web_localizers.web_app_ejs_file_localizer import WebAppEJSFileLo
 from localizers.web_localizers.web_app_jsx_file_localizer import WebAppJSXFileLocalizer
 from localizers.web_localizers.web_app_ts_file_localizer import WebAppTSFileLocalizer
 from localizers.web_localizers.web_app_tsx_file_localizer import WebAppTSXFileLocalizer
-from localizers.web_localizers.web_app_vue_file_localizer import WebAppVueFileLocalizer
+from localizers.web_localizers.web_app_vue_file_localizer import WebAppVUEFileLocalizer
 from localizers.web_localizers.web_app_json_file_localizer import WebAppJSONFileLocalizer
 from localizers.web_localizers.web_app_csv_file_localizer import WebAppCSVFileLocalizer
 
-from localizers.android_localizers.android_app_xml_file_localizer import AndroidAppXMLFileLocalizer
-from localizers.android_localizers.android_app_java_file_localizer import AndroidAppJavaFileLocalizer
-from localizers.android_localizers.android_app_kotlin_file_localizer import AndroidAppKotlinFileLocalizer
+# from localizers.android_localizers.android_app_xml_file_localizer import AndroidAppXMLFileLocalizer
+# from localizers.android_localizers.android_app_java_file_localizer import AndroidAppJavaFileLocalizer
+# from localizers.android_localizers.android_app_kotlin_file_localizer import AndroidAppKotlinFileLocalizer
 
-from localizers.ios_localizers.ios_app_swift_file_localizer import IOSAppSwiftFileLocalizer
-from localizers.ios_localizers.ios_app_objc_m_file_localizer import IOSAppObjcMFileLocalizer
-from localizers.ios_localizers.ios_app_objc_h_file_localizer import IOSAppObjcHFileLocalizer
-from localizers.ios_localizers.ios_app_strings_file_localizer import IOSAppStringsFileLocalizer
-from localizers.ios_localizers.ios_app_storyboard_file_localizer import IOSAppStoryboardFileLocalizer
-from localizers.ios_localizers.ios_app_xib_file_localizer import IOSAppXIBFileLocalizer
-from localizers.ios_localizers.ios_app_plist_file_localizer import IOSAppPListFileLocalizer
+# from localizers.ios_localizers.ios_app_swift_file_localizer import IOSAppSwiftFileLocalizer
+# from localizers.ios_localizers.ios_app_objc_m_file_localizer import IOSAppObjcMFileLocalizer
+# from localizers.ios_localizers.ios_app_objc_h_file_localizer import IOSAppObjcHFileLocalizer
+# from localizers.ios_localizers.ios_app_strings_file_localizer import IOSAppStringsFileLocalizer
+# from localizers.ios_localizers.ios_app_storyboard_file_localizer import IOSAppStoryboardFileLocalizer
+# from localizers.ios_localizers.ios_app_xib_file_localizer import IOSAppXIBFileLocalizer
+# from localizers.ios_localizers.ios_app_plist_file_localizer import IOSAppPListFileLocalizer
 
-from localizers.java_localizers.java_app_xhtml_file_localizer import JavaAppXHTMLFileLocalizer
-from localizers.java_localizers.java_app_xml_file_localizer import JavaAppXMLFileLocalizer
-from localizers.java_localizers.java_app_java_file_localizer import JavaAppJavaFileLocalizer
-from localizers.java_localizers.java_app_properties_file_localizer import JavaAppPropertiesFileLocalizer
+# from localizers.java_localizers.java_app_xhtml_file_localizer import JavaAppXHTMLFileLocalizer
+# from localizers.java_localizers.java_app_xml_file_localizer import JavaAppXMLFileLocalizer
+# from localizers.java_localizers.java_app_java_file_localizer import JavaAppJavaFileLocalizer
+# from localizers.java_localizers.java_app_properties_file_localizer import JavaAppPropertiesFileLocalizer
 
 
-class L10nManager(QObject):
+class L10nManager:
     """
     The L10nManager class handles all localization procedures of the AutoLoc app.
     It coordinates the localization of different source code files according to their types.
     """
-    
-    # Define signals to be emitted during localization
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id):
-        super().__init__()
         try:
             # Initialize the source code manager
             self.source_code_manager = SourceCodeManager(source_code_id)
@@ -73,7 +69,6 @@ class L10nManager(QObject):
             self.files = self.get_files()
         except (InitializationError, InvalidUserInputError) as e:
             raise InitializationError(f"L10nManager Initialization Error: {str(e)}")
-
 
     def get_active_file_types(self):
         """
@@ -102,6 +97,7 @@ class L10nManager(QObject):
     def get_files_by_extension(self, extension):
         """
         Retrieves files with the specified extension from the source code's localized path.
+        Returns the full path of each file.
         """
         try:
             localized_path = self.source_code_manager.get_localized_source_code_path(self.source_code['id'])
@@ -109,11 +105,12 @@ class L10nManager(QObject):
             for root, _, filenames in os.walk(localized_path):
                 for filename in filenames:
                     if filename.endswith(extension):
-                        files.append(os.path.relpath(os.path.join(root, filename), localized_path))
+                        # Append the full path of the file instead of the relative path
+                        files.append(os.path.join(root, filename))
             return files
         except Exception as e:
             raise InvalidUserInputError(f"L10nManager Error in get_files_by_extension: {str(e)}")
-
+            
     def localize_source_code(self):
         """
         Initiates the localization process based on the source code type.
@@ -134,11 +131,10 @@ class L10nManager(QObject):
             else:
                 raise InvalidUserInputError(f"L10nManager Error in localize_source_code: Unsupported source code type '{self.source_code_type}'")
         except LocalizationRenderError as e:
-            self.localization_complete_signal.emit(f"L10nManager Error in localize_source_code: {str(e)}", False)
+            print(f"L10nManager Error in localize_source_code: {str(e)}")
             return  # Stop the localization process
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_source_code: {str(e)}")
-
 
     def localize_web_files(self):
         """
@@ -164,8 +160,7 @@ class L10nManager(QObject):
             for extension, files in self.files.items():
                 if files and extension in localizer_classes:
                     localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
-                    localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.start()  # Start the localizer thread
+                    localizer.localize_files()  # Start the localizer
 
             self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
@@ -179,19 +174,18 @@ class L10nManager(QObject):
             if not self.files:
                 raise LocalizationRenderError("L10nManager Error in localize_android_files: No files found for localization.")
 
-            localizer_classes = {
-                '.xml': AndroidAppXMLFileLocalizer,
-                '.java': AndroidAppJavaFileLocalizer,
-                '.kt': AndroidAppKotlinFileLocalizer,
-            }
+            # localizer_classes = {
+            #     '.xml': AndroidAppXMLFileLocalizer,
+            #     '.java': AndroidAppJavaFileLocalizer,
+            #     '.kt': AndroidAppKotlinFileLocalizer,
+            # }
 
-            for extension, files in self.files.items():
-                if files and extension in localizer_classes:
-                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
-                    localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.start()  # Start the localizer thread
+            # for extension, files in self.files.items():
+            #     if files and extension in localizer_classes:
+            #         localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
+            #         localizer.localize_files()  # Start the localizer
 
-            self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
+            # self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_android_files: {str(e)}")
 
@@ -203,23 +197,22 @@ class L10nManager(QObject):
             if not self.files:
                 raise LocalizationRenderError("L10nManager Error in localize_ios_files: No files found for localization.")
 
-            localizer_classes = {
-                '.swift': IOSAppSwiftFileLocalizer,
-                '.m': IOSAppObjcMFileLocalizer,
-                '.h': IOSAppObjcHFileLocalizer,
-                '.strings': IOSAppStringsFileLocalizer,
-                '.storyboard': IOSAppStoryboardFileLocalizer,
-                '.xib': IOSAppXIBFileLocalizer,
-                '.plist': IOSAppPListFileLocalizer,
-            }
+            # localizer_classes = {
+            #     '.swift': IOSAppSwiftFileLocalizer,
+            #     '.m': IOSAppObjcMFileLocalizer,
+            #     '.h': IOSAppObjcHFileLocalizer,
+            #     '.strings': IOSAppStringsFileLocalizer,
+            #     '.storyboard': IOSAppStoryboardFileLocalizer,
+            #     '.xib': IOSAppXIBFileLocalizer,
+            #     '.plist': IOSAppPListFileLocalizer,
+            # }
 
-            for extension, files in self.files.items():
-                if files and extension in localizer_classes:
-                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
-                    localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.start()  # Start the localizer thread
+            # for extension, files in self.files.items():
+            #     if files and extension in localizer_classes:
+            #         localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
+            #         localizer.localize_files()  # Start the localizer
 
-            self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
+            # self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_ios_files: {str(e)}")
 
@@ -231,85 +224,87 @@ class L10nManager(QObject):
             if not self.files:
                 raise LocalizationRenderError("L10nManager Error in localize_java_files: No files found for localization.")
 
-            localizer_classes = {
-                '.xhtml': JavaAppXHTMLFileLocalizer,
-                '.xml': JavaAppXMLFileLocalizer,
-                '.java': JavaAppJavaFileLocalizer,
-                '.properties': JavaAppPropertiesFileLocalizer,
-            }
+            # localizer_classes = {
+            #     '.xhtml': JavaAppXHTMLFileLocalizer,
+            #     '.xml': JavaAppXMLFileLocalizer,
+            #     '.java': JavaAppJavaFileLocalizer,
+            #     '.properties': JavaAppPropertiesFileLocalizer,
+            # }
 
-            for extension, files in self.files.items():
-                if files and extension in localizer_classes:
-                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
-                    localizer.localization_complete_signal.connect(self.localization_complete_signal.emit)
-                    localizer.start()  # Start the localizer thread
+            # for extension, files in self.files.items():
+            #     if files and extension in localizer_classes:
+            #         localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
+            #         localizer.localize_files()  # Start the localizer
 
-            self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
+            # self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_java_files: {str(e)}")
 
 
 
 
-
 16. localizers.web_localizers.web_app_file_localizer.py:
-
-# web_app_file_localizer.py
 
 import os
 import json
+from datetime import datetime
 from pathlib import Path
-from PySide6.QtCore import QObject, Signal
-from setting_manager import SettingManager
-from source_code_manager import SourceCodeManager
-from error_manager import (
+from managers.setting_manager import SettingManager
+from managers.source_code_manager import SourceCodeManager
+from managers.target_locale_manager import TargetLocaleManager
+from managers.error_manager import (
     InitializationError,
     InvalidUserInputError,
     ResourceFileError,
 )
 
-class WebAppFileLocalizer(QObject):
+class WebAppFileLocalizer:
     """
     The WebAppFileLocalizer class serves as the base class for all web app file type localizer classes.
     It manages common functionalities such as progress tracking, key generation, and saving extracted strings to resource files.
     """
 
     def __init__(self, source_code_id):
-        super().__init__()
         try:
             # Initialize necessary managers
             self.setting_manager = SettingManager()
             self.source_code_manager = SourceCodeManager(source_code_id)
-            
+            self.target_locale_manager = TargetLocaleManager(source_code_id)  # Added target locale manager
+
             # Get source code information
             self.source_code = self.source_code_manager.get_source_code(source_code_id)
             self.source_locale = self.source_code['source_locale']
-            self.app_settings = self.setting_manager.get_app_settings()
+            self.app_settings = self.setting_manager.get_app_settings()  # Use as sqlite3.Row object
 
             # Initialize paths
             self.locales_path = Path(self.source_code['localized_source_code_path']) / "locales"
 
             # Ensure the locales directory exists
             self.locales_path.mkdir(parents=True, exist_ok=True)
-            
+
             # Get target locales for the source code
-            self.target_locales = self.setting_manager.get_target_locales(source_code_id)
+            self.target_locales = self.target_locale_manager.get_target_locales()
         except (InitializationError, InvalidUserInputError) as e:
             raise InitializationError(f"WebAppFileLocalizer Initialization Error: {str(e)}")
 
     def generate_key(self, file_path):
         """
         Generates a unique string identifier key for the extracted strings.
+        If use_key_namespace is True, the key includes a namespace based on the file path.
 
-        :param file_path: The path of the file being processed
-        :return: A unique key string
+        :param file_path: The path of the file being processed.
+        :return: A unique key string.
         """
         try:
-            # Remove the file extension from the file path
-            namespace_prefix = f"{Path(file_path).stem}:" if self.app_settings.get('use_key_namespace', False) else ""
-            existing_keys = self._get_existing_keys(file_path)
-            new_key_index = len(existing_keys) + 1
-            return f"{namespace_prefix}str_{new_key_index}"
+            # Determine namespace prefix based on settings
+            namespace_prefix = f"{Path(file_path).stem}:" if self.app_settings['use_key_namespace'] else ""
+
+            # Generate a unique ID using datetime attributes
+            now = datetime.now()
+            unique_id = f"str_id_{now.strftime('%Y%m%d%H%M%S%f')}"
+
+            # Return the key with or without the namespace prefix
+            return f"{namespace_prefix}{unique_id}"
         except Exception as e:
             raise InvalidUserInputError(f"WebAppFileLocalizer Error in generate_key: {str(e)}")
 
@@ -321,38 +316,23 @@ class WebAppFileLocalizer(QObject):
         :param file_path: The path to the file being processed
         """
         try:
-            # Remove extension from file path and create corresponding JSON file path
-            json_file_name = Path(file_path).with_suffix('.json').as_posix()
+            # Determine relative path of the file to preserve directory structure
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+            json_file_name = Path(file_path).with_suffix('.json').name
 
             # Save data for source locale
-            source_locale_path = self.locales_path / self.source_locale / json_file_name
+            source_locale_path = self.locales_path / self.source_locale / relative_path
+            source_locale_path = source_locale_path.with_suffix('.json')  # Replace the file extension with .json
             self._write_json_file(data, source_locale_path)
 
             # Save data for each target locale
             for locale in self.target_locales:
-                locale_path = self.locales_path / locale['code'] / json_file_name
-                self._write_json_file(data, locale_path)
+                target_locale_path = self.locales_path / locale['code'] / relative_path
+                target_locale_path = target_locale_path.with_suffix('.json')  # Replace the file extension with .json
+                self._write_json_file(data, target_locale_path)
+
         except Exception as e:
             raise ResourceFileError(f"WebAppFileLocalizer Error in save_resource_files: {str(e)}")
-
-    def _get_existing_keys(self, file_path):
-        """
-        Retrieves existing keys from the JSON resource file for the given file path.
-
-        :param file_path: The path of the file being processed
-        :return: A set of existing keys in the resource file
-        """
-        try:
-            json_file_name = Path(file_path).with_suffix('.json').as_posix()
-            source_locale_path = self.locales_path / self.source_locale / json_file_name
-
-            if source_locale_path.exists():
-                with open(source_locale_path, 'r', encoding='utf-8') as json_file:
-                    data = json.load(json_file)
-                    return set(data.keys())
-            return set()
-        except Exception as e:
-            raise ResourceFileError(f"WebAppFileLocalizer Error in _get_existing_keys: {str(e)}")
 
     def _write_json_file(self, data, file_path):
         """
@@ -377,19 +357,15 @@ class WebAppFileLocalizer(QObject):
 
 import os
 from pathlib import Path
-from PySide6.QtCore import QThread, Signal
 from bs4 import BeautifulSoup
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-
-class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppHTMLFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppHTMLFileLocalizer handles all HTML file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
@@ -404,15 +380,6 @@ class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
                                 'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi',
                                 'bdo', 'ruby', 'rt', 'rp', 'wbr']
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppHTMLFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the files in self.files.
@@ -420,7 +387,7 @@ class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for html_file in self.files:
                 self._process_html_file(html_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppHTMLFileLocalizer Error in localize_files: {str(e)}")
 
@@ -569,22 +536,20 @@ class WebAppHTMLFileLocalizer(QThread, WebAppFileLocalizer):
 
 
 
+
 18. web_app_js_file_localizer.py:
 
 # web_app_js_file_localizer.py
 
 import re
-from PySide6.QtCore import QThread, Signal
-from web_app_file_localizer import WebAppFileLocalizer
-from error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
 
-class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
+class WebAppJSFileLocalizer(WebAppFileLocalizer):
     """
     The WebAppJSFileLocalizer handles all JS file-specific localization procedures.
-    It inherits the WebAppFileLocalizer class and runs on its own PySide6 Thread.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
     """
-
-    localization_complete_signal = Signal(str, bool)
 
     def __init__(self, source_code_id, files):
         super().__init__(source_code_id)
@@ -597,15 +562,6 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
             re.compile(r">\s*(.*?)\s*<", re.MULTILINE),               # Matches HTML content between tags
         ]
 
-    def run(self):
-        """
-        Executes the localization process in a separate thread.
-        """
-        try:
-            self.localize_files()
-        except Exception as e:
-            self.localization_complete_signal.emit(f"WebAppJSFileLocalizer Error: {str(e)}", False)
-
     def localize_files(self):
         """
         Localizes all the JS files in self.files.
@@ -613,7 +569,7 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
         try:
             for js_file in self.files:
                 self._process_js_file(js_file)
-            self.localization_complete_signal.emit("Localization completed successfully.", True)
+            print("Localization completed successfully.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppJSFileLocalizer Error in localize_files: {str(e)}")
 
@@ -646,7 +602,7 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
                 matches = pattern.finditer(content)
                 for match in matches:
                     original_string = match.group(0)
-                    translatable_string = match.group(1).strip()  # Remove quotes or backticks around the string
+                    translatable_string = match.group(1).strip()
                     if not translatable_string:
                         continue
                     
@@ -654,7 +610,7 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
                     key = self.generate_key(js_file)
 
                     # Adjust key if use_key_namespace is True
-                    if self.app_settings.get('use_key_namespace', False):
+                    if self.app_settings['use_key_namespace']:
                         key = key.split(':', 1)[1]  # Remove namespace_suffix from the key
 
                     # Save the extracted string to the JSON file
@@ -685,8 +641,6 @@ class WebAppJSFileLocalizer(QThread, WebAppFileLocalizer):
                 file.write(content)
         except Exception as e:
             raise ResourceFileError(f"WebAppJSFileLocalizer Error in _save_js_file: {str(e)}")
-
-
 
 
 

@@ -9,18 +9,18 @@ from managers.error_manager import (
 # Create an instance of SettingManager
 setting_manager = SettingManager()
 
-# # 1. Test `update_app_settings` function
-# try:
-#     settings = {'dark_mode': False, 'duplicate_html': False, 'use_key_namespace': True}
-#     updated_settings = setting_manager.update_app_settings(settings)
-#     assert updated_settings['dark_mode'] is False, f"Expected False, got {updated_settings['dark_mode']}"
-#     assert updated_settings['duplicate_html'] is False, f"Expected False, got {updated_settings['duplicate_html']}"
-#     assert updated_settings['use_key_namespace'] is True, f"Expected True, got {updated_settings['use_key_namespace']}"
-#     print("Test update_app_settings: Passed")
-# except DatabaseError as e:
-#     print(f"Test update_app_settings: Failed with DatabaseError: {str(e)}")
-# except Exception as e:
-#     print(f"Test update_app_settings: Failed with Exception: {str(e)}")
+# 1. Test `update_app_settings` function
+try:
+    settings = {'dark_mode': False, 'duplicate_html': False, 'use_key_namespace': True}
+    updated_settings = setting_manager.update_app_settings(settings)
+    assert updated_settings['dark_mode'] is False, f"Expected False, got {updated_settings['dark_mode']}"
+    assert updated_settings['duplicate_html'] is False, f"Expected False, got {updated_settings['duplicate_html']}"
+    assert updated_settings['use_key_namespace'] is True, f"Expected True, got {updated_settings['use_key_namespace']}"
+    print("Test update_app_settings: Passed")
+except DatabaseError as e:
+    print(f"Test update_app_settings: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test update_app_settings: Failed with Exception: {str(e)}")
 
 # # 2. Test `reset_db` function
 # try:
