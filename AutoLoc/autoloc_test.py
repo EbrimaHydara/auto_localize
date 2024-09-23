@@ -19,14 +19,22 @@ def main():
         # Initialize the L10nManager
         l10n_manager = L10nManager(source_code_id)
 
-        # Run the localize_source_code method
-        print("Testing localize_source_code method...")
+        # # Test localize_source_code method
+        # print("Testing localize_source_code method...")
+        # try:
+        #     l10n_manager.localize_source_code()  # This should internally call localize_web_files()
+        #     print("localize_source_code() completed successfully.")
+        # except LocalizationRenderError as e:
+        #     print(f"localize_source_code() raised LocalizationRenderError: {str(e)}")
+
+        # Test unlocalize_source_code method
+        print("Testing unlocalize_source_code method...")
         try:
-            l10n_manager.localize_source_code()  # This should internally call localize_web_files()
-            print("localize_source_code() completed successfully.")
+            l10n_manager.unlocalize_source_code()
+            print("unlocalize_source_code() completed successfully.")
         except LocalizationRenderError as e:
-            print(f"localize_source_code() raised LocalizationRenderError: {str(e)}")
-        
+            print(f"unlocalize_source_code() raised LocalizationRenderError: {str(e)}")
+
     except Exception as e:
         print(f"An error occurred during testing: {str(e)}")
 

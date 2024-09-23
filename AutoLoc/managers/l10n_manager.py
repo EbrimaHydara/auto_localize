@@ -1,12 +1,14 @@
 # l10n_manager.py
 
 import os
+import shutil
 from managers.source_code_manager import SourceCodeManager
 from managers.setting_manager import SettingManager
 from managers.error_manager import (
     InitializationError,
     InvalidUserInputError,
-    LocalizationRenderError
+    LocalizationRenderError,
+    ResourceFileError
 )
 
 # Import all the localizer classes
@@ -235,3 +237,38 @@ class L10nManager:
             # self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
         except Exception as e:
             raise LocalizationRenderError(f"L10nManager Error in localize_java_files: {str(e)}")
+
+    def unlocalize_source_code(self):
+        """
+        Restores the original source code by deleting all localized files and copying the original files back.
+        Updates the source code status to "Unlocalized".
+        """
+        try:
+            # Get the paths for the localized and original source code from self.source_code
+            localized_path = self.source_code['localized_source_code_path']
+            original_path = self.source_code['original_source_code_path']
+
+            # Delete all files in the localized source code path
+            for root, _, files in os.walk(localized_path, topdown=False):
+                for file in files:
+                    os.remove(os.path.join(root, file))
+            
+            # Remove the directories after deleting the files
+            for root, dirs, _ in os.walk(localized_path, topdown=False):
+                for dir in dirs:
+                    os.rmdir(os.path.join(root, dir))
+            
+            # Recursively copy all files from the original source code path to the localized path
+            shutil.copytree(original_path, localized_path, dirs_exist_ok=True)
+
+            # Update the source code status to "Unlocalized" using SourceCodeManager
+            self.source_code_manager.update_source_code(self.source_code['id'], {'status': "Unlocalized"})
+
+        except FileNotFoundError as e:
+            raise ResourceFileError(f"File not found: {str(e)}")
+        except PermissionError as e:
+            raise ResourceFileError(f"Permission error: {str(e)}")
+        except Exception as e:
+            raise ResourceFileError(f"L10nManager Error in unlocalize_source_code: {str(e)}")
+
+
