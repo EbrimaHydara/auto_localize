@@ -10,12 +10,12 @@ if project_root not in sys.path:
 
 
 from managers.l10n_manager import L10nManager
-from localizers.web_localizers.web_app_js_file_localizer import WebAppJSFileLocalizer
+from localizers.web_localizers.web_app_vue_file_localizer import WebAppVUEFileLocalizer
 
-def run_js_localization_test(source_code_id):
+def run_vue_localization_test(source_code_id):
     """
-    Tests the WebAppJSFileLocalizer class functionalities using the specified source code ID.
-    Collects JS files using L10nManager's get_files_by_extension method and runs localization.
+    Tests the WebAppVUEFileLocalizer class functionalities using the specified source code ID.
+    Collects VUE files using L10nManager's get_files_by_extension method and runs localization.
     
     :param source_code_id: The ID of the source code to test.
     """
@@ -23,21 +23,21 @@ def run_js_localization_test(source_code_id):
         # Initialize L10nManager with the given source_code_id
         l10n_manager = L10nManager(source_code_id)
 
-        # Collect JS files using get_files_by_extension function
-        js_files = l10n_manager.get_files_by_extension('.js')
+        # Collect VUE files using get_files_by_extension function
+        vue_files = l10n_manager.get_files_by_extension('.vue')
 
-        # Check if there are JS files to test
-        if not js_files:
-            print("No JS files found for localization testing.")
+        # Check if there are VUE files to test
+        if not vue_files:
+            print("No VUE files found for localization testing.")
             return
 
-        print(f"Collected {len(js_files)} JS file(s) for testing.")
+        print(f"Collected {len(vue_files)} VUE file(s) for testing.")
 
-        # Initialize WebAppJSFileLocalizer with collected JS files
-        js_localizer = WebAppJSFileLocalizer(source_code_id, js_files)
+        # Initialize WebAppVUEFileLocalizer with collected VUE files
+        vue_localizer = WebAppVUEFileLocalizer(source_code_id, vue_files)
 
         # Run the localization process
-        js_localizer.localize_files()
+        vue_localizer.localize_files()
 
         print("Localization test completed successfully.")
 
@@ -76,7 +76,7 @@ if __name__ == "__main__":
         print("Please provide a valid source_code_id for testing.")
     else:
         if action == "1":
-            run_js_localization_test(source_code_id)
+            run_vue_localization_test(source_code_id)
         elif action == "2":
             run_unlocalization(source_code_id)
         else:

@@ -15,10 +15,10 @@ class WebAppJSFileLocalizer(WebAppFileLocalizer):
         # Regular expression patterns for identifying Japanese strings while avoiding comments and concatenations
         self.comment_pattern = re.compile(r'//.*?$|/\*.*?\*/', re.DOTALL | re.MULTILINE)
 
-        # Updated pattern to exclude concatenated strings and handle specific cases
+        # Updated pattern to include backtick strings, while excluding concatenated strings and specific cases
         self.japanese_text_pattern = re.compile(r"""
             (?<![\+\w])\s*            # Negative lookbehind to ignore concatenations and object keys
-            (["'])                    # Match opening quote (capture group 1)
+            (["'`])                    # Match opening quote (single, double, or backtick) (capture group 1)
             (                         # Start group for the content to be matched
             (?:[^"'\n]*?)             # Lazily match any characters that are not newlines or quotes
             [\u3000-\u30FF\u4E00-\u9FFF]  # Match Japanese characters
@@ -27,7 +27,7 @@ class WebAppJSFileLocalizer(WebAppFileLocalizer):
             \1                        # Match closing quote (same as opening)
             (?!\s*[\+\w])             # Negative lookahead to ignore concatenations and function calls
             |
-            ^\s*(["'])                # Match isolated opening quote at the beginning (capture group 2)
+            ^\s*(["'`])               # Match isolated opening quote at the beginning (capture group 2)
             (                         # Start group for isolated content to be matched
             (?:[^"'\n]*?)             # Lazily match any characters that are not newlines or quotes
             [\u3000-\u30FF\u4E00-\u9FFF]  # Match Japanese characters
@@ -39,7 +39,7 @@ class WebAppJSFileLocalizer(WebAppFileLocalizer):
 
         # Pattern to match specific cases like '福岡県' or prompts with Japanese characters
         self.specific_japanese_string_pattern = re.compile(r"""
-            (["'])                    # Match opening quote (capture group 1)
+            (["'`])                    # Match opening quote (capture group 1)
             ([\u3000-\u30FF\u4E00-\u9FFF]+)  # Match only Japanese characters
             \1                        # Match closing quote (same as opening)
         """, re.VERBOSE)
@@ -112,9 +112,14 @@ class WebAppJSFileLocalizer(WebAppFileLocalizer):
                     if quote_type == "'":
                         # If the original string was in single quotes, use double quotes in the replacement
                         replacement_string = f'${{translate("{generated_key}")}}'
-                    else:
+                    elif quote_type == '"':
                         # If the original string was in double quotes, use single quotes in the replacement
                         replacement_string = f"${{translate('{generated_key}')}}"
+                    elif quote_type == "`":
+                        # If the original string was in backtick quotes, use double quotes in the replacement
+                        replacement_string = f'${{translate("{generated_key}")}}'
+                    else:
+                        replacement_string = original_text  # No replacement needed
 
                     # Replace the original text with the replacement string
                     return f"{quote_type}{replacement_string}{quote_type}"

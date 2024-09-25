@@ -11,7 +11,7 @@ setting_manager = SettingManager()
 
 # 1. Test `update_app_settings` function
 try:
-    settings = {'dark_mode': False, 'duplicate_html': False, 'use_key_namespace': True}
+    settings = {'dark_mode': False, 'duplicate_html': False, 'use_key_namespace': False}
     updated_settings = setting_manager.update_app_settings(settings)
     assert updated_settings['dark_mode'] is False, f"Expected False, got {updated_settings['dark_mode']}"
     assert updated_settings['duplicate_html'] is False, f"Expected False, got {updated_settings['duplicate_html']}"
