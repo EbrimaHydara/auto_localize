@@ -10,22 +10,21 @@ class TargetLocaleManager:
     Manages all target locales in the AutoLoc app, including CRUD operations for the target_locales table.
     """
 
-    def __init__(self, source_code_id):
+    def __init__(self):
         """
-        Initializes the TargetLocaleManager with the provided source_code_id.
+        Initializes the TargetLocaleManager.
         """
         try:
             self.db_manager = DBManager()  # Initialize DBManager for database operations
-            self.source_code_id = source_code_id
         except InitializationError as e:
             raise InitializationError(f"TargetLocaleManager Initialization Error: {str(e)}")
 
-    def get_target_locales(self):
+    def get_target_locales(self, source_code_id=None):
         """
-        Retrieves all target locales for a specific source code.
+        Retrieves all target locales.
         """
         try:
-            return self.db_manager.get_records('target_locales', {'source_code_id': self.source_code_id})
+            return self.db_manager.get_records('target_locales', {'source_code_id': source_code_id})
         except DatabaseError as e:
             raise LocaleManagementError(f"TargetLocaleManager Get Target Locales Error: {str(e)}")
 
@@ -38,13 +37,13 @@ class TargetLocaleManager:
         except DatabaseError as e:
             raise LocaleManagementError(f"TargetLocaleManager Get Target Locale Error: {str(e)}")
 
-    def add_target_locale(self, name, code):
+    def add_target_locale(self, source_code_id, name, code):
         """
         Adds a new target locale record for a specific source code.
         """
         try:
             data = {
-                'source_code_id': self.source_code_id,
+                'source_code_id': source_code_id,
                 'name': name,
                 'code': code
             }
@@ -75,6 +74,6 @@ class TargetLocaleManager:
         Deletes all target locales for a specific source code.
         """
         try:
-            return self.db_manager.delete_records('target_locales', {'source_code_id': self.source_code_id})
+            return self.db_manager.delete_records('target_locales')
         except DatabaseError as e:
             raise LocaleManagementError(f"TargetLocaleManager Delete Target Locales Error: {str(e)}")

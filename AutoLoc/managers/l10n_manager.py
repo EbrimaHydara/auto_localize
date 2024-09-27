@@ -49,7 +49,7 @@ class L10nManager:
     def __init__(self, source_code_id):
         try:
             # Initialize the source code manager
-            self.source_code_manager = SourceCodeManager(source_code_id)
+            self.source_code_manager = SourceCodeManager()
             self.source_code = self.source_code_manager.get_source_code(source_code_id)
             self.source_code_type = self.source_code['code_type']
             self.source_code_status = self.source_code['status']

@@ -12,11 +12,11 @@ target_locale_name = "Korean (KR)"
 target_locale_code = "ko-KR"
 
 # Create an instance of TargetLocaleManager
-target_locale_manager = TargetLocaleManager(source_code_id)
+target_locale_manager = TargetLocaleManager()
 
 # # 1. Test `get_target_locales` function
 # try:
-#     target_locales = target_locale_manager.get_target_locales()
+#     target_locales = target_locale_manager.get_target_locales(source_code_id=source_code_id)
 #     assert isinstance(target_locales, list), f"Expected list, got {type(target_locales)}"
 #     print("Test get_target_locales: Passed")
 # except LocaleManagementError as e:
@@ -24,16 +24,16 @@ target_locale_manager = TargetLocaleManager(source_code_id)
 # except Exception as e:
 #     print(f"Test get_target_locales: Failed with Exception: {str(e)}")
 
-# 2. Test `add_target_locale` function
-try:
-    new_target_locale = target_locale_manager.add_target_locale(target_locale_name, target_locale_code)
-    assert new_target_locale['name'] == target_locale_name, f"Expected '{target_locale_name}', got {new_target_locale['name']}"
-    assert new_target_locale['code'] == target_locale_code, f"Expected '{target_locale_code}', got {new_target_locale['code']}"
-    print("Test add_target_locale: Passed")
-except LocaleManagementError as e:
-    print(f"Test add_target_locale: Failed with LocaleManagementError: {str(e)}")
-except Exception as e:
-    print(f"Test add_target_locale: Failed with Exception: {str(e)}")
+# # 2. Test `add_target_locale` function
+# try:
+#     new_target_locale = target_locale_manager.add_target_locale(source_code_id, target_locale_name, target_locale_code)
+#     assert new_target_locale['name'] == target_locale_name, f"Expected '{target_locale_name}', got {new_target_locale['name']}"
+#     assert new_target_locale['code'] == target_locale_code, f"Expected '{target_locale_code}', got {new_target_locale['code']}"
+#     print("Test add_target_locale: Passed")
+# except LocaleManagementError as e:
+#     print(f"Test add_target_locale: Failed with LocaleManagementError: {str(e)}")
+# except Exception as e:
+#     print(f"Test add_target_locale: Failed with Exception: {str(e)}")
 
 # # 3. Test `get_target_locale` function
 # try:

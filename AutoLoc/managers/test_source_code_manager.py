@@ -17,7 +17,7 @@ source_code_type = "Web App"
 source_code_locale = "ja-JP"
 
 # Create an instance of SourceCodeManager
-source_code_manager = SourceCodeManager(project_id)
+source_code_manager = SourceCodeManager()
 
 # # 1. Test `_generate_unique_id` function
 # try:
@@ -29,7 +29,7 @@ source_code_manager = SourceCodeManager(project_id)
 
 # # 2. Test `add_source_code` function
 # try:
-#     new_source_code = source_code_manager.add_source_code(source_code_name, source_code_type, source_code_locale)
+#     new_source_code = source_code_manager.add_source_code(project_id, source_code_name, source_code_type, source_code_locale)
 #     assert new_source_code['name'] == source_code_name, f"Expected '{source_code_name}', got {new_source_code['name']}"
 #     assert new_source_code['code_type'] == source_code_type, f"Expected '{source_code_type}', got {new_source_code['code_type']}"
 #     print("Test add_source_code: Passed")

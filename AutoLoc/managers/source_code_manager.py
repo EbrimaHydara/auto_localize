@@ -20,7 +20,7 @@ class SourceCodeManager:
     Manages all source codes in the AutoLoc app, including CRUD operations, file management, and localization.
     """
 
-    def __init__(self, project_id):
+    def __init__(self):
         """
         Initializes the SourceCodeManager by creating instances of AppManager and DBManager,
         and setting up initial paths for source code files.
@@ -28,7 +28,6 @@ class SourceCodeManager:
         try:
             self.app_manager = AppManager()  # Initialize AppManager
             self.db_manager = DBManager()  # Initialize DBManager
-            self.project_id = project_id
             self.app_data_path = self.app_manager.get_app_data_path()
             self.original_source_code_path = None
             self.localized_source_code_path = None
@@ -40,7 +39,7 @@ class SourceCodeManager:
         Retrieves all source codes for a specific project.
         """
         try:
-            return self.db_manager.get_records('source_codes', {'project_id': self.project_id})
+            return self.db_manager.get_records('source_codes')
         except DatabaseError as e:
             raise DatabaseError(f"SourceCodeManager Get Source Codes Error: {str(e)}")
 
@@ -63,18 +62,19 @@ class SourceCodeManager:
         except DatabaseError as e:
             raise DatabaseError(f"SourceCodeManager Get Source Locale Error: {str(e)}")
 
-    def add_source_code(self, name, code_type, source_locale):
+    def add_source_code(self, project_id, name, code_type, source_locale, notes=None):
         """
         Adds a new source code record for a specific project.
         """
         try:
             data = {
-                'project_id': self.project_id,
+                'project_id': project_id,
                 'name': name,
                 'unique_id': self._generate_unique_id(name),
                 'code_type': code_type,
                 'source_locale': source_locale,
-                'status': 'Unlocalized'
+                'status': 'Unlocalized',
+                'notes': notes
             }
             return self.db_manager.insert_record('source_codes', data)
         except DatabaseError as e:
@@ -117,7 +117,7 @@ class SourceCodeManager:
         """
         try:
             source_code = self.get_source_code(source_code_id)
-            project_unique_id = self.db_manager.get_record('projects', self.project_id)['unique_id']
+            project_unique_id = self.db_manager.get_record('projects', source_code['project_id'])['unique_id']
             source_code_unique_id = source_code['unique_id']
 
             self.original_source_code_path = os.path.join(self.app_data_path, f"{project_unique_id}/{source_code_unique_id}/Original_Files/")

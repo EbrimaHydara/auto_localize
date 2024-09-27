@@ -9,106 +9,281 @@ Classes: app_ui module classes and starter file:
 
 
 
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
     - MainAppWindow Class:
         - The MainAppWindow is the main class of the AutoLoc app. It consolidates all the other classes logic in one place. It is the only class called in the autoloc.py file to start and run the app. 
-        - It calls the AppManager and the DBManager to execute startup procedures as the first procedures of the app.
+        - It calls the AppManager's initialize_app() function to execute startup procedures as the first procedures of the app.
         - It makes sure the AppManager passes on all its startup procedures without any failure before any other process is allowed on the app.
+        - It imports and executes the following classes:
+            - app_ui.header_widget.HeaderWidget
+            - app_ui.sidebar_widget.SideBarWidget
+            - app_ui.panel_widget.PanelWidget
+            - app_ui.footer_widget.FooterWidget
+            - app_ui.styles.Styles 
+        - It imports and executes all the app's stylings from the `app_ui.styles.Styles` class. 
         - It implements and displays all the exceptions/errors QMessageBoxes from the AppManager class.
+        - It has a fixed width: 1024, height: 768. It is not resizeable by the user.
         - It defines the AutoLoc app's main layout which includes the following layouts with their corresponding widgets:
-            - main_layout: MainAppWindow's layout 
-            - header_layout: in main_layout to accommodate HeaderWidget
-            - body_layout: inside main_layout to accommodate side_bar_layout and panel_layout
-            - side_bar_layout: in main_layout to accommodate SideBarWidget
-            - panel_layout: in main_layout to accommodate any QWidget, QStackedWidget, and QTabWidget of the app 
-            - footer_layout: in main_layout to accommodate FooterWidget
-            - Note: the panel_layout will accommodate any other QWidget class defined below.
-            - Please read the attached AutoLoc_App_Design PDF document to see how the MainAppWindow layouts are designed. 
+            - main_layout: MainAppWindow's layout. 
+            - header_layout: in main_layout to accommodate `app_ui.header_widget.HeaderWidget` class.
+            - body_layout: inside main_layout to accommodate sidebar_layout and panel_layout.
+            - sidebar_layout: in body_layout_layout to accommodate SideBarWidget.
+            - panel_layout: in body_layout to accommodate the PanelWidget class that renders any QWidget and QStackedWidget of the app. The PanelWidget is the central widget of the MainAppWindow class. 
+            - footer_layout: in main_layout to accommodate FooterWidget.
+            - Please read the attached image to see how the MainAppWindow layouts and widgets are designed.
     
 
 
-    - HeaderWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - HeaderWidget class:
         - The HeaderWidget class is a QWidget class that defines the layout and components of the app's header widget meant to be rendered in the header_layout of the MainAppWindow class. 
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the HeaderWidget layouts and components are designed. 
+        - It has a `header_widget_layout` that is a QHBoxLayout.
+        
+        - It has a `brand_layout` that is a QVBoxLayout inside `header_widget_layout`.
+
+        - It has a `module_layout` that is QHBoxLayout inside `header_widget_layout`.
+
+        - It renders `app_name_label` (QLabel), and `app_slogan_label` (QLabel) inside `brand_layout`.
+        The app_name_label = "AutoLoc", the app_slogan_label = "By RTranslate".
+
+        - It renders `module_label` (QLabel) inside `module_layout`.
+        The default module_label = "Smart Automatic Localization"
+
+        - Both `app_name_label` and `app_slogan_label` have fixed width of 150 and center-aligned. The `module_label` takes the rest of the `header_widget_layout` width and left-aligned.
+
+        - It defines a set_module_label(label) function that changes the value of the module_label.
+
+
+
+        - Please read the attached image to see how the HeaderWidget layouts and components are designed. 
 
 
 
 
-    - SideBarWidget class
-        - The SideBarWidget class is a QWidget class that defines the layout and components of the app's sidebar widget meant to be rendered in the side_bar_layout of the MainAppWindow class.
 
-        - It defines all the sidebar buttons as the main menu items of the app.  
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SideBarWidget layouts and components are designed. 
+    - SideBarWidget class:
+        - The SideBarWidget class is a QWidget class that defines the layout and components of the app's sidebar widget meant to be rendered in the sidebar_layout of the MainAppWindow class.
+
+        - It defines all the sidebar QPushButtons as the main menu items of the app.
+
+        - It takes a fixed width of 150 of the body_layout.
+
+        - It imports and uses the PanelWidget class and its QStackedWidget to switch the specified widget class based on the QPushButton clicked. 
+
+        - The clicked QPushButton connects to a slot that changes the index of the QStackedWidget of the PanelWidget class that corresponds to the button's widget. 
+
+        - Please read the attached image to see how the SideBarWidget layouts and components are designed. 
 
 
 
 
-    - FooterWidget class
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - FooterWidget class:
         - The FooterWidget class is a QWidget class that defines the layout and components of the app's footer widget meant to be rendered in the footer_layout of the MainAppWindow class.
 
-        - It defines all the labels shown in the app's footer.  
+        - It defines all the labels shown in the app's footer.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the FooterWidget layouts and components are designed. 
+        - It has a `footer_widget_layout` that is a QHBoxLayout.
+
+        - It has `copyright_label` (QLabel) and `app_version_label` (QLabel) inside footer_widget_layout separated by an addStretch() method to add space between the labels.  
+
+        - Please read the attached image to see how the FooterWidget layouts and components are designed. 
 
 
-
-
-    - HomeWidget class
-        - The HomeWidget class is a QWidget class that defines the layout and components of the app's home widget meant to be rendered in the panel_layout of the MainAppWindow class.
-
-        - It renders a banner image for the app.  
-
-        - Please read the attached AutoLoc_App_Design PDF document to see how the HomeWidget layouts and components are designed. 
+    
 
 
 
 
-    - SettingsStackedWidget class
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - PanelWidget class:
+        - The PanelWidget class is a QWidget class that defines the layout and components of the PanelWidget class meant to be rendered in the panel_layout of the MainAppWindow class to dynamically contain any widget class invoked at the click of a button.
+
+        - It imports and renders all the following classes in a QStackedWidget:
+            - app_ui.home_widget.HomeWidget as the default widget
+            - app_ui.project_widgets.ProjectsStackedWidget
+            - app_ui.setting_widgets.SettingsStackedWidget
+            - app_ui.source_code_widgets.SourceCodesStackedWidget
+            - app_ui.target_locale_widgets.TargetLocalesStackedWidget
+
+        - It renders all QWidget and QStackedWidget classes of the app in a QStackedWidget to display any of them upon a corresponding button click.
+
+        - It defines functions to switch the class to render in its QStackedWidget. The QPushButtons of the SideBarWidget should be able to access and manipulate these functions to switch the rendering.
+
+        - It takes the rest of the panel_layout's width after the SideBarWidget takes only 150 of it. 
+
+        - Please read the attached image to see how the HomeWidget layouts and components are designed. 
+
+
+
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes. 
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - HomeWidget class:
+        - The HomeWidget class is a QWidget class that defines the layout and components of the app's home widget meant to be rendered by the PanelWidget class.
+
+        - It imports and uses the following classes:
+            - managers.project_manager.ProjectManager
+            - managers.setting_manager.SettingManager
+            - managers.target_locale_manager.TargetLocaleManager
+            - app_ui.header_widget.HeaderWidget
+        
+        - It sets the HeaderWidget's module_label to "Home" using its set_module_label(label) function.
+
+        - It renders an overview of the app's content in tablets showing:
+            - All Projects: the projects count in the DB.
+            - Completed Projects: the projects count whose status = "Completed" in the DB.
+            - Pending Projects: the projects count whose status = "Pending" in the DB.
+            - All Source Codes: the source codes count in the DB.
+            - Localized Source Codes: the count of source codes whose status = "Localized" in the DB.
+            - Unlocalized Source Codes: the count of source codes whose status = "Unlocalized" in the DB.
+            - Supported File Types: the count of all file types in the DB.
+            - Supported Locales: the count of all locales in the DB.
+
+        - Please read the attached image to see how the HomeWidget layouts and components are designed. 
+
+
+
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - SettingsStackedWidget class:
         - The SettingsStackedWidget class is a QWidget class that defines the layout and components of the app's settings stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
 
-        - It renders in a stack all the following QWidget classes:
+        - It imports and uses the `app_ui.header_widget.HeaderWidget` class.
+
+        - It sets the HeaderWidget's module_label to "Settings" using its set_module_label(label) function.
+
+        - It is implemented in the same file (`app_ui.setting_widgets.py`) along with the following classes:
             - SettingsWidget class
+            - FileTypesWidget class
+            - LocalesWidget class
+            - LocaleWidget class
+            - AddLocaleWidget class
+            - UpdateLocaleWidget class  
+
+        - It renders in a QStackedWidget all the following QWidget classes:
+            - SettingsWidget class as the default widget
+            - FileTypesWidget class
             - LocalesWidget class
             - LocaleWidget class
             - AddLocaleWidget class
             - UpdateLocaleWidget class
 
-        - It defines the following buttons in the stack_buttons_layout:
-            - "General" to point to SettingsWidget
-            - "Locales" to point LocalesWidget
+        - It defines the following QPushButtons in the stack_buttons_layout:
+            - "General" QPushButton to render the SettingsWidget
+            - "File Types" QPushButton to render the FileTypesWidget
+            - "Locales" QPushButton to render the LocalesWidget
             - "Add Locale" to point to AddLocaleWidget
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SettingsStackedWidget layouts and components are designed following the sample for "Any QStackedWidget". 
+        - Please read the attached image to see how the SettingsStackedWidget layouts and components are designed. 
 
 
 
     
-    - SettingsWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - SettingsWidget class:
         - The SettingsWidget class is a QWidget class that defines the layout and components of the app's settings widget meant to be rendered in the SettingsStackedWidget class.
 
+        - It imports and uses the `managers.setting_manager.SettingManager` class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
+
+        - It renders 2 QCheckBoxes:
+            - duplicate_html_checkbox: checked = True, unchecked = False, default = unchecked.
+            - use_key_namespace_checkbox: checked = True, unchecked = False, default = unchecked.
+            - update_settings_button = QPushButton("Update Settings") to effect the current state/values of the QCheckBoxes to the DB via SettingManager's update_app_settings(settings) function. Note that the `settings` argument is a dictionary of the QCheckBoxes values as in the example: settings = {'dark_mode': False, 'duplicate_html': duplicate_html_checkbox's value, 'use_key_namespace': use_key_namespace_checkbox's value}. Please note that `dark_mode` attribute is not displayed on the UI but it is always False in the background logic. 
+
+        - Please read the attached image to see how the SettingsWidget layouts and components are designed. 
+
+
+
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - FileTypesWidget class:
+        - The FileTypesWidget class is a QWidget class that defines the layout and components of the app's locales widget meant to be rendered in the SettingsStackedWidget class.
+
         - It uses the SettingManager class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
 
-        - It renders an Object Data Form with the following:
-            - Label: Dark Mode, Data: QCheckBox where checked = SettingManager.set_ui_mode('Dark Mode') and unchecked = SettingManager.set_ui_mode('Light Mode')
-            - Label: Localization Setting, Data: QCheckBox where checked = SettingManager.set_html_is_duplicated('True') and unchecked = SettingManager.set_html_is_duplicated('False'), Data: key_format QRadio where "Simple Key" if selected will update SettingManager.set_key_format('Simple Key') and "Namespaced Key with File Path" if selected will update SettingManager.set_key_format('Namespaced Key with File Path')
+        - It renders a QTable (`file_types_table`) taking its data from SettingManager's get_file_types() function with the following attributes:
+            - Table Column Names:
+                - Code Type 
+                - Name 
+                - Extension 
+                - Active  
+            - Table Rows Data:
+                - Each file type's code_type 
+                - Each file type's name 
+                - Each file type's extension 
+                - Each file type's is_active value (True/False) in a QCheckBox (checked if True, unchecked if False)
+            
+            - The update_file_types_button = QPushButton("Update File Types") connects to a function slot that takes each row of the `file_types_table` data in a dictionary as argument of the SettingManager's update_file_type(file_type_id, data) to update each file type's record in the DB. It then renders the `file_types_table` anew to show the updates. Note that the data dictionary for the update of each file_type looks like: data = {'is_active': is_active_checkbox's value} 
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SettingsWidget layouts and components are designed. 
+            - The update is done on the `is_active_checkbox` only and sent to the DB via SettingManager's update_file_type. Note that the file_type_id is a must to have from the get_file_types() function. 
+
+        - Please read the attached image to see how the LocalesWidget layouts and components are designed.
 
 
 
 
-    - LocalesWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - LocalesWidget class:
         - The LocalesWidget class is a QWidget class that defines the layout and components of the app's locales widget meant to be rendered in the SettingsStackedWidget class.
 
-        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.setting_manager.SettingManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
 
-        - It renders a Table Data with the following:
+        - It renders a QTable (`locales_table`) with the following attributes:
             - Table Column Names:
                 - Name 
                 - Code 
@@ -116,113 +291,127 @@ Classes: app_ui module classes and starter file:
                 - Each locale's name 
                 - Each locale's code 
             
-            - The "Add" button renders the AddLocaleWidget class in the stack.
-            - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
-                - "Delete All": will delete all locales records in the DB
-                - "Cancel": will abort the deletion of records. 
+            - The `add_locale_button = QPushButton("Add Locale")` renders the AddLocaleWidget class in the stack.
+            - The `update_locale_button = QPushButton("Update")` renders the UpdateLocaleWidget class in the stack. It sends along the `locale_id` attribute to the UpdateLocaleWidget. 
+            - The `delete_locale_button = QPushButton("Delete")` shows a QMessageBox with a critical message ("Do you want to delete the [locale['name']]?) with 2 buttons:
+                - "Ok": will delete the locale's record in the DB using SettingManager's delete_locale(locale_id).
+                - "Cancel": will abort the deletion of record and closes the QMessageBox. 
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the LocalesWidget layouts and components are designed. 
-
-
-
-
-    - LocaleWidget class
-        - The LocaleWidget class is a QWidget class that defines the layout and components of the app's one locale widget meant to be rendered in the SettingsStackedWidget class.
-
-        - It uses the SettingManager class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
-
-        - It renders an Object Data with the following:
-            - Labels:
-                - Name 
-                - Code 
-            - Data:
-                - The locale's name 
-                - The locale's code
-            
-            - The "Add" button renders the AddLocaleWidget class in the stack.
-            - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
-                - "Delete": will delete the specific locale record in the DB
-                - "Cancel": will abort the deletion of the record.
-
-        - Please read the attached AutoLoc_App_Design PDF document to see how the LocaleWidget layouts and components are designed. 
+        - Please read the attached image to see how the LocalesWidget layouts and components are designed. 
 
 
 
 
-    - AddLocaleWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - AddLocaleWidget class:
         - The AddLocaleWidget class is a QWidget class that defines the layout and components of the app's adding one locale widget meant to be rendered in the SettingsStackedWidget class.
 
-        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.setting_manager.SettingManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
 
-        - It renders an Object Data Add Form with the following:
+        - It renders a Form with the following fields:
             - Labels:
                 - Name 
                 - Code 
             - Data:
                 - The locale's name 
                 - The locale's code
-            - Submit button under the form to submit the form data to the DB
+            - The `save_locale_button = QPushButton("Save")` under the form saves the form data to the DB via the SettingManager's add_locale(name, code) function.
             
-            - The "Cancel" button aborts adding and renders the LocalesWidget class in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts adding and renders back the LocalesWidget in the stack.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the AddLocaleWidget layouts and components are designed. 
+        - Please read the attached image to see how the AddLocaleWidget layouts and components are designed. 
 
 
 
 
-    - UpdateLocaleWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - UpdateLocaleWidget class:
         - The UpdateLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one locale widget meant to be rendered in the SettingsStackedWidget class.
 
-        - It uses the SettingManager class for all its CRUD and relevant functionalities.
+       - It imports and uses the `managers.setting_manager.SettingManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
 
-        - It renders an Object Data Update Form with the following:
+        - It takes in locale_id as argument at initialization.
+
+        - It renders a Form with the following fields:
             - Labels:
                 - Name 
                 - Code 
             - Data:
                 - The locale's name 
                 - The locale's code
-            - Submit button under the form to submit the form data to the DB
+            - The `save_locale_button = QPushButton("Save")` under the form saves the form data to the DB via the SettingManager's update_locale(locale_id, data) function. The data argument is a dictionary like {'name': name, 'code': code}. 
             
-            - The "Cancel" button aborts updating and renders the LocaleWidget being updated in its Object Data record in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts the update action and renders back the LocalesWidget in the stack.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateLocaleWidget layouts and components are designed. 
+        - Please read the attached image to see how the UpdateLocaleWidget layouts and components are designed. 
 
 
 
 
-    - ProjectsStackedWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - ProjectsStackedWidget class:
         - The ProjectsStackedWidget class is a QStackedWidget class that defines the layout and components of the app's projects stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
 
-        - It renders in a stack all the following QWidget classes:
+        - It imports and uses the `app_ui.header_widget.HeaderWidget` class.
+
+        - It sets the HeaderWidget's module_label to "Projects" using its set_module_label(label) function.
+
+        - It is implemented in the same file (`app_ui.project_widgets.py`) along with the following classes:
             - ProjectsWidget class
             - ProjectWidget class
             - AddProjectWidget class
             - UpdateProjectWidget class
 
+        - It renders in a QStackedWidget all the following QWidget classes:
+            - ProjectsWidget class as the default widget 
+            - ProjectWidget class
+            - AddProjectWidget class
+            - UpdateProjectWidget class
+
         - It defines the following buttons in the stack_buttons_layout:
-            - "Projects" to point to ProjectsWidget
-            - "Add Project" to point AddProjectWidget
+            - The `projects_button = QPushButton("Projects")` to render the ProjectsWidget
+            - The `add_project_button = QPushButton("Add Project")` to render the AddProjectWidget
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the ProjectsStackedWidget layouts and components are designed following the sample for "Any QStackedWidget".
-
-
+        - Please read the attached image to see how the ProjectsStackedWidget layouts and components are designed.
 
 
-    - ProjectsWidget class
+
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - ProjectsWidget class:
         - The ProjectsWidget class is a QWidget class that defines the layout and components of the app's projects widget meant to be rendered in the ProjectsStackedWidget class.
 
-        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.project_manager.ProjectManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
 
-        - It renders a Table Data with the following:
+        - It renders a QTable (`projects_table`) displaying all projects data from ProjectManager's get_projects() function with the following attributes:
             - Table Column Names:
                 - Name 
                 - Client
@@ -237,24 +426,30 @@ Classes: app_ui module classes and starter file:
                 - Each project's start date 
                 - Each project's end date  
             
-            - The "Add" button renders the AddProjectWidget class in the stack.
-            - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
-                - "Delete All": will delete all projects records in the DB
-                - "Cancel": will abort the deletion of records. 
+            - The `add_project_button = QPushButton(Add Project)` renders the AddProjectWidget class in the stack. 
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the ProjectsWidget layouts and components are designed. 
+        - Please read the attached image to see how the ProjectsWidget layouts and components are designed. 
 
 
 
 
-    - ProjectWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - ProjectWidget class:
         - The ProjectWidget class is a QWidget class that defines the layout and components of the app's one project widget meant to be rendered in the ProjectsStackedWidget class.
 
-        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.project_manager.ProjectManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
 
-        - It renders an Object Data with the following:
+        - It takes in project_id as argument at initialization.
+
+        - It renders an Project object's data in a QTable with the following attributes:
             - Labels:
                 - Name 
                 - Unique ID 
@@ -276,122 +471,157 @@ Classes: app_ui module classes and starter file:
                 - The project's last updated date 
                 - The project's lead engineer 
             
-            - The "Add" button renders the AddProjectWidget class in the stack.
-            - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
-                - "Delete": will delete the specific project's record in the DB
+            - The `update_project_button = QPushButton("Update")` renders the UpdateProjectWidget class in the stack sending along the project_id.
+            - The `delete_project_button = QPushButton("Delete")`  shows a QMessageBox with a critical message with 2 buttons:
+                - "OK": will delete the specific project's record in the DB
                 - "Cancel": will abort the deletion of the record.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the ProjectWidget layouts and components are designed. 
+        - Please read the attached image to see how the ProjectWidget layouts and components are designed. 
 
 
 
 
 
-    - AddProjectWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - AddProjectWidget class:
         - The AddProjectWidget class is a QWidget class that defines the layout and components of the app's adding one project widget meant to be rendered in the ProjectsStackedWidget class.
 
-        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.project_manager.ProjectManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
 
-        - It renders an Object Data Add Form with the following:
+        - It renders a Form to add a new project with the following attributes:
             - Labels:
-                - Name 
-                - Unique ID 
+                - Name
                 - Client
                 - Description 
-                - Status 
+                - Status (select filed, values: "In Progress", "Completed")
                 - Start Date 
-                - End Date 
-                - Last Updated Date 
+                - End Date
                 - Lead Engineer 
             - Data:
                 - The project's name
-                - The project's unique ID 
                 - The project's client 
                 - The project's description
-                - The project's status 
+                - The project's status (select filed, values: "In Progress", "Completed")
                 - The project's start date 
                 - The project's end date
-                - The project's last updated date 
                 - The project's lead engineer 
-            - Submit button under the form to submit the form data to the DB
+
+            - The `save_project_button = QPushButton("Save")` under the form saves the form data to the DB using the ProjectManager's add_project(name, client, description, status="In Progress", start_date, end_date, lead_engineer)
             
-            - The "Cancel" button aborts adding and renders the ProjectsWidget class in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts adding and renders the ProjectsWidget class in the stack.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the AddProjectWidget layouts and components are designed. 
+        - Please read the attached image to see how the AddProjectWidget layouts and components are designed. 
 
 
 
 
-    - UpdateProjectWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - UpdateProjectWidget class:
         - The UpdateProjectWidget class is a QWidget class that defines the layout and components of the app's updating one project widget meant to be rendered in the ProjectsStackedWidget class.
 
-        - It uses the ProjectManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.project_manager.ProjectManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the ProjectManager class.
 
-        - It renders an Object Data Update Form with the following:
+        - It takes in project_id as argument at initialization.
+
+        - It renders a Form to add a new project with the following attributes:
             - Labels:
-                - Name 
-                - Unique ID 
+                - Name
                 - Client
                 - Description 
-                - Status 
+                - Status (select filed, values: "In Progress", "Completed")
                 - Start Date 
-                - End Date 
-                - Last Updated Date 
+                - End Date
                 - Lead Engineer 
             - Data:
                 - The project's name
-                - The project's unique ID 
                 - The project's client 
                 - The project's description
-                - The project's status 
+                - The project's status (select filed, values: "In Progress", "Completed")
                 - The project's start date 
                 - The project's end date
-                - The project's last updated date 
                 - The project's lead engineer 
-            - Submit button under the form to submit the form data to the DB
+
+            - The `save_project_button = QPushButton("Save")` under the form saves the form data to the DB using the ProjectManager's update_project(project_id, {name, client, description, status, start_date, end_date, lead_engineer})
             
-            - The "Cancel" button aborts updating and renders the ProjectsWidget class in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts the update and renders the specific project based on its ID in the ProjectWidget class in the stack.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateProjectWidget layouts and components are designed. 
+        - Please read the attached image to see how the UpdateProjectWidget layouts and components are designed. 
 
 
 
 
-    - SourceCodesStackedWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - SourceCodesStackedWidget class:
         - The SourceCodesStackedWidget class is a QStackedWidget class that defines the layout and components of the app's source codes stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
 
-        - It renders in a stack all the following QWidget classes:
+        - It imports and uses the `app_ui.header_widget.HeaderWidget` class.
+
+        - It sets the HeaderWidget's module_label to "Source Codes" using its set_module_label(label) function.
+
+        - It is implemented in the same file (`app_ui.source_code_widgets.py`) along with the following classes:
             - SourceCodesWidget class
             - SourceCodeWidget class
             - AddSourceCodeWidget class
             - UpdateSourceCodeWidget class
-            - MergeSourceCodeLocalesCommonsWidget class 
-            - L10nWidget class 
+            - SetTargetLocalesWidget class 
+            - AddSourceCodeFilesWidget class 
+            - UpdateSourceCodeFilesWidget class
+            - L10nWidget class
 
+        - It renders in a QStackedWidget all the following QWidget classes:
+            - SourceCodesWidget class
+            - SourceCodeWidget class
+            - AddSourceCodeWidget class
+            - UpdateSourceCodeWidget class
+            - SetTargetLocalesWidget class 
+            - AddSourceCodeFilesWidget class 
+            - UpdateSourceCodeFilesWidget class
+            - L10nWidget class
 
         - It defines the following buttons in the stack_buttons_layout:
-            - "Source Codes" to point to SourceCodesWidget
-            - "Add Source Code" to point AddSourceCodeWidget
+            - The `source_codes_button = QPushButton("Source Codes")` renders the SourceCodesWidget.
+            - The `add_source_code_button = QPushButton("Add Source Code")` renders the AddSourceCodeWidget.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodesStackedWidget layouts and components are designed following the sample for "Any QStackedWidget".
-
-
+        - Please read the attached image to see how the SourceCodesStackedWidget layouts and components are designed.
 
 
-    - SourceCodesWidget class
+
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - SourceCodesWidget class:
         - The SourceCodesWidget class is a QWidget class that defines the layout and components of the app's source codes widget meant to be rendered in the SourceCodesStackedWidget class.
 
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
-        - It renders a Table Data with the following:
+        - It renders a QTable (`source_codes_table`) Data with the following attributes:
             - Table Column Names:
-                - Project ID
+                - Project
                 - Name 
                 - Type 
                 - Source Locale
@@ -399,190 +629,302 @@ Classes: app_ui module classes and starter file:
                 - Status 
 
             - Table Rows Data:
-                - Each source code's name (this should be a link to the specific source code opening in SourceCodeWidget)
-                - Each source code's project name  
+                - Each source code's project name 
+                - Each source code's name (this should be a link to the specific source code opening in SourceCodeWidget) 
                 - Each source code's name 
                 - Each source code's type
                 - Each source code's source locale code
                 - Each source code's target locales codes in comma-separated list
                 - Each source code's status 
             
-            - Buttons in form_buttons_layout: 
-                - The "Add" button renders the AddSourceCodeWidget class in the stack.
-                - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
-                    - "Delete All": will delete all source codes records in the DB
-                    - "Cancel": will abort the deletion of records. 
+            - The `add_source_code_button = QPushButton("Add Source Code")` renders the AddSourceCodeWidget class in the stack.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodesWidget layouts and components are designed. 
+        - Please read the attached image to see how the SourceCodesWidget layouts and components are designed. 
 
 
 
 
-    - SourceCodeWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - SourceCodeWidget class:
         - The SourceCodeWidget class is a QWidget class that defines the layout and components of the app's one source code widget meant to be rendered in the SourceCodesStackedWidget class.
 
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
+
+        - It imports and uses the `managers.l10n_manager.L10nManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
-        - It renders an Object Data with the following:
+        - It takes in source_code_id as argument at initialization.
+
+        - It renders an QTable (`source_code_table`) Data with the following attribute:
             - Labels:
-                - Project ID
+                - Project
                 - Name 
                 - Unique ID 
-                - Type
+                - Code Type
                 - Source Locale 
-                - Original Code Path 
-                - Commons Paths 
-                - Localized Code Path 
+                - Target Locales
                 - Status 
                 - Notes 
             - Data:
-                - The source code's Project ID (showing Project's Name: Unique ID in a select field to select)
+                - The source code's Project Name
                 - The source code's Name
-                - The source code's unique ID 
-                - The source code's client 
-                - The source code's description
+                - The source code's unique ID  
+                - The source code's code_type
+                - The source code's soure locale  
+                - The source code's comma-separated list of target locales (e.g. en-US, zh-CN, zh-TW, ko-KR) 
                 - The source code's status 
-                - The source code's notes 
-            
-            - Buttons in form_buttons_layout: 
-                - The "Add" button renders the AddSourceCodeWidget class in the stack.
-                - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
-                    - "Delete": will delete the specific source code's record in the DB
-                    - "Cancel": will abort the deletion of the record.
-                - The "Merge Commons" button renders the MergeSourceCodeLocalesCommonsWidget from the stack.
-                - The "Export Files" button triggers the SourceCodeManager's export_files() function and downloads the specific source code's files in a zip file in the Downloads folder of the host OS.  
-                - The "Localize" button renders the L10nWidget with this SourceCode's ID. The L10nWidget class is defined later below. 
+                - The source code's notes  
+             
+            - The `update_source_code_button = QPushButton("Update")` renders the UpdateSourceCodeWidget passing it source_code_id as argument. 
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the SourceCodeWidget layouts and components are designed. 
+            - The `set_target_locales_button = QPushButton("Set Target Locales")` renders the SetTargetLocalesWidget passing it source_code_id as argument. 
+
+            - The `localize_source_code_button = QPushButton("Localize") is only displayed and renders the L10nWidget passing it source_code_id when source_code['status'] = "Unlocalized", otherwise, the `unlocalize_source_code_button = QPushButton("Unlocalize") is displayed in its place to call the L10nManager's unlocalize_source_code(source_code_id).
+
+            - The `delete_source_code_button = QPushButton("Delete")` shows a QMessageBox with a critical message ("Do you want to delete [source_code['name']]?) and 2 buttons: 
+                - "OK": will delete the specific source code's record in the DB.
+                - "Cancel": will abort the deletion of the record.
+
+            - The `add_source_code_files_button = QPushButton("Add Files")` renders the AddSourceCodeFilesWidget from the stack passing it the source_code_id.
+
+            - The `update_source_code_files_button = QPushButton("Update Files")` renders the UpdateSourceCodeFilesWidget passing it the source_code_id. 
+
+            - The `delete_source_code_files_button = QPushButton("Delete Files")` calls the SourceCodeManager's delete_source_code_files(source_code_id). 
+
+            - The `export_source_code_files_button = QPushButton("Export Files")` calls the SourceCodeManager's export_files(source_code_id).
+
+        - Please read the attached image to see how the SourceCodeWidget layouts and components are designed. 
 
 
 
 
-    - AddSourceCodeWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - AddSourceCodeWidget class:
         - The AddSourceCodeWidget class is a QWidget class that defines the layout and components of the app's adding one source code widget meant to be rendered in the SourceCodesStackedWidget class.
 
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.project_manager.ProjectManager` class get all projects from get_projects().
+
+        - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
-        - It renders an Object Data Add Form with the following:
+        - It renders a Form with the following:
             - Labels:
-                - Upload Source Code (file dialog for choosing and uploading a directory containing the source code)
-                - Project ID
+                - Project
                 - Name 
-                - Unique ID 
-                - Type
-                - Source Locale 
-                - Original Code Path 
-                - Commons Paths 
-                - Localized Code Path 
-                - Status 
+                - Code Type
+                - Source Locale
                 - Notes 
             - Data:
-                - The source code's Project ID (showing Project's Name: Unique ID in a select field to select)
-                - The source code's Name
-                - The source code's unique ID 
-                - The source code's client 
-                - The source code's description
-                - The source code's status 
-                - The source code's notes 
+                - The source code's Project Name (select field of project ID but showing project name on UI)
+                - The source code's Name 
+                - The source code's code_type (select field, values: "Web App", "Android App", "iOS App", "Java App")
+                - The source code's soure locale (select field, value: "ja-JP" only) 
+                - The source code's notes   
 
-            - Submit button under the form to submit the form data to the DB. The submit will first get and copy the source code according to the L10nManager.copy_source_code_files() function. It then records the form data to the DB. Once the record is successfull, this class trigers the AddSourceCodeCommonsPathsWidget to render in the stack and parses it the source code ID. 
+            - The `save_source_code_button = QPushButton("Save")` under the form saves the form data to the DB using the SourceCodeManager's add_source_code(project_id, name, code_type, source_locale, notes)
             
-            - Buttons in form_buttons_layout: 
-                - The "Cancel" button aborts adding and renders the SourceCodesWidget class in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts adding and renders the SourceCodesWidget class in the stack.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the AddSourceCodeWidget layouts and components are designed.  
+        - Please read the attached image to see how the AddSourceCodeWidget layouts and components are designed.  
 
 
 
 
-    - UpdateSourceCodeWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - UpdateSourceCodeWidget class:
         - The UpdateSourceCodeWidget class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered in the SourceCodesStackedWidget class.
 
-        - It uses the SourceCodeManager and L10nManager classes for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
-        - It renders an Object Data Update Form with the following:
+        - It takes in source_code_id as argument at initialization.
+
+        - It renders a Form with the following:
             - Labels:
-                - Project ID
+                - Project
                 - Name 
-                - Unique ID 
-                - Type
-                - Source Locale 
-                - Original Code Path 
-                - Commons Paths 
-                - Localized Code Path 
-                - Status 
+                - Code Type
+                - Source Locale
                 - Notes 
             - Data:
-                - The source code's Project ID (showing Project's Name: Unique ID in a select field to select)
-                - The source code's Name
-                - The source code's unique ID 
-                - The source code's client 
-                - The source code's description
-                - The source code's status 
-                - The source code's notes
+                - The source code's Project Name (select field of project ID but showing project name on UI)
+                - The source code's Name 
+                - The source code's code_type (select field, values: "Web App", "Android App", "iOS App", "Java App")
+                - The source code's soure locale (select field, value: "ja-JP" only) 
+                - The source code's notes   
 
-            - Submit button under the form to submit the form data to the DB
+            - The `save_source_code_button = QPushButton("Save")` under the form saves the form data to the DB using the SourceCodeManager's update_source_code(source_code_id, data) where data = {name, code_type, source_locale, notes} dictionary.
             
-            - Buttons in form_buttons_layout: 
-                - The "Cancel" button aborts updating and renders back the SourceCodeWidget object being updated in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts update action and renders the SourceCodeWidget class in the stack passing it the source_code_id.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateSourceCodeWidget layouts and components are designed. 
+        - Please read the attached image to see how the UpdateSourceCodeWidget layouts and components are designed. 
     
 
 
 
-    - MergeSourceCodeLocalesCommonsWidget class
-        - The MergeSourceCodeLocalesCommonsWidget class is a QWidget class that defines the layout and components of the app's merging source code commons paths widget meant to be rendered in the SourceCodesStackedWidget class.
 
-        - It uses the SourceCodeManager class for all its CRUD and relevant functionalities.
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - SetTargetLocalesWidget class:
+        - The SetTargetLocalesWidget class is a QWidget class that defines the layout and components of the app's adding/removing target locales to the source code. It is meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class to get all target_locales from get_target_locales(source_code_id=source_code_id).
+
+        - It takes in source_code_id as argument at initialization.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
 
-        - It renders an Object Data Add Form with the following:
+        - It renders a Form with the following:
             - Labels:
-                - Source Code ID (autogenerated from the source code's ID at button click)
-                - Locales Commons Paths (file dialog for multiple directories selectable)
+                - Name
+                - Code
+                - Selected 
             - Data:
-                - The source code's ID
-                - The locales commons paths in a list to save in DB  
+                - The target locale's Name 
+                - The target locale's code
+                - The target locale's ID in a checkbox  
 
-            - Submit button under the form to submit the form data to the SourceCodeManager's merge_locale_commons() function to merge the JSON files in each commons path into one JSON file named as "commons.json". 
+            - The `set_target_locales_button = QPushButton("Set Target Locale")` under the table saves the table data to the DB using the TargetLocaleManager's add_target_locale(source_code_id, name, code). It first checks if the target locale IDs in checkboxes are in the `target_locales_list`, otherwise it saves the corresponding table row data as a new target locale for the source_code. If a checkbox is unchecked and its ID is in `target_locales_list`, it is removed from the source_code's target locales in the DB using TargetLocaleManager's delete_target_locale(target_locale_id).
             
-            - Buttons in form_buttons_layout: 
-                - The "Cancel" button aborts adding and renders the SourceCodesWidget class in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts setting the target locales and renders the SourceCodeWidget class in the stack passing it the source_code_id.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the MergeSourceCodeLocalesCommonsWidget layouts and components are designed.
+        - Please read the attached image to see how the SetTargetLocalesWidget layouts and components are designed.  
+
+
+
+
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - AddSourceCodeFilesWidget class:
+        - The AddSourceCodeFilesWidget class is a QWidget class that defines the layout and components of the app's adding one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It takes in source_code_id as argument at initialization.
+
+        - It renders a Form (`add_source_code_files_form`) with the following attributes:
+            - Labels:
+                - Name 
+                - Upload Files
+            - Data:
+                - The source code's Name 
+                - The select folder path dialog field/button 
+
+            - The `save_source_code_files_button = QPushButton("Save")` under the form sends the form data's upload_files file path to the SourceCodeManager's add_source_code_files(source_code_id, upload_path).
+            
+            - The `cancel_button = QPushButton("Cancel")` aborts adding files and renders the SourceCodeWidget class in the stack passing it the source_code_id. 
+            
+        - Please read the attached image to see how the AddSourceCodeFilesWidget layouts and components are designed.  
+
+
+
+
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - UpdateSourceCodeFilesWidget class:
+        - The UpdateSourceCodeFilesWidget class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
+
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SourceCodeManager class.
+
+        - It takes in source_code_id as argument at initialization.
+
+        - It renders a Form (`update_source_code_files_form`) with the following attributes:
+            - Labels:
+                - Name 
+                - Upload Files
+            - Data:
+                - The source code's Name 
+                - The select folder path dialog field/button 
+
+            - The `save_source_code_files_button = QPushButton("Save")` under the form sends the form data's upload_files file path to the SourceCodeManager's update_source_code_files(source_code_id, upload_path).
+            
+            - The `cancel_button = QPushButton("Cancel")` aborts update files and renders the SourceCodeWidget class in the stack passing it the source_code_id. 
+            
+        - Please read the attached image to see how the UpdateSourceCodeFilesWidget layouts and components are designed. 
     
 
 
 
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
     - L10nWidget class:
         - The L10nWidget displays the localization process for each source code based on source code ID. It takes in the source code ID as argument and parse it to the L10nManager class to handle the localization procedures appropriate for the source code. 
 
-        - It uses the L10nManager class for all its relevant functionalities.
+        - It imports and uses the `managers.l10n_manager.L10nManager` class for all its CRUD and relevant functionalities.
 
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the L10nManager, WebAppBasedLocalizer, and all the classes of the web_localizers module.
+        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the L10nManager.
+
+        - It takes in source_code_id as argument at initialization to pass it further to L10nManager as argument for its initialization. 
 
         - It is a QWidget class that defines the layout and components of the app's localization process widget meant to be rendered in the SourceCodesStackedWidget class.
+
+        - It implements a QDialogBox overlay that says (Localization in progress, please wait...). This overlay should render the app unclickable until the L10nManager's localize_source_code(source_code_id) is done executing.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the L10nWidget layouts and components are designed. 
+        - Please read the attached image to see how the L10nWidget layouts and components are designed. 
     
 
 
 
 
 
-    - TargetLocalesStackedWidget class
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - TargetLocalesStackedWidget class:
         - The TargetLocalesStackedWidget class is a QStackedWidget class that defines the layout and components of the app's target locales stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
 
-        - It renders in a stack all the following QWidget classes:
+        - It is implemented in the same file (`app-ui.target_locale_widgets.py`) along with the following classes:
+            - TargetLocalesWidget class
+            - TargetLocaleWidget class
+            - AddTargetLocaleWidget class
+            - UpdateTargetLocaleWidget class
+
+        - It renders in a QStackedWidget all the following QWidget classes:
             - TargetLocalesWidget class
             - TargetLocaleWidget class
             - AddTargetLocaleWidget class
@@ -590,132 +932,163 @@ Classes: app_ui module classes and starter file:
 
 
         - It defines the following buttons in the stack_buttons_layout:
-            - "Target Locales" to point to TargetLocalesWidget
-            - "Add Target Locale" to point AddTargetLocaleWidget
+            - The `target_locales_button = QPushButton("Target Locales")` renders the TargetLocalesWidget.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the TargetLocalesStackedWidget layouts and components are designed following the sample for "Any QStackedWidget".
+            - The `add_taget_locale_button = QPushButton("Add Target Locale")` renders the AddTargetLocaleWidget.
+
+        - Please read the attached image to see how the TargetLocalesStackedWidget layouts and components are designed.
 
 
 
 
-    - TargetLocalesWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - TargetLocalesWidget class:
         - The TargetLocalesWidget class is a QWidget class that defines the layout and components of the app's target locale target locales widget meant to be rendered in the TargetLocalesStackedWidget class.
 
-        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
 
-        - It renders a Table Data with the following:
+        - It renders a QTable (`target_locales_table`) Data with the following:
             - Table Column Names:
-                - Target Locale ID 
                 - Name 
                 - Code
-                - Action 
+                - Source Code
+                - Actions
 
             - Table Rows Data:
-                - Each traget locale's target locale Name: Unique ID (this should be a link to the specific target locale opening in TargetLocaleWidget)
-                - Each target locale target locale's name (this should be a link to the specific target locale target locale opening in TargetLocaleWidget)
-                - Each target locale target locale's code 
-                - Each target locale target locale's "Delete" button to delete the specific target locale target locale from the target locale's records in DB  
+                - Each traget locale's Name: Unique ID (this should be a link to the specific target locale opening in TargetLocaleWidget)
+                - Each target locale's code 
+                - Each target locale's Soure Code Name from source_code_id. 
+                - Action buttons to update and delete the record. 
             
-            - Buttons in form_buttons_layout: 
-                - The "Add" button renders the AddTargetLocaleWidget class in the stack. The button click should pick along the target locale's ID to the AddTargetLocaleWidget as argument. 
-                - The "Delete All" button shows a QMessageBox with a warning message with 2 buttons:
-                    - "Delete All": will delete all target locale target locales records in the DB for the specific target locale by ID.
-                    - "Cancel": will abort the deletion of records. 
+            - The `add_target_locale_button = QPushButton("Add Target Locale")` renders the AddTargetLocaleWidget class in the stack.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the TargetLocalesWidget layouts and components are designed. 
+            - The `update_target_locale_button = QPushButton("Update")` renders the UpdateLocaleWidget class in the stack. It sends along the `locale_id` attribute to the UpdateLocaleWidget. 
+
+            - The `delete_target_locale_button = QPushButton("Delete")` shows a QMessageBox with a critical message ("Do you want to delete the [locale['name']]?) with 2 buttons:
+                - "Ok": will delete the target locale's record in the DB using TargetLocaleManager's delete_target_locale(target_locale_id).
+                - "Cancel": will abort the deletion of record and closes the QMessageBox. 
+
+        - Please read the attached image to see how the TargetLocalesWidget layouts and components are designed. 
 
 
 
 
-    - TargetLocaleWidget class
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - TargetLocaleWidget class:
         - The TargetLocaleWidget class is a QWidget class that defines the layout and components of the app's one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
 
-        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
 
         - It renders an Object Data with the following:
             - Labels:
-                - Target Locale ID 
                 - Name 
                 - Code
-                - Action 
+                - Source Code
             - Data:
-                - The traget locale's target locale Name: Unique ID (this should be a link to the specific target locale opening in TargetLocaleWidget)
-                - The target locale target locale's name (this should be a link to the specific target locale target locale opening in TargetLocaleWidget)
-                - The target locale target locale's code
+                - The target locale's name (this should be a link to the specific target locale opening in TargetLocaleWidget)
+                - The target locale's code
+                - The target locale's source code
             
             - Buttons in form_buttons_layout: 
                 - The "Add" button renders the AddTargetLocaleWidget class in the stack. This button's click should take along the target locale's ID as argument to the AddTargetLocaleWidget. 
                 - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
-                    - "Delete": will delete the specific target locale target locale's record in the DB
+                    - "OK": will delete the specific target locale target locale's record in the DB
                     - "Cancel": will abort the deletion of the record.
 
-        - Please read the attached AutoLoc_App_Design PDF document to see how the TargetLocaleWidget layouts and components are designed. 
+        - Please read the attached image to see how the TargetLocaleWidget layouts and components are designed. 
 
 
 
 
-    - AddTargetLocaleWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - AddTargetLocaleWidget class:
         - The AddTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's adding one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
 
-        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
 
         - It renders an Object Data Add Form with the following:
             - Labels:
-                - Target Locale ID 
+                - Source Code
                 - Name 
                 - Code
-                - Action 
             - Data:
-                - The traget locale's target locale Name: Unique ID (automatically added from th target locale's ID)
-                - The target locale target locale's name (this should be a select field)
-                - The target locale target locale's code (auto-updated select field based on the target locale's name selection)
+                - The traget locale's Source Code Name: Unique ID (automatically added from th target locale's ID)
+                - The target locale's name (this should be a select field)
+                - The locale's code
 
-            - Submit button under the form to submit the form data to the DB
+            - "Save" button under the form to submit the form data to the DB using TargetLocaleManager's add_target_locale(source_code_id, name, code).
             
-            - Buttons in form_buttons_layout: 
-                - The "Cancel" button aborts adding and renders the TargetLocalesWidget class in the stack using the target locale's ID too.
+            - A "Cancel" button near the "Save" button that aborts adding and renders the TargetLocaleWidget class in the stack using the target locale's ID too.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the AddTargetLocaleWidget layouts and components are designed. 
+        - Please read the attached image to see how the AddTargetLocaleWidget layouts and components are designed. 
 
 
 
 
-    - UpdateTargetLocaleWidget class
+
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - UpdateTargetLocaleWidget class:
         - The UpdateTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
 
-        - It uses the TargetLocaleManager class for all its CRUD and relevant functionalities.
+        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
 
-        - It renders an Object Data Update Form with the following:
+        - It renders an Object Data Add Form with the following:
             - Labels:
-                - Labels:
-                - Target Locale ID 
+                - Source Code
                 - Name 
                 - Code
-                - Action 
             - Data:
-                - The traget locale's target locale Name: Unique ID (automatically added from th target locale's ID)
+                - The traget locale's Source Code Name: Unique ID (automatically added from th target locale's ID)
                 - The target locale target locale's name (this should be a select field)
                 - The target locale target locale's code (auto-updated select field based on the target locale's name selection)
-            - Submit button under the form to submit the form data to the DB
+
+            - "Save" button under the form to submit the form data to the DB using TargetLocaleManager's update_target_locale(source_code_id, name, code).
             
-            - Buttons in form_buttons_layout: 
-                - The "Cancel" button aborts updating and renders back the TargetLocaleWidget object being updated in the stack using the target locale's ID too.
+            - A "Cancel" button near the "Save" button that aborts update and renders the TargetLocaleWidget class in the stack using the target locale's ID too.
             
-        - Please read the attached AutoLoc_App_Design PDF document to see how the UpdateTargetLocaleWidget layouts and components are designed. 
+        - Please read the attached image to see how the UpdateTargetLocaleWidget layouts and components are designed. 
     
 
 
 
 
-    - Styles class 
+
+    - PROMPT:
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
+        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
+
+    - Styles class:
         - The Styles class of the AutoLoc app defines the CSS for styling all the layouts, widgets, buttons, labels, and other components of the app. 
 
         - It is called in any QWidget class requiring styling. 

@@ -22,8 +22,8 @@ class WebAppFileLocalizer:
         try:
             # Initialize necessary managers
             self.setting_manager = SettingManager()
-            self.source_code_manager = SourceCodeManager(source_code_id)
-            self.target_locale_manager = TargetLocaleManager(source_code_id)  # Added target locale manager
+            self.source_code_manager = SourceCodeManager()
+            self.target_locale_manager = TargetLocaleManager()  # Added target locale manager
 
             # Get source code information
             self.source_code = self.source_code_manager.get_source_code(source_code_id)
@@ -37,7 +37,7 @@ class WebAppFileLocalizer:
             self.locales_path.mkdir(parents=True, exist_ok=True)
 
             # Get target locales for the source code
-            self.target_locales = self.target_locale_manager.get_target_locales()
+            self.target_locales = self.target_locale_manager.get_target_locales(source_code_id=source_code_id)
         except (InitializationError, InvalidUserInputError) as e:
             raise InitializationError(f"WebAppFileLocalizer Initialization Error: {str(e)}")
 
