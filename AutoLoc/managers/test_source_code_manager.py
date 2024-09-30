@@ -107,8 +107,8 @@ source_code_manager = SourceCodeManager()
 
 # # 9. Test `update_source_code_files` function
 # try:
-#     source_code_id = 2
-#     source_code_manager.update_source_code_files(source_code_id, '../../../Sample Source Code')
+#     source_code_id = 4
+#     source_code_manager.update_source_code_files(source_code_id, '../../L10n_Test_Repo/RMI_Test_Files/src')
 #     assert os.path.exists(source_code_manager.original_source_code_path), "Updated source code path does not exist."
 #     print("Test update_source_code_files: Passed")
 # except (DatabaseError, FilePermissionError) as e:
