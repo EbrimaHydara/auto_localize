@@ -1,87 +1,95 @@
-# main_window.py
-
-from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QMessageBox
-from PySide6.QtCore import Qt
-from managers.app_manager import AppManager  # Importing the AppManager class
-from app_ui.header_widget import HeaderWidget  # Importing HeaderWidget class
-from app_ui.sidebar_widget import SideBarWidget  # Importing SideBarWidget class
-from app_ui.footer_widget import FooterWidget  # Importing FooterWidget class
+# Import necessary modules and classes
+from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QMessageBox
+from PySide6.QtCore import Qt, QSize
+from managers.app_manager import AppManager
+from app_ui.styles import Styles
+from app_ui.header_widget import HeaderWidget
+from app_ui.sidebar_widget import SideBarWidget
+from app_ui.panel_widget import PanelWidget
+from app_ui.footer_widget import FooterWidget
 
 class MainAppWindow(QMainWindow):
-    """
-    Main window class for the AutoLoc app.
-    Consolidates all other components and manages the main application layout.
-    """
-
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("AutoLoc - Localization Automation Tool")
-        
-        # Initialize AppManager and handle startup procedures
-        try:
-            self.app_manager = self.initialize_app_manager()
-            self.app_manager.initialize_app()
-        except Exception as e:
-            self.show_error_message("Startup Error", str(e))
-            return
 
-        # Set up the main layout
-        self.main_layout = QVBoxLayout()
-        
-        # Header Layout and Widget
+        # Set fixed size for the MainAppWindow
+        self.setFixedSize(QSize(1024, 768))
+        self.setWindowTitle("AutoLoc - Automatic Localization Tool")
+
+        # Apply central styling
+        self.apply_styling()
+
+        # Initialize the main layout
+        self.main_widget = QWidget(self)
+        self.setCentralWidget(self.main_widget)
+        self.main_layout = QVBoxLayout(self.main_widget)
+        self.main_layout.setContentsMargins(0, 0, 0, 0)
+
+        # Initialize layouts
         self.header_layout = QHBoxLayout()
-        self.header_widget = HeaderWidget()  # Instantiate the HeaderWidget
-        self.header_layout.addWidget(self.header_widget)
-        
-        # Body Layout with Sidebar and Panel
         self.body_layout = QHBoxLayout()
-        
-        # Sidebar Layout and Widget
-        self.side_bar_layout = QVBoxLayout()
-        self.side_bar_widget = SideBarWidget()  # Instantiate the SideBarWidget
-        self.side_bar_layout.addWidget(self.side_bar_widget)
-        
-        # Panel Layout for dynamic content
+        self.sidebar_layout = QVBoxLayout()
         self.panel_layout = QVBoxLayout()
-        
-        # Adding side bar and panel to the body layout
-        self.body_layout.addLayout(self.side_bar_layout)
-        self.body_layout.addLayout(self.panel_layout)
-
-        # Footer Layout and Widget
         self.footer_layout = QHBoxLayout()
-        self.footer_widget = FooterWidget()  # Instantiate the FooterWidget
-        self.footer_layout.addWidget(self.footer_widget)
-        
-        # Adding header, body, and footer layouts to the main layout
+
+        # Add layouts to the main layout
         self.main_layout.addLayout(self.header_layout)
         self.main_layout.addLayout(self.body_layout)
         self.main_layout.addLayout(self.footer_layout)
 
-        # Creating a central widget for the main layout
-        central_widget = QWidget()
-        central_widget.setLayout(self.main_layout)
-        self.setCentralWidget(central_widget)
-        
-        # Additional setup like window size, styles, etc.
-        self.resize(1024, 768)
-        
-    def initialize_app_manager(self):
-        """
-        Initializes the AppManager. This is where any setup or dependency injection can occur.
-        """
+        # Add sidebar and panel layouts to the body layout
+        self.body_layout.addLayout(self.sidebar_layout)
+        self.body_layout.addLayout(self.panel_layout)
+
+        # Initialize AppManager and handle startup
+        self.app_manager = AppManager()
+        self.initialize_app()
+
+        # Add Widgets to layouts
+        self.add_widgets()
+
+    def apply_styling(self):
+        """Apply styling to the MainAppWindow from the Styles class."""
+        self.setStyleSheet(Styles.main_window_style())
+
+    def initialize_app(self):
+        """Initialize app using the AppManager's startup procedures."""
         try:
-            # Initialize AppManager
-            app_manager = AppManager()
-            return app_manager
+            self.app_manager.initialize_app()
         except Exception as e:
-            raise Exception(f"MainAppWindow Error in initialize_app_manager: {str(e)}")
-    
-    def show_error_message(self, title, message):
-        """
-        Displays an error message using a QMessageBox.
-        
-        :param title: The title of the message box.
-        :param message: The content of the error message.
-        """
-        QMessageBox.critical(self, title, message, QMessageBox.Ok)
+            # Show error message box if initialization fails
+            QMessageBox.critical(
+                self, 
+                "Initialization Error - MainAppWindow", 
+                f"Failed to initialize app:\n{str(e)}", 
+                QMessageBox.Ok
+            )
+            self.close()
+
+    def add_widgets(self):
+        """Add all widgets to their respective layouts."""
+        try:
+            # Header Widget
+            self.header_widget = HeaderWidget()
+            self.header_layout.addWidget(self.header_widget)
+
+            # Panel Widget
+            self.panel_widget = PanelWidget()
+            self.panel_layout.addWidget(self.panel_widget)
+
+            # # Sidebar Widget
+            # self.sidebar_widget = SideBarWidget(panel_widget=self.panel_widget)
+            # self.sidebar_layout.addWidget(self.sidebar_widget)
+
+            # Footer Widget
+            self.footer_widget = FooterWidget()
+            self.footer_layout.addWidget(self.footer_widget)
+
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "Widget Initialization Error - MainAppWindow",
+                f"An error occurred while adding widgets:\n{str(e)}",
+                QMessageBox.Ok
+            )
+            self.close()

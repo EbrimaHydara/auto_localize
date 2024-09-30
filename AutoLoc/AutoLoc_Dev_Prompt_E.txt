@@ -1,11 +1,60 @@
 Classes: app_ui module classes and starter file:
 
-    App's starter file:
+    PROMPT:
+    Please read the following content of the App's starter file to understand how it calls and executes the MainAppWindow class. The MainAppWindow is the main class of the app. Do not rewrite the code for this file. It is just meant for perusal and understanding of its content and intent. When you are done reading it, please just say "DONE reading the autoloc.py file's content!".
 
-    - autoloc.py file:
+    - App's starter file - `autoloc.py` file:
+
         - The autoloc.py file is the only entry point of the AutoLoc app.
+
         - It calls the MainAppWindow and executes the Application to render the app's UI.
+
         - It is the AutoLoc app's only allowed entry point of execution.
+
+        - Code in auloc.py file:
+
+            # autoloc.py
+
+            import os
+            import sys
+
+            # Add project root directory to PYTHONPATH if not already present
+            project_root = os.path.abspath(os.path.dirname(__file__))
+            if project_root not in sys.path:
+                sys.path.insert(0, project_root)
+
+            from PySide6.QtWidgets import QApplication, QMessageBox
+            from PySide6.QtGui import QIcon
+            from app_ui.main_app_window import MainAppWindow  # Importing MainAppWindow from the correct module
+
+            def main():
+                """
+                Entry point for the AutoLoc application.
+                Initializes the QApplication and MainAppWindow, and starts the app.
+                """
+                # Create a QApplication instance
+                app = QApplication(sys.argv)
+                
+                # Set the application icon (Replace 'path_to_icon' with the actual icon path)
+                app.setWindowIcon(QIcon('path_to_icon/autoloc_icon.png'))
+
+                try:
+                    # Initialize and show the main application window
+                    main_window = MainAppWindow()
+                    main_window.show()
+                except Exception as e:
+                    # Show a critical error message box if the main window fails to initialize
+                    QMessageBox.critical(None, "AutoLoc Error", f"An unexpected error occurred:\n{str(e)}", QMessageBox.Ok)
+                    sys.exit(1)
+
+                # Execute the application's event loop
+                sys.exit(app.exec())
+
+            if __name__ == "__main__":
+                main()
+
+
+
 
 
 
@@ -16,24 +65,40 @@ Classes: app_ui module classes and starter file:
 
     - MainAppWindow Class:
         - The MainAppWindow is the main class of the AutoLoc app. It consolidates all the other classes logic in one place. It is the only class called in the autoloc.py file to start and run the app. 
+
         - It calls the AppManager's initialize_app() function to execute startup procedures as the first procedures of the app.
+
         - It makes sure the AppManager passes on all its startup procedures without any failure before any other process is allowed on the app.
+
         - It imports and executes the following classes:
+            - managers.app_manager.AppManager
+            - app_ui.styles.Styles
             - app_ui.header_widget.HeaderWidget
             - app_ui.sidebar_widget.SideBarWidget
             - app_ui.panel_widget.PanelWidget
             - app_ui.footer_widget.FooterWidget
             - app_ui.styles.Styles 
-        - It imports and executes all the app's stylings from the `app_ui.styles.Styles` class. 
+
+        - It is the class that applies the Styles class stylings to the entire app. The Styles class centralizes all the CSS definitions of the app. 
+
         - It implements and displays all the exceptions/errors QMessageBoxes from the AppManager class.
+
         - It has a fixed width: 1024, height: 768. It is not resizeable by the user.
+
         - It defines the AutoLoc app's main layout which includes the following layouts with their corresponding widgets:
+
             - main_layout: MainAppWindow's layout. 
+
             - header_layout: in main_layout to accommodate `app_ui.header_widget.HeaderWidget` class.
+
             - body_layout: inside main_layout to accommodate sidebar_layout and panel_layout.
+
             - sidebar_layout: in body_layout_layout to accommodate SideBarWidget.
-            - panel_layout: in body_layout to accommodate the PanelWidget class that renders any QWidget and QStackedWidget of the app. The PanelWidget is the central widget of the MainAppWindow class. 
+
+            - panel_layout: in body_layout to accommodate the PanelWidget class that renders any QWidget and QStackedWidget of the app. The PanelWidget is the central widget of the MainAppWindow class.
+
             - footer_layout: in main_layout to accommodate FooterWidget.
+
             - Please read the attached image to see how the MainAppWindow layouts and widgets are designed.
     
 
@@ -61,9 +126,7 @@ Classes: app_ui module classes and starter file:
 
         - Both `app_name_label` and `app_slogan_label` have fixed width of 150 and center-aligned. The `module_label` takes the rest of the `header_widget_layout` width and left-aligned.
 
-        - It defines a set_module_label(label) function that changes the value of the module_label.
-
-
+        - It defines a set_module_label(label) function that changes the value of the module_label from other classes that use it.
 
         - Please read the attached image to see how the HeaderWidget layouts and components are designed. 
 
@@ -122,7 +185,8 @@ Classes: app_ui module classes and starter file:
     - PanelWidget class:
         - The PanelWidget class is a QWidget class that defines the layout and components of the PanelWidget class meant to be rendered in the panel_layout of the MainAppWindow class to dynamically contain any widget class invoked at the click of a button.
 
-        - It imports and renders all the following classes in a QStackedWidget:
+        - It imports and renders all the following classes in its QStackedWidget:
+            - app_ui.sidebar_widget.SideBarWidget (if needed)
             - app_ui.home_widget.HomeWidget as the default widget
             - app_ui.project_widgets.ProjectsStackedWidget
             - app_ui.setting_widgets.SettingsStackedWidget
@@ -142,30 +206,39 @@ Classes: app_ui module classes and starter file:
 
 
     - PROMPT:
-        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. 
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes. 
+        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
+        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
     - HomeWidget class:
         - The HomeWidget class is a QWidget class that defines the layout and components of the app's home widget meant to be rendered by the PanelWidget class.
 
         - It imports and uses the following classes:
-            - managers.project_manager.ProjectManager
             - managers.setting_manager.SettingManager
-            - managers.target_locale_manager.TargetLocaleManager
+            - managers.project_manager.ProjectManager
+            - managers.source_code_manager.SourceCodeManager
             - app_ui.header_widget.HeaderWidget
+            - app_ui.styles.Styles 
         
         - It sets the HeaderWidget's module_label to "Home" using its set_module_label(label) function.
 
-        - It renders an overview of the app's content in tablets showing:
-            - All Projects: the projects count in the DB.
-            - Completed Projects: the projects count whose status = "Completed" in the DB.
-            - Pending Projects: the projects count whose status = "Pending" in the DB.
-            - All Source Codes: the source codes count in the DB.
-            - Localized Source Codes: the count of source codes whose status = "Localized" in the DB.
-            - Unlocalized Source Codes: the count of source codes whose status = "Unlocalized" in the DB.
-            - Supported File Types: the count of all file types in the DB.
-            - Supported Locales: the count of all locales in the DB.
+        - It renders an overview of the app's content in tablets showing the counts of specified DB tables records. Please note that the calls to get record from DB always return sqlite3.Row objects. The following records are returned and counted and displayed in tablets:
+
+            - All Projects: the projects count in the DB from ProjectManager's get_projects().
+
+            - Completed Projects: the projects count whose status = "Completed" in the DB from ProjectManager's get_projects({'status': "Completed"}).
+
+            - Pending Projects: the projects count whose status = "Pending" in the DB from ProjectManager's get_projects({'status': "Pending"}).
+
+            - All Source Codes: the source codes count in the DB from SourceCodeManager's get_source_codes().
+
+            - Localized Source Codes: the count of source codes whose status = "Localized" in the DB from SourceCodeManager's get_source_codes({'status': "Localized"}).
+
+            - Unlocalized Source Codes: the count of source codes whose status = "Unlocalized" in the DB from SourceCodeManager's get_source_codes({'status': "Unlocalize"}).
+
+            - Supported File Types: the count of all file types in the DB from SettingManager's get_file_types().
+
+            - Supported Locales: the count of all locales in the DB from SettingManager's get_locales().
 
         - Please read the attached image to see how the HomeWidget layouts and components are designed. 
 
@@ -189,17 +262,13 @@ Classes: app_ui module classes and starter file:
             - SettingsWidget class
             - FileTypesWidget class
             - LocalesWidget class
-            - LocaleWidget class
-            - AddLocaleWidget class
-            - UpdateLocaleWidget class  
+            - AddLocaleWidget class 
 
         - It renders in a QStackedWidget all the following QWidget classes:
             - SettingsWidget class as the default widget
             - FileTypesWidget class
-            - LocalesWidget class
             - LocaleWidget class
             - AddLocaleWidget class
-            - UpdateLocaleWidget class
 
         - It defines the following QPushButtons in the stack_buttons_layout:
             - "General" QPushButton to render the SettingsWidget
@@ -291,8 +360,6 @@ Classes: app_ui module classes and starter file:
                 - Each locale's name 
                 - Each locale's code 
             
-            - The `add_locale_button = QPushButton("Add Locale")` renders the AddLocaleWidget class in the stack.
-            - The `update_locale_button = QPushButton("Update")` renders the UpdateLocaleWidget class in the stack. It sends along the `locale_id` attribute to the UpdateLocaleWidget. 
             - The `delete_locale_button = QPushButton("Delete")` shows a QMessageBox with a critical message ("Do you want to delete the [locale['name']]?) with 2 buttons:
                 - "Ok": will delete the locale's record in the DB using SettingManager's delete_locale(locale_id).
                 - "Cancel": will abort the deletion of record and closes the QMessageBox. 
@@ -323,6 +390,7 @@ Classes: app_ui module classes and starter file:
             - Data:
                 - The locale's name 
                 - The locale's code
+
             - The `save_locale_button = QPushButton("Save")` under the form saves the form data to the DB via the SettingManager's add_locale(name, code) function.
             
             - The `cancel_button = QPushButton("Cancel")` aborts adding and renders back the LocalesWidget in the stack.
@@ -330,36 +398,6 @@ Classes: app_ui module classes and starter file:
         - Please read the attached image to see how the AddLocaleWidget layouts and components are designed. 
 
 
-
-
-
-
-    - PROMPT:
-        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
-
-    - UpdateLocaleWidget class:
-        - The UpdateLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one locale widget meant to be rendered in the SettingsStackedWidget class.
-
-       - It imports and uses the `managers.setting_manager.SettingManager` class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the SettingManager class.
-
-        - It takes in locale_id as argument at initialization.
-
-        - It renders a Form with the following fields:
-            - Labels:
-                - Name 
-                - Code 
-            - Data:
-                - The locale's name 
-                - The locale's code
-            - The `save_locale_button = QPushButton("Save")` under the form saves the form data to the DB via the SettingManager's update_locale(locale_id, data) function. The data argument is a dictionary like {'name': name, 'code': code}. 
-            
-            - The `cancel_button = QPushButton("Cancel")` aborts the update action and renders back the LocalesWidget in the stack.
-            
-        - Please read the attached image to see how the UpdateLocaleWidget layouts and components are designed. 
 
 
 
@@ -379,15 +417,11 @@ Classes: app_ui module classes and starter file:
 
         - It is implemented in the same file (`app_ui.project_widgets.py`) along with the following classes:
             - ProjectsWidget class
-            - ProjectWidget class
             - AddProjectWidget class
-            - UpdateProjectWidget class
 
         - It renders in a QStackedWidget all the following QWidget classes:
             - ProjectsWidget class as the default widget 
-            - ProjectWidget class
             - AddProjectWidget class
-            - UpdateProjectWidget class
 
         - It defines the following buttons in the stack_buttons_layout:
             - The `projects_button = QPushButton("Projects")` to render the ProjectsWidget
@@ -413,6 +447,7 @@ Classes: app_ui module classes and starter file:
 
         - It renders a QTable (`projects_table`) displaying all projects data from ProjectManager's get_projects() function with the following attributes:
             - Table Column Names:
+                - ID (hidden column)
                 - Name 
                 - Client
                 - Status 
@@ -420,13 +455,14 @@ Classes: app_ui module classes and starter file:
                 - End Date 
 
             - Table Rows Data:
-                - Each project's name (this should be a link to the specific project opening in ProjectWidget)
+                - Each project's ID hidden but needed to open ProjectWidgetDialog
+                - Each project's name (this should be a link to the specific project opening in ProjectWidgetDialog)
                 - Each project's client 
                 - Each project's status 
                 - Each project's start date 
-                - Each project's end date  
+                - Each project's end date 
             
-            - The `add_project_button = QPushButton(Add Project)` renders the AddProjectWidget class in the stack. 
+            - The Name field value of the `projects_table` should be a clickable QLabel in blue color and mouseover cursor like a link. It should call a method to open the ProjectWidgetDialog passing it project_id that is hidden in the ID field to open that project's ProjectWidgetDialog as a QDialog modal view showing the specific project's details being clicked on.
 
         - Please read the attached image to see how the ProjectsWidget layouts and components are designed. 
 
@@ -440,8 +476,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - ProjectWidget class:
-        - The ProjectWidget class is a QWidget class that defines the layout and components of the app's one project widget meant to be rendered in the ProjectsStackedWidget class.
+    - ProjectWidgetDialog class:
+        - The ProjectWidgetDialog class is a QDialog class that defines the layout and components of the app's one project widget meant to be rendered in the ProjectsWidget class.
 
         - It imports and uses the `managers.project_manager.ProjectManager` class for all its CRUD and relevant functionalities.
 
@@ -471,12 +507,14 @@ Classes: app_ui module classes and starter file:
                 - The project's last updated date 
                 - The project's lead engineer 
             
-            - The `update_project_button = QPushButton("Update")` renders the UpdateProjectWidget class in the stack sending along the project_id.
+            - The `update_project_button = QPushButton("Update")` renders the UpdateProjectWidgetDialog class as QDialog sending along the project_id.
+
             - The `delete_project_button = QPushButton("Delete")`  shows a QMessageBox with a critical message with 2 buttons:
-                - "OK": will delete the specific project's record in the DB
+                - "OK": will delete the specific project's record in the DB and closes the ProjectWidgetDialog.
+
                 - "Cancel": will abort the deletion of the record.
 
-        - Please read the attached image to see how the ProjectWidget layouts and components are designed. 
+        - Please read the attached image to see how the ProjectWidgetDialog layouts and components are designed. 
 
 
 
@@ -513,7 +551,7 @@ Classes: app_ui module classes and starter file:
                 - The project's end date
                 - The project's lead engineer 
 
-            - The `save_project_button = QPushButton("Save")` under the form saves the form data to the DB using the ProjectManager's add_project(name, client, description, status="In Progress", start_date, end_date, lead_engineer)
+            - The `save_project_button = QPushButton("Save")` under the form saves the form data to the DB using the ProjectManager's add_project(name, client, description, status="In Progress", start_date, end_date, lead_engineer). It then then switch the current index of the ProjectsStackedWidget's stack_widget to ProjectsWidget's index.
             
             - The `cancel_button = QPushButton("Cancel")` aborts adding and renders the ProjectsWidget class in the stack.
             
@@ -528,8 +566,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - UpdateProjectWidget class:
-        - The UpdateProjectWidget class is a QWidget class that defines the layout and components of the app's updating one project widget meant to be rendered in the ProjectsStackedWidget class.
+    - UpdateProjectWidgetDialog class:
+        - The UpdateProjectWidgetDialog class is a QWidget class that defines the layout and components of the app's updating one project widget meant to be rendered by the ProjectWidgetDialog class.
 
         - It imports and uses the `managers.project_manager.ProjectManager` class for all its CRUD and relevant functionalities.
 
@@ -555,11 +593,11 @@ Classes: app_ui module classes and starter file:
                 - The project's end date
                 - The project's lead engineer 
 
-            - The `save_project_button = QPushButton("Save")` under the form saves the form data to the DB using the ProjectManager's update_project(project_id, {name, client, description, status, start_date, end_date, lead_engineer})
+            - The `save_project_button = QPushButton("Save")` under the form saves the form data to the DB using the ProjectManager's update_project(project_id, {name, client, description, status, start_date, end_date, lead_engineer}). It then closes the UpdateProjectWidgetDialog. 
             
-            - The `cancel_button = QPushButton("Cancel")` aborts the update and renders the specific project based on its ID in the ProjectWidget class in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts the update and closes the UpdateProjectWidgetDialog.
             
-        - Please read the attached image to see how the UpdateProjectWidget layouts and components are designed. 
+        - Please read the attached image to see how the UpdateProjectWidgetDialog layouts and components are designed. 
 
 
 
@@ -579,23 +617,11 @@ Classes: app_ui module classes and starter file:
 
         - It is implemented in the same file (`app_ui.source_code_widgets.py`) along with the following classes:
             - SourceCodesWidget class
-            - SourceCodeWidget class
             - AddSourceCodeWidget class
-            - UpdateSourceCodeWidget class
-            - SetTargetLocalesWidget class 
-            - AddSourceCodeFilesWidget class 
-            - UpdateSourceCodeFilesWidget class
-            - L10nWidget class
 
         - It renders in a QStackedWidget all the following QWidget classes:
             - SourceCodesWidget class
-            - SourceCodeWidget class
             - AddSourceCodeWidget class
-            - UpdateSourceCodeWidget class
-            - SetTargetLocalesWidget class 
-            - AddSourceCodeFilesWidget class 
-            - UpdateSourceCodeFilesWidget class
-            - L10nWidget class
 
         - It defines the following buttons in the stack_buttons_layout:
             - The `source_codes_button = QPushButton("Source Codes")` renders the SourceCodesWidget.
@@ -622,6 +648,7 @@ Classes: app_ui module classes and starter file:
         - It renders a QTable (`source_codes_table`) Data with the following attributes:
             - Table Column Names:
                 - Project
+                - ID (hidden column)
                 - Name 
                 - Type 
                 - Source Locale
@@ -630,14 +657,12 @@ Classes: app_ui module classes and starter file:
 
             - Table Rows Data:
                 - Each source code's project name 
-                - Each source code's name (this should be a link to the specific source code opening in SourceCodeWidget) 
-                - Each source code's name 
-                - Each source code's type
+                - Each source code's ID (hidden to help invoke SourceCodeWidgetDialog(source_code_id))
+                - Each source code's name (this should be a link to the specific source code opening in SourceCodeWidgetDialog) 
+                - Each source code's code_type
                 - Each source code's source locale code
                 - Each source code's target locales codes in comma-separated list
-                - Each source code's status 
-            
-            - The `add_source_code_button = QPushButton("Add Source Code")` renders the AddSourceCodeWidget class in the stack.
+                - Each source code's status
 
         - Please read the attached image to see how the SourceCodesWidget layouts and components are designed. 
 
@@ -651,8 +676,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - SourceCodeWidget class:
-        - The SourceCodeWidget class is a QWidget class that defines the layout and components of the app's one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+    - SourceCodeWidgetDialog class:
+        - The SourceCodeWidgetDialog class is a QWidget class that defines the layout and components of the app's one source code widget meant to be rendered by the SourceCodesWidget class.
 
         - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
 
@@ -682,23 +707,32 @@ Classes: app_ui module classes and starter file:
                 - The source code's status 
                 - The source code's notes  
              
-            - The `update_source_code_button = QPushButton("Update")` renders the UpdateSourceCodeWidget passing it source_code_id as argument. 
+            - The `update_source_code_button = QPushButton("Update")` renders as QDialog the UpdateSourceCodeWidgetDialog(source_code_id) passing it source_code_id as argument. The source code's data is reloaded after the UpdateSourceCodeWidgetDialog closes. 
 
-            - The `set_target_locales_button = QPushButton("Set Target Locales")` renders the SetTargetLocalesWidget passing it source_code_id as argument. 
+            - The `set_target_locales_button = QPushButton("Set Target Locales")` renders as QDialog the SetTargetLocalesWidgetDialog(source_code_id) passing it source_code_id as argument. The source code's data is reloaded after the SetTargetLocalesWidgetDialog closes.
 
-            - The `localize_source_code_button = QPushButton("Localize") is only displayed and renders the L10nWidget passing it source_code_id when source_code['status'] = "Unlocalized", otherwise, the `unlocalize_source_code_button = QPushButton("Unlocalize") is displayed in its place to call the L10nManager's unlocalize_source_code(source_code_id).
+            - The `localize_source_code_button = QPushButton("Localize") is only displayed and renders the L10nWidgetDialog(source_code_id) passing it source_code_id when source_code['status'] = "Unlocalized", otherwise, the `unlocalize_source_code_button = QPushButton("Unlocalize") is displayed in its place to call the L10nManager's unlocalize_source_code(source_code_id).
+            Both the localize_source_code_button and unlocalize_source_code_button display a QMessageBox critical error saying that "The source code does not have files to process!" if source_code['localized_source_code_path'] is None.
+            The source code's data is reloaded after the L10nWidgetDialog closes. 
+
 
             - The `delete_source_code_button = QPushButton("Delete")` shows a QMessageBox with a critical message ("Do you want to delete [source_code['name']]?) and 2 buttons: 
-                - "OK": will delete the specific source code's record in the DB.
-                - "Cancel": will abort the deletion of the record.
+                - "OK": will delete the specific source code's record in the DB and closes the SourceCodeWidgetDialog. The SourceCodeWidgetDialog closes after this action.
 
-            - The `add_source_code_files_button = QPushButton("Add Files")` renders the AddSourceCodeFilesWidget from the stack passing it the source_code_id.
+                - "Cancel": will abort the deletion of the record but still shows the SourceCodeWidgetDialog. The SourceCodeWidgetDialog still stays in view after this action.
 
-            - The `update_source_code_files_button = QPushButton("Update Files")` renders the UpdateSourceCodeFilesWidget passing it the source_code_id. 
+            - The `add_source_code_files_button = QPushButton("Add Files")` renders as QDialog the AddSourceCodeFilesWidgetDialog(source_code_id) passing it the source_code_id if source_code['localized_source_code_path'] is None. The add_source_code_files_button shows a QMessageBox information error saying that: 
+            "The Source Code Files already exist. You can however update them instead." if source_code['localized_source_code_path'] is not None. The SourceCodeWidgetDialog still stays in view after this action.
+            The source code's data is reloaded after the AddSourceCodeFilesWidgetDialog closes.
 
-            - The `delete_source_code_files_button = QPushButton("Delete Files")` calls the SourceCodeManager's delete_source_code_files(source_code_id). 
+            - The `update_source_code_files_button = QPushButton("Update Files")` renders the UpdateSourceCodeFilesWidgetDialog(source_code_id) passing it the source_code_id if source_code['localized_source_code_path'] is not None. The update_source_code_files_button shows a QMessageBox information error saying that: 
+            "The source code has no files. Please add files instead." if source_code['localized_source_code_path'] is None. The SourceCodeWidgetDialog still stays in view after this action. The source code's data is reloaded after the UpdateSourceCodeFilesWidgetDialog closes.
 
-            - The `export_source_code_files_button = QPushButton("Export Files")` calls the SourceCodeManager's export_files(source_code_id).
+
+            - The `delete_source_code_files_button = QPushButton("Delete Files")` calls the SourceCodeManager's delete_source_code_files(source_code_id) if source_code['localized_source_code_path'] is not None. Otherwise, it shows a QMessageBox information error saying that: 
+            "The source code has no files to delete!". The SourceCodeWidgetDialog still stays in view after this action. The source code's data is reloaded after this action.
+
+            - The `export_source_code_files_button = QPushButton("Export Files")` calls the SourceCodeManager's export_files(source_code_id). It shows a QMessageBox information error that says "The source code does not have files to export!" if source_code['localized_source_code_path'] is None. The SourceCodeWidgetDialog still stays in view after this action.
 
         - Please read the attached image to see how the SourceCodeWidget layouts and components are designed. 
 
@@ -735,9 +769,9 @@ Classes: app_ui module classes and starter file:
                 - The source code's soure locale (select field, value: "ja-JP" only) 
                 - The source code's notes   
 
-            - The `save_source_code_button = QPushButton("Save")` under the form saves the form data to the DB using the SourceCodeManager's add_source_code(project_id, name, code_type, source_locale, notes)
+            - The `save_source_code_button = QPushButton("Save")` under the form saves the form data to the DB using the SourceCodeManager's add_source_code(project_id, name, code_type, source_locale, notes). This action sets the current index of the SourceCodesStackedWidget's QStackedWidget to the SourceCodesWidget's index (0).
             
-            - The `cancel_button = QPushButton("Cancel")` aborts adding and renders the SourceCodesWidget class in the stack.
+            - The `cancel_button = QPushButton("Cancel")` aborts adding and sets the current index of the SourceCodesStackedWidget's QStackedWidget to the SourceCodesWidget's index (0).
             
         - Please read the attached image to see how the AddSourceCodeWidget layouts and components are designed.  
 
@@ -750,8 +784,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - UpdateSourceCodeWidget class:
-        - The UpdateSourceCodeWidget class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+    - UpdateSourceCodeWidgetDialog class:
+        - The UpdateSourceCodeWidgetDialog class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered by the SourceCodeWidgetDialog class.
 
         - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
 
@@ -761,23 +795,23 @@ Classes: app_ui module classes and starter file:
 
         - It renders a Form with the following:
             - Labels:
-                - Project
                 - Name 
                 - Code Type
                 - Source Locale
                 - Notes 
             - Data:
-                - The source code's Project Name (select field of project ID but showing project name on UI)
                 - The source code's Name 
                 - The source code's code_type (select field, values: "Web App", "Android App", "iOS App", "Java App")
                 - The source code's soure locale (select field, value: "ja-JP" only) 
-                - The source code's notes   
+                - The source code's notes 
 
-            - The `save_source_code_button = QPushButton("Save")` under the form saves the form data to the DB using the SourceCodeManager's update_source_code(source_code_id, data) where data = {name, code_type, source_locale, notes} dictionary.
+            - The source code's project cannot be upadted by policy. So it is not required in the source code update form.   
+
+            - The `save_source_code_button = QPushButton("Save")` under the form saves the form data to the DB using the SourceCodeManager's update_source_code(source_code_id, data) where data = {name, code_type, source_locale, notes} dictionary. The UpdateSourceCodeWidgetDialog closes after this action. 
             
-            - The `cancel_button = QPushButton("Cancel")` aborts update action and renders the SourceCodeWidget class in the stack passing it the source_code_id.
+            - The `cancel_button = QPushButton("Cancel")` aborts update action. The UpdateSourceCodeWidgetDialog closes after this action. 
             
-        - Please read the attached image to see how the UpdateSourceCodeWidget layouts and components are designed. 
+        - Please read the attached image to see how the UpdateSourceCodeWidgetDialog layouts and components are designed. 
     
 
 
@@ -789,8 +823,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - SetTargetLocalesWidget class:
-        - The SetTargetLocalesWidget class is a QWidget class that defines the layout and components of the app's adding/removing target locales to the source code. It is meant to be rendered in the SourceCodesStackedWidget class.
+    - SetTargetLocalesWidgetDialog class:
+        - The SetTargetLocalesWidgetDialog class is a QWidget class that defines the layout and components of the app's adding/removing target locales to the source code. It is meant to be rendered by the SourceCodeWidgetDialog class.
 
         - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class to get all target_locales from get_target_locales(source_code_id=source_code_id).
 
@@ -806,13 +840,13 @@ Classes: app_ui module classes and starter file:
             - Data:
                 - The target locale's Name 
                 - The target locale's code
-                - The target locale's ID in a checkbox  
+                - The target locale's ID hidden in a checkbox  
 
-            - The `set_target_locales_button = QPushButton("Set Target Locale")` under the table saves the table data to the DB using the TargetLocaleManager's add_target_locale(source_code_id, name, code). It first checks if the target locale IDs in checkboxes are in the `target_locales_list`, otherwise it saves the corresponding table row data as a new target locale for the source_code. If a checkbox is unchecked and its ID is in `target_locales_list`, it is removed from the source_code's target locales in the DB using TargetLocaleManager's delete_target_locale(target_locale_id).
+            - The `set_target_locales_button = QPushButton("Set Target Locale")` under the table saves the table data to the DB using the TargetLocaleManager's add_target_locale(source_code_id, name, code). It first checks if the target locale IDs in checkboxes are in the `target_locales_list`, otherwise it saves the corresponding table row data as a new target locale for the source_code. If a checkbox is unchecked and its ID is in `target_locales_list`, it is removed from the source_code's target locales in the DB using TargetLocaleManager's delete_target_locale(target_locale_id). The SetTargetLocalesWidgetDialog closes after this action. 
             
-            - The `cancel_button = QPushButton("Cancel")` aborts setting the target locales and renders the SourceCodeWidget class in the stack passing it the source_code_id.
+            - The `cancel_button = QPushButton("Cancel")` aborts setting the target locales and the SetTargetLocalesWidgetDialog closes after this action.
             
-        - Please read the attached image to see how the SetTargetLocalesWidget layouts and components are designed.  
+        - Please read the attached image to see how the SetTargetLocalesWidgetDialog layouts and components are designed.  
 
 
 
@@ -824,8 +858,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - AddSourceCodeFilesWidget class:
-        - The AddSourceCodeFilesWidget class is a QWidget class that defines the layout and components of the app's adding one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+    - AddSourceCodeFilesWidgetDialog class:
+        - The AddSourceCodeFilesWidgetDialog class is a QWidget class that defines the layout and components of the app's adding one source code widget meant to be rendered by the SourceCodeWidgetDialog class.
 
         - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
 
@@ -842,8 +876,9 @@ Classes: app_ui module classes and starter file:
                 - The select folder path dialog field/button 
 
             - The `save_source_code_files_button = QPushButton("Save")` under the form sends the form data's upload_files file path to the SourceCodeManager's add_source_code_files(source_code_id, upload_path).
+            The AddSourceCodeFilesWidgetDialog closes after this action.
             
-            - The `cancel_button = QPushButton("Cancel")` aborts adding files and renders the SourceCodeWidget class in the stack passing it the source_code_id. 
+            - The `cancel_button = QPushButton("Cancel")` aborts adding files and the AddSourceCodeFilesWidgetDialog closes after this action.
             
         - Please read the attached image to see how the AddSourceCodeFilesWidget layouts and components are designed.  
 
@@ -857,8 +892,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - UpdateSourceCodeFilesWidget class:
-        - The UpdateSourceCodeFilesWidget class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered in the SourceCodesStackedWidget class.
+    - UpdateSourceCodeFilesWidgetDialog class:
+        - The UpdateSourceCodeFilesWidgetDialog class is a QWidget class that defines the layout and components of the app's updating one source code widget meant to be rendered by the SourceCodeWidgetDialog class.
 
         - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for all its CRUD and relevant functionalities.
 
@@ -875,8 +910,9 @@ Classes: app_ui module classes and starter file:
                 - The select folder path dialog field/button 
 
             - The `save_source_code_files_button = QPushButton("Save")` under the form sends the form data's upload_files file path to the SourceCodeManager's update_source_code_files(source_code_id, upload_path).
+            The UpdateSourceCodeFilesWidgetDialog closes after this action.
             
-            - The `cancel_button = QPushButton("Cancel")` aborts update files and renders the SourceCodeWidget class in the stack passing it the source_code_id. 
+            - The `cancel_button = QPushButton("Cancel")` aborts update files and the UpdateSourceCodeFilesWidgetDialog closes after this action. 
             
         - Please read the attached image to see how the UpdateSourceCodeFilesWidget layouts and components are designed. 
     
@@ -890,8 +926,8 @@ Classes: app_ui module classes and starter file:
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
-    - L10nWidget class:
-        - The L10nWidget displays the localization process for each source code based on source code ID. It takes in the source code ID as argument and parse it to the L10nManager class to handle the localization procedures appropriate for the source code. 
+    - L10nWidgetDialog class:
+        - The L10nWidgetDialog displays the localization process for each source code based on source code ID. It takes in the source code ID as argument and parse it to the L10nManager class to handle the localization procedures appropriate for the source code. It is rendered by the SourceCodeWidgetDialog. 
 
         - It imports and uses the `managers.l10n_manager.L10nManager` class for all its CRUD and relevant functionalities.
 
@@ -899,185 +935,47 @@ Classes: app_ui module classes and starter file:
 
         - It takes in source_code_id as argument at initialization to pass it further to L10nManager as argument for its initialization. 
 
-        - It is a QWidget class that defines the layout and components of the app's localization process widget meant to be rendered in the SourceCodesStackedWidget class.
+        - It invokes the L10nManager's localize_source_code() function.
 
-        - It implements a QDialogBox overlay that says (Localization in progress, please wait...). This overlay should render the app unclickable until the L10nManager's localize_source_code(source_code_id) is done executing.
-            
-        - Please read the attached image to see how the L10nWidget layouts and components are designed. 
+        - It implements a QDialogBox overlay that says (Localization in progress, please wait...). This overlay should render the app unclickable until the L10nManager's localize_source_code() is done executing.
+
+        - It automatically closes the localization in progress QDialog and shows QMessageBox information stating that "The localization procedure has been successfully completed." Clicking any button of this QMessageBox should close the L10nWidgetDialog.  
+         
     
 
 
 
 
 
-    - PROMPT:
-        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
-
-    - TargetLocalesStackedWidget class:
-        - The TargetLocalesStackedWidget class is a QStackedWidget class that defines the layout and components of the app's target locales stacked widget meant to be rendered in the panel_layout of the MainAppWindow class.
-
-        - It is implemented in the same file (`app-ui.target_locale_widgets.py`) along with the following classes:
-            - TargetLocalesWidget class
-            - TargetLocaleWidget class
-            - AddTargetLocaleWidget class
-            - UpdateTargetLocaleWidget class
-
-        - It renders in a QStackedWidget all the following QWidget classes:
-            - TargetLocalesWidget class
-            - TargetLocaleWidget class
-            - AddTargetLocaleWidget class
-            - UpdateTargetLocaleWidget class
-
-
-        - It defines the following buttons in the stack_buttons_layout:
-            - The `target_locales_button = QPushButton("Target Locales")` renders the TargetLocalesWidget.
-
-            - The `add_taget_locale_button = QPushButton("Add Target Locale")` renders the AddTargetLocaleWidget.
-
-        - Please read the attached image to see how the TargetLocalesStackedWidget layouts and components are designed.
-
-
-
-
-
-
+    
     - PROMPT:
         Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
         Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
         If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
 
     - TargetLocalesWidget class:
-        - The TargetLocalesWidget class is a QWidget class that defines the layout and components of the app's target locale target locales widget meant to be rendered in the TargetLocalesStackedWidget class.
+        - The TargetLocalesWidget class is a QWidget class that defines the layout and components of the app's target locale target locales widget meant to be rendered in the PanelWidget class.
+
+        - It imports and uses the `managers.source_code_manager.SourceCodeManager` class for getting the source_code of the target_locale. 
 
         - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
 
         - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
 
-        - It renders a QTable (`target_locales_table`) Data with the following:
+        - It renders a QTable (`target_locales_table`) Data from TargetLocaleManager's get_target_locales() with the following:
             - Table Column Names:
                 - Name 
                 - Code
                 - Source Code
-                - Actions
 
             - Table Rows Data:
                 - Each traget locale's Name: Unique ID (this should be a link to the specific target locale opening in TargetLocaleWidget)
                 - Each target locale's code 
                 - Each target locale's Soure Code Name from source_code_id. 
-                - Action buttons to update and delete the record. 
             
-            - The `add_target_locale_button = QPushButton("Add Target Locale")` renders the AddTargetLocaleWidget class in the stack.
-
-            - The `update_target_locale_button = QPushButton("Update")` renders the UpdateLocaleWidget class in the stack. It sends along the `locale_id` attribute to the UpdateLocaleWidget. 
-
-            - The `delete_target_locale_button = QPushButton("Delete")` shows a QMessageBox with a critical message ("Do you want to delete the [locale['name']]?) with 2 buttons:
-                - "Ok": will delete the target locale's record in the DB using TargetLocaleManager's delete_target_locale(target_locale_id).
-                - "Cancel": will abort the deletion of record and closes the QMessageBox. 
-
         - Please read the attached image to see how the TargetLocalesWidget layouts and components are designed. 
 
 
-
-
-
-    - PROMPT:
-        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
-
-    - TargetLocaleWidget class:
-        - The TargetLocaleWidget class is a QWidget class that defines the layout and components of the app's one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
-
-        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
-
-        - It renders an Object Data with the following:
-            - Labels:
-                - Name 
-                - Code
-                - Source Code
-            - Data:
-                - The target locale's name (this should be a link to the specific target locale opening in TargetLocaleWidget)
-                - The target locale's code
-                - The target locale's source code
-            
-            - Buttons in form_buttons_layout: 
-                - The "Add" button renders the AddTargetLocaleWidget class in the stack. This button's click should take along the target locale's ID as argument to the AddTargetLocaleWidget. 
-                - The "Delete" button shows a QMessageBox with a warning message with 2 buttons:
-                    - "OK": will delete the specific target locale target locale's record in the DB
-                    - "Cancel": will abort the deletion of the record.
-
-        - Please read the attached image to see how the TargetLocaleWidget layouts and components are designed. 
-
-
-
-
-
-
-    - PROMPT:
-        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
-
-    - AddTargetLocaleWidget class:
-        - The AddTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's adding one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
-
-        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
-
-        - It renders an Object Data Add Form with the following:
-            - Labels:
-                - Source Code
-                - Name 
-                - Code
-            - Data:
-                - The traget locale's Source Code Name: Unique ID (automatically added from th target locale's ID)
-                - The target locale's name (this should be a select field)
-                - The locale's code
-
-            - "Save" button under the form to submit the form data to the DB using TargetLocaleManager's add_target_locale(source_code_id, name, code).
-            
-            - A "Cancel" button near the "Save" button that aborts adding and renders the TargetLocaleWidget class in the stack using the target locale's ID too.
-            
-        - Please read the attached image to see how the AddTargetLocaleWidget layouts and components are designed. 
-
-
-
-
-
-
-    - PROMPT:
-        Write the full PySide6 class described below based on the description and your expertise as a software developer. Add or adjust any specification as you deem fit for the AutoLoc app. Indicate the class name concerned in all exceptions/errors to enable the user easily locate the class throwing the exception/error. Please put all CSS styling procedures of this class in the `app_ui.styles.Styles` class.
-        Please correct any wrong or defective specification in the class description below and adjust it for the best practices available in the development of such classes.
-        If there are any changes needed in other classes affected by this class, please indicate them in code snippets after wiriting this class.
-
-    - UpdateTargetLocaleWidget class:
-        - The UpdateTargetLocaleWidget class is a QWidget class that defines the layout and components of the app's updating one target locale target locale widget meant to be rendered in the TargetLocalesStackedWidget class.
-
-        - It imports and uses the `managers.target_locale_manager.TargetLocaleManager` class for all its CRUD and relevant functionalities.
-
-        - It implements and displays all the corresponding and relevant exceptions/errors QMessageBoxes from the TargetLocaleManager class.
-
-        - It renders an Object Data Add Form with the following:
-            - Labels:
-                - Source Code
-                - Name 
-                - Code
-            - Data:
-                - The traget locale's Source Code Name: Unique ID (automatically added from th target locale's ID)
-                - The target locale target locale's name (this should be a select field)
-                - The target locale target locale's code (auto-updated select field based on the target locale's name selection)
-
-            - "Save" button under the form to submit the form data to the DB using TargetLocaleManager's update_target_locale(source_code_id, name, code).
-            
-            - A "Cancel" button near the "Save" button that aborts update and renders the TargetLocaleWidget class in the stack using the target locale's ID too.
-            
-        - Please read the attached image to see how the UpdateTargetLocaleWidget layouts and components are designed. 
-    
 
 
 
@@ -1092,4 +990,8 @@ Classes: app_ui module classes and starter file:
         - The Styles class of the AutoLoc app defines the CSS for styling all the layouts, widgets, buttons, labels, and other components of the app. 
 
         - It is called in any QWidget class requiring styling. 
+
+        - It implements all styling fuctions called in QWidget classes and the MainAppWindow class. 
+
+        - Please suggest CSS definitions for the MainAppWindow and QWidget classes you have written so far by implementing their called functions.
 

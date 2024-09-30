@@ -1,55 +1,83 @@
-# sidebar_widget.py
-
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QSpacerItem, QSizePolicy
-from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QWidget, QPushButton, QVBoxLayout, QMessageBox
+from PySide6.QtCore import QSize
+from app_ui.styles import Styles
+from app_ui.panel_widget import PanelWidget
 
 class SideBarWidget(QWidget):
-    """
-    SideBarWidget class defines the layout and components of the app's sidebar widget.
-    It is rendered in the side_bar_layout of the MainAppWindow class.
-    """
-
-    def __init__(self, parent=None):
+    def __init__(self, panel_widget: PanelWidget, parent=None):
         super().__init__(parent)
-        
-        # Set up the main layout for the sidebar widget
-        self.sidebar_layout = QVBoxLayout()
-        self.sidebar_layout.setAlignment(Qt.AlignTop)
-        self.sidebar_layout.setContentsMargins(10, 10, 10, 10)
-        self.sidebar_layout.setSpacing(10)
+        self.panel_widget = panel_widget  # Reference to the PanelWidget instance
+        self.init_ui()
 
-        # Create and add all the buttons to the sidebar layout
-        self.home_button = self.create_button("Home")
-        self.projects_button = self.create_button("Projects")
-        self.source_codes_button = self.create_button("Source Codes")
-        self.locales_button = self.create_button("Locales")
-        self.settings_button = self.create_button("Settings")
-        self.exit_button = self.create_button("Exit")
+    def init_ui(self):
+        """Initialize the UI components and layout for the SideBarWidget."""
+        # Set fixed width for sidebar
+        self.setFixedWidth(150)
 
-        # Adding buttons to the sidebar layout
-        self.sidebar_layout.addWidget(self.home_button)
-        self.sidebar_layout.addWidget(self.projects_button)
-        self.sidebar_layout.addWidget(self.source_codes_button)
-        self.sidebar_layout.addWidget(self.locales_button)
-        self.sidebar_layout.addWidget(self.settings_button)
-        
-        # Add a spacer item to push the exit button to the bottom
-        self.sidebar_layout.addSpacerItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
-        
-        # Adding exit button at the bottom of the sidebar
-        self.sidebar_layout.addWidget(self.exit_button)
+        # Create main layout for the sidebar
+        self.sidebar_widget_layout = QVBoxLayout(self)
+        self.sidebar_widget_layout.setContentsMargins(0, 0, 0, 0)
+        self.sidebar_widget_layout.setSpacing(20)  # Optional: Adjust spacing between buttons
 
-        # Set the main layout to the widget
-        self.setLayout(self.sidebar_layout)
+        # Create and add buttons to the sidebar
+        self.home_button = QPushButton("Home")
+        self.projects_button = QPushButton("Projects")
+        self.source_codes_button = QPushButton("Source Codes")
+        self.locales_button = QPushButton("Locales")
+        self.settings_button = QPushButton("Settings")
+        self.exit_button = QPushButton("Exit")
 
-    def create_button(self, text):
-        """
-        Helper method to create a QPushButton with a standard style.
-        
-        :param text: The text to display on the button.
-        :return: A QPushButton instance with the given text.
-        """
-        button = QPushButton(text)
-        button.setStyleSheet("font-size: 14px; padding: 10px;")
-        button.setFixedHeight(40)
-        return button
+        # Apply styles
+        self.apply_styling()
+
+        # Add buttons to the sidebar layout
+        self.sidebar_widget_layout.addWidget(self.home_button)
+        self.sidebar_widget_layout.addWidget(self.projects_button)
+        self.sidebar_widget_layout.addWidget(self.source_codes_button)
+        self.sidebar_widget_layout.addWidget(self.locales_button)
+        self.sidebar_widget_layout.addWidget(self.settings_button)
+
+        # Add a stretch to push the exit button to the bottom
+        self.sidebar_widget_layout.addStretch(1)
+
+        # Add exit button
+        self.sidebar_widget_layout.addWidget(self.exit_button)
+
+        # Connect button signals to slots for navigating the app
+        self.connect_signals()
+
+    def connect_signals(self):
+        """Connect the sidebar buttons to their respective slots."""
+        try:
+            self.home_button.clicked.connect(lambda: self.panel_widget.set_current_index(0))
+            self.projects_button.clicked.connect(lambda: self.panel_widget.set_current_index(1))
+            self.source_codes_button.clicked.connect(lambda: self.panel_widget.set_current_index(2))
+            self.locales_button.clicked.connect(lambda: self.panel_widget.set_current_index(3))
+            self.settings_button.clicked.connect(lambda: self.panel_widget.set_current_index(4))
+            self.exit_button.clicked.connect(self.close_app)
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "Button Connection Error - SideBarWidget",
+                f"An error occurred while connecting buttons:\n{str(e)}",
+                QMessageBox.Ok
+            )
+
+    def apply_styling(self):
+        """Apply styling to the SideBarWidget from the Styles class."""
+        self.setStyleSheet(Styles.sidebar_widget_style())
+
+    def close_app(self):
+        """Close the application."""
+        try:
+            QMessageBox.information(
+                self, "Exiting AutoLoc", "The application will now close.", QMessageBox.Ok
+            )
+            self.parentWidget().close()
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "Exit Error - SideBarWidget",
+                f"An error occurred while trying to close the app:\n{str(e)}",
+                QMessageBox.Ok
+            )
