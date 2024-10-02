@@ -179,6 +179,8 @@ Please say DONE When you are done reading and understanding the following codes:
 
 1. error_manager.py:
 
+# error_manager.py
+
 class AppError(Exception):
     """Base class for all application errors."""
     pass
@@ -254,12 +256,14 @@ class LocaleManagementError(AppError):
     pass
 
 
+
+
 2. app_manager.py:
 
 import os
 import sys
 import sqlite3
-from error_manager import (
+from managers.error_manager import (
     AppError,
     InitializationError,
     PermissionError,
@@ -368,11 +372,13 @@ class AppManager:
         return self.app_db_file_path
 
 
+
+
 3. test_app_manager.py:
 
 import os
-from app_manager import AppManager
-from error_manager import (  # Import specific exceptions
+from managers.app_manager import AppManager
+from managers.error_manager import (  # Import specific exceptions
     InitializationError,
     PermissionError,
     DatabaseError,
@@ -469,7 +475,11 @@ if __name__ == "__main__":
     test_app_manager()
 
 
+
+
 4. default_data.py:
+
+# default_data.py
 
 # Dictionary for create table statements
 CREATE_TABLE_STATEMENTS = {
@@ -526,7 +536,7 @@ CREATE_TABLE_STATEMENTS = {
             original_source_code_path TEXT NULL,
             commons_paths TEXT NULL,
             localized_source_code_path TEXT NULL,
-            status TEXT DEFAULT 'In Progress',
+            status TEXT,
             notes TEXT NULL,
             UNIQUE(project_id, name, unique_id, source_locale),
             FOREIGN KEY(project_id) REFERENCES projects(id)
@@ -585,18 +595,20 @@ DEFAULT_RECORDS = {
 }
 
 
+
+
 5. db_manager.py:
 
-from app_manager import AppManager
+from managers.app_manager import AppManager
 import sqlite3
 import os
-from error_manager import (
+from managers.error_manager import (
     DatabaseError,
     DatabaseConnectionError,
     FilePermissionError,
     InitializationError,
 )
-from default_data import CREATE_TABLE_STATEMENTS, DEFAULT_RECORDS
+from managers.default_data import CREATE_TABLE_STATEMENTS, DEFAULT_RECORDS
 
 class DBManager:
     """
@@ -701,16 +713,30 @@ class DBManager:
         except (DatabaseError, DatabaseConnectionError) as e:
             raise DatabaseError(f"DBManager DB Reset Error: {str(e)}")
     
-    def get_records(self, table_name):
+    def get_records(self, table_name, condition=None):
         """
-        Retrieves all records from a given table.
-        :param table_name: The name of the table to query
-        :return: A list of records or an error message
+        Retrieves all records from a given table based on the specified condition.
+        :param table_name: The name of the table to query.
+        :param condition: A dictionary containing the column and value to filter records (e.g., {'column_name': value}).
+        :return: A list of records or raises a DatabaseError.
         """
         try:
             cursor = self.connection.cursor()
-            cursor.execute(f"SELECT * FROM {table_name}")
-            return cursor.fetchall()
+
+            if condition:
+                # Extract column and value from the condition
+                column = list(condition.keys())[0]
+                value = list(condition.values())[0]
+
+                # Fetch records matching the condition
+                cursor.execute(f"SELECT * FROM {table_name} WHERE {column} = ?", (value,))
+            else:
+                # Fetch all records if no condition is provided
+                cursor.execute(f"SELECT * FROM {table_name}")
+
+            # Retrieve all records
+            records = cursor.fetchall()
+            return records
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Get Records Error from {table_name}: {str(e)}")
 
@@ -782,19 +808,40 @@ class DBManager:
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Delete Record Error from {table_name}: {str(e)}")
     
-    def delete_records(self, table_name):
+    def delete_records(self, table_name, condition=None):
         """
-        Deletes all records from a given table.
-        :param table_name: The name of the table to clear
-        :return: List of all deleted records or an error message
+        Deletes all records from a given table based on the condition and returns the deleted records.
+        :param table_name: The name of the table to clear.
+        :param condition: A dictionary containing the column and value to filter records to delete.
+        :return: A list of all deleted records or raises a DatabaseError.
         """
         try:
-            # Fetch all records before deletion
-            records_to_delete = self.get_records(table_name)
             cursor = self.connection.cursor()
-            cursor.execute(f"DELETE FROM {table_name}")
+
+            if condition:
+                # Extract column and value from the condition
+                column = list(condition.keys())[0]
+                value = list(condition.values())[0]
+
+                # Fetch records to delete
+                cursor.execute(f"SELECT * FROM {table_name} WHERE {column} = ?", (value,))
+                records_to_delete = cursor.fetchall()
+
+                # Delete the records
+                cursor.execute(f"DELETE FROM {table_name} WHERE {column} = ?", (value,))
+            else:
+                # Fetch all records to delete
+                cursor.execute(f"SELECT * FROM {table_name}")
+                records_to_delete = cursor.fetchall()
+
+                # Delete all records
+                cursor.execute(f"DELETE FROM {table_name}")
+
+            # Commit the changes
             self.connection.commit()
-            return records_to_delete  # Return all deleted records
+
+            # Return the list of deleted records
+            return records_to_delete
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Delete Records Error from {table_name}: {str(e)}")
 
@@ -806,115 +853,116 @@ class DBManager:
             self.connection.close()
 
 
+
+
 6. test_db_manager.py:
 
-    from db_manager import DBManager
-    from error_manager import (
-        DatabaseError,
-        DatabaseConnectionError,
-        FilePermissionError,
-        InitializationError,
-    )
-    import os
+from managers.db_manager import DBManager
+from managers.error_manager import (
+    DatabaseError,
+    DatabaseConnectionError,
+    FilePermissionError,
+    InitializationError,
+)
+import os
 
-    # Initialize DBManager
-    db_manager = DBManager()
+# Initialize DBManager
+db_manager = DBManager()
 
-    # 1. Test `insert_record` function
-    try:
-        data = {'name': 'Test Project', 'client': 'Client A', 'description': 'A sample project'}
-        inserted_record = db_manager.insert_record('projects', data)
-        assert inserted_record['name'] == 'Test Project', f"Expected 'Test Project', got {inserted_record['name']}"
-        assert inserted_record['client'] == 'Client A', f"Expected 'Client A', got {inserted_record['client']}"
-        print("Test insert_record: Passed")
-    except DatabaseError as e:
-        print(f"Test insert_record: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test insert_record: Failed with Exception: {str(e)}")
+# 1. Test `insert_record` function
+try:
+    data = {'name': 'Test Project', 'client': 'Client A', 'description': 'A sample project'}
+    inserted_record = db_manager.insert_record('projects', data)
+    assert inserted_record['name'] == 'Test Project', f"Expected 'Test Project', got {inserted_record['name']}"
+    assert inserted_record['client'] == 'Client A', f"Expected 'Client A', got {inserted_record['client']}"
+    print("Test insert_record: Passed")
+except DatabaseError as e:
+    print(f"Test insert_record: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test insert_record: Failed with Exception: {str(e)}")
 
-    # 2. Test `update_record` function
-    try:
-        record_id = inserted_record['id']
-        updated_data = {'name': 'Updated Project', 'client': 'Client B', 'description': 'Updated description'}
-        updated_record = db_manager.update_record('projects', record_id, updated_data)
-        assert updated_record['name'] == 'Updated Project', f"Expected 'Updated Project', got {updated_record['name']}"
-        assert updated_record['client'] == 'Client B', f"Expected 'Client B', got {updated_record['client']}"
-        print("Test update_record: Passed")
-    except DatabaseError as e:
-        print(f"Test update_record: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test update_record: Failed with Exception: {str(e)}")
+# 2. Test `update_record` function
+try:
+    record_id = inserted_record['id']
+    updated_data = {'name': 'Updated Project', 'client': 'Client B', 'description': 'Updated description'}
+    updated_record = db_manager.update_record('projects', record_id, updated_data)
+    assert updated_record['name'] == 'Updated Project', f"Expected 'Updated Project', got {updated_record['name']}"
+    assert updated_record['client'] == 'Client B', f"Expected 'Client B', got {updated_record['client']}"
+    print("Test update_record: Passed")
+except DatabaseError as e:
+    print(f"Test update_record: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test update_record: Failed with Exception: {str(e)}")
 
-    # 3. Test `delete_record` function
-    try:
-        deleted_record = db_manager.delete_record('projects', record_id)
-        assert deleted_record['id'] == record_id, f"Expected ID {record_id}, got {deleted_record['id']}"
-        assert deleted_record['name'] == 'Updated Project', f"Expected 'Updated Project', got {deleted_record['name']}"
-        print("Test delete_record: Passed")
-    except DatabaseError as e:
-        print(f"Test delete_record: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_record: Failed with Exception: {str(e)}")
+# 3. Test `delete_record` function
+try:
+    deleted_record = db_manager.delete_record('projects', record_id)
+    assert deleted_record['id'] == record_id, f"Expected ID {record_id}, got {deleted_record['id']}"
+    assert deleted_record['name'] == 'Updated Project', f"Expected 'Updated Project', got {deleted_record['name']}"
+    print("Test delete_record: Passed")
+except DatabaseError as e:
+    print(f"Test delete_record: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_record: Failed with Exception: {str(e)}")
 
-    # 4. Test `get_records` function
-    try:
-        records = db_manager.get_records('projects')
-        assert isinstance(records, list), f"Expected list, got {type(records)}"
-        print("Test get_records: Passed")
-    except DatabaseError as e:
-        print(f"Test get_records: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test get_records: Failed with Exception: {str(e)}")
+# 4. Test `get_records` function
+try:
+    records = db_manager.get_records('projects')
+    assert isinstance(records, list), f"Expected list, got {type(records)}"
+    print("Test get_records: Passed")
+except DatabaseError as e:
+    print(f"Test get_records: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test get_records: Failed with Exception: {str(e)}")
 
-    # 5. Test `get_record` function
-    try:
-        if records:
-            record_id = records[0]['id']
-            record = db_manager.get_record('projects', record_id)
-            assert isinstance(record, sqlite3.Row), f"Expected sqlite3.Row, got {type(record)}"
-            assert record['id'] == record_id, f"Expected ID {record_id}, got {record['id']}"
-            print("Test get_record: Passed")
-        else:
-            print("No records found to test get_record.")
-    except DatabaseError as e:
-        print(f"Test get_record: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test get_record: Failed with Exception: {str(e)}")
+# 5. Test `get_record` function
+try:
+    if records:
+        record_id = records[0]['id']
+        record = db_manager.get_record('projects', record_id)
+        assert isinstance(record, sqlite3.Row), f"Expected sqlite3.Row, got {type(record)}"
+        assert record['id'] == record_id, f"Expected ID {record_id}, got {record['id']}"
+        print("Test get_record: Passed")
+    else:
+        print("No records found to test get_record.")
+except DatabaseError as e:
+    print(f"Test get_record: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test get_record: Failed with Exception: {str(e)}")
 
-    # 6. Test `delete_records` function
-    try:
-        deleted_records = db_manager.delete_records('projects')
-        assert isinstance(deleted_records, list), f"Expected list, got {type(deleted_records)}"
-        print("Test delete_records: Passed")
-    except DatabaseError as e:
-        print(f"Test delete_records: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_records: Failed with Exception: {str(e)}")
+# 6. Test `delete_records` function
+try:
+    deleted_records = db_manager.delete_records('projects')
+    assert isinstance(deleted_records, list), f"Expected list, got {type(deleted_records)}"
+    print("Test delete_records: Passed")
+except DatabaseError as e:
+    print(f"Test delete_records: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_records: Failed with Exception: {str(e)}")
 
-    # 7. Test `reset_db` function
-    try:
-        result = db_manager.reset_db()
-        assert result is None, f"Unexpected result: {result}"
-        print("Test reset_db: Passed")
-    except DatabaseError as e:
-        print(f"Test reset_db: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test reset_db: Failed with Exception: {str(e)}")
+# 7. Test `reset_db` function
+try:
+    result = db_manager.reset_db()
+    assert result is None, f"Unexpected result: {result}"
+    print("Test reset_db: Passed")
+except DatabaseError as e:
+    print(f"Test reset_db: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test reset_db: Failed with Exception: {str(e)}")
 
-    # 8. Test `create_tables` function
-    try:
-        result = db_manager.create_tables()
-        assert result is None, f"Unexpected result: {result}"
-        print("Test create_tables: Passed")
-    except DatabaseError as e:
-        print(f"Test create_tables: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test create_tables: Failed with Exception: {str(e)}")
+# 8. Test `create_tables` function
+try:
+    result = db_manager.create_tables()
+    assert result is None, f"Unexpected result: {result}"
+    print("Test create_tables: Passed")
+except DatabaseError as e:
+    print(f"Test create_tables: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test create_tables: Failed with Exception: {str(e)}")
 
-    # 9. Test `close_connection` function
-    try:
-        db_manager.close_connection()
-        print("Test close_connection: Passed")
-    except Exception as e:
-        print(f"Test close_connection: Failed with Exception: {str(e)}")
-
+# 9. Test `close_connection` function
+try:
+    db_manager.close_connection()
+    print("Test close_connection: Passed")
+except Exception as e:
+    print(f"Test close_connection: Failed with Exception: {str(e)}")

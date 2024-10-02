@@ -3,8 +3,8 @@ Read this file as a continuation from 'AutoLoc_Code_1.txt' file's content.
 
 7. setting_manager.py:
 
-from db_manager import DBManager
-from error_manager import (
+from managers.db_manager import DBManager
+from managers.error_manager import (
     InitializationError,
     DatabaseError,
     InvalidUserInputError,
@@ -26,7 +26,19 @@ class SettingManager:
             self.db_manager = DBManager()  # Initialize DBManager
         except InitializationError as e:
             raise InitializationError(f"SettingManager Initialization Error: {str(e)}")
-
+    
+    def get_app_settings(self):
+        """
+        Retrieves the application settings from the app_settings table.
+        :return: The application settings record.
+        :raises DatabaseError: If there is an error during retrieval.
+        """
+        try:
+            # Assuming there's only one settings record with ID = 1
+            return self.db_manager.get_record('app_settings', 1)
+        except DatabaseError as e:
+            raise DatabaseError(f"SettingManager Get App Settings Error: {str(e)}")
+            
     def update_app_settings(self, settings):
         """
         Updates the application settings in the app_settings table.
@@ -200,181 +212,201 @@ class SettingManager:
             raise FileTypeError(f"SettingManager Delete File Types Error: {str(e)}")
 
 
+
+
 8. test_setting_manager.py:
 
-    from setting_manager import SettingManager
-    from error_manager import (
-        InitializationError,
-        DatabaseError,
-        LocaleManagementError,
-        FileTypeError
-    )
+from managers.setting_manager import SettingManager
+from managers.error_manager import (
+    InitializationError,
+    DatabaseError,
+    LocaleManagementError,
+    FileTypeError
+)
 
-    # Create an instance of SettingManager
-    setting_manager = SettingManager()
+# Create an instance of SettingManager
+setting_manager = SettingManager()
 
-    # 1. Test `update_app_settings` function
-    try:
-        settings = {'dark_mode': True, 'duplicate_html': True, 'use_key_namespace': False}
-        updated_settings = setting_manager.update_app_settings(settings)
-        assert updated_settings['dark_mode'] is True, f"Expected True, got {updated_settings['dark_mode']}"
-        assert updated_settings['duplicate_html'] is True, f"Expected True, got {updated_settings['duplicate_html']}"
-        assert updated_settings['use_key_namespace'] is False, f"Expected False, got {updated_settings['use_key_namespace']}"
-        print("Test update_app_settings: Passed")
-    except DatabaseError as e:
-        print(f"Test update_app_settings: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test update_app_settings: Failed with Exception: {str(e)}")
+# 1. Test `update_app_settings` function
+try:
+    settings = {'dark_mode': False, 'duplicate_html': False, 'use_key_namespace': False}
+    updated_settings = setting_manager.update_app_settings(settings)
+    assert updated_settings['dark_mode'] is False, f"Expected False, got {updated_settings['dark_mode']}"
+    assert updated_settings['duplicate_html'] is False, f"Expected False, got {updated_settings['duplicate_html']}"
+    assert updated_settings['use_key_namespace'] is True, f"Expected True, got {updated_settings['use_key_namespace']}"
+    print("Test update_app_settings: Passed")
+except DatabaseError as e:
+    print(f"Test update_app_settings: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test update_app_settings: Failed with Exception: {str(e)}")
 
-    # 2. Test `reset_db` function
-    try:
-        result = setting_manager.reset_db()
-        assert result is None, f"Unexpected result: {result}"
-        print("Test reset_db: Passed")
-    except DatabaseError as e:
-        print(f"Test reset_db: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test reset_db: Failed with Exception: {str(e)}")
+# 2. Test `reset_db` function
+try:
+    result = setting_manager.reset_db()
+    assert result is None, f"Unexpected result: {result}"
+    print("Test reset_db: Passed")
+except DatabaseError as e:
+    print(f"Test reset_db: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test reset_db: Failed with Exception: {str(e)}")
 
-    # 3. Test `get_locales` function
-    try:
-        locales = setting_manager.get_locales()
-        assert isinstance(locales, list), f"Expected list, got {type(locales)}"
-        print("Test get_locales: Passed")
-    except LocaleManagementError as e:
-        print(f"Test get_locales: Failed with LocaleManagementError: {str(e)}")
-    except Exception as e:
-        print(f"Test get_locales: Failed with Exception: {str(e)}")
+# 3. Test `get_locales` function
+try:
+    locales = setting_manager.get_locales()
+    assert isinstance(locales, list), f"Expected list, got {type(locales)}"
+    print("Test get_locales: Passed")
+except LocaleManagementError as e:
+    print(f"Test get_locales: Failed with LocaleManagementError: {str(e)}")
+except Exception as e:
+    print(f"Test get_locales: Failed with Exception: {str(e)}")
 
-    # # 4. Test `get_locale` function
-    # try:
-    #     locale_id = 1  # Assume 1 is a valid ID
-    #     locale = setting_manager.get_locale(locale_id)
-    #     assert isinstance(locale, sqlite3.Row), f"Expected sqlite3.Row, got {type(locale)}"
-    #     assert locale['id'] == locale_id, f"Expected ID {locale_id}, got {locale['id']}"
-    #     print("Test get_locale: Passed")
-    # except LocaleManagementError as e:
-    #     print(f"Test get_locale: Failed with LocaleManagementError: {str(e)}")
-    # except Exception as e:
-    #     print(f"Test get_locale: Failed with Exception: {str(e)}")
+# # 4. Test `get_locale` function
+# try:
+#     locale_id = 1  # Assume 1 is a valid ID
+#     locale = setting_manager.get_locale(locale_id)
+#     assert isinstance(locale, sqlite3.Row), f"Expected sqlite3.Row, got {type(locale)}"
+#     assert locale['id'] == locale_id, f"Expected ID {locale_id}, got {locale['id']}"
+#     print("Test get_locale: Passed")
+# except LocaleManagementError as e:
+#     print(f"Test get_locale: Failed with LocaleManagementError: {str(e)}")
+# except Exception as e:
+#     print(f"Test get_locale: Failed with Exception: {str(e)}")
 
-    # 5. Test `add_locale` function
-    try:
-        new_locale = setting_manager.add_locale('Spanish', 'es-ES')
-        assert new_locale['name'] == 'Spanish', f"Expected 'Spanish', got {new_locale['name']}"
-        assert new_locale['code'] == 'es-ES', f"Expected 'es-ES', got {new_locale['code']}"
-        print("Test add_locale: Passed")
-    except LocaleManagementError as e:
-        print(f"Test add_locale: Failed with LocaleManagementError: {str(e)}")
-    except Exception as e:
-        print(f"Test add_locale: Failed with Exception: {str(e)}")
+# 5. Test `add_locale` function
+try:
+    new_locale = setting_manager.add_locale('Spanish', 'es-ES')
+    assert new_locale['name'] == 'Spanish', f"Expected 'Spanish', got {new_locale['name']}"
+    assert new_locale['code'] == 'es-ES', f"Expected 'es-ES', got {new_locale['code']}"
+    print("Test add_locale: Passed")
+except LocaleManagementError as e:
+    print(f"Test add_locale: Failed with LocaleManagementError: {str(e)}")
+except Exception as e:
+    print(f"Test add_locale: Failed with Exception: {str(e)}")
 
-    # 6. Test `update_locale` function
-    try:
-        locale_id = new_locale['id']
-        updated_locale = setting_manager.update_locale(locale_id, {'name': 'French', 'code': 'fr-FR'})
-        assert updated_locale['name'] == 'French', f"Expected 'French', got {updated_locale['name']}"
-        assert updated_locale['code'] == 'fr-FR', f"Expected 'fr-FR', got {updated_locale['code']}"
-        print("Test update_locale: Passed")
-    except LocaleManagementError as e:
-        print(f"Test update_locale: Failed with LocaleManagementError: {str(e)}")
-    except Exception as e:
-        print(f"Test update_locale: Failed with Exception: {str(e)}")
+# 6. Test `update_locale` function
+try:
+    locale_id = new_locale['id']
+    updated_locale = setting_manager.update_locale(locale_id, {'name': 'French', 'code': 'fr-FR'})
+    assert updated_locale['name'] == 'French', f"Expected 'French', got {updated_locale['name']}"
+    assert updated_locale['code'] == 'fr-FR', f"Expected 'fr-FR', got {updated_locale['code']}"
+    print("Test update_locale: Passed")
+except LocaleManagementError as e:
+    print(f"Test update_locale: Failed with LocaleManagementError: {str(e)}")
+except Exception as e:
+    print(f"Test update_locale: Failed with Exception: {str(e)}")
 
-    # 7. Test `delete_locale` function
-    try:
-        deleted_locale = setting_manager.delete_locale(locale_id)
-        assert deleted_locale['id'] == locale_id, f"Expected ID {locale_id}, got {deleted_locale['id']}"
-        assert deleted_locale['name'] == 'French', f"Expected 'French', got {deleted_locale['name']}"
-        print("Test delete_locale: Passed")
-    except LocaleManagementError as e:
-        print(f"Test delete_locale: Failed with LocaleManagementError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_locale: Failed with Exception: {str(e)}")
+# 7. Test `delete_locale` function
+try:
+    deleted_locale = setting_manager.delete_locale(locale_id)
+    assert deleted_locale['id'] == locale_id, f"Expected ID {locale_id}, got {deleted_locale['id']}"
+    assert deleted_locale['name'] == 'French', f"Expected 'French', got {deleted_locale['name']}"
+    print("Test delete_locale: Passed")
+except LocaleManagementError as e:
+    print(f"Test delete_locale: Failed with LocaleManagementError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_locale: Failed with Exception: {str(e)}")
 
-    # 8. Test `delete_locales` function
-    try:
-        deleted_locales = setting_manager.delete_locales()
-        assert isinstance(deleted_locales, list), f"Expected list, got {type(deleted_locales)}"
-        print("Test delete_locales: Passed")
-    except LocaleManagementError as e:
-        print(f"Test delete_locales: Failed with LocaleManagementError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_locales: Failed with Exception: {str(e)}")
+# 8. Test `delete_locales` function
+try:
+    deleted_locales = setting_manager.delete_locales()
+    assert isinstance(deleted_locales, list), f"Expected list, got {type(deleted_locales)}"
+    print("Test delete_locales: Passed")
+except LocaleManagementError as e:
+    print(f"Test delete_locales: Failed with LocaleManagementError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_locales: Failed with Exception: {str(e)}")
 
-    # 9. Test `get_file_types` function
-    try:
-        file_types = setting_manager.get_file_types()
-        assert isinstance(file_types, list), f"Expected list, got {type(file_types)}"
-        print("Test get_file_types: Passed")
-    except FileTypeError as e:
-        print(f"Test get_file_types: Failed with FileTypeError: {str(e)}")
-    except Exception as e:
-        print(f"Test get_file_types: Failed with Exception: {str(e)}")
+# 9. Test `get_file_types` function
+try:
+    file_types = setting_manager.get_file_types()
+    assert isinstance(file_types, list), f"Expected list, got {type(file_types)}"
+    print("Test get_file_types: Passed")
+except FileTypeError as e:
+    print(f"Test get_file_types: Failed with FileTypeError: {str(e)}")
+except Exception as e:
+    print(f"Test get_file_types: Failed with Exception: {str(e)}")
 
-    # 10. Test `get_file_type` function
-    try:
-        file_type_id = 1  # Assume 1 is a valid ID
-        file_type = setting_manager.get_file_type(file_type_id)
-        assert isinstance(file_type, sqlite3.Row), f"Expected sqlite3.Row, got {type(file_type)}"
-        assert file_type['id'] == file_type_id, f"Expected ID {file_type_id}, got {file_type['id']}"
-        print("Test get_file_type: Passed")
-    except FileTypeError as e:
-        print(f"Test get_file_type: Failed with FileTypeError: {str(e)}")
-    except Exception as e:
-        print(f"Test get_file_type: Failed with Exception: {str(e)}")
+# 10. Test `get_file_type` function
+try:
+    file_type_id = 1  # Assume 1 is a valid ID
+    file_type = setting_manager.get_file_type(file_type_id)
+    assert isinstance(file_type, sqlite3.Row), f"Expected sqlite3.Row, got {type(file_type)}"
+    assert file_type['id'] == file_type_id, f"Expected ID {file_type_id}, got {file_type['id']}"
+    print("Test get_file_type: Passed")
+except FileTypeError as e:
+    print(f"Test get_file_type: Failed with FileTypeError: {str(e)}")
+except Exception as e:
+    print(f"Test get_file_type: Failed with Exception: {str(e)}")
 
-    # 11. Test `add_file_type` function
-    try:
-        new_file_type = setting_manager.add_file_type('Web App', 'CSS', '.css')
-        assert new_file_type['name'] == 'CSS', f"Expected 'CSS', got {new_file_type['name']}"
-        assert new_file_type['extension'] == '.css', f"Expected '.css', got {new_file_type['extension']}"
-        print("Test add_file_type: Passed")
-    except FileTypeError as e:
-        print(f"Test add_file_type: Failed with FileTypeError: {str(e)}")
-    except Exception as e:
-        print(f"Test add_file_type: Failed with Exception: {str(e)}")
+# 11. Test `add_file_type` function
+try:
+    new_file_type = setting_manager.add_file_type('Web App', 'CSS', '.css')
+    assert new_file_type['name'] == 'CSS', f"Expected 'CSS', got {new_file_type['name']}"
+    assert new_file_type['extension'] == '.css', f"Expected '.css', got {new_file_type['extension']}"
+    print("Test add_file_type: Passed")
+except FileTypeError as e:
+    print(f"Test add_file_type: Failed with FileTypeError: {str(e)}")
+except Exception as e:
+    print(f"Test add_file_type: Failed with Exception: {str(e)}")
 
-    # 12. Test `update_file_type` function
-    try:
-        file_type_id = new_file_type['id']
-        updated_file_type = setting_manager.update_file_type(file_type_id, {'name': 'JavaScript', 'extension': '.js'})
-        assert updated_file_type['name'] == 'JavaScript', f"Expected 'JavaScript', got {updated_file_type['name']}"
-        assert updated_file_type['extension'] == '.js', f"Expected '.js', got {updated_file_type['extension']}"
-        print("Test update_file_type: Passed")
-    except FileTypeError as e:
-        print(f"Test update_file_type: Failed with FileTypeError: {str(e)}")
-    except Exception as e:
-        print(f"Test update_file_type: Failed with Exception: {str(e)}")
+# 12. Test `update_file_type` function
+try:
+    file_type_id = new_file_type['id']
+    updated_file_type = setting_manager.update_file_type(file_type_id, {'name': 'JavaScript', 'extension': '.js'})
+    assert updated_file_type['name'] == 'JavaScript', f"Expected 'JavaScript', got {updated_file_type['name']}"
+    assert updated_file_type['extension'] == '.js', f"Expected '.js', got {updated_file_type['extension']}"
+    print("Test update_file_type: Passed")
+except FileTypeError as e:
+    print(f"Test update_file_type: Failed with FileTypeError: {str(e)}")
+except Exception as e:
+    print(f"Test update_file_type: Failed with Exception: {str(e)}")
 
-    # 13. Test `delete_file_type` function
-    try:
-        deleted_file_type = setting_manager.delete_file_type(file_type_id)
-        assert deleted_file_type['id'] == file_type_id, f"Expected ID {file_type_id}, got {deleted_file_type['id']}"
-        assert deleted_file_type['name'] == 'JavaScript', f"Expected 'JavaScript', got {deleted_file_type['name']}"
-        print("Test delete_file_type: Passed")
-    except FileTypeError as e:
-        print(f"Test delete_file_type: Failed with FileTypeError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_file_type: Failed with Exception: {str(e)}")
 
-    # 14. Test `delete_file_types` function
-    try:
-        deleted_file_types = setting_manager.delete_file_types()
-        assert isinstance(deleted_file_types, list), f"Expected list, got {type(deleted_file_types)}"
-        print("Test delete_file_types: Passed")
-    except FileTypeError as e:
-        print(f"Test delete_file_types: Failed with FileTypeError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_file_types: Failed with Exception: {str(e)}")
+
+# For updating one column
+try:
+    file_type_id = 1
+    updated_file_type = setting_manager.update_file_type(file_type_id, {'is_active': False})
+    assert updated_file_type['is_active'] == 0, f"Expected '0', got {updated_file_type['is_active']}"
+    print("Test update_file_type: Passed")
+except FileTypeError as e:
+    print(f"Test update_file_type: Failed with FileTypeError: {str(e)}")
+except Exception as e:
+    print(f"Test update_file_type: Failed with Exception: {str(e)}")
+
+
+
+# 13. Test `delete_file_type` function
+try:
+    deleted_file_type = setting_manager.delete_file_type(file_type_id)
+    assert deleted_file_type['id'] == file_type_id, f"Expected ID {file_type_id}, got {deleted_file_type['id']}"
+    assert deleted_file_type['name'] == 'JavaScript', f"Expected 'JavaScript', got {deleted_file_type['name']}"
+    print("Test delete_file_type: Passed")
+except FileTypeError as e:
+    print(f"Test delete_file_type: Failed with FileTypeError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_file_type: Failed with Exception: {str(e)}")
+
+# 14. Test `delete_file_types` function
+try:
+    deleted_file_types = setting_manager.delete_file_types()
+    assert isinstance(deleted_file_types, list), f"Expected list, got {type(deleted_file_types)}"
+    print("Test delete_file_types: Passed")
+except FileTypeError as e:
+    print(f"Test delete_file_types: Failed with FileTypeError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_file_types: Failed with Exception: {str(e)}")
+
+
+
 
 
 
 9. project_manager.py:
 
-from db_manager import DBManager  # Import DBManager from the same module
+from managers.db_manager import DBManager  # Import DBManager from the same module
 from datetime import datetime
-from error_manager import (
+from managers.error_manager import (
     DatabaseError,
     InitializationError,
     InvalidUserInputError
@@ -531,115 +563,118 @@ class ProjectManager:
 
 
 
+
+
 10. test_project_manager.py:
 
-    from project_manager import ProjectManager
-    from error_manager import (
-        DatabaseError,
-        InitializationError,
-        InvalidUserInputError
+import sqlite3
+from managers.project_manager import ProjectManager
+from managers.error_manager import (
+    DatabaseError,
+    InitializationError,
+    InvalidUserInputError
+)
+
+# Create an instance of ProjectManager
+project_manager = ProjectManager()
+
+# 1. Test `get_projects` function
+try:
+    projects = project_manager.get_projects()
+    assert isinstance(projects, list), f"Expected list, got {type(projects)}"
+    print("Test get_projects: Passed")
+except DatabaseError as e:
+    print(f"Test get_projects: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test get_projects: Failed with Exception: {str(e)}")
+
+# 2. Test `get_project` function
+try:
+    project_id = 2  # Assume 1 is a valid ID
+    project = project_manager.get_project(project_id)
+    assert isinstance(project, sqlite3.Row), f"Expected sqlite3.Row, got {type(project)}"
+    assert project['id'] == project_id, f"Expected ID {project_id}, got {project['id']}"
+    print("Test get_project: Passed")
+except DatabaseError as e:
+    print(f"Test get_project: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test get_project: Failed with Exception: {str(e)}")
+
+# 3. Test `add_project` function
+try:
+    new_project = project_manager.add_project(
+        name="Rakuten Mobile Project",
+        client="Rakuten Mobile Inc.",
+        description="A project to localize RMI source code.",
+        status="In Progress",
+        start_date="2024-09-01",
+        end_date="2024-09-30",
+        lead_engineer="Ebrima Hydara"
     )
+    assert new_project['name'] == 'Rakuten Mobile Project', f"Expected 'Rakuten Mobile Project', got {new_project['name']}"
+    assert new_project['client'] == 'Rakuten Mobile Inc.', f"Expected 'Rakuten Mobile Inc.', got {new_project['client']}"
+    print("Test add_project: Passed")
+except DatabaseError as e:
+    print(f"Test add_project: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test add_project: Failed with Exception: {str(e)}")
 
-    # Create an instance of ProjectManager
-    project_manager = ProjectManager()
+# 4. Test `update_project` function
+try:
+    project_id = new_project['id']
+    updated_project = project_manager.update_project(
+        project_id,
+        name="Updated Project",
+        client="Client B",
+        description="Updated description",
+        status="Completed",
+        start_date="2024-09-13",
+        end_date="2024-12-31",
+        lead_engineer="Engineer B"
+    )
+    assert updated_project['name'] == 'Updated Project', f"Expected 'Updated Project', got {updated_project['name']}"
+    assert updated_project['client'] == 'Client B', f"Expected 'Client B', got {updated_project['client']}"
+    print("Test update_project: Passed")
+except DatabaseError as e:
+    print(f"Test update_project: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test update_project: Failed with Exception: {str(e)}")
 
-    # 1. Test `get_projects` function
-    try:
-        projects = project_manager.get_projects()
-        assert isinstance(projects, list), f"Expected list, got {type(projects)}"
-        print("Test get_projects: Passed")
-    except DatabaseError as e:
-        print(f"Test get_projects: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test get_projects: Failed with Exception: {str(e)}")
+# 5. Test `delete_project` function
+try:
+    deleted_project = project_manager.delete_project(project_id)
+    assert deleted_project['id'] == project_id, f"Expected ID {project_id}, got {deleted_project['id']}"
+    assert deleted_project['name'] == 'Updated Project', f"Expected 'Updated Project', got {deleted_project['name']}"
+    print("Test delete_project: Passed")
+except DatabaseError as e:
+    print(f"Test delete_project: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_project: Failed with Exception: {str(e)}")
 
-    # 2. Test `get_project` function
-    try:
-        project_id = 1  # Assume 1 is a valid ID
-        project = project_manager.get_project(project_id)
-        assert isinstance(project, sqlite3.Row), f"Expected sqlite3.Row, got {type(project)}"
-        assert project['id'] == project_id, f"Expected ID {project_id}, got {project['id']}"
-        print("Test get_project: Passed")
-    except DatabaseError as e:
-        print(f"Test get_project: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test get_project: Failed with Exception: {str(e)}")
+# 6. Test `delete_projects` function
+try:
+    deleted_projects = project_manager.delete_projects()
+    assert isinstance(deleted_projects, list), f"Expected list, got {type(deleted_projects)}"
+    print("Test delete_projects: Passed")
+except DatabaseError as e:
+    print(f"Test delete_projects: Failed with DatabaseError: {str(e)}")
+except Exception as e:
+    print(f"Test delete_projects: Failed with Exception: {str(e)}")
 
-    # 3. Test `add_project` function
-    try:
-        new_project = project_manager.add_project(
-            name="New Project",
-            client="Client A",
-            description="A test project",
-            status="In Progress",
-            start_date="2024-09-13",
-            end_date=None,
-            lead_engineer="Engineer A"
-        )
-        assert new_project['name'] == 'New Project', f"Expected 'New Project', got {new_project['name']}"
-        assert new_project['client'] == 'Client A', f"Expected 'Client A', got {new_project['client']}"
-        print("Test add_project: Passed")
-    except DatabaseError as e:
-        print(f"Test add_project: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test add_project: Failed with Exception: {str(e)}")
+# 7. Test `_abbreviate` function
+try:
+    text = "Sample Project"
+    abbreviation = project_manager._abbreviate(text)
+    assert abbreviation == "SP", f"Expected 'SP', got {abbreviation}"
+    print("Test _abbreviate: Passed")
+except Exception as e:
+    print(f"Test _abbreviate: Failed with Exception: {str(e)}")
 
-    # 4. Test `update_project` function
-    try:
-        project_id = new_project['id']
-        updated_project = project_manager.update_project(
-            project_id,
-            name="Updated Project",
-            client="Client B",
-            description="Updated description",
-            status="Completed",
-            start_date="2024-09-13",
-            end_date="2024-12-31",
-            lead_engineer="Engineer B"
-        )
-        assert updated_project['name'] == 'Updated Project', f"Expected 'Updated Project', got {updated_project['name']}"
-        assert updated_project['client'] == 'Client B', f"Expected 'Client B', got {updated_project['client']}"
-        print("Test update_project: Passed")
-    except DatabaseError as e:
-        print(f"Test update_project: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test update_project: Failed with Exception: {str(e)}")
-
-    # 5. Test `delete_project` function
-    try:
-        deleted_project = project_manager.delete_project(project_id)
-        assert deleted_project['id'] == project_id, f"Expected ID {project_id}, got {deleted_project['id']}"
-        assert deleted_project['name'] == 'Updated Project', f"Expected 'Updated Project', got {deleted_project['name']}"
-        print("Test delete_project: Passed")
-    except DatabaseError as e:
-        print(f"Test delete_project: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_project: Failed with Exception: {str(e)}")
-
-    # 6. Test `delete_projects` function
-    try:
-        deleted_projects = project_manager.delete_projects()
-        assert isinstance(deleted_projects, list), f"Expected list, got {type(deleted_projects)}"
-        print("Test delete_projects: Passed")
-    except DatabaseError as e:
-        print(f"Test delete_projects: Failed with DatabaseError: {str(e)}")
-    except Exception as e:
-        print(f"Test delete_projects: Failed with Exception: {str(e)}")
-
-    # 7. Test `_abbreviate` function
-    try:
-        text = "Sample Project"
-        abbreviation = project_manager._abbreviate(text)
-        assert abbreviation == "SP", f"Expected 'SP', got {abbreviation}"
-        print("Test _abbreviate: Passed")
-    except Exception as e:
-        print(f"Test _abbreviate: Failed with Exception: {str(e)}")
-
-    # 8. Test `_generate_unique_id` function
-    try:
-        unique_id = project_manager._generate_unique_id("Sample Project", "Client X")
-        assert isinstance(unique_id, str) and len(unique_id) > 0, f"Expected non-empty string, got {unique_id}"
-        print("Test _generate_unique_id: Passed")
-    except Exception as e:
-        print(f"Test _generate_unique_id: Failed with Exception: {str(e)}")
+# 8. Test `_generate_unique_id` function
+try:
+    unique_id = project_manager._generate_unique_id("Sample Project", "Client X")
+    assert isinstance(unique_id, str) and len(unique_id) > 0, f"Expected non-empty string, got {unique_id}"
+    print("Test _generate_unique_id: Passed")
+except Exception as e:
+    print(f"Test _generate_unique_id: Failed with Exception: {str(e)}")
 

@@ -1,6 +1,7 @@
 import os
 import json
 import shutil
+import random
 from datetime import datetime
 from pathlib import Path
 from managers.setting_manager import SettingManager
@@ -52,22 +53,26 @@ class WebAppFileLocalizer:
         """
         try:
             # Determine the relative path in the context of the localized source code path
-            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path']).replace(os.sep, '/')
 
-            # Remove the file extension from the relative path for the namespace prefix
-            relative_path_without_extension = os.path.splitext(relative_path)[0]
-
-            # Use the relative path without extension as namespace prefix if 'use_key_namespace' is True
-            namespace_prefix = f"{relative_path_without_extension.replace(os.sep, '/')}:" if self.app_settings['use_key_namespace'] else ""
-
-            # Generate a unique ID using datetime attributes
+            # Get the current minute, second, and millisecond
             now = datetime.now()
-            unique_id = f"str_id_{now.strftime('%Y%m%d%H%M%S%f')}"
+            minute = now.strftime('%M')   # Minutes (00-59)
+            second = now.strftime('%S')   # Seconds (00-59)
+            millisecond = now.strftime('%f')[:3]  # First three digits of microseconds to represent milliseconds
+
+            # Generate a random number to ensure uniqueness within the same time frame
+            random_number = random.randint(100, 999)  # A random 3-digit number
+
+            # Combine minute, second, millisecond, and random number without underscores
+            unique_id = f"str_id_{minute}{second}{millisecond}{random_number}"
 
             # Return the key with or without the namespace prefix
-            return f"{namespace_prefix}{unique_id}"
+            return f"{relative_path}:{unique_id}" if self.app_settings['use_key_namespace'] else unique_id
+
         except Exception as e:
             raise InvalidUserInputError(f"WebAppFileLocalizer Error in generate_key: {str(e)}")
+
             
     def save_resource_files(self, data, file_path):
         """

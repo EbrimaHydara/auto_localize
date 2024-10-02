@@ -3,9 +3,9 @@ Read this file as a continuation from 'AutoLoc_Code_2.txt' file's content.
 
 11. source_code_manager.py:
 
-from app_manager import AppManager
-from db_manager import DBManager
-from error_manager import (
+from managers.app_manager import AppManager
+from managers.db_manager import DBManager
+from managers.error_manager import (
     InitializationError,
     DatabaseError,
     InvalidUserInputError,
@@ -25,7 +25,7 @@ class SourceCodeManager:
     Manages all source codes in the AutoLoc app, including CRUD operations, file management, and localization.
     """
 
-    def __init__(self, project_id):
+    def __init__(self):
         """
         Initializes the SourceCodeManager by creating instances of AppManager and DBManager,
         and setting up initial paths for source code files.
@@ -33,7 +33,6 @@ class SourceCodeManager:
         try:
             self.app_manager = AppManager()  # Initialize AppManager
             self.db_manager = DBManager()  # Initialize DBManager
-            self.project_id = project_id
             self.app_data_path = self.app_manager.get_app_data_path()
             self.original_source_code_path = None
             self.localized_source_code_path = None
@@ -45,7 +44,7 @@ class SourceCodeManager:
         Retrieves all source codes for a specific project.
         """
         try:
-            return self.db_manager.get_records('source_codes', {'project_id': self.project_id})
+            return self.db_manager.get_records('source_codes')
         except DatabaseError as e:
             raise DatabaseError(f"SourceCodeManager Get Source Codes Error: {str(e)}")
 
@@ -68,18 +67,19 @@ class SourceCodeManager:
         except DatabaseError as e:
             raise DatabaseError(f"SourceCodeManager Get Source Locale Error: {str(e)}")
 
-    def add_source_code(self, name, code_type, source_locale):
+    def add_source_code(self, project_id, name, code_type, source_locale, notes=None):
         """
         Adds a new source code record for a specific project.
         """
         try:
             data = {
-                'project_id': self.project_id,
+                'project_id': project_id,
                 'name': name,
                 'unique_id': self._generate_unique_id(name),
                 'code_type': code_type,
                 'source_locale': source_locale,
-                'status': 'Unlocalized'
+                'status': 'Unlocalized',
+                'notes': notes
             }
             return self.db_manager.insert_record('source_codes', data)
         except DatabaseError as e:
@@ -122,7 +122,7 @@ class SourceCodeManager:
         """
         try:
             source_code = self.get_source_code(source_code_id)
-            project_unique_id = self.db_manager.get_record('projects', self.project_id)['unique_id']
+            project_unique_id = self.db_manager.get_record('projects', source_code['project_id'])['unique_id']
             source_code_unique_id = source_code['unique_id']
 
             self.original_source_code_path = os.path.join(self.app_data_path, f"{project_unique_id}/{source_code_unique_id}/Original_Files/")
@@ -231,14 +231,17 @@ class SourceCodeManager:
 
 
 
+
+
+
 12. test_source_code_manager.py:
 
 import os
 import shutil
 import sqlite3
 from datetime import datetime
-from source_code_manager import SourceCodeManager
-from error_manager import (
+from managers.source_code_manager import SourceCodeManager
+from managers.error_manager import (
     DatabaseError,
     InitializationError,
     InvalidUserInputError,
@@ -246,13 +249,13 @@ from error_manager import (
 )
 
 # Sample data for testing
-project_id = 2  # Assume this is a valid project ID
-source_code_name = "My New Source Code"
+project_id = 3  # Assume this is a valid project ID
+source_code_name = "Rakuten Mobile Source Code"
 source_code_type = "Web App"
 source_code_locale = "ja-JP"
 
 # Create an instance of SourceCodeManager
-source_code_manager = SourceCodeManager(project_id)
+source_code_manager = SourceCodeManager()
 
 # 1. Test `_generate_unique_id` function
 try:
@@ -264,7 +267,7 @@ except Exception as e:
 
 # 2. Test `add_source_code` function
 try:
-    new_source_code = source_code_manager.add_source_code(source_code_name, source_code_type, source_code_locale)
+    new_source_code = source_code_manager.add_source_code(project_id, source_code_name, source_code_type, source_code_locale)
     assert new_source_code['name'] == source_code_name, f"Expected '{source_code_name}', got {new_source_code['name']}"
     assert new_source_code['code_type'] == source_code_type, f"Expected '{source_code_type}', got {new_source_code['code_type']}"
     print("Test add_source_code: Passed")
@@ -297,7 +300,7 @@ except Exception as e:
 
 # 5. Test `get_source_locale` function
 try:
-    source_code_id = 2
+    source_code_id = 4
     source_locale = source_code_manager.get_source_locale(source_code_id)
     assert source_locale == source_code_locale, f"Expected '{source_code_locale}', got {source_locale}"
     print("Test get_source_locale: Passed")
@@ -319,7 +322,7 @@ except Exception as e:
 
 # 7. Test `delete_source_code` function
 try:
-    source_code_id = 2
+    source_code_id = 3
     deleted_source_code = source_code_manager.delete_source_code(source_code_id)
     assert deleted_source_code['id'] == source_code_id, f"Expected ID {source_code_id}, got {deleted_source_code['id']}"
     print("Test delete_source_code: Passed")
@@ -330,9 +333,9 @@ except Exception as e:
 
 # 8. Test `add_source_code_files` function
 try:
-    source_code_id = 3
+    source_code_id = 4
     # os.makedirs('../../../Sample Source Code', exist_ok=True)
-    source_code_manager.add_source_code_files(source_code_id, '../../../Sample Source Code')
+    source_code_manager.add_source_code_files(source_code_id, '../Project_Files/RMI/Source_Code_Samples')
     assert os.path.exists(source_code_manager.original_source_code_path), "Original source code path does not exist."
     print("Test add_source_code_files: Passed")
 except (DatabaseError, FilePermissionError) as e:
@@ -342,8 +345,8 @@ except Exception as e:
 
 # 9. Test `update_source_code_files` function
 try:
-    source_code_id = 2
-    source_code_manager.update_source_code_files(source_code_id, '../../../Sample Source Code')
+    source_code_id = 4
+    source_code_manager.update_source_code_files(source_code_id, '../../L10n_Test_Repo/RMI_Test_Files/src')
     assert os.path.exists(source_code_manager.original_source_code_path), "Updated source code path does not exist."
     print("Test update_source_code_files: Passed")
 except (DatabaseError, FilePermissionError) as e:
@@ -405,10 +408,13 @@ if os.path.exists(source_code_manager.localized_source_code_path):
 
 
 
+
+
+
 13. target_locale_manager.py:
 
-from db_manager import DBManager
-from error_manager import (
+from managers.db_manager import DBManager
+from managers.error_manager import (
     DatabaseError,
     LocaleManagementError,
     InitializationError
@@ -419,22 +425,21 @@ class TargetLocaleManager:
     Manages all target locales in the AutoLoc app, including CRUD operations for the target_locales table.
     """
 
-    def __init__(self, source_code_id):
+    def __init__(self):
         """
-        Initializes the TargetLocaleManager with the provided source_code_id.
+        Initializes the TargetLocaleManager.
         """
         try:
             self.db_manager = DBManager()  # Initialize DBManager for database operations
-            self.source_code_id = source_code_id
         except InitializationError as e:
             raise InitializationError(f"TargetLocaleManager Initialization Error: {str(e)}")
 
-    def get_target_locales(self):
+    def get_target_locales(self, source_code_id=None):
         """
-        Retrieves all target locales for a specific source code.
+        Retrieves all target locales.
         """
         try:
-            return self.db_manager.get_records('target_locales', {'source_code_id': self.source_code_id})
+            return self.db_manager.get_records('target_locales', {'source_code_id': source_code_id})
         except DatabaseError as e:
             raise LocaleManagementError(f"TargetLocaleManager Get Target Locales Error: {str(e)}")
 
@@ -447,13 +452,13 @@ class TargetLocaleManager:
         except DatabaseError as e:
             raise LocaleManagementError(f"TargetLocaleManager Get Target Locale Error: {str(e)}")
 
-    def add_target_locale(self, name, code):
+    def add_target_locale(self, source_code_id, name, code):
         """
         Adds a new target locale record for a specific source code.
         """
         try:
             data = {
-                'source_code_id': self.source_code_id,
+                'source_code_id': source_code_id,
                 'name': name,
                 'code': code
             }
@@ -484,32 +489,36 @@ class TargetLocaleManager:
         Deletes all target locales for a specific source code.
         """
         try:
-            return self.db_manager.delete_records('target_locales', {'source_code_id': self.source_code_id})
+            return self.db_manager.delete_records('target_locales')
         except DatabaseError as e:
             raise LocaleManagementError(f"TargetLocaleManager Delete Target Locales Error: {str(e)}")
+
+
+
+
 
 
 14. test_target_locale_manager.py:
 
 import sqlite3
-from target_locale_manager import TargetLocaleManager
-from error_manager import (
+from managers.target_locale_manager import TargetLocaleManager
+from managers.error_manager import (
     DatabaseError,
     LocaleManagementError,
     InitializationError
 )
 
 # Sample data for testing
-source_code_id = 3  # Assume this is a valid source code ID
-target_locale_name = "French"
-target_locale_code = "fr-FR"
+source_code_id = 4  # Assume this is a valid source code ID
+target_locale_name = "Korean (KR)"
+target_locale_code = "ko-KR"
 
 # Create an instance of TargetLocaleManager
-target_locale_manager = TargetLocaleManager(source_code_id)
+target_locale_manager = TargetLocaleManager()
 
 # 1. Test `get_target_locales` function
 try:
-    target_locales = target_locale_manager.get_target_locales()
+    target_locales = target_locale_manager.get_target_locales(source_code_id=source_code_id)
     assert isinstance(target_locales, list), f"Expected list, got {type(target_locales)}"
     print("Test get_target_locales: Passed")
 except LocaleManagementError as e:
@@ -519,7 +528,7 @@ except Exception as e:
 
 # 2. Test `add_target_locale` function
 try:
-    new_target_locale = target_locale_manager.add_target_locale(target_locale_name, target_locale_code)
+    new_target_locale = target_locale_manager.add_target_locale(source_code_id, target_locale_name, target_locale_code)
     assert new_target_locale['name'] == target_locale_name, f"Expected '{target_locale_name}', got {new_target_locale['name']}"
     assert new_target_locale['code'] == target_locale_code, f"Expected '{target_locale_code}', got {new_target_locale['code']}"
     print("Test add_target_locale: Passed")
@@ -583,4 +592,3 @@ except LocaleManagementError as e:
     print(f"Clean-up: Failed to delete test target locales with LocaleManagementError: {str(e)}")
 except Exception as e:
     print(f"Clean-up: Failed to delete test target locales with Exception: {str(e)}")
-
