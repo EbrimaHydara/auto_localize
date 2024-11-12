@@ -52,7 +52,7 @@ class WebAppVUEFileLocalizer(WebAppFileLocalizer):
         try:
             for vue_file in self.files:
                 self._process_vue_file(vue_file)
-            print("Localization completed successfully.")
+            print("VUE files localization completed.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppVUEFileLocalizer Error in localize_files: {str(e)}")
 

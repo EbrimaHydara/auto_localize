@@ -1,0 +1,70 @@
+Please read this file content as a continuation from the AutoLoc_Code_5.txt file content.
+
+Now read this file content as the specific instructions I want you to execute as follows:
+
+1. Create me a complete README.md file explaining:
+
+    a. the app's Background and Introduction
+
+    b. the app's use case and main functions
+
+    c. the app's main structure
+
+    d. the app's required environment, OS, dependencies, etc.
+
+    e. the `setup.py` script to set all the requirements: the settings details, project details, and source code details before running the `autoloc` script to localize the source code.
+    This `setup.py` file/script must be importable and executable in `autoloc.py` file/script. 
+
+    f. the app's default data already set in the DB 
+
+2. Create me a `setup.py` script that cleanly organize the code to assist the user do the following:
+
+    a. Set `use_key_namespace` to True/False with explanation from the SettingManager
+
+    b. Add a project using ProjectManager with the following details:
+        - name="Rakuten Mobile Project",
+        - client="Rakuten Mobile Inc.",
+        - description="A project to localize RMI source code.",
+        - status="In Progress",
+        - start_date="2024-09-01",
+        - end_date="2024-09-30",
+        - lead_engineer="Engineer A"
+
+    c. Add a source code using SourceCodeManager with the following details:
+        - NB: first get the ID of the first project of all the projects in the DB using ProjectManager to assign it to project_id 
+        - project_id = project_id
+        - source_code_name = "Rakuten Mobile Source Code"
+        - source_code_type = "Web App"
+        - source_code_locale = "ja-JP"
+
+    d. Add source code files using `add_source_code_files` of the SourceCodeManager with the following details:
+        - NB: get the source code whose project_id = project_id above
+        - source_code_path = "<specified path here..."
+        - the script should throw an Exception/error if the source_code_path does not exist or not found 
+
+    e. Add target locales to the DB using source_code_id above and the following list of target locales:
+        - [
+            ('English (US)', 'en-US'),
+            ('Simplified Chinese (CN)', 'zh-CN'),
+            ('Traditional Chinese (TW)', 'zh-TW'),
+            ('Korean (South Korea)', 'ko-KR')
+        ]
+    
+    f. Implement a function to get the source_code_id in `autoloc.py` script
+
+3. Create me an `autoloc.py` script that cleanly organize the code to do the following:
+
+    a. Import and set the following at the top of the file:
+        - import os
+        - import sys
+
+        - # Add project root directory to PYTHONPATH if not already present
+        - project_root = os.path.abspath(os.path.dirname(__file__))
+        - if project_root not in sys.path:
+            sys.path.insert(0, project_root)
+
+        - from managers.l10n_manager import L10nManager
+    
+    b. Import and execute the `setup.py` file's code before executing its own logic
+
+    c. Implement a the same or similar approach as in `autoloc_test.py` file but changing the function name `run_web_localization_test()` to `run_web_localization()` and get the source_code_id from the `setup.py` script file.  

@@ -84,7 +84,7 @@ class DBManager:
                     """, records)
 
             self.connection.commit()
-            print("Default records inserted into the tables successfully.")
+            # print("Default records inserted into the tables successfully.")
         except sqlite3.DatabaseError as e:
             raise DatabaseError(f"DBManager Record Insertion Error: {str(e)}")
 

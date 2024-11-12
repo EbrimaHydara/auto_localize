@@ -51,7 +51,7 @@ class WebAppTSFileLocalizer(WebAppFileLocalizer):
         try:
             for ts_file in self.files:
                 self._process_ts_file(ts_file)
-            print("Localization completed successfully.")
+            print("TS files localization completed.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppTSFileLocalizer Error in localize_files: {str(e)}")
 

@@ -28,7 +28,7 @@ class WebAppJSXFileLocalizer(WebAppFileLocalizer):
         try:
             for jsx_file in self.files:
                 self._process_jsx_file(jsx_file)
-            print("Localization completed successfully.")
+            print("JSX files localization completed.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppJSXFileLocalizer Error in localize_files: {str(e)}")
 

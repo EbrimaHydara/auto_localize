@@ -21,7 +21,7 @@ class WebAppJSONFileLocalizer(WebAppFileLocalizer):
         try:
             for json_file in self.files:
                 self._process_json_file(json_file)
-            print("Localization completed successfully.")
+            print("JSON files localization completed.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppJSONFileLocalizer Error in localize_files: {str(e)}")
 

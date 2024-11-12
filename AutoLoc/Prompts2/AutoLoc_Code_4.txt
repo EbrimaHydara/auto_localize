@@ -1,0 +1,783 @@
+Read this file as a continuation from 'AutoLoc_Code_3.txt' file's content.
+
+15. l10n_manager.py: in `managers` module:
+# l10n_manager.py
+
+import os
+import shutil
+from managers.source_code_manager import SourceCodeManager
+from managers.setting_manager import SettingManager
+from managers.error_manager import (
+    InitializationError,
+    InvalidUserInputError,
+    LocalizationRenderError,
+    ResourceFileError
+)
+
+# Import all the localizer classes
+from localizers.web_localizers.web_app_html_file_localizer import WebAppHTMLFileLocalizer
+from localizers.web_localizers.web_app_js_file_localizer import WebAppJSFileLocalizer
+from localizers.web_localizers.web_app_ejs_file_localizer import WebAppEJSFileLocalizer
+from localizers.web_localizers.web_app_jsx_file_localizer import WebAppJSXFileLocalizer
+from localizers.web_localizers.web_app_ts_file_localizer import WebAppTSFileLocalizer
+from localizers.web_localizers.web_app_tsx_file_localizer import WebAppTSXFileLocalizer
+from localizers.web_localizers.web_app_vue_file_localizer import WebAppVUEFileLocalizer
+from localizers.web_localizers.web_app_json_file_localizer import WebAppJSONFileLocalizer
+from localizers.web_localizers.web_app_csv_file_localizer import WebAppCSVFileLocalizer
+
+
+class L10nManager:
+    """
+    The L10nManager class handles all localization procedures of the AutoLoc app.
+    It coordinates the localization of different source code files according to their types.
+    """
+
+    def __init__(self, source_code_id):
+        try:
+            # Initialize the source code manager
+            self.source_code_manager = SourceCodeManager()
+            self.source_code = self.source_code_manager.get_source_code(source_code_id)
+            self.source_code_type = self.source_code['code_type']
+            self.source_code_status = self.source_code['status']
+
+            # Initialize the setting manager and get active file types
+            self.setting_manager = SettingManager()
+            self.active_file_types = self.get_active_file_types()
+
+            # Validate source code type
+            self.accepted_source_code_types = ["Web App", "Android App", "iOS App", "Java App"]
+            if self.source_code_type not in self.accepted_source_code_types:
+                raise InvalidUserInputError(f"L10nManager Initialization Error: Unsupported source code type '{self.source_code_type}'")
+
+            # Get files based on active file types
+            self.files = self.get_files()
+        except (InitializationError, InvalidUserInputError) as e:
+            raise InitializationError(f"L10nManager Initialization Error: {str(e)}")
+
+    def get_active_file_types(self):
+        """
+        Retrieves and returns active file types for the current source code type.
+        """
+        try:
+            file_types = self.setting_manager.get_file_types()
+            return [ft['extension'] for ft in file_types if ft['is_active'] and ft['code_type'] == self.source_code_type]
+        except Exception as e:
+            raise InvalidUserInputError(f"L10nManager Error in get_active_file_types: {str(e)}")
+
+    def get_files(self):
+        """
+        Retrieves files categorized by their extensions based on active file types.
+        """
+        files_dict = {}
+        try:
+            for extension in self.active_file_types:
+                files_by_extension = self.get_files_by_extension(extension)
+                if files_by_extension:
+                    files_dict[extension] = files_by_extension
+            return files_dict
+        except Exception as e:
+            raise InvalidUserInputError(f"L10nManager Error in get_files: {str(e)}")
+
+    def get_files_by_extension(self, extension):
+        """
+        Retrieves files with the specified extension from the source code's localized path.
+        Returns the full path of each file.
+        """
+        try:
+            localized_path = self.source_code_manager.get_localized_source_code_path(self.source_code['id'])
+            files = []
+            for root, _, filenames in os.walk(localized_path):
+                for filename in filenames:
+                    if filename.endswith(extension):
+                        # Append the full path of the file instead of the relative path
+                        files.append(os.path.join(root, filename))
+            return files
+        except Exception as e:
+            raise InvalidUserInputError(f"L10nManager Error in get_files_by_extension: {str(e)}")
+            
+    def localize_source_code(self):
+        """
+        Initiates the localization process based on the source code type.
+        """
+        try:
+            # Check if the source code has already been localized
+            if self.source_code_status == "Localized":
+                raise LocalizationRenderError("L10nManager Error: The source code has already been localized!")
+
+            if self.source_code_type == "Web App":
+                self.localize_web_files()
+            elif self.source_code_type == "Android App":
+                # Call Android files localizer function
+                pass 
+            elif self.source_code_type == "iOS App":
+                # Call iOS files localizer function
+                pass
+            elif self.source_code_type == "Java App":
+                # Call Java files localizer function
+                pass 
+            else:
+                raise InvalidUserInputError(f"L10nManager Error in localize_source_code: Unsupported source code type '{self.source_code_type}'")
+        except LocalizationRenderError as e:
+            print(f"L10nManager Error in localize_source_code: {str(e)}")
+            return  # Stop the localization process
+        except Exception as e:
+            raise LocalizationRenderError(f"L10nManager Error in localize_source_code: {str(e)}")
+
+    def localize_web_files(self):
+        """
+        Localizes web app files using the respective localizer classes.
+        """
+        try:
+            if not self.files:
+                raise LocalizationRenderError("L10nManager Error in localize_web_files: No files found for localization.")
+
+            # Map file extensions to their respective localizer classes
+            localizer_classes = {
+                '.html': WebAppHTMLFileLocalizer,
+                '.js': WebAppJSFileLocalizer,
+                '.ejs': WebAppEJSFileLocalizer,
+                '.jsx': WebAppJSXFileLocalizer,
+                '.ts': WebAppTSFileLocalizer,
+                '.tsx': WebAppTSXFileLocalizer,
+                '.vue': WebAppVUEFileLocalizer,
+                '.json': WebAppJSONFileLocalizer,
+                '.csv': WebAppCSVFileLocalizer,
+            }
+
+            for extension, files in self.files.items():
+                if files and extension in localizer_classes:
+                    localizer = localizer_classes[extension](self.source_code['id'], files)  # Pass source_code_id and files list
+                    localizer.localize_files()  # Start the localizer
+
+            self.source_code_manager.update_source_code(self.source_code['id'], {'status': 'Localized'})
+        except Exception as e:
+            raise LocalizationRenderError(f"L10nManager Error in localize_web_files: {str(e)}")
+
+    def unlocalize_source_code(self):
+        """
+        Restores the original source code by deleting all localized files and copying the original files back.
+        Updates the source code status to "Unlocalized".
+        """
+        try:
+            # Get the paths for the localized and original source code from self.source_code
+            localized_path = self.source_code['localized_source_code_path']
+            original_path = self.source_code['original_source_code_path']
+
+            # Delete all files in the localized source code path
+            for root, _, files in os.walk(localized_path, topdown=False):
+                for file in files:
+                    os.remove(os.path.join(root, file))
+            
+            # Remove the directories after deleting the files
+            for root, dirs, _ in os.walk(localized_path, topdown=False):
+                for dir in dirs:
+                    os.rmdir(os.path.join(root, dir))
+            
+            # Recursively copy all files from the original source code path to the localized path
+            shutil.copytree(original_path, localized_path, dirs_exist_ok=True)
+
+            # Update the source code status to "Unlocalized" using SourceCodeManager
+            self.source_code_manager.update_source_code(self.source_code['id'], {'status': "Unlocalized"})
+
+        except FileNotFoundError as e:
+            raise ResourceFileError(f"File not found: {str(e)}")
+        except PermissionError as e:
+            raise ResourceFileError(f"Permission error: {str(e)}")
+        except Exception as e:
+            raise ResourceFileError(f"L10nManager Error in unlocalize_source_code: {str(e)}")
+
+
+
+
+
+15b. test_l10n_manager.py 
+
+# autoloc_test.py
+
+import os
+import sys
+from managers.l10n_manager import L10nManager
+
+def run_web_localization_test(source_code_id):
+    """
+    Tests the localization functionalities for all web file types (HTML, JS, VUE, etc.)
+    using the specified source code ID. 
+    It collects the files using the L10nManager's get_files_by_extension method and runs the localization process.
+    
+    :param source_code_id: The ID of the source code to test.
+    """
+    try:
+        # Initialize L10nManager with the given source_code_id
+        l10n_manager = L10nManager(source_code_id)
+
+        # Retrieve all active files for localization (HTML, JS, VUE, etc.)
+        files_dict = l10n_manager.get_files()
+
+        # Check if there are any files to test
+        if not files_dict:
+            print("No web files found for localization testing.")
+            return
+        print(f"Files Dict: {files_dict}")
+
+        # Output collected file count for each extension
+        for extension, files in files_dict.items():
+            print(f"Collected {len(files)} {extension.upper()} file(s) for testing.")
+
+        # Run the localization process for all collected files
+        l10n_manager.localize_web_files()
+
+        print("Web localization test completed successfully.")
+
+    except Exception as e:
+        print(f"An error occurred during the localization test: {str(e)}")
+
+def run_unlocalization(source_code_id):
+    """
+    Runs the unlocalization process to restore the original source code.
+    Allows repeated testing by undoing the localization.
+
+    :param source_code_id: The ID of the source code to unlocalize.
+    """
+    try:
+        # Initialize L10nManager with the given source_code_id
+        l10n_manager = L10nManager(source_code_id)
+
+        # Run the unlocalization process
+        l10n_manager.unlocalize_source_code()
+
+        print("Unlocalization completed successfully. The source code has been restored to its original state.")
+
+    except Exception as e:
+        print(f"An error occurred during the unlocalization process: {str(e)}")
+
+
+if __name__ == "__main__":
+    # Set the source_code_id for testing (replace with actual ID)
+    source_code_id = 4  # Replace with the actual source_code_id you want to test
+
+    # Choose an action
+    action = input("Choose an action: (1) Run Localization Test (2) Run Unlocalization: ")
+
+    # Check if the source code ID is valid
+    if not source_code_id or source_code_id <= 0:
+        print("Please provide a valid source_code_id for testing.")
+    else:
+        if action == "1":
+            run_web_localization_test(source_code_id)
+        elif action == "2":
+            run_unlocalization(source_code_id)
+        else:
+            print("Invalid action. Please choose either 1 or 2.")
+
+
+
+
+
+
+
+16. localizers.web_localizers.web_app_file_localizer.py:
+import os
+import json
+import shutil
+from datetime import datetime
+from pathlib import Path
+from managers.setting_manager import SettingManager
+from managers.source_code_manager import SourceCodeManager
+from managers.target_locale_manager import TargetLocaleManager
+from managers.error_manager import (
+    InitializationError,
+    InvalidUserInputError,
+    ResourceFileError,
+)
+
+class WebAppFileLocalizer:
+    """
+    The WebAppFileLocalizer class serves as the base class for all web app file type localizer classes.
+    It manages common functionalities such as progress tracking, key generation, and saving extracted strings to resource files.
+    """
+
+    def __init__(self, source_code_id):
+        try:
+            # Initialize necessary managers
+            self.setting_manager = SettingManager()
+            self.source_code_manager = SourceCodeManager()
+            self.target_locale_manager = TargetLocaleManager()  # Added target locale manager
+
+            # Get source code information
+            self.source_code = self.source_code_manager.get_source_code(source_code_id)
+            self.source_locale = self.source_code['source_locale']
+            self.app_settings = self.setting_manager.get_app_settings()  # Use as sqlite3.Row object
+
+            # Initialize paths
+            self.locales_path = Path(self.source_code['localized_source_code_path']) / "locales"
+
+            # Ensure the locales directory exists
+            self.locales_path.mkdir(parents=True, exist_ok=True)
+
+            # Get target locales for the source code
+            self.target_locales = self.target_locale_manager.get_target_locales(source_code_id=source_code_id)
+        except (InitializationError, InvalidUserInputError) as e:
+            raise InitializationError(f"WebAppFileLocalizer Initialization Error: {str(e)}")
+
+    def generate_key(self, file_path):
+        """
+        Generates a unique string identifier key for the extracted strings.
+        If use_key_namespace is True, the key includes a namespace based on the relative path
+        of the file (excluding the file extension) in the context of the localized source code path.
+
+        :param file_path: The path of the file being processed.
+        :return: A unique key string.
+        """
+        try:
+            # Determine the relative path in the context of the localized source code path
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+
+            # Remove the file extension from the relative path for the namespace prefix
+            relative_path_without_extension = os.path.splitext(relative_path)[0]
+
+            # Use the relative path without extension as namespace prefix if 'use_key_namespace' is True
+            namespace_prefix = f"{relative_path_without_extension.replace(os.sep, '/')}:" if self.app_settings['use_key_namespace'] else ""
+
+            # Generate a unique ID using datetime attributes
+            now = datetime.now()
+            unique_id = f"str_id_{now.strftime('%Y%m%d%H%M%S%f')}"
+
+            # Return the key with or without the namespace prefix
+            return f"{namespace_prefix}{unique_id}"
+        except Exception as e:
+            raise InvalidUserInputError(f"WebAppFileLocalizer Error in generate_key: {str(e)}")
+            
+    def save_resource_files(self, data, file_path):
+        """
+        Saves the extracted strings in JSON format for both source and target locales.
+
+        :param data: The JSON data to save
+        :param file_path: The path to the file being processed
+        """
+        try:
+            # Determine relative path of the file to preserve directory structure
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+            json_file_name = Path(file_path).with_suffix('.json').name
+
+            # Save data for source locale
+            source_locale_path = self.locales_path / self.source_locale / relative_path
+            source_locale_path = source_locale_path.with_suffix('.json')  # Replace the file extension with .json
+            self._write_json_file(data, source_locale_path)
+
+            # Save data for each target locale
+            for locale in self.target_locales:
+                target_locale_path = self.locales_path / locale['code'] / relative_path
+                target_locale_path = target_locale_path.with_suffix('.json')  # Replace the file extension with .json
+                self._write_json_file(data, target_locale_path)
+
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in save_resource_files: {str(e)}")
+
+    def _write_json_file(self, data, file_path):
+        """
+        Writes JSON data to the specified file path, ensuring the directory exists.
+
+        :param data: The JSON data to write
+        :param file_path: The path to the JSON file
+        """
+        try:
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(file_path, 'w', encoding='utf-8') as json_file:
+                json.dump(data, json_file, ensure_ascii=False, indent=4)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in _write_json_file: {str(e)}")
+    
+    def duplicate_as_resource_files(self, file_path):
+        """
+        Duplicates the specified file into each locale's path without reading its content.
+
+        :param file_path: The path of the file to duplicate.
+        """
+        try:
+            # Determine the relative path of the file from the localized source code path
+            relative_path = os.path.relpath(file_path, self.source_code['localized_source_code_path'])
+            
+            # Define the base name of the file for duplication
+            file_name = Path(file_path).name
+
+            # Duplicate the file for each target locale
+            for locale in self.target_locales:
+                # Construct the target locale path
+                target_locale_path = self.locales_path / locale['code'] / relative_path
+                target_locale_path.parent.mkdir(parents=True, exist_ok=True)  # Ensure the directory exists
+
+                # Define the full path for the duplicated file
+                target_file_path = target_locale_path.with_name(file_name)
+
+                # Copy the file to the target locale path
+                shutil.copyfile(file_path, target_file_path)
+
+        except Exception as e:
+            raise ResourceFileError(f"WebAppFileLocalizer Error in duplicate_as_resource_files: {str(e)}")
+
+
+
+
+
+
+17. web_app_html_file_localizer.py:
+# web_app_html_file_localizer.py
+
+import os
+from pathlib import Path
+from bs4 import BeautifulSoup
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppHTMLFileLocalizer(WebAppFileLocalizer):
+    """
+    The WebAppHTMLFileLocalizer handles all HTML file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
+    """
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+        # Tags for localization
+        self.target_tags = ['title', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'address', 'pre', 'blockquote',
+                            'li', 'figcaption', 'caption', 'td', 'th', 'label', 'option']
+        self.special_tags = ['meta', 'img']
+        self.nav_tags = ['a', 'button']
+        self.formatting_tags = ['span', 'br', 'b', 'strong', 'i', 'em', 'mark', 'small', 'del', 'ins', 'sub', 'sup',
+                                'u', 's', 'abbr', 'code', 'kbd', 'samp', 'var', 'cite', 'q', 'dfn', 'time', 'bdi',
+                                'bdo', 'ruby', 'rt', 'rp', 'wbr']
+
+    def localize_files(self):
+        """
+        Localizes all the files in self.files.
+        """
+        try:
+            for html_file in self.files:
+                self._process_html_file(html_file)
+            print("Localization completed successfully.")
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppHTMLFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_html_file(self, html_file):
+        """
+        Processes a given HTML file for localization.
+        """
+        try:
+            with open(html_file, 'r', encoding='utf-8') as file:
+                soup = BeautifulSoup(file, 'html.parser')
+
+            self._mark_translatable_strings(soup, html_file)
+            self._extract_and_save_strings(soup, html_file)
+
+            if self.app_settings['duplicate_html']:
+                self._duplicate_html_file(soup, html_file)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppHTMLFileLocalizer Error in _process_html_file: {str(e)}")
+
+    def _mark_translatable_strings(self, soup, file_path):
+        """
+        Marks all translatable strings in the HTML content.
+        """
+        try:
+            # Process target tags
+            for tag in soup.find_all(self.target_tags):
+                if 'data-i18n' in tag.attrs:
+                    continue  # Skip tags that are already marked
+                if self._is_inside_nav_or_formatting_tags(tag):
+                    continue  # Skip if tag is inside a nav tag or formatting tag parent
+                if tag.find(self.target_tags) or tag.find(self.special_tags):
+                    continue  # Skip if tag contains another target tag or special tag as an immediate child
+
+                if (tag.string and tag.string.strip()) or tag.get_text(strip=True):
+                    tag['data-i18n'] = self.generate_key(file_path)
+                elif self._has_nav_or_formatting_tags(tag):
+                    tag['data-i18n'] = self.generate_key(file_path)
+
+            # Process special tags
+            for tag in soup.find_all(self.special_tags):
+                if 'data-i18n' in tag.attrs:
+                    continue  # Skip tags that are already marked
+                if self._is_inside_nav_or_formatting_tags(tag):
+                    continue  # Skip if tag is inside a nav tag
+                if tag.name == 'img' and tag.has_attr('alt') and tag['alt'].strip():
+                    tag['data-i18n'] = self.generate_key(file_path)
+                elif tag.name == 'meta' and (tag.get('name') in ['description', 'author'] or tag.get('property') in ['og:title', 'og:description', 'og:site_name']):
+                    if tag.has_attr('content') and tag['content'].strip():
+                        tag['data-i18n'] = self.generate_key(file_path)
+
+            # Process nav tags
+            for tag in soup.find_all(self.nav_tags):
+                if 'data-i18n' in tag.attrs:
+                    continue  # Skip tags that are already marked
+                if self._has_target_formatting_or_special_tags(tag):
+                    tag['data-i18n'] = self.generate_key(file_path)
+                elif any(sibling.name in self.target_tags for sibling in tag.find_next_siblings()):
+                    tag['data-i18n'] = self.generate_key(file_path)
+
+        except Exception as e:
+            raise InvalidUserInputError(f"WebAppHTMLFileLocalizer Error in _mark_translatable_strings: {str(e)}")
+
+    def _extract_and_save_strings(self, soup, html_file):
+        """
+        Extracts and saves the translatable strings to JSON files.
+        """
+        try:
+            source_json = {}
+
+            for tag in soup.find_all(attrs={"data-i18n": True}):
+                # Check if 'use_key_namespace' is True before splitting the 'data-i18n' attribute
+                if self.app_settings['use_key_namespace']:
+                    key = tag['data-i18n'].split(':', 1)[1]  # Take the second part without namespace_suffix
+                else:
+                    key = tag['data-i18n']  # Use the full key as is
+
+                # Get the inner HTML content if available
+                inner_html = ''.join(str(child) for child in tag.children).strip() if tag.children else None
+                if inner_html and inner_html.strip():
+                    source_json[key] = inner_html
+
+            if source_json:
+                self.save_resource_files(source_json, html_file)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppHTMLFileLocalizer Error in _extract_and_save_strings: {str(e)}")
+
+    def _duplicate_html_file(self, soup, html_file):
+        """
+        Duplicates the HTML file for each target locale and modifies the lang attribute.
+        """
+        try:
+            source_locale = self.source_locale
+            soup.html['lang'] = source_locale
+            self._save_html_file(soup, html_file, source_locale, is_original=True)
+
+            for target_locale in self.target_locales:
+                duplicate_html = BeautifulSoup(str(soup), 'html.parser')
+                duplicate_html.html['lang'] = target_locale['code']
+                self._save_html_file(duplicate_html, html_file, target_locale['code'])
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppHTMLFileLocalizer Error in _duplicate_html_file: {str(e)}")
+
+    def _save_html_file(self, soup, html_file, locale, is_original=False):
+        """
+        Saves the modified HTML file with the lang attribute.
+        """
+        try:
+            file_dir, file_name = os.path.split(html_file)
+            if is_original:
+                new_file_path = os.path.join(file_dir, file_name)
+            else:
+                locale_dir = os.path.join(file_dir, "locales", locale)
+                file_name_without_ext, file_ext = os.path.splitext(file_name)
+                new_file_name = f"{file_name_without_ext}_{locale.replace('-', '_')}{file_ext}"
+                new_file_path = os.path.join(locale_dir, new_file_name)
+
+            os.makedirs(os.path.dirname(new_file_path), exist_ok=True)
+
+            with open(new_file_path, 'w', encoding='utf-8') as file:
+                file.write(soup.prettify())
+        except Exception as e:
+            raise ResourceFileError(f"WebAppHTMLFileLocalizer Error in _save_html_file: {str(e)}")
+
+    def _has_nav_or_formatting_tags(self, tag):
+        """
+        Checks if a tag has nav_tags or formatting_tags children.
+        """
+        for child in tag.find_all(recursive=False):
+            if child.name in self.nav_tags or child.name in self.formatting_tags:
+                return True
+        return False
+
+    def _has_target_formatting_or_special_tags(self, tag):
+        """
+        Checks if a tag has target_tags, formatting_tags, or special_tags children.
+        """
+        for child in tag.find_all(recursive=False):
+            if child.name in self.target_tags or child.name in self.formatting_tags or child.name in self.special_tags:
+                return True
+        return False
+
+    def _is_inside_nav_or_formatting_tags(self, tag):
+        """
+        Checks if a tag is inside nav_tags or formatting_tags parents.
+        """
+        parent = tag.parent
+        while parent is not None:
+            if parent.name in self.nav_tags or parent.name in self.formatting_tags:
+                return True
+            parent = parent.parent
+        return False
+
+
+
+
+
+
+18. web_app_js_file_localizer.py:
+import re
+from localizers.web_localizers.web_app_file_localizer import WebAppFileLocalizer
+from managers.error_manager import LocalizationRenderError, ResourceFileError, InvalidUserInputError
+
+class WebAppJSFileLocalizer(WebAppFileLocalizer):
+    """
+    The WebAppJSFileLocalizer handles all JS file-specific localization procedures.
+    It inherits the WebAppFileLocalizer class and manages the localization process.
+    """
+
+    def __init__(self, source_code_id, files):
+        super().__init__(source_code_id)
+        self.files = files
+
+        # Regular expression patterns for identifying Japanese strings while avoiding comments and concatenations
+        self.comment_pattern = re.compile(r'//.*?$|/\*.*?\*/', re.DOTALL | re.MULTILINE)
+
+        # Updated pattern to include backtick strings, while excluding concatenated strings and specific cases
+        self.japanese_text_pattern = re.compile(r"""
+            (?<![\+\w])\s*            # Negative lookbehind to ignore concatenations and object keys
+            (["'`])                    # Match opening quote (single, double, or backtick) (capture group 1)
+            (                         # Start group for the content to be matched
+            (?:[^"'\n]*?)             # Lazily match any characters that are not newlines or quotes
+            [\u3000-\u30FF\u4E00-\u9FFF]  # Match Japanese characters
+            [^"'\n]*?                 # Lazily match any characters that are not newlines or quotes
+            )                         # End group for the content to be matched
+            \1                        # Match closing quote (same as opening)
+            (?!\s*[\+\w])             # Negative lookahead to ignore concatenations and function calls
+            |
+            ^\s*(["'`])               # Match isolated opening quote at the beginning (capture group 2)
+            (                         # Start group for isolated content to be matched
+            (?:[^"'\n]*?)             # Lazily match any characters that are not newlines or quotes
+            [\u3000-\u30FF\u4E00-\u9FFF]  # Match Japanese characters
+            [^"'\n]*?                 # Lazily match any characters that are not newlines or quotes
+            )                         # End group for isolated content to be matched
+            \2                        # Match isolated closing quote (same as opening)
+            (?![\w\+\)])              # Negative lookahead to avoid concatenations, function calls, or variable names
+        """, re.VERBOSE)
+
+        # Pattern to match specific cases like '福岡県' or prompts with Japanese characters
+        self.specific_japanese_string_pattern = re.compile(r"""
+            (["'`])                    # Match opening quote (capture group 1)
+            ([\u3000-\u30FF\u4E00-\u9FFF]+)  # Match only Japanese characters
+            \1                        # Match closing quote (same as opening)
+        """, re.VERBOSE)
+
+    def localize_files(self):
+        """
+        Localizes all the JS files in self.files.
+        """
+        try:
+            for js_file in self.files:
+                self._process_js_file(js_file)
+            print("Localization completed successfully.")
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppJSFileLocalizer Error in localize_files: {str(e)}")
+
+    def _process_js_file(self, js_file):
+        """
+        Processes an individual JS file for localization.
+
+        :param js_file: The path to the JS file to process.
+        """
+        try:
+            with open(js_file, 'r', encoding='utf-8') as file:
+                content = file.read()
+
+            modified_content, source_json = self._mark_and_extract_japanese_strings(content, js_file)
+
+            # Save the extracted strings to a JSON file
+            if source_json:
+                self.save_resource_files(source_json, js_file)
+
+            # Save the modified JS file using the existing method
+            self._save_js_file(modified_content, js_file)
+        except Exception as e:
+            raise LocalizationRenderError(f"WebAppJSFileLocalizer Error in _process_js_file: {str(e)}")
+
+    def _mark_and_extract_japanese_strings(self, content, js_file):
+        """
+        Marks and extracts all the Japanese strings in the JS file content while preserving comments
+        and avoiding concatenated strings.
+
+        :param content: The content of the JS file.
+        :param js_file: The path to the JS file being processed.
+        :return: Modified content with placeholders for Japanese texts, and source_json for extracted strings.
+        """
+        try:
+            source_json = {}
+            modified_content_segments = []
+
+            # Check if the namespace is enabled in app_settings
+            use_namespace = self.app_settings['use_key_namespace']
+
+            # Function to replace Japanese strings in code segments
+            def replace_in_code_segment(segment):
+                def replace_function(match):
+                    # Match group 1 or 2 for quote type, and group 2 or 3 for the text to be replaced
+                    quote_type = match.group(1) or match.group(2)
+                    original_text = match.group(2) if match.group(1) else match.group(3)
+
+                    # Generate a unique key for the translatable string
+                    generated_key = self.generate_key(js_file)
+
+                    # Determine the key without namespace for the JSON file
+                    key_without_namespace = generated_key.split(':', 1)[-1] if use_namespace else generated_key
+
+                    # Save the extracted string to the JSON file
+                    source_json[key_without_namespace] = original_text
+
+                    # Determine the correct replacement string based on quote type
+                    if quote_type == "'":
+                        # If the original string was in single quotes, use double quotes in the replacement
+                        replacement_string = f'${{translate("{generated_key}")}}'
+                    elif quote_type == '"':
+                        # If the original string was in double quotes, use single quotes in the replacement
+                        replacement_string = f"${{translate('{generated_key}')}}"
+                    elif quote_type == "`":
+                        # If the original string was in backtick quotes, use double quotes in the replacement
+                        replacement_string = f'${{translate("{generated_key}")}}'
+                    else:
+                        replacement_string = original_text  # No replacement needed
+
+                    # Replace the original text with the replacement string
+                    return f"{quote_type}{replacement_string}{quote_type}"
+
+                # Apply the specific Japanese string pattern first to catch strings like '福岡県'
+                segment = self.specific_japanese_string_pattern.sub(replace_function, segment)
+
+                # Then apply the general pattern for all other cases
+                return self.japanese_text_pattern.sub(replace_function, segment)
+
+            # Split the JS code into segments of comments and non-comments
+            pos = 0
+            for match in self.comment_pattern.finditer(content):
+                # Add the non-comment part
+                non_comment_part = content[pos:match.start()]
+                if non_comment_part:
+                    modified_content_segments.append(replace_in_code_segment(non_comment_part))
+                # Add the comment part without modification
+                modified_content_segments.append(match.group())
+                pos = match.end()
+
+            # Add the last non-comment part if it exists
+            remaining_code = content[pos:]
+            if remaining_code:
+                modified_content_segments.append(replace_in_code_segment(remaining_code))
+
+            # Combine all segments back into the modified code
+            modified_content = ''.join(modified_content_segments)
+
+            return modified_content, source_json
+        except Exception as e:
+            raise ResourceFileError(f"WebAppJSFileLocalizer Error in _mark_and_extract_japanese_strings: {str(e)}")
+    
+    def _save_js_file(self, content, js_file):
+        """
+        Saves the modified JS file to replace the original.
+
+        :param content: The modified content of the JS file.
+        :param js_file: The path to the JS file being saved.
+        """
+        try:
+            with open(js_file, 'w', encoding='utf-8') as file:
+                file.write(content)
+        except Exception as e:
+            raise ResourceFileError(f"WebAppJSFileLocalizer Error in _save_js_file: {str(e)}")

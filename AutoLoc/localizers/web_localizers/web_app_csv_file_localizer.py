@@ -21,7 +21,7 @@ class WebAppCSVFileLocalizer(WebAppFileLocalizer):
         try:
             for csv_file in self.files:
                 self._process_csv_file(csv_file)
-            print("Localization completed successfully.")
+            print("CSV files localization completed.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppCSVFileLocalizer Error in localize_files: {str(e)}")
 

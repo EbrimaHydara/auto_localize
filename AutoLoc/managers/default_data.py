@@ -76,7 +76,7 @@ CREATE_TABLE_STATEMENTS = {
 # Dictionary for default records
 DEFAULT_RECORDS = {
     'app_settings': [
-        (1, False, False, False)
+        (1, False, False, True)
     ],
     'locales': [
         ('Japanese', 'ja-JP'),

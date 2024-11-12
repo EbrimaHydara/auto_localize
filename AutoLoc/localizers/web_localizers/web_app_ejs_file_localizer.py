@@ -52,7 +52,7 @@ class WebAppEJSFileLocalizer(WebAppFileLocalizer):
         try:
             for ejs_file in self.files:
                 self._process_ejs_file(ejs_file)
-            print("Localization completed successfully.")
+            print("EJS files localization completed.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppEJSFileLocalizer Error in localize_files: {str(e)}")
 

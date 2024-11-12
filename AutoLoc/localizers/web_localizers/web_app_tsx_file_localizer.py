@@ -52,7 +52,7 @@ class WebAppTSXFileLocalizer(WebAppFileLocalizer):
         try:
             for tsx_file in self.files:
                 self._process_tsx_file(tsx_file)
-            print("Localization completed successfully.")
+            print("TSX files localization completed.")
         except Exception as e:
             raise LocalizationRenderError(f"WebAppTSXFileLocalizer Error in localize_files: {str(e)}")
 
