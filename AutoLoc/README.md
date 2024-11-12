@@ -1,12 +1,12 @@
 # AutoLoc - Automated Localization Tool
 
 ## Background and Introduction
-AutoLoc is an automated localization tool designed to streamline the process of localizing source code for various software projects. With support for multiple file types, it enables the extraction, management, and translation of translatable strings across applications, enhancing localization efficiency. Originally built to meet the localization needs of Rakuten Mobile Inc. (RMI), AutoLoc's architecture supports internationalization with multi-language support.
+AutoLoc is an automatic localization tool designed to streamline the process of localizing source code for various software projects. With support for multiple file types, it enables the extraction, management, and translation of translatable strings across applications, enhancing localization efficiency. Originally built to meet the localization needs of Rakuten Mobile Inc. (RMI), AutoLoc's architecture supports internationalization with multi-language support.
 
 ## Use Case and Main Functions
 AutoLoc's primary use case is to automate localization for web and mobile applications, particularly for multilingual support. Key functionalities include:
 - Managing projects and source code for localization.
-- Extracting translatable strings from supported file types (HTML, JavaScript, JSX, JSON, etc.).
+- Extracting translatable strings from supported file types (HTML, JavaScript, JSX, JSON, etc.) to JSON resource files.
 - Generating unique keys for translatable content.
 - Managing locale-specific resource files for each target language.
 - Providing the ability to revert localization to the original state.
@@ -31,7 +31,7 @@ The application is structured around the following modules:
     ```bash
     pip install -r requirements.txt
     ```
-2. If required, change the configurations of the app by editing the `setup.py` before running `autoloc.py` for localization.
+2. If required, change the configurations of the app by editing and running the `setup.py` before running `autoloc.py` for localization.
 
 ## Running `autoloc.py`
 You must run `setup.py` script for the first time of using the app. This sets up initial project data and configuration, allowing customization of settings and project details. Ensure all configurations are complete and accurate in `setup.py` before running `setup.py`. 

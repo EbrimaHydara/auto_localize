@@ -63,6 +63,26 @@ def run_unlocalization(source_code_id):
     except Exception as e:
         print(f"An error occurred during unlocalization: {str(e)}")
 
+def export_source_code(source_code_id):
+    """
+    Exports the source code files to the Downloads directory.
+
+    :param source_code_id: The ID of the source code to export.
+    """
+
+    try:
+        # Initialize SourceCodeManager
+        source_code_manager = SourceCodeManager()
+
+        # Export the source code files
+        print("Exporting the source code. Please wait...")
+        source_code_manager.export_files(source_code_id)
+        print("The source code has been successfully exported to the Downloads directory!")
+
+    except Exception as e:
+        print(f"An error occurred while exporting the source code: {str(e)}")
+
+
 if __name__ == "__main__":
     # Initialize SourceCodeManager to retrieve all source codes
     source_code_manager = SourceCodeManager()
@@ -88,12 +108,14 @@ if __name__ == "__main__":
         sys.exit()
 
     # Choose an action
-    action = input("Choose an action: (1) Localize source code (2) Unlocalize source code: ")
+    action = input("Choose an action: (1) Localize source code, (2) Unlocalize source code, (3) Export source code: ")
 
     # Execute the selected action with the chosen source code ID
     if action == "1":
         run_web_localization(source_code_id)
     elif action == "2":
         run_unlocalization(source_code_id)
+    elif action == "3":
+        export_source_code(source_code_id)
     else:
-        print("Invalid action. Please choose either 1 or 2.")
+        print("Invalid action. Please choose either 1, 2, or 3.")

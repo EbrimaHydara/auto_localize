@@ -186,7 +186,7 @@ class SourceCodeManager:
         """
         try:
             source_code = self.get_source_code(source_code_id)
-            zip_filename = os.path.join(os.path.expanduser('~/Downloads'), f"{source_code['unique_id']}_localized.zip")
+            zip_filename = os.path.join(os.path.expanduser('~/Downloads'), f"{source_code['unique_id']}_{source_code['status']}.zip")
 
             with zipfile.ZipFile(zip_filename, 'w') as zipf:
                 for root, dirs, files in os.walk(source_code['localized_source_code_path']):
